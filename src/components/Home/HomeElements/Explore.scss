@@ -25,8 +25,8 @@
   }
 }
 
-.no-webp .explore__block-fashion {
-  background-image: url("../img/explore/image4.jpg");
+.explore__block-fashion {
+  background-image: url("HomePage/explore/image4.jpg");
 }
 
 .explore__block-fashion {
@@ -89,8 +89,8 @@
   line-height: 125%;
 }
 
-.no-webp .explore__block-electronics {
-  background-image: url("../img/explore/image3.jpg");
+.explore__block-electronics {
+  background-image: url("HomePage/explore/image3.jpg");
 }
 
 .explore__block-electronics {
@@ -132,8 +132,8 @@
   /* Цвет и прозрачность затемнения */
 }
 
-.no-webp .explore__block-shops {
-  background-image: url("../img/explore/image2.jpg");
+.explore__block-shops {
+  background-image: url("HomePage/explore/image2.jpg");
 }
 
 .explore__block-shops {
@@ -175,8 +175,8 @@
   /* Цвет и прозрачность затемнения */
 }
 
-.no-webp .explore__block-furniture {
-  background-image: url("../img/explore/image1.jpg");
+.explore__block-furniture {
+  background-image: url("/public/HomePage/explore/image1.jpg");
 }
 
 .explore__block-furniture {
@@ -240,20 +240,4 @@
 
 .explore__all-btn:hover {
   color: #69dbdb;
-}
-
-.webp .explore__block-fashion {
-  background-image: url(../img/explore/image4.webp);
-}
-
-.webp .explore__block-electronics {
-  background-image: url(../img/explore/image3.webp);
-}
-
-.webp .explore__block-shops {
-  background-image: url(../img/explore/image2.webp);
-}
-
-.webp .explore__block-furniture {
-  background-image: url(../img/explore/image1.webp);
 }

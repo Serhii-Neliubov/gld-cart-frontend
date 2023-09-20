@@ -11,24 +11,19 @@ const Footer: FC = () => {
             <span className="footer__link"> Furnitures </span>
             <nav className="footer__links">
               <a href="#" className="footer__link">
-                {" "}
-                Men{" "}
+                Men
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Woman{" "}
+                Woman
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Kids{" "}
+                Kids
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Electronics{" "}
+                Electronics
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Jewellery{" "}
+                Jewellery
               </a>
             </nav>
           </div>
@@ -36,24 +31,19 @@ const Footer: FC = () => {
             <h3 className="footer__links-title">Near by shops</h3>
             <nav className="footer__links">
               <a href="#" className="footer__link">
-                {" "}
-                Near By Fashion{" "}
+                Near By Fashion
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Near By Jewellery{" "}
+                Near By Jewellery
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Near By Furnitures{" "}
+                Near By Furnitures
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Near By Electronics{" "}
+                Near By Electronics
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Near By All Shops{" "}
+                Near By All Shops
               </a>
             </nav>
           </div>
@@ -61,32 +51,25 @@ const Footer: FC = () => {
             <h3 className="footer__links-title">help & info</h3>
             <nav className="footer__links">
               <a href="#" className="footer__link">
-                {" "}
-                Track An Order{" "}
+                Track An Order
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Contact Us{" "}
+                Contact Us
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                FAQs{" "}
+                FAQs
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Privacy Policy{" "}
+                Privacy Policy
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Cookie Policy{" "}
+                Cookie Policy
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Shipping Policy{" "}
+                Shipping Policy
               </a>
               <a href="#" className="footer__link">
-                {" "}
-                Terms & Conditions{" "}
+                Terms & Conditions
               </a>
             </nav>
             <span className="footer__link"> Help & Support </span>
@@ -100,22 +83,16 @@ const Footer: FC = () => {
               <h3 className="footer__links-title">social links</h3>
               <div className="footer__social-items">
                 <a href="#" className="footer__social-item">
-                  <img src="img/footer/social-icon1.svg" alt="Social" />
+                  <img src="HomePage/footer/social-icon1.svg" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <picture>
-                    <source
-                      srcSet="img/footer/social-icon2.webp"
-                      type="image/webp"
-                    />
-                    <img src="img/footer/social-icon2.png" alt="Social" />
-                  </picture>
+                  <img src="HomePage/footer/social-icon2.png" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="img/footer/social-icon3.svg" alt="Social" />
+                  <img src="HomePage/footer/social-icon3.svg" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="img/footer/social-icon4.svg" alt="Social" />
+                  <img src="HomePage/footer/social-icon4.svg" alt="Social" />
                 </a>
               </div>
             </div>
@@ -123,29 +100,14 @@ const Footer: FC = () => {
               <h3 className="footer__links-title">Download App</h3>
               <div className="footer__download-services">
                 <a href="#" className="footer__download-qr">
-                  <picture>
-                    <source srcSet="img/footer/qr.webp" type="image/webp" />
-                    <img src="img/footer/qr.jpg" alt="Image" />
-                  </picture>
+                  <img src="HomePage/footer/qr.jpg" alt="Image" />
                 </a>
                 <div className="footer__download-stores">
                   <a className="footer__download-store" href="#">
-                    <picture>
-                      <source
-                        srcSet="img/footer/AppStore.webp"
-                        type="image/webp"
-                      />
-                      <img src="img/footer/AppStore.png" alt="Image" />
-                    </picture>
+                    <img src="HomePage/footer/AppStore.png" alt="Image" />
                   </a>
                   <a className="footer__download-store" href="#">
-                    <picture>
-                      <source
-                        srcSet="img/footer/GooglePlay.webp"
-                        type="image/webp"
-                      />
-                      <img src="img/footer/GooglePlay.png" alt="Image" />
-                    </picture>
+                    <img src="HomePage/footer/GooglePlay.png" alt="Image" />
                   </a>
                 </div>
               </div>
@@ -159,34 +121,13 @@ const Footer: FC = () => {
             <div className="footer__trialshoopy">
               <h4 className="footer__trialshoopy-title">trialshoopy accepts</h4>
               <div className="footer__trialshoopy-items">
-                <picture>
-                  <source
-                    srcSet="img/footer/cards/visa.webp"
-                    type="image/webp"
-                  />
-                  <img src="img/footer/cards/visa.png" alt="Visa" />
-                </picture>
-                <picture>
-                  <source
-                    srcSet="img/footer/cards/mastercard.webp"
-                    type="image/webp"
-                  />
-                  <img
-                    src="img/footer/cards/mastercard.png"
-                    alt="Master Card"
-                  />
-                </picture>
-                <picture>
-                  <source
-                    srcSet="img/footer/cards/bhim.webp"
-                    type="image/webp"
-                  />
-                  <img src="img/footer/cards/bhim.png" alt="BHIM UPI" />
-                </picture>
-                <picture>
-                  <source srcSet="img/footer/cards/r.webp" type="image/webp" />
-                  <img src="img/footer/cards/r.png" alt=" R" />
-                </picture>
+                <img src="HomePage/footer/cards/visa.png" alt="Visa" />
+                <img
+                  src="HomePage/footer/cards/mastercard.png"
+                  alt="Master Card"
+                />
+                <img src="HomePage/footer/cards/bhim.png" alt="BHIM UPI" />
+                <img src="HomePage/footer/cards/r.png" alt=" R" />
               </div>
             </div>
             <div className="footer__reserved">

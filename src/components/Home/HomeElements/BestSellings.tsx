@@ -16,10 +16,9 @@ const BestSellings: FC = () => {
           <div className="blocks__items">
             <div className="best-sellings__block blocks__item">
               <picture>
-                <source srcSet="img/best1.webp" type="image/webp" />
                 <img
                   className="blocks__image"
-                  src="img/best1.png"
+                  src="HomePage/best-sellings/best1.png"
                   alt="Image"
                 />
               </picture>
@@ -32,10 +31,9 @@ const BestSellings: FC = () => {
             </div>
             <div className="best-sellings__block blocks__item">
               <picture>
-                <source srcSet="img/best1.webp" type="image/webp" />
                 <img
                   className="blocks__image"
-                  src="img/best1.png"
+                  src="HomePage/best-sellings/best1.png"
                   alt="Image"
                 />
               </picture>
@@ -48,10 +46,9 @@ const BestSellings: FC = () => {
             </div>
             <div className="best-sellings__block blocks__item">
               <picture>
-                <source srcSet="img/best1.webp" type="image/webp" />
                 <img
                   className="blocks__image"
-                  src="img/best1.png"
+                  src="HomePage/best-sellings/best1.png"
                   alt="Image"
                 />
               </picture>

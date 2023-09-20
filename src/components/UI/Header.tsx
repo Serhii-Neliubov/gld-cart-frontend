@@ -15,10 +15,7 @@ const Header: FC = () => {
     <div className="header">
       <div className="header__container">
         <Link to="/home" className="header__logo">
-          <picture>
-            <source srcSet="logo.webp" type="webp" />
-            <img src="logo.png" alt="Logo" />
-          </picture>
+          <img src="HomePage/header/logo.png" alt="Logo" />
         </Link>
         <div className="header__input">
           <input placeholder="What are you looking for?" type="text" />
@@ -26,7 +23,7 @@ const Header: FC = () => {
         </div>
         <div onClick={changeLanguageHandler} className="header__button-lang">
           <span>English</span>
-          <img src="arrow-down.svg" alt="arrow down" />
+          <img src="HomePage/header/arrow-down.svg" alt="arrow down" />
           {openLanguageModal && (
             <div className="header__language-modal">
               {languages.map((language) => (

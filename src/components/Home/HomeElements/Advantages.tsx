@@ -8,7 +8,7 @@ const Advantages: FC = () => {
         <div className="advantages__items">
           <div className="advantages__item">
             <div className="advantages__image">
-              <img src="img/advantages/delivery.svg" alt="Icon" />
+              <img src="HomePage/advantages/delivery.svg" alt="Icon" />
             </div>
             <div className="advantages__text">
               <h4 className="advantages__title">Free Delivery</h4>
@@ -17,7 +17,7 @@ const Advantages: FC = () => {
           </div>
           <div className="advantages__item">
             <div className="advantages__image">
-              <img src="img/advantages/refund.svg" alt="Icon" />
+              <img src="HomePage/advantages/refund.svg" alt="Icon" />
             </div>
             <div className="advantages__text">
               <h4 className="advantages__title">Return & Refund</h4>
@@ -26,7 +26,7 @@ const Advantages: FC = () => {
           </div>
           <div className="advantages__item">
             <div className="advantages__image">
-              <img src="img/advantages/discount.svg" alt="Icon" />
+              <img src="HomePage/advantages/discount.svg" alt="Icon" />
             </div>
             <div className="advantages__text">
               <h4 className="advantages__title">Member Discount</h4>
@@ -35,7 +35,7 @@ const Advantages: FC = () => {
           </div>
           <div className="advantages__item">
             <div className="advantages__image">
-              <img src="img/advantages/support.svg" alt="Icon" />
+              <img src="HomePage/advantages/support.svg" alt="Icon" />
             </div>
             <div className="advantages__text">
               <h4 className="advantages__title">Support 24/7</h4>

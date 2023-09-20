@@ -10,12 +10,12 @@ const Label: FC = () => {
           <nav className="label__body">
             <ul className="label__list">
               <li className="label__item">
-                <a href="#" className="label__link label__link_active">
+                <a href="/home" className="label__link label__link_active">
                   Home
                 </a>
               </li>
               <li className="label__item">
-                <a href="#" className="label__link">
+                <a href="/renting" className="label__link">
                   Renting
                 </a>
               </li>
@@ -39,13 +39,13 @@ const Label: FC = () => {
         </div>
         <div className="label__actions">
           <button className="label__like-btn">
-            <img src="img/like-icon.svg" alt="Like icon" />
+            <img src="like-icon.svg" alt="Like icon" />
           </button>
           <button className="label__trash-btn">
-            <img src="img/trash-icon.svg" alt="Trash icon" />
+            <img src="trash-icon.svg" alt="Trash icon" />
           </button>
           <button className="label__profile-btn">
-            <img src="img/profile-icon.svg" alt="Profile icon" />
+            <img src="profile-icon.svg" alt="Profile icon" />
             <span>John Miller</span>
           </button>
         </div>

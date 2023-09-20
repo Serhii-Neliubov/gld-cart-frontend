@@ -8,10 +8,7 @@ const ShopNow: FC = () => {
         <div className="shop-now__content">
           <div className="shop-now__info">
             <div className="shop-now__icon">
-              <picture>
-                <source srcSet="img/apple-icon.webp" type="image/webp" />
-                <img src="img/apple-icon.png" alt="Icon" />
-              </picture>
+              <img src="apple-icon.png" alt="Icon" />
             </div>
             <div className="shop-now__description">iPhone 14 Series</div>
           </div>
@@ -19,10 +16,7 @@ const ShopNow: FC = () => {
           <button className="shop-now__button">Shop Now</button>
         </div>
         <div className="shop-now__image">
-          <picture>
-            <source srcSet="img/iphone-img.webp" type="image/webp" />
-            <img src="img/iphone-img.png" alt="Image" />
-          </picture>
+          <img src="iphone-img.png" alt="Image" />
         </div>
       </div>
     </div>
