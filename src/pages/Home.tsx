@@ -1,8 +1,16 @@
-import React from "react";
-import styles from "./Home.module.scss";
+import { FC } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import HomeMain from "../components/Home/HomeMain";
 
-const Home = () => {
-  return <div className={styles.body}>Home</div>;
+const Home: FC = () => {
+  return (
+    <>
+      <Header />
+      <HomeMain />
+      <Footer />
+    </>
+  );
 };
 
 export default Home;
