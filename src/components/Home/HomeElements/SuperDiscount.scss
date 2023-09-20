@@ -51,6 +51,9 @@
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+.webp .super-discount__container {
+  background-image: url(../img/super-discount-bg.webp);
+}
 
 .super-discount__button:hover {
   background-color: #3b3b3b;

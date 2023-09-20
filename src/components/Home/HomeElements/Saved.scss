@@ -28,6 +28,9 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
+.webp .saved__image {
+  background-image: url(../img/img1.webp);
+}
 
 .no-webp .saved__image {
   background-image: url("../img/img1.png");
