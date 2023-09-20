@@ -7,6 +7,7 @@ import BestSellings from "./HomeElements/BestSellings";
 import Featured from "./HomeElements/Featured";
 import Saved from "./HomeElements/Saved";
 import Advantages from "./HomeElements/Advantages";
+import SuperDiscount from "./HomeElements/SuperDiscount";
 
 const HomeMain = () => {
   return (
@@ -16,6 +17,7 @@ const HomeMain = () => {
       <Companies />
       <Explore />
       <BestSellings />
+      <SuperDiscount />
       <Featured />
       <Saved />
       <Advantages />
