@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import "./Label.scss";
+import { Link } from "react-router-dom";
 
 const Label: FC = () => {
   return (
@@ -10,29 +11,29 @@ const Label: FC = () => {
           <nav className="label__body">
             <ul className="label__list">
               <li className="label__item">
-                <a href="/home" className="label__link label__link_active">
+                <Link to="/" className="label__link label__link_active">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="label__item">
-                <a href="/renting" className="label__link">
+                <Link to="/renting" className="label__link">
                   Renting
-                </a>
+                </Link>
               </li>
               <li className="label__item">
-                <a href="#" className="label__link">
+                <Link to="/products" className="label__link">
                   Products
-                </a>
+                </Link>
               </li>
               <li className="label__item">
-                <a href="#" className="label__link">
+                <Link to="/personal-services" className="label__link">
                   Professional Services
-                </a>
+                </Link>
               </li>
               <li className="label__item">
-                <a href="#" className="label__link">
+                <Link to="/contact-us" className="label__link">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -44,10 +45,10 @@ const Label: FC = () => {
           <button className="label__trash-btn">
             <img src="trash-icon.svg" alt="Trash icon" />
           </button>
-          <button className="label__profile-btn">
+          <Link to="/user-type-page" className="label__profile-btn">
             <img src="profile-icon.svg" alt="Profile icon" />
             {/* <span>John Miller</span> */}
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ const Header: FC = () => {
   return (
     <div className="header">
       <div className="header__container">
-        <Link to="/home" className="header__logo">
+        <Link to="/" className="header__logo">
           <img src="HomePage/header/logo.png" alt="Logo" />
         </Link>
         <div className="header__input">

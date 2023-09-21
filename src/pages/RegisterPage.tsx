@@ -1,9 +1,13 @@
 import React from "react";
 import styles from "./RegisterPage.module.scss";
-import Login from "../components/UI/Login";
 import { Link } from "react-router-dom";
+import Login from "../components/UI/Login";
 
-const BuyerLoginPage = () => {
+interface RegisterPageProps {
+  isVendorType: boolean;
+}
+
+const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
   return (
     <div className={styles.body}>
       <Login>
@@ -31,20 +35,24 @@ const BuyerLoginPage = () => {
               </div>
               <div className={styles.input}>
                 <span>Your Email</span>
-                <input type="email" placeholder="ex:Miller" />
+                <input type="email" placeholder="Gldcart@mail.com" />
               </div>
               <div className={styles.input}>
                 <span>Password</span>
-                <input type="password" placeholder="ex:Miller" />
+                <input type="password" placeholder="Min. 6 character" />
               </div>
               <div className={styles.input}>
                 <span>Re-Password</span>
-                <input type="password" placeholder="ex:Miller" />
+                <input type="password" placeholder="Min. 6 character" />
               </div>
             </div>
           </form>
         </div>
-        <Link className={styles.button} to="/home">
+        <div className={styles.check_box}>
+          <input type="checkbox" />
+          <span>Remember me</span>
+        </div>
+        <Link className={styles.button} to={isVendorType ? "/sub-plans" : "/"}>
           Create my account
         </Link>
       </Login>
@@ -52,4 +60,4 @@ const BuyerLoginPage = () => {
   );
 };
 
-export default BuyerLoginPage;
+export default RegisterPage;
