@@ -46,7 +46,7 @@ const Label: FC = () => {
           </button>
           <button className="label__profile-btn">
             <img src="profile-icon.svg" alt="Profile icon" />
-            <span>John Miller</span>
+            {/* <span>John Miller</span> */}
           </button>
         </div>
       </div>
