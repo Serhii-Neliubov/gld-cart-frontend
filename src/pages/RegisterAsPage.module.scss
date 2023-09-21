@@ -27,13 +27,18 @@
   margin-bottom: 39px;
   border-radius: 15px;
   border: 1px solid #e0e2e3;
-  background: #2283dc;
+  background-color: #2283dc;
 
   color: #fff;
-  font-family: Poppins;
   font-size: 24px;
   font-weight: 700;
   line-height: 150%; /*  */
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #2282dcd3;
+  }
 }
 .button_green {
   display: flex;
@@ -51,6 +56,12 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 150%; /*  */
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #02a0a0dc;
+  }
 }
 button {
 }
