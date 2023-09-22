@@ -1,7 +1,7 @@
 import { FC } from "react";
-import Header from "../components/UI/Header";
-import Footer from "../components/UI/Footer";
-import HomeMain from "../components/Home/HomeMain";
+import Header from "../../components/UI/Header";
+import HomeMain from "../../components/Home/HomeMain";
+import Footer from "../../components/UI/Footer";
 
 const Home: FC = () => {
   return (

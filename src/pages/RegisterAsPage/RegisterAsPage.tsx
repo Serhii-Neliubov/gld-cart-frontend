@@ -1,4 +1,4 @@
-import Login from "../components/UI/Login";
+import Login from "../../components/UI/Login";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
 

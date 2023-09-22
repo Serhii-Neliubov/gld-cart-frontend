@@ -1,15 +1,15 @@
-import Home from "../pages/Home";
+import Home from "../pages/HomePage/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Renting from "../pages/Renting";
-import RegisterAsPage from "../pages/RegisterAsPage";
-import LoginPage from "../pages/LoginPage";
+import Renting from "../pages/RentingPage/Renting";
+import RegisterAsPage from "../pages/RegisterAsPage/RegisterAsPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
 import { FC, useState } from "react";
-import RegisterPage from "../pages/RegisterPage";
-import SubPlansPage from "../pages/SubPlansPage";
-import PaymentPage from "../pages/PaymentPage";
-import ProductsPage from "../pages/ProductsPage";
-import ContactUsPage from "../pages/ContactUsPage";
-import SendMessagePage from "../pages/SendMessagePage";
+import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import SubPlansPage from "../pages/SubPlansPage/SubPlansPage";
+import PaymentPage from "../pages/PaymentPage/PaymentPage";
+import ProductsPage from "../pages/ProductsPage/ProductsPage";
+import ContactUsPage from "../pages/ContactUsPage/ContactUsPage";
+import SendMessagePage from "../pages/SendMessagePage/SendMessagePage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);

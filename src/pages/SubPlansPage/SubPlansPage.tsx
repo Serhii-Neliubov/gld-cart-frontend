@@ -1,6 +1,6 @@
-import Header from "../components/UI/Header";
-import Label from "../components/Home/HomeElements/Label";
-import Footer from "../components/UI/Footer";
+import Label from "../../components/Home/HomeElements/Label";
+import Footer from "../../components/UI/Footer";
+import Header from "../../components/UI/Header";
 import styles from "./SubPlansPage.module.scss";
 import { Link } from "react-router-dom";
 

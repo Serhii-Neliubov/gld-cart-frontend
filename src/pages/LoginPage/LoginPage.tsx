@@ -1,6 +1,6 @@
-import Login from "../components/UI/Login";
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
+import Login from "../../components/UI/Login";
 
 interface LoginPageProps {
   isVendorType: boolean;

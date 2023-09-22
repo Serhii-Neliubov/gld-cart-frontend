@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Login from "../components/UI/Login";
 import styles from "./SendMessagePage.module.scss";
 import { FC } from "react";
+import Login from "../../components/UI/Login";
 
 const SendMessagePage: FC = () => {
   return (

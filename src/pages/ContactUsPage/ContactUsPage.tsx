@@ -1,9 +1,9 @@
 import { FC } from "react";
-import Header from "../components/UI/Header";
-import Label from "../components/Home/HomeElements/Label";
-import Footer from "../components/UI/Footer";
 import styles from "./ContactUsPage.module.scss";
 import { Link } from "react-router-dom";
+import Header from "../../components/UI/Header";
+import Label from "../../components/Home/HomeElements/Label";
+import Footer from "../../components/UI/Footer";
 
 const ContactUsPage: FC = () => {
   return (
