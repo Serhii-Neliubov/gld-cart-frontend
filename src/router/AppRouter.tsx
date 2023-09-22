@@ -9,6 +9,7 @@ import SubPlansPage from "../pages/SubPlansPage";
 import PaymentPage from "../pages/PaymentPage";
 import ProductsPage from "../pages/ProductsPage";
 import ContactUsPage from "../pages/ContactUsPage";
+import SendMessagePage from "../pages/SendMessagePage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
@@ -34,6 +35,7 @@ const AppRouter: FC = () => {
         <Route element={<PaymentPage />} path="/payment" />
         <Route element={<ProductsPage />} path="/products" />
         <Route element={<ContactUsPage />} path="/contact-us" />
+        <Route element={<SendMessagePage />} path="/send-message" />
       </Routes>
     </BrowserRouter>
   );
