@@ -1,0 +1,42 @@
+.body {
+  padding: 50px 0;
+  background-color: #ecf2f7;
+}
+.title {
+  text-align: center;
+  color: #010f1c;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 100%;
+}
+.path {
+  display: flex;
+  gap: 13px;
+  justify-content: center;
+  position: relative;
+  span {
+    color: #55585b;
+    text-align: center;
+    line-height: 162.5%; /*  */
+  }
+
+  margin-bottom: 50px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 49.4%;
+    transform: translate(-50%, -50%);
+    background-color: #a8acb0;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+  }
+}
+
+.content {
+  padding: 50px;
+  background-color: #fff;
+  box-shadow: 0px 30px 70px 0px rgba(1, 15, 28, 0.1);
+}

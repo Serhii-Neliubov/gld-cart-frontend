@@ -8,6 +8,7 @@ import RegisterPage from "../pages/RegisterPage";
 import SubPlansPage from "../pages/SubPlansPage";
 import PaymentPage from "../pages/PaymentPage";
 import ProductsPage from "../pages/ProductsPage";
+import ContactUsPage from "../pages/ContactUsPage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
@@ -32,6 +33,7 @@ const AppRouter: FC = () => {
         <Route element={<SubPlansPage />} path="/sub-plans" />
         <Route element={<PaymentPage />} path="/payment" />
         <Route element={<ProductsPage />} path="/products" />
+        <Route element={<ContactUsPage />} path="/contact-us" />
       </Routes>
     </BrowserRouter>
   );
