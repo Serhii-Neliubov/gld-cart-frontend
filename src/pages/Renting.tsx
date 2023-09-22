@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "./Renting.module.scss";
 import Header from "../components/UI/Header";
 import Label from "../components/Home/HomeElements/Label";

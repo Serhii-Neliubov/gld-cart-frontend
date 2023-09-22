@@ -1,4 +1,3 @@
-import React from "react";
 import Label from "./HomeElements/Label";
 import ShopNow from "./HomeElements/ShopNow";
 import Explore from "./HomeElements/Explore";

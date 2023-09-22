@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../components/UI/Header";
 import Label from "../components/Home/HomeElements/Label";
 import Footer from "../components/UI/Footer";

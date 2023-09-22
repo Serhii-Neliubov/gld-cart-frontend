@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./RegisterPage.module.scss";
 import { Link } from "react-router-dom";
 import Login from "../components/UI/Login";

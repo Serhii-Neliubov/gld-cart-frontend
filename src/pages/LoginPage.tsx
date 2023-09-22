@@ -1,4 +1,3 @@
-import React from "react";
 import Login from "../components/UI/Login";
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
@@ -12,7 +11,7 @@ const LoginPage = ({ isVendorType }: LoginPageProps) => {
     <div className={styles.body}>
       <Login>
         <div className={styles.content}>
-          <h1 className={styles.title}>Sign up to Gldcart</h1>
+          <h1 className={styles.title}>Log in to Gldcart</h1>
           <div className={styles.log_link}>
             <p>Don’t have an account? </p>
             <Link className={styles.link} to="/register-page">
