@@ -28,7 +28,7 @@ const ShippingPolicyPage = () => {
               <ul className={styles.unordered_list}>
                 <li>
                   Orders are typically processed within [insert number of
-                  business days] business days after payment is confirmed..
+                  business days] business days after payment is confirmed.
                 </li>
                 <li>
                   Please note that order processing time may be longer during
