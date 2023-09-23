@@ -14,6 +14,7 @@ import ProfServicesPage from "../pages/ProfServicesPage/ProfServicesPage";
 import TermsConditionsPage from "../pages/TermsConditionsPage/TermsConditionsPage";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage/PrivacyPolicyPage";
 import CookiePolicyPage from "../pages/CookiePolicyPage/CookiePolicyPage";
+import ShippingPolicyPage from "../pages/ShippingPolicyPage/ShippingPolicyPage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
@@ -44,6 +45,7 @@ const AppRouter: FC = () => {
         <Route element={<TermsConditionsPage />} path="/terms-and-conditions" />
         <Route element={<PrivacyPolicyPage />} path="/privacy-policy" />
         <Route element={<CookiePolicyPage />} path="/cookie-policy" />
+        <Route element={<ShippingPolicyPage />} path="/shipping-policy" />
       </Routes>
     </BrowserRouter>
   );
