@@ -11,7 +11,7 @@
 .blocks {
   display: flex;
   flex-wrap: wrap;
-  gap: 23px;
+  justify-content: space-between;
 }
 .block {
   justify-content: center;
@@ -29,5 +29,23 @@
   }
   &:hover {
     background-color: #f4f4f4e3;
+  }
+}
+
+.block_active {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(2, 160, 160, 0.45);
+  box-shadow: 0px 4px 41px rgba(2, 160, 160, 0.1);
+
+  align-items: center;
+  padding: 35px;
+  width: 240px;
+  gap: 25px;
+  transition: all 0.3s ease;
+  img {
+    width: 65px;
+    height: 65px;
   }
 }
