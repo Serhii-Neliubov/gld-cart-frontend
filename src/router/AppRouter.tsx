@@ -12,6 +12,8 @@ import ContactUsPage from "../pages/ContactUsPage/ContactUsPage";
 import SendMessagePage from "../pages/SendMessagePage/SendMessagePage";
 import ProfServicesPage from "../pages/ProfServicesPage/ProfServicesPage";
 import TermsConditionsPage from "../pages/TermsConditionsPage/TermsConditionsPage";
+import PrivacyPolicyPage from "../pages/PrivacyPolicyPage/PrivacyPolicyPage";
+import CookiePolicyPage from "../pages/CookiePolicyPage/CookiePolicyPage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
@@ -40,6 +42,8 @@ const AppRouter: FC = () => {
         <Route element={<SendMessagePage />} path="/send-message" />
         <Route element={<ProfServicesPage />} path="/personal-services" />
         <Route element={<TermsConditionsPage />} path="/terms-and-conditions" />
+        <Route element={<PrivacyPolicyPage />} path="/privacy-policy" />
+        <Route element={<CookiePolicyPage />} path="/cookie-policy" />
       </Routes>
     </BrowserRouter>
   );
