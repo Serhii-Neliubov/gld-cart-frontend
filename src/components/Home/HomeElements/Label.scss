@@ -52,6 +52,10 @@
   line-height: normal;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  &_active {
+    color: red;
+    font-weight: 700;
+  }
 }
 
 .label__link:hover {

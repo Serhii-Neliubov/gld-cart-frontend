@@ -1,8 +1,23 @@
 import { FC } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Label.scss";
-import { Link } from "react-router-dom";
+
+interface NavLinkProps {
+  to: string;
+  label: string;
+}
+
+const navLinks: NavLinkProps[] = [
+  { to: "/", label: "Home" },
+  { to: "/renting", label: "Renting" },
+  { to: "/products", label: "Products" },
+  { to: "/personal-services", label: "Professional Services" },
+  { to: "/contact-us", label: "Contact Us" },
+];
 
 const Label: FC = () => {
+  const location = useLocation();
+
   return (
     <div className="page__label label">
       <div className="label__container">
@@ -10,31 +25,20 @@ const Label: FC = () => {
         <div className="label__menu">
           <nav className="label__body">
             <ul className="label__list">
-              <li className="label__item">
-                <Link to="/" className="label__link label__link_active">
-                  Home
-                </Link>
-              </li>
-              <li className="label__item">
-                <Link to="/renting" className="label__link">
-                  Renting
-                </Link>
-              </li>
-              <li className="label__item">
-                <Link to="/products" className="label__link">
-                  Products
-                </Link>
-              </li>
-              <li className="label__item">
-                <Link to="/personal-services" className="label__link">
-                  Professional Services
-                </Link>
-              </li>
-              <li className="label__item">
-                <Link to="/contact-us" className="label__link">
-                  Contact Us
-                </Link>
-              </li>
+              {navLinks.map((navLink) => (
+                <li className="label__item" key={navLink.to}>
+                  <Link
+                    to={navLink.to}
+                    className={`label__link ${
+                      location.pathname === navLink.to
+                        ? "label__link_active"
+                        : ""
+                    }`}
+                  >
+                    {navLink.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
