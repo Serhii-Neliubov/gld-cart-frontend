@@ -5,6 +5,7 @@ const authRoutes = require('./routes/authRoutes')
 
 const server = express();
 
+server.use(express.json());
 
 const dbURI = 'mongodb+srv://kolya_228:oD5TAoabAZyJDOhr@cluster0.iaw7xzn.mongodb.net/node-auth';
 mongoose.connect(dbURI, {
@@ -16,3 +17,8 @@ mongoose.connect(dbURI, {
 
 server.use(cors());
 server.use(authRoutes);
+
+const port = process.env.PORT || 3001;
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
