@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import Label from "../../components/Home/HomeElements/Label";
 import Footer from "../../components/UI/Footer";
 import Header from "../../components/UI/Header";
 import styles from "./PaymentPage.module.scss";
 
 const Payment = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Header />

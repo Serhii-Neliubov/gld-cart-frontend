@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import "./Renting.module.scss";
 import styles from "./Renting.module.scss";
 import Header from "../../components/UI/Header";
@@ -6,6 +6,9 @@ import Label from "../../components/Home/HomeElements/Label";
 import Footer from "../../components/UI/Footer";
 
 const Renting: FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Header />

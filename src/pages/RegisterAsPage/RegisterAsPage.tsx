@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
@@ -7,6 +8,9 @@ interface RegisterAsPageProps {
 }
 
 const RegisterAsPage = ({ setIsVendorType }: RegisterAsPageProps) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Login>
       <div className={styles.body}>

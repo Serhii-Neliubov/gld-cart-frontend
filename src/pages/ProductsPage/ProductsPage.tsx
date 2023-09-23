@@ -1,5 +1,5 @@
 import styles from "./ProductsPage.module.scss";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/UI/Header";
 import Label from "../../components/Home/HomeElements/Label";
@@ -48,6 +48,9 @@ const categories = [
 ];
 
 const ProductsPage: FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Header />

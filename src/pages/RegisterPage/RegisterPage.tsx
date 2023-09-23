@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
 import { Link } from "react-router-dom";
@@ -24,6 +24,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
     password: "",
     rePassword: "",
   });
+
   function sendFormData(formData: IUser) {
     fetch("/your-api-endpoint", {
       method: "POST",
@@ -57,6 +58,9 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       sendFormData(userData);
     }
   }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={styles.body}>

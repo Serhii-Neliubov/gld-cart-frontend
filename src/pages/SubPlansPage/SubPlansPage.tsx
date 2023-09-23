@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Label from "../../components/Home/HomeElements/Label";
 import Footer from "../../components/UI/Footer";
 import Header from "../../components/UI/Header";
@@ -5,6 +6,9 @@ import styles from "./SubPlansPage.module.scss";
 import { Link } from "react-router-dom";
 
 const SubPlansPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Header />

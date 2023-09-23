@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
 import Login from "../../components/UI/Login";
+import { useEffect } from "react";
 
 interface LoginPageProps {
   isVendorType: boolean;
 }
 
 const LoginPage = ({ isVendorType }: LoginPageProps) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.body}>
       <Login>
