@@ -1,5 +1,6 @@
 import { FC } from "react";
 import "./Footer.scss";
+import { Link } from "react-router-dom";
 
 const Footer: FC = () => {
   return (
@@ -8,7 +9,10 @@ const Footer: FC = () => {
         <div className="footer__content">
           <div className="footer__nav">
             <h3 className="footer__links-title">Online Shopping</h3>
-            <span className="footer__link"> Furnitures </span>
+            <a href="#" className="footer__link">
+              {" "}
+              Furnitures{" "}
+            </a>
             <nav className="footer__links">
               <a href="#" className="footer__link">
                 Men
@@ -56,28 +60,31 @@ const Footer: FC = () => {
               <a href="#" className="footer__link">
                 Contact Us
               </a>
-              <a href="#" className="footer__link">
+              <Link to="/faq-s" className="footer__link">
                 FAQs
-              </a>
-              <a href="#" className="footer__link">
+              </Link>
+              <Link to="/privacy-policy" className="footer__link">
                 Privacy Policy
-              </a>
-              <a href="#" className="footer__link">
+              </Link>
+              <Link to="/cookie-policy" className="footer__link">
                 Cookie Policy
-              </a>
-              <a href="#" className="footer__link">
+              </Link>
+              <Link to="/shipping-policy" className="footer__link">
                 Shipping Policy
-              </a>
-              <a href="#" className="footer__link">
+              </Link>
+              <Link to="/terms-and-conditions" className="footer__link">
                 Terms & Conditions
-              </a>
+              </Link>
             </nav>
-            <span className="footer__link"> Help & Support </span>
+            <a href="#" className="footer__link">
+              {" "}
+              Help & Support{" "}
+            </a>
           </div>
           <div className="footer__contacts">
             <div className="footer__email">
               <h3 className="footer__links-title">email</h3>
-              <span className="footer__link">Gldcart@gmail.com</span>
+              <span className="footer__link-mail">Gldcart@gmail.com</span>
             </div>
             <div className="footer__socials">
               <h3 className="footer__links-title">social links</h3>

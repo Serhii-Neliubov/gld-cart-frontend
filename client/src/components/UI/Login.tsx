@@ -9,7 +9,7 @@ interface LoginProps {
 
 const Login = ({ children }: LoginProps) => {
   return (
-    <>
+    <div>
       <Header />
       <Label />
       <div className="__container">
@@ -28,7 +28,7 @@ const Login = ({ children }: LoginProps) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
