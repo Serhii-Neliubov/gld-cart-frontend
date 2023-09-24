@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface IUser {
   type: string;
@@ -25,6 +25,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
     password: "",
     rePassword: "",
   });
+  const navigate = useNavigate();
 
   const [isEmptyName, setIsEmptyName] = useState(false);
   const [isEmptySurname, setIsEmptySurname] = useState(false);
@@ -72,6 +73,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       setIsEmptyEmail(userData.email.length === 0);
       setIsEmptyPassword(userData.password.length === 0);
       setIsEmptyRePassword(userData.rePassword.length === 0);
+      navigate(`${isVendorType ? "/payment" : "/home"}`);
     } else {
       setIsEmptyName(userData.name.length === 0);
       setIsEmptySurname(userData.surname.length === 0);
