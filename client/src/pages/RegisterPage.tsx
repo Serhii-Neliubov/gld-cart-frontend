@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
+import Login from "../components/UI/Login";
 
 interface IUser {
   type: string;
