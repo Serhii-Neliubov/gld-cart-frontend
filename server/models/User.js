@@ -4,7 +4,7 @@ const { isEmail } = require('validator');
 const userSchema = new mongoose.Schema({
     type: {
         type: String,
-        required: [true, "Client's   type is undefined" ],
+        required: [true, "Client's type is undefined" ],
     },
     name: {
         type: String,
