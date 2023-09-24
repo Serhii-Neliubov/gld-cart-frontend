@@ -12,7 +12,7 @@ mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-    .then((result) => server.listen(3000))
+    .then((result) => server.listen(9000))
     .catch((err) => console.log(err));
 
 server.use(cors());
