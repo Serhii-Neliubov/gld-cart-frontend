@@ -15,6 +15,14 @@ mongoose.connect(dbURI, {
     .then((result) => server.listen(9000))
     .catch((err) => console.log(err));
 
+server.get('/set-cookies', (req, res) => {
+
+})
+
+server.get('/read-cookies', (req, res) => {
+
+})
+
 server.use(cors());
 server.use(authRoutes);
 
