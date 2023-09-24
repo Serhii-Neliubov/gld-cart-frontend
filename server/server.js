@@ -1,11 +1,13 @@
-const express = require("express");
+const express = require('express');
 const cors = require('cors');
-const mongoose = require("mongoose");
-const authRoutes = require('./routes/authRoutes')
+const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
+const cookieParser = require('cookie-parser');
 
 const server = express();
 
 server.use(express.json());
+server.use(cookieParser());
 
 const dbURI = 'mongodb+srv://kolya_228:oD5TAoabAZyJDOhr@cluster0.iaw7xzn.mongodb.net/node-auth';
 mongoose.connect(dbURI, {
@@ -15,13 +17,6 @@ mongoose.connect(dbURI, {
     .then((result) => server.listen(9000))
     .catch((err) => console.log(err));
 
-server.get('/set-cookies', (req, res) => {
-
-})
-
-server.get('/read-cookies', (req, res) => {
-
-})
 
 server.use(cors());
 server.use(authRoutes);
