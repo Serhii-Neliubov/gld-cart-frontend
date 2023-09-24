@@ -4,7 +4,7 @@ const { isEmail } = require('validator');
 const userSchema = new mongoose.Schema({
     type: {
         type: String,
-        required: [true, "Client' type is undefined" ],
+        required: [true, "Client's   type is undefined" ],
     },
     name: {
         type: String,
@@ -29,6 +29,16 @@ const userSchema = new mongoose.Schema({
         minlength: [6, 'Minimum password length is 6 charachters']
     }
 })
+
+userSchema.post('save', (doc, next))
+{
+    console.log('new user was created and saved', doc);
+    next();
+}
+userSchema.pre('save', function(next) {
+    console.log('user about to be created and saved', this);
+    next();
+} )
 
 const User = mongoose.model('user', userSchema);
 module.exports = User;
