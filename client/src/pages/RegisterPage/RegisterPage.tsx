@@ -65,7 +65,8 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       userData.name.length &&
       userData.password.length &&
       userData.surname.length &&
-      userData.rePassword.length
+      userData.rePassword.length &&
+      userData.password.length >= 6
     ) {
       sendFormData(userData);
       setIsEmptyName(userData.name.length === 0);
@@ -73,7 +74,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       setIsEmptyEmail(userData.email.length === 0);
       setIsEmptyPassword(userData.password.length === 0);
       setIsEmptyRePassword(userData.rePassword.length === 0);
-      navigate(`${isVendorType ? "/payment" : "/home"}`);
+      navigate(`${isVendorType ? "/sub-plans" : "/"}`);
     } else {
       setIsEmptyName(userData.name.length === 0);
       setIsEmptySurname(userData.surname.length === 0);
@@ -82,10 +83,15 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       setIsEmptyRePassword(userData.rePassword.length === 0);
     }
 
+    if (userData.password.length <= 6) {
+      setIsEmptyPassword(true);
+      console.log("Пароль должен быть больше 6 символов");
+    }
+
     if (userData.password !== userData.rePassword) {
       setIsEmptyPassword(true);
       setIsEmptyRePassword(true);
-      console.log("Пароли не одинаковвые");
+      console.log("Пароли не одинаковые");
     }
   }
 
@@ -139,7 +145,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
                     }
                     value={userData.email}
                     type="email"
-                    placeholder="Gldcart@mail.com"
+                    placeholder="Gldcart@gmail.com"
                   />
                 </div>
                 <div className={isEmptyPassword ? styles.error : styles.input}>
