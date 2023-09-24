@@ -51,7 +51,7 @@
 }
 
 .featured__block-1 {
-  background-image: url("HomePage/new-arrival/img1.jpg");
+  background-image: url("/public/HomePage/new-arrival/img1.jpg");
 }
 
 .featured__block-1 {
@@ -61,7 +61,7 @@
 }
 
 .featured__block-2 {
-  background-image: url("HomePage/new-arrival/img2.jpg");
+  background-image: url("/public/HomePage/new-arrival/img2.jpg");
 }
 
 .featured__block-2 {
@@ -72,7 +72,7 @@
 }
 
 .featured__block-4 {
-  background-image: url("HomePage/new-arrival/img4.jpg");
+  background-image: url("/public/HomePage/new-arrival/img4.jpg");
 }
 
 .featured__block-4 {
@@ -83,7 +83,7 @@
 }
 
 .featured__block-3 {
-  background-image: url("HomePage/new-arrival/img3.jpg");
+  background-image: url("/public/HomePage/new-arrival/img3.jpg");
 }
 
 .featured__block-3 {
@@ -310,24 +310,4 @@
   width: 80%;
   height: 0.0625rem;
   background-color: rgba(255, 255, 255, 0.5960784314);
-}
-
-.webp .featured__block-1 {
-  background-image: url(../img/new-arrival/img1.webp);
-}
-
-.webp .featured__block-2 {
-  background-image: url(../img/new-arrival/img2.webp);
-}
-
-.webp .featured__block-4 {
-  background-image: url(../img/new-arrival/img4.webp);
-}
-
-.webp .featured__block-3 {
-  background-image: url(../img/new-arrival/img3.webp);
-}
-
-.webp .featured__block-1 {
-  background-image: url(../img/new-arrival/img1.webp);
 }

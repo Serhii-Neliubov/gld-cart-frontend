@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
-import { Link } from "react-router-dom";
-import Login from "../components/UI/Login";
+import { Link, useNavigate } from "react-router-dom";
 
 interface IUser {
   type: string;
   name: string;
   surname: string;
+  email: string;
   password: string;
   rePassword: string;
 }
@@ -16,7 +17,7 @@ interface RegisterPageProps {
 }
 
 const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<IUser>({
     type: "",
     name: "",
     surname: "",
@@ -24,9 +25,25 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
     password: "",
     rePassword: "",
   });
+  const navigate = useNavigate();
+
+  const [isEmptyName, setIsEmptyName] = useState(false);
+  const [isEmptySurname, setIsEmptySurname] = useState(false);
+  const [isEmptyEmail, setIsEmptyEmail] = useState(false);
+  const [isEmptyPassword, setIsEmptyPassword] = useState(false);
+  const [isEmptyRePassword, setIsEmptyRePassword] = useState(false);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    if (isVendorType) {
+      setUserData({ ...userData, type: "Vendor" });
+    } else {
+      setUserData({ ...userData, type: "Buyer" });
+    }
+  }, []);
 
   function sendFormData(formData: IUser) {
-    fetch("http://localhost:3001/signup", {
+    fetch("/your-api-endpoint", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,12 +60,6 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
   }
 
   function sendFormHandler(): void {
-    if (isVendorType) {
-      setUserData({ ...userData, type: "Vendor" });
-    } else {
-      setUserData({ ...userData, type: "Buyer" });
-    }
-
     if (
       userData.password === userData.rePassword &&
       userData.name.length &&
@@ -57,6 +68,24 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       userData.rePassword.length
     ) {
       sendFormData(userData);
+      setIsEmptyName(userData.name.length === 0);
+      setIsEmptySurname(userData.surname.length === 0);
+      setIsEmptyEmail(userData.email.length === 0);
+      setIsEmptyPassword(userData.password.length === 0);
+      setIsEmptyRePassword(userData.rePassword.length === 0);
+      navigate(`${isVendorType ? "/payment" : "/home"}`);
+    } else {
+      setIsEmptyName(userData.name.length === 0);
+      setIsEmptySurname(userData.surname.length === 0);
+      setIsEmptyEmail(userData.email.length === 0);
+      setIsEmptyPassword(userData.password.length === 0);
+      setIsEmptyRePassword(userData.rePassword.length === 0);
+    }
+
+    if (userData.password !== userData.rePassword) {
+      setIsEmptyPassword(true);
+      setIsEmptyRePassword(true);
+      console.log("Пароли не одинаковвые");
     }
   }
 
@@ -79,7 +108,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
             <form>
               <div className={styles.form}>
                 <div className={styles.form_column_wrap}>
-                  <div className={styles.input}>
+                  <div className={isEmptyName ? styles.error : styles.input}>
                     <span>First Name</span>
                     <input
                       onChange={(e) =>
@@ -90,7 +119,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
                       placeholder="ex:John"
                     />
                   </div>
-                  <div className={styles.input}>
+                  <div className={isEmptySurname ? styles.error : styles.input}>
                     <span>Last Name</span>
                     <input
                       onChange={(e) =>
@@ -102,7 +131,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
                     />
                   </div>
                 </div>
-                <div className={styles.input}>
+                <div className={isEmptyEmail ? styles.error : styles.input}>
                   <span>Your Email</span>
                   <input
                     onChange={(e) =>
@@ -113,7 +142,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
                     placeholder="Gldcart@mail.com"
                   />
                 </div>
-                <div className={styles.input}>
+                <div className={isEmptyPassword ? styles.error : styles.input}>
                   <span>Password</span>
                   <input
                     onChange={(e) =>
@@ -124,11 +153,16 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
                     placeholder="Min. 6 character"
                   />
                 </div>
-                <div className={styles.input}>
+                <div
+                  className={isEmptyRePassword ? styles.error : styles.input}
+                >
                   <span>Re-Password</span>
                   <input
                     onChange={(e) =>
-                      setUserData({ ...userData, rePassword: e.target.value })
+                      setUserData({
+                        ...userData,
+                        rePassword: e.target.value,
+                      })
                     }
                     value={userData.rePassword}
                     type="password"
