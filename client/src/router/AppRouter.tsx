@@ -16,6 +16,8 @@ import PrivacyPolicyPage from "../pages/PrivacyPolicyPage/PrivacyPolicyPage";
 import CookiePolicyPage from "../pages/CookiePolicyPage/CookiePolicyPage";
 import ShippingPolicyPage from "../pages/ShippingPolicyPage/ShippingPolicyPage";
 import FaqsPage from "../pages/FaqsPage/FaqsPage";
+import WishListPage from "../pages/NoWishListPage/NoWishListPage";
+import NoShoppingCartPage from "../pages/NoShoppingCartPage/NoShoppingCartPage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
@@ -48,6 +50,11 @@ const AppRouter: FC = () => {
         <Route element={<CookiePolicyPage />} path="/cookie-policy" />
         <Route element={<ShippingPolicyPage />} path="/shipping-policy" />
         <Route element={<FaqsPage />} path="/faq-s" />
+        <Route element={<WishListPage />} path="/wishlist-no-found" />
+        <Route
+          element={<NoShoppingCartPage />}
+          path="/shopping-cart-no-found"
+        />
       </Routes>
     </BrowserRouter>
   );

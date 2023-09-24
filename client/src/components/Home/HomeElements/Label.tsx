@@ -43,12 +43,12 @@ const Label: FC = () => {
           </nav>
         </div>
         <div className="label__actions">
-          <button className="label__like-btn">
+          <Link to="/wishlist-no-found" className="label__like-btn">
             <img src="like-icon.svg" alt="Like icon" />
-          </button>
-          <button className="label__trash-btn">
+          </Link>
+          <Link to="/shopping-cart-no-found" className="label__trash-btn">
             <img src="trash-icon.svg" alt="Trash icon" />
-          </button>
+          </Link>
           <Link to="/user-type-page" className="label__profile-btn">
             <img src="profile-icon.svg" alt="Profile icon" />
             {/* <span>John Miller</span> */}
