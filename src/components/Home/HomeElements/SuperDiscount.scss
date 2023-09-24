@@ -1,5 +1,5 @@
 .super-discount__container {
-  background-image: url("HomePage/featured/super-discount-bg.png");
+  background-image: url("/public/HomePage/featured/super-discount-bg.png");
 }
 .super-discount {
   margin-bottom: 7.875rem;
@@ -54,9 +54,6 @@
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
-}
-.webp .super-discount__container {
-  background-image: url(../img/super-discount-bg.webp);
 }
 
 .super-discount__button:hover {

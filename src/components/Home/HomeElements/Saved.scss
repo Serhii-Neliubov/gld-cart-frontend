@@ -31,7 +31,7 @@
   }
 
   &__image {
-    background-image: url("HomePage/saved/img1.png");
+    background-image: url("/public/HomePage/saved/img1.png");
   }
 
   &__image {
@@ -78,7 +78,7 @@
   &__button::before {
     content: "";
     position: absolute;
-    background-image: url("HomePage/saved/shopping_cart.svg");
+    background-image: url("/public/HomePage/saved/shopping_cart.svg");
     width: 1.25rem;
     height: 1.25rem;
     top: 0.5rem;
