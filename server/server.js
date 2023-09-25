@@ -1,27 +1,27 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
+const { checkUser } = require('./middleware/authMiddleware');
 
+const port = process.env.PORT || 5000;
 const server = express();
 
 server.use(express.json());
 server.use(cookieParser());
+server.use(cors());
 
-const dbURI = 'mongodb+srv://kolya_228:oD5TAoabAZyJDOhr@cluster0.iaw7xzn.mongodb.net/node-auth';
-mongoose.connect(dbURI, {
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
 })
-    .then((result) => server.listen(9000))
+    .then((result) => server.listen(process.env.DB_PORT))
     .catch((err) => console.log(err));
 
-
-server.use(cors());
+server.use('*', checkUser);
 server.use(authRoutes);
 
-const port = process.env.PORT || 3001;
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
