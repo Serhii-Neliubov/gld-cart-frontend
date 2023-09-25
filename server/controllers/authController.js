@@ -67,3 +67,8 @@ module.exports.login_post = async (req, res) => {
     }
 
 }
+
+module.exports.logout_post = () => {
+    res.cookie('jwt', '', { maxAge: 1 });
+    res.status(200).json({ message: 'Logout successful' });
+}
