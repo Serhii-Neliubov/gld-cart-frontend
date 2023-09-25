@@ -43,7 +43,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
   }, []);
 
   function sendFormData(formData: IUser) {
-    fetch("/your-api-endpoint", {
+    fetch("http://localhost:3001/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
