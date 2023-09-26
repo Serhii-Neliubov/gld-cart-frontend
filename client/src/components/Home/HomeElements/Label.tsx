@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Label.scss";
 
@@ -15,7 +14,7 @@ const navLinks: NavLinkProps[] = [
   { to: "/contact-us", label: "Contact Us" },
 ];
 
-const Label: FC = () => {
+const Label = ({ shoppingCart }) => {
   const location = useLocation();
 
   return (
@@ -46,8 +45,14 @@ const Label: FC = () => {
           <Link to="/wishlist-no-found" className="label__like-btn">
             <img src="like-icon.svg" alt="Like icon" />
           </Link>
-          <Link to="/shopping-cart-no-found" className="label__trash-btn">
+          <Link
+            to={
+              shoppingCart.length ? "/shopping-cart" : "/shopping-cart-no-found"
+            }
+            className="label__trash-btn"
+          >
             <img src="trash-icon.svg" alt="Trash icon" />
+            <div className="label__cart-count">{shoppingCart.length}</div>
           </Link>
           <Link to="/user-type-page" className="label__profile-btn">
             <img src="profile-icon.svg" alt="Profile icon" />

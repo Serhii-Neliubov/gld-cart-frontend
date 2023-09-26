@@ -1,0 +1,203 @@
+@charset "UTF-8";
+.explore {
+  margin-bottom: 7.875rem;
+}
+.explore__container {
+  padding: 0;
+}
+.explore__title {
+  margin-bottom: 2.8125rem;
+  color: var(--Color-2, #1e1e1e);
+  font-size: 64px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.explore__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.explore__block-fashion {
+  background-image: url("/public/HomePage/explore/image4.jpg");
+}
+
+.explore__block-fashion {
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  background-size: cover;
+  width: 25rem;
+  height: 26.6875rem;
+  position: relative;
+  display: flex;
+  align-items: end;
+  padding-bottom: 1.25rem;
+  padding-left: 1.875rem;
+}
+
+.explore__block-fashion::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Цвет и прозрачность затемнения */
+  z-index: 1;
+  transition: all 0.3s ease;
+  /* Поднимаем слой выше фонового изображения */
+}
+
+.explore__block-fashion:hover::before {
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Цвет и прозрачность затемнения */
+}
+
+.explore__blocks-column {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.explore__block-title {
+  justify-content: center;
+  display: flex;
+  color: #fff;
+  z-index: 20;
+  position: relative;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 125%;
+}
+
+.explore__block-electronics {
+  background-image: url("/public/HomePage/explore/image3.jpg");
+}
+
+.explore__block-electronics {
+  background-repeat: no-repeat;
+  background-position: 100% 80%;
+  border-radius: 5px;
+  background-size: cover;
+  width: 51.25rem;
+  height: 26.6875rem;
+  position: relative;
+  display: flex;
+  align-items: end;
+  padding-bottom: 1.25rem;
+  padding-left: 1.875rem;
+}
+
+.explore__block-electronics::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Цвет и прозрачность затемнения */
+  z-index: 1;
+  /* Поднимаем слой выше фонового изображения */
+  transition: all 0.3s ease;
+  /* Поднимаем слой выше фонового изображения */
+}
+
+.explore__block-electronics:hover::before {
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Цвет и прозрачность затемнения */
+}
+
+.explore__block-shops {
+  background-image: url("/public/HomePage/explore/image2.jpg");
+}
+
+.explore__block-shops {
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  background-size: cover;
+  width: 51.125rem;
+  height: 26.6875rem;
+  position: relative;
+  display: flex;
+  align-items: end;
+  padding-bottom: 1.25rem;
+  padding-left: 1.875rem;
+}
+
+.explore__block-shops::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Цвет и прозрачность затемнения */
+  z-index: 1;
+  /* Поднимаем слой выше фонового изображения */
+  transition: all 0.3s ease;
+  /* Поднимаем слой выше фонового изображения */
+}
+
+.explore__block-shops:hover::before {
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Цвет и прозрачность затемнения */
+}
+
+.explore__block-furniture {
+  background-image: url("/public/HomePage/explore/image1.jpg");
+}
+
+.explore__block-furniture {
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  background-size: cover;
+  width: 25rem;
+  height: 26.6875rem;
+  position: relative;
+  display: flex;
+  align-items: end;
+  padding-bottom: 1.25rem;
+  padding-left: 1.875rem;
+}
+
+.explore__block-furniture::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Цвет и прозрачность затемнения */
+  z-index: 1;
+  /* Поднимаем слой выше фонового изображения */
+  transition: all 0.3s ease;
+  /* Поднимаем слой выше фонового изображения */
+}
+
+.explore__block-furniture:hover::before {
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Цвет и прозрачность затемнения */
+}
+
+.explore__text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.explore__all-btn {
+  color: #5ac0c0;
+  font-size: 21px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.explore__all-btn:hover {
+  color: #69dbdb;
+}/*# sourceMappingURL=Explore.css.map */

@@ -1,6 +1,3 @@
-import Header from "../../components/UI/Header";
-import Label from "../../components/Home/HomeElements/Label";
-import Footer from "../../components/UI/Footer";
 import styles from "./PrivacyPolicyPage.module.scss";
 import { useEffect } from "react";
 
@@ -11,8 +8,6 @@ const PrivacyPolicyPage = () => {
 
   return (
     <>
-      <Header />
-      <Label />
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>Privacy Policy</h1>
@@ -129,7 +124,6 @@ const PrivacyPolicyPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

@@ -32,6 +32,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
   const [isEmptyEmail, setIsEmptyEmail] = useState(false);
   const [isEmptyPassword, setIsEmptyPassword] = useState(false);
   const [isEmptyRePassword, setIsEmptyRePassword] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -66,7 +67,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       userData.password.length &&
       userData.surname.length &&
       userData.rePassword.length &&
-      userData.password.length >= 6
+      userData.password.length >= 8
     ) {
       sendFormData(userData);
       setIsEmptyName(userData.name.length === 0);
@@ -83,9 +84,9 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       setIsEmptyRePassword(userData.rePassword.length === 0);
     }
 
-    if (userData.password.length <= 6) {
+    if (userData.password.length <= 8) {
       setIsEmptyPassword(true);
-      console.log("Пароль должен быть больше 6 символов");
+      console.log("Пароль должен быть больше 8 символов");
     }
 
     if (userData.password !== userData.rePassword) {
@@ -156,7 +157,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
                     }
                     value={userData.password}
                     type="password"
-                    placeholder="Min. 6 character"
+                    placeholder="Min. 8 character"
                   />
                 </div>
                 <div
@@ -172,7 +173,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
                     }
                     value={userData.rePassword}
                     type="password"
-                    placeholder="Min. 6 character"
+                    placeholder="Min. 8 character"
                   />
                 </div>
               </div>

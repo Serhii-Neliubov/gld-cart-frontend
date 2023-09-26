@@ -1,0 +1,125 @@
+.footer {
+  background-color: black;
+  padding-top: 3.5rem;
+}
+
+.footer__container {
+  padding: 0;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__links-title {
+  margin-bottom: 1.5rem;
+  color: var(--Text, #fafafa);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%;
+  text-transform: uppercase;
+}
+
+.footer__links {
+  margin-top: 1.5rem;
+  margin-bottom: 1.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer__link {
+  color: var(--Text, #fafafa);
+  font-size: 16px;
+  line-height: 150%;
+  transition: all 0.3s ease;
+}
+
+.footer__link-mail {
+  color: var(--Text, #fafafa);
+}
+
+.footer__link:hover {
+  color: rgb(255, 101, 101);
+}
+
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__email {
+  margin-bottom: 1.8125rem;
+}
+
+.footer__socials {
+  margin-bottom: 1.875rem;
+}
+
+.footer__social-items {
+  display: flex;
+  gap: 0.9375rem;
+  align-items: center;
+}
+
+.footer__download-services {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.footer__download-stores {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+
+.footer__copyright {
+  margin-top: 3.875rem;
+  border-top: 1px solid gray;
+  padding-top: 1.875rem;
+  padding-bottom: 2.25rem;
+}
+
+.footer__copyright-content {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.footer__trialshoopy {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__trialshoopy-title {
+  color: #fafafa;
+  text-transform: uppercase;
+  margin-bottom: 0.625rem;
+}
+
+.footer__trialshoopy-items {
+  margin-top: 0.625rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer__reserved-text {
+  position: relative;
+  color: #cfcfcf;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.footer__reserved-text::after {
+  content: "";
+  background-image: url("/public/icon-copyright.png");
+  position: absolute;
+  top: 0.0625rem;
+  left: 0;
+  transform: translateX(-130%);
+  width: 1.25rem;
+  height: 1.25rem;
+}/*# sourceMappingURL=Footer.css.map */

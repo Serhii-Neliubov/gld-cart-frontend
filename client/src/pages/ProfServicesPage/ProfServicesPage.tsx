@@ -1,8 +1,5 @@
 import { FC, useEffect } from "react";
 import styles from "./ProfServicesPage.module.scss";
-import Header from "../../components/UI/Header";
-import Label from "../../components/Home/HomeElements/Label";
-import Footer from "../../components/UI/Footer";
 
 const ProfServicesPage: FC = () => {
   useEffect(() => {
@@ -10,8 +7,6 @@ const ProfServicesPage: FC = () => {
   }, []);
   return (
     <>
-      <Header />
-      <Label />
       <div className="__container">
         <h1 className={styles.title}>
           Select <span>PROFESSIONAL SERVICES</span> Category
@@ -75,7 +70,6 @@ const ProfServicesPage: FC = () => {
           </a>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
