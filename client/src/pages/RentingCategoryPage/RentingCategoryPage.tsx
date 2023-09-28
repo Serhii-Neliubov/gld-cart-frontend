@@ -29,6 +29,7 @@ const cars = [
   { name: "Vans" },
   { name: "Jeep" },
 ];
+
 const carsType = [
   { name: "Toyota" },
   { name: "Honda" },
@@ -44,6 +45,7 @@ const carsType = [
   { name: "Lexus" },
   { name: "Others" },
 ];
+
 const houses = [
   { name: "Single-Family Homes" },
   { name: "Multi-Family Home" },
@@ -56,6 +58,7 @@ const houses = [
   { name: "Condominium (Condo)" },
   { name: "Historic Home" },
 ];
+
 const housesType = [
   { name: "Single-Family Homes" },
   { name: "Multi-Family Home" },
@@ -68,6 +71,7 @@ const housesType = [
   { name: "Condominium (Condo)" },
   { name: "Historic Home" },
 ];
+
 const electronics = [
   { name: "Laptops" },
   { name: "Tablets" },
@@ -84,6 +88,184 @@ const electronics = [
   { name: "Power Generators" },
   { name: "Oxygen concentrators" },
   { name: "Fitness trackers" },
+];
+
+const laptops = [
+  { name: "Apple" },
+  { name: "Dell" },
+  { name: "HP" },
+  { name: "Lenovo" },
+  { name: "Acer" },
+  { name: "Microsoft" },
+  { name: "Toshiba" },
+  { name: "Samsung" },
+  { name: "Fujitsu" },
+  { name: "Huawei" },
+  { name: "Other" },
+];
+
+const smartphones = [
+  { name: "Apple" },
+  { name: "Huawei" },
+  { name: "Samsung" },
+  { name: "Lenovo" },
+  { name: "Google" },
+  { name: "OnePlus" },
+  { name: "Xiaomi" },
+  { name: "Oppo" },
+  { name: "Vivo" },
+  { name: "Sony" },
+  { name: "LG" },
+  { name: "Lenovo" },
+  { name: "Other" },
+];
+
+const projectors = [
+  { name: "Epson" },
+  { name: "Sony" },
+  { name: "BenQ" },
+  { name: "Optoma" },
+  { name: "ViewSonic" },
+  { name: "NEC" },
+  { name: "LG" },
+  { name: "Casio" },
+  { name: "Panasonic" },
+  { name: "Acer" },
+  { name: "Other" },
+];
+
+const televisions = [
+  { name: "Samsung" },
+  { name: "LG" },
+  { name: "Sony" },
+  { name: "TCL" },
+  { name: "Panasonic" },
+  { name: "Toshiba" },
+  { name: "Other" },
+];
+
+const speakers = [
+  { name: "Bose" },
+  { name: "Sonos" },
+  { name: "JBL (by Harman)" },
+  { name: "Sony" },
+  { name: "KEF" },
+  { name: "Polk Audio" },
+  { name: "Other" },
+];
+
+const microphones = [
+  { name: "Shure" },
+  { name: "Audio-Technica" },
+  { name: "Blue Microphones" },
+  { name: "Electro-Voice (EV)" },
+  { name: "Neumann" },
+  { name: "Microsoft" },
+  { name: "Earthworks Audio" },
+  { name: "Other" },
+];
+
+const cameras = [
+  { name: "Canon" },
+  { name: "Nikon" },
+  { name: "GoPro" },
+  { name: "RED Digital Cinema" },
+  { name: "Blackmagic Design" },
+  { name: "Phase One" },
+  { name: "Leica Audio" },
+  { name: "RED Hydrogen" },
+  { name: "Other" },
+];
+
+const playstation = [
+  { name: "Sony Interactive Entertainment Europe" },
+  { name: "PlayStation Studios" },
+  { name: "PlayStation UK" },
+  { name: "PlayStation Authorized Retailers" },
+  { name: "Other" },
+];
+
+const drones = [
+  { name: "DJI" },
+  { name: "QuestUAV" },
+  { name: "sense Fly" },
+  { name: "Anafi UK" },
+  { name: "Skyports" },
+  { name: "PrecisionHawk" },
+  { name: "Flyby Technology" },
+  { name: "Dronelink" },
+  { name: "Altitude Angel" },
+  { name: "Drone Safe Register" },
+  { name: "Other" },
+];
+
+const washingmachines = [
+  { name: "Beko" },
+  { name: "Bosch" },
+  { name: "Hotpoint" },
+  { name: "Indesit" },
+  { name: "Siemens" },
+  { name: "Miele" },
+  { name: "AEG" },
+  { name: "Samsung" },
+  { name: "LG" },
+  { name: "Zanussi" },
+  { name: "Other" },
+];
+
+const gpsnavigation = [
+  { name: "Garmin" },
+  { name: "TomTom" },
+  { name: "Mio" },
+  { name: "Snooper" },
+  { name: "Cobra Electronic" },
+  { name: "Bushnell" },
+  { name: "Navman" },
+  { name: "Aguri" },
+  { name: "Black Vue" },
+  { name: "Snooper Truckmate" },
+  { name: "Other" },
+];
+
+const generators = [
+  { name: "Caterpillar" },
+  { name: "Cummins" },
+  { name: "Perkins Engines" },
+  { name: "FG Wilson" },
+  { name: "JCB Power Products" },
+  { name: "Himoinsa" },
+  { name: "SDMO Industries" },
+  { name: "Atlas Copco" },
+  { name: "Pramac UK" },
+  { name: "APR Energy Truckmate" },
+  { name: "Other" },
+];
+
+const concentrators = [
+  { name: "Philips Respironics" },
+  { name: "Invacare" },
+  { name: "Devilish Healthcare" },
+  { name: "Yuwell" },
+  { name: "Drive Devilish Healthcare" },
+  { name: "GCE Group" },
+  { name: "O2 Concepts" },
+  { name: "Atlas Copco" },
+  { name: "Besco Medical" },
+  { name: "Other" },
+];
+
+const fitnesstrackers = [
+  { name: "Apple" },
+  { name: "Fitbit" },
+  { name: "Garmin" },
+  { name: "Witlings" },
+  { name: "Polar" },
+  { name: "Suunto" },
+  { name: "Oppo" },
+  { name: "Amazfit" },
+  { name: "Xiaomi" },
+  { name: "Huawei" },
+  { name: "Other" },
 ];
 
 const RentingCategoryPage = () => {
@@ -271,6 +453,261 @@ const RentingCategoryPage = () => {
                         );
                       })}
                     </div>
+                  )}
+                  {selectedButton === "Laptops" ? (
+                    <div className={styles.main_items_3}>
+                      {laptops.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Tablets" ? (
+                    <div className={styles.main_items_3}>
+                      {laptops.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Smartphones" ? (
+                    <div className={styles.main_items_3}>
+                      {smartphones.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Projectors" ? (
+                    <div className={styles.main_items_3}>
+                      {projectors.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Televisions" ? (
+                    <div className={styles.main_items_3}>
+                      {televisions.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Speakers" ? (
+                    <div className={styles.main_items_3}>
+                      {speakers.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Microphones" ? (
+                    <div className={styles.main_items_3}>
+                      {microphones.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Cameras" ? (
+                    <div className={styles.main_items_3}>
+                      {cameras.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "PlayStation" ? (
+                    <div className={styles.main_items_3}>
+                      {playstation.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Drones" ? (
+                    <div className={styles.main_items_3}>
+                      {drones.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Washing machines" ? (
+                    <div className={styles.main_items_3}>
+                      {washingmachines.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "GPS Navigation Devices" ? (
+                    <div className={styles.main_items_3}>
+                      {gpsnavigation.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Power Generators" ? (
+                    <div className={styles.main_items_3}>
+                      {generators.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Oxygen concentrators" ? (
+                    <div className={styles.main_items_3}>
+                      {concentrators.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Fitness trackers" ? (
+                    <div className={styles.main_items_3}>
+                      {fitnesstrackers.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
                   )}
                 </div>
               </div>
