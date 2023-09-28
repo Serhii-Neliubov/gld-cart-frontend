@@ -92,3 +92,20 @@
   left: 120%;
   text-wrap: nowrap;
 }
+.label__trash-btn {
+  position: relative;
+}
+.label__cart-count {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #2283dc;
+  color: white;
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: -40%;
+  left: 50%;
+}

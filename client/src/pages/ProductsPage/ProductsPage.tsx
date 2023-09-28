@@ -1,9 +1,6 @@
 import styles from "./ProductsPage.module.scss";
 import { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Header from "../../components/UI/Header";
-import Label from "../../components/Home/HomeElements/Label";
-import Footer from "../../components/UI/Footer";
 
 const categories = [
   { title: "Beauty of Skin", img: "Categories/img1.png", count: "2 products" },
@@ -53,8 +50,6 @@ const ProductsPage: FC = () => {
   }, []);
   return (
     <>
-      <Header />
-      <Label />
       <div className={styles.body}>
         <div className="__container">
           <div className={styles.content}>
@@ -81,7 +76,6 @@ const ProductsPage: FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

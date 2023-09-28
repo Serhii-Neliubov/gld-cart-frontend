@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import Label from "../../components/Home/HomeElements/Label";
-import Footer from "../../components/UI/Footer";
-import Header from "../../components/UI/Header";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
 
@@ -21,8 +18,6 @@ const Payment = () => {
 
   return (
     <>
-      <Header />
-      <Label />
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>Select Payment Method</h1>
@@ -100,7 +95,6 @@ const Payment = () => {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

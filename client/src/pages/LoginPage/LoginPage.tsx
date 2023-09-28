@@ -32,11 +32,11 @@ const LoginPage = ({ isVendorType }: LoginPageProps) => {
             <div className={styles.form}>
               <div className={styles.input}>
                 <span>Your Email</span>
-                <input type="email" placeholder="Gldcart@mail.com" />
+                <input type="email" placeholder="Email" />
               </div>
               <div className={styles.input}>
                 <span>Password</span>
-                <input type="password" placeholder="Min. 6 character" />
+                <input type="password" placeholder="Password" />
               </div>
             </div>
           </form>

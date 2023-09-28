@@ -1,9 +1,6 @@
 import { FC, useEffect } from "react";
 import "./Renting.module.scss";
 import styles from "./Renting.module.scss";
-import Header from "../../components/UI/Header";
-import Label from "../../components/Home/HomeElements/Label";
-import Footer from "../../components/UI/Footer";
 
 const Renting: FC = () => {
   useEffect(() => {
@@ -11,8 +8,6 @@ const Renting: FC = () => {
   }, []);
   return (
     <>
-      <Header />
-      <Label />
       <div className="__container">
         <h1 className={styles.title}>
           Select <span>renting</span> Category
@@ -40,7 +35,6 @@ const Renting: FC = () => {
           </a>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

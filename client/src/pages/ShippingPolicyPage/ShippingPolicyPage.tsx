@@ -1,6 +1,3 @@
-import Header from "../../components/UI/Header";
-import Label from "../../components/Home/HomeElements/Label";
-import Footer from "../../components/UI/Footer";
 import styles from "./ShippingPolicyPage.module.scss";
 import { useEffect } from "react";
 
@@ -11,8 +8,6 @@ const ShippingPolicyPage = () => {
 
   return (
     <>
-      <Header />
-      <Label />
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>Shipping Policy</h1>
@@ -167,7 +162,6 @@ const ShippingPolicyPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

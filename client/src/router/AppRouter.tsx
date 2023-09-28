@@ -16,15 +16,38 @@ import PrivacyPolicyPage from "../pages/PrivacyPolicyPage/PrivacyPolicyPage";
 import CookiePolicyPage from "../pages/CookiePolicyPage/CookiePolicyPage";
 import ShippingPolicyPage from "../pages/ShippingPolicyPage/ShippingPolicyPage";
 import FaqsPage from "../pages/FaqsPage/FaqsPage";
+import WishListPage from "../pages/NoWishListPage/NoWishListPage";
+import NoShoppingCartPage from "../pages/NoShoppingCartPage/NoShoppingCartPage";
+import PageStructure from "../components/UI/PagesStructure";
+import ShoppingCartPage from "../pages/ShoppingCartPage/ShoppingCartPage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Home />} path="/" />
-        <Route element={<Renting />} path="/renting" />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <Home
+                shoppingCart={shoppingCart}
+                setShoppingCart={setShoppingCart}
+              />
+            </PageStructure>
+          }
+          path="/"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <Renting />
+            </PageStructure>
+          }
+          path="/renting"
+        />
+
         <Route
           element={<RegisterAsPage setIsVendorType={setIsVendorType} />}
           path="/user-type-page"
@@ -37,17 +60,111 @@ const AppRouter: FC = () => {
           element={<LoginPage isVendorType={isVendorType} />}
           path="/login"
         />
-        <Route element={<SubPlansPage />} path="/sub-plans" />
-        <Route element={<PaymentPage />} path="/payment" />
-        <Route element={<ProductsPage />} path="/products" />
-        <Route element={<ContactUsPage />} path="/contact-us" />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <SubPlansPage />
+            </PageStructure>
+          }
+          path="/sub-plans"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <PaymentPage />
+            </PageStructure>
+          }
+          path="/payment"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <ProductsPage />
+            </PageStructure>
+          }
+          path="/products"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <ContactUsPage />
+            </PageStructure>
+          }
+          path="/contact-us"
+        />
         <Route element={<SendMessagePage />} path="/send-message" />
-        <Route element={<ProfServicesPage />} path="/personal-services" />
-        <Route element={<TermsConditionsPage />} path="/terms-and-conditions" />
-        <Route element={<PrivacyPolicyPage />} path="/privacy-policy" />
-        <Route element={<CookiePolicyPage />} path="/cookie-policy" />
-        <Route element={<ShippingPolicyPage />} path="/shipping-policy" />
-        <Route element={<FaqsPage />} path="/faq-s" />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <ProfServicesPage />
+            </PageStructure>
+          }
+          path="/personal-services"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <TermsConditionsPage />
+            </PageStructure>
+          }
+          path="/terms-and-conditions"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <PrivacyPolicyPage />
+            </PageStructure>
+          }
+          path="/privacy-policy"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <CookiePolicyPage />
+            </PageStructure>
+          }
+          path="/cookie-policy"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <ShippingPolicyPage />
+            </PageStructure>
+          }
+          path="/shipping-policy"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <FaqsPage />
+            </PageStructure>
+          }
+          path="/faq-s"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <WishListPage />
+            </PageStructure>
+          }
+          path="/wishlist-no-found"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <NoShoppingCartPage />
+            </PageStructure>
+          }
+          path="/shopping-cart-no-found"
+        />
+        <Route
+          element={
+            <PageStructure shoppingCart={shoppingCart}>
+              <ShoppingCartPage />
+            </PageStructure>
+          }
+          path="/shopping-cart"
+        />
       </Routes>
     </BrowserRouter>
   );

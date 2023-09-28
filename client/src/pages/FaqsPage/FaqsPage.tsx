@@ -1,6 +1,3 @@
-import Header from "../../components/UI/Header";
-import Label from "../../components/Home/HomeElements/Label";
-import Footer from "../../components/UI/Footer";
 import styles from "./FaqsPage.module.scss";
 import { useEffect } from "react";
 
@@ -11,8 +8,6 @@ const FaqsPage = () => {
 
   return (
     <>
-      <Header />
-      <Label />
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>FAQs</h1>
@@ -143,7 +138,6 @@ const FaqsPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
