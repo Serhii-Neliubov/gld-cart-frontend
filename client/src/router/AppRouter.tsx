@@ -23,25 +23,21 @@ import ShoppingCartPage from "../pages/ShoppingCartPage/ShoppingCartPage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
-  const [shoppingCart, setShoppingCart] = useState([]);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
-              <Home
-                shoppingCart={shoppingCart}
-                setShoppingCart={setShoppingCart}
-              />
+            <PageStructure>
+              <Home />
             </PageStructure>
           }
           path="/"
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <Renting />
             </PageStructure>
           }
@@ -62,7 +58,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <SubPlansPage />
             </PageStructure>
           }
@@ -70,7 +66,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <PaymentPage />
             </PageStructure>
           }
@@ -78,7 +74,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <ProductsPage />
             </PageStructure>
           }
@@ -86,7 +82,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <ContactUsPage />
             </PageStructure>
           }
@@ -95,7 +91,7 @@ const AppRouter: FC = () => {
         <Route element={<SendMessagePage />} path="/send-message" />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <ProfServicesPage />
             </PageStructure>
           }
@@ -103,7 +99,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <TermsConditionsPage />
             </PageStructure>
           }
@@ -111,7 +107,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <PrivacyPolicyPage />
             </PageStructure>
           }
@@ -119,7 +115,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <CookiePolicyPage />
             </PageStructure>
           }
@@ -127,7 +123,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <ShippingPolicyPage />
             </PageStructure>
           }
@@ -135,7 +131,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <FaqsPage />
             </PageStructure>
           }
@@ -143,7 +139,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <WishListPage />
             </PageStructure>
           }
@@ -151,7 +147,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <NoShoppingCartPage />
             </PageStructure>
           }
@@ -159,7 +155,7 @@ const AppRouter: FC = () => {
         />
         <Route
           element={
-            <PageStructure shoppingCart={shoppingCart}>
+            <PageStructure>
               <ShoppingCartPage />
             </PageStructure>
           }
