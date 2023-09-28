@@ -29,7 +29,7 @@ const AppRouter: FC = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Label />
+      <Label isVendorType={isVendorType} />
 
       <Routes>
         <Route element={<Home />} path="/" />

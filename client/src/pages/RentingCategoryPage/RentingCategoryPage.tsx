@@ -134,7 +134,6 @@ const RentingCategoryPage = () => {
                         isClicked.vehicles ? { backgroundColor: "#02A0A0" } : {}
                       }
                       onClick={() => {
-                        setSelectedButton(null);
                         setIsClicked({ ...clearClick, vehicles: true });
                       }}
                       className={styles.main_item_1}

@@ -6,16 +6,19 @@ interface NavLinkProps {
   label: string;
 }
 
-const navLinks: NavLinkProps[] = [
-  { to: "/", label: "Home" },
-  { to: "/renting", label: "Renting" },
-  { to: "/products", label: "Products" },
-  { to: "/personal-services", label: "Professional Services" },
-  { to: "/contact-us", label: "Contact Us" },
-];
-
-const Label = () => {
+const Label = ({ isVendorType }) => {
   const location = useLocation();
+
+  const navLinks: NavLinkProps[] = [
+    { to: "/", label: "Home" },
+    {
+      to: isVendorType ? "/renting-category-page" : "/renting",
+      label: "renting",
+    },
+    { to: "/products", label: "Products" },
+    { to: "/personal-services", label: "Professional Services" },
+    { to: "/contact-us", label: "Contact Us" },
+  ];
 
   return (
     <div className="page__label label">
