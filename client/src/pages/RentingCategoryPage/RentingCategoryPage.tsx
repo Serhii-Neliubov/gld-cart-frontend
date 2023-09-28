@@ -59,19 +59,6 @@ const houses = [
   { name: "Historic Home" },
 ];
 
-const housesType = [
-  { name: "Single-Family Homes" },
-  { name: "Multi-Family Home" },
-  { name: "Town House" },
-  { name: "Apartments" },
-  { name: "Cottages" },
-  { name: "Villa" },
-  { name: "Cabin" },
-  { name: "Tiny House" },
-  { name: "Condominium (Condo)" },
-  { name: "Historic Home" },
-];
-
 const electronics = [
   { name: "Laptops" },
   { name: "Tablets" },
@@ -268,12 +255,92 @@ const fitnesstrackers = [
   { name: "Other" },
 ];
 
+const singlefamily = [
+  { name: "Ranch House" },
+  { name: "Cape Cod House" },
+  { name: "Victorian House" },
+  { name: "Colonial House" },
+  { name: "Craftsman House" },
+  { name: "Mediterranean House" },
+  { name: "Tudor House" },
+  { name: "Contemporary House" },
+  { name: "Georgian House" },
+  { name: "Pueblo Revival House" },
+  { name: "Other" },
+];
+
+const multifamily = [
+  { name: "Duplex" },
+  { name: "Triplex" },
+  { name: "Quadplex" },
+  { name: "Apartment Building" },
+  { name: "Multi-Unit Complex" },
+  { name: "Other" },
+];
+
+const townhouse = [
+  { name: "Rowhouse" },
+  { name: "Brownhouse" },
+  { name: "Terrace House" },
+  { name: "Linked House" },
+  { name: "Other" },
+];
+
+const apartments = [
+  { name: "Studio Apartment" },
+  { name: "One-Bedroom Apartment" },
+  { name: "Two-Bedroom Apartment" },
+  { name: "Penthouse Apartment" },
+  { name: "Loft Apartment" },
+  { name: "Other" },
+];
+
+const cottages = [
+  { name: "Beach Cottage" },
+  { name: "Mountain Cottage" },
+  { name: "Lakeside Cottage" },
+  { name: "Other" },
+];
+
+const villa = [
+  { name: "Tuscan Villa" },
+  { name: "Mediterranean Villa" },
+  { name: "Caribbean Villa" },
+  { name: "Other" },
+];
+const cabin = [
+  { name: "Log Cabin" },
+  { name: "A-Frame Cabin" },
+  { name: "Rustic Cabin" },
+  { name: "Other" },
+];
+const tinyhouse = [
+  { name: "Traditional Tiny House" },
+  { name: "Container Home" },
+  { name: "Tiny House on Wheels (THOW)" },
+  { name: "Other" },
+];
+const condominium = [
+  { name: "High-Rise Condo" },
+  { name: "Mid-Rise Condo" },
+  { name: "Low-Rise Condo" },
+  { name: "Luxury Condo" },
+  { name: "Other" },
+];
+const historic = [
+  { name: "Victorian Era Home" },
+  { name: "Colonial Revival Home" },
+  { name: "Mid-Century Modern Home" },
+  { name: "Other" },
+];
+
 const RentingCategoryPage = () => {
   const [isClicked, setIsClicked] = React.useState(clearClick);
   const [selectedButton, setSelectedButton] = React.useState(null);
 
   const handleButtonClick = (item) => {
     setSelectedButton(item);
+    console.log(selectedButton);
   };
 
   return (
@@ -439,21 +506,7 @@ const RentingCategoryPage = () => {
                       })}
                     </div>
                   )}
-                  {isClicked.openHouseType && (
-                    <div className={styles.main_items_3}>
-                      {housesType.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  )}
+
                   {selectedButton === "Laptops" ? (
                     <div className={styles.main_items_3}>
                       {laptops.map((item) => {
@@ -695,6 +748,176 @@ const RentingCategoryPage = () => {
                   {selectedButton === "Fitness trackers" ? (
                     <div className={styles.main_items_3}>
                       {fitnesstrackers.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Single-Family Homes" ? (
+                    <div className={styles.main_items_3}>
+                      {singlefamily.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Multi-Family Home" ? (
+                    <div className={styles.main_items_3}>
+                      {multifamily.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Town House" ? (
+                    <div className={styles.main_items_3}>
+                      {townhouse.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Apartments" ? (
+                    <div className={styles.main_items_3}>
+                      {apartments.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Cottages" ? (
+                    <div className={styles.main_items_3}>
+                      {cottages.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Villa" ? (
+                    <div className={styles.main_items_3}>
+                      {villa.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Cabin" ? (
+                    <div className={styles.main_items_3}>
+                      {cabin.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Tiny House" ? (
+                    <div className={styles.main_items_3}>
+                      {tinyhouse.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Condominium (Condo)" ? (
+                    <div className={styles.main_items_3}>
+                      {condominium.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {selectedButton === "Historic Home" ? (
+                    <div className={styles.main_items_3}>
+                      {historic.map((item) => {
                         return (
                           <Link
                             to="/"
