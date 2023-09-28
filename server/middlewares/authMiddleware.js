@@ -1,48 +1,19 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const ApiError = require("../exceptions/api-error");
+const tokenService = require('../services/token-service');
 
-const requireAuth = (req, res, next) => {
-    const token = req.cookies.jwt;
-    if (token) {
-        jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, decodedToken) => {
-            if (err) {
-                console.log(err.message);
-                res.redirect('/login');
-            }
-            else {
-                console.log(decodedToken);
-                next();
-            }
-        })
-
+module.exports.requireAuth = function (req, res, next) {
+    const authorizationHeader = req.headers.authorization;
+    if(!authorizationHeader) {
+        return next(ApiError.UnauthorizedError());
     }
-    else {
-        res.redirect('/login');
+    const accessToken = authorizationHeader.split(' ')[1];
+    if(!accessToken) {
+        return next(ApiError.UnauthorizedError());
     }
+    const userData = tokenService.validateAccessToken(accessToken);
+    if(!userData) {
+        return next(ApiError.UnauthorizedError());
+    }
+    req.user = userData;
+    next();
 }
-
-const checkUser = (req, res, next) => {
-    const token = req.cookies.jwt;
-    if (token) {
-        jwt.verify(token, process.env.JWT_ACCESS_SECRET, async (err, decodedToken) => {
-            if (err) {
-                console.log(err.message);
-                res.locals.user = null;
-                next();
-            }
-            else {
-                console.log(decodedToken);
-                let user = await User.findById(decodedToken.id);
-                res.locals.user = user;
-                next();
-            }
-        })
-
-    }
-    else {
-        res.locals.user = null;
-        next();
-    }
-}
-
-module.exports = { requireAuth, checkUser };
