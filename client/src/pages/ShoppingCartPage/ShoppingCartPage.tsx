@@ -1,6 +1,7 @@
 import styles from "./ShoppingCartPage.module.scss";
 import SavedItems from "../../utils/SavedItems";
 import { useState } from "react";
+import Footer from "../../components/UI/Footer";
 
 const ShoppingCartPage = () => {
   const [result, setResult] = useState(0);
@@ -29,6 +30,7 @@ const ShoppingCartPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

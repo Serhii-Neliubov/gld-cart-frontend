@@ -1,6 +1,7 @@
 import styles from "./ProductsPage.module.scss";
 import { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../../components/UI/Footer";
 
 const categories = [
   { title: "Beauty of Skin", img: "Categories/img1.png", count: "2 products" },
@@ -76,6 +77,7 @@ const ProductsPage: FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

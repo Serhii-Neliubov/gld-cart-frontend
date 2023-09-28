@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 import HomeMain from "../../components/Home/HomeMain";
+import Footer from "../../components/UI/Footer";
 
 const Home: FC = ({ shoppingCart, setShoppingCart }) => {
   useEffect(() => {
@@ -8,6 +9,7 @@ const Home: FC = ({ shoppingCart, setShoppingCart }) => {
   return (
     <>
       <HomeMain shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />
+      <Footer />
     </>
   );
 };

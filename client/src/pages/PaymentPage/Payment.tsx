@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
-import Footer from "../../components/UI/Footer";
-
-export const clearModalActiveParams = {
-  google: false,
-  apple: false,
-  credit: false,
-  delivery: false,
-};
+import { clearModalActiveParams } from "./PaymentPage.tsx";
 
 const Payment = () => {
   const [modalActive, setModalActive] = useState(clearModalActiveParams);

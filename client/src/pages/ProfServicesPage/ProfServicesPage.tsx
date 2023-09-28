@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 import styles from "./ProfServicesPage.module.scss";
+import Footer from "../../components/UI/Footer";
 
 const ProfServicesPage: FC = () => {
   useEffect(() => {
@@ -70,6 +71,7 @@ const ProfServicesPage: FC = () => {
           </a>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

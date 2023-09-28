@@ -1,3 +1,4 @@
+import Footer from "../../components/UI/Footer";
 import styles from "./TermsConditionsPage.module.scss";
 import { useEffect } from "react";
 
@@ -103,6 +104,7 @@ const TermsConditionsPage = () => {
           </span>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

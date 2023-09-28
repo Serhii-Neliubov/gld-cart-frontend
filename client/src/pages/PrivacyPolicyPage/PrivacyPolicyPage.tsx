@@ -1,3 +1,4 @@
+import Footer from "../../components/UI/Footer";
 import styles from "./PrivacyPolicyPage.module.scss";
 import { useEffect } from "react";
 
@@ -124,6 +125,7 @@ const PrivacyPolicyPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

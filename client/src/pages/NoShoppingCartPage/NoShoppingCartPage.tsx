@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./NoShoppingCartPage.module.scss";
+import Footer from "../../components/UI/Footer";
 
 const NoShoppingCartPage = () => {
   return (
@@ -19,6 +20,7 @@ const NoShoppingCartPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

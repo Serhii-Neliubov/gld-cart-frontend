@@ -6,7 +6,7 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import { FC, useState } from "react";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import SubPlansPage from "../pages/SubPlansPage/SubPlansPage";
-import PaymentPage from "../pages/PaymentPage/PaymentPage";
+import PaymentPage from "../pages/PaymentPage/Payment";
 import ProductsPage from "../pages/ProductsPage/ProductsPage";
 import ContactUsPage from "../pages/ContactUsPage/ContactUsPage";
 import SendMessagePage from "../pages/SendMessagePage/SendMessagePage";
@@ -18,31 +18,22 @@ import ShippingPolicyPage from "../pages/ShippingPolicyPage/ShippingPolicyPage";
 import FaqsPage from "../pages/FaqsPage/FaqsPage";
 import WishListPage from "../pages/NoWishListPage/NoWishListPage";
 import NoShoppingCartPage from "../pages/NoShoppingCartPage/NoShoppingCartPage";
-import PageStructure from "../components/UI/PagesStructure";
 import ShoppingCartPage from "../pages/ShoppingCartPage/ShoppingCartPage";
+import RentingCategoryPage from "../pages/RentingCategoryPage/RentingCategoryPage";
+import Label from "../components/Home/HomeElements/Label";
+import Header from "../components/UI/Header";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
 
   return (
     <BrowserRouter>
+      <Header />
+      <Label />
+
       <Routes>
-        <Route
-          element={
-            <PageStructure>
-              <Home />
-            </PageStructure>
-          }
-          path="/"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <Renting />
-            </PageStructure>
-          }
-          path="/renting"
-        />
+        <Route element={<Home />} path="/" />
+        <Route element={<Renting />} path="/renting" />
 
         <Route
           element={<RegisterAsPage setIsVendorType={setIsVendorType} />}
@@ -56,110 +47,26 @@ const AppRouter: FC = () => {
           element={<LoginPage isVendorType={isVendorType} />}
           path="/login"
         />
-        <Route
-          element={
-            <PageStructure>
-              <SubPlansPage />
-            </PageStructure>
-          }
-          path="/sub-plans"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <PaymentPage />
-            </PageStructure>
-          }
-          path="/payment"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <ProductsPage />
-            </PageStructure>
-          }
-          path="/products"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <ContactUsPage />
-            </PageStructure>
-          }
-          path="/contact-us"
-        />
+        <Route element={<SubPlansPage />} path="/sub-plans" />
+        <Route element={<PaymentPage />} path="/payment" />
+        <Route element={<ProductsPage />} path="/products" />
+        <Route element={<ContactUsPage />} path="/contact-us" />
         <Route element={<SendMessagePage />} path="/send-message" />
+        <Route element={<ProfServicesPage />} path="/personal-services" />
+        <Route element={<TermsConditionsPage />} path="/terms-and-conditions" />
+        <Route element={<PrivacyPolicyPage />} path="/privacy-policy" />
+        <Route element={<CookiePolicyPage />} path="/cookie-policy" />
+        <Route element={<ShippingPolicyPage />} path="/shipping-policy" />
+        <Route element={<FaqsPage />} path="/faq-s" />
+        <Route element={<WishListPage />} path="/wishlist-no-found" />
         <Route
-          element={
-            <PageStructure>
-              <ProfServicesPage />
-            </PageStructure>
-          }
-          path="/personal-services"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <TermsConditionsPage />
-            </PageStructure>
-          }
-          path="/terms-and-conditions"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <PrivacyPolicyPage />
-            </PageStructure>
-          }
-          path="/privacy-policy"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <CookiePolicyPage />
-            </PageStructure>
-          }
-          path="/cookie-policy"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <ShippingPolicyPage />
-            </PageStructure>
-          }
-          path="/shipping-policy"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <FaqsPage />
-            </PageStructure>
-          }
-          path="/faq-s"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <WishListPage />
-            </PageStructure>
-          }
-          path="/wishlist-no-found"
-        />
-        <Route
-          element={
-            <PageStructure>
-              <NoShoppingCartPage />
-            </PageStructure>
-          }
+          element={<NoShoppingCartPage />}
           path="/shopping-cart-no-found"
         />
+        <Route element={<ShoppingCartPage />} path="/shopping-cart" />
         <Route
-          element={
-            <PageStructure>
-              <ShoppingCartPage />
-            </PageStructure>
-          }
-          path="/shopping-cart"
+          element={<RentingCategoryPage />}
+          path="/renting-category-page"
         />
       </Routes>
     </BrowserRouter>

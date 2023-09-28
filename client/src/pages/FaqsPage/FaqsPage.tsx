@@ -1,3 +1,4 @@
+import Footer from "../../components/UI/Footer";
 import styles from "./FaqsPage.module.scss";
 import { useEffect } from "react";
 
@@ -138,6 +139,7 @@ const FaqsPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

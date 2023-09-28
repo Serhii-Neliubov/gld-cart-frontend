@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./NoWishListPage.module.scss";
+import Footer from "../../components/UI/Footer";
 
 const NoWishListPage = () => {
   return (
@@ -19,6 +20,7 @@ const NoWishListPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

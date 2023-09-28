@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "./Header";
-import Label from "../Home/HomeElements/Label";
 import styles from "./Login.module.scss";
 
 interface LoginProps {
@@ -10,8 +8,6 @@ interface LoginProps {
 const Login = ({ children }: LoginProps) => {
   return (
     <div>
-      <Header />
-      <Label />
       <div className="__container">
         <div className={styles.body}>
           <div className={styles.content}>{children}</div>

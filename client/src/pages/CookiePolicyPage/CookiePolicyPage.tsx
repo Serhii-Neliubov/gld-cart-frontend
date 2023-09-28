@@ -1,3 +1,4 @@
+import Footer from "../../components/UI/Footer";
 import styles from "./CookiePolicyPage.module.scss";
 import { useEffect } from "react";
 
@@ -89,6 +90,7 @@ const CookiePolicyPage = () => {
           </span>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

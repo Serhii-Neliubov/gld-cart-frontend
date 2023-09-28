@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react";
 import "./Renting.module.scss";
 import styles from "./Renting.module.scss";
+import Footer from "../../components/UI/Footer";
 
 const Renting: FC = () => {
   useEffect(() => {
@@ -35,6 +36,7 @@ const Renting: FC = () => {
           </a>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

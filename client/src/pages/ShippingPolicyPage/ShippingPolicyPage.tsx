@@ -1,3 +1,4 @@
+import Footer from "../../components/UI/Footer";
 import styles from "./ShippingPolicyPage.module.scss";
 import { useEffect } from "react";
 
@@ -162,6 +163,7 @@ const ShippingPolicyPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

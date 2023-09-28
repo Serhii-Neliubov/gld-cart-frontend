@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react";
 import styles from "./ContactUsPage.module.scss";
 import { Link } from "react-router-dom";
+import Footer from "../../components/UI/Footer";
 
 const ContactUsPage: FC = () => {
   useEffect(() => {
@@ -76,6 +77,7 @@ const ContactUsPage: FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
