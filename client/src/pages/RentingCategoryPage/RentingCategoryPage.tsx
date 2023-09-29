@@ -368,8 +368,8 @@ const RentingCategoryPage = () => {
                 <div
                   style={
                     isClicked.openCarsType ||
-                    isClicked.electronics ||
-                    isClicked.openHouseType
+                    isClicked.openHouseType ||
+                    isClicked.openElectronicsType
                       ? { backgroundColor: "#02A0A0" }
                       : { backgroundColor: "#D9D9D9" }
                   }
@@ -519,6 +519,10 @@ const RentingCategoryPage = () => {
                               backgroundColor: isSelected ? "#02A0A0" : "",
                             }}
                             onClick={() => {
+                              setIsClicked({
+                                ...isClicked,
+                                openElectronicsType: true,
+                              });
                               handleButtonClick(item.name);
                             }}
                           >
@@ -533,7 +537,7 @@ const RentingCategoryPage = () => {
                       {carsType.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/vehicles"
                             key={item.name}
                             className={styles.main_item_3}
                           >
