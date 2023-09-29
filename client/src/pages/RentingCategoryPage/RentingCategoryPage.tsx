@@ -350,23 +350,60 @@ const RentingCategoryPage = () => {
           <div className={styles.content}>
             <div className={styles.routings}>
               <div className={styles.routing}>
-                <div className={styles.number}>1</div>
+                <div
+                  style={
+                    isClicked.electronics ||
+                    isClicked.houses ||
+                    isClicked.vehicles
+                      ? { backgroundColor: "#02A0A0" }
+                      : { backgroundColor: "#D9D9D9" }
+                  }
+                  className={styles.number}
+                >
+                  1
+                </div>
                 <span>Category</span>
               </div>
               <div className={styles.routing}>
-                <div className={styles.number}>2</div>
+                <div
+                  style={
+                    isClicked.openCarsType ||
+                    isClicked.electronics ||
+                    isClicked.openHouseType
+                      ? { backgroundColor: "#02A0A0" }
+                      : { backgroundColor: "#D9D9D9" }
+                  }
+                  className={styles.number}
+                >
+                  2
+                </div>
                 <span>Sub Category</span>
               </div>
               <div className={styles.routing}>
-                <div className={styles.number}>3</div>
+                <div
+                  style={{ backgroundColor: "#D9D9D9" }}
+                  className={styles.number}
+                >
+                  3
+                </div>
                 <span>Information</span>
               </div>
               <div className={styles.routing}>
-                <div className={styles.number}>4</div>
+                <div
+                  style={{ backgroundColor: "#D9D9D9" }}
+                  className={styles.number}
+                >
+                  4
+                </div>
                 <span>Photo & Video</span>
               </div>
               <div className={styles.routing}>
-                <div className={styles.number}>5</div>
+                <div
+                  style={{ backgroundColor: "#D9D9D9" }}
+                  className={styles.number}
+                >
+                  5
+                </div>
                 <span>Specifications</span>
               </div>
             </div>
