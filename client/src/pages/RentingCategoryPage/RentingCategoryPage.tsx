@@ -547,7 +547,6 @@ const RentingCategoryPage = () => {
                       })}
                     </div>
                   )}
-
                   {selectedButton === "Laptops" ? (
                     <div className={styles.main_items_3}>
                       {laptops.map((item) => {

@@ -1,0 +1,350 @@
+.body {
+  padding-bottom: 150px;
+}
+
+.content {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > button {
+    margin-top: 30px;
+
+    border-radius: 7px;
+    background: #02a0a0;
+    width: 253px;
+
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 17px 0;
+    padding-right: 30px;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 20px;
+      background-image: url("RentingCar/Arrow.svg");
+      background-repeat: no-repeat;
+      top: 16px;
+      right: 30px;
+    }
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #00b4b4;
+    }
+  }
+}
+.filter_content {
+  width: 326px;
+  padding: 25px;
+
+  border-radius: 9px;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.1);
+
+  h5 {
+    color: #000;
+    font-weight: 600;
+  }
+}
+.filter_label {
+  width: 100%;
+  background-color: #0989ff;
+  height: 5px;
+  margin: 12px 0;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 5px;
+    height: 12px;
+    position: absolute;
+    background-color: #0989ff;
+    top: -4px;
+    left: 0;
+  }
+
+  &::before {
+    content: "";
+    width: 5px;
+    height: 12px;
+    position: absolute;
+    background-color: #0989ff;
+    top: -4px;
+    right: 0;
+  }
+}
+.item_prices {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 304px;
+  position: relative;
+  margin-bottom: 30px;
+  &::after {
+    position: absolute;
+    content: "";
+
+    bottom: -20px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.22);
+    height: 1px;
+  }
+}
+
+.filter_price {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  &::after {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.22);
+    top: 12px;
+    left: 23px;
+  }
+
+  button {
+    width: 66.444px;
+    height: 27.444px;
+    flex-shrink: 0;
+    background-color: #f5f5f5;
+
+    color: #000;
+    font-size: 11.861px;
+  }
+}
+.filter_block {
+  width: 265px;
+  display: flex;
+  align-items: center;
+  padding: 17px;
+  gap: 16px;
+  position: relative;
+
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  background: #fff;
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.11);
+
+  p {
+    color: rgba(33, 33, 33, 0.71);
+    font-size: 13px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background-image: url("RentingCar/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10px;
+    transform: scale(1.5);
+    height: 10px;
+  }
+}
+.filter_blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-bottom: 40px;
+}
+.filter_price_text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  p {
+    color: rgba(0, 0, 0, 0.46);
+    font-size: 12.806px;
+    font-weight: 500;
+  }
+}
+.reset {
+  display: flex;
+  flex-direction: column;
+}
+.reset_button {
+  margin-top: 30px;
+  width: 123.5px;
+  height: 44.778px;
+  background-color: #262626;
+
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid black;
+    background-color: #fff;
+    color: #000;
+  }
+}
+.reset_text {
+  color: #000;
+  font-weight: 600;
+  position: relative;
+  &::after {
+    content: "";
+    width: 96%;
+    bottom: -5px;
+    left: 0;
+    position: absolute;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+.title {
+  color: #000;
+  font-size: 70px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+.item_price {
+  position: relative;
+  padding-left: 30px;
+  flex: 1 1 auto;
+
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 17.925px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("RentingCar/Vector.svg");
+    width: 20px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.item {
+  width: 800px;
+  border-radius: 11.489px;
+  padding: 30px 15px;
+  background-color: #f6f6f6;
+  height: 388px;
+  display: flex;
+  gap: 50px;
+  &_title {
+    color: #000;
+    font-size: 28.894px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.image {
+  background-color: white;
+  padding: 12px 50px;
+  width: 333px;
+  position: relative;
+  border-radius: 10.212px;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    height: 238px;
+  }
+}
+
+.advantages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: rgba(0, 0, 0, 0.92);
+  font-size: 14.377px;
+}
+
+.advantage {
+  padding-left: 13px;
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: red;
+  }
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .total_price {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    border-radius: 12.765px;
+    flex: 1 1 auto;
+    background-color: #fff;
+
+    h3 {
+      color: #000;
+      font-size: 14.377px;
+      font-weight: 600;
+    }
+
+    span {
+      color: #02a0a0;
+      font-size: 36.457px;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 7px 0 40px 0;
+
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 14.377px;
+    }
+  }
+
+  button {
+    padding: 17px 35px;
+
+    color: #fff;
+    font-size: 24.828px;
+    font-weight: 500;
+
+    border-radius: 7.659px;
+    background-color: #02a0a0;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #00b4b4;
+    }
+  }
+}

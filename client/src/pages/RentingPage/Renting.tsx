@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import "./Renting.module.scss";
 import styles from "./Renting.module.scss";
 import Footer from "../../components/UI/Footer";
+import { Link } from "react-router-dom";
 
 const Renting: FC = () => {
   useEffect(() => {
@@ -14,26 +15,26 @@ const Renting: FC = () => {
           Select <span>renting</span> Category
         </h1>
         <div className={styles.blocks}>
-          <a href="#" className={styles.block}>
+          <Link to="/renting-car" className={styles.block}>
             <div className={styles.image}>
               <img src="RentingPage/img1.png" alt="Image" />
             </div>
 
             <span>Vehicles</span>
-          </a>
-          <a href="#" className={styles.block}>
+          </Link>
+          <Link to="/renting-house" className={styles.block}>
             <div className={styles.image}>
               <img src="RentingPage/img2.png" alt="Image" />
             </div>
 
             <span>Houses</span>
-          </a>
-          <a href="#" className={styles.block}>
+          </Link>
+          <Link to="/renting-electronics" className={styles.block}>
             <div className={styles.image}>
               <img src="RentingPage/img3.png" alt="Image" />
             </div>
             <span>Electronics</span>
-          </a>
+          </Link>
         </div>
       </div>
       <Footer />
