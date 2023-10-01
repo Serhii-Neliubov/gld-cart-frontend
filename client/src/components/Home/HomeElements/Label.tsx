@@ -15,7 +15,10 @@ const Label = ({ isVendorType }) => {
       to: isVendorType ? "/renting-category-page" : "/renting",
       label: "renting",
     },
-    { to: "/products", label: "Products" },
+    {
+      to: isVendorType ? "/products-category-page" : "/products",
+      label: "Products",
+    },
     { to: "/personal-services", label: "Professional Services" },
     { to: "/contact-us", label: "Contact Us" },
   ];

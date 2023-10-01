@@ -25,6 +25,7 @@ import Header from "../components/UI/Header";
 import RentingCarPage from "../pages/RentingCarPage/RentingCarPage";
 import RentingHousePage from "../pages/RentingHousePage/RentingCarPage";
 import RentingElectronicsPage from "../pages/RentingElectronicsPage/RentingElectronicsPage";
+import RentingProductsPage from "../pages/RentingProductsPage/RentingProductsPage";
 
 const AppRouter: FC = () => {
   const [isVendorType, setIsVendorType] = useState<boolean>(false);
@@ -70,6 +71,10 @@ const AppRouter: FC = () => {
         <Route
           element={<RentingCategoryPage />}
           path="/renting-category-page"
+        />
+        <Route
+          element={<RentingProductsPage />}
+          path="/products-category-page"
         />
         <Route element={<RentingCarPage />} path="/renting-car" />
         <Route element={<RentingHousePage />} path="/renting-house" />
