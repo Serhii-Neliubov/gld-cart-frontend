@@ -4,6 +4,30 @@
 .components {
   padding: 55px;
 }
+
+.error {
+  border: 1px solid red;
+  width: 100%;
+  position: relative;
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: red;
+    transform: translate(8%, -50%);
+    background-color: #fff;
+    padding: 0 10px;
+  }
+  input {
+    padding: 18px;
+    outline: none;
+    width: 100%;
+    &:focus::placeholder {
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+  }
+}
 .content {
   display: flex;
   flex-direction: column;

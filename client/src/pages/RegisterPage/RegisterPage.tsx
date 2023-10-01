@@ -67,7 +67,8 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       userData.password.length &&
       userData.surname.length &&
       userData.rePassword.length &&
-      userData.password.length >= 8
+      userData.password.length >= 8 &&
+      isEmptyEmail == false
     ) {
       sendFormData(userData);
       setIsEmptyName(userData.name.length === 0);
@@ -79,7 +80,6 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
     } else {
       setIsEmptyName(userData.name.length === 0);
       setIsEmptySurname(userData.surname.length === 0);
-      setIsEmptyEmail(userData.email.length === 0);
       setIsEmptyPassword(userData.password.length === 0);
       setIsEmptyRePassword(userData.rePassword.length === 0);
     }
@@ -138,17 +138,26 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
                     />
                   </div>
                 </div>
-                <div className={isEmptyEmail ? styles.error : styles.input}>
+                <div
+                  className={`${isEmptyEmail ? styles.error : styles.input}`}
+                >
                   <span>Your Email</span>
                   <input
-                    onChange={(e) =>
-                      setUserData({ ...userData, email: e.target.value })
-                    }
+                    onChange={(e) => {
+                      setUserData({ ...userData, email: e.target.value });
+                      // Добавьте валидацию здесь, например, с использованием регулярных выражений
+                      const isValidEmail =
+                        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(
+                          e.target.value
+                        );
+                      setIsEmptyEmail(!isValidEmail);
+                    }}
                     value={userData.email}
                     type="email"
                     placeholder="Gldcart@gmail.com"
                   />
                 </div>
+
                 <div className={isEmptyPassword ? styles.error : styles.input}>
                   <span>Password</span>
                   <input

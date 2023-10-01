@@ -2,12 +2,15 @@ import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useEffect } from "react";
+import React from "react";
 
 interface LoginPageProps {
   isVendorType: boolean;
 }
 
 const LoginPage = ({ isVendorType }: LoginPageProps) => {
+  const [isEmptyEmail, setIsEmptyEmail] = React.useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -30,9 +33,19 @@ const LoginPage = ({ isVendorType }: LoginPageProps) => {
           </div>
           <form>
             <div className={styles.form}>
-              <div className={styles.input}>
+              <div className={`${isEmptyEmail ? styles.error : styles.input}`}>
                 <span>Your Email</span>
-                <input type="email" placeholder="Email" />
+                <input
+                  onChange={(e) => {
+                    const isValidEmail =
+                      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(
+                        e.target.value
+                      );
+                    setIsEmptyEmail(!isValidEmail);
+                  }}
+                  type="email"
+                  placeholder="Gldcart@gmail.com"
+                />
               </div>
               <div className={styles.input}>
                 <span>Password</span>
