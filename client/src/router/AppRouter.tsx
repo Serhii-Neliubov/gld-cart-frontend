@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Renting from "../pages/RentingPage/Renting";
 import RegisterAsPage from "../pages/RegisterAsPage/RegisterAsPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
-import { FC, useState } from "react";
+import { FC } from "react";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import SubPlansPage from "../pages/SubPlansPage/SubPlansPage";
 import PaymentPage from "../pages/PaymentPage/Payment";
@@ -28,29 +28,18 @@ import RentingElectronicsPage from "../pages/RentingElectronicsPage/RentingElect
 import RentingProductsPage from "../pages/RentingProductsPage/RentingProductsPage";
 
 const AppRouter: FC = () => {
-  const [isVendorType, setIsVendorType] = useState<boolean>(false);
-
   return (
     <BrowserRouter>
       <Header />
-      <Label isVendorType={isVendorType} />
+      <Label />
 
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Renting />} path="/renting" />
 
-        <Route
-          element={<RegisterAsPage setIsVendorType={setIsVendorType} />}
-          path="/user-type-page"
-        />
-        <Route
-          element={<RegisterPage isVendorType={isVendorType} />}
-          path="/register-page"
-        />
-        <Route
-          element={<LoginPage isVendorType={isVendorType} />}
-          path="/login"
-        />
+        <Route element={<RegisterAsPage />} path="/user-type-page" />
+        <Route element={<RegisterPage />} path="/register-page" />
+        <Route element={<LoginPage />} path="/login" />
         <Route element={<SubPlansPage />} path="/sub-plans" />
         <Route element={<PaymentPage />} path="/payment" />
         <Route element={<ProductsPage />} path="/products" />

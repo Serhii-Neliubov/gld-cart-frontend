@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 interface IUser {
   type: string;
@@ -12,11 +14,9 @@ interface IUser {
   rePassword: string;
 }
 
-interface RegisterPageProps {
-  isVendorType: boolean;
-}
+const RegisterPage = () => {
+  const isVendor = useSelector((state: RootState) => state.isVendor.value);
 
-const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
   const [userData, setUserData] = useState<IUser>({
     type: "",
     name: "",
@@ -36,7 +36,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (isVendorType) {
+    if (isVendor) {
       setUserData({ ...userData, type: "Vendor" });
     } else {
       setUserData({ ...userData, type: "Buyer" });
@@ -76,7 +76,7 @@ const RegisterPage = ({ isVendorType }: RegisterPageProps) => {
       setIsEmptyEmail(userData.email.length === 0);
       setIsEmptyPassword(userData.password.length === 0);
       setIsEmptyRePassword(userData.rePassword.length === 0);
-      navigate(`${isVendorType ? "/sub-plans" : "/"}`);
+      navigate(`${isVendor ? "/sub-plans" : "/"}`);
     } else {
       setIsEmptyName(userData.name.length === 0);
       setIsEmptySurname(userData.surname.length === 0);

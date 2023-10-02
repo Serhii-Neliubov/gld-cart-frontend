@@ -3,13 +3,12 @@ import styles from "./LoginPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useEffect } from "react";
 import React from "react";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
-interface LoginPageProps {
-  isVendorType: boolean;
-}
-
-const LoginPage = ({ isVendorType }: LoginPageProps) => {
+const LoginPage = () => {
   const [isEmptyEmail, setIsEmptyEmail] = React.useState(false);
+  const isVendor = useSelector((state: RootState) => state.isVendor.value);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -57,10 +56,7 @@ const LoginPage = ({ isVendorType }: LoginPageProps) => {
             <input type="checkbox" />
             <span>Remember me</span>
           </div>
-          <Link
-            className={styles.button}
-            to={isVendorType ? "/sub-plans" : "/"}
-          >
+          <Link className={styles.button} to={isVendor ? "/sub-plans" : "/"}>
             Login
           </Link>
         </div>

@@ -1,22 +1,25 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Label.scss";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 interface NavLinkProps {
   to: string;
   label: string;
 }
 
-const Label = ({ isVendorType }) => {
+const Label = () => {
   const location = useLocation();
+  const isVendor = useSelector((state: RootState) => state.isVendor.value);
 
   const navLinks: NavLinkProps[] = [
     { to: "/", label: "Home" },
     {
-      to: isVendorType ? "/renting-category-page" : "/renting",
+      to: isVendor ? "/renting-category-page" : "/renting",
       label: "renting",
     },
     {
-      to: isVendorType ? "/products-category-page" : "/products",
+      to: isVendor ? "/products-category-page" : "/products",
       label: "Products",
     },
     { to: "/personal-services", label: "Professional Services" },

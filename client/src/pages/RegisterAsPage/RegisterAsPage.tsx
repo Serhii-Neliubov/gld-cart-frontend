@@ -2,15 +2,16 @@ import { useEffect } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setFalse, setTrue } from "../../redux/Slices/isvendorSlice";
 
-interface RegisterAsPageProps {
-  setIsVendorType: (state: boolean) => void;
-}
+const RegisterAsPage = () => {
+  const dispatch = useDispatch();
 
-const RegisterAsPage = ({ setIsVendorType }: RegisterAsPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <Login>
       <div className={styles.body}>
@@ -20,14 +21,14 @@ const RegisterAsPage = ({ setIsVendorType }: RegisterAsPageProps) => {
           audience. Register now and embark on a journey of growth and success.
         </p>
         <Link
-          onClick={() => setIsVendorType(false)}
+          onClick={() => dispatch(setFalse())}
           to="/register-page"
           className={styles.button_green}
         >
           Buyer
         </Link>
         <Link
-          onClick={() => setIsVendorType(true)}
+          onClick={() => dispatch(setTrue())}
           to="/register-page"
           className={styles.button_blue}
         >
