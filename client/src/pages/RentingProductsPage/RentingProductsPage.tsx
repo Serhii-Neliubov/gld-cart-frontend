@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./RentingProductsPage.module.scss";
 import React from "react";
 
-const clearClick = {
+const clearClick: IClearClick = {
   beauty: false,
   bags: false,
   awesome: false,
@@ -34,6 +34,39 @@ const clearClick = {
   opensmartWatch: false,
   openearrings: false,
 };
+
+interface IClearClick {
+  beauty: boolean;
+  bags: boolean;
+  awesome: boolean;
+  mobileTablets: boolean;
+  necklaces: boolean;
+  clothing: boolean;
+  bluetooth: boolean;
+  facial: boolean;
+  shoes: boolean;
+  cpu: boolean;
+  discover: boolean;
+  headphones: boolean;
+  bracelets: boolean;
+  smartWatch: boolean;
+  earrings: boolean;
+  openbeauty: boolean;
+  openbags: boolean;
+  openawesome: boolean;
+  openmobileTablets: boolean;
+  opennecklaces: boolean;
+  openclothing: boolean;
+  openbluetooth: boolean;
+  openfacial: boolean;
+  openshoes: boolean;
+  opencpu: boolean;
+  opendiscover: boolean;
+  openheadphones: boolean;
+  openbracelets: boolean;
+  opensmartWatch: boolean;
+  openearrings: boolean;
+}
 
 const beauty = [
   { name: "Radiant Complexion" },
@@ -1121,12 +1154,13 @@ const statementEarrings = [
   { name: "other" },
 ];
 const RentingProductsPage = () => {
-  const [isClicked, setIsClicked] = React.useState(clearClick);
-  const [selectedButton, setSelectedButton] = React.useState(null);
+  const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
+  const [selectedButton, setSelectedButton] = React.useState<string | null>(
+    null
+  );
 
-  const handleButtonClick = (item) => {
+  const handleButtonClick = (item: string) => {
     setSelectedButton(item);
-    console.log(selectedButton);
   };
 
   return (

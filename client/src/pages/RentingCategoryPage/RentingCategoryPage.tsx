@@ -12,6 +12,16 @@ const clearClick = {
   openElectronicsType: false,
 };
 
+interface IClearClick {
+  vehicles: boolean;
+  houses: boolean;
+  electronics: boolean;
+  openCars: boolean;
+  openCarsType: boolean;
+  openHouseType: boolean;
+  openElectronicsType: boolean;
+}
+
 const cars = [
   { name: "Sedans" },
   { name: "Coupes" },
@@ -335,12 +345,13 @@ const historic = [
 ];
 
 const RentingCategoryPage = () => {
-  const [isClicked, setIsClicked] = React.useState(clearClick);
-  const [selectedButton, setSelectedButton] = React.useState(null);
+  const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
+  const [selectedButton, setSelectedButton] = React.useState<string | null>(
+    null
+  );
 
-  const handleButtonClick = (item) => {
+  const handleButtonClick = (item: string) => {
     setSelectedButton(item);
-    console.log(selectedButton);
   };
 
   return (
