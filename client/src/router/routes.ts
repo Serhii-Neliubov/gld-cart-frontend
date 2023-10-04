@@ -15,27 +15,73 @@ import PrivacyPolicyPage from "../pages/PrivacyPolicyPage/PrivacyPolicyPage";
 import CookiePolicyPage from "../pages/CookiePolicyPage/CookiePolicyPage";
 import ShippingPolicyPage from "../pages/ShippingPolicyPage/ShippingPolicyPage";
 import FaqsPage from "../pages/FaqsPage/FaqsPage";
+import RentingCategoryPage from "../pages/RentingCategoryPage/RentingCategoryPage";
+import NoWishListPage from "../pages/NoWishListPage/NoWishListPage";
+import NoShoppingCartPage from "../pages/NoShoppingCartPage/NoShoppingCartPage";
+import ShoppingCartPage from "../pages/ShoppingCartPage/ShoppingCartPage";
+import RentingCarPage from "../pages/RentingCarPage/RentingCarPage";
+import RentingElectronicsPage from "../pages/RentingElectronicsPage/RentingElectronicsPage";
+import RentingHousePage from "../pages/RentingHousePage/RentingCarPage";
+import RentingProductsPage from "../pages/RentingProductsPage/RentingProductsPage";
+import CleaningPage from "../pages/CleaningPage/CleaningPage";
+import GardeningPage from "../pages/GardeningPage/GardeningPage";
+import RepairingPage from "../pages/RepairingPage/RepairingPage";
 
 export const buyerRoutes = [
-  { component: Home, path: "" },
-  { component: Renting, path: "" },
-  { component: RegisterAsPage, path: "" },
-  { component: NotFound, path: "" },
-  { component: RegisterPage, path: "" },
-  { component: LoginPage, path: "" },
-  { component: PaymentPage, path: "" },
-  { component: ProductsPage, path: "" },
-  { component: ContactUsPage, path: "" },
-  { component: SendMessagePage, path: "" },
-  { component: ProfServicesPage, path: "" },
-  { component: TermsConditionsPage, path: "" },
-  { component: PrivacyPolicyPage, path: "" },
-  { component: CookiePolicyPage, path: "" },
-  { component: ShippingPolicyPage, path: "" },
-  { component: FaqsPage, path: "" },
+  { component: Home, path: "/" },
+  { component: Renting, path: "/renting" },
+  { component: ContactUsPage, path: "/contact-us" },
+  { component: PrivacyPolicyPage, path: "/privacy-policy" },
+  { component: CookiePolicyPage, path: "/cookie-policy" },
+  { component: ShippingPolicyPage, path: "/shipping-policy" },
+  { component: TermsConditionsPage, path: "/terms-and-conditions" },
+  { component: FaqsPage, path: "/faq-s" },
+  { component: NotFound, path: "/not-found" },
+  { component: PaymentPage, path: "/payment" },
+  { component: ProductsPage, path: "/products" },
+  { component: SendMessagePage, path: "/send-message" },
+  { component: ProfServicesPage, path: "/personal-services" },
+  { component: NoWishListPage, path: "/wishlist-no-found" },
+  { component: NoShoppingCartPage, path: "/shopping-cart-no-found" },
+  { component: ShoppingCartPage, path: "/shopping-cart" },
+  { component: RentingCarPage, path: "renting-car" },
+  { component: RentingCategoryPage, path: "/renting" },
+  { component: RentingElectronicsPage, path: "/renting-electronics" },
+  { component: RentingHousePage, path: "/renting-house" },
+  { component: RentingProductsPage, path: "/shopping-cart" },
+  { component: CleaningPage, path: "/cleaning-page" },
+  { component: GardeningPage, path: "/gardening-page" },
+  { component: RepairingPage, path: "/repairing-page" },
 ];
 export const vendorRoutes = [
+  { component: Home, path: "/" },
+  { component: RentingCategoryPage, path: "/renting-category-page" },
   { component: SubPlansPage, path: "" },
-  { component: SubPlansPage, path: "" },
-  { component: SubPlansPage, path: "" },
+  { component: ContactUsPage, path: "/contact-us" },
+  { component: PrivacyPolicyPage, path: "/privacy-policy" },
+  { component: CookiePolicyPage, path: "/cookie-policy" },
+  { component: ShippingPolicyPage, path: "/shipping-policy" },
+  { component: TermsConditionsPage, path: "/terms-and-conditions" },
+  { component: FaqsPage, path: "/faq-s" },
+  { component: NotFound, path: "/not-found" },
+  { component: SubPlansPage, path: "/sub-plans" },
+  { component: PaymentPage, path: "/payment" },
+  { component: SendMessagePage, path: "/send-message" },
+  { component: RentingCategoryPage, path: "/products-category-page" },
+];
+
+export const noAuthRotes = [
+  { component: Home, path: "/" },
+  { component: Renting, path: "/renting" },
+  { component: RegisterAsPage, path: "/user-type-page" },
+  { component: LoginPage, path: "/login" },
+  { component: RegisterPage, path: "/register-page" },
+  { component: PrivacyPolicyPage, path: "/privacy-policy" },
+  { component: CookiePolicyPage, path: "/cookie-policy" },
+  { component: ShippingPolicyPage, path: "/shipping-policy" },
+  { component: TermsConditionsPage, path: "/terms-and-conditions" },
+  { component: FaqsPage, path: "/faq-s" },
+  { component: NotFound, path: "/not-found" },
+  { component: ProductsPage, path: "/products" },
+  { component: ProfServicesPage, path: "/personal-services" },
 ];

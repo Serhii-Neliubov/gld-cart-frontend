@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import isvendorSlice from "./Slices/isvendorSlice";
+import isauthSlice from "./Slices/isauthSlice";
 
 export const store = configureStore({
   reducer: {
     isVendor: isvendorSlice,
+    isAuth: isauthSlice,
   },
 });
 

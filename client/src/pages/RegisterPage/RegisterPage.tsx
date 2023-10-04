@@ -3,7 +3,8 @@ import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setTrue } from "../../redux/Slices/isauthSlice";
 
 interface IUser {
   type: string;
@@ -16,6 +17,7 @@ interface IUser {
 
 const RegisterPage = () => {
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
+  const dispatch = useDispatch();
 
   const [userData, setUserData] = useState<IUser>({
     type: "",
@@ -71,6 +73,7 @@ const RegisterPage = () => {
       isEmptyEmail == false
     ) {
       sendFormData(userData);
+      dispatch(setTrue());
       setIsEmptyName(userData.name.length === 0);
       setIsEmptySurname(userData.surname.length === 0);
       setIsEmptyEmail(userData.email.length === 0);
