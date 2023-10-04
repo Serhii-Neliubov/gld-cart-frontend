@@ -26,18 +26,21 @@ import RentingCarPage from "../pages/RentingCarPage/RentingCarPage";
 import RentingHousePage from "../pages/RentingHousePage/RentingCarPage";
 import RentingElectronicsPage from "../pages/RentingElectronicsPage/RentingElectronicsPage";
 import RentingProductsPage from "../pages/RentingProductsPage/RentingProductsPage";
+import NotFound from "../pages/NotFound/NotFound";
+import CleaningPage from "../pages/CleaningPage/CleaningPage";
+import RepairingPage from "../pages/RepairingPage/RepairingPage";
+import GardeningPage from "../pages/GardeningPage/GardeningPage";
 
 const AppRouter: FC = () => {
   return (
     <BrowserRouter>
       <Header />
       <Label />
-
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Renting />} path="/renting" />
-
         <Route element={<RegisterAsPage />} path="/user-type-page" />
+        <Route element={<NotFound />} path="/not-found" />
         <Route element={<RegisterPage />} path="/register-page" />
         <Route element={<LoginPage />} path="/login" />
         <Route element={<SubPlansPage />} path="/sub-plans" />
@@ -57,6 +60,7 @@ const AppRouter: FC = () => {
           path="/shopping-cart-no-found"
         />
         <Route element={<ShoppingCartPage />} path="/shopping-cart" />
+
         <Route
           element={<RentingCategoryPage />}
           path="/renting-category-page"
@@ -71,6 +75,9 @@ const AppRouter: FC = () => {
           element={<RentingElectronicsPage />}
           path="/renting-electronics"
         />
+        <Route element={<CleaningPage />} path="/cleaning-page" />
+        <Route element={<RepairingPage />} path="/repairing-page" />
+        <Route element={<GardeningPage />} path="/gardening-page" />
       </Routes>
     </BrowserRouter>
   );
