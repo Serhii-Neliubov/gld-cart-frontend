@@ -72,6 +72,40 @@ const ProfilePage = () => {
             <h1 className={styles.title}>Welcome Mr. Muhammad Tallah</h1>
             <div className={styles.content_box}>
               <h2 className={styles.box_name}>Personal Details</h2>
+              <div className={styles.content_box_items}>
+                <div className={styles.box_inputs}>
+                  <div className={styles.inputs_column}>
+                    <input
+                      className={styles.input}
+                      placeholder="Eleanor Pena"
+                      type="text"
+                    />
+                    <input
+                      placeholder="alma.lawson@example.com"
+                      className={styles.input}
+                      type="text"
+                    />
+                  </div>
+                  <input
+                    placeholder="0123 456 7889"
+                    className={styles.input}
+                    type="text"
+                  />
+                  <input
+                    placeholder="3304 Randall Drive"
+                    className={styles.input}
+                    type="text"
+                  />
+                  <input
+                    placeholder="Hi there, this is my bio..."
+                    className={styles.input}
+                    type="text"
+                  />
+                </div>
+                <div className={styles.button}>
+                  <button className={styles.button}>Update Profile</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

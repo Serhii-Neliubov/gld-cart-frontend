@@ -4,7 +4,39 @@
   gap: 50px;
   align-items: center;
 }
-
+.box_name {
+  color: #000;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.button {
+  color: white;
+  text-align: right;
+  justify-content: flex-end;
+  margin-top: 15px;
+  button {
+    padding: 10px 20px;
+    background-color: #000;
+  }
+}
+.input {
+  border: 1px solid #252525;
+  background: #fff;
+  padding: 22px;
+  height: 60px;
+  outline: none;
+  flex: 1 1 auto;
+}
+.inputs_column {
+  display: flex;
+  gap: 20px;
+}
+.box_inputs {
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+}
 .button_item {
   padding: 20px 0;
   padding-left: 20px;
