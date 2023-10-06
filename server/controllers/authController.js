@@ -1,5 +1,5 @@
 const userService = require('../services/user-service');
-const maxRefreshTokenAge = 30 * 24 * 60 * 60 * 1000;
+require('dotenv').config();
 
 module.exports.signup_post = async (req, res, next) => {
 
@@ -9,7 +9,7 @@ module.exports.signup_post = async (req, res, next) => {
 
     const userData = await userService.registration(type, name, surname, email, password);
 
-    res.cookie('refreshToken', userData.refreshToken, { httpOnly: true, maxAge: maxRefreshTokenAge });
+    res.cookie('refreshToken', userData.refreshToken, { httpOnly: true, maxAge: process.env.REFRESH_TOKEN_AGE });
 
     res.status(201).json(userData);
 
@@ -23,7 +23,7 @@ module.exports.login_post = async (req, res, next) => {
   try {
     const userData = await userService.login(email, password);
 
-    res.cookie('refreshToken', userData.refreshToken, { httpOnly: true, maxAge: maxRefreshTokenAge });
+    res.cookie('refreshToken', userData.refreshToken, { httpOnly: true, maxAge: process.env.REFRESH_TOKEN_AGE });
 
     res.status(201).json(userData);
   } catch (error) {
@@ -47,7 +47,7 @@ module.exports.refresh_get = async(req, res, next) =>
   try {
     const{refreshToken} = req.cookies;
     const userData = await userService.refresh(refreshToken);
-    res.cookie('refreshToken', userData.refreshToken, { httpOnly: true, maxAge: maxRefreshTokenAge });
+    res.cookie('refreshToken', userData.refreshToken, { httpOnly: true, maxAge: process.env.REFRESH_TOKEN_AGE });
     return res.json(userData);
   }
   catch (e) {
