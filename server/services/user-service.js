@@ -5,10 +5,8 @@ const tokenService = require('../services/token-service');
 const UserDto = require("../dtos/user-dto");
 const ApiError = require("../exceptions/api-error");
 
-
 class UserService {
     async registration(type, name, surname, email, password) {
-
         const candidate = await UserModel.findOne( {email} );
         if(candidate) {
             throw ApiError.BadRequest("That email is already registered");
@@ -75,5 +73,4 @@ class UserService {
         await TokenModel.collection.drop();
 }
 }
-
 module.exports = new UserService();
