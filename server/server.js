@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware')
 const port = process.env.PORT || 5000;
 const server = express();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
 server.use(express.json());
