@@ -13,29 +13,32 @@ const RegisterAsPage = () => {
   }, []);
 
   return (
-    <Login>
-      <div className={styles.body}>
-        <h1 className={styles.title}>Register As A</h1>
-        <p className={styles.text}>
-          Join our platform and showcase your products and Services to a wide
-          audience. Register now and embark on a journey of growth and success.
-        </p>
-        <Link
-          onClick={() => dispatch(setFalse())}
-          to="/register-page"
-          className={styles.button_green}
-        >
-          Buyer
-        </Link>
-        <Link
-          onClick={() => dispatch(setTrue())}
-          to="/register-page"
-          className={styles.button_blue}
-        >
-          Vendor
-        </Link>
-      </div>
-    </Login>
+    <div className={styles.container}>
+      <Login>
+        <div className={styles.body}>
+          <h1 className={styles.title}>Register As A</h1>
+          <p className={styles.text}>
+            Join our platform and showcase your products and Services to a wide
+            audience. Register now and embark on a journey of growth and
+            success.
+          </p>
+          <Link
+            onClick={() => dispatch(setFalse())}
+            to="/register-page"
+            className={styles.button_green}
+          >
+            Buyer
+          </Link>
+          <Link
+            onClick={() => dispatch(setTrue())}
+            to="/register-page"
+            className={styles.button_blue}
+          >
+            Vendor
+          </Link>
+        </div>
+      </Login>
+    </div>
   );
 };
 

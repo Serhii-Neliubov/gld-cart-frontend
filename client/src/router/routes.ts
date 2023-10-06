@@ -26,6 +26,7 @@ import RentingProductsPage from "../pages/RentingProductsPage/RentingProductsPag
 import CleaningPage from "../pages/CleaningPage/CleaningPage";
 import GardeningPage from "../pages/GardeningPage/GardeningPage";
 import RepairingPage from "../pages/RepairingPage/RepairingPage";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
 export const buyerRoutes = [
   { component: Home, path: "/" },
@@ -52,11 +53,11 @@ export const buyerRoutes = [
   { component: CleaningPage, path: "/cleaning-page" },
   { component: GardeningPage, path: "/gardening-page" },
   { component: RepairingPage, path: "/repairing-page" },
+  { component: ProfilePage, path: "/profile" },
 ];
 export const vendorRoutes = [
   { component: Home, path: "/" },
   { component: RentingCategoryPage, path: "/renting-category-page" },
-  { component: SubPlansPage, path: "" },
   { component: ContactUsPage, path: "/contact-us" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
   { component: CookiePolicyPage, path: "/cookie-policy" },
@@ -68,6 +69,7 @@ export const vendorRoutes = [
   { component: PaymentPage, path: "/payment" },
   { component: SendMessagePage, path: "/send-message" },
   { component: RentingCategoryPage, path: "/products-category-page" },
+  { component: ProfilePage, path: "/profile" },
 ];
 
 export const noAuthRotes = [
@@ -84,4 +86,5 @@ export const noAuthRotes = [
   { component: NotFound, path: "/not-found" },
   { component: ProductsPage, path: "/products" },
   { component: ProfServicesPage, path: "/personal-services" },
+  { component: ProfilePage, path: "/profile" },
 ];

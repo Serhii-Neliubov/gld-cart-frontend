@@ -11,6 +11,7 @@ interface NavLinkProps {
 const Label = () => {
   const location = useLocation();
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
+  const isAuth = useSelector((state: RootState) => state.isAuth.value);
 
   const navLinks: NavLinkProps[] = [
     { to: "/", label: "Home" },
@@ -62,7 +63,10 @@ const Label = () => {
             </>
           )}
 
-          <Link to="/user-type-page" className="label__profile-btn">
+          <Link
+            to={isAuth ? "/profile" : "/user-type-page"}
+            className="label__profile-btn"
+          >
             <img src="profile-icon.svg" alt="Profile icon" />
             {/* <span>John Miller</span> */}
           </Link>
