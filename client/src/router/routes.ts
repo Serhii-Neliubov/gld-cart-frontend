@@ -27,6 +27,7 @@ import CleaningPage from "../pages/CleaningPage/CleaningPage";
 import GardeningPage from "../pages/GardeningPage/GardeningPage";
 import RepairingPage from "../pages/RepairingPage/RepairingPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import RentingProfservicesPage from "../pages/RentingProfservicesPage/RentingProductsPage";
 
 export const buyerRoutes = [
   { component: Home, path: "/" },
@@ -70,6 +71,7 @@ export const vendorRoutes = [
   { component: SendMessagePage, path: "/send-message" },
   { component: RentingCategoryPage, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
+  { component: RentingProfservicesPage, path: "/personal-services" },
 ];
 
 export const noAuthRotes = [
