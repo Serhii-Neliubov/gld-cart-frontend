@@ -28,7 +28,6 @@ module.exports.login_post = async (req, res, next) => {
     res.status(201).json(userData);
   } catch (error) {
     next(error);
-
   }
 }
 
