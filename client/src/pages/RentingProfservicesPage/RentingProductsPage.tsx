@@ -56,17 +56,21 @@ interface IClearClick {
   openearrings: boolean;
 }
 
-const beauty = [
-  { name: "Radiant Complexion" },
-  { name: "Skin Texture Smoothness" },
-  { name: "Hydration and Moisture" },
-  { name: "Skin Clarity and Clearness" },
-  { name: "Elasticity and Firmness" },
+const cleaning = [
+  { name: "General Cleaning" },
+  { name: "Kitchen Cleaning" },
+  { name: "Bathroom Cleaning" },
+  { name: "Bedroom Cleaning" },
+  { name: "Living Room Cleaning" },
+  { name: "Laundry Room Cleaning" },
+  { name: "Home Office Cleaning" },
+  { name: "Entryway/Hallway Cleaning" },
+  { name: "Outdoor Cleaning" },
 ];
 
-const beautySub = [
-  { name: "Glowing skin" },
-  { name: "Healthy luminosity" },
+const repairing = [
+  { name: "Electronics Repair" },
+  { name: "Appliance Repair" },
   { name: "Natural radiance" },
   { name: "Youthful brightness" },
   { name: "Dewy appearance" },

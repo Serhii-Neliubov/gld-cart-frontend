@@ -50,7 +50,7 @@ export const buyerRoutes = [
   { component: RentingCategoryPage, path: "/renting" },
   { component: RentingElectronicsPage, path: "/renting-electronics" },
   { component: RentingHousePage, path: "/renting-house" },
-  { component: RentingProductsPage, path: "/shopping-cart" },
+  { component: RentingProductsPage, path: "/products-category-page" },
   { component: CleaningPage, path: "/cleaning-page" },
   { component: GardeningPage, path: "/gardening-page" },
   { component: RepairingPage, path: "/repairing-page" },
@@ -69,7 +69,7 @@ export const vendorRoutes = [
   { component: SubPlansPage, path: "/sub-plans" },
   { component: PaymentPage, path: "/payment" },
   { component: SendMessagePage, path: "/send-message" },
-  { component: RentingCategoryPage, path: "/products-category-page" },
+  { component: RentingProductsPage, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
   { component: RentingProfservicesPage, path: "/personal-services" },
 ];
