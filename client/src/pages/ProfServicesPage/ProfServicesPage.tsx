@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react";
 import styles from "./ProfServicesPage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { Link } from "react-router-dom";
 
 const ProfServicesPage: FC = () => {
   useEffect(() => {
@@ -13,26 +14,26 @@ const ProfServicesPage: FC = () => {
           Select <span>PROFESSIONAL SERVICES</span> Category
         </h1>
         <div className={styles.blocks}>
-          <a href="#" className={styles.block}>
+          <Link to="/cleaning-page" className={styles.block}>
             <div className={styles.image}>
               <img src="professional-services/img1.png" alt="Image" />
             </div>
 
             <span>Cleaning</span>
-          </a>
-          <a href="#" className={styles.block}>
+          </Link>
+          <Link to="/repairing-page" className={styles.block}>
             <div className={styles.image}>
               <img src="professional-services/img2.png" alt="Image" />
             </div>
 
             <span>Repairing</span>
-          </a>
-          <a href="#" className={styles.block}>
+          </Link>
+          <Link to="/gardening-page" className={styles.block}>
             <div className={styles.image}>
               <img src="professional-services/img3.png" alt="Image" />
             </div>
             <span>Gardening</span>
-          </a>
+          </Link>
           <a href="#" className={styles.block}>
             <div className={styles.image}>
               <img src="professional-services/img4.png" alt="Image" />

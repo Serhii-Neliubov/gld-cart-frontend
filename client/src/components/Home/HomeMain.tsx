@@ -1,4 +1,3 @@
-import Label from "./HomeElements/Label";
 import ShopNow from "./HomeElements/ShopNow";
 import Explore from "./HomeElements/Explore";
 import Companies from "./HomeElements/Companies";

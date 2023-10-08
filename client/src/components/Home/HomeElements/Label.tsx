@@ -11,6 +11,7 @@ interface NavLinkProps {
 const Label = () => {
   const location = useLocation();
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
+  const isAuth = useSelector((state: RootState) => state.isAuth.value);
 
   const navLinks: NavLinkProps[] = [
     { to: "/", label: "Home" },
@@ -51,13 +52,21 @@ const Label = () => {
           </nav>
         </div>
         <div className="label__actions">
-          <Link to="/wishlist-no-found" className="label__like-btn">
-            <img src="like-icon.svg" alt="Like icon" />
-          </Link>
-          <Link to="/shopping-cart-no-found" className="label__trash-btn">
-            <img src="trash-icon.svg" alt="Trash icon" />
-          </Link>
-          <Link to="/user-type-page" className="label__profile-btn">
+          {isVendor ? null : (
+            <>
+              <Link to="/wishlist-no-found" className="label__like-btn">
+                <img src="like-icon.svg" alt="Like icon" />
+              </Link>
+              <Link to="/shopping-cart-no-found" className="label__trash-btn">
+                <img src="trash-icon.svg" alt="Trash icon" />
+              </Link>
+            </>
+          )}
+
+          <Link
+            to={isAuth ? "/profile" : "/user-type-page"}
+            className="label__profile-btn"
+          >
             <img src="profile-icon.svg" alt="Profile icon" />
             {/* <span>John Miller</span> */}
           </Link>
