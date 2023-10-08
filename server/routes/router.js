@@ -9,6 +9,7 @@ router.post("/signup", userController.signup_post);
 router.post("/login", userController.login_post);
 router.post("/logout", userController.logout_post);
 router.get("/refresh", userController.refresh_get);
+router.post("/sendEmail", userController.send_email);
 router.get(
   "/userData",
   authMiddleware.requireAuth,

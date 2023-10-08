@@ -1,4 +1,5 @@
 const userService = require("../services/user-service");
+const mailService = require("../services/mail-service");
 const maxAge = 30 * 24 * 60 * 60 * 1000;
 module.exports.signup_post = async (req, res, next) => {
   const { type, name, surname, email, password } = req.body;
@@ -72,13 +73,14 @@ module.exports.userData_get = async (req, res, next) => {
   }
 };
 module.exports.send_email = async (req, res, next) => {
-
-    const {name, email, subject, message} = req.body;
+  const { name, email, subject, message, to } = req.body;
   try {
-    const email = await userService.sendEmail(name, email, subject, message);
-
-
+    await mailService.sendContactMail(name, email, subject, message, to);
+    res
+      .status(200)
+      .json({ success: true, message: "Email was sent successfully" });
   } catch (e) {
+    res.status(500).json({ success: false, message: "Email was not sent" });
     next(e);
   }
 };
