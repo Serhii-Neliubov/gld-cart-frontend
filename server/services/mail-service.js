@@ -15,8 +15,7 @@ class MailService {
       from: "GLDCart Feedback",
       to: to,
       subject: subject,
-      text:
-        "My name is: " + name + ". " + "My email is: " + email + ". " + message,
+      text: `My name is: ${name}. My email is: ${email}. ${message}`,
     });
   }
 }
