@@ -4,7 +4,6 @@ const TokenModel = require("../models/Token");
 const tokenService = require("../services/token-service");
 const UserDto = require("../dtos/user-dto");
 const ApiError = require("../exceptions/api-error");
-const mailService = require("../services/mail-service");
 class UserService {
   async registration(type, name, surname, email, password) {
     const candidate = await UserModel.findOne({ email });
@@ -42,8 +41,7 @@ class UserService {
     throw ApiError.BadRequest("Incorrect email");
   }
   async logout(refreshToken) {
-    const token = await tokenService.removeToken(refreshToken);
-    return token;
+    return await tokenService.removeToken(refreshToken);
   }
   async refresh(refreshToken) {
     if (!refreshToken) {
@@ -63,8 +61,7 @@ class UserService {
   }
 
   async getData() {
-    const user = await UserModel.find();
-    return user;
+    return UserModel.find();
   }
   async deleteData() {
     await UserModel.collection.drop((err) => {
