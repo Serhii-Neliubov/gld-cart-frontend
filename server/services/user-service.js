@@ -10,12 +10,14 @@ class UserService {
     if (candidate) {
       throw ApiError.BadRequest("That email is already registered");
     }
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
     const user = await UserModel.create({
       type,
       name,
       surname,
       email,
-      password,
+      password: hashedPassword,
     });
     const userDto = new UserDto(user);
 
@@ -86,6 +88,10 @@ class UserService {
       }
     });
     await TokenModel.collection.drop();
+  }
+  async generatePassword(password) {
+    const salt = await bcrypt.genSalt();
+    return await bcrypt.hash(password, salt);
   }
 }
 module.exports = new UserService();
