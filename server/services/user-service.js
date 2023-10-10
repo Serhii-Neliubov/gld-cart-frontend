@@ -43,6 +43,20 @@ class UserService {
   async logout(refreshToken) {
     return await tokenService.removeToken(refreshToken);
   }
+  async changePassword(id, password, newPassword) {
+    const user = await UserModel.findById(id);
+
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      throw ApiError.BadRequest("Incorrect old password");
+    }
+    const salt = await bcrypt.genSalt();
+    user.password = await bcrypt.hash(newPassword, salt);
+    await user.save();
+
+    const userDto = new UserDto(user);
+
+    return { user: userDto };
+  }
   async refresh(refreshToken) {
     if (!refreshToken) {
       throw ApiError.UnauthorizedError();
