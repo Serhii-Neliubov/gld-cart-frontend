@@ -9,13 +9,18 @@ router.post("/signup", userController.signup_post);
 router.post("/login", userController.login_post);
 router.post("/logout", userController.logout_post);
 router.get("/refresh", userController.refresh_get);
-router.post("/sendEmail", userController.send_email);
+router.post("/send-email", userController.send_email);
+router.put(
+  "/change-password",
+  authMiddleware.requireAuth,
+  userController.change_password
+);
 router.get(
   "/userData",
   authMiddleware.requireAuth,
   userController.userData_get
 );
-router.post("/deleteAll", userController.delete_all);
+router.post("/delete-all", userController.delete_all);
 
 //Payment routes
 router.post(
