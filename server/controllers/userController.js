@@ -50,6 +50,26 @@ module.exports.logout_post = async (req, res, next) => {
     next(e);
   }
 };
+module.exports.change_password = async (req, res, next) => {
+  const { oldPassword, newPassword } = req.body;
+  const userId = req.user.id;
+  try {
+    const userData = await userService.changePassword(
+      userId,
+      oldPassword,
+      newPassword
+    );
+    res.cookie("refreshToken", userData.refreshToken, {
+      httpOnly: true,
+      maxAge: maxAge,
+    });
+    res
+      .status(201)
+      .json({ userData, message: "Password was changed successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports.refresh_get = async (req, res, next) => {
   try {
     const { refreshToken } = req.cookies;
@@ -84,7 +104,7 @@ module.exports.send_email = async (req, res, next) => {
     next(e);
   }
 };
-module.exports.delete_all = async (req, res, next) => {
+module.exports.delete_all = async (res, next) => {
   try {
     const userData = await userService.deleteData();
     return res.json(userData);
