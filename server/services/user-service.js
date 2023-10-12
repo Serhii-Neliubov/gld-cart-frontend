@@ -59,6 +59,18 @@ class UserService {
 
     return { user: userDto };
   }
+  async requestPasswordReset(email) {
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      throw ApiError.BadRequest("Incorrect email");
+    }
+    const resetLink = uuid.v4();
+    await mailService.sendResetPasswordMail(
+      email,
+      `${process.env.API_URL}/reset-password/${resetLink}`
+    );
+  }
+
   async refresh(refreshToken) {
     if (!refreshToken) {
       throw ApiError.UnauthorizedError();
