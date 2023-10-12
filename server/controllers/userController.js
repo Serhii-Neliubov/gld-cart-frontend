@@ -92,7 +92,19 @@ module.exports.userData_get = async (req, res, next) => {
     next(e);
   }
 };
-module.exports.send_email = async (req, res, next) => {
+module.exports.send_password_email = async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    await userService.requestPasswordReset(email);
+    res.status(200).json({
+      success: true,
+      message: "Reset password email was sent successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+module.exports.send_contact_email = async (req, res, next) => {
   const { name, email, subject, message, to } = req.body;
   try {
     await mailService.sendContactMail(name, email, subject, message, to);
