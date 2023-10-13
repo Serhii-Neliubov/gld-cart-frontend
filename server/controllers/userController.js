@@ -63,6 +63,19 @@ module.exports.initiate_password_reset = async (req, res, next) => {
     next(error);
   }
 };
+module.exports.reset_password = async (req, res, next) => {
+  const { token } = req.params;
+  console.log(token);
+  const { newPassword } = req.body;
+  console.log(newPassword);
+  try {
+    await userService.changePassword(token, newPassword);
+    res.status(200).json({ message: "Password was reset successfully." });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports.refresh_get = async (req, res, next) => {
   try {
     const { refreshToken } = req.cookies;
