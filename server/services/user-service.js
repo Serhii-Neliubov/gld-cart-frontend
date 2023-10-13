@@ -4,6 +4,7 @@ const TokenModel = require("../models/Token");
 const tokenService = require("../services/token-service");
 const UserDto = require("../dtos/user-dto");
 const ApiError = require("../exceptions/api-error");
+const mailService = require("../services/mail-service");
 class UserService {
   async registration(type, name, surname, email, password) {
     const candidate = await UserModel.findOne({ email });
@@ -45,29 +46,26 @@ class UserService {
   async logout(refreshToken) {
     return await tokenService.removeToken(refreshToken);
   }
-  async changePassword(id, password, newPassword) {
-    const user = await UserModel.findById(id);
-
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      throw ApiError.BadRequest("Incorrect old password");
+  async changePassword(token, newPassword) {
+    const user = await UserModel.findOne({ passwordResetToken: token });
+    if (!user) {
+      throw ApiError.BadRequest("Invalid or expired token");
     }
-    const salt = await bcrypt.genSalt();
-    user.password = await bcrypt.hash(newPassword, salt);
+    user.password = await this.hashPassword(newPassword);
+    user.passwordResetToken = null;
     await user.save();
-
-    const userDto = new UserDto(user);
-
-    return { user: userDto };
   }
-  async requestPasswordReset(email) {
-    const user = await UserModel.findOne({ email });
+  async requestPasswordReset(email, token) {
+    const user = await UserModel.findOneAndUpdate(
+      { email },
+      { passwordResetToken: token }
+    );
     if (!user) {
       throw ApiError.BadRequest("Incorrect email");
     }
-    const resetLink = uuid.v4();
     await mailService.sendResetPasswordMail(
       email,
-      `${process.env.API_URL}/reset-password/${resetLink}`
+      `${process.env.CLIENT_URL}/reset-password/${token}`
     );
   }
 
