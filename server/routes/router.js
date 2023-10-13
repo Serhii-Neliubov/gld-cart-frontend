@@ -9,10 +9,12 @@ router.post("/signup", userController.signup_post);
 router.post("/login", userController.login_post);
 router.post("/logout", userController.logout_post);
 router.get("/refresh", userController.refresh_get);
-router.post("/send-contact-email", userController.send_contact_email);
-router.get("/send-password-email", userController.send_password_email);
-router.get("/reset-password/:link", userController.change_password);
-router.put("/change-password", userController.change_password);
+
+//Reset password routes
+router.post('/forgot-password', userController.initiate_password_reset);
+router.post('/reset-password/:token', userController.reset_password);
+
+//Admin routes
 router.get(
   "/userData",
   authMiddleware.requireAuth,
