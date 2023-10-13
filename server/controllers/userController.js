@@ -51,22 +51,14 @@ module.exports.logout_post = async (req, res, next) => {
     next(e);
   }
 };
-module.exports.change_password = async (req, res, next) => {
-  const { oldPassword, newPassword } = req.body;
-  const userId = req.user.id;
+module.exports.initiate_password_reset = async (req, res, next) => {
+  const { email } = req.body;
   try {
-    const userData = await userService.changePassword(
-      userId,
-      oldPassword,
-      newPassword
-    );
-    res.cookie("refreshToken", userData.refreshToken, {
-      httpOnly: true,
-      maxAge: maxAge,
-    });
+    const token = uuid.v4();
+    await userService.requestPasswordReset(email, token);
     res
-      .status(201)
-      .json({ userData, message: "Password was changed successfully" });
+      .status(200)
+      .json({ message: "Password reset link was sent to your email." });
   } catch (error) {
     next(error);
   }
