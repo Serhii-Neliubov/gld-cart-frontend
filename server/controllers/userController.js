@@ -1,5 +1,6 @@
 const userService = require("../services/user-service");
 const mailService = require("../services/mail-service");
+const uuid = require("uuid");
 const maxAge = 30 * 24 * 60 * 60 * 1000;
 module.exports.signup_post = async (req, res, next) => {
   const { type, name, surname, email, password } = req.body;
