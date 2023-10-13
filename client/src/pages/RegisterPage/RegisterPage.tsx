@@ -46,23 +46,6 @@ const RegisterPage = () => {
     }
   }, []);
 
-  function sendFormData(formData: IUser) {
-    fetch("http://localhost:3001/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Ответ сервера:", data);
-      })
-      .catch((error) => {
-        console.error("Ошибка при отправке данных:", error);
-      });
-  }
-
   function sendFormHandler(): void {
     dispatch(register(userData));
     console.log(userData);
@@ -198,7 +181,10 @@ const RegisterPage = () => {
             <input type="checkbox" />
             <span>Remember me</span>
           </div>
-          <button onClick={sendFormHandler} className={styles.button}>
+          <button
+            onClick={() => dispatch(register(userData))}
+            className={styles.button}
+          >
             Create my account
           </button>
         </div>
