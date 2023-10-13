@@ -9,7 +9,7 @@ const initialState: isvendorSlice = {
 };
 
 export const isvendorSlice = createSlice({
-  name: "counter",
+  name: "vendor",
   initialState,
   reducers: {
     setTrue: (state) => {

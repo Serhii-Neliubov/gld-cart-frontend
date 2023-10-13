@@ -1,14 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useEffect } from "react";
 import React from "react";
-import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/Slices/userDataSlice";
 
 const LoginPage = () => {
   const [isEmptyEmail, setIsEmptyEmail] = React.useState(false);
-  const isVendor = useSelector((state: RootState) => state.isVendor.value);
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,14 +47,23 @@ const LoginPage = () => {
                         e.target.value
                       );
                     setIsEmptyEmail(!isValidEmail);
+                    setUserData({ ...userData, email: e.target.value });
                   }}
+                  value={userData.email}
                   type="email"
                   placeholder="Gldcart@gmail.com"
                 />
               </div>
               <div className={styles.input}>
                 <span>Password</span>
-                <input type="password" placeholder="Password" />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={userData.password}
+                  onChange={(e) =>
+                    setUserData({ ...userData, password: e.target.value })
+                  }
+                />
               </div>
             </div>
           </form>
@@ -56,9 +71,12 @@ const LoginPage = () => {
             <input type="checkbox" />
             <span>Remember me</span>
           </div>
-          <Link className={styles.button} to={isVendor ? "/sub-plans" : "/"}>
+          <button
+            onClick={() => dispatch(login(userData))}
+            className={styles.button}
+          >
             Login
-          </Link>
+          </button>
         </div>
       </Login>
     </div>

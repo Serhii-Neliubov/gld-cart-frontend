@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setTrue } from "../../redux/Slices/isauthSlice";
+// import { setTrue } from "../../redux/Slices/isauthSlice";
+import { register } from "../../redux/Slices/userDataSlice";
 
 interface IUser {
   type: string;
@@ -12,20 +13,20 @@ interface IUser {
   surname: string;
   email: string;
   password: string;
-  rePassword: string;
+  // rePassword: string;
 }
 
 const RegisterPage = () => {
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const [userData, setUserData] = useState<IUser>({
+  const [userData, setUserData] = useState({
     type: "",
     name: "",
     surname: "",
     email: "",
     password: "",
-    rePassword: "",
+    // rePassword: "",
   });
   const navigate = useNavigate();
 
@@ -63,40 +64,42 @@ const RegisterPage = () => {
   }
 
   function sendFormHandler(): void {
-    if (
-      userData.password === userData.rePassword &&
-      userData.name.length &&
-      userData.password.length &&
-      userData.surname.length &&
-      userData.rePassword.length &&
-      userData.password.length >= 8 &&
-      isEmptyEmail == false
-    ) {
-      sendFormData(userData);
-      dispatch(setTrue());
-      setIsEmptyName(userData.name.length === 0);
-      setIsEmptySurname(userData.surname.length === 0);
-      setIsEmptyEmail(userData.email.length === 0);
-      setIsEmptyPassword(userData.password.length === 0);
-      setIsEmptyRePassword(userData.rePassword.length === 0);
-      navigate(`${isVendor ? "/sub-plans" : "/"}`);
-    } else {
-      setIsEmptyName(userData.name.length === 0);
-      setIsEmptySurname(userData.surname.length === 0);
-      setIsEmptyPassword(userData.password.length === 0);
-      setIsEmptyRePassword(userData.rePassword.length === 0);
-    }
+    dispatch(register(userData));
+    console.log(userData);
+    // if (
+    //   userData.password === userData.rePassword &&
+    //   userData.name.length &&
+    //   userData.password.length &&
+    //   userData.surname.length &&
+    //   userData.rePassword.length &&
+    //   userData.password.length >= 8 &&
+    //   isEmptyEmail == false
+    // ) {
+    //   sendFormData(userData);
+    //   // dispatch(setTrue());
+    //   setIsEmptyName(userData.name.length === 0);
+    //   setIsEmptySurname(userData.surname.length === 0);
+    //   setIsEmptyEmail(userData.email.length === 0);
+    //   setIsEmptyPassword(userData.password.length === 0);
+    //   setIsEmptyRePassword(userData.rePassword.length === 0);
+    //   navigate(`${isVendor ? "/sub-plans" : "/"}`);
+    // } else {
+    //   setIsEmptyName(userData.name.length === 0);
+    //   setIsEmptySurname(userData.surname.length === 0);
+    //   setIsEmptyPassword(userData.password.length === 0);
+    //   setIsEmptyRePassword(userData.rePassword.length === 0);
+    // }
 
-    if (userData.password.length <= 8) {
-      setIsEmptyPassword(true);
-      console.log("Пароль должен быть больше 8 символов");
-    }
+    // if (userData.password.length <= 8) {
+    //   setIsEmptyPassword(true);
+    //   console.log("Пароль должен быть больше 8 символов");
+    // }
 
-    if (userData.password !== userData.rePassword) {
-      setIsEmptyPassword(true);
-      setIsEmptyRePassword(true);
-      console.log("Пароли не одинаковые");
-    }
+    // if (userData.password !== userData.rePassword) {
+    //   setIsEmptyPassword(true);
+    //   setIsEmptyRePassword(true);
+    //   console.log("Пароли не одинаковые");
+    // }
   }
 
   return (
@@ -172,7 +175,7 @@ const RegisterPage = () => {
                     placeholder="Min. 8 character"
                   />
                 </div>
-                <div
+                {/* <div
                   className={isEmptyRePassword ? styles.error : styles.input}
                 >
                   <span>Re-Password</span>
@@ -187,7 +190,7 @@ const RegisterPage = () => {
                     type="password"
                     placeholder="Min. 8 character"
                   />
-                </div>
+                </div> */}
               </div>
             </form>
           </div>
