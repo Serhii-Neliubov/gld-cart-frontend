@@ -101,9 +101,13 @@ class UserService {
     });
     await TokenModel.collection.drop();
   }
-  async generatePassword(password) {
-    const salt = await bcrypt.genSalt();
-    return await bcrypt.hash(password, salt);
+  async hashPassword(password) {
+    try {
+      const salt = await bcrypt.genSalt();
+      return await bcrypt.hash(password, salt);
+    } catch (error) {
+      throw error;
+    }
   }
 }
 module.exports = new UserService();
