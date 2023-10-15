@@ -37,6 +37,7 @@ export const register = createAsyncThunk(
         payload.name,
         payload.surname
       );
+      console.log(response.data);
       return response.data;
     } catch (e) {
       console.log(e);

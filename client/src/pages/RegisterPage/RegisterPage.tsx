@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 // import { setTrue } from "../../redux/Slices/isauthSlice";
@@ -13,22 +13,21 @@ interface IUser {
   surname: string;
   email: string;
   password: string;
-  // rePassword: string;
+  rePassword: string;
 }
 
 const RegisterPage = () => {
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
   const dispatch = useDispatch<AppDispatch>();
 
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<IUser>({
     type: "",
     name: "",
     surname: "",
     email: "",
     password: "",
-    // rePassword: "",
+    rePassword: "",
   });
-  const navigate = useNavigate();
 
   const [isEmptyName, setIsEmptyName] = useState(false);
   const [isEmptySurname, setIsEmptySurname] = useState(false);
@@ -45,46 +44,40 @@ const RegisterPage = () => {
       setUserData({ ...userData, type: "Buyer" });
     }
   }, []);
-
   function sendFormHandler(): void {
-    dispatch(register(userData));
-    console.log(userData);
-    // if (
-    //   userData.password === userData.rePassword &&
-    //   userData.name.length &&
-    //   userData.password.length &&
-    //   userData.surname.length &&
-    //   userData.rePassword.length &&
-    //   userData.password.length >= 8 &&
-    //   isEmptyEmail == false
-    // ) {
-    //   sendFormData(userData);
-    //   // dispatch(setTrue());
-    //   setIsEmptyName(userData.name.length === 0);
-    //   setIsEmptySurname(userData.surname.length === 0);
-    //   setIsEmptyEmail(userData.email.length === 0);
-    //   setIsEmptyPassword(userData.password.length === 0);
-    //   setIsEmptyRePassword(userData.rePassword.length === 0);
-    //   navigate(`${isVendor ? "/sub-plans" : "/"}`);
-    // } else {
-    //   setIsEmptyName(userData.name.length === 0);
-    //   setIsEmptySurname(userData.surname.length === 0);
-    //   setIsEmptyPassword(userData.password.length === 0);
-    //   setIsEmptyRePassword(userData.rePassword.length === 0);
-    // }
+    if (
+      userData.password === userData.rePassword &&
+      userData.name.length &&
+      userData.password.length &&
+      userData.surname.length &&
+      userData.rePassword.length &&
+      userData.password.length >= 8 &&
+      isEmptyEmail == false
+    ) {
+      dispatch(register(userData));
+      setIsEmptyName(userData.name.length === 0);
+      setIsEmptySurname(userData.surname.length === 0);
+      setIsEmptyEmail(userData.email.length === 0);
+      setIsEmptyPassword(userData.password.length === 0);
+      setIsEmptyRePassword(userData.rePassword.length === 0);
+    } else {
+      setIsEmptyName(userData.name.length === 0);
+      setIsEmptySurname(userData.surname.length === 0);
+      setIsEmptyPassword(userData.password.length === 0);
+      setIsEmptyRePassword(userData.rePassword.length === 0);
+    }
 
-    // if (userData.password.length <= 8) {
-    //   setIsEmptyPassword(true);
-    //   console.log("Пароль должен быть больше 8 символов");
-    // }
+    if (userData.password.length <= 8) {
+      setIsEmptyPassword(true);
+      console.log("Пароль должен быть больше 8 символов");
+    }
 
-    // if (userData.password !== userData.rePassword) {
-    //   setIsEmptyPassword(true);
-    //   setIsEmptyRePassword(true);
-    //   console.log("Пароли не одинаковые");
-    // }
+    if (userData.password !== userData.rePassword) {
+      setIsEmptyPassword(true);
+      setIsEmptyRePassword(true);
+      console.log("Пароли не одинаковые");
+    }
   }
-
   return (
     <div className={styles.body}>
       <Login>
@@ -107,14 +100,16 @@ const RegisterPage = () => {
                   <div className={isEmptyName ? styles.error : styles.input}>
                     <span>First Name</span>
                     <input
-                      onChange={(e) =>
-                        setUserData({ ...userData, name: e.target.value })
-                      }
-                      value={userData.name}
+                      onChange={(e) => {
+                        setUserData({ ...userData, email: e.target.value });
+                        // Добавьте валидацию здесь, например, с использованием регулярных выражений
+                      }}
+                      value={userData.email}
                       type="text"
-                      placeholder="ex:John"
+                      placeholder="ex:Miller"
                     />
                   </div>
+
                   <div className={isEmptySurname ? styles.error : styles.input}>
                     <span>Last Name</span>
                     <input
@@ -122,26 +117,27 @@ const RegisterPage = () => {
                         setUserData({ ...userData, surname: e.target.value })
                       }
                       value={userData.surname}
+                      placeholder="ex:John"
                       type="text"
-                      placeholder="ex:Miller"
                     />
                   </div>
                 </div>
+
                 <div
                   className={`${isEmptyEmail ? styles.error : styles.input}`}
                 >
                   <span>Your Email</span>
                   <input
                     onChange={(e) => {
-                      setUserData({ ...userData, email: e.target.value });
-                      // Добавьте валидацию здесь, например, с использованием регулярных выражений
+                      setUserData({ ...userData, name: e.target.value });
+
                       const isValidEmail =
                         /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(
                           e.target.value
                         );
                       setIsEmptyEmail(!isValidEmail);
                     }}
-                    value={userData.email}
+                    value={userData.name}
                     type="email"
                     placeholder="Gldcart@gmail.com"
                   />
@@ -158,7 +154,7 @@ const RegisterPage = () => {
                     placeholder="Min. 8 character"
                   />
                 </div>
-                {/* <div
+                <div
                   className={isEmptyRePassword ? styles.error : styles.input}
                 >
                   <span>Re-Password</span>
@@ -173,7 +169,7 @@ const RegisterPage = () => {
                     type="password"
                     placeholder="Min. 8 character"
                   />
-                </div> */}
+                </div>
               </div>
             </form>
           </div>
@@ -181,10 +177,7 @@ const RegisterPage = () => {
             <input type="checkbox" />
             <span>Remember me</span>
           </div>
-          <button
-            onClick={() => dispatch(register(userData))}
-            className={styles.button}
-          >
+          <button onClick={sendFormHandler} className={styles.button}>
             Create my account
           </button>
         </div>
