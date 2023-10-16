@@ -32,12 +32,12 @@ export const register = createAsyncThunk(
     try {
       const response = await AuthService.registration(
         payload.type,
-        payload.email,
-        payload.password,
         payload.name,
-        payload.surname
+        payload.surname,
+        payload.email,
+        payload.password
       );
-      console.log(response.data);
+      console.log(response);
       return response.data;
     } catch (e) {
       console.log(e);

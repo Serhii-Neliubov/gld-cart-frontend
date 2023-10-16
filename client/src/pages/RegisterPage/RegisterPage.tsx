@@ -101,10 +101,10 @@ const RegisterPage = () => {
                     <span>First Name</span>
                     <input
                       onChange={(e) => {
-                        setUserData({ ...userData, email: e.target.value });
+                        setUserData({ ...userData, name: e.target.value });
                         // Добавьте валидацию здесь, например, с использованием регулярных выражений
                       }}
-                      value={userData.email}
+                      value={userData.name}
                       type="text"
                       placeholder="ex:Miller"
                     />
@@ -129,7 +129,7 @@ const RegisterPage = () => {
                   <span>Your Email</span>
                   <input
                     onChange={(e) => {
-                      setUserData({ ...userData, name: e.target.value });
+                      setUserData({ ...userData, email: e.target.value });
 
                       const isValidEmail =
                         /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(
@@ -137,7 +137,7 @@ const RegisterPage = () => {
                         );
                       setIsEmptyEmail(!isValidEmail);
                     }}
-                    value={userData.name}
+                    value={userData.email}
                     type="email"
                     placeholder="Gldcart@gmail.com"
                   />
