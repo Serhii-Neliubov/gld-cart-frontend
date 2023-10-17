@@ -2,7 +2,7 @@ import { FC } from "react";
 import "./Saved.scss";
 import SavedItems from "../../../utils/SavedItems.js";
 
-const Saved: FC = ({ shoppingCart, setShoppingCart }) => {
+const Saved: FC = () => {
   return (
     <div className="page__saved saved">
       <div className="saved__container">
@@ -18,12 +18,7 @@ const Saved: FC = ({ shoppingCart, setShoppingCart }) => {
                   ></div>
                   <span className="saved__price">{item.price}</span>
                   <p className="saved__desc">{item.desc}</p>
-                  <button
-                    onClick={() => setShoppingCart([...shoppingCart, item])}
-                    className="saved__button"
-                  >
-                    Move to cart
-                  </button>
+                  <button className="saved__button">Move to cart</button>
                 </div>
               );
             })}

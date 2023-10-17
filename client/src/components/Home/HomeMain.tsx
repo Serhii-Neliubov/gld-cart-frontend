@@ -7,7 +7,7 @@ import Saved from "./HomeElements/Saved";
 import Advantages from "./HomeElements/Advantages";
 import SuperDiscount from "./HomeElements/SuperDiscount";
 
-const HomeMain = ({ shoppingCart, setShoppingCart }) => {
+const HomeMain = () => {
   return (
     <main className="page">
       <ShopNow />
@@ -16,7 +16,7 @@ const HomeMain = ({ shoppingCart, setShoppingCart }) => {
       <BestSellings />
       <SuperDiscount />
       <Featured />
-      <Saved shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />
+      <Saved />
       <Advantages />
     </main>
   );
