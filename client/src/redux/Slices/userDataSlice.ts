@@ -4,6 +4,7 @@ import AuthService from "../../services/AuthService";
 import axios from "axios";
 import { AuthResponse } from "../../models/response/AuthResponse";
 import { API_URL } from "../../http";
+import { setTrue } from "./isauthSlice";
 
 const initialState = {
   user: {} as IUser,
@@ -12,22 +13,26 @@ const initialState = {
 
 export const login = createAsyncThunk(
   "/login",
-  async (payload: { email: string; password: string }) => {
+  async (payload: { email: string; password: string }, thunkAPI) => {
     const response = await AuthService.login(payload.email, payload.password);
     localStorage.setItem("token", response.data.accessToken);
-    return response.data; // Возвращаем данные для обработки в extraReducers
+    thunkAPI.dispatch(setTrue());
+    return response.data;
   }
 );
 
 export const register = createAsyncThunk(
   "/signup",
-  async (payload: {
-    surname: string;
-    name: string;
-    type: string;
-    email: string;
-    password: string;
-  }) => {
+  async (
+    payload: {
+      surname: string;
+      name: string;
+      type: string;
+      email: string;
+      password: string;
+    },
+    thunkAPI
+  ) => {
     const response = await AuthService.registration(
       payload.type,
       payload.name,
@@ -35,6 +40,7 @@ export const register = createAsyncThunk(
       payload.email,
       payload.password
     );
+    thunkAPI.dispatch(setTrue());
     localStorage.setItem("token", response.data.accessToken);
     return response.data; // Возвращаем данные для обработки в extraReducers
   }
@@ -45,7 +51,7 @@ export const checkAuth = createAsyncThunk("/refresh", async () => {
     withCredentials: true,
   });
   localStorage.setItem("token", response.data.accessToken);
-  return response.data; // Возвращаем данные для обработки в extraReducers
+  return response.data;
 });
 
 const authDataSlice = createSlice({
@@ -86,7 +92,5 @@ const authDataSlice = createSlice({
       });
   },
 });
-
 export const { setAuth, setUser, logout } = authDataSlice.actions;
-
 export default authDataSlice.reducer;

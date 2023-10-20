@@ -88,5 +88,4 @@ export const noAuthRotes = [
   { component: NotFound, path: "/not-found" },
   { component: ProductsPage, path: "/products" },
   { component: ProfServicesPage, path: "/personal-services" },
-  { component: ProfilePage, path: "/profile" },
 ];

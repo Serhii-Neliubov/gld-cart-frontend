@@ -71,12 +71,13 @@ const LoginPage = () => {
             <input type="checkbox" />
             <span>Remember me</span>
           </div>
-          <button
+          <Link
+            to="/"
             onClick={() => dispatch(login(userData))}
             className={styles.button}
           >
             Login
-          </button>
+          </Link>
         </div>
       </Login>
     </div>
