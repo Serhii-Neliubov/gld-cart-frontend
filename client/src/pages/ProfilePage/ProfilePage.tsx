@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/UI/Footer";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setFalse as setFalseVendor } from "../../redux/Slices/isvendorSlice";
 import { RootState } from "../../redux/store";
 import { logout } from "../../redux/Slices/userDataSlice";
 
@@ -58,13 +57,11 @@ const ProfilePage = () => {
             </Link>
             <Link
               to="/"
-              onClick={() => {
-                dispatch(setFalseVendor());
-              }}
+              onClick={() => dispatch(logout())}
               className={styles.button_item}
             >
               <img src="ProfilePage/icon10.svg" alt="icon" />
-              <button onClick={() => dispatch(logout())}>Logout</button>
+              <button>Logout</button>
             </Link>
           </div>
           <div className={styles.content}>

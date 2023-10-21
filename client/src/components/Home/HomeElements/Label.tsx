@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Label.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import { selectIsAuth } from "../../../redux/Slices/userDataSlice";
 
 interface NavLinkProps {
   to: string;
@@ -11,7 +12,7 @@ interface NavLinkProps {
 const Label = () => {
   const location = useLocation();
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
-  const isAuth = useSelector((state: RootState) => state.isAuth.value);
+  const isAuth = useSelector(selectIsAuth);
 
   const navLinks: NavLinkProps[] = [
     { to: "/", label: "Home" },

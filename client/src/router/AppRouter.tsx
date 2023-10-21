@@ -6,11 +6,11 @@ import Header from "../components/UI/Header";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
-import { checkAuth } from "../redux/Slices/userDataSlice";
+import { checkAuth, selectIsAuth } from "../redux/Slices/userDataSlice";
 
 const AppRouter: FC = () => {
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
-  const isAuth = useSelector((state: RootState) => state.isAuth.value);
+  const isAuth = useSelector(selectIsAuth);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
