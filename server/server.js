@@ -22,6 +22,7 @@ server.use(errorMiddleware);
 mongoose
     .connect(process.env.DB_URL, {
         useNewUrlParser: true,
+        useUnifiedTopology: true,
     })
     .then((result) => server.listen(process.env.DB_PORT))
     .catch((err) => console.log(err));
