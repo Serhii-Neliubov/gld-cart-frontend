@@ -11,21 +11,21 @@ const server = express();
 server.use(express.json());
 server.use(cookieParser());
 server.use(
-  cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL,
-  })
+    cors({
+        credentials: true,
+        origin: process.env.CLIENT_URL,
+    })
 );
 server.use(router);
 server.use(errorMiddleware);
 
 mongoose
-  .connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-  })
-  .then((result) => server.listen(process.env.DB_PORT))
-  .catch((err) => console.log(err));
+    .connect(process.env.DB_URL, {
+        useNewUrlParser: true,
+    })
+    .then((result) => server.listen(process.env.DB_PORT))
+    .catch((err) => console.log(err));
 
 server.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
