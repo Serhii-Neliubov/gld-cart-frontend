@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import IUser from "../../models/IUser";
 import AuthService from "../../services/AuthService";
+import axios from "axios";
+import { AuthResponse } from "../../models/response/AuthResponse";
+import { API_URL } from "../../http";
+import { RootState } from "../store";
 
 const initialState = {
   user: {} as IUser,
@@ -10,13 +14,9 @@ const initialState = {
 export const login = createAsyncThunk(
   "/login",
   async (payload: { email: string; password: string }) => {
-    try {
-      const response = await AuthService.login(payload.email, payload.password);
-      console.log(response);
-      return response.data;
-    } catch (e) {
-      console.log(e);
-    }
+    const response = await AuthService.login(payload.email, payload.password);
+    localStorage.setItem("token", response.data.accessToken);
+    return response.data;
   }
 );
 
@@ -29,21 +29,25 @@ export const register = createAsyncThunk(
     email: string;
     password: string;
   }) => {
-    try {
-      const response = await AuthService.registration(
-        payload.type,
-        payload.name,
-        payload.surname,
-        payload.email,
-        payload.password
-      );
-      console.log(response);
-      return response.data;
-    } catch (e) {
-      console.log(e);
-    }
+    const response = await AuthService.registration(
+      payload.type,
+      payload.name,
+      payload.surname,
+      payload.email,
+      payload.password
+    );
+    localStorage.setItem("token", response.data.accessToken);
+    return response.data; // Возвращаем данные для обработки в extraReducers
   }
 );
+
+export const checkAuth = createAsyncThunk("/refresh", async () => {
+  const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
+    withCredentials: true,
+  });
+  localStorage.setItem("token", response.data.accessToken);
+  return response.data;
+});
 
 const authDataSlice = createSlice({
   name: "auth",
@@ -72,10 +76,17 @@ const authDataSlice = createSlice({
         localStorage.setItem("token", action.payload.accessToken);
         state.isAuth = true;
         state.user = action.payload.user;
+      })
+      .addCase(checkAuth.fulfilled, (state, action) => {
+        state.isAuth = true;
+        state.user = action.payload.user; // Set the user data from the action payload
+      })
+      .addCase(checkAuth.rejected, (state) => {
+        state.isAuth = false;
+        state.user = {} as IUser;
       });
   },
 });
-
 export const { setAuth, setUser, logout } = authDataSlice.actions;
-
 export default authDataSlice.reducer;
+export const selectIsAuth = (state: RootState) => state.userDataSlice.isAuth;
