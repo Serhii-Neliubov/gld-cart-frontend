@@ -2,17 +2,26 @@ const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
 
-const messageSchema = new mongoose.Schema(
-  {
-    chatUsers: {
-      type: String,
-      require: true,
-    },
-    message: { type: String, require: true },
-    sender: { type: mongoose.Schema.Types.ObjectId, require: true },
+const messageSchema = new mongoose.Schema({
+  text: {
+    type: String,
+    required: true,
   },
-  { timestamps: true }
-);
+  sender: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  receiver: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
 const Message = mongoose.model("message", messageSchema);
 module.exports = Message;
