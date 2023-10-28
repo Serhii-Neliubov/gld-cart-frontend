@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Label.scss";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
 import {
   selectIsAuth,
   userDataSelector,
 } from "../../../redux/Slices/userDataSlice";
+import { useTranslation } from "react-i18next";
 
 interface NavLinkProps {
   to: string;
@@ -14,28 +14,27 @@ interface NavLinkProps {
 
 const Label = () => {
   const location = useLocation();
-  const isVendor = useSelector((state: RootState) => state.isVendor.value);
   const isAuth = useSelector(selectIsAuth);
   const user = useSelector(userDataSelector);
-
+  const { t } = useTranslation();
   const navLinks: NavLinkProps[] = [
-    { to: "/", label: "Home" },
+    { to: "/", label: t("home") },
     {
-      to: isVendor ? "/renting-category-page" : "/renting",
-      label: "renting",
+      to: user.type == "Vendor" ? "/renting-category-page" : "/renting",
+      label: t("renting"),
     },
     {
-      to: isVendor ? "/products-category-page" : "/products",
-      label: "Products",
+      to: user.type == "Vendor" ? "/products-category-page" : "/products",
+      label: t("products"),
     },
-    { to: "/personal-services", label: "Professional Services" },
-    { to: "/contact-us", label: "Contact Us" },
+    { to: "/personal-services", label: t("professional services") },
+    { to: "/contact-us", label: t("contact us") },
   ];
 
   return (
     <div className="page__label label">
       <div className="label__container">
-        <h2 className="label__title">Exclusive</h2>
+        <h2 className="label__title">{t("Exclusive")}</h2>
         <div className="label__menu">
           <nav className="label__body">
             <ul className="label__list">
@@ -57,7 +56,7 @@ const Label = () => {
           </nav>
         </div>
         <div className="label__actions">
-          {isVendor ? null : (
+          {user.type == "Vendor" ? null : (
             <>
               <Link to="/wishlist-no-found" className="label__like-btn">
                 <img src="like-icon.svg" alt="Like icon" />
