@@ -5,27 +5,33 @@ const mongoose = require("mongoose");
 const router = require("./routes/router");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middlewares/errorMiddleware");
+const setupSocketIO = require("./socketio");
+const { createServer } = require("node:http");
 const port = process.env.PORT || 5000;
-const server = express();
 
-server.use(express.json());
-server.use(cookieParser());
-server.use(
+const app = express();
+const server = createServer(app);
+setupSocketIO(server);
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(
   cors({
     credentials: true,
     origin: process.env.CLIENT_URL,
   })
 );
-server.use(router);
-server.use(errorMiddleware);
+app.use(router);
+app.use(errorMiddleware);
 
 mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
-  .then((result) => server.listen(process.env.DB_PORT))
+  .then((result) => app.listen(process.env.DB_PORT))
   .catch((err) => console.log(err));
 
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

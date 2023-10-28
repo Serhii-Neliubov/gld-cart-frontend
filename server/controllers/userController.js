@@ -94,8 +94,8 @@ module.exports.userData_get = async (req, res, next) => {
   try {
     const userData = await userService.getData();
     return res.json(userData);
-  } catch (e) {
-    next(e);
+  } catch (error) {
+    next(error);
   }
 };
 module.exports.send_contact_email = async (req, res, next) => {
@@ -106,7 +106,6 @@ module.exports.send_contact_email = async (req, res, next) => {
       .status(200)
       .json({ success: true, message: "Email was sent successfully" });
   } catch (e) {
-    res.status(500).json({ success: false, message: "Email was not sent" });
     next(e);
   }
 };

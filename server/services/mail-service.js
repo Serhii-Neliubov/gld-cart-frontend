@@ -1,5 +1,6 @@
-const nodemailer = require("nodemailer");
 require("dotenv").config();
+const nodemailer = require("nodemailer");
+const ApiError = require("../exceptions/api-error");
 class MailService {
   constructor() {
     this.transporter = nodemailer.createTransport({
@@ -11,12 +12,16 @@ class MailService {
     });
   }
   async sendContactMail(name, email, subject, message, to) {
-    await this.transporter.sendMail({
-      from: "GLDCart Feedback",
-      to: to,
-      subject: subject,
-      text: `My name is: ${name}. My email is: ${email}. ${message}`,
-    });
+    try {
+      await this.transporter.sendMail({
+        from: "GLDCart Feedback",
+        to: to,
+        subject: subject,
+        text: `My name is: ${name}. My email is: ${email}. ${message}`,
+      });
+    } catch {
+      throw ApiError.BadRequest("Failed to send email");
+    }
   }
   async sendResetPasswordMail(email, link) {
     await this.transporter.sendMail({
