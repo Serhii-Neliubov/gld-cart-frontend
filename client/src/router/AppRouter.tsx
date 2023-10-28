@@ -7,31 +7,22 @@ import Header from "../components/UI/Header";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
-import { checkAuth, selectIsAuth } from "../redux/Slices/userDataSlice";
-import UserService from "../services/UserService";
+import {
+  checkAuth,
+  selectIsAuth,
+  userDataSelector,
+} from "../redux/Slices/userDataSlice";
 
 const AppRouter: FC = () => {
-  const [user, setUser] = React.useState();
-
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
+  const userData = useSelector(userDataSelector);
   const isAuth = useSelector(selectIsAuth);
 
   const dispatch = useDispatch<AppDispatch>();
 
-  async function getUserData() {
-    try {
-      const response = await UserService.fetchUsers();
-      setUser(response.data.user);
-      console.log(user);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       dispatch(checkAuth());
-      getUserData();
     }
   }, []);
 
@@ -39,8 +30,8 @@ const AppRouter: FC = () => {
     <BrowserRouter>
       <Header />
       <Label />
+      <h2>{userData.email}</h2>
       <h1>{isAuth ? "YOU ALREADY AUT" : "YOU NEED AUTH!!"}</h1>
-      <button onClick={getUserData}>123</button>
       <Routes>
         {isAuth
           ? isVendor
