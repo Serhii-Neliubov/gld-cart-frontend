@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 // import { setTrue } from "../../redux/Slices/isauthSlice";
-import { register } from "../../redux/Slices/userDataSlice";
+import { register, userDataSelector } from "../../redux/Slices/userDataSlice";
 
 interface IUser {
   type: string;
@@ -17,7 +17,7 @@ interface IUser {
 }
 
 const RegisterPage = () => {
-  const isVendor = useSelector((state: RootState) => state.isVendor.value);
+  const user = useSelector(userDataSelector);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const RegisterPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (isVendor) {
+    if (user.type == "Vendor") {
       setUserData({ ...userData, type: "Vendor" });
     } else {
       setUserData({ ...userData, type: "Buyer" });
@@ -56,7 +56,7 @@ const RegisterPage = () => {
       isEmptyEmail == false
     ) {
       dispatch(register(userData));
-      navigate("/home");
+      navigate("/");
       setIsEmptyName(userData.name.length === 0);
       setIsEmptySurname(userData.surname.length === 0);
       setIsEmptyEmail(userData.email.length === 0);
@@ -69,7 +69,7 @@ const RegisterPage = () => {
       setIsEmptyRePassword(userData.rePassword.length === 0);
     }
 
-    if (userData.password.length <= 8) {
+    if (userData.password.length < 8) {
       setIsEmptyPassword(true);
       console.log("Пароль должен быть больше 8 символов");
     }

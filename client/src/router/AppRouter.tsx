@@ -33,11 +33,14 @@ const AppRouter: FC = () => {
           ? user.type == "Vendor"
             ? vendorRoutes.map((route) => {
                 return (
-                  <Route
-                    Component={route.component}
-                    path={route.path}
-                    key={route.path}
-                  />
+                  <>
+                    <Route
+                      Component={route.component}
+                      path={route.path}
+                      key={route.path}
+                    />
+                    <Route path="/*" element={<Navigate to="/not-found" />} />
+                  </>
                 );
               })
             : buyerRoutes.map((route) => {
