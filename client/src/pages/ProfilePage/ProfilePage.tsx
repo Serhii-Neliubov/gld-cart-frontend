@@ -3,10 +3,11 @@ import Footer from "../../components/UI/Footer";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { logout } from "../../redux/Slices/userDataSlice";
+import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
 
 const ProfilePage = () => {
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
+  const user = useSelector(userDataSelector);
   const dispatch = useDispatch();
 
   return (
@@ -65,7 +66,9 @@ const ProfilePage = () => {
             </Link>
           </div>
           <div className={styles.content}>
-            <h1 className={styles.title}>Welcome Mr. Muhammad Tallah</h1>
+            <h1 className={styles.title}>
+              Welcome Mr. {user.name} {user.surname}
+            </h1>
             <div className={styles.content_box}>
               <h2 className={styles.box_name}>Personal Details</h2>
               <div className={styles.content_box_items}>

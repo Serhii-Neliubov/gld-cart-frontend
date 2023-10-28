@@ -1,10 +1,9 @@
-import React from "react";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { FC } from "react";
 import Label from "../components/Home/HomeElements/Label";
 import Header from "../components/UI/Header";
-import { AppDispatch, RootState } from "../redux/store";
+import { AppDispatch } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
 import {
@@ -14,9 +13,8 @@ import {
 } from "../redux/Slices/userDataSlice";
 
 const AppRouter: FC = () => {
-  const isVendor = useSelector((state: RootState) => state.isVendor.value);
-  const userData = useSelector(userDataSelector);
   const isAuth = useSelector(selectIsAuth);
+  const user = useSelector(userDataSelector);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -30,11 +28,9 @@ const AppRouter: FC = () => {
     <BrowserRouter>
       <Header />
       <Label />
-      <h2>{userData.email}</h2>
-      <h1>{isAuth ? "YOU ALREADY AUT" : "YOU NEED AUTH!!"}</h1>
       <Routes>
         {isAuth
-          ? isVendor
+          ? user.type == "Vendor"
             ? vendorRoutes.map((route) => {
                 return (
                   <Route

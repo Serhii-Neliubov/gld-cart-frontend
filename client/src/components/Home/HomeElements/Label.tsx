@@ -2,7 +2,10 @@ import { Link, useLocation } from "react-router-dom";
 import "./Label.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { selectIsAuth } from "../../../redux/Slices/userDataSlice";
+import {
+  selectIsAuth,
+  userDataSelector,
+} from "../../../redux/Slices/userDataSlice";
 
 interface NavLinkProps {
   to: string;
@@ -13,6 +16,7 @@ const Label = () => {
   const location = useLocation();
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
   const isAuth = useSelector(selectIsAuth);
+  const user = useSelector(userDataSelector);
 
   const navLinks: NavLinkProps[] = [
     { to: "/", label: "Home" },
@@ -69,7 +73,9 @@ const Label = () => {
             className="label__profile-btn"
           >
             <img src="profile-icon.svg" alt="Profile icon" />
-            {/* <span>John Miller</span> */}
+            <span>
+              {user.name} {user.surname}
+            </span>
           </Link>
         </div>
       </div>
