@@ -17,9 +17,11 @@ router.post("/reset-password/:token", userController.reset_password);
 
 
 //Message routes
-router.post("/messages/create", authMiddleware.requireAuth, chatController.create_message);
-router.put("/messages/:id/update", authMiddleware.requireAuth, chatController.update_message);
-router.delete("/messages/:id/delete", authMiddleware.requireAuth, chatController.delete_message);
+// router.post("/chat/messages/create", authMiddleware.requireAuth, chatController.create_message);
+router.post("/chat/messages/create", chatController.create_message);
+router.get("/chat/messages/:user1Id/:user2Id", chatController.get_messages);
+// router.put("/chat/messages/:id/update", authMiddleware.requireAuth, chatController.update_message);
+// router.delete("/chat/messages/:id/delete", authMiddleware.requireAuth, chatController.delete_message);
 
 //Payment routes
 router.post(
