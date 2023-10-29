@@ -40,7 +40,6 @@ export const register = createAsyncThunk(
     return response.data; // Возвращаем данные для обработки в extraReducers
   }
 );
-
 export const checkAuth = createAsyncThunk("/refresh", async () => {
   const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
     withCredentials: true,

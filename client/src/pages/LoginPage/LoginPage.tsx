@@ -68,8 +68,14 @@ const LoginPage = () => {
             </div>
           </form>
           <div className={styles.check_box}>
-            <input type="checkbox" />
-            <span>Remember me</span>
+            <div className={styles.check_box_remember}>
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </div>
+
+            <Link className={styles.link} to="/forgotten-password">
+              Forgot password?
+            </Link>
           </div>
           <Link
             to="/"

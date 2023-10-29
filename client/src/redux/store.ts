@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import isvendorSlice from "./Slices/isvendorSlice";
 import userDataSlice from "./Slices/userDataSlice";
+import resetPasswordEmailSlice from "./Slices/resetPasswordEmailSlice";
 
 export const store = configureStore({
   reducer: {
     isVendor: isvendorSlice,
     userDataSlice: userDataSlice,
+    setEmail: resetPasswordEmailSlice,
   },
 });
 

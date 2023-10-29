@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { AppDispatch } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 // import { setTrue } from "../../redux/Slices/isauthSlice";
-import { register, userDataSelector } from "../../redux/Slices/userDataSlice";
+import { register } from "../../redux/Slices/userDataSlice";
 
 interface IUser {
   type: string;
@@ -17,7 +17,6 @@ interface IUser {
 }
 
 const RegisterPage = () => {
-  const user = useSelector(userDataSelector);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -29,6 +28,7 @@ const RegisterPage = () => {
     password: "",
     rePassword: "",
   });
+  const isVendor = useSelector((state: RootState) => state.isVendor.value);
 
   const [isEmptyName, setIsEmptyName] = useState(false);
   const [isEmptySurname, setIsEmptySurname] = useState(false);
@@ -39,7 +39,7 @@ const RegisterPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (user.type == "Vendor") {
+    if (isVendor) {
       setUserData({ ...userData, type: "Vendor" });
     } else {
       setUserData({ ...userData, type: "Buyer" });
