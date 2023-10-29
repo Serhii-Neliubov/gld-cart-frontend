@@ -10,15 +10,13 @@ const { createServer } = require("node:http");
 const port = process.env.PORT || 5000;
 
 const app = express();
-const server = createServer(app);
-setupSocketIO(server);
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    credentials: true,
     origin: process.env.CLIENT_URL,
+    credentials: true,
   })
 );
 app.use(router);
