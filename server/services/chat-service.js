@@ -1,7 +1,7 @@
 const MessageModel = require("../models/Message");
 class ChatService {
   async createMessage(text, sender, receiver) {
-    const newMessage = MessageModel.create({
+    const newMessage =  await MessageModel.create({
       text: text,
       sender: sender,
       receiver: receiver,
