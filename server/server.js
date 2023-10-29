@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 const router = require("./routes/router");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middlewares/errorMiddleware");
-const setupSocketIO = require("./socketio");
-const { createServer } = require("node:http");
+const setupSocket = require("./setupSocket");
+
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -30,6 +30,9 @@ mongoose
   .then((result) => app.listen(process.env.DB_PORT))
   .catch((err) => console.log(err));
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+setupSocket(server);
+
