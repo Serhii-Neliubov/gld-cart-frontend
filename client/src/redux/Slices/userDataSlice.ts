@@ -40,7 +40,6 @@ export const register = createAsyncThunk(
     return response.data; // Возвращаем данные для обработки в extraReducers
   }
 );
-
 export const checkAuth = createAsyncThunk("/refresh", async () => {
   const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
     withCredentials: true,
@@ -89,4 +88,6 @@ const authDataSlice = createSlice({
 });
 export const { setAuth, setUser, logout } = authDataSlice.actions;
 export default authDataSlice.reducer;
+
 export const selectIsAuth = (state: RootState) => state.userDataSlice.isAuth;
+export const userDataSelector = (state: RootState) => state.userDataSlice.user;

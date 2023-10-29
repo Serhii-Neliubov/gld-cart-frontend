@@ -28,6 +28,8 @@ import GardeningPage from "../pages/GardeningPage/GardeningPage";
 import RepairingPage from "../pages/RepairingPage/RepairingPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import RentingProfservicesPage from "../pages/RentingProfservicesPage/RentingProductsPage";
+import ForgottenPasswordPage from "../pages/ForgottenPasswordPage/ForgottenPasswordPage";
+import ForgottenAttentionPage from "../pages/ForgottenEttantionPage/ForgottenAttentionPage";
 
 export const buyerRoutes = [
   { component: Home, path: "/" },
@@ -88,4 +90,6 @@ export const noAuthRotes = [
   { component: NotFound, path: "/not-found" },
   { component: ProductsPage, path: "/products" },
   { component: ProfServicesPage, path: "/personal-services" },
+  { component: ForgottenPasswordPage, path: "/forgotten-password" },
+  { component: ForgottenAttentionPage, path: "/forgotten-attention" },
 ];

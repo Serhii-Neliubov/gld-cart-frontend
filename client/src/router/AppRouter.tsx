@@ -3,14 +3,19 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { FC } from "react";
 import Label from "../components/Home/HomeElements/Label";
 import Header from "../components/UI/Header";
-import { AppDispatch, RootState } from "../redux/store";
+import { AppDispatch } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
-import { checkAuth, selectIsAuth } from "../redux/Slices/userDataSlice";
+import {
+  checkAuth,
+  selectIsAuth,
+  userDataSelector,
+} from "../redux/Slices/userDataSlice";
 
 const AppRouter: FC = () => {
-  const isVendor = useSelector((state: RootState) => state.isVendor.value);
   const isAuth = useSelector(selectIsAuth);
+  const user = useSelector(userDataSelector);
+
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -23,17 +28,19 @@ const AppRouter: FC = () => {
     <BrowserRouter>
       <Header />
       <Label />
-      <h1>{isAuth ? "Авторизован" : "Не авторизован"}</h1>
       <Routes>
         {isAuth
-          ? isVendor
+          ? user.type == "Vendor"
             ? vendorRoutes.map((route) => {
                 return (
-                  <Route
-                    Component={route.component}
-                    path={route.path}
-                    key={route.path}
-                  />
+                  <>
+                    <Route
+                      Component={route.component}
+                      path={route.path}
+                      key={route.path}
+                    />
+                    <Route path="/*" element={<Navigate to="/not-found" />} />
+                  </>
                 );
               })
             : buyerRoutes.map((route) => {

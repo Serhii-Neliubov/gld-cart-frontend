@@ -1,15 +1,18 @@
 import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
-const languages = ["Russian", "Spanish", "Ukrainian", "German"];
-
 const Header: FC = () => {
   const [openLanguageModal, setOpenLanguageModal] = useState(false);
-
+  const { t, i18n } = useTranslation();
   function changeLanguageHandler() {
     setOpenLanguageModal((prev) => !prev);
   }
+
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+  };
 
   return (
     <div className="header">
@@ -18,7 +21,7 @@ const Header: FC = () => {
           <img src="HomePage/header/logo.png" alt="Logo" />
         </Link>
         <div className="header__input">
-          <input placeholder="What are you looking for?" type="text" />
+          <input placeholder={t("What are you looking for?")} type="text" />
           <button className="header__search-btn" />
         </div>
         <div onClick={changeLanguageHandler} className="header__button-lang">
@@ -26,9 +29,15 @@ const Header: FC = () => {
           <img src="HomePage/header/arrow-down.svg" alt="arrow down" />
           {openLanguageModal && (
             <div className="header__language-modal">
-              {languages.map((language) => (
-                <div className="header__language-modal-elem">{language}</div>
-              ))}
+              <div
+                onClick={() => changeLanguage("ru")}
+                className="header__language-modal-elem"
+              >
+                Russian
+              </div>
+              <div className="header__language-modal-elem">Spanish</div>
+              <div className="header__language-modal-elem">Ukrainian</div>
+              <div className="header__language-modal-elem">German</div>
             </div>
           )}
         </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 // import { setTrue } from "../../redux/Slices/isauthSlice";
@@ -17,8 +17,8 @@ interface IUser {
 }
 
 const RegisterPage = () => {
-  const isVendor = useSelector((state: RootState) => state.isVendor.value);
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState<IUser>({
     type: "",
@@ -28,6 +28,7 @@ const RegisterPage = () => {
     password: "",
     rePassword: "",
   });
+  const isVendor = useSelector((state: RootState) => state.isVendor.value);
 
   const [isEmptyName, setIsEmptyName] = useState(false);
   const [isEmptySurname, setIsEmptySurname] = useState(false);
@@ -55,6 +56,7 @@ const RegisterPage = () => {
       isEmptyEmail == false
     ) {
       dispatch(register(userData));
+      navigate("/");
       setIsEmptyName(userData.name.length === 0);
       setIsEmptySurname(userData.surname.length === 0);
       setIsEmptyEmail(userData.email.length === 0);
@@ -67,7 +69,7 @@ const RegisterPage = () => {
       setIsEmptyRePassword(userData.rePassword.length === 0);
     }
 
-    if (userData.password.length <= 8) {
+    if (userData.password.length < 8) {
       setIsEmptyPassword(true);
       console.log("Пароль должен быть больше 8 символов");
     }
@@ -102,7 +104,6 @@ const RegisterPage = () => {
                     <input
                       onChange={(e) => {
                         setUserData({ ...userData, name: e.target.value });
-                        // Добавьте валидацию здесь, например, с использованием регулярных выражений
                       }}
                       value={userData.name}
                       type="text"
