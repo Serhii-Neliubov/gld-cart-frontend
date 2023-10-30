@@ -7,10 +7,10 @@ module.exports = function (server) {
       credentials: true,
     },
   });
-  global.onlineUsers = new Map();
+  const onlineUsers = new Map();
   io.on("connection", (socket) => {
-    console.log("Some dickhead has connected");
-    global.chatSocket = socket;
+    console.log("Some user has connected");
+    const chatSocket = socket;
     socket.on("addUser", (userId) => {
       onlineUsers.set(userId, socket.id);
     });
