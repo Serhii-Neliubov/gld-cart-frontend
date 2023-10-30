@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const router = require("./routes/router");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middlewares/errorMiddleware");
-const setupSocket = require("./setupSocket");
+const setupSocket = require("./socket-server");
 
 const port = process.env.PORT || 5000;
 
