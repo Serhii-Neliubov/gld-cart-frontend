@@ -8,17 +8,25 @@ module.exports = function (server) {
     },
   });
   const onlineUsers = new Map();
-  io.on("connection", (socket) => {
-    console.log("Some user has connected");
-    const chatSocket = socket;
-    socket.on("addUser", (userId) => {
-      onlineUsers.set(userId, socket.id);
-    });
+  io.on("connection", async (socket) => {
+    console.log("Someone has connected");
 
+    socket.on("addUser", async (userId) => {
+      onlineUsers.set(userId, socket.id);
+      console.log(userId + " " + socket.id);
+    })
     socket.on("chat message", async (msg) => {
-      const sendUserSocket = onlineUsers.get(msg.receiver);
+      console.log(msg);
+      console.log("text: " + msg.text);
+      console.log("sender " + msg.sender);
+      console.log("recipient: " + msg.recipient);
+      const sendUserSocket = onlineUsers.get(msg.recipient);
+      console.log(sendUserSocket);
       if (sendUserSocket) {
         socket.to(sendUserSocket).emit("msg-receive", msg.text);
+        console.log(
+          `Received message from ${msg.sender} to ${msg.recipient}: ${msg.text}`
+        );
       }
     });
   });
