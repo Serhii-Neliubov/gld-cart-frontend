@@ -5,20 +5,18 @@ const mongoose = require("mongoose");
 const router = require("./routes/router");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middlewares/errorMiddleware");
-const setupSocketIO = require("./socketio");
-const { createServer } = require("node:http");
+const setupSocket = require("./socket-server");
+
 const port = process.env.PORT || 5000;
 
 const app = express();
-const server = createServer(app);
-setupSocketIO(server);
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    credentials: true,
     origin: process.env.CLIENT_URL,
+    credentials: true,
   })
 );
 app.use(router);
@@ -32,6 +30,9 @@ mongoose
   .then((result) => app.listen(process.env.DB_PORT))
   .catch((err) => console.log(err));
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+setupSocket(server);
+
