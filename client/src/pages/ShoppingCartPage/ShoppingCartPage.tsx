@@ -1,10 +1,10 @@
 import styles from "./ShoppingCartPage.module.scss";
 import SavedItems from "../../utils/SavedItems";
-import { useState } from "react";
+import { FC, useState } from "react";
 import Footer from "../../components/UI/Footer";
 
-const ShoppingCartPage = () => {
-  const [result, setResult] = useState(0);
+const ShoppingCartPage: FC = () => {
+  const [result] = useState<number>(0);
 
   return (
     <>
@@ -17,7 +17,7 @@ const ShoppingCartPage = () => {
           </div>
           <div className={styles.content}>
             <div className={styles.items}>
-              {SavedItems.map((item) => {
+              {SavedItems.map(() => {
                 return <div>123</div>;
               })}
             </div>

@@ -1,3 +1,4 @@
+import { FC } from "react";
 import styles from "./PaymentModal.module.scss";
 
 interface PaymentModalProps {
@@ -6,11 +7,11 @@ interface PaymentModalProps {
   secondInputTitle?: string;
 }
 
-const PaymentModal = ({
+const PaymentModal: FC<PaymentModalProps> = ({
   title,
   secondInput = "Enter your password",
   secondInputTitle = "Password",
-}: PaymentModalProps) => {
+}) => {
   const maxlength = 5;
 
   return (

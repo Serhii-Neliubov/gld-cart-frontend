@@ -1,7 +1,8 @@
 import styles from "./RentingElectronicsPage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
-const RentingElectronicsPage = () => {
+const RentingElectronicsPage: FC = () => {
   return (
     <>
       <div className={styles.body}>

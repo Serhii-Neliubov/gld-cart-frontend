@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
 import { clearModalActiveParams } from "./PaymentPage.tsx";
 import Footer from "../../components/UI/Footer.tsx";
 
-const Payment = () => {
-  const [modalActive, setModalActive] = useState(clearModalActiveParams);
+const Payment: FC = () => {
+  const [modalActive, setModalActive] = useState<{
+    google: boolean;
+    apple: boolean;
+    credit: boolean;
+    delivery: boolean;
+  }>(clearModalActiveParams);
 
-  useEffect(() => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

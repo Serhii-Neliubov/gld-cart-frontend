@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./NoShoppingCartPage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
-const NoShoppingCartPage = () => {
+const NoShoppingCartPage: FC = () => {
   return (
     <>
       <div className={styles.body}>

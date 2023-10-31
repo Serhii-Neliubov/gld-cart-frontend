@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./RentingProfservicesPage.module.scss";
-import React from "react";
+import React, { FC } from "react";
 
 const clearClick: IClearClick = {
   cleaning: false,
@@ -55,27 +55,6 @@ interface IClearClick {
   opensmartWatch: boolean;
   openearrings: boolean;
 }
-
-const cleaning = [
-  { name: "General Cleaning" },
-  { name: "Kitchen Cleaning" },
-  { name: "Bathroom Cleaning" },
-  { name: "Bedroom Cleaning" },
-  { name: "Living Room Cleaning" },
-  { name: "Laundry Room Cleaning" },
-  { name: "Home Office Cleaning" },
-  { name: "Entryway/Hallway Cleaning" },
-  { name: "Outdoor Cleaning" },
-];
-
-const repairing = [
-  { name: "Electronics Repair" },
-  { name: "Appliance Repair" },
-  { name: "Natural radiance" },
-  { name: "Youthful brightness" },
-  { name: "Dewy appearance" },
-  { name: "Other" },
-];
 
 const skinTexture = [
   { name: "Silk-like softness" },
@@ -1068,7 +1047,7 @@ const statementEarrings = [
   { name: "Exaggerated hoops" },
   { name: "other" },
 ];
-const RentingProfservicesPage = () => {
+const RentingProfservicesPage: FC = () => {
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [selectedButton, setSelectedButton] = React.useState<string | null>(
     null

@@ -3,7 +3,7 @@ import HomeMain from "../../components/Home/HomeMain";
 import Footer from "../../components/UI/Footer";
 
 const Home: FC = () => {
-  useEffect(() => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

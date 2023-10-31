@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./NoWishListPage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
-const NoWishListPage = () => {
+const NoWishListPage: FC = () => {
   return (
     <>
       <div className={styles.body}>

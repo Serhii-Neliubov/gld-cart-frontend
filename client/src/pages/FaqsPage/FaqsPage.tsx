@@ -1,9 +1,9 @@
 import Footer from "../../components/UI/Footer";
 import styles from "./FaqsPage.module.scss";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 
-const FaqsPage = () => {
-  useEffect(() => {
+const FaqsPage: FC = () => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

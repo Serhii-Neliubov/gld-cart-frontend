@@ -1,7 +1,8 @@
 import styles from "./RentingCarPage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
-const RentingCarPage = () => {
+const RentingCarPage: FC = () => {
   return (
     <>
       <div className={styles.body}>

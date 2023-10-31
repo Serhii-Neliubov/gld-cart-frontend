@@ -1,9 +1,9 @@
 import Footer from "../../components/UI/Footer";
 import styles from "./ShippingPolicyPage.module.scss";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 
-const ShippingPolicyPage = () => {
-  useEffect(() => {
+const ShippingPolicyPage: FC = () => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

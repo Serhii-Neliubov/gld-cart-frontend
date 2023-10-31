@@ -4,7 +4,7 @@ import Footer from "../../components/UI/Footer";
 import { Link } from "react-router-dom";
 
 const ProfServicesPage: FC = () => {
-  useEffect(() => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
   return (

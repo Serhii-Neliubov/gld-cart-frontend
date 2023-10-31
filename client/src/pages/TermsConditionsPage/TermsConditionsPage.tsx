@@ -1,9 +1,9 @@
 import Footer from "../../components/UI/Footer";
 import styles from "./TermsConditionsPage.module.scss";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 
-const TermsConditionsPage = () => {
-  useEffect(() => {
+const TermsConditionsPage: FC = () => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

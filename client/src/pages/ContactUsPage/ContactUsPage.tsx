@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/UI/Footer";
 
 const ContactUsPage: FC = () => {
-  useEffect(() => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
   return (

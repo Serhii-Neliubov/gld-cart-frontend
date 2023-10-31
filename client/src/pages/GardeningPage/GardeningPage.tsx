@@ -1,7 +1,8 @@
 import styles from "./GardeningPage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
-const GardeningPage = () => {
+const GardeningPage: FC = () => {
   return (
     <>
       <div className={styles.body}>

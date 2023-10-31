@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./RentingProductsPage.module.scss";
-import React from "react";
+import React, { FC } from "react";
 
 const clearClick: IClearClick = {
   beauty: false,
@@ -1153,7 +1153,7 @@ const statementEarrings = [
   { name: "Exaggerated hoops" },
   { name: "other" },
 ];
-const RentingProductsPage = () => {
+const RentingProductsPage: FC = () => {
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [selectedButton, setSelectedButton] = React.useState<string | null>(
     null

@@ -1,9 +1,9 @@
 import Footer from "../../components/UI/Footer";
 import styles from "./CookiePolicyPage.module.scss";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 
-const CookiePolicyPage = () => {
-  useEffect(() => {
+const CookiePolicyPage: FC = () => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

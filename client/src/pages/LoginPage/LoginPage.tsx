@@ -3,22 +3,25 @@ import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useEffect } from "react";
-import React from "react";
 import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/Slices/userDataSlice";
 
 const LoginPage = () => {
-  const [isEmptyEmail, setIsEmptyEmail] = React.useState(false);
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
+  const [isEmptyEmail, setIsEmptyEmail] = useState<boolean>(false);
+  const [userData, setUserData] = useState<{ email: string; password: string }>(
+    {
+      email: "",
+      password: "",
+    }
+  );
+
   const dispatch = useDispatch<AppDispatch>();
 
-  useEffect(() => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className={styles.body}>
       <Login>

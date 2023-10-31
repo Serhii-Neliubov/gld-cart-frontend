@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./RentingCategoryPage.module.scss";
-import React from "react";
+import React, { FC } from "react";
 
 const clearClick = {
   vehicles: false,
@@ -344,7 +344,7 @@ const historic = [
   { name: "Other" },
 ];
 
-const RentingCategoryPage = () => {
+const RentingCategoryPage: FC = () => {
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [selectedButton, setSelectedButton] = React.useState<string | null>(
     null

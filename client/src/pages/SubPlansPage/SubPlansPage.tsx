@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import styles from "./SubPlansPage.module.scss";
 import { Link } from "react-router-dom";
 import Footer from "../../components/UI/Footer";
 
-const SubPlansPage = () => {
-  useEffect(() => {
+const SubPlansPage: FC = () => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
   return (

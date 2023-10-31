@@ -30,8 +30,14 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import RentingProfservicesPage from "../pages/RentingProfservicesPage/RentingProductsPage";
 import ForgottenPasswordPage from "../pages/ForgottenPasswordPage/ForgottenPasswordPage";
 import ForgottenAttentionPage from "../pages/ForgottenEttantionPage/ForgottenAttentionPage";
+import { FC } from "react";
 
-export const buyerRoutes = [
+interface IRoutes {
+  component: FC;
+  path: string;
+}
+
+export const buyerRoutes: IRoutes[] = [
   { component: Home, path: "/" },
   { component: Renting, path: "/renting" },
   { component: ContactUsPage, path: "/contact-us" },
@@ -58,7 +64,7 @@ export const buyerRoutes = [
   { component: RepairingPage, path: "/repairing-page" },
   { component: ProfilePage, path: "/profile" },
 ];
-export const vendorRoutes = [
+export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
   { component: RentingCategoryPage, path: "/renting-category-page" },
   { component: ContactUsPage, path: "/contact-us" },
@@ -76,7 +82,7 @@ export const vendorRoutes = [
   { component: RentingProfservicesPage, path: "/personal-services" },
 ];
 
-export const noAuthRotes = [
+export const noAuthRotes: IRoutes[] = [
   { component: Home, path: "/" },
   { component: Renting, path: "/renting" },
   { component: RegisterAsPage, path: "/user-type-page" },

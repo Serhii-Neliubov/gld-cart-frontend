@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
 import Footer from "../../components/UI/Footer";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const clearModalActiveParams = {
   google: false,
   apple: false,
@@ -10,10 +11,19 @@ export const clearModalActiveParams = {
   delivery: false,
 };
 
-const Payment = () => {
-  const [modalActive, setModalActive] = useState(clearModalActiveParams);
+interface IClearModalActiveParams {
+  google: boolean;
+  apple: boolean;
+  credit: boolean;
+  delivery: boolean;
+}
 
-  useEffect(() => {
+const Payment: FC = () => {
+  const [modalActive, setModalActive] = useState<IClearModalActiveParams>(
+    clearModalActiveParams
+  );
+
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

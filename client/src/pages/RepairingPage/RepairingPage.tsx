@@ -1,7 +1,8 @@
 import styles from "./RepairingPage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
-const RepairingPage = () => {
+const RepairingPage: FC = () => {
   return (
     <>
       <div className={styles.body}>

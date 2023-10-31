@@ -1,7 +1,8 @@
 import styles from "./RentingHousePage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
-const RentingHousePage = () => {
+const RentingHousePage: FC = () => {
   return (
     <>
       <div className={styles.body}>

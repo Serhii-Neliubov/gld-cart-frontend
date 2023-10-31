@@ -2,13 +2,18 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/UI/Footer";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
+import { FC } from "react";
 
-const ProfilePage = () => {
-  const isVendor = useSelector((state: RootState) => state.isVendor.value);
-  const user = useSelector(userDataSelector);
-  const dispatch = useDispatch();
+const ProfilePage: FC = () => {
+  const isVendor: boolean = useSelector(
+    (state: RootState) => state.isVendor.value
+  );
+
+  const user = useSelector(userDataSelector); // НУЖНА ТИПИЗАЦИЯ
+
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <>

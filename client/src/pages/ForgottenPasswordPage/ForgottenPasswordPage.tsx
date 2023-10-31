@@ -1,13 +1,14 @@
-import React from "react";
+import { FC, useState } from "react";
 import styles from "./ForgottenPasswordPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useDispatch } from "react-redux";
 import { setEmailValue } from "../../redux/Slices/resetPasswordEmailSlice";
 import { Link } from "react-router-dom";
+import { AppDispatch } from "../../redux/store";
 
-const ForgottenPasswordPage = () => {
-  const [email, setEmail] = React.useState("");
-  const dispatch = useDispatch();
+const ForgottenPasswordPage: FC = () => {
+  const [email, setEmail] = useState<string>("");
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <div className={styles.body}>

@@ -46,7 +46,7 @@ const categories = [
 ];
 
 const ProductsPage: FC = () => {
-  useEffect(() => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
   return (

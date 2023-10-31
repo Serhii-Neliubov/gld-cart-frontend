@@ -1,9 +1,9 @@
 import Footer from "../../components/UI/Footer";
 import styles from "./PrivacyPolicyPage.module.scss";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 
-const PrivacyPolicyPage = () => {
-  useEffect(() => {
+const PrivacyPolicyPage: FC = () => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setFalse, setTrue } from "../../redux/Slices/isvendorSlice";
+import { AppDispatch } from "../../redux/store";
 
-const RegisterAsPage = () => {
-  const dispatch = useDispatch();
+const RegisterAsPage: FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
 
-  useEffect(() => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
 

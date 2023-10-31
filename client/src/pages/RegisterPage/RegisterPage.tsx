@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Login from "../../components/UI/Login";
 import styles from "./RegisterPage.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
-// import { setTrue } from "../../redux/Slices/isauthSlice";
 import { register } from "../../redux/Slices/userDataSlice";
 
 interface IUser {
@@ -16,9 +15,9 @@ interface IUser {
   rePassword: string;
 }
 
-const RegisterPage = () => {
+const RegisterPage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   const [userData, setUserData] = useState<IUser>({
     type: "",
@@ -28,15 +27,16 @@ const RegisterPage = () => {
     password: "",
     rePassword: "",
   });
+
   const isVendor = useSelector((state: RootState) => state.isVendor.value);
 
-  const [isEmptyName, setIsEmptyName] = useState(false);
-  const [isEmptySurname, setIsEmptySurname] = useState(false);
-  const [isEmptyEmail, setIsEmptyEmail] = useState(false);
-  const [isEmptyPassword, setIsEmptyPassword] = useState(false);
-  const [isEmptyRePassword, setIsEmptyRePassword] = useState(false);
+  const [isEmptyName, setIsEmptyName] = useState<boolean>(false);
+  const [isEmptySurname, setIsEmptySurname] = useState<boolean>(false);
+  const [isEmptyEmail, setIsEmptyEmail] = useState<boolean>(false);
+  const [isEmptyPassword, setIsEmptyPassword] = useState<boolean>(false);
+  const [isEmptyRePassword, setIsEmptyRePassword] = useState<boolean>(false);
 
-  useEffect(() => {
+  useEffect((): void => {
     window.scrollTo(0, 0);
 
     if (isVendor) {
@@ -44,7 +44,9 @@ const RegisterPage = () => {
     } else {
       setUserData({ ...userData, type: "Buyer" });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   function sendFormHandler(): void {
     if (
       userData.password === userData.rePassword &&

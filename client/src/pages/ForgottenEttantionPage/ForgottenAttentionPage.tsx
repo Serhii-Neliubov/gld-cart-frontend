@@ -1,12 +1,13 @@
-import React from "react";
+import { FC } from "react";
 import styles from "./ForgottenAttentionPage.module.scss";
 import { Link } from "react-router-dom";
 import Login from "../../components/UI/Login";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
-const ForgottenAttentionPage = () => {
-  const email = useSelector((state: RootState) => state.setEmail.value);
+const ForgottenAttentionPage: FC = () => {
+  const email: string = useSelector((state: RootState) => state.setEmail.value);
+
   return (
     <div className={styles.body}>
       <Login>

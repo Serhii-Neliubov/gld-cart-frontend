@@ -1,7 +1,8 @@
 import styles from "./CleaningPage.module.scss";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
-const CleaningPage = () => {
+const CleaningPage: FC = () => {
   return (
     <>
       <div className={styles.body}>
