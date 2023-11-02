@@ -3,15 +3,24 @@ import { useTranslation } from "react-i18next";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
-const Header: FC = () => {
-  const [openLanguageModal, setOpenLanguageModal] = useState(false);
-  const { t, i18n } = useTranslation();
-  function changeLanguageHandler() {
-    setOpenLanguageModal((prev) => !prev);
-  }
+const languages = ["English", "Russian", "Ukrainian", "German"];
 
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
+const Header: FC = () => {
+  const [openLanguageModal, setOpenLanguageModal] = useState<boolean>(false);
+  const [language, setLanguage] = useState<string>("English");
+
+  const { t, i18n } = useTranslation();
+
+  const languageCodes: { [key: string]: string } = {
+    English: "en",
+    Russian: "ru",
+    Ukrainian: "ua",
+    German: "de",
+  };
+
+  const changeLanguage = (newLanguage: string) => {
+    i18n.changeLanguage(languageCodes[newLanguage]);
+    setLanguage(newLanguage);
   };
 
   return (
@@ -24,20 +33,25 @@ const Header: FC = () => {
           <input placeholder={t("What are you looking for?")} type="text" />
           <button className="header__search-btn" />
         </div>
-        <div onClick={changeLanguageHandler} className="header__button-lang">
-          <span>English</span>
+        <div
+          onClick={() => setOpenLanguageModal((prev) => !prev)}
+          className="header__button-lang"
+        >
+          <span>{language}</span>
           <img src="HomePage/header/arrow-down.svg" alt="arrow down" />
           {openLanguageModal && (
             <div className="header__language-modal">
-              <div
-                onClick={() => changeLanguage("ru")}
-                className="header__language-modal-elem"
-              >
-                Russian
-              </div>
-              <div className="header__language-modal-elem">Spanish</div>
-              <div className="header__language-modal-elem">Ukrainian</div>
-              <div className="header__language-modal-elem">German</div>
+              {languages
+                .filter((lang) => lang !== language)
+                .map((lang) => (
+                  <div
+                    key={lang}
+                    onClick={() => changeLanguage(lang)}
+                    className="header__language-modal-elem"
+                  >
+                    {lang}
+                  </div>
+                ))}
             </div>
           )}
         </div>
