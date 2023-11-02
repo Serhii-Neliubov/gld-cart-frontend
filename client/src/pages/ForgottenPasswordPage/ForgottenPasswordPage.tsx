@@ -5,10 +5,23 @@ import { useDispatch } from "react-redux";
 import { setEmailValue } from "../../redux/Slices/resetPasswordEmailSlice";
 import { Link } from "react-router-dom";
 import { AppDispatch } from "../../redux/store";
+import axios from "axios";
+import {API_URL} from "../../http";
 
 const ForgottenPasswordPage: FC = () => {
   const [email, setEmail] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
+
+  async function sendEmailHandler() {
+    try {
+      const response = await axios.post(`${API_URL}/forgot-password`, {
+        email,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className={styles.body}>
@@ -36,15 +49,15 @@ const ForgottenPasswordPage: FC = () => {
               </div>
             </div>
           </form>
-          <Link
-            to="/forgotten-attention"
+          <button
             onClick={() => {
               dispatch(setEmailValue(email));
+              sendEmailHandler()
             }}
             className={styles.button}
           >
             Send Link
-          </Link>
+          </button>
         </div>
       </Login>
     </div>
