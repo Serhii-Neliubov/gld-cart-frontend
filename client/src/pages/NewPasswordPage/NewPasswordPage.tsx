@@ -1,9 +1,25 @@
 import { FC, useState } from "react";
 import styles from "./NewPasswordPage.module.scss";
 import Login from "../../components/UI/Login";
+import axios from "axios";
+import { API_URL } from "../../http";
+import { useParams } from "react-router-dom";
 
 const NewPasswordPage: FC = () => {
   const [password, setPassword] = useState<string>("");
+  const { token } = useParams();
+
+  async function sendNewPasswordHandler() {
+    console.log(password);
+    try {
+      const response = await axios.post(`${API_URL}/reset-password/${token}`, {
+        newPassword: password,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className={styles.body}>
@@ -22,13 +38,15 @@ const NewPasswordPage: FC = () => {
                 <input
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  type="password"
+                  type="text"
                   placeholder="password"
                 />
               </div>
             </div>
           </form>
-          <button className={styles.button}>Set a password</button>
+          <button onClick={sendNewPasswordHandler} className={styles.button}>
+            Set a password
+          </button>
         </div>
       </Login>
     </div>
