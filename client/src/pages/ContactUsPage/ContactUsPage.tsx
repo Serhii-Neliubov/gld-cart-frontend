@@ -1,12 +1,40 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "./ContactUsPage.module.scss";
-import { Link } from "react-router-dom";
 import Footer from "../../components/UI/Footer";
+import axios from "axios";
+import { API_URL } from "../../http";
+
+interface IMessageData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 const ContactUsPage: FC = () => {
+  const [messageData, setMessageData] = useState<IMessageData>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  async function sendMessageHandler() {
+    console.log(messageData);
+    try {
+      const response = await axios.post(`${API_URL}/send-contact-email`, {
+        messageData,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <>
       <div className={styles.body}>
@@ -22,19 +50,51 @@ const ContactUsPage: FC = () => {
               <div className={styles.inputs}>
                 <div className={styles.input}>
                   <span>Your Name</span>
-                  <input type="text" placeholder="Cameron Williamson" />
+                  <input
+                    value={messageData.name}
+                    onChange={(e) =>
+                      setMessageData({ ...messageData, name: e.target.value })
+                    }
+                    type="text"
+                    placeholder="Cameron Williamson"
+                  />
                 </div>
                 <div className={styles.input}>
                   <span>Your Email</span>
-                  <input type="text" placeholder="Gldcart@mail.com" />
+                  <input
+                    value={messageData.email}
+                    onChange={(e) =>
+                      setMessageData({ ...messageData, email: e.target.value })
+                    }
+                    type="text"
+                    placeholder="Gldcart@mail.com"
+                  />
                 </div>
                 <div className={styles.input}>
                   <span>Subject</span>
-                  <input type="text" placeholder="Write your subject" />
+                  <input
+                    value={messageData.subject}
+                    onChange={(e) =>
+                      setMessageData({
+                        ...messageData,
+                        subject: e.target.value,
+                      })
+                    }
+                    type="text"
+                    placeholder="Write your subject"
+                  />
                 </div>
                 <div className={styles.input}>
                   <span>Your Message</span>
-                  <textarea />
+                  <textarea
+                    value={messageData.message}
+                    onChange={(e) =>
+                      setMessageData({
+                        ...messageData,
+                        message: e.target.value,
+                      })
+                    }
+                  />
                 </div>
               </div>
               <div className={styles.checkbox}>
@@ -44,9 +104,9 @@ const ContactUsPage: FC = () => {
                   time I comment.
                 </span>
               </div>
-              <Link className={styles.button} to="/send-message">
+              <button onClick={sendMessageHandler} className={styles.button}>
                 Send Message
-              </Link>
+              </button>
             </div>
             <div className={styles.contacts}>
               <div className={styles.contacts_item}>
