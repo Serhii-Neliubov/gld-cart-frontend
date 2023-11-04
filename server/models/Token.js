@@ -1,16 +1,15 @@
-const mongoose = require('mongoose');
-const {Schema} = require("mongoose");
-
-const tokenSchema = new mongoose.Schema({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var mongoose_1 = require("mongoose");
+var tokenSchema = new mongoose_1.Schema({
     user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'User',
     },
     refreshToken: {
         type: String,
         required: true,
     },
-})
-
-const Token = mongoose.model('token', tokenSchema);
-module.exports = Token;
+});
+var Token = mongoose_1.default.model('Token', tokenSchema);
+exports.default = Token;
