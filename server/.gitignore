@@ -1,2 +1,10 @@
-node_modules
-.idea
+node_modules/
+..idea/
+
+# Exclude unnecessary JavaScript files within the "server" folder
+/server/**/*.js
+
+# Include the "dist" folder and its contents, including necessary JavaScript files
+!dist/
+!dist/**
+!dist/**/*.js
