@@ -27,9 +27,8 @@ const ContactUsPage: FC = () => {
   async function sendMessageHandler() {
     console.log(messageData);
     try {
-      const response = await axios.post(`${API_URL}/send-contact-email`, {
-        messageData,
-      });
+      const response = await axios.post(`${API_URL}/send-contact-email`,
+        messageData);
       console.log(response.data);
     } catch (error) {
       console.error(error);
