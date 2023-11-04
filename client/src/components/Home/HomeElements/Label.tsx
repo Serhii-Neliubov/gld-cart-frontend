@@ -6,16 +6,19 @@ import {
   userDataSelector,
 } from "../../../redux/Slices/userDataSlice";
 import { useTranslation } from "react-i18next";
+import { FC } from "react";
+import { RootState } from "../../../redux/store";
+import IUser from "../../../models/IUser";
 
 interface NavLinkProps {
   to: string;
   label: string;
 }
 
-const Label = () => {
+const Label: FC = () => {
   const location = useLocation();
-  const isAuth = useSelector(selectIsAuth);
-  const user = useSelector(userDataSelector);
+  const isAuth = useSelector<RootState, boolean>(selectIsAuth);
+  const user = useSelector<RootState, IUser>(userDataSelector);
   const { t } = useTranslation();
   const navLinks: NavLinkProps[] = [
     { to: "/", label: t("home") },

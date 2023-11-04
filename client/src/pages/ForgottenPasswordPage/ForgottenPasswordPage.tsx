@@ -3,10 +3,9 @@ import styles from "./ForgottenPasswordPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useDispatch } from "react-redux";
 import { setEmailValue } from "../../redux/Slices/resetPasswordEmailSlice";
-import { Link } from "react-router-dom";
 import { AppDispatch } from "../../redux/store";
 import axios from "axios";
-import {API_URL} from "../../http";
+import { API_URL } from "../../http";
 
 const ForgottenPasswordPage: FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -52,7 +51,7 @@ const ForgottenPasswordPage: FC = () => {
           <button
             onClick={() => {
               dispatch(setEmailValue(email));
-              sendEmailHandler()
+              sendEmailHandler();
             }}
             className={styles.button}
           >

@@ -31,6 +31,7 @@ import RentingProfservicesPage from "../pages/RentingProfservicesPage/RentingPro
 import ForgottenPasswordPage from "../pages/ForgottenPasswordPage/ForgottenPasswordPage";
 import ForgottenAttentionPage from "../pages/ForgottenEttantionPage/ForgottenAttentionPage";
 import { FC } from "react";
+import NewPasswordPage from "../pages/NewPasswordPage/NewPasswordPage";
 
 interface IRoutes {
   component: FC;
@@ -98,4 +99,5 @@ export const noAuthRotes: IRoutes[] = [
   { component: ProfServicesPage, path: "/personal-services" },
   { component: ForgottenPasswordPage, path: "/forgotten-password" },
   { component: ForgottenAttentionPage, path: "/forgotten-attention" },
+  { component: NewPasswordPage, path: "/reset-password/:token" },
 ];

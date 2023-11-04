@@ -6,8 +6,9 @@ import Featured from "./HomeElements/Featured";
 import Saved from "./HomeElements/Saved";
 import Advantages from "./HomeElements/Advantages";
 import SuperDiscount from "./HomeElements/SuperDiscount";
+import { FC } from "react";
 
-const HomeMain = () => {
+const HomeMain: FC = () => {
   return (
     <main className="page">
       <ShopNow />
