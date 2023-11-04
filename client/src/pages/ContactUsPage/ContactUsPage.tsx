@@ -3,22 +3,25 @@ import styles from "./ContactUsPage.module.scss";
 import Footer from "../../components/UI/Footer";
 import axios from "axios";
 import { API_URL } from "../../http";
+import { AuthResponse } from "../../models/response/AuthResponse";
 
 interface IMessageData {
   name: string;
   email: string;
   subject: string;
   message: string;
-  to: string;
+  token: string;
 }
 
 const ContactUsPage: FC = () => {
+  const [token, setToken] = useState<string>("");
+
   const [messageData, setMessageData] = useState<IMessageData>({
     name: "",
     email: "",
     subject: "",
     message: "",
-    to: "",
+    token: "",
   });
 
   async function sendMessageHandler() {
@@ -32,9 +35,25 @@ const ContactUsPage: FC = () => {
       console.error(error);
     }
   }
+  async function getToken() {
+    try {
+      const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
+        withCredentials: true,
+      });
+      setMessageData((prevMessageData) => ({
+        ...prevMessageData,
+        token: response.data.accessToken,
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect((): void => {
     window.scrollTo(0, 0);
+    if (localStorage.getItem("token")) {
+      getToken();
+    }
   }, []);
 
   return (
