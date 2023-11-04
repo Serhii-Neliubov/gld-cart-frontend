@@ -1,5 +1,4 @@
 node_modules/
 ..idea/
 
-# Exclude unnecessary JavaScript files within the "server" folder
-/server/!dist/**/*.js
+dist
