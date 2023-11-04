@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import styles from "./Login.module.scss";
 
 interface LoginProps {
   children: React.ReactNode;
 }
 
-const Login = ({ children }: LoginProps) => {
+const Login: FC<LoginProps> = ({ children }) => {
   return (
     <div>
       <div className="__container">

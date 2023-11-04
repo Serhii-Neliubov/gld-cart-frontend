@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Header from "./Header";
 import Label from "../Home/HomeElements/Label";
 import Footer from "./Footer";
@@ -7,11 +7,11 @@ interface PageStructureProps {
   children: React.ReactNode;
 }
 
-const PageStructure = ({ children, shoppingCart }: PageStructureProps) => {
+const PageStructure: FC<PageStructureProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <Label shoppingCart={shoppingCart} />
+      <Label />
       {children}
       <Footer />
     </>

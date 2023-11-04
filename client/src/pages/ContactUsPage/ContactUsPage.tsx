@@ -9,6 +9,7 @@ interface IMessageData {
   email: string;
   subject: string;
   message: string;
+  to: string;
 }
 
 const ContactUsPage: FC = () => {
@@ -17,6 +18,7 @@ const ContactUsPage: FC = () => {
     email: "",
     subject: "",
     message: "",
+    to: "",
   });
 
   async function sendMessageHandler() {

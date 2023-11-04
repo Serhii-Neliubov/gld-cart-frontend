@@ -18,7 +18,7 @@ const Header: FC = () => {
     German: "de",
   };
 
-  const changeLanguage = (newLanguage: string) => {
+  const changeLanguage = (newLanguage: string): void => {
     i18n.changeLanguage(languageCodes[newLanguage]);
     setLanguage(newLanguage);
   };
