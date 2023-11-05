@@ -8,12 +8,20 @@ import router from "./routes/router";
 import cookieParser from "cookie-parser";
 import errorMiddleware from "./middlewares/errorMiddleware";
 import setupSocket from "./socket-server";
+import rateLimit from "express-rate-limit";
 
 const port: number | string = process.env.PORT || 5000;
 
 const app: Express = express();
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  limit: 100, // limit each IP to 100 requests per windowMs
+});
+
 setupSocket(app);
 
+app.use(limiter);
 app.use(express.json());
 app.use(cookieParser());
 app.use(
