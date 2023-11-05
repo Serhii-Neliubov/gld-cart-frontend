@@ -3,7 +3,7 @@ import { Router } from "express";
 import * as userController from "../controllers/userController";
 import * as authMiddleware from "../middlewares/authMiddleware";
 import * as chatController from "../controllers/chatController";
-
+import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
 const router:Router = Router();
 
 // Auth routes
@@ -17,7 +17,7 @@ router.post("/forgot-password", userController.initiate_password_reset);
 router.post("/reset-password/:token", userController.reset_password);
 
 //Email routes
-router.post("/send-contact-email", userController.send_contact_email);
+router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.send_contact_email);
 
 // Message routes
 // router.post("/chat/messages/create", chatController.create_message);
