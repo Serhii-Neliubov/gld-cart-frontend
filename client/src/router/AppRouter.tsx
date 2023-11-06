@@ -64,10 +64,7 @@ const AppRouter: FC = () => {
                     path={route.path}
                     key={route.path}
                   />
-                  <Route
-                    path="/*"
-                    element={<Navigate to="/user-type-page" />}
-                  />
+                  <Route path="/*" element={<Navigate to="/login" />} />
                 </>
               );
             })}

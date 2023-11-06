@@ -6,10 +6,12 @@ import { setEmailValue } from "../../redux/Slices/resetPasswordEmailSlice";
 import { AppDispatch } from "../../redux/store";
 import axios from "axios";
 import { API_URL } from "../../http";
+import { useNavigate } from "react-router-dom";
 
 const ForgottenPasswordPage: FC = () => {
   const [email, setEmail] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   async function sendEmailHandler() {
     try {
@@ -17,6 +19,7 @@ const ForgottenPasswordPage: FC = () => {
         email,
       });
       console.log(response.data);
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
