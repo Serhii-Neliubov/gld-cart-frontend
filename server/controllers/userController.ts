@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import MailService from "../services/mail-service";
 import UserService from "../services/user-service";
 import TokenService from "../services/token-service";
-import uuid from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 const maxAge: number = 30 * 24 * 60 * 60 * 1000;
 
 export const signup_post = async (
@@ -73,7 +73,7 @@ export const initiate_password_reset = async (
 ) => {
   const { email } = req.body;
   try {
-    const token = uuid.v4();
+    const token = uuidv4();
     await UserService.requestPasswordReset(email, token);
     res
       .status(200)
