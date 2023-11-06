@@ -71,7 +71,7 @@ const Label: FC = () => {
           )}
 
           <Link
-            to={isAuth ? "/profile" : "/user-type-page"}
+            to={isAuth ? "/profile" : "/login"}
             className="label__profile-btn"
           >
             <img src="profile-icon.svg" alt="Profile icon" />
