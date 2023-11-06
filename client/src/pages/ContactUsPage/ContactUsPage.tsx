@@ -4,6 +4,7 @@ import Footer from "../../components/UI/Footer";
 import axios from "axios";
 import { API_URL } from "../../http";
 import { AuthResponse } from "../../models/response/AuthResponse";
+import { useNavigate } from "react-router-dom";
 
 interface IMessageData {
   name: string;
@@ -14,8 +15,8 @@ interface IMessageData {
 }
 
 const ContactUsPage: FC = () => {
-  const [token, setToken] = useState<string>("");
-
+  const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const [messageData, setMessageData] = useState<IMessageData>({
     name: "",
     email: "",
@@ -27,11 +28,18 @@ const ContactUsPage: FC = () => {
   async function sendMessageHandler() {
     console.log(messageData);
     try {
-      const response = await axios.post(`${API_URL}/send-contact-email`,
-        messageData);
+      const response = await axios.post(
+        `${API_URL}/send-contact-email`,
+        messageData
+      );
       console.log(response.data);
+      navigate("/send-message");
     } catch (error) {
       console.error(error);
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
     }
   }
   async function getToken() {
@@ -59,6 +67,9 @@ const ContactUsPage: FC = () => {
     <>
       <div className={styles.body}>
         <div className="__container">
+          {error && (
+            <div style={{ color: "red" }}>Error to sending message</div>
+          )}
           <h1 className={styles.title}>Keep In Touch with Us</h1>
           <div className={styles.path}>
             <span>Home</span>
