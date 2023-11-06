@@ -73,7 +73,7 @@ export const initiate_password_reset = async (
 ) => {
   const { email } = req.body;
   try {
-    const token = uuidv4();
+    const token: string = uuidv4();
     await UserService.requestPasswordReset(email, token);
     res
       .status(200)
