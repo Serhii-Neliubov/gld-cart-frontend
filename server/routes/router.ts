@@ -1,9 +1,11 @@
 
-import { Router } from "express";
-import * as userController from "../controllers/userController";
-import * as authMiddleware from "../middlewares/authMiddleware";
-import * as chatController from "../controllers/chatController";
+import { Router }                 from "express";
+import * as userController        from "../controllers/userController";
+import * as authMiddleware        from "../middlewares/authMiddleware";
+import * as chatController        from "../controllers/chatController";
+import * as googleController      from "../controllers/googleController";
 import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
+
 const router:Router = Router();
 
 // Auth routes
@@ -11,6 +13,9 @@ router.post("/signup", userController.signup_post);
 router.post("/login", userController.login_post);
 router.post("/logout", userController.logout_post);
 router.get("/refresh", userController.refresh_get);
+
+//GoogleAuth routes
+router.get("/tokens/oauth/google", googleController.googleOauthHandler);
 
 // Reset password routes
 router.post("/forgot-password", userController.initiate_password_reset);

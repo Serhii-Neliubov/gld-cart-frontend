@@ -5,6 +5,7 @@ import TokenService from "./token-service";
 import UserDto from "../dtos/user-dto";
 import ApiError from "../exceptions/api-error";
 import mailService from "./mail-service";
+import { FilterQuery, QueryOptions, UpdateQuery } from "mongoose";
 
 class UserService {
   async registration(
@@ -88,7 +89,7 @@ class UserService {
     if (!userData || !tokenFromDb) {
       throw ApiError.UnauthorizedError();
     }
-    const user = <IUser> await UserModel.findById(userData.id);
+    const user = <IUser>await UserModel.findById(userData.id);
     const userDto = new UserDto(user);
     const tokens = TokenService.createTokens({ ...userDto });
 
@@ -110,6 +111,17 @@ class UserService {
       return await bcrypt.hash(password, salt);
     } catch (error) {
       throw error;
+    }
+  }
+  async findAndUpdateUser( type, name, surname, email, picture, password
+  ) {
+    try {
+      // return <IUser>UserModel.findOneAndUpdate(query, update, options);
+      return await <IUser> UserModel.findOneAndUpdate({ email: email },
+          {type: type, name: name, surname: surname, email: email, picture: picture, password: password},
+          {upsert: true, new: true});
+    } catch (e) {
+      console.log(e);
     }
   }
 }
