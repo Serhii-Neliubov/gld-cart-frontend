@@ -76,10 +76,10 @@ const Footer: FC = () => {
                 Terms & Conditions
               </Link>
             </nav>
-            <a href="#" className="footer__link">
+            <Link to="/help-and-support" className="footer__link">
               {" "}
               Help & Support{" "}
-            </a>
+            </Link>
           </div>
           <div className="footer__contacts">
             <div className="footer__email">

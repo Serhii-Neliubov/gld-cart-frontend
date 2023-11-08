@@ -1,0 +1,27 @@
+.title {
+  margin: 25px 0;
+
+  font-size: 25.97px;
+}
+.blocks {
+  display: flex;
+  gap: 36px;
+  margin-bottom: 25px;
+}
+.block {
+  padding: 5px;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.question_links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+.question_link {
+  color: #ec0000;
+  font-size: 25.967px;
+}

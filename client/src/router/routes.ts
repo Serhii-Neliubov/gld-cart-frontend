@@ -32,6 +32,7 @@ import ForgottenPasswordPage from "../pages/ForgottenPasswordPage/ForgottenPassw
 import ForgottenAttentionPage from "../pages/ForgottenEttantionPage/ForgottenAttentionPage";
 import { FC } from "react";
 import NewPasswordPage from "../pages/NewPasswordPage/NewPasswordPage";
+import HelpAndSupport from "../pages/HelpAndSupport/HelpAndSupport";
 
 interface IRoutes {
   component: FC;
@@ -64,6 +65,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: GardeningPage, path: "/gardening-page" },
   { component: RepairingPage, path: "/repairing-page" },
   { component: ProfilePage, path: "/profile" },
+  { component: HelpAndSupport, path: "/help-and-support" },
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
@@ -80,6 +82,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: SendMessagePage, path: "/send-message" },
   { component: RentingProductsPage, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
+  { component: HelpAndSupport, path: "/help-and-support" },
   { component: RentingProfservicesPage, path: "/personal-services" },
 ];
 
