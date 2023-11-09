@@ -22,12 +22,20 @@ class TokenService {
     accessToken: string;
     refreshToken: string;
   } {
-    const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET!, {
-      expiresIn: "15m",
-    });
-    const refreshToken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET!, {
-      expiresIn: "30d",
-    });
+    const accessToken: string = jwt.sign(
+      payload,
+      process.env.JWT_ACCESS_SECRET!,
+      {
+        expiresIn: "15m",
+      }
+    );
+    const refreshToken: string = jwt.sign(
+      payload,
+      process.env.JWT_REFRESH_SECRET!,
+      {
+        expiresIn: "30d",
+      }
+    );
     return { accessToken, refreshToken };
   }
 
@@ -35,7 +43,9 @@ class TokenService {
     userId: string,
     refreshToken: string
   ): Promise<IToken | null> {
-    const tokenData = <IToken>await TokenModel.findOne({ user: userId });
+    const tokenData: IToken = <IToken>(
+      await TokenModel.findOne({ user: userId })
+    );
     if (tokenData) {
       tokenData.refreshToken = refreshToken;
       return tokenData.save();

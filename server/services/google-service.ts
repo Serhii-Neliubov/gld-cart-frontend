@@ -9,7 +9,6 @@ interface GoogleTokensResult {
   scope: string;
   id_token: string;
 }
-
 export async function getGoogleOAuthTokens({
   code,
 }: {
@@ -67,7 +66,7 @@ export async function getGoogleUser({
         },
       }
     );
-    return res.data;
+    return res.data as GoogleUserResult;
   } catch (error: any) {
     throw new Error(error.message);
   }

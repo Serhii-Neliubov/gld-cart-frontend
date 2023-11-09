@@ -5,7 +5,6 @@ import TokenService from "./token-service";
 import UserDto from "../dtos/user-dto";
 import ApiError from "../exceptions/api-error";
 import mailService from "./mail-service";
-import { FilterQuery, QueryOptions, UpdateQuery } from "mongoose";
 
 class UserService {
   async registration(
@@ -28,22 +27,24 @@ class UserService {
       email,
       password: hashedPassword,
     });
-    const userDto = new UserDto(user);
+    const userDto: UserDto = new UserDto(user);
 
-    const tokens = TokenService.createTokens({ ...userDto });
+    const tokens: { accessToken: string; refreshToken: string } =
+      TokenService.createTokens({ ...userDto });
     await TokenService.saveToken(userDto.id, tokens.refreshToken);
 
     return { ...tokens, user: userDto };
   }
 
   async login(email: string, password: string) {
-    const user = <IUser>await UserModel.findOne({ email });
+    const user: IUser = <IUser>await UserModel.findOne({ email });
 
     if (user) {
-      const auth = await bcrypt.compare(password, user.password);
+      const auth: boolean = await bcrypt.compare(password, user.password);
       if (auth) {
-        const userDto = new UserDto(user);
-        const tokens = TokenService.createTokens({ ...userDto });
+        const userDto: UserDto = new UserDto(user);
+        const tokens: { accessToken: string; refreshToken: string } =
+          TokenService.createTokens({...userDto});
 
         await TokenService.saveToken(userDto.id, tokens.refreshToken);
         return { ...tokens, user: userDto };
@@ -56,9 +57,39 @@ class UserService {
   async logout(refreshToken: string) {
     return await TokenService.removeToken(refreshToken);
   }
+  async loginGoogleUser(
+    code: string,
+    customParameter,
+    name: string,
+    family_name: string,
+    email: string,
+    picture: string,
+    password: string
+  ) {
+    const user: IUser = await this.findAndUpdateUser(
+      customParameter,
+      name,
+      family_name,
+      email,
+      picture,
+      password
+    );
+    {
+      const userDto: UserDto = new UserDto(user);
+      console.log(userDto);
+
+      const tokens: { accessToken: string; refreshToken: string } =
+        TokenService.createTokens({...userDto});
+
+      await TokenService.saveToken(userDto.id, tokens.refreshToken);
+      return { ...tokens, user: userDto, picture: picture};
+    }
+  }
 
   async changePassword(token: string, newPassword: string) {
-    const user = <IUser>await UserModel.findOne({ passwordResetToken: token });
+    const user: IUser = <IUser>(
+      await UserModel.findOne({ passwordResetToken: token })
+    );
     if (!user) {
       throw ApiError.BadRequest("Invalid or expired token");
     }
@@ -68,7 +99,7 @@ class UserService {
   }
 
   async requestPasswordReset(email: string, token: string) {
-    const user = <IUser>(
+    const user: IUser = <IUser>(
       await UserModel.findOneAndUpdate({ email }, { passwordResetToken: token })
     );
     if (!user) {
@@ -84,19 +115,22 @@ class UserService {
     if (!refreshToken) {
       throw ApiError.UnauthorizedError();
     }
-    const userData = await TokenService.validateRefreshToken(refreshToken);
-    const tokenFromDb = await TokenService.findToken(refreshToken);
+    const userData = TokenService.validateRefreshToken(refreshToken);
+    const tokenFromDb: IToken | null = await TokenService.findToken(
+      refreshToken
+    );
     if (!userData || !tokenFromDb) {
       throw ApiError.UnauthorizedError();
     }
-    const user = <IUser>await UserModel.findById(userData.id);
-    const userDto = new UserDto(user);
-    const tokens = TokenService.createTokens({ ...userDto });
+    const user: IUser = <IUser>await UserModel.findById(userData.id);
+    const userDto: UserDto = new UserDto(user);
+    const tokens: { accessToken: string; refreshToken: string } =
+      TokenService.createTokens({ ...userDto });
 
     await TokenService.saveToken(userDto.id, tokens.refreshToken);
     return { ...tokens, user: userDto };
   }
-  async deleteData() {
+  async deleteData(): Promise<void> {
     try {
       await UserModel.collection.drop();
       await TokenModel.collection.drop();
@@ -105,7 +139,7 @@ class UserService {
     }
   }
 
-  async hashPassword(password: string) {
+  async hashPassword(password: string): Promise<string> {
     try {
       const salt: string = await bcrypt.genSalt();
       return await bcrypt.hash(password, salt);
@@ -113,16 +147,30 @@ class UserService {
       throw error;
     }
   }
-  async findAndUpdateUser( type, name, surname, email, picture, password
-  ) {
-    try {
-      // return <IUser>UserModel.findOneAndUpdate(query, update, options);
-      return await <IUser> UserModel.findOneAndUpdate({ email: email },
-          {type: type, name: name, surname: surname, email: email, picture: picture, password: password},
-          {upsert: true, new: true});
-    } catch (e) {
-      console.log(e);
+  async findAndUpdateUser(
+    type: string,
+    name: string,
+    surname: string,
+    email: string,
+    picture: string,
+    password: string
+  ): Promise<IUser> {
+    const user: IUser = <IUser>(<unknown>UserModel.findOneAndUpdate(
+      { email: email },
+      {
+        type: type,
+        name: name,
+        surname: surname,
+        email: email,
+        picture: picture,
+        password: password,
+      },
+      { upsert: true, new: true }
+    ));
+    if (!user) {
+      throw ApiError.BadRequest("User not found");
     }
+    return user;
   }
 }
 
