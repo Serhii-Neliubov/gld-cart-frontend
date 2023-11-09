@@ -4,7 +4,7 @@ import ApiError from "../exceptions/api-error";
 
 interface GoogleTokensResult {
   access_token: string;
-  expires_in: Number;
+  expires_in: number;
   refresh_token: string;
   scope: string;
   id_token: string;
@@ -34,7 +34,6 @@ export async function getGoogleOAuthTokens({
         },
       }
     );
-    console.log(res.data);
     return res.data;
   } catch (error: any) {
     console.error(error.response.data.error);
