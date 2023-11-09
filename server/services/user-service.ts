@@ -18,9 +18,9 @@ class UserService {
     if (candidate) {
       throw ApiError.BadRequest("That email is already registered");
     }
-    const salt: string = await bcrypt.genSalt();
-    const hashedPassword: string = await bcrypt.hash(password, salt);
-    const user: IUser = <IUser>await UserModel.create({
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const user = await UserModel.create({
       type,
       name,
       surname,
@@ -64,7 +64,7 @@ class UserService {
     family_name: string,
     email: string,
     picture: string,
-    password: string,
+    password: string
   ) {
     const user: IUser = await this.findAndUpdateUser(
       customParameter,

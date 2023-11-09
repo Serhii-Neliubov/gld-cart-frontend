@@ -3,6 +3,7 @@ import { Router }                 from "express";
 import * as userController        from "../controllers/userController";
 import * as authMiddleware        from "../middlewares/authMiddleware";
 import * as chatController        from "../controllers/chatController";
+import * as googleController      from "../controllers/googleController";
 import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
 
 const router:Router = Router();
