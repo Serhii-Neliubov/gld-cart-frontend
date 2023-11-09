@@ -6,7 +6,6 @@ class UserDto {
     name: string;
     surname: string;
     email: string;
-    picture: string;
 
     constructor(model: IUser) {
         this.id = model._id;
@@ -14,7 +13,6 @@ class UserDto {
         this.name = model.name;
         this.surname = model.surname;
         this.email = model.email;
-        this.picture = model.picture;
     }
 }
 
