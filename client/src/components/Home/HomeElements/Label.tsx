@@ -62,10 +62,10 @@ const Label: FC = () => {
           {user.type == "Vendor" ? null : (
             <>
               <Link to="/wishlist-no-found" className="label__like-btn">
-                <img src="like-icon.svg" alt="Like icon" />
+                <img src="/like-icon.svg" alt="Like icon" />
               </Link>
               <Link to="/shopping-cart-no-found" className="label__trash-btn">
-                <img src="trash-icon.svg" alt="Trash icon" />
+                <img src="/trash-icon.svg" alt="Trash icon" />
               </Link>
             </>
           )}
@@ -74,7 +74,7 @@ const Label: FC = () => {
             to={isAuth ? "/profile" : "/login"}
             className="label__profile-btn"
           >
-            <img src="profile-icon.svg" alt="Profile icon" />
+            <img src="/profile-icon.svg" alt="Profile icon" />
             <span>
               {user.name} {user.surname}
             </span>

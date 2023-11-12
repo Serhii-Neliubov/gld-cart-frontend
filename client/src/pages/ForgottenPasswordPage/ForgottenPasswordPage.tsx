@@ -19,9 +19,10 @@ const ForgottenPasswordPage: FC = () => {
         email,
       });
       console.log(response.data);
-      navigate("/");
     } catch (error) {
       console.error(error);
+    } finally {
+      navigate("/forgotten-attention");
     }
   }
 

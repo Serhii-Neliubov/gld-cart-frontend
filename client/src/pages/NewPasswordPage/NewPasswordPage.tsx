@@ -28,7 +28,10 @@ const NewPasswordPage: FC = () => {
           <div className={styles.content}>
             <h1 className={styles.title}>New password</h1>
             <div className={styles.log_link}>
-              <p>...</p>
+              <p>
+                We will send a password reset link attached to your existing
+                account.
+              </p>
             </div>
           </div>
           <form>

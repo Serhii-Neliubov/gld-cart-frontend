@@ -1,8 +1,13 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import Footer from "../../components/UI/Footer";
 import styles from "./HelpAndSupport.module.scss";
+import { Link } from "react-router-dom";
 
 const HelpAndSupport: FC = () => {
+  useEffect((): void => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <div className="__container">
@@ -67,9 +72,11 @@ const HelpAndSupport: FC = () => {
                 at 021-111-132729 | Mon - Sat (09:00 am till 09:00 pm).
               </p>
               <a href="#">
-                <button className={styles.content_button}>
-                  LIVE CHAT NOW!
-                </button>
+                <Link to="/chat-answers">
+                  <button className={styles.content_button}>
+                    LIVE CHAT NOW!
+                  </button>
+                </Link>
               </a>
               <span>Still need help? Click here</span>
             </div>
