@@ -35,6 +35,9 @@ import NewPasswordPage from "../pages/NewPasswordPage/NewPasswordPage";
 import HelpAndSupport from "../pages/HelpAndSupport/HelpAndSupport";
 import QuestionsAndAnswers from "../pages/QuestionsAndAnswers/QuestionsAndAnswers";
 import BasicInformationPage from "../pages/BasicInformationPage/BasicInformationPage";
+import BasicInformationPhoto from "../pages/BasicInformationPhoto/BasicInformationPhoto";
+import SpecificationsPage from "../pages/SpecificationsPage/SpecificationsPage";
+import ItemPublishPage from "../components/UI/ItemPublishPage/ItemPublishPage";
 
 interface IRoutes {
   component: FC;
@@ -89,6 +92,18 @@ export const vendorRoutes: IRoutes[] = [
   { component: RentingProfservicesPage, path: "/personal-services" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: BasicInformationPage, path: "/renting-category-page/vehicles" },
+  {
+    component: ItemPublishPage,
+    path: "/renting-category-page/vehicles/photo-and-video/published-successfully",
+  },
+  {
+    component: BasicInformationPhoto,
+    path: "/renting-category-page/vehicles/photo-and-video",
+  },
+  {
+    component: SpecificationsPage,
+    path: "/renting-category-page/vehicles/photo-and-video/specifications",
+  },
 ];
 
 export const noAuthRotes: IRoutes[] = [

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styles from "./BasicInformationPage.module.scss";
+import { Link } from "react-router-dom";
 
 const BasicInformationPage: FC = () => {
   return (
@@ -269,16 +270,18 @@ const BasicInformationPage: FC = () => {
         >
           Cancel
         </button>
-        <button
-          style={{
-            border: "1px solid blue",
-            backgroundColor: "blue",
-            color: "white",
-            padding: "20px 50px",
-          }}
-        >
-          Next
-        </button>
+        <Link to="/renting-category-page/vehicles/photo-and-video">
+          <button
+            style={{
+              border: "1px solid blue",
+              backgroundColor: "blue",
+              color: "white",
+              padding: "20px 50px",
+            }}
+          >
+            Next
+          </button>
+        </Link>
       </div>
     </div>
   );
