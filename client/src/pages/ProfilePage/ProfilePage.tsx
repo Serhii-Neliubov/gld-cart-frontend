@@ -39,7 +39,7 @@ const ProfilePage: FC = () => {
               <img src="ProfilePage/icon4.svg" alt="icon" />
               <button>Payment Method</button>
             </div>
-            {isVendor ? null : (
+            {isVendor && (
               <div className={styles.button_item}>
                 <img src="ProfilePage/icon5.svg" alt="icon" />
                 <button>Wishlist</button>
@@ -49,10 +49,10 @@ const ProfilePage: FC = () => {
               <img src="ProfilePage/icon6.svg" alt="icon" />
               <button>Change Password</button>
             </div>
-            <div className={styles.button_item}>
+            <Link to="/help-and-support" className={styles.button_item}>
               <img src="ProfilePage/icon7.svg" alt="icon" />
               <button>Help & Support</button>
-            </div>
+            </Link>
             <Link to="/terms-and-conditions" className={styles.button_item}>
               <img src="ProfilePage/icon8.svg" alt="icon" />
               <button>Terms & conditions</button>

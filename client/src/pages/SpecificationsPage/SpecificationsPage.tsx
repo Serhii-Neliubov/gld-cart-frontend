@@ -36,6 +36,12 @@ const SpecificationsPage: FC = () => {
           </div>
           <span>Specifications</span>
         </div>
+        <div className={styles.routing}>
+          <div style={{ backgroundColor: "#D9D9D9" }} className={styles.number}>
+            6
+          </div>
+          <span>Publish</span>
+        </div>
       </div>
       <h1 className={styles.title}>Vehicles Renting Form </h1>
       <div className={styles.content}>
