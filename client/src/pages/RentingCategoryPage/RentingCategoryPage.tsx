@@ -12,7 +12,7 @@ const clearClick = {
   openElectronicsType: false,
 };
 
-interface IClearClick {
+export interface IClearClick {
   vehicles: boolean;
   houses: boolean;
   electronics: boolean;

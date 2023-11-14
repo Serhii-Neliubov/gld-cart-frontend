@@ -34,6 +34,7 @@ import { FC } from "react";
 import NewPasswordPage from "../pages/NewPasswordPage/NewPasswordPage";
 import HelpAndSupport from "../pages/HelpAndSupport/HelpAndSupport";
 import QuestionsAndAnswers from "../pages/QuestionsAndAnswers/QuestionsAndAnswers";
+import BasicInformationPage from "../pages/BasicInformationPage/BasicInformationPage";
 
 interface IRoutes {
   component: FC;
@@ -87,6 +88,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: HelpAndSupport, path: "/help-and-support" },
   { component: RentingProfservicesPage, path: "/personal-services" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
+  { component: BasicInformationPage, path: "/renting-category-page/vehicles" },
 ];
 
 export const noAuthRotes: IRoutes[] = [
