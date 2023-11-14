@@ -2,15 +2,11 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/UI/Footer";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch } from "../../redux/store";
 import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
 import { FC } from "react";
 
 const ProfilePage: FC = () => {
-  const isVendor: boolean = useSelector(
-    (state: RootState) => state.isVendor.value
-  );
-
   const user = useSelector(userDataSelector); // НУЖНА ТИПИЗАЦИЯ
 
   const dispatch = useDispatch<AppDispatch>();
@@ -28,22 +24,21 @@ const ProfilePage: FC = () => {
               <img src="ProfilePage/icon2.svg" alt="icon" />
               <button>Address</button>
             </div>
-            {isVendor ? null : (
+            {user.type == "Buyer" && (
               <div className={styles.button_item}>
                 <img src="ProfilePage/icon3.svg" alt="icon" />
                 <button>My Orders</button>
               </div>
             )}
-
             <div className={styles.button_item}>
               <img src="ProfilePage/icon4.svg" alt="icon" />
               <button>Payment Method</button>
             </div>
-            {isVendor && (
-              <div className={styles.button_item}>
+            {user.type == "Buyer" && (
+              <Link to="/wishlist-no-found" className={styles.button_item}>
                 <img src="ProfilePage/icon5.svg" alt="icon" />
                 <button>Wishlist</button>
-              </div>
+              </Link>
             )}
             <div className={styles.button_item}>
               <img src="ProfilePage/icon6.svg" alt="icon" />
