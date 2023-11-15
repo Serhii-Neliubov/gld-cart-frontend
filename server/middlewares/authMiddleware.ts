@@ -21,6 +21,9 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction): vo
     return next(ApiError.UnauthorizedError());
   }
   // req.user = userData;
+  res.locals.user = userData;
+  next();
+};
 export const requireAuthWithGoogle = (req: Request, res: Response, next: NextFunction): void => {
   const accessToken = req.cookies.accessToken as string;
 
