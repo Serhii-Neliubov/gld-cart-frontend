@@ -22,7 +22,22 @@ setupSocket(app);
 
 app.set("trust proxy", true);
 // app.use(limiter);
-app.use(express.json());
+app.use(
+  (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ): void => {
+    if (req.originalUrl === "/webhook") {
+      next();
+    } else {
+      express.json()(req, res, next);
+      express.urlencoded({
+        extended: true,
+      });
+    }
+  }
+);
 app.use(cookieParser());
 app.use(
   cors({
