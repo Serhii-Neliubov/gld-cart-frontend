@@ -2,12 +2,13 @@ import { Request, Response, NextFunction } from "express";
 import MailService from "../services/mail-service";
 import UserService from "../services/user-service";
 import TokenService from "../services/token-service";
-import { v4 as uuidv4 } from 'uuid';
-const maxAge: number = 30 * 24 * 60 * 60 * 1000;
+import { v4 as uuidv4 } from "uuid";
 import {
   getGoogleOAuthTokens,
   getGoogleUser,
 } from "../services/google-service";
+
+const maxAge: number = 30 * 24 * 60 * 60 * 1000;
 
 export const signup_post = async (
   req: Request,
@@ -91,7 +92,7 @@ export const reset_password = async (
   req: Request,
   res: Response,
   next: NextFunction
-) : Promise<void> => {
+): Promise<void> => {
   const { token: token } = req.params;
   const { newPassword } = req.body;
   try {
