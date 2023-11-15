@@ -64,7 +64,7 @@ export const create_checkout = async (
             line_items,
             mode: "payment",
             success_url: `${process.env.CLIENT_URL}/checkout-success`,
-            cancel_url: `${process.env.CLIENT_URL}/cart`,
+            cancel_url: `${process.env.CLIENT_URL}/checkout-failed`,
         });
         res.redirect(<string>session.url);
         // res.send({url: session.url});
