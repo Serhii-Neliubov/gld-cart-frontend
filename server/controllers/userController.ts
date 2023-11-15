@@ -160,16 +160,17 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
       googleUser.family_name,
       googleUser.email,
       googleUser.picture,
-      process.env.USERS_AFTER_GOOGLE_PASSWORD
+      process.env.USERS_AFTER_GOOGLE_PASSWORD as string
     );
-
-    res.cookie("refreshToken", userData.refreshToken, {
-      httpOnly: true,
-      maxAge: maxAge,
-    });
     res.cookie("accessToken", userData.accessToken, {
       httpOnly: true,
       maxAge: maxAge,
+      sameSite: "lax",
+    });
+    res.cookie("refreshToken", userData.refreshToken, {
+      httpOnly: true,
+      maxAge: maxAge,
+      sameSite: "lax",
     });
 
     const redirectURL: string = `${process.env.CLIENT_URL}/
