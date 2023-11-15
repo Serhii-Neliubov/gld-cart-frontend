@@ -66,13 +66,15 @@ class UserService {
     picture: string,
     password: string,
   ) {
-    const user: IUser = await this.findAndUpdateUser(
-      customParameter,
-      name,
-      family_name,
-      email,
-      picture,
-      password
+    const user = <IUser>(
+      await this.findAndUpdateUser(
+        customParameter,
+        name,
+        family_name,
+        email,
+        picture,
+        password
+      )
     );
     {
       const userDto: UserDto = new UserDto(user);
@@ -87,9 +89,7 @@ class UserService {
   }
 
   async changePassword(token: string, newPassword: string) {
-    const user: IUser = <IUser>(
-      await UserModel.findOne({ passwordResetToken: token })
-    );
+    const user = <IUser>await UserModel.findOne({ passwordResetToken: token });
     if (!user) {
       throw ApiError.BadRequest("Invalid or expired token");
     }
@@ -99,7 +99,7 @@ class UserService {
   }
 
   async requestPasswordReset(email: string, token: string) {
-    const user: IUser = <IUser>(
+    const user = <IUser>(
       await UserModel.findOneAndUpdate({ email }, { passwordResetToken: token })
     );
     if (!user) {
@@ -122,7 +122,7 @@ class UserService {
     if (!userData || !tokenFromDb) {
       throw ApiError.UnauthorizedError();
     }
-    const user: IUser = <IUser>await UserModel.findById(userData.id);
+    const user = <IUser>await UserModel.findById(userData.id);
     const userDto: UserDto = new UserDto(user);
     const tokens: { accessToken: string; refreshToken: string } =
       TokenService.createTokens({ ...userDto });
@@ -155,7 +155,7 @@ class UserService {
     picture: string,
     password: string
   ): Promise<IUser> {
-    const user: IUser = <IUser>(<unknown>UserModel.findOneAndUpdate(
+    const user = <IUser>(<unknown>UserModel.findOneAndUpdate(
       { email: email },
       {
         type: type,

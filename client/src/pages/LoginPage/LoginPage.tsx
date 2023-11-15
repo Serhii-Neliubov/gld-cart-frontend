@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import styles from "./LoginPage.module.scss";
+import { useState }        from "react";
+import {Link, useNavigate} from "react-router-dom";
+import styles              from "./LoginPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useEffect } from "react";
 import { AppDispatch } from "../../redux/store";
@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/Slices/userDataSlice";
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const [isEmptyEmail, setIsEmptyEmail] = useState<boolean>(false);
   const [userData, setUserData] = useState<{ email: string; password: string }>(
     {
@@ -15,7 +16,38 @@ const LoginPage = () => {
       password: "",
     }
   );
+  function getGoogleOAuthURL() {
+    const rootUrl = "https://accounts.google.com/o/oauth2/v2/auth";
 
+    // const options = {
+    //   redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_AUTH_REDIRECT_URL as string,
+    //   client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
+    //   access_type: "offline",
+    //   response_type: "code",
+    //   prompt: "consent",
+    //   state: "Buyer",
+    //   scope: [
+    //     "https://www.googleapis.com/auth/userinfo.profile",
+    //     "https://www.googleapis.com/auth/userinfo.email",
+    //   ].join(" "),
+    // };
+    const options = {
+      redirect_uri: "http://localhost:3001/tokens/oauth/google",
+      client_id: "779302160501-d6omdv1c2cdknj75b17epp22tc40u0eu.apps.googleusercontent.com",
+      access_type: "offline",
+      response_type: "code",
+      prompt: "consent",
+      state: "Buyer",
+      scope: [
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email",
+      ].join(" "),
+    };
+
+    const qs = new URLSearchParams(options);
+    console.log(qs.toString());
+    return `${rootUrl}?${qs.toString()}`;
+  }
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect((): void => {
@@ -34,9 +66,9 @@ const LoginPage = () => {
                 Create a free account
               </Link>
             </div>
-            <button className={styles.google_button}>
+            <a href={getGoogleOAuthURL()} className={styles.google_button}>
               Sign up with google
-            </button>
+            </a>
             <p className={styles.email_bar}>or Sign up with Email</p>
           </div>
           <form>

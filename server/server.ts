@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-
 dotenv.config();
 import express, { Express } from "express";
 import cors from "cors";
@@ -16,14 +15,29 @@ const app: Express = express();
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  limit: 100, // limit each IP to 100 requests per windowMs
+  limit: 15, // limit each IP to 100 requests per windowMs
 });
 
 setupSocket(app);
 
-app.set('trust proxy', true);
-// app.use(limiter);
-app.use(express.json());
+app.set("trust proxy", 1);
+
+app.use(
+  (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ): void => {
+    if (req.originalUrl === "/webhook") {
+      next();
+    } else {
+      express.json()(req, res, next);
+      express.urlencoded({
+        extended: true,
+      });
+    }
+  }
+);
 app.use(cookieParser());
 app.use(
   cors({

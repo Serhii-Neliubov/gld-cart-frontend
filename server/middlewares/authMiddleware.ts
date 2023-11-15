@@ -10,16 +10,28 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction): vo
   }
 
   const accessToken = authorizationHeader.split(' ')[1];
-
   if (!accessToken) {
     return next(ApiError.UnauthorizedError());
   }
-
   const userData = TokenService.validateAccessToken(accessToken);
 
   if (!userData) {
     return next(ApiError.UnauthorizedError());
   }
-  // req.user = userData;
+  res.locals.user = userData;
+  next();
+};
+export const requireAuthWithGoogle = (req: Request, res: Response, next: NextFunction): void => {
+  const accessToken = req.cookies.accessToken as string;
+
+  if (!accessToken) {
+    return next(ApiError.UnauthorizedError());
+  }
+  const userData = TokenService.validateAccessToken(accessToken);
+
+  if (!userData) {
+    return next(ApiError.UnauthorizedError());
+  }
+  res.locals.user = userData;
   next();
 };

@@ -2,12 +2,13 @@ import { Request, Response, NextFunction } from "express";
 import MailService from "../services/mail-service";
 import UserService from "../services/user-service";
 import TokenService from "../services/token-service";
-import { v4 as uuidv4 } from 'uuid';
-const maxAge: number = 30 * 24 * 60 * 60 * 1000;
+import { v4 as uuidv4 } from "uuid";
 import {
   getGoogleOAuthTokens,
   getGoogleUser,
 } from "../services/google-service";
+
+const maxAge: number = 30 * 24 * 60 * 60 * 1000;
 
 export const signup_post = async (
   req: Request,
@@ -91,7 +92,7 @@ export const reset_password = async (
   req: Request,
   res: Response,
   next: NextFunction
-) : Promise<void> => {
+): Promise<void> => {
   const { token: token } = req.params;
   const { newPassword } = req.body;
   try {
@@ -159,25 +160,19 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
       googleUser.family_name,
       googleUser.email,
       googleUser.picture,
-      process.env.USERS_AFTER_GOOGLE_PASSWORD
+      process.env.USERS_AFTER_GOOGLE_PASSWORD as string
     );
-
-    res.cookie("refreshToken", userData.refreshToken, {
-      httpOnly: true,
-      maxAge: maxAge,
-    });
     res.cookie("accessToken", userData.accessToken, {
       httpOnly: true,
       maxAge: maxAge,
+      sameSite: "lax",
     });
-
-    const redirectURL: string = `${process.env.CLIENT_URL}/
-    ?id=${userData.user.id}
-    &type=${userData.user.type}
-    &name=${userData.user.name}
-    &surname=${userData.user.surname}
-    &email=${userData.user.email}
-    &picture=${userData.picture}`;
+    res.cookie("refreshToken", userData.refreshToken, {
+      httpOnly: true,
+      maxAge: maxAge,
+      sameSite: "lax",
+    });
+    const redirectURL: string = `${process.env.CLIENT_URL}/`;
     res.redirect(redirectURL);
   } catch (error) {
     return res.redirect(`${process.env.CLIENT_URL}/oauth/error`);
@@ -197,4 +192,7 @@ export const delete_all = async (
   } catch (e) {
     next(e);
   }
+};
+export const get_current_user = async (req: Request, res: Response) => {
+  return res.send(res.locals.user);
 };
