@@ -21,7 +21,7 @@ const limiter = rateLimit({
 setupSocket(app);
 
 app.set("trust proxy", 1);
-app.use(limiter);
+
 app.use(
   (
     req: express.Request,
