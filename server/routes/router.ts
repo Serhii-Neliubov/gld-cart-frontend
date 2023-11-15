@@ -22,4 +22,8 @@ router.post("/reset-password/:token", userController.reset_password);
 
 //Email routes
 router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.send_contact_email);
+
+//Payment routes
+router.post("/create-checkout-session", paymentController.create_checkout);
+router.post("/webhook",  express.raw({ type: "application/json" }), paymentController.create_order);
 export default router;
