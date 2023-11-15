@@ -20,7 +20,7 @@ const limiter = rateLimit({
 
 setupSocket(app);
 
-app.set('trust proxy', true);
+app.set("trust proxy", true);
 // app.use(limiter);
 app.use(express.json());
 app.use(cookieParser());
