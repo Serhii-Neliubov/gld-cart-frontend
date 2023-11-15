@@ -199,3 +199,6 @@ export const delete_all = async (
     next(e);
   }
 };
+export const get_current_user = async (req: Request, res: Response) => {
+  return res.send(res.locals.user);
+};
