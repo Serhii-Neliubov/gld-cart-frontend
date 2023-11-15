@@ -146,7 +146,7 @@ const SpecificationsPage: FC = () => {
         >
           Cancel
         </button>
-        <Link to="/renting-category-page/vehicles/photo-and-video/published-successfully">
+        <Link to="/renting-category-page/vehicles/photo-and-video/publishing">
           <button
             style={{
               border: "1px solid blue",

@@ -38,6 +38,7 @@ import BasicInformationPage from "../pages/BasicInformationPage/BasicInformation
 import BasicInformationPhoto from "../pages/BasicInformationPhoto/BasicInformationPhoto";
 import SpecificationsPage from "../pages/SpecificationsPage/SpecificationsPage";
 import ItemPublishPage from "../components/UI/ItemPublishPage/ItemPublishPage";
+import PublishSuccessfully from "../pages/PublishSuccessfully/PublishSuccessfully";
 
 interface IRoutes {
   component: FC;
@@ -94,7 +95,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: BasicInformationPage, path: "/renting-category-page/vehicles" },
   {
     component: ItemPublishPage,
-    path: "/renting-category-page/vehicles/photo-and-video/published-successfully",
+    path: "/renting-category-page/vehicles/photo-and-video/publishing",
   },
   {
     component: BasicInformationPhoto,
@@ -103,6 +104,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsPage,
     path: "/renting-category-page/vehicles/photo-and-video/specifications",
+  },
+  {
+    component: PublishSuccessfully,
+    path: "/renting-category-page/vehicles/photo-and-video/publishing/successfully-published",
   },
 ];
 
