@@ -1,8 +1,9 @@
 
-import { Router }                 from "express";
-import * as userController        from "../controllers/userController";
+import express, { Router } from "express";
+import * as userController from "../controllers/userController";
 import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
-
+import * as paymentController from "../controllers/paymentController";
+import * as authMiddleware from "../middlewares/authMiddleware";
 const router:Router = Router();
 
 // Auth routes
