@@ -172,14 +172,7 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
       maxAge: maxAge,
       sameSite: "lax",
     });
-
-    const redirectURL: string = `${process.env.CLIENT_URL}/
-    ?id=${userData.user.id}
-    &type=${userData.user.type}
-    &name=${userData.user.name}
-    &surname=${userData.user.surname}
-    &email=${userData.user.email}
-    &picture=${userData.picture}`;
+    const redirectURL: string = `${process.env.CLIENT_URL}/`;
     res.redirect(redirectURL);
   } catch (error) {
     return res.redirect(`${process.env.CLIENT_URL}/oauth/error`);
