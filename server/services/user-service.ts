@@ -1,10 +1,10 @@
-import bcrypt from "bcrypt";
-import UserModel, { IUser } from "../models/User";
-import TokenModel, { IToken } from "../models/Token";
-import TokenService from "./token-service";
-import UserDto from "../dtos/user-dto";
-import ApiError from "../exceptions/api-error";
-import mailService from "./mail-service";
+import bcrypt               from "bcrypt";
+import UserModel, {IUser}   from "../models/User";
+import TokenModel, {IToken} from "../models/Token";
+import TokenService         from "./token-service";
+import UserDto              from "../dtos/user-dto";
+import ApiError             from "../exceptions/api-error";
+import mailService          from "./mail-service";
 
 class UserService {
   async registration(
@@ -154,26 +154,19 @@ class UserService {
     picture: string,
     password: string
   ): Promise<IUser> {
-    let user = await UserModel.findOne({ email });
+     const existingUser = await UserModel.findOne({ email: email });
 
-    if (!user) {
-      user = await UserModel.findOneAndUpdate(
-        { email },
-        {
-          type,
-          name,
-          surname,
-          email,
-          picture,
-          password,
-        },
-        { upsert: true, new: true }
-      );
-    }
-    if (!user) {
-      throw ApiError.BadRequest("User not found");
-    }
-    return user;
+  if (existingUser)
+    return existingUser;
+
+    return await UserModel.create({
+    type: type,
+    name: name,
+    surname: surname,
+    email: email,
+    picture: picture,
+    password: password,
+  });
   }
 }
 
