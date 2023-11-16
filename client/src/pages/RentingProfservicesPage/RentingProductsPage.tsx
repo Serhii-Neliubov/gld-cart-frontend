@@ -446,47 +446,60 @@ const bClassic = [
   { name: "Other" },
 ];
 const bLowEnergy = [
-  { name: "Energy-efficient connectivity" },
-  { name: "Ideal for IoT devices" },
-  { name: "Lower data transfer rate" },
+  { name: "Wiring and rewiring" },
+  { name: "Outlet and switch installation" },
+  { name: "Lighting fixture installation" },
+  { name: "Circuit breaker replacement" },
+  { name: "Ceiling fan installation" },
   { name: "Other" },
 ];
 
 const bFive = [
-  { name: "Improved range and speed" },
-  { name: "Enhanced data throughput" },
-  { name: "Better coexistence with Wi-Fi" },
+  { name: "Faucet repair and installation" },
+  { name: "Toilet repair and replacement" },
+  { name: "Drain cleaning" },
+  { name: "Pipe leak repair" },
+  { name: "Water heater installation" },
   { name: "Other" },
 ];
 const bFiveOne = [
-  { name: "Precise location tracking" },
-  { name: "Direction-finding capability" },
-  { name: "Enhanced security features" },
+  { name: "Door installation and repair" },
+  { name: "Cabinet assembly and installation" },
+  { name: "Deck and fence repair" },
+  { name: "Trim and molding installation" },
+  { name: "Custom shelving and storage" },
   { name: "Other" },
 ];
 const bFiveTwo = [
-  { name: "Audio Sharing feature" },
-  { name: "LE Audio improvements" },
-  { name: "Enhanced multi-device support" },
+  { name: "Interior and exterior painting" },
+  { name: "Wall patching and repair" },
+  { name: "Deck staining and sealing" },
+  { name: "Wallpaper removal" },
+  { name: "Texture and faux finish painting" },
   { name: "Other" },
 ];
 const bMesh = [
-  { name: "Mesh network topology" },
-  { name: "Scalable IoT connectivity" },
-  { name: "Reliable data transmission" },
+  { name: "Drywall repair" },
+  { name: "Tile and grout repair" },
+  { name: "Roof and gutter maintenance" },
+  { name: "Insulation installation" },
+  { name: "Appliance installation and repair" },
   { name: "Other" },
 ];
 const bFiveThree = [
-  { name: "Future advancements expected" },
-  { name: "Potential new features" },
-  { name: "Improved efficiency and security" },
+  { name: "Driveway Snow Plowing" },
+  { name: "Sidewalk Clearing" },
+  { name: "Roof Snow Removal" },
+  { name: "Walkway De-Icing" },
+  { name: "Snow Blowing Services" },
   { name: "Other" },
 ];
 const cleansers = [
-  { name: "Facial cleansers" },
-  { name: "Exfoliating scrubs" },
-  { name: "Micellar water" },
-  { name: "Makeup removers" },
+  { name: "Parking Lot Plowing" },
+  { name: "Ice Management" },
+  { name: "Snow Hauling" },
+  { name: "Salting and Sanding" },
+  { name: "Snow Stacking and Removal" },
   { name: "Other" },
 ];
 const uniforms = [
@@ -506,202 +519,219 @@ const babyClothing = [
   { name: "Other" },
 ];
 const serums = [
-  { name: "Hydrating moisturizers" },
-  { name: "Anti-aging serums" },
-  { name: "Vitamin C serums" },
-  { name: "Night creams" },
+  { name: "Road Plowing" },
+  { name: "Bridge and Overpass Clearing" },
+  { name: "Public Pathway Maintenance" },
+  { name: "Emergency Snow Response" },
+  { name: "Snow Dump Operations" },
   { name: "Other" },
 ];
 const sunProtection = [
-  { name: "Sunscreen lotions" },
-  { name: "SPF lip balms" },
-  { name: "Sunscreen sprays" },
-  { name: "After-sun care" },
+  { name: "Airport Snow Removal" },
+  { name: "Ski Resort Snow Grooming" },
+  { name: "Snow Removal for Railways" },
+  { name: "Hospital and Healthcare Facilities Snow Management" },
+  { name: "Snow Removal for Stadiums and Arenas" },
   { name: "Other" },
 ];
 const acne = [
-  { name: "Acne cleansers" },
-  { name: "Spot treatments" },
-  { name: "Oil-free moisturizers" },
-  { name: "Acne masks" },
+  { name: "Ant Control" },
+  { name: "Roach Extermination" },
+  { name: "Bed Bug Removal" },
+  { name: "Termite Inspections" },
+  { name: "Flea and Tick Control" },
   { name: "Other" },
 ];
 const faceMasks = [
-  { name: "Sheet masks" },
-  { name: "Clay masks" },
-  { name: "Chemical peels" },
-  { name: "Hydrating masks" },
+  { name: "Rat Removal Services" },
+  { name: "Mice Control Experts" },
+  { name: "Squirrel Removal" },
+  { name: "Vole and Gopher Control" },
+  { name: "Muskrat Eradication" },
   { name: "Other" },
 ];
 const eyeCare = [
-  { name: "Eye creams" },
-  { name: "Under-eye serums" },
-  { name: "Eye gels" },
-  { name: "Cooling eye masks" },
+  { name: "Raccoon Removal" },
+  { name: "Bat Exclusion Services" },
+  { name: "Bird Deterrent Solutions" },
+  { name: "Snake Removal Experts" },
+  { name: "Skunk Control Services" },
   { name: "Other" },
 ];
 const facialTools = [
-  { name: "Facial rollers" },
-  { name: "Jade gua sha tools" },
-  { name: "Derma rollers" },
-  { name: "Electric cleansing brushes" },
+  { name: "Raccoon Removal" },
+  { name: "Bat Exclusion Services" },
+  { name: "Bird Deterrent Solutions" },
+  { name: "Snake Removal Experts" },
+  { name: "Skunk Control Services" },
   { name: "Other" },
 ];
 const toning = [
-  { name: "Facial toners" },
-  { name: "Witch hazel" },
-  { name: "Astringent solutions" },
-  { name: "pH-balancing tonics" },
+  { name: "Pigeon Control" },
+  { name: "Seagull Deterrence" },
+  { name: "Sparrow Nest Removal" },
+  { name: "Crow and Magpie Control" },
+  { name: "Woodpecker Solutions" },
   { name: "Other" },
 ];
 const makeup = [
-  { name: "Makeup wipes" },
-  { name: "Oil-based removers" },
-  { name: "Micellar cleansing water" },
-  { name: "Dual-phase removers" },
+  { name: "Organic Pest Control" },
+  { name: "Non-Toxic Treatments" },
+  { name: "Integrated Pest Management" },
+  { name: "Eco-Friendly Pesticides" },
+  { name: "Sustainable Pest Solutions" },
   { name: "Other" },
 ];
 const antiAging = [
-  { name: "Wrinkle creams" },
-  { name: "Retinol treatments" },
-  { name: "Collagen boosters" },
-  { name: "Firming serums" },
+  { name: "Office Building Pest Control" },
+  { name: "Restaurant Pest Services" },
+  { name: "Hotel Pest Prevention" },
+  { name: "Warehouse Pest Control" },
+  { name: "Retail Store Extermination" },
   { name: "Other" },
 ];
 const athletic = [
-  { name: "Running Shoes" },
-  { name: "Basketball Sneakers" },
-  { name: "Soccer Cleats" },
-  { name: "Cross Training Shoes" },
-  { name: "Tennis Court Footwear" },
+  { name: "Home Pest Inspections" },
+  { name: "Apartment Pest Control" },
+  { name: "Condo Pest Management" },
+  { name: "Townhouse Extermination" },
+  { name: "Villa Pest Services" },
   { name: "Other" },
 ];
 const casual = [
-  { name: "Sneakers and Trainers" },
-  { name: "Loafers and Slip-Ons" },
-  { name: "Espadrilles and Flats" },
-  { name: "Boat Shoes" },
-  { name: "Moccasins" },
+  { name: "Lawn Insect Treatments" },
+  { name: "Garden Pest Solutions" },
+  { name: "Tree and Shrub Care" },
+  { name: "Weed Control Services" },
+  { name: "Lawn Fungus Management" },
   { name: "Other" },
 ];
 const formal = [
-  { name: "Dress Shoes" },
-  { name: "Oxfords and Brogues" },
-  { name: "Derby Shoes" },
-  { name: "Monk Strap Shoes" },
-  { name: "Tuxedo Footwear" },
+  { name: "Foundation Pest Barriers" },
+  { name: "Crawl Space Encapsulation" },
+  { name: "Attic Insulation Pest Control" },
+  { name: "Basement Waterproofing" },
+  { name: "Wall Void Pest Prevention" },
   { name: "Other" },
 ];
 const bootsAndBooties = [
-  { name: "Ankle Boots" },
-  { name: "Knee-High Boots" },
-  { name: "Chelsea Boots" },
-  { name: "Hiking Boots" },
-  { name: "Cowboy Boots" },
+  { name: "Pest Assessment Services" },
+  { name: "Preventative Pest Measures" },
+  { name: "Annual Pest Inspections" },
+  { name: "Pre-Purchase Pest Checks" },
+  { name: "Pest-Proofing Advice" },
   { name: "Other" },
 ];
 const sandals = [
-  { name: "Slide Sandals" },
-  { name: "Gladiator Sandals" },
-  { name: "Thong Flip-Flops" },
-  { name: "Wedge Sandals" },
-  { name: "Espadrille Sandals" },
+  { name: "Renewable Sources" },
+  { name: "Thermal Power Plants" },
+  { name: "Hydroelectric Facilities" },
+  { name: "Nuclear Power Stations" },
+  { name: "Wind and Solar Farms" },
   { name: "Other" },
 ];
 const outdoor = [
-  { name: "Trail Running Shoes" },
-  { name: "Mountaineering Boots" },
-  { name: "Snow Boots" },
-  { name: "Water Shoes" },
-  { name: "Climbing Shoes" },
+  { name: "Grid Infrastructure" },
+  { name: "Transformers and Substations" },
+  { name: "Circuit Breakers" },
+  { name: "Switchgear Systems" },
+  { name: "Voltage Regulation" },
   { name: "Other" },
 ];
 const workAndSafety = [
-  { name: "Steel Toe Boots" },
-  { name: "Slip-Resistant Shoes" },
-  { name: "Electric Hazard Boots" },
-  { name: "Chef's Shoes" },
-  { name: "Nursing Clogs" },
+  { name: "Residential Wiring" },
+  { name: "Commercial Installations" },
+  { name: "Industrial Wiring" },
+  { name: "Underground Cabling" },
+  { name: "Conduit Systems" },
   { name: "Other" },
 ];
 const speciality = [
-  { name: "Dance Shoes" },
-  { name: "Bowling Shoes" },
-  { name: "Cycling Shoes" },
-  { name: "Golf Cleats" },
-  { name: "Weightlifting Shoes" },
+  { name: "PLC Programming" },
+  { name: "Automation Solutions" },
+  { name: "SCADA Systems" },
+  { name: "Process Control" },
+  { name: "Instrumentation" },
   { name: "Other" },
 ];
 const fashion = [
-  { name: "High-Top Sneakers" },
-  { name: "Low-Top Sneakers" },
-  { name: "Platform Sneakers" },
-  { name: "Chunky Sneakers" },
-  { name: "Retro Athletic Shoes" },
+  { name: "PCB Layout and Design" },
+  { name: "Analog Circuitry" },
+  { name: "Digital Electronics" },
+  { name: "Microcontroller Systems" },
+  { name: "RF and Communication" },
   { name: "Other" },
 ];
 const kids = [
-  { name: "Children's Sandals" },
-  { name: "Toddler Sneakers" },
-  { name: "School Uniform Shoes" },
-  { name: "Infant Booties" },
-  { name: "Youth Sports Shoes" },
+  { name: "AC Motor Types" },
+  { name: "DC Motor Varieties" },
+  { name: "Motor Control Methods" },
+  { name: "Servo Motors" },
+  { name: "Stepper Motors" },
   { name: "Other" },
 ];
 const centralProcessing = [
-  { name: "Core components of computers" },
-  { name: "Executes instructions, performs calculations" },
-  { name: "Brain of the computer system" },
-  { name: "Handles data processing tasks" },
+  { name: "Grounding and Bonding" },
+  { name: "Arc Flash Protection" },
+  { name: "Electrical Codes" },
+  { name: "Safety Equipment" },
+  { name: "Lockout/Tagout" },
   { name: "Other" },
 ];
 const microprocessors = [
-  { name: "Compact CPU integrated circuits" },
-  { name: "Power most personal devices" },
-  { name: "Execute program instructions" },
-  { name: "Vital for modern computing" },
+  { name: "Solar Photovoltaics" },
+  { name: "Wind Turbine Systems" },
+  { name: "Battery Storage" },
+  { name: "Grid Integration" },
+  { name: "Inverter Technologies" },
   { name: "Other" },
 ];
 const multiCore = [
-  { name: "Multiple CPUs on one chip" },
-  { name: "Enhance multitasking performance" },
-  { name: "Improve overall processing speed" },
-  { name: "Common in modern computers" },
+  { name: "Inverters and Converters" },
+  { name: "Power Factor Correction" },
+  { name: "Voltage Regulators" },
+  { name: "UPS Systems" },
+  { name: "Motor Drives" },
   { name: "Other" },
 ];
 const graphics = [
-  { name: "Specialized for graphics rendering" },
-  { name: "Accelerate 3D graphics tasks" },
-  { name: "Vital for gaming and design" },
-  { name: "Parallel processing capabilities" },
+  { name: "HV Substations" },
+  { name: "Insulation Materials" },
+  { name: "Surge Protection" },
+  { name: "Dielectric Testing" },
+  { name: "Lightning Protection" },
   { name: "Other" },
 ];
 const embedded = [
-  { name: "Found in everyday devices" },
-  { name: "Power IoT devices" },
-  { name: "Tailored for specific tasks" },
-  { name: "Low power consumption" },
+  { name: "Energy Audits" },
+  { name: "HVAC Optimization" },
+  { name: "Energy Management Systemss" },
+  { name: "Green Building Practices" },
+  { name: "Energy Conservation" },
   { name: "Other" },
 ];
 const server = [
-  { name: "Designed for server tasks" },
-  { name: "Handle heavy workloads" },
-  { name: "Support multiple users" },
-  { name: "Offer reliability and scalability" },
+  { name: "EV Charging Infrastructure" },
+  { name: "Battery Technology" },
+  { name: "EV Motors and Controllers" },
+  { name: "Charging Protocols" },
+  { name: "EV Fleet Management" },
   { name: "Other" },
 ];
 const mobileProcessors = [
-  { name: "Power smartphones and tablets" },
-  { name: "Optimize power efficiency" },
-  { name: "Incorporate ARM architecture" },
-  { name: "Enable mobile computing" },
+  { name: "Industrial Robots" },
+  { name: "Robotic Arm Design" },
+  { name: "Automated Assembly" },
+  { name: "Robotics Programming" },
+  { name: "Human-Robot Interaction" },
   { name: "Other" },
 ];
 const desktop = [
-  { name: "Found in traditional PCs" },
-  { name: "Balance performance and power" },
-  { name: "Suitable for general tasks" },
-  { name: "Overclocking capabilities" },
+  { name: "Multimeters and Testers" },
+  { name: "Oscilloscopes" },
+  { name: "Power Quality Analysis" },
+  { name: "Calibration Techniques" },
+  { name: "Data Logging Systems" },
   { name: "Other" },
 ];
 const workstation = [
@@ -2204,7 +2234,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bluetooth Low Energy" ? (
+                  {selectedButton === "Electrical Services" ? (
                     <div className={styles.main_items_3}>
                       {bLowEnergy.map((item) => {
                         return (
@@ -2221,7 +2251,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bluetooth 5.0" ? (
+                  {selectedButton === "Plumbing Services" ? (
                     <div className={styles.main_items_3}>
                       {bFive.map((item) => {
                         return (
@@ -2238,7 +2268,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bluetooth 5.1" ? (
+                  {selectedButton === "Carpentry Services" ? (
                     <div className={styles.main_items_3}>
                       {bFiveOne.map((item) => {
                         return (
@@ -2255,7 +2285,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bluetooth 5.2" ? (
+                  {selectedButton === "Painting Services" ? (
                     <div className={styles.main_items_3}>
                       {bFiveTwo.map((item) => {
                         return (
@@ -2272,7 +2302,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bluetooth Mesh" ? (
+                  {selectedButton === "Home Repair and Maintenance" ? (
                     <div className={styles.main_items_3}>
                       {bMesh.map((item) => {
                         return (
@@ -2289,7 +2319,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bluetooth 5.3" ? (
+                  {selectedButton === "Residential Snow Removal" ? (
                     <div className={styles.main_items_3}>
                       {bFiveThree.map((item) => {
                         return (
@@ -2306,7 +2336,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Cleansers and Scrubs" ? (
+                  {selectedButton === "Commercial Snow Removal" ? (
                     <div className={styles.main_items_3}>
                       {cleansers.map((item) => {
                         return (
@@ -2323,7 +2353,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Moisturizers and Serums" ? (
+                  {selectedButton === "Municipal Snow Removal" ? (
                     <div className={styles.main_items_3}>
                       {serums.map((item) => {
                         return (
@@ -2340,7 +2370,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Sun Protection" ? (
+                  {selectedButton === "Specialized Snow Removal" ? (
                     <div className={styles.main_items_3}>
                       {sunProtection.map((item) => {
                         return (
@@ -2357,7 +2387,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Acne Treatment" ? (
+                  {selectedButton === "Insect Extermination Services" ? (
                     <div className={styles.main_items_3}>
                       {acne.map((item) => {
                         return (
@@ -2374,7 +2404,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Face Masks and Peels" ? (
+                  {selectedButton === "Rodent Management Solutions" ? (
                     <div className={styles.main_items_3}>
                       {faceMasks.map((item) => {
                         return (
@@ -2391,7 +2421,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Eye Care Products" ? (
+                  {selectedButton === "Wildlife Pest Control" ? (
                     <div className={styles.main_items_3}>
                       {eyeCare.map((item) => {
                         return (
@@ -2408,7 +2438,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Facial Tools and Devices" ? (
+                  {selectedButton === "Nuisance Bird Management" ? (
                     <div className={styles.main_items_3}>
                       {facialTools.map((item) => {
                         return (
@@ -2425,7 +2455,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Toning and Astringents" ? (
+                  {selectedButton === "Nuisance Bird Management" ? (
                     <div className={styles.main_items_3}>
                       {toning.map((item) => {
                         return (
@@ -2442,7 +2472,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Makeup Removers" ? (
+                  {selectedButton === "Green and Eco-Friendly Pest" ? (
                     <div className={styles.main_items_3}>
                       {makeup.map((item) => {
                         return (
@@ -2459,7 +2489,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Anti-Aging Products" ? (
+                  {selectedButton === "Commercial Pest Management" ? (
                     <div className={styles.main_items_3}>
                       {antiAging.map((item) => {
                         return (
@@ -2476,7 +2506,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Athletic Footwear" ? (
+                  {selectedButton === "Residential Pest Solutions" ? (
                     <div className={styles.main_items_3}>
                       {athletic.map((item) => {
                         return (
@@ -2493,7 +2523,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Casual Footwear" ? (
+                  {selectedButton === "Lawn and Garden Pest Control" ? (
                     <div className={styles.main_items_3}>
                       {casual.map((item) => {
                         return (
@@ -2510,7 +2540,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Formal Footwear" ? (
+                  {selectedButton === "Structural Pest Protection" ? (
                     <div className={styles.main_items_3}>
                       {formal.map((item) => {
                         return (
@@ -2527,7 +2557,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Boots and Booties" ? (
+                  {selectedButton === "Pest Inspection and Prevention" ? (
                     <div className={styles.main_items_3}>
                       {bootsAndBooties.map((item) => {
                         return (
@@ -2544,7 +2574,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Sandals and Flip-Flops" ? (
+                  {selectedButton === "Power Generation" ? (
                     <div className={styles.main_items_3}>
                       {sandals.map((item) => {
                         return (
@@ -2561,7 +2591,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Outdoor and Hiking" ? (
+                  {selectedButton === "Power Distribution" ? (
                     <div className={styles.main_items_3}>
                       {outdoor.map((item) => {
                         return (
@@ -2578,7 +2608,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Work and Safety" ? (
+                  {selectedButton === "Electrical Wiring" ? (
                     <div className={styles.main_items_3}>
                       {workAndSafety.map((item) => {
                         return (
@@ -2595,7 +2625,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Specialty Footwear" ? (
+                  {selectedButton === "Control Systems" ? (
                     <div className={styles.main_items_3}>
                       {speciality.map((item) => {
                         return (
@@ -2612,7 +2642,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Fashion Sneakers" ? (
+                  {selectedButton === "Electronics Design" ? (
                     <div className={styles.main_items_3}>
                       {fashion.map((item) => {
                         return (
@@ -2629,7 +2659,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Kids' Footwear" ? (
+                  {selectedButton === "Electric Motors" ? (
                     <div className={styles.main_items_3}>
                       {kids.map((item) => {
                         return (
@@ -2646,7 +2676,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Central Processing Unit" ? (
+                  {selectedButton === "Electrical Safety" ? (
                     <div className={styles.main_items_3}>
                       {centralProcessing.map((item) => {
                         return (
@@ -2663,7 +2693,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Microprocessors" ? (
+                  {selectedButton === "Renewable Energy Systems" ? (
                     <div className={styles.main_items_3}>
                       {microprocessors.map((item) => {
                         return (
@@ -2680,7 +2710,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Multi-Core Processors" ? (
+                  {selectedButton === "Power Electronics" ? (
                     <div className={styles.main_items_3}>
                       {multiCore.map((item) => {
                         return (
@@ -2697,7 +2727,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Graphics Processing Unit" ? (
+                  {selectedButton === "High Voltage Engineering" ? (
                     <div className={styles.main_items_3}>
                       {graphics.map((item) => {
                         return (
@@ -2714,7 +2744,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Embedded Processors" ? (
+                  {selectedButton === "Energy Efficiency" ? (
                     <div className={styles.main_items_3}>
                       {embedded.map((item) => {
                         return (
@@ -2731,7 +2761,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Server Processors" ? (
+                  {selectedButton === "Electric Vehicle Technology" ? (
                     <div className={styles.main_items_3}>
                       {server.map((item) => {
                         return (
@@ -2748,7 +2778,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Mobile Processors" ? (
+                  {selectedButton === "Robotics and Automation" ? (
                     <div className={styles.main_items_3}>
                       {mobileProcessors.map((item) => {
                         return (
@@ -2765,7 +2795,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}{" "}
-                  {selectedButton === "Desktop Processors" ? (
+                  {selectedButton === "Test and Measurement" ? (
                     <div className={styles.main_items_3}>
                       {desktop.map((item) => {
                         return (
