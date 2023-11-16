@@ -56,377 +56,393 @@ interface IClearClick {
   openearrings: boolean;
 }
 
-const skinTexture = [
-  { name: "Silk-like softness" },
-  { name: "Pore refinement" },
-  { name: "Flawless finish" },
-  { name: "Velvety touch" },
-  { name: "Even skin tone" },
+const generalCleaning = [
+  { name: "Dusting surfaces and furniture." },
+  { name: "Wiping down countertops and tables." },
+  { name: "Sweeping and mopping floors." },
+  { name: "Vacuuming carpets and rugs." },
   { name: "Other" },
 ];
 
-const hydration = [
-  { name: "Supple and plump" },
-  { name: "Moisture retention" },
-  { name: "Deep hydration" },
-  { name: "Nourished skin" },
-  { name: "Dewy suppleness" },
+const kitchenCleaning = [
+  { name: "Cleaning and sanitizing countertops." },
+  { name: "Cleaning appliances" },
+  { name: "Washing dishes or loading the dishwasher." },
+  { name: "Cleaning the sink and faucet." },
+  { name: "Wiping down cabinet doors." },
   { name: "Other" },
 ];
 
-const skinClarity = [
-  { name: "Blemish-free beauty" },
-  { name: "Clear complexion" },
-  { name: "Transparent skin" },
-  { name: "Pimple-free radiance" },
-  { name: "Dewy appearance" },
+const bathroomCleaning = [
+  { name: "Cleaning and disinfecting the toilet." },
+  { name: "Scrubbing the bathtub and/or shower." },
+  { name: "Cleaning bathroom sinks and faucets" },
+  { name: "Wiping down mirrors and glass surfaces." },
+  { name: "Sweeping and mopping the bathroom floor." },
   { name: "Other" },
 ];
 
-const elasticity = [
-  { name: "Resilient skin" },
-  { name: "Firm and toned" },
-  { name: "Youthful bounce" },
-  { name: "Elastic suppleness" },
-  { name: "Tightened appearance" },
+const bedroomCleaning = [
+  { name: "Changing bed linens and making the bed." },
+  { name: "Dusting and cleaning furniture." },
+  { name: "Vacuuming or sweeping the floor." },
+  { name: "Organizing clutter." },
   { name: "Other" },
 ];
 
-const bags = [
-  { name: "Tote Bags" },
-  { name: "Backpacks" },
-  { name: "Crossbody Bags" },
-  { name: "Clutch Purses" },
-  { name: "Messenger Bags" },
-  { name: "Duffel Bags" },
-  { name: "Hobo Bags" },
-  { name: "Satchel Bags" },
-  { name: "Bucket Bags" },
-  { name: "Wallets and Pouches" },
+const repairing = [
+  { name: "Electronics Repair" },
+  { name: "Appliance Repair" },
+  { name: "Automotive Repair" },
+  { name: "Home Repair" },
+  { name: "Jewelry and Watch Repair" },
+  { name: "Shoe and Leather Goods Repair" },
+  { name: "Bicycle Repair" },
+  { name: "Furniture Repair" },
+  { name: "Musical Instrument Repair" },
 ];
 
-const toteBags = [
-  { name: "Spacious and versatile" },
-  { name: "Ideal for everyday use" },
-  { name: "Durable materials available" },
-  { name: "Fashionable designs" },
+const livingRoomCleaning = [
+  { name: "Dusting and cleaning electronics" },
+  { name: "Vacuuming upholstery and curtains." },
+  { name: "Cleaning and organizing shelves." },
+  { name: "Wiping down remote controls and surfaces." },
   { name: "Other" },
 ];
 
-const backpacks = [
-  { name: "Hands-free carrying option" },
-  { name: "Great for commuting or travel" },
-  { name: "Various sizes and styles" },
-  { name: "Comfortable shoulder straps" },
+const laundyRoom = [
+  { name: "Cleaning the washing machine and dryer." },
+  { name: "Wiping down laundry surfaces and shelves." },
+  { name: "Emptying the lint trap in the dryer." },
+  { name: "Organizing laundry supplies." },
   { name: "Other" },
 ];
 
-const crossbody = [
-  { name: "Adjustable crossbody strap" },
-  { name: "Compact and easy to carry" },
-  { name: "Perfect for on-the-go" },
-  { name: "Stylish and functional" },
+const homeCleaning = [
+  { name: "Dusting and cleaning computer equipment." },
+  { name: "Organizing paperwork and office supplies." },
+  { name: "Vacuuming or sweeping the floor." },
+  { name: "Wiping down desks and surfaces." },
   { name: "Other" },
 ];
 
-const clutch = [
-  { name: "Small and elegant" },
-  { name: "Evening or formal events" },
-  { name: "Minimalist design" },
-  { name: "Often handheld" },
+const entryRoom = [
+  { name: "Sweeping or vacuuming floors." },
+  { name: "Cleaning and organizing entryway storage." },
+  { name: "Wiping down doorknobs and light switches." },
   { name: "Other" },
 ];
 
 const messenger = [
-  { name: "Single shoulder strap" },
-  { name: "Satchel-style design" },
-  { name: "Popular for work or school" },
-  { name: "Multiple compartments" },
+  { name: "Sweeping and cleaning porches or decks" },
+  { name: "Cleaning outdoor furniture." },
+  { name: "Gardening and yard work." },
   { name: "Other" },
 ];
 
 const duffel = [
-  { name: "Large and spacious" },
-  { name: "Great for travel or sports" },
-  { name: "Easy access to belongings" },
-  { name: "Sturdy handles and straps" },
+  { name: "Mobile phone repair" },
+  { name: "Computer and laptop repair" },
+  { name: "Television repair" },
+  { name: "Game console repair" },
   { name: "Other" },
 ];
 
 const hobo = [
-  { name: "Slouchy, crescent shape" },
-  { name: "Casual and bohemian style" },
-  { name: "Comfortable to carry" },
-  { name: "Roomy interior" },
+  { name: "Refrigerator repair" },
+  { name: "Washer and dryer repair" },
+  { name: "Oven and stove repair" },
+  { name: "Dishwasher repair" },
   { name: "Other" },
 ];
 
 const satchel = [
-  { name: "Structured and chic" },
-  { name: "Top handle and crossbody strap" },
-  { name: "Professional appearance" },
-  { name: "Organized compartments" },
+  { name: "Car engine repair" },
+  { name: "Transmission repair" },
+  { name: "Brake repair" },
+  { name: "Suspension and steering repair" },
   { name: "Other" },
 ];
 
 const bucket = [
-  { name: "Unique bucket shape" },
-  { name: "Drawstring closure" },
-  { name: "Trendy and spacious" },
-  { name: "Casual yet fashionable" },
+  { name: "Plumbing repair" },
+  { name: "Electrical system repair" },
+  { name: "Roof repair" },
+  { name: "HVAC repair" },
   { name: "Other" },
 ];
 
 const wallets = [
-  { name: "Compact for essentials" },
-  { name: "Card slots and pockets" },
-  { name: "Convenient for small items" },
-  { name: "Often used as accessories" },
+  { name: "Watch battery replacement" },
+  { name: "Jewelry resizing and refurbishing" },
+  { name: "Watch movement repair" },
   { name: "Other" },
 ];
 
-const awesome = [
-  { name: "Lip Balm Flavors" },
-  { name: "Lip Scrub Varieties" },
-  { name: "Lip Mask Benefits" },
-  { name: "Lip Sunscreen Protection" },
-  { name: "Lip Tint Options" },
-  { name: "Lip Care Tools" },
-  { name: "Organic Lip Products" },
-  { name: "Lip Care for Seasons" },
-  { name: "Lip Care for Special Needs" },
-  { name: "DIY Lip Care Recipes" },
+const gardening = [
+  { name: "Vegetable Gardening" },
+  { name: "Flower Gardening" },
+  { name: "Herb Gardening" },
+  { name: "Fruit Tree Gardening" },
+  { name: "Landscaping" },
+  { name: "Container Gardening" },
+  { name: "Gardening for Wildlife" },
+  { name: "Water Gardening" },
+  { name: "Seasonal Gardening" },
 ];
-const mobileTablets = [{ name: "Android" }, { name: "iOS" }];
-const necklaces = [
-  { name: "Chain Necklaces" },
-  { name: "Layered Necklaces" },
-  { name: "Pendant Necklaces" },
-  { name: "Choker Necklaces" },
-  { name: "Statement Necklaces" },
+
+const treeCutting = [
+  { name: "Residential Tree Cutting" },
+  { name: "Commercial Tree Cutting" },
+  { name: "Forestry and Logging" },
+  { name: "Tree Cutting Equipment and Techniques" },
+  { name: "Tree Preservation and Conservation" },
 ];
-const clothing = [
-  { name: "Tops" },
-  { name: "Bottoms" },
-  { name: "Outerwear" },
-  { name: "Dresses" },
-  { name: "Activewear" },
-  { name: "Sleepwear" },
-  { name: "Swimwear" },
-  { name: "Workwear" },
-  { name: "Baby clothing" },
-  { name: "Uniforms" },
+const lawnServices = [
+  { name: "Lawn Maintenance Services" },
+  { name: "Landscape Design and Installation" },
+  { name: "Lawn Care and Treatment" },
+  { name: "Tree and Shrub Care" },
+  { name: "Hardscape Services" },
+  { name: "Irrigation Services" },
+  { name: "Seasonal Cleanups" },
+  { name: "Lawn Renovation Services" },
+  { name: "Organic and Eco-Friendly Services" },
+  { name: "Commercial Lawn Services" },
 ];
-const bluetooth = [
-  { name: "Bluetooth Classic" },
-  { name: "Bluetooth Low Energy" },
-  { name: "Bluetooth 5.0" },
-  { name: "Bluetooth 5.1" },
-  { name: "Bluetooth 5.2" },
-  { name: "Bluetooth Mesh" },
-  { name: "Bluetooth 5.3" },
+const handyman = [
+  { name: "Electrical Services" },
+  { name: "Plumbing Services" },
+  { name: "Carpentry Services" },
+  { name: "Painting Services" },
+  { name: "Home Repair and Maintenance" },
 ];
-const facial = [
-  { name: "Cleansers and Scrubs" },
-  { name: "Moisturizers and Serums" },
-  { name: "Sun Protection" },
-  { name: "Acne Treatment" },
-  { name: "Face Masks and Peels" },
-  { name: "Eye Care Products" },
-  { name: "Facial Tools and Devices" },
-  { name: "Toning and Astringents" },
-  { name: "Makeup Removers" },
-  { name: "Anti-Aging Products" },
+const snowRemoval = [
+  { name: "Residential Snow Removal" },
+  { name: "Commercial Snow Removal" },
+  { name: "Municipal Snow Removal" },
+  { name: "Specialized Snow Removal" },
 ];
-const shoes = [
-  { name: "Athletic Footwear" },
-  { name: "Casual Footwear" },
-  { name: "Formal Footwear" },
-  { name: "Boots and Booties" },
-  { name: "Sandals and Flip-Flops" },
-  { name: "Outdoor and Hiking" },
-  { name: "Work and Safety" },
-  { name: "Specialty Footwear" },
-  { name: "Fashion Sneakers" },
-  { name: "Kids' Footwear" },
+const pestControl = [
+  { name: "Insect Extermination Services" },
+  { name: "Rodent Management Solutions" },
+  { name: "Wildlife Pest Control" },
+  { name: "Nuisance Bird Management" },
+  { name: "Green and Eco-Friendly Pest" },
+  { name: "Commercial Pest Management" },
+  { name: "Residential Pest Solutions" },
+  { name: "Lawn and Garden Pest Control" },
+  { name: "Structural Pest Protection" },
+  { name: "Pest Inspection and Prevention" },
+];
+const electrical = [
+  { name: "Power Generation" },
+  { name: "Power Distribution" },
+  { name: "Electrical Wiring" },
+  { name: "Control Systems" },
+  { name: "Electronics Design" },
+  { name: "Electric Motors" },
+  { name: "Electrical Safety" },
+  { name: "Renewable Energy Systems" },
+  { name: "Lighting Technology" },
+  { name: "Power Electronics" },
+  { name: "High Voltage Engineering" },
+  { name: "Energy Efficiency" },
+  { name: "Electric Vehicle Technology" },
+  { name: "Robotics and Automation" },
+  { name: "Test and Measurement" },
 ];
 
 const lipBalm = [
-  { name: "Fruit-infused balms" },
-  { name: "Minty fresh options" },
-  { name: "Exotic tropical blends" },
-  { name: "Natural, unscented choices" },
+  { name: "Shoe sole replacement" },
+  { name: "Leather bag repair" },
+  { name: "Belt repair and resizing" },
+  { name: "Wallet and purse repair" },
   { name: "Other" },
 ];
 
 const lipScrub = [
-  { name: "Sugar scrub options" },
-  { name: "Exfoliating lip treatments" },
-  { name: "Flavored scrub selections" },
-  { name: "Gentle, sensitive formulas" },
+  { name: "Tire and tube replacement" },
+  { name: "Brake and gear adjustments" },
+  { name: "Frame repair" },
   { name: "Other" },
 ];
 
 const lipMusk = [
-  { name: "Hydrating overnight masks" },
-  { name: "Plumping lip treatments" },
-  { name: "Nourishing, vitamin-rich masks" },
-  { name: "Repairing cracked lip masks" },
+  { name: "Upholstery repair" },
+  { name: "Furniture refinishing" },
+  { name: "Wood furniture repair" },
   { name: "Other" },
 ];
 
 const lipSunscreen = [
-  { name: "SPF-infused lip balms" },
-  { name: "Sunblock lip sticks" },
-  { name: "UV lip protection" },
-  { name: "Broad-spectrum SPF choices" },
+  { name: "Guitar repair and setup" },
+  { name: "Piano tuning and repair" },
+  { name: "Brass and woodwind instrument repair" },
   { name: "Other" },
 ];
 
 const lipTint = [
-  { name: "Sheer tinted lip balms" },
-  { name: "Bold, pigmented lip stains" },
-  { name: "Matte lip color choices" },
-  { name: "Natural lip enhancers" },
+  { name: "Organic vegetable gardening" },
+  { name: "Raised bed gardening" },
+  { name: "Container vegetable gardening" },
+  { name: "Companion planting" },
   { name: "Other" },
 ];
 
 const lipCare = [
-  { name: "Lip scrub brushes" },
-  { name: "Lip exfoliation pads" },
-  { name: "Lip applicator wands" },
-  { name: "Lip mask silicone molds" },
+  { name: "Rose gardening" },
+  { name: "Perennial flower gardening" },
+  { name: "Wildflower gardening" },
+  { name: "Cottage garden style" },
   { name: "Other" },
 ];
 const organicLip = [
-  { name: "All-natural lip balms" },
-  { name: "Organic lip scrubs" },
-  { name: "Chemical-free lip care" },
-  { name: "Eco-friendly lip options" },
+  { name: "Medicinal herb gardening" },
+  { name: "Culinary herb gardening" },
+  { name: "Indoor herb gardening" },
+  { name: "Herb drying and preservation" },
   { name: "Other" },
 ];
 const lipCareSeasons = [
-  { name: "Winter lip protection" },
-  { name: "Summer sun care" },
-  { name: "Fall lip hydration" },
-  { name: "Spring lip renewal" },
+  { name: "Apple orchard management" },
+  { name: "Citrus tree care" },
+  { name: "Berry bush cultivation" },
+  { name: "Espalier fruit trees" },
   { name: "Other" },
 ];
 const lipCareSpecial = [
-  { name: "Sensitive skin solutions" },
-  { name: "Vegan lip care products" },
-  { name: "Gluten-free lip options" },
-  { name: "Cruelty-free lip care" },
+  { name: "Landscape design" },
+  { name: "Xeriscaping" },
+  { name: "Japanese garden design" },
+  { name: "Rock garden construction" },
   { name: "Other" },
 ];
 const android = [
-  { name: "Samsung" },
-  { name: "LG" },
-  { name: "Sony" },
-  { name: "Motorola" },
-  { name: "Asus" },
-  { name: "Lenovo" },
-  { name: "TCL" },
-  { name: "Honor" },
+  { name: "Butterfly garden" },
+  { name: "Bird-friendly gardening" },
+  { name: "Pollinator garden" },
+  { name: "Bat-friendly garden" },
+  { name: "Other" },
 ];
-const iOS = [{ name: "Apple" }];
+const iOS = [
+  { name: "Koi pond maintenance" },
+  { name: "Water lily cultivation" },
+  { name: "Aquatic plant care" },
+  { name: "Fountain and waterfall design" },
+  { name: "Other" },
+];
 
 const chainNeckaces = [
-  { name: "Cable Link Chains" },
-  { name: "Figaro Chain Styles" },
-  { name: "Rolo Chain Designs" },
-  { name: "Snake Chain Varieties" },
+  { name: "Spring bulb planting" },
+  { name: "Fall garden preparation" },
+  { name: "Winter garden protection" },
+  { name: "Summer flower maintenance" },
   { name: "Other" },
 ];
 const layeredNeckaces = [
-  { name: "Multistrand Necklace Sets" },
-  { name: "Mixed Metal Layering" },
-  { name: "Delicate Layered Chains" },
-  { name: "Personalized Layered Styles" },
+  { name: "Pruning and Trimming" },
+  { name: "Tree Removal" },
+  { name: "Emergency Tree Removal" },
+  { name: "Stump Grinding" },
+  { name: "Tree Health Assessment" },
   { name: "Other" },
 ];
 const pandantNeckaces = [
-  { name: "Gemstone Pendants" },
-  { name: "Initial Letter Charms" },
-  { name: "Religious Symbols" },
-  { name: "Locket Pendant Styles" },
+  { name: "Land Clearing" },
+  { name: "Arboricultural Consulting" },
+  { name: "Urban Tree Management" },
+  { name: "Tree Inventory and Management Plans" },
+  { name: "Lot Clearing for Development" },
   { name: "Other" },
 ];
 const chokerNeckaces = [
-  { name: "Velvet Choker Trends" },
-  { name: "Gothic Choker Designs" },
-  { name: "Pearl Choker Styles" },
-  { name: "Leather Choker Options" },
+  { name: "Timber Harvesting" },
+  { name: "Clearcutting" },
+  { name: "Selective Logging" },
+  { name: "Sustainable Logging Practices" },
+  { name: "Reforestation" },
   { name: "Other" },
 ];
 const statementNecklaces = [
-  { name: "Bohemian Statement Pieces" },
-  { name: "Crystal Statement Jewelry" },
-  { name: "Geometric Statement Necklaces" },
-  { name: "Vintage-inspired Statements" },
+  { name: "Chainsaw Operation" },
+  { name: "Aerial Tree Cutting" },
+  { name: "Tree Felling Techniques" },
+  { name: "Arborist Rigging" },
+  { name: "Wood Chipper Operation" },
   { name: "Other" },
 ];
 const tops = [
-  { name: "T-shirts" },
-  { name: "Blouses" },
-  { name: "Hoodies" },
-  { name: "Tank tops" },
+  { name: "Pruning for Tree Health" },
+  { name: "Hazard Assessment and Mitigation" },
+  { name: "Wildlife Habitat Preservation" },
+  { name: "Historical Tree Preservation" },
+  { name: "Community Tree Programs" },
   { name: "Other" },
 ];
 const bottoms = [
-  { name: "Jeans" },
-  { name: "Leggings" },
-  { name: "Shorts" },
-  { name: "Trousers" },
+  { name: "Mowing and grass cutting" },
+  { name: "Edging and trimming" },
+  { name: "Lawn fertilization and aeration" },
+  { name: "Weed control and removal" },
+  { name: "Leaf and debris cleanup" },
   { name: "Other" },
 ];
 const outerwear = [
-  { name: "Jackets" },
-  { name: "Coats" },
-  { name: "Vests" },
-  { name: "Raincoats" },
+  { name: "Landscape planning and consultation" },
+  { name: "Planting flowers, shrubs, and trees" },
+  { name: "Hardscape construction" },
+  { name: "Irrigation system installation" },
+  { name: "Outdoor lighting installation" },
   { name: "Other" },
 ];
 const dresses = [
-  { name: "Evening gowns" },
-  { name: "Maxi dresses" },
-  { name: "Cocktail dresses" },
-  { name: "Shift dresses" },
+  { name: "Lawn disease control" },
+  { name: "Pest and insect management" },
+  { name: "Soil testing and analysis" },
+  { name: "Seasonal lawn treatments" },
+  { name: "pH balancing and soil amendments" },
   { name: "Other" },
 ];
 const activewear = [
-  { name: "Yoga pants" },
-  { name: "Running shorts" },
-  { name: "Athletic shirts" },
-  { name: "Compression leggings" },
+  { name: "Tree pruning and trimming" },
+  { name: "Tree and shrub removal" },
+  { name: "Disease diagnosis and treatment" },
+  { name: "Arborist services" },
+  { name: "Deep root fertilization" },
   { name: "Other" },
 ];
 const sleepwear = [
-  { name: "Pajamas" },
-  { name: "Nightgowns" },
-  { name: "Sleep shirts" },
-  { name: "Robes" },
+  { name: "Patio and deck design and construction" },
+  { name: "Walkway and driveway installation" },
+  { name: "Retaining wall construction" },
+  { name: "Stone or brick work" },
+  { name: "Outdoor kitchen and firepit installation" },
   { name: "Other" },
 ];
 const swimwear = [
-  { name: "One-pieces" },
-  { name: "Swim trunks" },
-  { name: "Rash guards" },
-  { name: "Cover-ups" },
+  { name: "Sprinkler system installation" },
+  { name: "Sprinkler repair and maintenance" },
+  { name: "Drip irrigation system installation" },
+  { name: "Smart irrigation system upgrades" },
+  { name: "Water-efficient system audits" },
   { name: "Other" },
 ];
 
 const workwear = [
-  { name: "Suits" },
-  { name: "Dress shirts" },
-  { name: "Slacks" },
-  { name: "Work boots" },
+  { name: "Spring and fall cleanups" },
+  { name: "Gutter cleaning and maintenance" },
+  { name: "Mulch installation" },
+  { name: "Snow removal" },
+  { name: "Holiday decoration setup and takedown" },
   { name: "Other" },
 ];
 const bClassic = [
-  { name: "Legacy wireless technology" },
-  { name: "Supports audio and data" },
-  { name: "Common in older devices" },
+  { name: "Grounds maintenance for businesses" },
+  { name: "Large-scale landscaping projects" },
+  { name: "Property management services" },
+  { name: "Sports field maintenance" },
+  { name: "Commercial snow removal" },
   { name: "Other" },
 ];
 const bLowEnergy = [
@@ -474,17 +490,19 @@ const cleansers = [
   { name: "Other" },
 ];
 const uniforms = [
-  { name: "School uniforms" },
-  { name: "Military uniforms" },
-  { name: "Medical scrubs" },
-  { name: "Police uniforms" },
+  { name: "Organic lawn care programs" },
+  { name: "Chemical-free pest control" },
+  { name: "Sustainable landscaping practices" },
+  { name: "Rain garden installation" },
+  { name: "Xeriscaping" },
   { name: "Other" },
 ];
 const babyClothing = [
-  { name: "Onesies" },
-  { name: "Baby rompers" },
-  { name: "Infant socks" },
-  { name: "Baby bibs" },
+  { name: "Complete lawn restoration" },
+  { name: "Sod installation" },
+  { name: "Grading and leveling" },
+  { name: "Hydroseeding" },
+  { name: "Erosion control measures" },
   { name: "Other" },
 ];
 const serums = [
@@ -694,10 +712,10 @@ const workstation = [
   { name: "Other" },
 ];
 const DIYLipCare = [
-  { name: "Homemade lip balms" },
-  { name: "DIY lip scrubs" },
-  { name: "Natural lip mask ideas" },
-  { name: "Custom lip care creations" },
+  { name: "Succulent container gardens" },
+  { name: "Patio and balcony gardening" },
+  { name: "Indoor plant arrangements" },
+  { name: "Terrarium creation" },
   { name: "Other" },
 ];
 const mainframe = [
@@ -707,13 +725,16 @@ const mainframe = [
   { name: "Serve enterprise-level needs" },
   { name: "Other" },
 ];
-const cleansing = [
-  { name: "Facial Cleansers" },
-  { name: "Makeup Removers" },
-  { name: "Exfoliating Scrubs" },
-  { name: "Cleansing Oils" },
-  { name: "Micellar Waters" },
-  { name: "Other" },
+const cleaning = [
+  { name: "General Cleaning" },
+  { name: "Kitchen Cleaning" },
+  { name: "Bathroom Cleaning" },
+  { name: "Bedroom Cleaning" },
+  { name: "Living Room Cleaning" },
+  { name: "Laundry Room Cleaning" },
+  { name: "Home Office Cleaning" },
+  { name: "Entryway/Hallway Cleaning" },
+  { name: "Outdoor Cleaning" },
 ];
 const moisturizing = [
   { name: "Hydrating Creams" },
@@ -1272,7 +1293,7 @@ const RentingProfservicesPage: FC = () => {
                   </div>
                   {isClicked.cleaning && (
                     <div className={styles.main_items_2}>
-                      {beauty.map((item) => {
+                      {cleaning.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1294,7 +1315,7 @@ const RentingProfservicesPage: FC = () => {
                   )}
                   {isClicked.repairing && (
                     <div className={styles.main_items_2}>
-                      {bags.map((item) => {
+                      {repairing.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1316,7 +1337,7 @@ const RentingProfservicesPage: FC = () => {
                   )}
                   {isClicked.gardening && (
                     <div className={styles.main_items_2}>
-                      {awesome.map((item) => {
+                      {gardening.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1338,7 +1359,7 @@ const RentingProfservicesPage: FC = () => {
                   )}
                   {isClicked.treeCutting && (
                     <div className={styles.main_items_2}>
-                      {mobileTablets.map((item) => {
+                      {treeCutting.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1360,7 +1381,7 @@ const RentingProfservicesPage: FC = () => {
                   )}
                   {isClicked.lawnServices && (
                     <div className={styles.main_items_2}>
-                      {necklaces.map((item) => {
+                      {lawnServices.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1382,7 +1403,7 @@ const RentingProfservicesPage: FC = () => {
                   )}
                   {isClicked.handyman && (
                     <div className={styles.main_items_2}>
-                      {clothing.map((item) => {
+                      {handyman.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1404,7 +1425,7 @@ const RentingProfservicesPage: FC = () => {
                   )}
                   {isClicked.snowRemoval && (
                     <div className={styles.main_items_2}>
-                      {bluetooth.map((item) => {
+                      {snowRemoval.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1426,7 +1447,7 @@ const RentingProfservicesPage: FC = () => {
                   )}
                   {isClicked.pestControl && (
                     <div className={styles.main_items_2}>
-                      {facial.map((item) => {
+                      {pestControl.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1448,7 +1469,7 @@ const RentingProfservicesPage: FC = () => {
                   )}
                   {isClicked.electrical && (
                     <div className={styles.main_items_2}>
-                      {shoes.map((item) => {
+                      {electrical.map((item) => {
                         const isSelected = selectedButton === item.name;
                         return (
                           <button
@@ -1468,9 +1489,9 @@ const RentingProfservicesPage: FC = () => {
                       })}
                     </div>
                   )}
-                  {selectedButton === "Radiant Complexion" ? (
+                  {selectedButton === "General Cleaning" ? (
                     <div className={styles.main_items_3}>
-                      {beautySub.map((item) => {
+                      {generalCleaning.map((item) => {
                         return (
                           <Link
                             to="/"
@@ -1485,9 +1506,9 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Skin Texture Smoothness" ? (
+                  {selectedButton === "Kitchen Cleaning" ? (
                     <div className={styles.main_items_3}>
-                      {skinTexture.map((item) => {
+                      {kitchenCleaning.map((item) => {
                         return (
                           <Link
                             to="/"
@@ -1502,9 +1523,9 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Hydration and Moisture" ? (
+                  {selectedButton === "Bathroom Cleaning" ? (
                     <div className={styles.main_items_3}>
-                      {hydration.map((item) => {
+                      {bathroomCleaning.map((item) => {
                         return (
                           <Link
                             to="/"
@@ -1519,9 +1540,9 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Skin Clarity and Clearness" ? (
+                  {selectedButton === "Bedroom Cleaning" ? (
                     <div className={styles.main_items_3}>
-                      {skinClarity.map((item) => {
+                      {bedroomCleaning.map((item) => {
                         return (
                           <Link
                             to="/"
@@ -1536,9 +1557,9 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Elasticity and Firmness" ? (
+                  {selectedButton === "Living Room Cleaning" ? (
                     <div className={styles.main_items_3}>
-                      {elasticity.map((item) => {
+                      {livingRoomCleaning.map((item) => {
                         return (
                           <Link
                             to="/"
@@ -1553,9 +1574,9 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Tote Bags" ? (
+                  {selectedButton === "Laundry Room Cleaning" ? (
                     <div className={styles.main_items_3}>
-                      {toteBags.map((item) => {
+                      {laundyRoom.map((item) => {
                         return (
                           <Link
                             to="/"
@@ -1570,9 +1591,9 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Backpacks" ? (
+                  {selectedButton === "Home Office Cleaning" ? (
                     <div className={styles.main_items_3}>
-                      {backpacks.map((item) => {
+                      {homeCleaning.map((item) => {
                         return (
                           <Link
                             to="/"
@@ -1587,9 +1608,9 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Crossbody Bags" ? (
+                  {selectedButton === "Entryway/Hallway Cleaning" ? (
                     <div className={styles.main_items_3}>
-                      {crossbody.map((item) => {
+                      {entryRoom.map((item) => {
                         return (
                           <Link
                             to="/"
@@ -1604,24 +1625,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Clutch Purses" ? (
-                    <div className={styles.main_items_3}>
-                      {clutch.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Messenger Bags" ? (
+                  {selectedButton === "Outdoor Cleaning" ? (
                     <div className={styles.main_items_3}>
                       {messenger.map((item) => {
                         return (
@@ -1638,7 +1642,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Duffel Bags" ? (
+                  {selectedButton === "Electronics Repair" ? (
                     <div className={styles.main_items_3}>
                       {duffel.map((item) => {
                         return (
@@ -1655,7 +1659,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Hobo Bags" ? (
+                  {selectedButton === "Appliance Repair" ? (
                     <div className={styles.main_items_3}>
                       {hobo.map((item) => {
                         return (
@@ -1672,7 +1676,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Satchel Bags" ? (
+                  {selectedButton === "Automotive Repair" ? (
                     <div className={styles.main_items_3}>
                       {satchel.map((item) => {
                         return (
@@ -1689,7 +1693,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bucket Bags" ? (
+                  {selectedButton === "Home Repair" ? (
                     <div className={styles.main_items_3}>
                       {bucket.map((item) => {
                         return (
@@ -1706,7 +1710,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Wallets and Pouches" ? (
+                  {selectedButton === "Jewelry and Watch Repair" ? (
                     <div className={styles.main_items_3}>
                       {wallets.map((item) => {
                         return (
@@ -1723,7 +1727,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Lip Balm Flavors" ? (
+                  {selectedButton === "Shoe and Leather Goods Repair" ? (
                     <div className={styles.main_items_3}>
                       {lipBalm.map((item) => {
                         return (
@@ -1740,7 +1744,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Lip Scrub Varieties" ? (
+                  {selectedButton === "Bicycle Repair" ? (
                     <div className={styles.main_items_3}>
                       {lipScrub.map((item) => {
                         return (
@@ -1757,7 +1761,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Lip Mask Benefits" ? (
+                  {selectedButton === "Furniture Repair" ? (
                     <div className={styles.main_items_3}>
                       {lipMusk.map((item) => {
                         return (
@@ -1774,7 +1778,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Lip Sunscreen Protection" ? (
+                  {selectedButton === "Musical Instrument Repair" ? (
                     <div className={styles.main_items_3}>
                       {lipSunscreen.map((item) => {
                         return (
@@ -1791,7 +1795,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Lip Tint Options" ? (
+                  {selectedButton === "Vegetable Gardening" ? (
                     <div className={styles.main_items_3}>
                       {lipTint.map((item) => {
                         return (
@@ -1808,7 +1812,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Lip Care Tools" ? (
+                  {selectedButton === "Flower Gardening" ? (
                     <div className={styles.main_items_3}>
                       {lipCare.map((item) => {
                         return (
@@ -1825,7 +1829,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Organic Lip Products" ? (
+                  {selectedButton === "Herb Gardening" ? (
                     <div className={styles.main_items_3}>
                       {organicLip.map((item) => {
                         return (
@@ -1842,7 +1846,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Lip Care for Seasons" ? (
+                  {selectedButton === "Fruit Tree Gardening" ? (
                     <div className={styles.main_items_3}>
                       {lipCareSeasons.map((item) => {
                         return (
@@ -1859,7 +1863,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Lip Care for Special Needs" ? (
+                  {selectedButton === "Landscaping" ? (
                     <div className={styles.main_items_3}>
                       {lipCareSpecial.map((item) => {
                         return (
@@ -1876,7 +1880,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "DIY Lip Care Recipes" ? (
+                  {selectedButton === "Container Gardening" ? (
                     <div className={styles.main_items_3}>
                       {DIYLipCare.map((item) => {
                         return (
@@ -1893,7 +1897,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Android" ? (
+                  {selectedButton === "Gardening for Wildlife" ? (
                     <div className={styles.main_items_3}>
                       {android.map((item) => {
                         return (
@@ -1910,7 +1914,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "iOS" ? (
+                  {selectedButton === "Water Gardening" ? (
                     <div className={styles.main_items_3}>
                       {iOS.map((item) => {
                         return (
@@ -1927,7 +1931,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Chain Necklaces" ? (
+                  {selectedButton === "Seasonal Gardening" ? (
                     <div className={styles.main_items_3}>
                       {chainNeckaces.map((item) => {
                         return (
@@ -1944,7 +1948,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Layered Necklaces" ? (
+                  {selectedButton === "Residential Tree Cutting" ? (
                     <div className={styles.main_items_3}>
                       {layeredNeckaces.map((item) => {
                         return (
@@ -1961,7 +1965,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Pendant Necklaces" ? (
+                  {selectedButton === "Commercial Tree Cutting" ? (
                     <div className={styles.main_items_3}>
                       {pandantNeckaces.map((item) => {
                         return (
@@ -1978,7 +1982,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Choker Necklaces" ? (
+                  {selectedButton === "Forestry and Logging" ? (
                     <div className={styles.main_items_3}>
                       {chokerNeckaces.map((item) => {
                         return (
@@ -1995,7 +1999,8 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Statement Necklaces" ? (
+                  {selectedButton ===
+                  "Tree Cutting Equipment and Techniques" ? (
                     <div className={styles.main_items_3}>
                       {statementNecklaces.map((item) => {
                         return (
@@ -2012,7 +2017,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Tops" ? (
+                  {selectedButton === "Tree Preservation and Conservation" ? (
                     <div className={styles.main_items_3}>
                       {tops.map((item) => {
                         return (
@@ -2029,7 +2034,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bottoms" ? (
+                  {selectedButton === "Lawn Maintenance Services" ? (
                     <div className={styles.main_items_3}>
                       {bottoms.map((item) => {
                         return (
@@ -2046,7 +2051,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Outerwear" ? (
+                  {selectedButton === "Landscape Design and Installation" ? (
                     <div className={styles.main_items_3}>
                       {outerwear.map((item) => {
                         return (
@@ -2063,7 +2068,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Dresses" ? (
+                  {selectedButton === "Lawn Care and Treatment" ? (
                     <div className={styles.main_items_3}>
                       {dresses.map((item) => {
                         return (
@@ -2080,7 +2085,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Activewear" ? (
+                  {selectedButton === "Tree and Shrub Care" ? (
                     <div className={styles.main_items_3}>
                       {activewear.map((item) => {
                         return (
@@ -2097,7 +2102,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Sleepwear" ? (
+                  {selectedButton === "Hardscape Services" ? (
                     <div className={styles.main_items_3}>
                       {sleepwear.map((item) => {
                         return (
@@ -2114,7 +2119,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Swimwear" ? (
+                  {selectedButton === "Irrigation Services" ? (
                     <div className={styles.main_items_3}>
                       {swimwear.map((item) => {
                         return (
@@ -2131,7 +2136,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Workwear" ? (
+                  {selectedButton === "Seasonal Cleanups" ? (
                     <div className={styles.main_items_3}>
                       {workwear.map((item) => {
                         return (
@@ -2148,7 +2153,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Baby clothing" ? (
+                  {selectedButton === "Lawn Renovation Services" ? (
                     <div className={styles.main_items_3}>
                       {babyClothing.map((item) => {
                         return (
@@ -2165,7 +2170,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Uniforms" ? (
+                  {selectedButton === "Organic and Eco-Friendly Services" ? (
                     <div className={styles.main_items_3}>
                       {uniforms.map((item) => {
                         return (
@@ -2182,7 +2187,7 @@ const RentingProfservicesPage: FC = () => {
                   ) : (
                     ""
                   )}
-                  {selectedButton === "Bluetooth Classic" ? (
+                  {selectedButton === "Commercial Lawn Services" ? (
                     <div className={styles.main_items_3}>
                       {bClassic.map((item) => {
                         return (
@@ -2797,23 +2802,6 @@ const RentingProfservicesPage: FC = () => {
                   {selectedButton === "Mainframe Processors" ? (
                     <div className={styles.main_items_3}>
                       {mainframe.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}{" "}
-                  {selectedButton === "Cleansing" ? (
-                    <div className={styles.main_items_3}>
-                      {cleansing.map((item) => {
                         return (
                           <Link
                             to="/"
