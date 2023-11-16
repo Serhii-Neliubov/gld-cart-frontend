@@ -44,7 +44,7 @@ class UserService {
       if (auth) {
         const userDto: UserDto = new UserDto(user);
         const tokens: { accessToken: string; refreshToken: string } =
-          TokenService.createTokens({...userDto});
+          TokenService.createTokens({ ...userDto });
 
         await TokenService.saveToken(userDto.id, tokens.refreshToken);
         return { ...tokens, user: userDto };
@@ -64,7 +64,7 @@ class UserService {
     family_name: string,
     email: string,
     picture: string,
-    password: string,
+    password: string
   ) {
     const user = <IUser>(
       await this.findAndUpdateUser(
@@ -81,10 +81,10 @@ class UserService {
       console.log(userDto);
 
       const tokens: { accessToken: string; refreshToken: string } =
-        TokenService.createTokens({...userDto});
+        TokenService.createTokens({ ...userDto });
 
       await TokenService.saveToken(userDto.id, tokens.refreshToken);
-      return { ...tokens, user: userDto, picture: picture};
+      return { ...tokens, user: userDto, picture: picture };
     }
   }
 
@@ -116,9 +116,8 @@ class UserService {
       throw ApiError.UnauthorizedError();
     }
     const userData = TokenService.validateRefreshToken(refreshToken);
-    const tokenFromDb: IToken | null = await TokenService.findToken(
-      refreshToken
-    );
+    const tokenFromDb: IToken | null =
+      await TokenService.findToken(refreshToken);
     if (!userData || !tokenFromDb) {
       throw ApiError.UnauthorizedError();
     }
@@ -155,18 +154,22 @@ class UserService {
     picture: string,
     password: string
   ): Promise<IUser> {
-    const user = <IUser>(<unknown>UserModel.findOneAndUpdate(
-      { email: email },
-      {
-        type: type,
-        name: name,
-        surname: surname,
-        email: email,
-        picture: picture,
-        password: password,
-      },
-      { upsert: true, new: true }
-    ));
+    let user = await UserModel.findOne({ email });
+
+    if (!user) {
+      user = await UserModel.findOneAndUpdate(
+        { email },
+        {
+          type,
+          name,
+          surname,
+          email,
+          picture,
+          password,
+        },
+        { upsert: true, new: true }
+      );
+    }
     if (!user) {
       throw ApiError.BadRequest("User not found");
     }
