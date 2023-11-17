@@ -32,6 +32,7 @@ export const requireAuthWithGoogle = (req: Request, res: Response, next: NextFun
   if (!userData) {
     return next(ApiError.UnauthorizedError());
   }
+  res.locals.accessToken = accessToken;
   res.locals.user = userData;
   next();
 };
