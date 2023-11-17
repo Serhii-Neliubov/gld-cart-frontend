@@ -8,8 +8,6 @@ import {
   getGoogleUser,
 } from "../services/google-service";
 
-const maxAge: number = 30 * 24 * 60 * 60 * 1000;
-
 export const signup_post = async (
   req: Request,
   res: Response,
