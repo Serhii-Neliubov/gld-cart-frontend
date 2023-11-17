@@ -12,12 +12,29 @@ import {
   userDataSelector,
 } from "../redux/Slices/userDataSlice";
 import IUser from "../models/IUser";
+import axios from "axios";
 
 const AppRouter: FC = () => {
   const isAuth = useSelector<RootState, boolean>(selectIsAuth);
   const user = useSelector<RootState, IUser>(userDataSelector);
 
   const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:3001/me", {
+          withCredentials: true,
+        });
+        console.log(data);
+        dispatch(checkAuth());
+        return data;
+      } catch (e) {
+        return null;
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
