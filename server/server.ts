@@ -48,7 +48,7 @@ app.use(
 app.use(router);
 app.use(errorMiddleware);
 
-const mongooseOptions: ConnectOptions = {
+const mongooseOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 } as ConnectOptions;
