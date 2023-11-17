@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import styles from "./ItemPublishPage.module.scss";
+import styles from "./HousePublishing.module.scss";
 import { Link } from "react-router-dom";
 
-const ItemPublishPage: FC = () => {
+const HousePublishing: FC = () => {
   return (
     <div
       style={{
@@ -56,7 +56,7 @@ const ItemPublishPage: FC = () => {
           <img src="/ItemPublishPage/close-button.svg" alt="" />
         </Link>
         <h1 className={styles.title}>
-          Your Vehicles Renting Form has <br /> been Successfully Completed
+          Your House Renting Form has <br /> been Successfully Completed
         </h1>
         <div className={styles.actions}>
           <button
@@ -86,4 +86,4 @@ const ItemPublishPage: FC = () => {
   );
 };
 
-export default ItemPublishPage;
+export default HousePublishing;
