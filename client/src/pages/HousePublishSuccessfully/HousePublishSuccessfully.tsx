@@ -1,15 +1,15 @@
 import React, { FC } from "react";
-import styles from "./ItemPublishPage.module.scss";
+import styles from "./HousePublishSuccessfully.module.scss";
 import { Link } from "react-router-dom";
 
-const ItemPublishPage: FC = () => {
+const HousePublishSuccessfully: FC = () => {
   return (
     <div
       style={{
-        paddingBottom: "300px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        paddingBottom: "180px",
       }}
       className="__container"
     >
@@ -45,45 +45,21 @@ const ItemPublishPage: FC = () => {
           <span>Specifications</span>
         </div>
         <div className={styles.routing}>
-          <div style={{ backgroundColor: "#D9D9D9" }} className={styles.number}>
+          <div style={{ backgroundColor: "#02A0A0" }} className={styles.number}>
             6
           </div>
           <span>Publish</span>
         </div>
       </div>
-      <div className={styles.content}>
-        <Link className={styles.close_button} to="/">
-          <img src="/ItemPublishPage/close-button.svg" alt="" />
+      <div className={styles.border}>
+        <img src="/PublishedSuccessfully/tick.svg" alt="Image" />
+        <h1>Your Product have Successfully Published </h1>
+        <Link to="/">
+          <button className={styles.button}>Go To Category Page</button>
         </Link>
-        <h1 className={styles.title}>
-          Your Vehicles Renting Form has <br /> been Successfully Completed
-        </h1>
-        <div className={styles.actions}>
-          <button
-            style={{
-              border: "1px solid gray",
-              color: "gray",
-              padding: "20px 50px",
-            }}
-          >
-            Save as Draft
-          </button>
-          <Link to="/successfully-published">
-            <button
-              style={{
-                border: "1px solid blue",
-                backgroundColor: "blue",
-                color: "white",
-                padding: "20px 50px",
-              }}
-            >
-              Publish
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );
 };
 
-export default ItemPublishPage;
+export default HousePublishSuccessfully;

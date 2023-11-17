@@ -827,7 +827,7 @@ const RentingCategoryPage: FC = () => {
                       {singlefamily.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -844,7 +844,7 @@ const RentingCategoryPage: FC = () => {
                       {multifamily.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -861,7 +861,7 @@ const RentingCategoryPage: FC = () => {
                       {townhouse.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -878,7 +878,7 @@ const RentingCategoryPage: FC = () => {
                       {apartments.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -895,7 +895,7 @@ const RentingCategoryPage: FC = () => {
                       {cottages.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -912,7 +912,7 @@ const RentingCategoryPage: FC = () => {
                       {villa.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -929,7 +929,7 @@ const RentingCategoryPage: FC = () => {
                       {cabin.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -946,7 +946,7 @@ const RentingCategoryPage: FC = () => {
                       {tinyhouse.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -963,7 +963,7 @@ const RentingCategoryPage: FC = () => {
                       {condominium.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -980,7 +980,7 @@ const RentingCategoryPage: FC = () => {
                       {historic.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/houses"
                             key={item.name}
                             className={styles.main_item_3}
                           >
