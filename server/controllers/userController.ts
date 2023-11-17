@@ -27,7 +27,7 @@ export const signup_post = async (
     );
     res.cookie("refreshToken", userData.refreshToken, {
       httpOnly: true,
-      maxAge: maxAge,
+      maxAge: process.env.COOKIES_MAX_AGE as number,
     });
 
     res.status(201).json(userData);
@@ -47,7 +47,7 @@ export const login_post = async (
 
     res.cookie("refreshToken", userData.refreshToken, {
       httpOnly: true,
-      maxAge: maxAge,
+      maxAge: process.env.COOKIES_MAX_AGE as number,
     });
 
     res.status(201).json(userData);
@@ -113,7 +113,7 @@ export const refresh_get = async (
     const userData = await UserService.refresh(refreshToken);
     res.cookie("refreshToken", userData.refreshToken, {
       httpOnly: true,
-      maxAge: maxAge,
+      maxAge: process.env.COOKIES_MAX_AGE as number,
     });
     return res.json(userData);
   } catch (e) {
@@ -164,12 +164,12 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
     );
     res.cookie("accessToken", userData.accessToken, {
       httpOnly: true,
-      maxAge: maxAge,
+      maxAge: process.env.COOKIES_MAX_AGE as number,
       sameSite: "lax",
     });
     res.cookie("refreshToken", userData.refreshToken, {
       httpOnly: true,
-      maxAge: maxAge,
+      maxAge: process.env.COOKIES_MAX_AGE as number,
       sameSite: "lax",
     });
     const redirectURL: string = `${process.env.CLIENT_URL}/`;
