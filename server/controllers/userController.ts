@@ -172,6 +172,7 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
       maxAge: process.env.COOKIES_MAX_AGE as number,
       sameSite: "lax",
     });
+
     const redirectURL: string = `${process.env.CLIENT_URL}/`;
     res.redirect(redirectURL);
   } catch (error) {
@@ -194,5 +195,9 @@ export const delete_all = async (
   }
 };
 export const get_current_user = async (req: Request, res: Response) => {
-  return res.send(res.locals.user);
+   const responseData = {
+    user: res.locals.user,
+    accessToken: res.locals.accessToken
+  };
+  return res.send(responseData);
 };
