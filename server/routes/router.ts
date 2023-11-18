@@ -1,4 +1,3 @@
-
 import express, { Router } from "express";
 import * as userController from "../controllers/userController";
 import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
@@ -14,7 +13,6 @@ router.get("/refresh", userController.refresh_get);
 
 //GoogleAuth routes
 router.get("/tokens/oauth/google", userController.googleOauthHandler);
-router.get("/me", authMiddleware.requireAuthWithGoogle, userController.get_current_user);
 
 // Reset password routes
 router.post("/forgot-password", userController.initiate_password_reset);
