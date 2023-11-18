@@ -133,7 +133,6 @@ export const send_contact_email = async (
       await MailService.sendContactMail(name, recipientEmail, subject, message);
       return res.json({ success: true, message: "Email sent successfully" });
     }
-
     return res
       .status(400)
       .json({ success: false, message: "Error. Email was not sent" });
@@ -160,18 +159,12 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
       googleUser.picture,
       process.env.USERS_AFTER_GOOGLE_PASSWORD as string
     );
-    res.cookie("accessToken", userData.accessToken, {
-      httpOnly: true,
-      maxAge: process.env.COOKIES_MAX_AGE as number,
-      sameSite: "lax",
-    });
     res.cookie("refreshToken", userData.refreshToken, {
       httpOnly: true,
       maxAge: process.env.COOKIES_MAX_AGE as number,
-      sameSite: "lax",
     });
 
-    const redirectURL: string = `${process.env.CLIENT_URL}/`;
+    const redirectURL: string = `${process.env.CLIENT_URL}`;
     res.redirect(redirectURL);
   } catch (error) {
     return res.redirect(`${process.env.CLIENT_URL}/oauth/error`);
@@ -191,11 +184,4 @@ export const delete_all = async (
   } catch (e) {
     next(e);
   }
-};
-export const get_current_user = async (req: Request, res: Response) => {
-   const responseData = {
-    user: res.locals.user,
-    accessToken: res.locals.accessToken
-  };
-  return res.send(responseData);
 };
