@@ -19,14 +19,16 @@ const AppRouter: FC = () => {
   const user = useSelector<RootState, IUser>(userDataSelector);
 
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/me", {
+        const { data } = await axios.get("http://localhost:3001/refresh", {
           withCredentials: true,
         });
-        console.log(data);
+        localStorage.setItem("token", data.accessToken);
         dispatch(checkAuth());
+        console.log(data.accessToken);
         return data;
       } catch (e) {
         return null;
