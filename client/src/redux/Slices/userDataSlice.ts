@@ -63,6 +63,7 @@ const authDataSlice = createSlice({
       localStorage.removeItem("token");
       state.isAuth = false;
       state.user = {} as IUser;
+      AuthService.logout();
     },
   },
   extraReducers: (builder) => {
