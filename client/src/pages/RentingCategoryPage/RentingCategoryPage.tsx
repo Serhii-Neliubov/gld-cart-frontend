@@ -572,7 +572,7 @@ const RentingCategoryPage: FC = () => {
                       {laptops.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -589,7 +589,7 @@ const RentingCategoryPage: FC = () => {
                       {laptops.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -606,7 +606,7 @@ const RentingCategoryPage: FC = () => {
                       {smartphones.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -623,7 +623,7 @@ const RentingCategoryPage: FC = () => {
                       {projectors.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -640,7 +640,7 @@ const RentingCategoryPage: FC = () => {
                       {televisions.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -657,7 +657,7 @@ const RentingCategoryPage: FC = () => {
                       {speakers.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -674,7 +674,7 @@ const RentingCategoryPage: FC = () => {
                       {microphones.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -691,7 +691,7 @@ const RentingCategoryPage: FC = () => {
                       {cameras.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -708,7 +708,7 @@ const RentingCategoryPage: FC = () => {
                       {playstation.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -725,7 +725,7 @@ const RentingCategoryPage: FC = () => {
                       {drones.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -742,7 +742,7 @@ const RentingCategoryPage: FC = () => {
                       {washingmachines.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -759,7 +759,7 @@ const RentingCategoryPage: FC = () => {
                       {gpsnavigation.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -776,7 +776,7 @@ const RentingCategoryPage: FC = () => {
                       {generators.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -793,7 +793,7 @@ const RentingCategoryPage: FC = () => {
                       {concentrators.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -810,7 +810,7 @@ const RentingCategoryPage: FC = () => {
                       {fitnesstrackers.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/renting-category-page/electronics"
                             key={item.name}
                             className={styles.main_item_3}
                           >

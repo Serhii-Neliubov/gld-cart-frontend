@@ -43,6 +43,10 @@ import HouseRentingForm from "../pages/HouseRentingForm/HouseRentingForm";
 import HouseRentingPhoto from "../pages/HouseRentingPhoto/HouseRentingPhoto";
 import HouseRentingSpecifications from "../pages/HouseRentingSpecifications/HouseRentingSpecifications";
 import HousePublishing from "../pages/HousePublishing/HousePublishing";
+import ElectronicsRentingForm from "../pages/ElectronicsRentingForm/ElectronicsRentingForm";
+import ElectronicsRentingPhoto from "../pages/ElectronicsRentingPhoto/ElectronicsRentingPhoto";
+import ElectronicsRentingSpecifications from "../pages/ElectronicsRentingSpecifications/ElectronicsRentingSpecifications";
+import ElectronicsRentingPublishing from "../pages/ElectronicsRentingPublishing/ElectronicsRentingPublishing";
 
 interface IRoutes {
   component: FC;
@@ -80,6 +84,7 @@ export const buyerRoutes: IRoutes[] = [
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
+
   { component: HouseRentingForm, path: "/renting-category-page/houses" },
   {
     component: HouseRentingPhoto,
@@ -89,6 +94,28 @@ export const vendorRoutes: IRoutes[] = [
     component: HouseRentingSpecifications,
     path: "/renting-category-page/houses/photo-and-video/specifications",
   },
+  {
+    component: HousePublishing,
+    path: "/renting-category-page/houses/photo-and-video/specifications/publishing",
+  },
+
+  {
+    component: ElectronicsRentingForm,
+    path: "/renting-category-page/electronics",
+  },
+  {
+    component: ElectronicsRentingPhoto,
+    path: "/renting-category-page/electronics/photo-and-video",
+  },
+  {
+    component: ElectronicsRentingSpecifications,
+    path: "/renting-category-page/electronics/photo-and-video/specifications",
+  },
+  {
+    component: ElectronicsRentingPublishing,
+    path: "/renting-category-page/electronics/photo-and-video/specifications/publishing",
+  },
+
   { component: RentingCategoryPage, path: "/renting-category-page" },
   { component: ContactUsPage, path: "/contact-us" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
@@ -106,14 +133,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: RentingProfservicesPage, path: "/personal-services" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: BasicInformationPage, path: "/renting-category-page/vehicles" },
-  {
-    component: ItemPublishPage,
-    path: "/renting-category-page/vehicles/photo-and-video/publishing",
-  },
-  {
-    component: HousePublishing,
-    path: "/renting-category-page/houses/photo-and-video/specifications/publishing",
-  },
+
   {
     component: BasicInformationPhoto,
     path: "/renting-category-page/vehicles/photo-and-video",
@@ -122,6 +142,11 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsPage,
     path: "/renting-category-page/vehicles/photo-and-video/specifications",
   },
+  {
+    component: ItemPublishPage,
+    path: "/renting-category-page/vehicles/photo-and-video/publishing",
+  },
+
   {
     component: PublishSuccessfully,
     path: "/successfully-published",
