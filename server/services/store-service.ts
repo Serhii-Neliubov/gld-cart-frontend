@@ -1,8 +1,8 @@
-import Order        from "../models/Order";
-import {IOrderData} from "../types/types";
+import Order from "../models/Order";
+
 class StoreService {
 
-    async createOrder(customer, data: IOrderData) {
+    async createOrder(customer, data) {
         const Items = JSON.parse(customer.metadata.cart);
         try {
             const newOrder = new Order({
