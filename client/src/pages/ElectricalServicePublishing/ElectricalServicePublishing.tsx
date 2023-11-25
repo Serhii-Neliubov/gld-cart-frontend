@@ -56,7 +56,7 @@ const ElectricalServicePublishing: FC = () => {
           <img src="/ItemPublishPage/close-button.svg" alt="" />
         </Link>
         <h1 className={styles.title}>
-          Your Pest Control Renting Form has <br /> been Successfully Completed
+          Your Electrical Renting Form has <br /> been Successfully Completed
         </h1>
         <div className={styles.actions}>
           <button

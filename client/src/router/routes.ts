@@ -78,6 +78,10 @@ import PestControlServiceForm from "../pages/PestControlServiceForm/PestControlS
 import PestControlServicePhoto from "../pages/PestControlServicePhoto/PestControlServicePhoto";
 import PestControlServiceSpecifications from "../pages/PestControlServiceSpecifications/PestControlServiceSpecifications";
 import PestControlServicePublishing from "../pages/PestControlServicePublishing/PestControlServicePublishing";
+import ElectricalServiceForm from "../pages/ElectricalServiceForm/ElectricalServiceForm";
+import ElectricalServicePhoto from "../pages/ElectricalServicePhoto/ElectricalServicePhoto";
+import ElectricalServiceSpecifications from "../pages/ElectricalServiceSpecifications/ElectricalServiceSpecifications";
+import ElectricalServicePublishing from "../pages/ElectricalServicePublishing/ElectricalServicePublishing";
 
 interface IRoutes {
   component: FC;
@@ -284,19 +288,19 @@ export const vendorRoutes: IRoutes[] = [
   },
   // Electrical Service
   {
-    component: ElectronicsRentingForm,
+    component: ElectricalServiceForm,
     path: "/personal-services/electrical",
   },
   {
-    component: ElectronicsRentingPhoto,
+    component: ElectricalServicePhoto,
     path: "/personal-services/electrical/photo-and-video",
   },
   {
-    component: ElectronicsRentingSpecifications,
+    component: ElectricalServiceSpecifications,
     path: "/renting-category-page/electrical/photo-and-video/specifications",
   },
   {
-    component: ElectronicsRentingPublishing,
+    component: ElectricalServicePublishing,
     path: "/renting-category-page/electrical/photo-and-video/specifications/publishing",
   },
   // Components

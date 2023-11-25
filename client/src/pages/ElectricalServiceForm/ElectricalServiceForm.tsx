@@ -66,7 +66,7 @@ const ElectricalServiceForm: FC = () => {
         </div>
         <div className={styles.content_input_radio}>
           <span style={{ fontWeight: 600 }}>
-            You want to give your Snow Removal service Per
+            You want to give your Electrical service Per
           </span>
           <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
             <input style={{ width: "20px", height: "20px" }} type="radio" />
@@ -84,19 +84,19 @@ const ElectricalServiceForm: FC = () => {
               <div style={{ display: "flex", gap: "10px" }}>
                 <input style={{ width: "20px" }} type="checkbox" />
                 <span style={{ fontWeight: "600" }}>
-                  Pest Control Packages For Hour
+                  Electrical service Packages For Hour
                 </span>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 <input style={{ width: "20px" }} type="checkbox" />
                 <span style={{ fontWeight: "600" }}>
-                  Pest Control Packages For Day
+                  Electrical service Packages For Day
                 </span>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 <input style={{ width: "20px" }} type="checkbox" />
                 <span style={{ fontWeight: "600" }}>
-                  Pest Control Packages For week
+                  Electrical service Packages For week
                 </span>
               </div>
             </div>
@@ -267,7 +267,7 @@ const ElectricalServiceForm: FC = () => {
         >
           Cancel
         </button>
-        <Link to="/personal-services/pest-control/photo-and-video">
+        <Link to="/personal-services/electrical/photo-and-video">
           <button
             style={{
               border: "1px solid blue",

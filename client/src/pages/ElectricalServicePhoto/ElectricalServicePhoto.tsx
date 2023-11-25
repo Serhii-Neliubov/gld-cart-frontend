@@ -43,7 +43,7 @@ const ElectricalServicePhoto: FC = () => {
           <span>Publish</span>
         </div>
       </div>
-      <h1 className={styles.title}>Pest Control SERVICES Form </h1>
+      <h1 className={styles.title}>Electrical SERVICES Form </h1>
       <div className={styles.content}>
         <h2 className={styles.content_title}>Photo And Video</h2>
         <div className={styles.content_input}>
@@ -147,7 +147,7 @@ const ElectricalServicePhoto: FC = () => {
         >
           Cancel
         </button>
-        <Link to="/renting-category-page/pest-control/photo-and-video/specifications">
+        <Link to="/renting-category-page/electrical/photo-and-video/specifications">
           <button
             style={{
               border: "1px solid blue",

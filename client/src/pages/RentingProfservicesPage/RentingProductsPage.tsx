@@ -3378,7 +3378,7 @@ const RentingProfservicesPage: FC = () => {
                       {lightingTechnology.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >

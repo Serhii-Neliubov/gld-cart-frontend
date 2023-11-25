@@ -49,7 +49,7 @@ const ElectricalServiceSpecifications: FC = () => {
 
         <div>
           <span className={styles.content_driver}>
-            Need Instrument for Pest Control Service
+            Need Instrument for Electrical Service
           </span>
           <div
             style={{ display: "flex", gap: "20px", margin: "10px 0px 50px 0" }}
@@ -66,7 +66,7 @@ const ElectricalServiceSpecifications: FC = () => {
         </div>
         <div>
           <span className={styles.content_driver}>
-            You have all the safety Instrument for Pest Control Service
+            You have all the safety Instrument for Electrical Service
           </span>
           <div
             style={{ display: "flex", gap: "20px", margin: "10px 0px 50px 0" }}
@@ -79,34 +79,6 @@ const ElectricalServiceSpecifications: FC = () => {
               <input style={{ width: "20px" }} type="radio" />
               <p>No</p>
             </div>
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
-            marginBottom: "20px",
-          }}
-        >
-          <span style={{ fontWeight: 600 }}>Select Type of Service</span>
-          <div style={{ display: "flex", gap: "10px" }}>
-            <input style={{ height: "15px", width: "15px" }} type="checkbox" />
-            <label style={{ fontWeight: 600 }} htmlFor="input">
-              Termite inspection
-            </label>
-          </div>
-          <div style={{ display: "flex", gap: "10px" }}>
-            <input style={{ height: "15px", width: "15px" }} type="checkbox" />
-            <label style={{ fontWeight: 600 }} htmlFor="input">
-              Odent control
-            </label>
-          </div>
-          <div style={{ display: "flex", gap: "10px" }}>
-            <input style={{ height: "15px", width: "15px" }} type="checkbox" />
-            <label style={{ fontWeight: 600 }} htmlFor="input">
-              Wildlife removal
-            </label>
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
@@ -141,7 +113,7 @@ const ElectricalServiceSpecifications: FC = () => {
         >
           Cancel
         </button>
-        <Link to="/renting-category-page/pest-control/photo-and-video/specifications/publishing">
+        <Link to="/renting-category-page/electrical/photo-and-video/specifications/publishing">
           <button
             style={{
               border: "1px solid blue",
