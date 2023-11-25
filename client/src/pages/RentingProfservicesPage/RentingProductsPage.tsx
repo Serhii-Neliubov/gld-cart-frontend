@@ -340,6 +340,14 @@ const chainNeckaces = [
   { name: "Summer flower maintenance" },
   { name: "Other" },
 ];
+const lightingTechnology = [
+  { name: "LED Lighting" },
+  { name: "Fluorescent Fixtures" },
+  { name: "Incandescent Lamps" },
+  { name: "Smart Lighting Systems" },
+  { name: "Lighting Controls" },
+  { name: "Other" },
+];
 const layeredNeckaces = [
   { name: "Pruning and Trimming" },
   { name: "Tree Removal" },
@@ -2554,7 +2562,7 @@ const RentingProfservicesPage: FC = () => {
                       {sandals.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2571,7 +2579,7 @@ const RentingProfservicesPage: FC = () => {
                       {outdoor.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2588,7 +2596,7 @@ const RentingProfservicesPage: FC = () => {
                       {workAndSafety.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2605,7 +2613,7 @@ const RentingProfservicesPage: FC = () => {
                       {speciality.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2622,7 +2630,7 @@ const RentingProfservicesPage: FC = () => {
                       {fashion.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2639,7 +2647,7 @@ const RentingProfservicesPage: FC = () => {
                       {kids.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2656,7 +2664,7 @@ const RentingProfservicesPage: FC = () => {
                       {centralProcessing.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2673,7 +2681,7 @@ const RentingProfservicesPage: FC = () => {
                       {microprocessors.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2690,7 +2698,7 @@ const RentingProfservicesPage: FC = () => {
                       {multiCore.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2707,7 +2715,7 @@ const RentingProfservicesPage: FC = () => {
                       {graphics.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2724,7 +2732,7 @@ const RentingProfservicesPage: FC = () => {
                       {embedded.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2741,7 +2749,7 @@ const RentingProfservicesPage: FC = () => {
                       {server.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2758,7 +2766,7 @@ const RentingProfservicesPage: FC = () => {
                       {mobileProcessors.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2775,7 +2783,7 @@ const RentingProfservicesPage: FC = () => {
                       {desktop.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/electrical"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -3351,6 +3359,23 @@ const RentingProfservicesPage: FC = () => {
                   {selectedButton === "Wrap Bracelets" ? (
                     <div className={styles.main_items_3}>
                       {wrap.map((item) => {
+                        return (
+                          <Link
+                            to="/"
+                            key={item.name}
+                            className={styles.main_item_3}
+                          >
+                            <span>{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  )}{" "}
+                  {selectedButton === "Lighting Technology" ? (
+                    <div className={styles.main_items_3}>
+                      {lightingTechnology.map((item) => {
                         return (
                           <Link
                             to="/"

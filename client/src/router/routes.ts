@@ -282,6 +282,23 @@ export const vendorRoutes: IRoutes[] = [
     component: PestControlServicePublishing,
     path: "/renting-category-page/pest-control/photo-and-video/specifications/publishing",
   },
+  // Electrical Service
+  {
+    component: ElectronicsRentingForm,
+    path: "/personal-services/electrical",
+  },
+  {
+    component: ElectronicsRentingPhoto,
+    path: "/personal-services/electrical/photo-and-video",
+  },
+  {
+    component: ElectronicsRentingSpecifications,
+    path: "/renting-category-page/electrical/photo-and-video/specifications",
+  },
+  {
+    component: ElectronicsRentingPublishing,
+    path: "/renting-category-page/electrical/photo-and-video/specifications/publishing",
+  },
   // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },
   { component: ContactUsPage, path: "/contact-us" },
