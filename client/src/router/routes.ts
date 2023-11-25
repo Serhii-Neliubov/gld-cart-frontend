@@ -62,6 +62,14 @@ import GardeningServicePublishing from "../pages/GardeningServicePublishing/Gard
 import TreeCuttingServiceForm from "../pages/TreeCuttingServiceForm/TreeCuttingServiceForm";
 import TreeCuttingServicePhoto from "../pages/TreeCuttingServicePhoto/TreeCuttingServicePhoto";
 import TreeCuttingServicePublishing from "../pages/TreeCuttingServicePublishing/TreeCuttingServicePublishing";
+import LawnServiceForm from "../pages/LawnServiceForm/LawnServiceForm";
+import LawnServicePhoto from "../pages/LawnServicePhoto/LawnServicePhoto";
+import LawnServiceSpecifications from "../pages/LawnServiceSpecifications/LawnServiceSpecifications";
+import LawnServicePublishing from "../pages/LawnServicePublishing/LawnServicePublishing";
+import HandymanServiceForm from "../pages/HandymanServiceForm/HandymanServiceForm";
+import HandymanServicePhoto from "../pages/HandymanServicePhoto/HandymanServicePhoto";
+import HandymanServiceSpecifications from "../pages/HandymanServiceSpecifications/HandymanServiceSpecifications";
+import HandymanServicePublishing from "../pages/HandymanServicePublishing/HandymanServicePublishing";
 
 interface IRoutes {
   component: FC;
@@ -197,6 +205,40 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: TreeCuttingServicePublishing,
     path: "/renting-category-page/tree-cutting/photo-and-video/specifications/publishing",
+  },
+  // Lawn Service
+  {
+    component: LawnServiceForm,
+    path: "/personal-services/lawn",
+  },
+  {
+    component: LawnServicePhoto,
+    path: "/personal-services/lawn/photo-and-video",
+  },
+  {
+    component: LawnServiceSpecifications,
+    path: "/renting-category-page/lawn/photo-and-video/specifications",
+  },
+  {
+    component: LawnServicePublishing,
+    path: "/renting-category-page/lawn/photo-and-video/specifications/publishing",
+  },
+  // Handyman Service
+  {
+    component: HandymanServiceForm,
+    path: "/personal-services/handyman",
+  },
+  {
+    component: HandymanServicePhoto,
+    path: "/personal-services/handyman/photo-and-video",
+  },
+  {
+    component: HandymanServiceSpecifications,
+    path: "/renting-category-page/handyman/photo-and-video/specifications",
+  },
+  {
+    component: HandymanServicePublishing,
+    path: "/renting-category-page/handyman/photo-and-video/specifications/publishing",
   },
   // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },

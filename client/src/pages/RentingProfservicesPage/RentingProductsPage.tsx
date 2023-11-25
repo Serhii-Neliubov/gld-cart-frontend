@@ -2069,7 +2069,7 @@ const RentingProfservicesPage: FC = () => {
                       {bottoms.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2086,7 +2086,7 @@ const RentingProfservicesPage: FC = () => {
                       {outerwear.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2103,7 +2103,7 @@ const RentingProfservicesPage: FC = () => {
                       {dresses.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2120,7 +2120,7 @@ const RentingProfservicesPage: FC = () => {
                       {activewear.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2137,7 +2137,7 @@ const RentingProfservicesPage: FC = () => {
                       {sleepwear.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2154,7 +2154,7 @@ const RentingProfservicesPage: FC = () => {
                       {swimwear.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2171,7 +2171,7 @@ const RentingProfservicesPage: FC = () => {
                       {workwear.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2188,7 +2188,7 @@ const RentingProfservicesPage: FC = () => {
                       {babyClothing.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2205,7 +2205,7 @@ const RentingProfservicesPage: FC = () => {
                       {uniforms.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2222,7 +2222,7 @@ const RentingProfservicesPage: FC = () => {
                       {bClassic.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/lawn"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2239,7 +2239,7 @@ const RentingProfservicesPage: FC = () => {
                       {bLowEnergy.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/handyman"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2256,7 +2256,7 @@ const RentingProfservicesPage: FC = () => {
                       {bFive.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/handyman"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2273,7 +2273,7 @@ const RentingProfservicesPage: FC = () => {
                       {bFiveOne.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/handyman"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2290,7 +2290,7 @@ const RentingProfservicesPage: FC = () => {
                       {bFiveTwo.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/handyman"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2307,7 +2307,7 @@ const RentingProfservicesPage: FC = () => {
                       {bMesh.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/handyman"
                             key={item.name}
                             className={styles.main_item_3}
                           >
