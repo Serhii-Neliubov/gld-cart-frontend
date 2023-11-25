@@ -1524,7 +1524,7 @@ const RentingProfservicesPage: FC = () => {
                       {generalCleaning.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1541,7 +1541,7 @@ const RentingProfservicesPage: FC = () => {
                       {kitchenCleaning.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1558,7 +1558,7 @@ const RentingProfservicesPage: FC = () => {
                       {bathroomCleaning.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1575,7 +1575,7 @@ const RentingProfservicesPage: FC = () => {
                       {bedroomCleaning.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1592,7 +1592,7 @@ const RentingProfservicesPage: FC = () => {
                       {livingRoomCleaning.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1609,7 +1609,7 @@ const RentingProfservicesPage: FC = () => {
                       {laundyRoom.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1626,7 +1626,7 @@ const RentingProfservicesPage: FC = () => {
                       {homeCleaning.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1643,7 +1643,7 @@ const RentingProfservicesPage: FC = () => {
                       {entryRoom.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1660,7 +1660,7 @@ const RentingProfservicesPage: FC = () => {
                       {messenger.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/cleaning"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1677,7 +1677,7 @@ const RentingProfservicesPage: FC = () => {
                       {duffel.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1694,7 +1694,7 @@ const RentingProfservicesPage: FC = () => {
                       {hobo.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1711,7 +1711,7 @@ const RentingProfservicesPage: FC = () => {
                       {satchel.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1728,7 +1728,7 @@ const RentingProfservicesPage: FC = () => {
                       {bucket.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1745,7 +1745,7 @@ const RentingProfservicesPage: FC = () => {
                       {wallets.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1762,7 +1762,7 @@ const RentingProfservicesPage: FC = () => {
                       {lipBalm.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1779,7 +1779,7 @@ const RentingProfservicesPage: FC = () => {
                       {lipScrub.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1796,7 +1796,7 @@ const RentingProfservicesPage: FC = () => {
                       {lipMusk.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1813,7 +1813,7 @@ const RentingProfservicesPage: FC = () => {
                       {lipSunscreen.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/repairing"
                             key={item.name}
                             className={styles.main_item_3}
                           >

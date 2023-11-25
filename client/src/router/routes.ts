@@ -47,6 +47,14 @@ import ElectronicsRentingForm from "../pages/ElectronicsRentingForm/ElectronicsR
 import ElectronicsRentingPhoto from "../pages/ElectronicsRentingPhoto/ElectronicsRentingPhoto";
 import ElectronicsRentingSpecifications from "../pages/ElectronicsRentingSpecifications/ElectronicsRentingSpecifications";
 import ElectronicsRentingPublishing from "../pages/ElectronicsRentingPublishing/ElectronicsRentingPublishing";
+import CleaningServiceForm from "../pages/CleaningServiceForm/CleaningServiceForm";
+import CleaningServicePhoto from "../pages/CleaningServicePhoto/CleaningServicePhoto";
+import CleaningServiceSpecifications from "../pages/CleaningServiceSpecifications/CleaningServiceSpecifications";
+import CleaningServicePublishing from "../pages/CleaningServicePublishing/CleaningServicePublishing";
+import RepairingServiceForm from "../pages/RepairingServiceForm/RepairingServiceForm";
+import RepairingServicePhoto from "../pages/RepairingServicePhoto/RepairingServicePhoto";
+import RepairingServiceSpecifications from "../pages/RepairingServiceSpecifications/RepairingServiceSpecifications";
+import RepairingServicePublishing from "../pages/RepairingServicePublishing/RepairingServicePublishing";
 
 interface IRoutes {
   component: FC;
@@ -84,7 +92,7 @@ export const buyerRoutes: IRoutes[] = [
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
-
+  // House
   { component: HouseRentingForm, path: "/renting-category-page/houses" },
   {
     component: HouseRentingPhoto,
@@ -98,7 +106,7 @@ export const vendorRoutes: IRoutes[] = [
     component: HousePublishing,
     path: "/renting-category-page/houses/photo-and-video/specifications/publishing",
   },
-
+  // Electronics
   {
     component: ElectronicsRentingForm,
     path: "/renting-category-page/electronics",
@@ -115,7 +123,41 @@ export const vendorRoutes: IRoutes[] = [
     component: ElectronicsRentingPublishing,
     path: "/renting-category-page/electronics/photo-and-video/specifications/publishing",
   },
-
+  // Cleaning Service
+  {
+    component: CleaningServiceForm,
+    path: "/personal-services/cleaning",
+  },
+  {
+    component: CleaningServicePhoto,
+    path: "/personal-services/cleaning/photo-and-video",
+  },
+  {
+    component: CleaningServiceSpecifications,
+    path: "/personal-services/cleaning/photo-and-video/specifications",
+  },
+  {
+    component: CleaningServicePublishing,
+    path: "/personal-services/cleaning/photo-and-video/specifications/publishing",
+  },
+  // Repairing Service
+  {
+    component: RepairingServiceForm,
+    path: "/personal-services/repairing",
+  },
+  {
+    component: RepairingServicePhoto,
+    path: "/personal-services/repairing/photo-and-video",
+  },
+  {
+    component: RepairingServiceSpecifications,
+    path: "/renting-category-page/repairing/photo-and-video/specifications",
+  },
+  {
+    component: RepairingServicePublishing,
+    path: "/renting-category-page/repairing/photo-and-video/specifications/publishing",
+  },
+  // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },
   { component: ContactUsPage, path: "/contact-us" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
