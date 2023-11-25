@@ -70,6 +70,14 @@ import HandymanServiceForm from "../pages/HandymanServiceForm/HandymanServiceFor
 import HandymanServicePhoto from "../pages/HandymanServicePhoto/HandymanServicePhoto";
 import HandymanServiceSpecifications from "../pages/HandymanServiceSpecifications/HandymanServiceSpecifications";
 import HandymanServicePublishing from "../pages/HandymanServicePublishing/HandymanServicePublishing";
+import SnowRemovalServiceForm from "../pages/SnowRemovalServiceForm/SnowRemovalServiceForm";
+import SnowRemovalServicePhoto from "../pages/SnowRemovalServicePhoto/SnowRemovalServicePhoto";
+import SnowRemovalServiceSpecifications from "../pages/SnowRemovalServiceSpecifications/SnowRemovalServiceSpecifications";
+import SnowRemovalServicePublishing from "../pages/SnowRemovalServicePublishing/SnowRemovalServicePublishing";
+import PestControlServiceForm from "../pages/PestControlServiceForm/PestControlServiceForm";
+import PestControlServicePhoto from "../pages/PestControlServicePhoto/PestControlServicePhoto";
+import PestControlServiceSpecifications from "../pages/PestControlServiceSpecifications/PestControlServiceSpecifications";
+import PestControlServicePublishing from "../pages/PestControlServicePublishing/PestControlServicePublishing";
 
 interface IRoutes {
   component: FC;
@@ -239,6 +247,40 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: HandymanServicePublishing,
     path: "/renting-category-page/handyman/photo-and-video/specifications/publishing",
+  },
+  // Snow Removal Service
+  {
+    component: SnowRemovalServiceForm,
+    path: "/personal-services/snow-removal",
+  },
+  {
+    component: SnowRemovalServicePhoto,
+    path: "/personal-services/snow-removal/photo-and-video",
+  },
+  {
+    component: SnowRemovalServiceSpecifications,
+    path: "/renting-category-page/snow-removal/photo-and-video/specifications",
+  },
+  {
+    component: SnowRemovalServicePublishing,
+    path: "/renting-category-page/snow-removal/photo-and-video/specifications/publishing",
+  },
+  // Pest Control Service
+  {
+    component: PestControlServiceForm,
+    path: "/personal-services/pest-control",
+  },
+  {
+    component: PestControlServicePhoto,
+    path: "/personal-services/pest-control/photo-and-video",
+  },
+  {
+    component: PestControlServiceSpecifications,
+    path: "/renting-category-page/pest-control/photo-and-video/specifications",
+  },
+  {
+    component: PestControlServicePublishing,
+    path: "/renting-category-page/pest-control/photo-and-video/specifications/publishing",
   },
   // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },

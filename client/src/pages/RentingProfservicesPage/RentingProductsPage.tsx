@@ -566,14 +566,6 @@ const facialTools = [
   { name: "Skunk Control Services" },
   { name: "Other" },
 ];
-const toning = [
-  { name: "Pigeon Control" },
-  { name: "Seagull Deterrence" },
-  { name: "Sparrow Nest Removal" },
-  { name: "Crow and Magpie Control" },
-  { name: "Woodpecker Solutions" },
-  { name: "Other" },
-];
 const makeup = [
   { name: "Organic Pest Control" },
   { name: "Non-Toxic Treatments" },
@@ -2324,7 +2316,7 @@ const RentingProfservicesPage: FC = () => {
                       {bFiveThree.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/snow-removal"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2341,7 +2333,7 @@ const RentingProfservicesPage: FC = () => {
                       {cleansers.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/snow-removal"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2358,7 +2350,7 @@ const RentingProfservicesPage: FC = () => {
                       {serums.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/snow-removal"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2375,7 +2367,7 @@ const RentingProfservicesPage: FC = () => {
                       {sunProtection.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/snow-removal"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2392,7 +2384,7 @@ const RentingProfservicesPage: FC = () => {
                       {acne.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2409,7 +2401,7 @@ const RentingProfservicesPage: FC = () => {
                       {faceMasks.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2426,7 +2418,7 @@ const RentingProfservicesPage: FC = () => {
                       {eyeCare.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2443,24 +2435,7 @@ const RentingProfservicesPage: FC = () => {
                       {facialTools.map((item) => {
                         return (
                           <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}{" "}
-                  {selectedButton === "Nuisance Bird Management" ? (
-                    <div className={styles.main_items_3}>
-                      {toning.map((item) => {
-                        return (
-                          <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2477,7 +2452,7 @@ const RentingProfservicesPage: FC = () => {
                       {makeup.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2494,7 +2469,7 @@ const RentingProfservicesPage: FC = () => {
                       {antiAging.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2511,7 +2486,7 @@ const RentingProfservicesPage: FC = () => {
                       {athletic.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2528,7 +2503,7 @@ const RentingProfservicesPage: FC = () => {
                       {casual.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2545,7 +2520,7 @@ const RentingProfservicesPage: FC = () => {
                       {formal.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2562,7 +2537,7 @@ const RentingProfservicesPage: FC = () => {
                       {bootsAndBooties.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/pest-control"
                             key={item.name}
                             className={styles.main_item_3}
                           >
