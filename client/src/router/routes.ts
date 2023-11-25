@@ -55,6 +55,13 @@ import RepairingServiceForm from "../pages/RepairingServiceForm/RepairingService
 import RepairingServicePhoto from "../pages/RepairingServicePhoto/RepairingServicePhoto";
 import RepairingServiceSpecifications from "../pages/RepairingServiceSpecifications/RepairingServiceSpecifications";
 import RepairingServicePublishing from "../pages/RepairingServicePublishing/RepairingServicePublishing";
+import GardeningServiceForm from "../pages/GardeningServiceForm/GardeningServiceForm";
+import GardeningServicePhoto from "../pages/GardeningServicePhoto/GardeningServicePhoto";
+import GardeningServiceSpecifications from "../pages/GardeningServiceSpecifications/GardeningServiceSpecifications";
+import GardeningServicePublishing from "../pages/GardeningServicePublishing/GardeningServicePublishing";
+import TreeCuttingServiceForm from "../pages/TreeCuttingServiceForm/TreeCuttingServiceForm";
+import TreeCuttingServicePhoto from "../pages/TreeCuttingServicePhoto/TreeCuttingServicePhoto";
+import TreeCuttingServicePublishing from "../pages/TreeCuttingServicePublishing/TreeCuttingServicePublishing";
 
 interface IRoutes {
   component: FC;
@@ -156,6 +163,40 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: RepairingServicePublishing,
     path: "/renting-category-page/repairing/photo-and-video/specifications/publishing",
+  },
+  // Gardening Service
+  {
+    component: GardeningServiceForm,
+    path: "/personal-services/gardening",
+  },
+  {
+    component: GardeningServicePhoto,
+    path: "/personal-services/gardening/photo-and-video",
+  },
+  {
+    component: GardeningServiceSpecifications,
+    path: "/renting-category-page/gardening/photo-and-video/specifications",
+  },
+  {
+    component: GardeningServicePublishing,
+    path: "/renting-category-page/gardening/photo-and-video/specifications/publishing",
+  },
+  // Tree Cutting Service
+  {
+    component: TreeCuttingServiceForm,
+    path: "/personal-services/tree-cutting",
+  },
+  {
+    component: TreeCuttingServicePhoto,
+    path: "/personal-services/tree-cutting/photo-and-video",
+  },
+  {
+    component: GardeningServiceSpecifications,
+    path: "/renting-category-page/tree-cutting/photo-and-video/specifications",
+  },
+  {
+    component: TreeCuttingServicePublishing,
+    path: "/renting-category-page/tree-cutting/photo-and-video/specifications/publishing",
   },
   // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },

@@ -1830,7 +1830,7 @@ const RentingProfservicesPage: FC = () => {
                       {lipTint.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1847,7 +1847,7 @@ const RentingProfservicesPage: FC = () => {
                       {lipCare.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1864,7 +1864,7 @@ const RentingProfservicesPage: FC = () => {
                       {organicLip.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1881,7 +1881,7 @@ const RentingProfservicesPage: FC = () => {
                       {lipCareSeasons.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1898,7 +1898,7 @@ const RentingProfservicesPage: FC = () => {
                       {lipCareSpecial.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1915,7 +1915,7 @@ const RentingProfservicesPage: FC = () => {
                       {DIYLipCare.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1932,7 +1932,7 @@ const RentingProfservicesPage: FC = () => {
                       {android.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1949,7 +1949,7 @@ const RentingProfservicesPage: FC = () => {
                       {iOS.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1966,7 +1966,7 @@ const RentingProfservicesPage: FC = () => {
                       {chainNeckaces.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/gardening"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -1983,7 +1983,7 @@ const RentingProfservicesPage: FC = () => {
                       {layeredNeckaces.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/tree-cutting"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2000,7 +2000,7 @@ const RentingProfservicesPage: FC = () => {
                       {pandantNeckaces.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/tree-cutting"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2017,7 +2017,7 @@ const RentingProfservicesPage: FC = () => {
                       {chokerNeckaces.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/tree-cutting"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2035,7 +2035,7 @@ const RentingProfservicesPage: FC = () => {
                       {statementNecklaces.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/tree-cutting"
                             key={item.name}
                             className={styles.main_item_3}
                           >
@@ -2052,7 +2052,7 @@ const RentingProfservicesPage: FC = () => {
                       {tops.map((item) => {
                         return (
                           <Link
-                            to="/"
+                            to="/personal-services/tree-cutting"
                             key={item.name}
                             className={styles.main_item_3}
                           >
