@@ -1,8 +1,8 @@
 "use client";
 import React, { FC, useState } from "react";
-import { useTranslation } from "react-i18next";
 import "./Header.scss";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const languages = ["English", "Russian", "Ukrainian", "German"];
 

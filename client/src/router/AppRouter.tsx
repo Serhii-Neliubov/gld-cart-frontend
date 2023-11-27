@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { FC } from "react";
-import Label from "../components/Home/HomeElements/Label";
-import Header from "../components/UI/Header";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
@@ -13,6 +11,8 @@ import {
 } from "../redux/Slices/userDataSlice";
 import IUser from "../models/IUser";
 import axios from "axios";
+import Header from "../components/UI/Header";
+import Label from "../../components/Label";
 
 const AppRouter: FC = () => {
   const isAuth = useSelector<RootState, boolean>(selectIsAuth);
