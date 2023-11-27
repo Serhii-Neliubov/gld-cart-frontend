@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
 import "../src/i18n";
+import "./global.scss";
+import { Provider } from "react-redux";
+import { store } from "../src/redux/store";
 
 export default function RootLayout({
   children,
@@ -9,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <Provider store={store}>
+        <body>{children}</body>
+      </Provider>
     </html>
   );
 }

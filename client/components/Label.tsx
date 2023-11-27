@@ -1,7 +1,6 @@
 "use client";
 import "./Label.scss";
 import Link from "next/link";
-import { useSelector } from "react-redux";
 import {
   selectIsAuth,
   userDataSelector,
@@ -10,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import React, { FC } from "react";
 import { RootState } from "../src/redux/store.ts";
 import IUser from "../src/models/IUser.ts";
+import { useSelector } from "react-redux";
 
 interface NavLinkProps {
   to: string;
@@ -30,7 +30,7 @@ const Label: FC = () => {
       to: user.type == "Vendor" ? "/products-category-page" : "/products",
       label: t("products"),
     },
-    { to: "/personal-services", label: t("professional services") },
+    { to: "/professional-services", label: t("professional services") },
     { to: "/contact-us", label: t("contact us") },
   ];
 
@@ -61,10 +61,10 @@ const Label: FC = () => {
         <div className="label__actions">
           {user.type == "Vendor" ? null : (
             <>
-              <Link href="/wishlist-no-found" className="label__like-btn">
+              <Link href="/wishlist" className="label__like-btn">
                 <img src="/like-icon.svg" alt="Like icon" />
               </Link>
-              <Link href="/shopping-cart-no-found" className="label__trash-btn">
+              <Link href="/shopping-cart" className="label__trash-btn">
                 <img src="/trash-icon.svg" alt="Trash icon" />
               </Link>
             </>

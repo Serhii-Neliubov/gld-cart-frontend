@@ -9,12 +9,24 @@
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
     "/renting/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/renting/page.css",
       "static/chunks/app/renting/page.js"
+    ],
+    "/products/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/products/page.js"
+    ],
+    "/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/login/page.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",

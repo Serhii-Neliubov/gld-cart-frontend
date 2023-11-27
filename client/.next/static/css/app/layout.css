@@ -1,180 +1,183 @@
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[13].use[5]!./components/Header.scss ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[13].use[5]!./app/global.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
-.header {
-  position: relative;
-  padding: 40px 0;
+@import url(https://fonts.googleapis.com/css?family=Poppins:regular,500,600,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Inter:500,600&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Roboto:regular,700&display=swap);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
 }
 
-.header__container {
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
-.header__input {
-  width: 33.75rem;
-  outline: none;
-  background-color: var(--Secondary, #f5f5f5);
-  border-radius: 5px;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
+html,
+body {
+  height: 100%;
+  min-width: 320px;
 }
 
-.header__input input {
-  background: none;
-  padding: 10px 20px;
-  width: 100%;
-  outline: none;
+body {
+  color: #121212;
+  line-height: 1;
+  font-family: "Poppins";
+  font-size: 1rem;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.header__input input::placeholder {
-  font-family: Poppins;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
-  /* 150% */
+input,
+button,
+textarea {
+  font-family: "Poppins";
+  font-size: inherit;
+  line-height: inherit;
 }
 
-.header__input input:focus::placeholder {
-  /* Стили для скрытия плейсхолдера при фокусе */
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.header__search-btn {
-  background-image: url(/_next/static/media/search-icon.114be111.svg);
-  width: 1.5rem;
-  height: 1.5rem;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-right: 1.5rem;
-}
-
-.header__button-lang {
+button {
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  position: relative;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  color: inherit;
+  background-color: transparent;
 }
 
-.header__language-modal {
-  padding: 10px;
-  font-size: 16px;
-  content: "";
-  font-size: 18px;
-  position: absolute;
-  top: 25px;
-  right: 5px;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.lock body {
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+.wrapper {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.404);
-  border-radius: 5px;
-  z-index: 10;
+  overflow: hidden;
 }
 
-.header__language-modal-elem:hover {
-  color: red;
+@supports (overflow: clip) {
+  .wrapper {
+    overflow: clip;
+  }
 }
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[13].use[5]!./components/Label.scss ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.label {
-  position: relative;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  padding: 19px 0;
+.wrapper > main {
+  flex: 1 1 auto;
 }
 
-.label__container {
-  display: flex;
-  justify-content: space-between;
+.wrapper > * {
+  min-width: 0;
 }
 
-.label__title {
-  display: flex;
-  align-items: center;
-  font-family: Inter;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 100%;
-  letter-spacing: 0.72px;
+/*
+(i) Стилі будуть застосовуватись до
+всіх класів, що містять *__container
+Наприклад header__container, main__container і т.п.
+Сніппет (HTML): cnt
+*/
+[class*=__container] {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 0.9375rem;
 }
 
-.label__menu {
-  display: flex;
-  align-items: center;
-}
-
-.label__list {
-  display: flex;
-  gap: 2.5rem;
-}
-
-.label__link {
-  text-transform: uppercase;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  transition: all 0.3s ease;
-}
-.label__link_active {
-  color: red;
-  font-weight: 700;
-}
-
-.label__link:hover {
-  color: rgba(255, 88, 88, 0.7411764706);
-}
-
-.label__actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.label__profile-btn {
-  display: flex;
-  align-items: center;
+[class*=-ibg] {
   position: relative;
 }
 
-.label__profile-btn span {
-  color: #000;
-  font-family: Poppins;
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 112.5%;
+[class*=-ibg] img {
   position: absolute;
-  left: 120%;
-  text-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
 }
 
-.label__trash-btn {
-  position: relative;
+[class*=-ibg--contain] img {
+  object-fit: contain;
 }
 
-.label__cart-count {
-  padding: 5px;
-  border-radius: 50%;
-  background-color: #2283dc;
-  color: white;
-  display: flex;
-  font-size: 12px;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: -40%;
-  left: 50%;
+/*
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: toRem(30);
+		height: toRem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: toRem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - toRem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - toRem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - toRem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
 }
+*/
