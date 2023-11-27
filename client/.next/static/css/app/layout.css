@@ -1,0 +1,180 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[13].use[5]!./components/Header.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+.header {
+  position: relative;
+  padding: 40px 0;
+}
+
+.header__container {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.header__input {
+  width: 33.75rem;
+  outline: none;
+  background-color: var(--Secondary, #f5f5f5);
+  border-radius: 5px;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.header__input input {
+  background: none;
+  padding: 10px 20px;
+  width: 100%;
+  outline: none;
+}
+
+.header__input input::placeholder {
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  /* 150% */
+}
+
+.header__input input:focus::placeholder {
+  /* Стили для скрытия плейсхолдера при фокусе */
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.header__search-btn {
+  background-image: url(/_next/static/media/search-icon.114be111.svg);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 1.5rem;
+}
+
+.header__button-lang {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.header__language-modal {
+  padding: 10px;
+  font-size: 16px;
+  content: "";
+  font-size: 18px;
+  position: absolute;
+  top: 25px;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.404);
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.header__language-modal-elem:hover {
+  color: red;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[13].use[5]!./components/Label.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.label {
+  position: relative;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 19px 0;
+}
+
+.label__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label__title {
+  display: flex;
+  align-items: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0.72px;
+}
+
+.label__menu {
+  display: flex;
+  align-items: center;
+}
+
+.label__list {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.label__link {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  transition: all 0.3s ease;
+}
+.label__link_active {
+  color: red;
+  font-weight: 700;
+}
+
+.label__link:hover {
+  color: rgba(255, 88, 88, 0.7411764706);
+}
+
+.label__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label__profile-btn {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.label__profile-btn span {
+  color: #000;
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 112.5%;
+  position: absolute;
+  left: 120%;
+  text-wrap: nowrap;
+}
+
+.label__trash-btn {
+  position: relative;
+}
+
+.label__cart-count {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #2283dc;
+  color: white;
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -40%;
+  left: 50%;
+}
