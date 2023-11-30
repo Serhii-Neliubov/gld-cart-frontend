@@ -23,20 +23,3 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction): vo
   res.locals.user = userData;
   next();
 };
-export const requireAuthWithGoogle = (req: Request, res: Response, next: NextFunction): void => {
-  const accessToken = req.cookies.accessToken as string;
-
-  if (!accessToken) {
-    console.log("no access token was provided");
-    return next(ApiError.UnauthorizedError());
-  }
-  const userData = TokenService.validateAccessToken(accessToken);
-
-  if (!userData) {
-    console.log("access token is invalid");
-    return next(ApiError.UnauthorizedError());
-  }
-  res.locals.accessToken = accessToken;
-  res.locals.user = userData;
-  next();
-};
