@@ -93,14 +93,11 @@ export const create_order = async (
         }
         const data = event.data.object;
         const eventType: string = event.type;
-
-        console.log({...data});
-
         switch (eventType) {
             case "checkout.session.completed":
                 try {
                     const customer = await stripe.customers.retrieve(
-                        data.customer
+                        (data as { customer: string }).customer
                     );
                     await StoreService.createOrder(customer, data);
                 } catch (err) {
