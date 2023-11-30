@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from "express";
-import Stripe                            from "stripe";
-import StoreService                      from "../services/store-service";
+import Stripe from "stripe";
+import StoreService from "../services/store-service";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2023-08-16",
@@ -101,7 +101,7 @@ export const create_order = async (
                 try {
                     const customer = await stripe.customers.retrieve(
                         data.customer
-                    )
+                    );
                     await StoreService.createOrder(customer, data);
                 } catch (err) {
                     console.log(err);
