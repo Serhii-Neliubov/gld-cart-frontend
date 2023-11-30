@@ -1,4 +1,6 @@
 import Order from "../models/Order";
+import Stripe from "stripe";
+import Product, {IProduct} from "../models/Product";
 
 class StoreService {
     async createOrder(customer: Stripe.Customer | Stripe.DeletedCustomer, data: Stripe.Event.Data.Object) {
@@ -9,26 +11,6 @@ class StoreService {
             "amount_total" in data &&
             "customer_details" in data &&
             "payment_status" in data) {
-
-    async createOrder(customer, data) {
-        const Items = JSON.parse(customer.metadata.cart);
-        try {
-            const newOrder = new Order({
-                userId: customer.metadata.userId,
-                customerId: data.customer,
-                paymentIntentId: data.payment_intent,
-                products: Items,
-                subtotal: data.amount_subtotal,
-                total: data.amount_total,
-                shipping: data.customer_details,
-                payment_status: data.payment_status,
-            });
-            const savedOrder = await newOrder.save();
-            console.log("Processed Order:", savedOrder);
-        } catch (err) {
-            console.log(err);
-        }
-    };
 
             const Items = JSON.parse(customer.metadata.cart) as IProduct[];
             console.log(Items);
@@ -49,6 +31,9 @@ class StoreService {
                 console.log(err);
             }
         }
+    }
+    async createProduct(name: string, brand: string, desc: string, price: number, image: string, cartQuantity: number) {
+        return <IProduct>await Product.create({name, brand, desc, price, image, cartQuantity});
     }
 }
 
