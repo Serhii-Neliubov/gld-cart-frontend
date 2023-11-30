@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import ChatService                       from "../services/chat-service";
+import ChatService from "../services/chat-service";
 
 export const createMessage = async (
     req: Request,
