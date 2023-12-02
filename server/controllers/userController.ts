@@ -1,8 +1,8 @@
-import {NextFunction, Request, Response}      from "express";
-import MailService                            from "../services/mail-service";
-import UserService                            from "../services/user-service";
-import TokenService                           from "../services/token-service";
-import {v4 as uuidv4}                         from "uuid";
+import {NextFunction, Request, Response} from "express";
+import MailService from "../services/mail-service";
+import UserService from "../services/user-service";
+import TokenService from "../services/token-service";
+import {v4 as uuidv4} from "uuid";
 import {getGoogleOAuthTokens, getGoogleUser,} from "../services/google-service";
 
 export const signup_post = async (
@@ -11,7 +11,6 @@ export const signup_post = async (
     next: NextFunction
 ): Promise<void> => {
     const {type, name, surname, email, password} = req.body;
-
     try {
         const userData = await UserService.registration(
             type,
@@ -22,7 +21,7 @@ export const signup_post = async (
         );
         res.cookie("refreshToken", userData.refreshToken, {
             httpOnly: true,
-            maxAge: process.env.COOKIES_MAX_AGE as number,
+            maxAge: process.env.COOKIES_MAX_AGE as unknown as number,
         });
 
         res.status(201).json(userData);
@@ -42,7 +41,7 @@ export const login_post = async (
 
         res.cookie("refreshToken", userData.refreshToken, {
             httpOnly: true,
-            maxAge: process.env.COOKIES_MAX_AGE as number,
+            maxAge: process.env.COOKIES_MAX_AGE as unknown as number,
         });
 
         res.status(201).json(userData);
@@ -108,7 +107,7 @@ export const refresh_get = async (
         const userData = await UserService.refresh(refreshToken);
         res.cookie("refreshToken", userData.refreshToken, {
             httpOnly: true,
-            maxAge: process.env.COOKIES_MAX_AGE as number,
+            maxAge: process.env.COOKIES_MAX_AGE as unknown as number,
         });
         return res.json(userData);
     } catch (e) {
@@ -142,14 +141,14 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
     const customParameter = req.query.state;
     try {
         const {id_token, access_token} = await getGoogleOAuthTokens({code});
-        const googleUser = await getGoogleUser({id_token, access_token});
+        const googleUser = await getGoogleUser(id_token, access_token);
 
         if (!googleUser.verified_email) {
             return res.status(403).send("Google account is not verified");
         }
         const userData = await UserService.loginGoogleUser(
             code,
-            customParameter,
+            customParameter as string,
             googleUser.name,
             googleUser.family_name,
             googleUser.email,
@@ -158,7 +157,7 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
         );
         res.cookie("refreshToken", userData.refreshToken, {
             httpOnly: true,
-            maxAge: process.env.COOKIES_MAX_AGE as number,
+            maxAge: process.env.COOKIES_MAX_AGE as unknown as number,
         });
         const redirectURL: string = `${process.env.CLIENT_URL}`;
         res.redirect(redirectURL);

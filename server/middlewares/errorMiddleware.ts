@@ -1,12 +1,10 @@
 
-import { Request, Response, NextFunction } from 'express';
+import { Response } from 'express';
 import ApiError from '../exceptions/api-error';
 
 export default function errorHandler(
     err: Error,
-    req: Request,
-    res: Response,
-    next: NextFunction
+    res: Response
 ) {
   console.log(err);
 
@@ -18,6 +16,5 @@ export default function errorHandler(
       errors: apiError.errors,
     });
   }
-
   return res.status(500).json({ message: 'Undefined server error' });
 }

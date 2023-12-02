@@ -1,10 +1,10 @@
-import bcrypt               from "bcrypt";
-import UserModel, {IUser}   from "../models/User";
+import bcrypt from "bcrypt";
+import UserModel, {IUser} from "../models/User";
 import TokenModel, {IToken} from "../models/Token";
-import TokenService         from "./token-service";
-import UserDto              from "../dtos/user-dto";
-import ApiError             from "../exceptions/api-error";
-import mailService          from "./mail-service";
+import TokenService from "./token-service";
+import UserDto from "../dtos/user-dto";
+import ApiError from "../exceptions/api-error";
+import mailService from "./mail-service";
 
 class UserService {
     async registration(
@@ -60,7 +60,7 @@ class UserService {
 
     async loginGoogleUser(
         code: string,
-        customParameter,
+        customParameter: string,
         name: string,
         family_name: string,
         email: string,
