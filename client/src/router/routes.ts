@@ -16,8 +16,6 @@ import CookiePolicyPage from "../pages/CookiePolicyPage/CookiePolicyPage";
 import ShippingPolicyPage from "../pages/ShippingPolicyPage/ShippingPolicyPage";
 import FaqsPage from "../pages/FaqsPage/FaqsPage";
 import RentingCategoryPage from "../pages/RentingCategoryPage/RentingCategoryPage";
-import NoWishListPage from "../pages/NoWishListPage/NoWishListPage";
-import NoShoppingCartPage from "../pages/NoShoppingCartPage/NoShoppingCartPage";
 import ShoppingCartPage from "../pages/ShoppingCartPage/ShoppingCartPage";
 import RentingCarPage from "../pages/RentingCarPage/RentingCarPage";
 import RentingElectronicsPage from "../pages/RentingElectronicsPage/RentingElectronicsPage";
@@ -82,6 +80,7 @@ import ElectricalServiceForm from "../pages/ElectricalServiceForm/ElectricalServ
 import ElectricalServicePhoto from "../pages/ElectricalServicePhoto/ElectricalServicePhoto";
 import ElectricalServiceSpecifications from "../pages/ElectricalServiceSpecifications/ElectricalServiceSpecifications";
 import ElectricalServicePublishing from "../pages/ElectricalServicePublishing/ElectricalServicePublishing";
+import WishlistPage from "../pages/WishlistPage/WishlistPage";
 
 interface IRoutes {
   component: FC;
@@ -102,8 +101,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: ProductsPage, path: "/products" },
   { component: SendMessagePage, path: "/send-message" },
   { component: ProfServicesPage, path: "/personal-services" },
-  { component: NoWishListPage, path: "/wishlist-no-found" },
-  { component: NoShoppingCartPage, path: "/shopping-cart-no-found" },
+  { component: WishlistPage, path: "/wishlist" },
   { component: ShoppingCartPage, path: "/shopping-cart" },
   { component: RentingCarPage, path: "renting-car" },
   { component: RentingCategoryPage, path: "/renting" },

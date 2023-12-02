@@ -1,11 +1,9 @@
+import { Link } from "react-router-dom";
 import styles from "./ShoppingCartPage.module.scss";
-import SavedItems from "../../utils/SavedItems";
-import { FC, useState } from "react";
 import Footer from "../../components/UI/Footer";
+import { FC } from "react";
 
 const ShoppingCartPage: FC = () => {
-  const [result] = useState<number>(0);
-
   return (
     <>
       <div className={styles.body}>
@@ -16,17 +14,10 @@ const ShoppingCartPage: FC = () => {
             <span>Shopping Cart</span>
           </div>
           <div className={styles.content}>
-            <div className={styles.items}>
-              {SavedItems.map(() => {
-                return <div>123</div>;
-              })}
-            </div>
-            <div className={styles.sidebar}>
-              <div className={styles.total}>
-                <h2>Subtotal</h2>
-                <span>{result}</span>
-              </div>
-            </div>
+            <h2>No Cart Items Found</h2>
+            <Link className={styles.link} to="/products">
+              Continue Shipping
+            </Link>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from "./NoWishListPage.module.scss";
+import styles from "./WishlistPage.module.scss";
 import Footer from "../../components/UI/Footer";
 import { FC } from "react";
 
-const NoWishListPage: FC = () => {
+const WishlistPage: FC = () => {
   return (
     <>
       <div className={styles.body}>
@@ -26,4 +26,4 @@ const NoWishListPage: FC = () => {
   );
 };
 
-export default NoWishListPage;
+export default WishlistPage;
