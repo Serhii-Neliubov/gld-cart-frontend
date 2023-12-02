@@ -3,8 +3,6 @@ import "./Renting.module.scss";
 import styles from "./Renting.module.scss";
 import Footer from "../../components/UI/Footer";
 import { Link } from "react-router-dom";
-import Header from "../../../components/Header";
-import Label from "../../../components/Label";
 
 const Renting: FC = () => {
   useEffect(() => {

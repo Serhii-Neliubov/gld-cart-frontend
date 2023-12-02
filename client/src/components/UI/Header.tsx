@@ -8,7 +8,6 @@ const languages = ["English", "Russian", "Ukrainian", "German"];
 const Header: FC = () => {
   const [openLanguageModal, setOpenLanguageModal] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>("English");
-
   const { t, i18n } = useTranslation();
 
   const languageCodes: { [key: string]: string } = {

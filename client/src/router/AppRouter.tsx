@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FC } from "react";
+import Label from "../components/Home/HomeElements/Label";
+import Header from "../components/UI/Header";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
@@ -11,12 +13,12 @@ import {
 } from "../redux/Slices/userDataSlice";
 import IUser from "../models/IUser";
 import axios from "axios";
-import Header from "../components/UI/Header";
-import Label from "../../components/Label";
+import { isLoading } from "../redux/Slices/isLoadingSlice";
 
 const AppRouter: FC = () => {
   const isAuth = useSelector<RootState, boolean>(selectIsAuth);
   const user = useSelector<RootState, IUser>(userDataSelector);
+  const loading = useSelector<RootState, boolean>(isLoading);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -28,7 +30,7 @@ const AppRouter: FC = () => {
         });
         localStorage.setItem("token", data.accessToken);
         dispatch(checkAuth());
-        console.log(data.accessToken);
+        console.log(user);
         return data;
       } catch (e) {
         return null;
@@ -38,58 +40,71 @@ const AppRouter: FC = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      dispatch(checkAuth());
-    }
-  }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  return (
-    <BrowserRouter>
-      <Header />
-      <Label />
-      <Routes>
-        {isAuth
-          ? user.type == "Vendor"
-            ? vendorRoutes.map((route) => {
-                return (
-                  <>
-                    <Route
-                      Component={route.component}
-                      path={route.path}
-                      key={route.path}
-                    />
-                    <Route path="/*" element={<Navigate to="/not-found" />} />
-                  </>
-                );
-              })
-            : buyerRoutes.map((route) => {
-                return (
-                  <>
-                    <Route
-                      Component={route.component}
-                      path={route.path}
-                      key={route.path}
-                    />
-                    <Route path="/*" element={<Navigate to="/not-found" />} />
-                  </>
-                );
-              })
-          : noAuthRotes.map((route) => {
-              return (
-                <>
-                  <Route
-                    Component={route.component}
-                    path={route.path}
-                    key={route.path}
-                  />
-                  <Route path="/*" element={<Navigate to="/login" />} />
-                </>
-              );
-            })}
-      </Routes>
-    </BrowserRouter>
-  );
+  if (!isAuth) {
+    return (
+      <BrowserRouter>
+        <Header />
+        <Label />
+        <Routes>
+          {noAuthRotes.map((route) => {
+            return (
+              <Route
+                Component={route.component}
+                path={route.path}
+                key={route.path}
+              />
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+
+  if (user.type === "Vendor") {
+    return (
+      <BrowserRouter>
+        <Header />
+        <Label />
+        <Routes>
+          {vendorRoutes.map((route) => {
+            return (
+              <Route
+                Component={route.component}
+                path={route.path}
+                key={route.path}
+              />
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+
+  if (user.type === "Buyer") {
+    return (
+      <BrowserRouter>
+        <Header />
+        <Label />
+        <Routes>
+          {buyerRoutes.map((route) => {
+            return (
+              <Route
+                Component={route.component}
+                path={route.path}
+                key={route.path}
+              />
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+
+  return <></>;
 };
 
 export default AppRouter;

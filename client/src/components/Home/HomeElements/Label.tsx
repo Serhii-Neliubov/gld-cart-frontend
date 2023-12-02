@@ -23,15 +23,26 @@ const Label: FC = () => {
   const navLinks: NavLinkProps[] = [
     { to: "/", label: t("home") },
     {
-      to: user.type == "Vendor" ? "/renting-category-page" : "/renting",
+      to: !isAuth
+        ? "login"
+        : user.type == "Vendor"
+        ? "/renting-category-page"
+        : "/renting",
       label: t("renting"),
     },
     {
-      to: user.type == "Vendor" ? "/products-category-page" : "/products",
+      to: !isAuth
+        ? "login"
+        : user.type == "Vendor"
+        ? "/products-category-page"
+        : "/products",
       label: t("products"),
     },
-    { to: "/personal-services", label: t("professional services") },
-    { to: "/contact-us", label: t("contact us") },
+    {
+      to: user.type ? "/personal-services" : "login",
+      label: t("professional services"),
+    },
+    { to: user.type ? "/contact-us" : "login", label: t("contact us") },
   ];
 
   return (
@@ -42,7 +53,7 @@ const Label: FC = () => {
           <nav className="label__body">
             <ul className="label__list">
               {navLinks.map((navLink) => (
-                <li className="label__item" key={navLink.to}>
+                <li className="label__item" key={navLink.label}>
                   <Link
                     to={navLink.to}
                     className={`label__link ${
@@ -61,10 +72,16 @@ const Label: FC = () => {
         <div className="label__actions">
           {user.type == "Vendor" ? null : (
             <>
-              <Link to="/wishlist-no-found" className="label__like-btn">
+              <Link
+                to={!isAuth ? "/login" : "/wishlist-no-found"}
+                className="label__like-btn"
+              >
                 <img src="/like-icon.svg" alt="Like icon" />
               </Link>
-              <Link to="/shopping-cart-no-found" className="label__trash-btn">
+              <Link
+                to={!isAuth ? "/login" : "/shopping-cart-no-found"}
+                className="label__trash-btn"
+              >
                 <img src="/trash-icon.svg" alt="Trash icon" />
               </Link>
             </>

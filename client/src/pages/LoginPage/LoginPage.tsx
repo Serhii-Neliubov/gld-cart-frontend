@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import styles from "./LoginPage.module.scss";
+import { useState }        from "react";
+import {Link, useNavigate} from "react-router-dom";
+import styles              from "./LoginPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useEffect } from "react";
 import { AppDispatch } from "../../redux/store";
@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/Slices/userDataSlice";
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const [isEmptyEmail, setIsEmptyEmail] = useState<boolean>(false);
   const [userData, setUserData] = useState<{ email: string; password: string }>(
     {
@@ -32,8 +33,7 @@ const LoginPage = () => {
     // };
     const options = {
       redirect_uri: "http://localhost:3001/tokens/oauth/google",
-      client_id:
-        "779302160501-d6omdv1c2cdknj75b17epp22tc40u0eu.apps.googleusercontent.com",
+      client_id: "779302160501-d6omdv1c2cdknj75b17epp22tc40u0eu.apps.googleusercontent.com",
       access_type: "offline",
       response_type: "code",
       prompt: "consent",

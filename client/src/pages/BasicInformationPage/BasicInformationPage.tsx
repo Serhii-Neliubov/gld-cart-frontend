@@ -1,8 +1,42 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import styles from "./BasicInformationPage.module.scss";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { updateVehicle } from "../../redux/Slices/vehiclesItemSlice";
 
 const BasicInformationPage: FC = () => {
+  const vehicleData = useSelector((state: RootState) => state);
+  const dispatch = useDispatch();
+
+  const [selectedRentingPackage, setSelectedRentingPackage] = useState<
+    string | null
+  >(null);
+  const [selectedDriverType, setSelectedDriverType] = useState("");
+
+  const handleCheckboxChange = (packageType: string) => {
+    setSelectedRentingPackage((prevSelected) =>
+      prevSelected === packageType ? null : packageType
+    );
+    dispatch(
+      updateVehicle({
+        key: "renting_packages",
+        value: packageType,
+      })
+    );
+  };
+  const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
+    dispatch(
+      updateVehicle({
+        key: "driver_choice",
+        value: event.target.value,
+      })
+    );
+    setSelectedDriverType(event.target.value);
+  };
+
+  console.log(vehicleData.vehicleDataSlice.vehicle);
   return (
     <div style={{ paddingBottom: "50px" }} className="__container">
       <div className={styles.routings}>
@@ -48,11 +82,32 @@ const BasicInformationPage: FC = () => {
         <h2 className={styles.content_title}>Basic Information</h2>
         <div className={styles.content_input}>
           <span>Title</span>
-          <input type="text" placeholder="70 words max" />
+          <input
+            onChange={(e) =>
+              dispatch(
+                updateVehicle({
+                  key: "title",
+                  value: e.target.value,
+                })
+              )
+            }
+            value={vehicleData.vehicleDataSlice.vehicle.title}
+            type="text"
+            placeholder="70 words max"
+          />
         </div>
         <div className={styles.content_input}>
           <span>Description</span>
           <textarea
+            onChange={(e) =>
+              dispatch(
+                updateVehicle({
+                  key: "description",
+                  value: e.target.value,
+                })
+              )
+            }
+            value={vehicleData.vehicleDataSlice.vehicle.description}
             style={{
               height: "107px",
               border: "1px solid gray",
@@ -71,11 +126,25 @@ const BasicInformationPage: FC = () => {
             style={{ display: "flex", gap: "20px", margin: "10px 0px 50px 0" }}
           >
             <div style={{ display: "flex", gap: "5px" }}>
-              <input style={{ width: "20px" }} type="radio" />
+              <input
+                style={{ width: "20px" }}
+                type="radio"
+                name="driverType"
+                value="withoutDriver"
+                onChange={handleRadioChange}
+                checked={selectedDriverType === "withoutDriver"}
+              />
               <p>Without Driver</p>
             </div>
             <div style={{ display: "flex", gap: "5px" }}>
-              <input style={{ width: "20px" }} type="radio" />
+              <input
+                style={{ width: "20px" }}
+                type="radio"
+                name="driverType"
+                value="withDriver"
+                onChange={handleRadioChange}
+                checked={selectedDriverType === "withDriver"}
+              />
               <p>With Driver</p>
             </div>
           </div>
@@ -85,23 +154,38 @@ const BasicInformationPage: FC = () => {
             Packages Details
           </span>
           <div style={{ marginTop: "35px" }}>
-            <div style={{ display: "flex", gap: "100px" }}>
+            <div style={{ display: "flex", gap: "170px" }}>
               <div style={{ display: "flex", gap: "10px" }}>
-                <input style={{ width: "20px" }} type="checkbox" />
+                <input
+                  style={{ width: "20px" }}
+                  type="checkbox"
+                  onChange={() => handleCheckboxChange("days")}
+                  checked={selectedRentingPackage === "days"}
+                />
                 <span style={{ fontWeight: "600" }}>
                   Renting Packages For Days
                 </span>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
-                <input style={{ width: "20px" }} type="checkbox" />
+                <input
+                  style={{ width: "20px" }}
+                  type="checkbox"
+                  onChange={() => handleCheckboxChange("weeks")}
+                  checked={selectedRentingPackage === "weeks"}
+                />
                 <span style={{ fontWeight: "600" }}>
-                  Renting Packages For Days
+                  Renting Packages For Weeks
                 </span>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
-                <input style={{ width: "20px" }} type="checkbox" />
+                <input
+                  style={{ width: "20px" }}
+                  type="checkbox"
+                  onChange={() => handleCheckboxChange("months")}
+                  checked={selectedRentingPackage === "months"}
+                />
                 <span style={{ fontWeight: "600" }}>
-                  Renting Packages For Days
+                  Renting Packages For Months
                 </span>
               </div>
             </div>
@@ -118,6 +202,15 @@ const BasicInformationPage: FC = () => {
                     Rent Price
                   </span>
                   <input
+                    onChange={(event) => {
+                      dispatch(
+                        updateVehicle({
+                          key: "rent_price",
+                          value: event.target.value,
+                        })
+                      );
+                    }}
+                    value={vehicleData.vehicleDataSlice.vehicle.rent_price}
                     type="number"
                     style={{
                       width: "100px",
@@ -147,20 +240,26 @@ const BasicInformationPage: FC = () => {
                       padding: "5px",
                       outline: "none",
                     }}
+                    onChange={(e) => {
+                      dispatch(
+                        updateVehicle({
+                          key: "time",
+                          value: e.target.value,
+                        })
+                      );
+                    }}
                   >
-                    <option value="volvo">01 Day</option>
-                    <option value="volvo">02 Day</option>
-                    <option value="volvo">03 Day</option>
-                    <option value="volvo">05 Days</option>
-                    <option value="volvo">07 Days</option>
-                    <option value="volvo">10 Days</option>
-                    <option value="volvo">12 Days</option>
-                    <option value="volvo">14 Days</option>
-                    <option value="volvo">20 Days</option>
-                    <option value="volvo">24 Days</option>
-                    <option value="volvo">28 Days</option>
-                    <option value="volvo">30 Days</option>
-                    <option value="volvo">60 Days</option>
+                    <option value="1 day">01 Day</option>
+                    <option value="2 days">02 Day</option>
+                    <option value="3 days">03 Day</option>
+                    <option value="6 days">05 Days</option>
+                    <option value="7 days">07 Days</option>
+                    <option value="10 days">10 Days</option>
+                    <option value="12 days">12 Days</option>
+                    <option value="14 days">14 Days</option>
+                    <option value="20 days">20 Days</option>
+                    <option value="24 days">24 Days</option>
+                    <option value="28 days">28 Days</option>
                   </select>
                 </div>
               </div>
@@ -171,6 +270,14 @@ const BasicInformationPage: FC = () => {
                   </span>
                   <input
                     type="number"
+                    onChange={(event) => {
+                      dispatch(
+                        updateVehicle({
+                          key: "rent_price",
+                          value: event.target.value,
+                        })
+                      );
+                    }}
                     style={{
                       width: "100px",
                       height: "45px",
@@ -189,8 +296,8 @@ const BasicInformationPage: FC = () => {
                     Week:
                   </label>
                   <select
-                    id="cars"
-                    name="cars"
+                    id="weeks"
+                    name="weeks"
                     style={{
                       border: "1px solid black",
                       width: "100px",
@@ -199,20 +306,28 @@ const BasicInformationPage: FC = () => {
                       padding: "5px",
                       outline: "none",
                     }}
+                    onChange={(e) => {
+                      dispatch(
+                        updateVehicle({
+                          key: "time",
+                          value: e.target.value,
+                        })
+                      );
+                    }}
                   >
-                    <option value="volvo">01 Week</option>
-                    <option value="volvo">02 Week</option>
-                    <option value="volvo">03 Week</option>
-                    <option value="volvo">05 Weeks</option>
-                    <option value="volvo">07 Weeks</option>
-                    <option value="volvo">10 Weeks</option>
-                    <option value="volvo">12 Weeks</option>
-                    <option value="volvo">14 Weeks</option>
-                    <option value="volvo">20 Weeks</option>
-                    <option value="volvo">24 Weeks</option>
-                    <option value="volvo">28 Weeks</option>
-                    <option value="volvo">30 Weeks</option>
-                    <option value="volvo">60 Weeks</option>
+                    <option value="1 week">01 Week</option>
+                    <option value="2 weeks">02 Week</option>
+                    <option value="3 weeks">03 Week</option>
+                    <option value="5 weeks">05 Weeks</option>
+                    <option value="7 weeks">07 Weeks</option>
+                    <option value="10 weeks">10 Weeks</option>
+                    <option value="12 weeks">12 Weeks</option>
+                    <option value="14 weeks">14 Weeks</option>
+                    <option value="20 weeks">20 Weeks</option>
+                    <option value="24 weeks">24 Weeks</option>
+                    <option value="28 weeks">28 Weeks</option>
+                    <option value="30 weeks">30 Weeks</option>
+                    <option value="60 weeks">60 Weeks</option>
                   </select>
                 </div>
               </div>
@@ -251,14 +366,22 @@ const BasicInformationPage: FC = () => {
                       padding: "5px",
                       outline: "none",
                     }}
+                    onChange={(e) => {
+                      dispatch(
+                        updateVehicle({
+                          key: "time",
+                          value: e.target.value,
+                        })
+                      );
+                    }}
                   >
-                    <option value="volvo">01 Month</option>
-                    <option value="volvo">02 Month</option>
-                    <option value="volvo">03 Month</option>
-                    <option value="volvo">05 Months</option>
-                    <option value="volvo">07 Months</option>
-                    <option value="volvo">10 Months</option>
-                    <option value="volvo">12 Months</option>
+                    <option value="1 Month">01 Month</option>
+                    <option value="2 Months">02 Months</option>
+                    <option value="3 Months">03 Months</option>
+                    <option value="5 Months">05 Months</option>
+                    <option value="7 Months">07 Months</option>
+                    <option value="10 Months">10 Months</option>
+                    <option value="12 Months">12 Months</option>
                   </select>
                 </div>
               </div>

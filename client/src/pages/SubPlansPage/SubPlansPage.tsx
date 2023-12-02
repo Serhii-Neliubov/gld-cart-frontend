@@ -7,6 +7,7 @@ const SubPlansPage: FC = () => {
   useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <>
       <div className="__container">

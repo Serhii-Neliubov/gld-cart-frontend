@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "./RentingCategoryPage.module.scss";
 import React, { FC } from "react";
+import { useDispatch } from "react-redux";
+import { updateVehicle } from "../../redux/Slices/vehiclesItemSlice";
 
 const clearClick = {
   vehicles: false,
@@ -349,7 +351,7 @@ const RentingCategoryPage: FC = () => {
   const [selectedButton, setSelectedButton] = React.useState<string | null>(
     null
   );
-
+  const dispatch = useDispatch();
   const handleButtonClick = (item: string) => {
     setSelectedButton(item);
   };
@@ -489,6 +491,12 @@ const RentingCategoryPage: FC = () => {
                               backgroundColor: isSelected ? "#02A0A0" : "",
                             }}
                             onClick={() => {
+                              dispatch(
+                                updateVehicle({
+                                  key: "subcategory",
+                                  value: item.name,
+                                })
+                              );
                               setIsClicked({
                                 ...isClicked,
                                 openCarsType: true,
@@ -557,6 +565,11 @@ const RentingCategoryPage: FC = () => {
                       {carsType.map((item) => {
                         return (
                           <Link
+                            onClick={() => {
+                              dispatch(
+                                updateVehicle({ key: "item", value: item.name })
+                              );
+                            }}
                             to="/renting-category-page/vehicles"
                             key={item.name}
                             className={styles.main_item_3}

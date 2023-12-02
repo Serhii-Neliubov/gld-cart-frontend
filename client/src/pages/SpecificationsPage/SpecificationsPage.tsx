@@ -1,8 +1,54 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styles from "./SpecificationsPage.module.scss";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateVehicle } from "../../redux/Slices/vehiclesItemSlice";
 
 const SpecificationsPage: FC = () => {
+  const dispatch = useDispatch();
+  const [data, setData] = useState({
+    manufacture_year: "",
+    vehicle_number: "",
+    specification: "",
+    specification_details: "",
+    fuel_type: "",
+    engine_capacity: "",
+    seat_capacity: "",
+    storage_bag_capacity: "",
+    air_bags: "",
+  });
+  const [selectedVehicleType, setSelectedVehicleType] = useState<string | null>(
+    null
+  );
+
+  const handleFieldChange = (fieldName: string, value: string) => {
+    setData((prevData) => ({
+      ...prevData,
+      [fieldName]: value,
+    }));
+  };
+
+  const handleButtonClick = () => {
+    const keys = [
+      "manufacture_year",
+      "vehicle_number",
+      "specification",
+      "specification_details",
+      "fuel_type",
+      "engine_capacity",
+      "seat_capacity",
+      "storage_bag_capacity",
+      "air_bags",
+    ];
+
+    keys.forEach((key) => {
+      dispatch(updateVehicle({ key, value: data[key] }));
+    });
+  };
+
+  const handleRadioChange = (vehicleType: string) => {
+    setSelectedVehicleType(vehicleType);
+  };
   return (
     <div style={{ paddingBottom: "50px" }} className="__container">
       <div className={styles.routings}>
@@ -49,11 +95,25 @@ const SpecificationsPage: FC = () => {
         <div style={{ display: "flex", gap: "20px", width: "100%" }}>
           <div className={styles.content_input}>
             <span>Year of Manufacture</span>
-            <input type="text" placeholder="Car Manufacture year" />
+            <input
+              onChange={(e) =>
+                handleFieldChange("manufacture_year", e.target.value)
+              }
+              value={data.manufacture_year}
+              type="text"
+              placeholder="Car Manufacture year"
+            />
           </div>
           <div className={styles.content_input}>
             <span>Vehicle Plate Number</span>
-            <input type="text" placeholder="AAA-123" />
+            <input
+              onChange={(e) => {
+                setData({ ...data, vehicle_number: e.target.value });
+              }}
+              value={data.vehicle_number}
+              type="text"
+              placeholder="AAA-123"
+            />
           </div>
         </div>
         <div>
@@ -62,11 +122,23 @@ const SpecificationsPage: FC = () => {
             style={{ display: "flex", gap: "20px", margin: "10px 0px 50px 0" }}
           >
             <div style={{ display: "flex", gap: "5px" }}>
-              <input style={{ width: "20px" }} type="radio" />
+              <input
+                style={{ width: "20px" }}
+                type="radio"
+                name="vehicleType"
+                onChange={() => handleRadioChange("new")}
+                checked={selectedVehicleType === "new"}
+              />
               <p>New Vehicle</p>
             </div>
             <div style={{ display: "flex", gap: "5px" }}>
-              <input style={{ width: "20px" }} type="radio" />
+              <input
+                style={{ width: "20px" }}
+                type="radio"
+                name="vehicleType"
+                onChange={() => handleRadioChange("used")}
+                checked={selectedVehicleType === "used"}
+              />
               <p>Used Vehicle</p>
             </div>
           </div>
@@ -76,6 +148,10 @@ const SpecificationsPage: FC = () => {
             <div className={styles.content_input}>
               <span>Custom specification*</span>
               <input
+                onChange={(e) => {
+                  setData({ ...data, specification: e.target.value });
+                }}
+                value={data.specification}
                 style={{ padding: "10px" }}
                 type="text"
                 placeholder="Transmission"
@@ -84,6 +160,10 @@ const SpecificationsPage: FC = () => {
             <div className={styles.content_input}>
               <span>Specification details*</span>
               <input
+                onChange={(e) => {
+                  setData({ ...data, specification_details: e.target.value });
+                }}
+                value={data.specification_details}
                 style={{ padding: "10px" }}
                 type="text"
                 placeholder="Automatic"
@@ -96,6 +176,10 @@ const SpecificationsPage: FC = () => {
             <div className={styles.content_input}>
               <span>Fuel type*</span>
               <input
+                onChange={(e) => {
+                  setData({ ...data, fuel_type: e.target.value });
+                }}
+                value={data.fuel_type}
                 style={{ padding: "10px" }}
                 type="text"
                 placeholder="Diesel"
@@ -104,6 +188,10 @@ const SpecificationsPage: FC = () => {
             <div className={styles.content_input}>
               <span>Engine copacity*</span>
               <input
+                onChange={(e) => {
+                  setData({ ...data, engine_capacity: e.target.value });
+                }}
+                value={data.engine_capacity}
                 style={{ padding: "10px" }}
                 type="text"
                 placeholder="1000 CC"
@@ -115,11 +203,23 @@ const SpecificationsPage: FC = () => {
           <div style={{ display: "flex", gap: "20px", width: "100%" }}>
             <div className={styles.content_input}>
               <span>Seat capacity</span>
-              <input style={{ padding: "10px" }} type="text" placeholder="04" />
+              <input
+                onChange={(e) => {
+                  setData({ ...data, seat_capacity: e.target.value });
+                }}
+                value={data.seat_capacity}
+                style={{ padding: "10px" }}
+                type="text"
+                placeholder="04"
+              />
             </div>
             <div className={styles.content_input}>
               <span>Storage Bag copacity</span>
               <input
+                onChange={(e) => {
+                  setData({ ...data, storage_bag_capacity: e.target.value });
+                }}
+                value={data.storage_bag_capacity}
                 style={{ padding: "10px" }}
                 type="text"
                 placeholder="1 big bag and one small bag"
@@ -131,7 +231,15 @@ const SpecificationsPage: FC = () => {
           <div style={{ display: "flex", gap: "20px", width: "49%" }}>
             <div className={styles.content_input}>
               <span>Air bags</span>
-              <input style={{ padding: "10px" }} type="text" placeholder="02" />
+              <input
+                onChange={(e) => {
+                  setData({ ...data, air_bags: e.target.value });
+                }}
+                value={data.air_bags}
+                style={{ padding: "10px" }}
+                type="text"
+                placeholder="02"
+              />
             </div>
           </div>
         </div>
@@ -148,6 +256,7 @@ const SpecificationsPage: FC = () => {
         </button>
         <Link to="/renting-category-page/vehicles/photo-and-video/publishing">
           <button
+            onClick={handleButtonClick}
             style={{
               border: "1px solid blue",
               backgroundColor: "blue",
