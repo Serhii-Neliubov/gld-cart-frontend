@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/express-rate-limit": "^6.0.0",
+    "@types/helmet": "^4.0.0",
     "@types/node": "^20.8.10",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
