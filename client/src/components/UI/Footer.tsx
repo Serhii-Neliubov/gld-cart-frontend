@@ -54,9 +54,9 @@ const Footer: FC = () => {
           <div className="footer__nav">
             <h3 className="footer__links-title">help & info</h3>
             <nav className="footer__links">
-              <a href="#" className="footer__link">
+              <Link to="/track-an-order" className="footer__link">
                 Track An Order
-              </a>
+              </Link>
               <Link to="/contact-us" className="footer__link">
                 Contact Us
               </Link>
