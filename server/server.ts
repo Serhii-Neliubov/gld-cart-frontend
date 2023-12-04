@@ -1,12 +1,13 @@
-import dotenv                     from "dotenv";
-import express, {Express}         from "express";
-import cors                       from "cors";
+import dotenv from "dotenv";
+import express, {Express} from "express";
+import cors from "cors";
 import mongoose, {ConnectOptions} from "mongoose";
-import router                     from "./routes/router";
-import cookieParser               from "cookie-parser";
-import errorMiddleware            from "./middlewares/errorMiddleware";
-import setupSocket                from "./socket-server";
-import rateLimit                  from "express-rate-limit";
+import router from "./routes/router";
+import cookieParser from "cookie-parser";
+import errorMiddleware from "./middlewares/errorMiddleware";
+import setupSocket from "./socket-server";
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ const limiter = rateLimit({
 setupSocket(app);
 
 app.set("trust proxy", 1);
+app.use(helmet());
 app.use(limiter);
 app.use(
     (
@@ -47,6 +49,7 @@ app.use(
     })
 );
 app.use(router);
+// @ts-ignore
 app.use(errorMiddleware);
 
 const mongooseOptions = {
