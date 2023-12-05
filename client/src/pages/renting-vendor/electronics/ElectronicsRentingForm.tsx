@@ -7,7 +7,7 @@ const packageBlocks = [{ time: "Days" }, { time: "Weeks" }, { time: "Months" }];
 
 const ElectronicsRentingForm: FC = () => {
   return (
-    <RentingForm title="Electronics Renting Form">
+    <RentingForm coloredStage={2} title="Electronics Renting Form">
       <div className={styles.content_input}>
         <span>Title</span>
         <input type="text" placeholder="70 words max" />
