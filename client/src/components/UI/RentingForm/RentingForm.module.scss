@@ -69,24 +69,6 @@
     background: #fff;
     outline: none;
   }
-  textarea {
-    height: 107px;
-    border: 1px solid rgba(128, 128, 128, 0.607);
-    outline: none;
-    padding: 5px;
-    resize: none;
-  }
-}
-.package_title {
-  font-weight: 600;
-  font-size: 20px;
-}
-.package_content {
-  margin: 35px 0;
-}
-.package_blocks {
-  display: flex;
-  gap: 100px;
 }
 .content_driver {
   color: #000;
