@@ -1,0 +1,192 @@
+.main {
+  background-color: #ecf2f7;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text {
+  padding-top: 96px;
+  padding-bottom: 56px;
+
+  text-align: center;
+}
+
+.title {
+  line-height: 117.778%;
+  text-transform: uppercase;
+  color: #141414;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  padding-bottom: 24px;
+}
+
+.subtitle {
+  color: #000;
+  font-size: 20px;
+  line-height: 139.166%;
+}
+.label {
+  display: flex;
+  gap: 153px;
+  position: relative;
+  padding-bottom: 57px;
+}
+.status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-direction: column;
+  &:not(:last-child) {
+    &::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      top: 25%;
+      left: 60%;
+      height: 10px;
+      background-color: #fff;
+    }
+  }
+}
+.status_text {
+  color: #000;
+  font-size: 14px;
+}
+.status_bg {
+  width: 38px;
+  height: 38px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  &_blue {
+    width: 38px;
+    height: 38px;
+    border-radius: 5px;
+    display: flex;
+    position: relative;
+    z-index: 20;
+    justify-content: center;
+    align-items: center;
+    background-color: #0084fd; /* Change to the desired blue color */
+  }
+}
+
+.status_number {
+  position: relative;
+  z-index: 5;
+  color: #000;
+  font-size: 24px;
+  line-height: normal;
+}
+.status_number_bg {
+  position: relative;
+  z-index: 5;
+  color: #fff;
+  font-size: 24px;
+  line-height: normal;
+}
+.track_window {
+  padding-bottom: 200px;
+}
+.track_content {
+  display: flex;
+  gap: 120px;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  padding: 22px 42px;
+  border-radius: 0px 0px 14px 14px;
+}
+.track_enter_number {
+  color: #888;
+  font-size: 20px;
+  line-height: 99.166%;
+}
+.track_number {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+  & > span {
+    color: #000;
+    font-size: 14px;
+    line-height: 114.286%;
+  }
+  & > input {
+    outline: none;
+    width: 375px;
+    padding: 15px 22px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    background-color: #fff;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.17);
+    ::placeholder {
+      color: #b3b3b3;
+      font-size: 16px;
+      line-height: 100%;
+    }
+  }
+}
+.track_title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 99.166%;
+  padding: 22px;
+  border-radius: 14px 14px 0px 0px;
+  background-color: #02a0a0;
+  text-transform: uppercase;
+}
+.track_agree {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  & > input {
+    width: 20px;
+  }
+  & > p {
+    color: #000;
+    font-size: 20px;
+    line-height: 99.166%;
+  }
+}
+.track_button {
+  color: #fff;
+  padding: 16px 50px;
+  border-radius: 6px;
+  background-color: #02a0a0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 88.889%;
+  text-transform: capitalize;
+}
+.order_status_bar {
+  padding: 35px;
+  border-radius: 18px;
+  background-color: #efefef;
+  width: 393px;
+  height: 195px;
+  & > div {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  & > div > span {
+    color: #000;
+    font-size: 24.348px;
+    font-weight: 600;
+  }
+  p {
+    color: #000;
+    font-size: 16px;
+  }
+}

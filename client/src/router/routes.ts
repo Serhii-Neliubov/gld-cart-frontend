@@ -81,6 +81,7 @@ import LawnServiceForm from "../pages/renting-vendor/lawn/LawnServiceForm";
 import LawnServicePhoto from "../pages/renting-vendor/lawn/photo-and-video/LawnServicePhoto";
 import LawnServiceSpecifications from "../pages/renting-vendor/lawn/photo-and-video/specifications/LawnServiceSpecifications";
 import LawnServicePublishing from "../pages/renting-vendor/lawn/photo-and-video/specifications/publishing/LawnServicePublishing";
+import TrackOrder from "../pages/track-order/TrackOrder";
 
 interface IRoutes {
   component: FC;
@@ -89,6 +90,7 @@ interface IRoutes {
 
 export const buyerRoutes: IRoutes[] = [
   { component: Home, path: "/" },
+  { component: TrackOrder, path: "/track-an-order" },
   { component: Renting, path: "/renting" },
   { component: ContactUsPage, path: "/contact-us" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
