@@ -1,5 +1,5 @@
 import mongoose, {Document, Model, Schema} from "mongoose";
-import {IProduct, productSchema} from "./Product";
+import {IProduct, productSchema} from "./ProductModel";
 
 export interface IOrder extends Document {
     user: mongoose.Types.ObjectId;
@@ -23,6 +23,6 @@ const orderSchema: Schema<IOrder> = new Schema(
     },
 );
 
-const Order  = mongoose.model('Order', orderSchema) as Model<IOrder>;
+const OrderModel  = mongoose.model('OrderModel', orderSchema) as Model<IOrder>;
 
-export default Order;
+export default OrderModel;

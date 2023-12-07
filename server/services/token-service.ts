@@ -1,4 +1,4 @@
-import TokenModel, {IToken} from "../models/Token";
+import TokenModel, {IToken} from "../models/TokenModel";
 import jwt                  from "jsonwebtoken";
 
 interface TokenPayload {

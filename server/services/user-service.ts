@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import UserModel, {IUser} from "../models/User";
-import TokenModel, {IToken} from "../models/Token";
+import UserModel, {IUser} from "../models/UserModel";
+import TokenModel, {IToken} from "../models/TokenModel";
 import TokenService from "./token-service";
 import UserDto from "../dtos/user-dto";
 import ApiError from "../exceptions/api-error";

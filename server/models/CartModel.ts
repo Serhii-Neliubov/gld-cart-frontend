@@ -1,5 +1,5 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
-import {IProduct, productSchema} from "./Product";
+import {IProduct, productSchema} from "./ProductModel";
 
 export interface ICart extends Document {
     user: mongoose.Types.ObjectId;
@@ -12,5 +12,5 @@ const cartSchema: Schema<ICart> = new Schema({
     },
     products: [productSchema]
 });
-const Cart: Model<ICart> = mongoose.model('Cart', cartSchema) as Model<ICart>;
-export default Cart;
+const CartModel: Model<ICart> = mongoose.model('CartModel', cartSchema) as Model<ICart>;
+export default CartModel;

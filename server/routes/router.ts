@@ -27,9 +27,15 @@ router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.send
 router.post("/create-checkout-session", authMiddleware.requireAuth, paymentController.create_checkout);
 router.post("/webhook", express.raw({type: "application/json"}), paymentController.create_order);
 
-//Product routes
-router.post("/save-product", authMiddleware.requireAuth, storeController.create_product);
+//Basic product routes
+router.post("/create-product", authMiddleware.requireAuth, storeController.create_product);
 router.post("/update-product", authMiddleware.requireAuth, storeController.update_product);
 router.post("/delete_product", authMiddleware.requireAuth, storeController.delete_product);
 router.get("/get_product", authMiddleware.requireAuth, storeController.get_product);
+
+//Vehicle routes
+router.post("/create-vehicle", authMiddleware.requireAuth, storeController.create_vehicle_item);
+router.get("/get-vehicle", authMiddleware.requireAuth, storeController.get_vehicle_item);
+
+
 export default router;

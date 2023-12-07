@@ -1,4 +1,4 @@
-import MessageModel, { IMessage } from "../models/Message";
+import MessageModel, { IMessage } from "../models/MessageModel";
 
 class ChatService {
   async createMessage(text: string, sender: string, recipient: string): Promise<IMessage> {
