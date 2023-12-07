@@ -1,4 +1,2 @@
-/server/node_modules/
 /server/dist/
-.idea
-.vscode
+/server/node_modules/
