@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import styles from "./WishlistPage.module.scss";
 import Footer from "../../components/UI/Footer";
 import { FC } from "react";
+import NoItems from "../../components/UI/NoItems";
 
 const WishlistPage: FC = () => {
   return (
@@ -13,12 +13,7 @@ const WishlistPage: FC = () => {
             <span>Home</span>
             <span>Wishlist</span>
           </div>
-          <div className={styles.content}>
-            <h2>No Wishlist Items Found</h2>
-            <Link className={styles.link} to="/products">
-              Continue Shipping
-            </Link>
-          </div>
+          <NoItems title="No Wishlist Items Found" />
         </div>
       </div>
       <Footer />

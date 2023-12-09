@@ -12,6 +12,7 @@ export default function RentingForm({
   children,
   title,
   coloredStage,
+}: RentingFormProps) {
   return (
     <div style={{ paddingBottom: "50px" }} className="__container">
       <RentingStage coloredStage={coloredStage} />

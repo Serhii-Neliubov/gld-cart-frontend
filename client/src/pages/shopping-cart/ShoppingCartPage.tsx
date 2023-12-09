@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import styles from "./ShoppingCartPage.module.scss";
 import Footer from "../../components/UI/Footer";
 import { FC } from "react";
+import NoItems from "../../components/UI/NoItems";
 
 const ShoppingCartPage: FC = () => {
   return (
@@ -13,12 +13,7 @@ const ShoppingCartPage: FC = () => {
             <span>Home</span>
             <span>Shopping Cart</span>
           </div>
-          <div className={styles.content}>
-            <h2>No Cart Items Found</h2>
-            <Link className={styles.link} to="/products">
-              Continue Shipping
-            </Link>
-          </div>
+          <NoItems title="No Cart Items Found" />
         </div>
       </div>
       <Footer />

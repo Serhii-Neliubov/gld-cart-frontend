@@ -5,14 +5,7 @@ import axios from "axios";
 import { API_URL } from "../../http";
 import { AuthResponse } from "../../models/response/AuthResponse";
 import { useNavigate } from "react-router-dom";
-
-interface IMessageData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  token: string;
-}
+import { IMessageData } from "../../interfaces/interfaces";
 
 const ContactUsPage: FC = () => {
   const navigate = useNavigate();

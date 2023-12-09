@@ -82,6 +82,7 @@ import LawnServicePhoto from "../pages/renting-vendor/lawn/photo-and-video/LawnS
 import LawnServiceSpecifications from "../pages/renting-vendor/lawn/photo-and-video/specifications/LawnServiceSpecifications";
 import LawnServicePublishing from "../pages/renting-vendor/lawn/photo-and-video/specifications/publishing/LawnServicePublishing";
 import TrackOrder from "../pages/track-order/TrackOrder";
+import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 
 interface IRoutes {
   component: FC;
@@ -90,6 +91,7 @@ interface IRoutes {
 
 export const buyerRoutes: IRoutes[] = [
   { component: Home, path: "/" },
+  { component: CarPage, path: "/renting-car/:id" },
   { component: TrackOrder, path: "/track-an-order" },
   { component: Renting, path: "/renting" },
   { component: ContactUsPage, path: "/contact-us" },

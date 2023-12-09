@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 
 type RentingActionsProps = {
   nextPageLink: string;
+  setFormData: () => void;
 };
 
-export default function RentingActions({ nextPageLink }: RentingActionsProps) {
+export default function RentingActions({
+  nextPageLink,
+  setFormData,
+}: RentingActionsProps) {
   return (
     <div className={styles.actions}>
       <Link
@@ -21,6 +25,7 @@ export default function RentingActions({ nextPageLink }: RentingActionsProps) {
       </Link>
       <Link to={nextPageLink}>
         <button
+          onClick={setFormData}
           style={{
             border: "1px solid blue",
             backgroundColor: "blue",

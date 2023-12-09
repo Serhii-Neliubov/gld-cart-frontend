@@ -1,6 +1,7 @@
+import { FC } from "react";
 import Footer from "../../../components/UI/Footer";
 import styles from "./RentingCarPage.module.scss";
-import { FC } from "react";
+import CarList from "./CarList";
 
 const RentingCarPage: FC = () => {
   return (
@@ -50,131 +51,7 @@ const RentingCarPage: FC = () => {
               </div>
               <button className={styles.filter_button}>FIND MY RENTALS</button>
             </div>
-            <div className={styles.items}>
-              <div className={styles.item}>
-                <div className={styles.image}>
-                  <img src="RentingCar/car.png" alt="Image" />
-                </div>
-                <div className={styles.item_text}>
-                  <h2 className={styles.item_title}>Lamborghini</h2>
-                  <div className={styles.item_prices}>
-                    <div className={styles.item_price}>$180/Day</div>
-                    <div className={styles.item_price}>$925/Week</div>
-                    <div className={styles.item_price}>$3,100/Month</div>
-                  </div>
-                  <div className={styles.advantages}>
-                    <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
-                    </span>
-                    <span className={styles.advantage}>
-                      High Safety and Nurity
-                    </span>
-                    <span className={styles.advantage}>
-                      Fixed Price & Bonus System
-                    </span>
-                    <span className={styles.advantage}>
-                      100% Luxurious Fleet
-                    </span>
-                    <span className={styles.advantage}>
-                      Clean, Polite & Knowledgeable
-                    </span>
-                    <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
-                    </span>
-                  </div>
-                </div>
-                <div className={styles.total}>
-                  <div className={styles.total_price}>
-                    <h3>Total Rental Price</h3>
-                    <p>Incl.taxes</p>
-                    <span>$230</span>
-                  </div>
-                  <button>Reserve</button>
-                </div>
-              </div>
-              <div className={styles.item}>
-                <div className={styles.image}>
-                  <img src="RentingCar/car.png" alt="Image" />
-                </div>
-                <div className={styles.item_text}>
-                  <h2 className={styles.item_title}>Lamborghini</h2>
-                  <div className={styles.item_prices}>
-                    <div className={styles.item_price}>$180/Day</div>
-                    <div className={styles.item_price}>$925/Week</div>
-                    <div className={styles.item_price}>$3,100/Month</div>
-                  </div>
-                  <div className={styles.advantages}>
-                    <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
-                    </span>
-                    <span className={styles.advantage}>
-                      High Safety and Nurity
-                    </span>
-                    <span className={styles.advantage}>
-                      Fixed Price & Bonus System
-                    </span>
-                    <span className={styles.advantage}>
-                      100% Luxurious Fleet
-                    </span>
-                    <span className={styles.advantage}>
-                      Clean, Polite & Knowledgeable
-                    </span>
-                    <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
-                    </span>
-                  </div>
-                </div>
-                <div className={styles.total}>
-                  <div className={styles.total_price}>
-                    <h3>Total Rental Price</h3>
-                    <p>Incl.taxes</p>
-                    <span>$230</span>
-                  </div>
-                  <button>Reserve</button>
-                </div>
-              </div>
-              <div className={styles.item}>
-                <div className={styles.image}>
-                  <img src="RentingCar/car.png" alt="Image" />
-                </div>
-                <div className={styles.item_text}>
-                  <h2 className={styles.item_title}>Lamborghini</h2>
-                  <div className={styles.item_prices}>
-                    <div className={styles.item_price}>$180/Day</div>
-                    <div className={styles.item_price}>$925/Week</div>
-                    <div className={styles.item_price}>$3,100/Month</div>
-                  </div>
-                  <div className={styles.advantages}>
-                    <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
-                    </span>
-                    <span className={styles.advantage}>
-                      High Safety and Nurity
-                    </span>
-                    <span className={styles.advantage}>
-                      Fixed Price & Bonus System
-                    </span>
-                    <span className={styles.advantage}>
-                      100% Luxurious Fleet
-                    </span>
-                    <span className={styles.advantage}>
-                      Clean, Polite & Knowledgeable
-                    </span>
-                    <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
-                    </span>
-                  </div>
-                </div>
-                <div className={styles.total}>
-                  <div className={styles.total_price}>
-                    <h3>Total Rental Price</h3>
-                    <p>Incl.taxes</p>
-                    <span>$230</span>
-                  </div>
-                  <button>Reserve</button>
-                </div>
-              </div>
-            </div>
+            <CarList />
           </div>
         </div>
       </div>
