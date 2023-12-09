@@ -19,25 +19,25 @@ const HelpAndSupport: FC = () => {
               <span>I Want To Know Where My Order Is</span>
             </div>
             <p className={styles.text}>
-              Get stsatus updates about your order with our Tricking Tool
+              Get status updates about your order with our Tricking Tool
             </p>
           </div>
           <div className={styles.block}>
             <div className={styles.block_text}>
               <img src="/HelpAndSupport/icon2.svg" alt="Image" />
-              <span>I Want To Know Where My Order Is</span>
+              <span>I Want To Return An Item</span>
             </div>
             <p className={styles.text}>
-              Get stsatus updates about your order with our Tricking Tool
+              Use our Online Return Form to start your return
             </p>
           </div>
           <div className={styles.block}>
             <div className={styles.block_text}>
               <img src="/HelpAndSupport/icon3.svg" alt="Image" />
-              <span>I Want To Know Where My Order Is</span>
+              <span>I Want To Cancel An Order</span>
             </div>
             <p className={styles.text}>
-              Get stsatus updates about your order with our Tricking Tool
+              Use our Online Cancellation Form to start your order cancellation
             </p>
           </div>
         </div>
@@ -61,9 +61,12 @@ const HelpAndSupport: FC = () => {
             <div className={styles.contact_sidebar}>
               <p className={styles.contact_text}>
                 For order status inquiry, please click{" "}
-                <span style={{ color: "#2283DC", cursor: "pointer" }}>
+                <Link
+                  to="/track-an-order"
+                  style={{ color: "#2283DC", cursor: "pointer" }}
+                >
                   here
-                </span>{" "}
+                </Link>{" "}
                 <br></br>
                 To cancel and return ordered items, please log-in with your
                 account here <br></br> For other concerns, feel free to visit
