@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.6",
+    "@types/i18next": "^13.0.0",
     "axios": "^1.5.1",
     "i18next": "^23.7.5",
     "i18next-browser-languagedetector": "^7.2.0",
