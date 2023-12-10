@@ -1,8 +1,8 @@
 import OrderModel from "../models/OrderModel";
 import Stripe from "stripe";
-import ProductModel, {IProduct} from "../models/ProductModel";
+import ProductModel, {Product} from "../models/products/ProductModel";
 
-class StoreService {
+class OrderService {
     async createOrder(customer: Stripe.Customer | Stripe.DeletedCustomer, data: Stripe.Event.Data.Object) {
         if ("metadata" in customer &&
             "customer" in data &&
@@ -12,7 +12,7 @@ class StoreService {
             "customer_details" in data &&
             "payment_status" in data) {
 
-            const Items = JSON.parse(customer.metadata.cart) as IProduct[];
+            const Items = JSON.parse(customer.metadata.cart) as Product[];
             console.log(Items);
             try {
                 const newOrder = new OrderModel({
@@ -32,9 +32,9 @@ class StoreService {
             }
         }
     }
-    async createProduct(name: string, brand: string, desc: string, price: number, image: string, cartQuantity: number) {
-        return <IProduct>await ProductModel.create({name, brand, desc, price, image, cartQuantity});
-    }
+    // async createProduct(name: string, brand: string, desc: string, price: number, image: string, cartQuantity: number) {
+    //     return <IProduct>await ProductModel.create({title: name, brand, desc, price, image, cartQuantity});
+    // }
 }
 
-export default new StoreService();
+export default new OrderService();
