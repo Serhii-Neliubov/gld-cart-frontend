@@ -1189,6 +1189,15 @@ const RentingProfservicesPage: FC = () => {
                 </div>
                 <span>Specifications</span>
               </div>
+              <div className={styles.routing}>
+                <div
+                  style={{ backgroundColor: "#D9D9D9" }}
+                  className={styles.number}
+                >
+                  6
+                </div>
+                <span>Publish</span>
+              </div>
             </div>
             <div className={styles.content_blocks}>
               <h1>

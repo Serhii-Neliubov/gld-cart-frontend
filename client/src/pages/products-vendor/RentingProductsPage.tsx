@@ -56,7 +56,21 @@ const RentingProductsPage: FC = () => {
               <div className={styles.routing}>
                 <div
                   style={
-                    Object.keys(isClicked)
+                    isClicked.openbeauty ||
+                    isClicked.openbags ||
+                    isClicked.openawesome ||
+                    isClicked.openmobileTablets ||
+                    isClicked.opennecklaces ||
+                    isClicked.openclothing ||
+                    isClicked.openbluetooth ||
+                    isClicked.openfacial ||
+                    isClicked.openshoes ||
+                    isClicked.opencpu ||
+                    isClicked.opendiscover ||
+                    isClicked.openheadphones ||
+                    isClicked.openbracelets ||
+                    isClicked.opensmartWatch ||
+                    isClicked.openearrings
                       ? { backgroundColor: "#02A0A0" }
                       : { backgroundColor: "#D9D9D9" }
                   }
@@ -119,6 +133,15 @@ const RentingProductsPage: FC = () => {
                   5
                 </div>
                 <span>Specifications</span>
+              </div>
+              <div className={styles.routing}>
+                <div
+                  style={{ backgroundColor: "#D9D9D9" }}
+                  className={styles.number}
+                >
+                  6
+                </div>
+                <span>Publish</span>
               </div>
             </div>
             <div className={styles.content_blocks}>
