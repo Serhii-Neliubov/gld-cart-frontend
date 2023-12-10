@@ -72,6 +72,43 @@ export const create_checkout = async (
         next(error);
     }
 };
+export const create_subscription = async (req: Request, res: Response, next: NextFunction)
+    : Promise<any> => {
+
+    const customer_id = req.body.customer_id;
+    const price_id = req.body.price_id;
+
+    try {
+        const subscription = await stripe.subscriptions.create({
+            customer: customer_id,
+            items: [{
+                price: price_id,
+            }],
+            payment_behavior: 'default_incomplete',
+            payment_settings: {save_default_payment_method: 'on_subscription'},
+            expand: ['latest_invoice.payment_intent'],
+        });
+
+        res.send({
+            subscriptionId: subscription.id,
+            clientSecret: subscription.latest_invoice.payment_intent.client_secret,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const cancel_subscription = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    try {
+        // @ts-ignore
+        const deletedSubscription = await stripe.subscriptions.del(
+            req.body.subscriptionId
+        );
+        res.send(deletedSubscription);
+    } catch (error) {
+        next(error);
+    }
+}
 export const create_order = async (
     req: Request,
     res: Response
