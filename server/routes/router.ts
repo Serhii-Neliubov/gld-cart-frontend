@@ -4,6 +4,7 @@ import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
 import * as paymentController     from "../controllers/paymentController";
 import * as authMiddleware        from "../middlewares/authMiddleware";
 import * as storeController from "../controllers/storeController";
+import * as vehicleController from "../controllers/vehicleController";
 
 const router: Router = Router();
 
@@ -25,6 +26,9 @@ router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.send
 
 //Payment routes
 router.post("/create-checkout-session", authMiddleware.requireAuth, paymentController.create_checkout);
+router.post("/create-subscription", authMiddleware.requireAuth, paymentController.create_subscription);
+router.post("/cancel-subscription", authMiddleware.requireAuth, paymentController.cancel_subscription);
+router.get("/get-customer", authMiddleware.requireAuth, paymentController.create_customer);
 router.post("/webhook", express.raw({type: "application/json"}), paymentController.create_order);
 
 //Basic product routes
@@ -34,8 +38,9 @@ router.post("/delete_product", authMiddleware.requireAuth, storeController.delet
 router.get("/get_product", authMiddleware.requireAuth, storeController.get_product);
 
 //Vehicle routes
-router.post("/create-vehicle", authMiddleware.requireAuth, storeController.create_vehicle_item);
-router.get("/get-vehicle", authMiddleware.requireAuth, storeController.get_vehicle_item);
-
+router.post('/vehicles', vehicleController.createVehicle);
+router.get('/vehicles/:id', vehicleController.getVehicleById);
+router.put('/vehicles/:id', vehicleController.updateVehicle);
+router.delete('/vehicles/:id', vehicleController.deleteVehicle);
 
 export default router;
