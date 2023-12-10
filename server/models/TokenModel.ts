@@ -17,6 +17,6 @@ const tokenSchema: Schema<IToken> = new Schema({
     },
 });
 
-const TokenModel: Model<IToken> = mongoose.model('TokenModel', tokenSchema) as Model<IToken>;
+const TokenModel: Model<IToken> = mongoose.model('tokens', tokenSchema) as Model<IToken>;
 
 export default TokenModel;

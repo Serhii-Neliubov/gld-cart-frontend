@@ -20,5 +20,5 @@ export const productSchema = new Schema<IProduct>({
     cartQuantity: { type: Number},
 });
 
-const ProductModel = mongoose.model('ProductModel', productSchema) as Model<IProduct>;
+const ProductModel = mongoose.model('products', productSchema) as Model<IProduct>;
 export default ProductModel;
