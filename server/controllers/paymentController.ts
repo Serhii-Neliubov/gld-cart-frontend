@@ -1,6 +1,7 @@
 import {NextFunction, Request, Response} from "express";
 import Stripe from "stripe";
-import StoreService from "../services/store-service";
+import StoreService from "../services/order-service";
+
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2023-08-16",
@@ -21,6 +22,36 @@ interface IItem {
     cartQuantity: any;
 }
 
+export const create_customer = async (req: Request, res: Response, next: NextFunction) => {
+    const email = req.body.email;
+    const name = req.body.name;
+    try {
+        const customer = await stripe.customers.create({
+            email: `${email}`,
+            name: `${name}`,
+            shipping: {
+                address: {
+                    city: 'Brothers',
+                    country: 'US',
+                    line1: '27 Fredrick Ave',
+                    postal_code: '97712',
+                    state: 'CA',
+                },
+                name: `${name}`,
+            },
+            address: {
+                city: 'Brothers',
+                country: 'US',
+                line1: '27 Fredrick Ave',
+                postal_code: '97712',
+                state: 'CA',
+            },
+        });
+        res.send(customer.id);
+    } catch (error) {
+        next(error);
+    }
+};
 export const create_checkout = async (
     req: Request,
     res: Response,
