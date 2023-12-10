@@ -42,7 +42,6 @@ const Label: FC = () => {
       to: user.type ? "/personal-services" : "login",
       label: t("professional services"),
     },
-    { to: user.type ? "/contact-us" : "login", label: t("contact us") },
   ];
 
   return (
@@ -66,6 +65,18 @@ const Label: FC = () => {
                   </Link>
                 </li>
               ))}
+              <li className="label__item">
+                <Link
+                  to="/contact-us"
+                  className={`label__link ${
+                    location.pathname === "/contact-us"
+                      ? "label__link_active"
+                      : ""
+                  }`}
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

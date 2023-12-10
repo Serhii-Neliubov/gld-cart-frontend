@@ -345,7 +345,6 @@ export const vendorRoutes: IRoutes[] = [
 
 export const noAuthRotes: IRoutes[] = [
   { component: Home, path: "/" },
-  { component: Renting, path: "/renting" },
   { component: RegisterAsPage, path: "/user-type-page" },
   { component: LoginPage, path: "/login" },
   { component: RegisterPage, path: "/register-page" },
@@ -355,9 +354,8 @@ export const noAuthRotes: IRoutes[] = [
   { component: TermsConditionsPage, path: "/terms-and-conditions" },
   { component: FaqsPage, path: "/faq-s" },
   { component: NotFound, path: "/not-found" },
-  { component: ProductsPage, path: "/products" },
-  { component: ProfServicesPage, path: "/personal-services" },
   { component: ForgottenPasswordPage, path: "/forgotten-password" },
   { component: ForgottenAttentionPage, path: "/forgotten-attention" },
   { component: NewPasswordPage, path: "/reset-password/:token" },
+  { component: ContactUsPage, path: "/contact-us" },
 ];
