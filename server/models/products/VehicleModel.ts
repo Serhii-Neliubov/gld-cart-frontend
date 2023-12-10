@@ -1,7 +1,19 @@
-import mongoose, {Schema, model, Document, Model} from 'mongoose';
+import mongoose, { Schema, Model, Document } from 'mongoose';
 
-// Define the interface for the vehicle
 export interface Vehicle extends Document {
+    image: string;
+    title: string;
+    price_day: string;
+    price_week: string;
+    price_month: string;
+    advantage1: string;
+    advantage2: string;
+    advantage3: string;
+    advantage4: string;
+    advantage5: string;
+    advantage6: string;
+    taxes: string;
+    total_price: string;
     air_bags: string;
     category: string;
     description: string;
@@ -22,12 +34,24 @@ export interface Vehicle extends Document {
     };
     subcategory: string;
     time: any;
-    title: string;
     vehicle_condition: string;
     vehicle_number: string;
 }
 
 const VehicleSchema = new Schema<Vehicle>({
+    image: { type: String, required: true },
+    title: { type: String, required: true },
+    price_day: { type: String, required: true },
+    price_week: { type: String, required: true },
+    price_month: { type: String, required: true },
+    advantage1: { type: String, required: true },
+    advantage2: { type: String, required: true },
+    advantage3: { type: String, required: true },
+    advantage4: { type: String, required: true },
+    advantage5: { type: String, required: true },
+    advantage6: { type: String, required: true },
+    taxes: { type: String, required: true },
+    total_price: { type: String, required: true },
     air_bags: { type: String, required: true },
     category: { type: String, required: true },
     description: { type: String, required: true },
@@ -48,12 +72,10 @@ const VehicleSchema = new Schema<Vehicle>({
     },
     subcategory: { type: String, required: true },
     time: { type: Schema.Types.Mixed },
-    title: { type: String, required: true },
     vehicle_condition: { type: String, required: true },
     vehicle_number: { type: String, required: true },
 });
 
-// Create a Mongoose model for the vehicle
-const VehicleModel: Model<Vehicle> = mongoose.model("vehicles", VehicleSchema) as Model<Vehicle>;
+const VehicleModel: Model<Vehicle> = mongoose.model('vehicles', VehicleSchema) as Model<Vehicle>;
 
 export default VehicleModel;
