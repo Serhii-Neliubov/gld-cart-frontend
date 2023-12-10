@@ -4,7 +4,7 @@ import styles from "./TrackOrder.module.scss";
 import { Link } from "react-router-dom";
 
 const TrackOrder: FC = () => {
-  const [orderStatus] = useState<string>("On The Way");
+  const [orderStatus] = useState<string>("");
 
   return (
     <div>
