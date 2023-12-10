@@ -16,6 +16,10 @@ class VehicleService {
     async deleteVehicle(id: string) {
         return VehicleModel.findByIdAndDelete(id);
     }
+
+    async getAllVehicles() {
+        return VehicleModel.find();
+    }
 }
 
 export default new VehicleService();

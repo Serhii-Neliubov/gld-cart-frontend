@@ -3,7 +3,6 @@ import * as userController        from "../controllers/userController";
 import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
 import * as paymentController     from "../controllers/paymentController";
 import * as authMiddleware        from "../middlewares/authMiddleware";
-import * as storeController from "../controllers/storeController";
 import * as vehicleController from "../controllers/vehicleController";
 
 const router: Router = Router();
@@ -32,14 +31,15 @@ router.get("/get-customer", authMiddleware.requireAuth, paymentController.create
 router.post("/webhook", express.raw({type: "application/json"}), paymentController.create_order);
 
 //Basic product routes
-router.post("/create-product", authMiddleware.requireAuth, storeController.create_product);
-router.post("/update-product", authMiddleware.requireAuth, storeController.update_product);
-router.post("/delete_product", authMiddleware.requireAuth, storeController.delete_product);
-router.get("/get_product", authMiddleware.requireAuth, storeController.get_product);
+// router.post("/create-product", authMiddleware.requireAuth, storeController.create_product);
+// router.post("/update-product", authMiddleware.requireAuth, storeController.update_product);
+// router.post("/delete_product", authMiddleware.requireAuth, storeController.delete_product);
+// router.get("/get_product", authMiddleware.requireAuth, storeController.get_product);
 
 //Vehicle routes
-router.post('/vehicles', vehicleController.createVehicle);
+router.post('/vehicle', vehicleController.createVehicle);
 router.get('/vehicles/:id', vehicleController.getVehicleById);
+router.get('/vehicles', vehicleController.getAllVehicles);
 router.put('/vehicles/:id', vehicleController.updateVehicle);
 router.delete('/vehicles/:id', vehicleController.deleteVehicle);
 

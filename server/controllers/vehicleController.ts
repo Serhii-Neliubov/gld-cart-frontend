@@ -24,6 +24,14 @@ export const getVehicleById = async (req: Request, res: Response, next: NextFunc
         next(err);
     }
 };
+export const getAllVehicles = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const vehicles = await vehicleService.getAllVehicles();
+        res.json(vehicles);
+    } catch (err) {
+        next(err);
+    }
+};
 export const updateVehicle = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const vehicleId = req.params.id;
