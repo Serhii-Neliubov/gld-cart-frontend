@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import styles from "./RentingProductsPage.module.scss";
 import React, { FC } from "react";
 import { RentingProductsData } from "../../utils/RentingProductsData";
-import { IClearClick } from "../../interfaces/interfaces";
-
+interface IClearClick {
+  [key: string]: boolean;
+}
 const clearClick: IClearClick = {
   beauty: false,
   bags: false,
@@ -42,6 +43,9 @@ const RentingProductsPage: FC = () => {
   const [selectedButton, setSelectedButton] = React.useState<string | null>(
     null
   );
+
+  const keys = Object.keys(isClicked);
+  console.log(isClicked);
 
   const handleButtonClick = (item: string) => {
     setSelectedButton(item);
@@ -343,336 +347,39 @@ const RentingProductsPage: FC = () => {
                       <span>Earrings</span>
                     </button>
                   </div>
-                  {isClicked.beauty && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.beauty.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openbeauty: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.bags && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.bags.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openbags: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.awesome && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.awesome.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.mobileTablets && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.mobileTablets.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.necklaces && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.necklaces.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.clothing && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.clothing.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.bluetooth && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.bluetooth.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.facial && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.facial.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.shoes && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.shoes.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.cpu && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.cpu.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.discover && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.discover.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.headphones && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.headphones.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.bracelets && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.bracelets.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.smartWatch && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.smartWatch.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                  {isClicked.earrings && (
-                    <div className={styles.main_items_2}>
-                      {RentingProductsData.earrings.map((item) => {
-                        const isSelected = selectedButton === item.name;
-                        return (
-                          <button
-                            key={item.name}
-                            className={styles.main_item_2}
-                            style={{
-                              backgroundColor: isSelected ? "#02A0A0" : "",
-                            }}
-                            onClick={() => {
-                              setIsClicked({ ...isClicked, openawesome: true });
-                              handleButtonClick(item.name);
-                            }}
-                          >
-                            <span>{item.name}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
+                  {/*SUBCATEGORY GENERATION*/}
+                  {keys.map((key) => {
+                    return (
+                      isClicked[key] && (
+                        <div className={styles.main_items_2}>
+                          {RentingProductsData[
+                            key as keyof typeof RentingProductsData
+                          ].map((item) => {
+                            const isSelected = selectedButton === item.name;
+                            return (
+                              <button
+                                key={item.name}
+                                className={styles.main_item_2}
+                                style={{
+                                  backgroundColor: isSelected ? "#02A0A0" : "",
+                                }}
+                                onClick={() => {
+                                  setIsClicked({
+                                    ...isClicked,
+                                    [key]: true,
+                                  });
+                                  handleButtonClick(item.name);
+                                }}
+                              >
+                                <span>{item.name}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )
+                    );
+                  })}
+                  {/*ITEMS GENERATION*/}
                   {selectedButton === "Radiant Complexion" ? (
                     <div className={styles.main_items_3}>
                       {RentingProductsData.beautySub.map((item) => {
