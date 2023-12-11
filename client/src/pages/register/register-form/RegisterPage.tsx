@@ -157,6 +157,7 @@ const RegisterPage: FC = () => {
                     placeholder="Min. 8 character"
                   />
                 </div>
+
                 <div
                   className={isEmptyRePassword ? styles.error : styles.input}
                 >

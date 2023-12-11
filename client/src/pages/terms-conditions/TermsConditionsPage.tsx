@@ -1,4 +1,6 @@
 import Footer from "../../components/UI/Footer";
+import { TermsConditionsData } from "../../utils/TermsConditionsData";
+import TextSection from "../cookie-policy/TextSection";
 import styles from "./TermsConditionsPage.module.scss";
 import { FC, useEffect } from "react";
 
@@ -18,84 +20,15 @@ const TermsConditionsPage: FC = () => {
             the Terms and Conditions carefully before using Gldcart.com.
           </span>
           <div className={styles.text}>
-            <div className={styles.text_container}>
-              <p className={styles.list_item}>1. Account Registration:</p>
-              <ul className={styles.unordered_list}>
-                <li>
-                  Users must be at least 18 years old or the age of majority in
-                  their jurisdiction to create an account.
-                </li>
-                <li>
-                  Users are responsible for maintaining the confidentiality of
-                  their account login information.
-                </li>
-                <li>
-                  Users agree to provide accurate and complete information
-                  during registration.
-                </li>
-              </ul>
-            </div>
-            <div className={styles.text_container}>
-              <p className={styles.list_item}>2. User Conduct:</p>
-              <ul className={styles.unordered_list}>
-                <li>
-                  Users must comply with all applicable laws and regulations.
-                </li>
-                <li>
-                  Prohibited activities include impersonation, disruption of the
-                  Website's functioning, collecting personal information, and
-                  engaging in fraudulent or deceptive behavior.
-                </li>
-                <li>
-                  GLDCART reserves the right to suspend or terminate accounts
-                  for violation of these Terms.
-                </li>
-              </ul>
-            </div>
-            <div className={styles.text_container}>
-              <p className={styles.list_item}>
-                3. Intellectual Property Rights:
-              </p>
-              <ul className={styles.unordered_list}>
-                <li>
-                  The Website and its content are owned by GLDCART or its
-                  licensors and are protected by intellectual property laws.
-                </li>
-                <li>
-                  Users may not reproduce, distribute, modify, or publicly
-                  display the Website's material without permission.
-                </li>
-              </ul>
-            </div>
-            <div className={styles.text_container}>
-              <p className={styles.list_item}>
-                4. Product Listings and Orders:
-              </p>
-              <ul className={styles.unordered_list}>
-                <li>
-                  GLDCART strives to provide accurate product information but
-                  does not guarantee its accuracy.
-                </li>
-                <li>
-                  Users represent that their order information is accurate and
-                  complete.
-                </li>
-                <li>
-                  GLDCART reserves the right to refuse or cancel orders for
-                  various reasons.
-                </li>
-              </ul>
-            </div>
-            <div className={styles.text_container}>
-              <p className={styles.list_item}>5. Limitation of Liability:</p>
-              <ul className={styles.unordered_list}>
-                <li>
-                  GLDCART is not liable for any direct or indirect damages
-                  arising from the use of the Website.
-                </li>
-                <li>Users use the Website at their own risk.</li>
-              </ul>
-            </div>
+            {TermsConditionsData.map((data) => {
+              return (
+                <TextSection
+                  id={data.id}
+                  title={data.title}
+                  text={data.text.map((text) => text)}
+                />
+              );
+            })}
           </div>
           <span className={styles.desc}>
             These Terms and Conditions outline the rules and guidelines for
