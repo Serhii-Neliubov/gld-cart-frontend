@@ -1079,3 +1079,58 @@ export const RentingProductsData = {
     { name: "other" },
   ],
 };
+type ProductsDataProps = {
+  image: string;
+  name: string;
+  items: {
+    [key: string]: string[];
+  };
+}[];
+export const ProductsData: ProductsDataProps = [
+  {
+    image: "ProductsCategoryPage/Vector-10.svg",
+    name: "Beauty of Skin",
+    items: {
+      "Radiant Complexion": [
+        "Glowing skin",
+        "Healthy luminosity",
+        "Natural radiance",
+        "Youthful brightness",
+        "Dewy appearance",
+        "Other",
+      ],
+      "Skin Texture Smoothness": [
+        "Slik-like softness",
+        "Pore refinement",
+        "Flawless finish",
+        "Velvety touch",
+        "Even skin tone",
+        "Other",
+      ],
+      "Hydration and Moisture": [
+        "Supple and plump",
+        "Moisture retention",
+        "Deep hydration",
+        "Nourished skin",
+        "Dewy suppleness",
+        "Other",
+      ],
+      "Skin Clarity and Clearness": [
+        "Blemish-free beauty",
+        "Clear complexion",
+        "Transparent skin",
+        "Pimple-free radiance",
+        "Dewy appearance",
+        "Other",
+      ],
+      "Elasticity and Firmness": [
+        "Resilient skin",
+        "Firm and toned",
+        "Youthful bounce",
+        "Elastic suppleness",
+        "Tightened appearance",
+        "Other",
+      ],
+    },
+  },
+];

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./RentingProductsPage.module.scss";
 import React, { FC } from "react";
-import { RentingProductsData } from "../../utils/RentingProductsData";
+import {
+  ProductsData,
+  RentingProductsData,
+} from "../../utils/RentingProductsData";
 interface IClearClick {
   [key: string]: boolean;
 }
@@ -46,7 +49,7 @@ const RentingProductsPage: FC = () => {
 
   const keys = Object.keys(isClicked);
   console.log(isClicked);
-
+  ProductsData.map((item) => console.log(item.name));
   const handleButtonClick = (item: string) => {
     setSelectedButton(item);
   };
@@ -156,18 +159,21 @@ const RentingProductsPage: FC = () => {
                 <h2>choose a category</h2>
                 <div className={styles.main_content}>
                   <div className={styles.main_items_1}>
-                    <button
-                      style={
-                        isClicked.beauty ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() => {
-                        setIsClicked({ ...clearClick, beauty: true });
-                      }}
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-10.svg" alt="img" />
-                      <span>Beauty of Skin</span>
-                    </button>
+                    {ProductsData.map((item) => (
+                      <button
+                        style={
+                          isClicked.beauty ? { backgroundColor: "#02A0A0" } : {}
+                        }
+                        onClick={() => {
+                          setIsClicked({ ...clearClick, beauty: true });
+                        }}
+                        className={styles.main_item_1}
+                      >
+                        <img src={item.image} alt="img" />
+                        <span>{item.name}</span>
+                      </button>
+                    ))}
+
                     <button
                       style={
                         isClicked.bags ? { backgroundColor: "#02A0A0" } : {}
@@ -379,91 +385,23 @@ const RentingProductsPage: FC = () => {
                       )
                     );
                   })}
-                  {/*ITEMS GENERATION*/}
-                  {selectedButton === "Radiant Complexion" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.beautySub.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Skin Texture Smoothness" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.skinTexture.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Hydration and Moisture" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.hydration.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Skin Clarity and Clearness" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.skinClarity.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Elasticity and Firmness" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.elasticity.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
+                  {/*ITEMS GENERATION Object.keys(object.items)*/}
+                  {ProductsData.map((object) =>
+                    Object.keys(object.items).map((item) =>
+                      selectedButton === item ? (
+                        <div className={styles.main_items_3} key={item}>
+                          {object.items[item].map((arrayItem, index) => (
+                            <Link
+                              to="/"
+                              key={index}
+                              className={styles.main_item_3}
+                            >
+                              <span>{arrayItem}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      ) : null
+                    )
                   )}
                   {selectedButton === "Tote Bags" ? (
                     <div className={styles.main_items_3}>
