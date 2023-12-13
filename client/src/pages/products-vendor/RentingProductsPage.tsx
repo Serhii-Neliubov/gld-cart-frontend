@@ -162,10 +162,15 @@ const RentingProductsPage: FC = () => {
                     {ProductsData.map((item) => (
                       <button
                         style={
-                          isClicked.beauty ? { backgroundColor: "#02A0A0" } : {}
+                          isClicked[item.category.toLowerCase()]
+                            ? { backgroundColor: "#02A0A0" }
+                            : {}
                         }
                         onClick={() => {
-                          setIsClicked({ ...clearClick, beauty: true });
+                          setIsClicked({
+                            ...clearClick,
+                            [item.category.toLowerCase()]: true,
+                          });
                         }}
                         className={styles.main_item_1}
                       >
@@ -174,18 +179,6 @@ const RentingProductsPage: FC = () => {
                       </button>
                     ))}
 
-                    <button
-                      style={
-                        isClicked.bags ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, bags: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-3.svg" alt="img" />
-                      <span>Bags</span>
-                    </button>
                     <button
                       style={
                         isClicked.awesome ? { backgroundColor: "#02A0A0" } : {}
@@ -402,176 +395,6 @@ const RentingProductsPage: FC = () => {
                         </div>
                       ) : null
                     )
-                  )}
-                  {selectedButton === "Tote Bags" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.toteBags.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Backpacks" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.backpacks.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Crossbody Bags" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.crossbody.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Clutch Purses" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.clutch.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Messenger Bags" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.messenger.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Duffel Bags" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.duffel.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Hobo Bags" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.hobo.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Satchel Bags" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.satchel.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Bucket Bags" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.bucket.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {selectedButton === "Wallets and Pouches" ? (
-                    <div className={styles.main_items_3}>
-                      {RentingProductsData.wallets.map((item) => {
-                        return (
-                          <Link
-                            to="/"
-                            key={item.name}
-                            className={styles.main_item_3}
-                          >
-                            <span>{item.name}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
                   )}
                   {selectedButton === "Lip Balm Flavors" ? (
                     <div className={styles.main_items_3}>

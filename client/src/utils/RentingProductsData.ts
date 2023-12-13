@@ -1082,6 +1082,7 @@ export const RentingProductsData = {
 type ProductsDataProps = {
   image: string;
   name: string;
+  category: string;
   items: {
     [key: string]: string[];
   };
@@ -1089,6 +1090,7 @@ type ProductsDataProps = {
 export const ProductsData: ProductsDataProps = [
   {
     image: "ProductsCategoryPage/Vector-10.svg",
+    category: "Beauty",
     name: "Beauty of Skin",
     items: {
       "Radiant Complexion": [
@@ -1124,6 +1126,93 @@ export const ProductsData: ProductsDataProps = [
         "Other",
       ],
       "Elasticity and Firmness": [
+        "Resilient skin",
+        "Firm and toned",
+        "Youthful bounce",
+        "Elastic suppleness",
+        "Tightened appearance",
+        "Other",
+      ],
+    },
+  },
+  {
+    image: "ProductsCategoryPage/Vector-3.svg",
+    category: "Bags",
+    name: "Bags",
+    items: {
+      "Tote Bags": [
+        "Glowing skin",
+        "Healthy luminosity",
+        "Natural radiance",
+        "Youthful brightness",
+        "Dewy appearance",
+        "Other",
+      ],
+      Backpacks: [
+        "Slik-like softness",
+        "Pore refinement",
+        "Flawless finish",
+        "Velvety touch",
+        "Even skin tone",
+        "Other",
+      ],
+      "Crossbody Bags": [
+        "Supple and plump",
+        "Moisture retention",
+        "Deep hydration",
+        "Nourished skin",
+        "Dewy suppleness",
+        "Other",
+      ],
+      "Clutch Purses": [
+        "Blemish-free beauty",
+        "Clear complexion",
+        "Transparent skin",
+        "Pimple-free radiance",
+        "Dewy appearance",
+        "Other",
+      ],
+      "Messenger Bags": [
+        "Resilient skin",
+        "Firm and toned",
+        "Youthful bounce",
+        "Elastic suppleness",
+        "Tightened appearance",
+        "Other",
+      ],
+      "Duffel Bags": [
+        "Resilient skin",
+        "Firm and toned",
+        "Youthful bounce",
+        "Elastic suppleness",
+        "Tightened appearance",
+        "Other",
+      ],
+      "Hobo Bags": [
+        "Resilient skin",
+        "Firm and toned",
+        "Youthful bounce",
+        "Elastic suppleness",
+        "Tightened appearance",
+        "Other",
+      ],
+      "Satchel Bags": [
+        "Resilient skin",
+        "Firm and toned",
+        "Youthful bounce",
+        "Elastic suppleness",
+        "Tightened appearance",
+        "Other",
+      ],
+      "Bucket Bags": [
+        "Resilient skin",
+        "Firm and toned",
+        "Youthful bounce",
+        "Elastic suppleness",
+        "Tightened appearance",
+        "Other",
+      ],
+      "Wallets and Pouches": [
         "Resilient skin",
         "Firm and toned",
         "Youthful bounce",
