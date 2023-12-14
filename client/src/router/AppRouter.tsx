@@ -103,8 +103,6 @@ const AppRouter: FC = () => {
       </BrowserRouter>
     );
   }
-
-  return <></>;
 };
 
 export default AppRouter;

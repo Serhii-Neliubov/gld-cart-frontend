@@ -48,8 +48,6 @@ const RentingProductsPage: FC = () => {
   );
 
   const keys = Object.keys(isClicked);
-  console.log(isClicked);
-  ProductsData.map((item) => console.log(item.name));
   const handleButtonClick = (item: string) => {
     setSelectedButton(item);
   };
@@ -158,18 +156,20 @@ const RentingProductsPage: FC = () => {
               <div className={styles.main_block}>
                 <h2>choose a category</h2>
                 <div className={styles.main_content}>
+                  {/*CATEGORY GENERATION*/}
                   <div className={styles.main_items_1}>
                     {ProductsData.map((item) => (
                       <button
+                        key={item.name}
                         style={
-                          isClicked[item.category.toLowerCase()]
+                          isClicked[item.category]
                             ? { backgroundColor: "#02A0A0" }
                             : {}
                         }
                         onClick={() => {
                           setIsClicked({
                             ...clearClick,
-                            [item.category.toLowerCase()]: true,
+                            [item.category]: true,
                           });
                         }}
                         className={styles.main_item_1}
@@ -178,173 +178,6 @@ const RentingProductsPage: FC = () => {
                         <span>{item.name}</span>
                       </button>
                     ))}
-
-                    <button
-                      style={
-                        isClicked.awesome ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, awesome: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-12.svg" alt="img" />
-                      <span>Awesome Lip Care</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.mobileTablets
-                          ? { backgroundColor: "#02A0A0" }
-                          : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, mobileTablets: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector.svg" alt="img" />
-                      <span>Mobile Tablets</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.necklaces
-                          ? { backgroundColor: "#02A0A0" }
-                          : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, necklaces: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-1.svg" alt="img" />
-                      <span>Necklaces</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.clothing ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, clothing: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-7.svg" alt="img" />
-                      <span>Clothing</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.bluetooth
-                          ? { backgroundColor: "#02A0A0" }
-                          : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, bluetooth: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-6.svg" alt="img" />
-                      <span>Bluetooth</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.facial ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, facial: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-14.svg" alt="img" />
-                      <span>Facial Care</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.shoes ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, shoes: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-13.svg" alt="img" />
-                      <span>Shoes</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.cpu ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() => setIsClicked({ ...clearClick, cpu: true })}
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-11.svg" alt="img" />
-                      <span>CPU</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.discover ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, discover: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-9.svg" alt="img" />
-                      <span>Discover Skincare</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.headphones
-                          ? { backgroundColor: "#02A0A0" }
-                          : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, headphones: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-4.svg" alt="img" />
-                      <span>Headphones</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.bracelets
-                          ? { backgroundColor: "#02A0A0" }
-                          : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, bracelets: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-8.svg" alt="img" />
-                      <span>Bracelets</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.smartWatch
-                          ? { backgroundColor: "#02A0A0" }
-                          : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, smartWatch: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-5.svg" alt="img" />
-                      <span>Smart Watch</span>
-                    </button>
-                    <button
-                      style={
-                        isClicked.earrings ? { backgroundColor: "#02A0A0" } : {}
-                      }
-                      onClick={() =>
-                        setIsClicked({ ...clearClick, earrings: true })
-                      }
-                      className={styles.main_item_1}
-                    >
-                      <img src="ProductsCategoryPage/Vector-2.svg" alt="img" />
-                      <span>Earrings</span>
-                    </button>
                   </div>
                   {/*SUBCATEGORY GENERATION*/}
                   {keys.map((key) => {
@@ -378,7 +211,7 @@ const RentingProductsPage: FC = () => {
                       )
                     );
                   })}
-                  {/*ITEMS GENERATION Object.keys(object.items)*/}
+                  {/*ITEMS GENERATION*/}
                   {ProductsData.map((object) =>
                     Object.keys(object.items).map((item) =>
                       selectedButton === item ? (
