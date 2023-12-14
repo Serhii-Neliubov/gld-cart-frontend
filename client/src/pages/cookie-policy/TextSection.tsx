@@ -1,11 +1,6 @@
 import React from "react";
 import styles from "./CookiePolicyPage.module.scss";
-
-type TextSectionProps = {
-  id: number;
-  title: string;
-  text: React.ReactNode[];
-};
+import { TextSectionProps } from "../../interfaces/types";
 
 export default function TextSection({ title, text, id }: TextSectionProps) {
   return (

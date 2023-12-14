@@ -1,11 +1,6 @@
 import { FC } from "react";
 import styles from "./PaymentModal.module.scss";
-
-interface PaymentModalProps {
-  title: string;
-  secondInput?: string;
-  secondInputTitle?: string;
-}
+import { PaymentModalProps } from "../../interfaces/interfaces";
 
 const PaymentModal: FC<PaymentModalProps> = ({
   title,

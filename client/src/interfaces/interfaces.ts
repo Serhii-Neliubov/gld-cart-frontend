@@ -38,3 +38,10 @@ export interface IClearClick {
   opensmartWatch: boolean;
   openearrings: boolean;
 }
+
+// PaymentModal.tsx
+export interface PaymentModalProps {
+  title: string;
+  secondInput?: string;
+  secondInputTitle?: string;
+}

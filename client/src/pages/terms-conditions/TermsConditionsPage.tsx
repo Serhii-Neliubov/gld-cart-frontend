@@ -1,5 +1,5 @@
 import Footer from "../../components/UI/Footer";
-import { TermsConditionsData } from "../../utils/TermsConditionsData";
+import { TermsConditions } from "../../utils/TermsConditionsData";
 import TextSection from "../cookie-policy/TextSection";
 import styles from "./TermsConditionsPage.module.scss";
 import { FC, useEffect } from "react";
@@ -13,27 +13,21 @@ const TermsConditionsPage: FC = () => {
     <>
       <div className="__container">
         <div className={styles.body}>
-          <h1 className={styles.title}>Terms and Conditions</h1>
-          <span className={styles.desc}>
-            By using Gldcart.com , you agree to the terms and conditions,
-            privacy policy, and returns/refund policy of the Site. Please read
-            the Terms and Conditions carefully before using Gldcart.com.
-          </span>
+          <h1 className={styles.title}>{TermsConditions.title}</h1>
+          <span className={styles.desc}>{TermsConditions.description_top}</span>
           <div className={styles.text}>
-            {TermsConditionsData.map((data) => {
+            {TermsConditions.list_text.map((li) => {
               return (
                 <TextSection
-                  id={data.id}
-                  title={data.title}
-                  text={data.text.map((text) => text)}
+                  id={li.id}
+                  title={li.title}
+                  text={li.text.map((text) => text)}
                 />
               );
             })}
           </div>
           <span className={styles.desc}>
-            These Terms and Conditions outline the rules and guidelines for
-            using the GLDCART Ecommerce Website. By accessing and using the
-            Website, users agree to comply with these terms.
+            {TermsConditions.description_bottom}
           </span>
         </div>
       </div>
