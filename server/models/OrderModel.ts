@@ -1,9 +1,9 @@
 import mongoose, {Document, Model, Schema} from "mongoose";
-import {Product, productSchema} from "./products/ProductModel";
+import {IProduct, productSchema} from "./products/ProductModel";
 
 export interface IOrder extends Document {
     user: mongoose.Types.ObjectId;
-    products: Product[];
+    products: IProduct[];
     subtotal: number;
     total: number;
     shipping?: object;

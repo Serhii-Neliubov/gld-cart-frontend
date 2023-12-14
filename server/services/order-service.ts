@@ -1,6 +1,6 @@
 import OrderModel from "../models/OrderModel";
 import Stripe from "stripe";
-import ProductModel, {Product} from "../models/products/ProductModel";
+import ProductModel, {IProduct} from "../models/products/ProductModel";
 
 class OrderService {
     async createOrder(customer: Stripe.Customer | Stripe.DeletedCustomer, data: Stripe.Event.Data.Object) {
@@ -12,7 +12,7 @@ class OrderService {
             "customer_details" in data &&
             "payment_status" in data) {
 
-            const Items = JSON.parse(customer.metadata.cart) as Product[];
+            const Items = JSON.parse(customer.metadata.cart) as IProduct[];
             console.log(Items);
             try {
                 const newOrder = new OrderModel({

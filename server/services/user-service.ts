@@ -5,6 +5,8 @@ import TokenService from "./token-service";
 import UserDto from "../dtos/user-dto";
 import ApiError from "../exceptions/api-error";
 import mailService from "./mail-service";
+import {IAddress} from "../models/AddressModel";
+import {Types} from "mongoose";
 
 class UserService {
     async registration(
@@ -89,7 +91,7 @@ class UserService {
         }
     }
 
-    async changePassword(token: string, newPassword: string) {
+    async changePasswordWithToken(token: string, newPassword: string) {
         const user = <IUser>await UserModel.findOne({passwordResetToken: token});
         if (!user) {
             throw ApiError.BadRequest("Invalid or expired token");
@@ -97,6 +99,20 @@ class UserService {
         user.password = await this.hashPassword(newPassword);
         user.passwordResetToken = undefined;
         await user.save();
+    }
+
+    async changePasswordWithEmail(email: string, oldPassword: string, newPassword: string) {
+        const user = <IUser>await UserModel.findOne({email});
+        if (user) {
+            const auth: boolean = await bcrypt.compare(oldPassword, user.password);
+            if (auth) {
+                user.password = await this.hashPassword(newPassword);
+                await user.save();
+                return;
+            }
+            throw ApiError.BadRequest("Incorrect old password");
+        }
+        throw ApiError.BadRequest("Incorrect email");
     }
 
     async requestPasswordReset(email: string, token: string) {
@@ -173,6 +189,35 @@ class UserService {
             picture: picture,
             password: password,
         });
+    }
+
+    async addAddress(email: string, addressData: IAddress) {
+        const user = await UserModel.findOne({email});
+        if (!user)
+            throw ApiError.BadRequest("User not found");
+
+        const newAddressId = new Types.ObjectId();
+        const addressWithId = {...addressData, id: newAddressId};
+
+        user.addresses.push(addressWithId);
+        await user.save();
+
+        return user;
+    }
+
+    async updateAddress(email: string, addressId: Types.ObjectId, updatedAddressData: IAddress) {
+
+        const user: IUser | null = await UserModel.findOne({email});
+
+        if (!user) {
+            throw ApiError.BadRequest('User not found');
+        }
+        const addressIndex = user.addresses.findIndex(address => String(address.id) === String(addressId));
+        if (addressIndex === -1) {
+            throw ApiError.BadRequest('Address not found');
+        }
+        Object.assign(user.addresses[addressIndex], updatedAddressData);
+        await user.save();
     }
 }
 

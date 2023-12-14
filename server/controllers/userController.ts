@@ -4,6 +4,8 @@ import UserService from "../services/user-service";
 import TokenService from "../services/token-service";
 import {v4 as uuidv4} from "uuid";
 import {getGoogleOAuthTokens, getGoogleUser,} from "../services/google-service";
+import {IAddress} from "../models/AddressModel";
+
 
 export const signup = async (
     req: Request,
@@ -90,7 +92,20 @@ export const resetPasswordWithToken = async (
     const {token: token} = req.params;
     const {newPassword} = req.body;
     try {
-        await UserService.changePassword(token, newPassword);
+        await UserService.changePasswordWithToken(token, newPassword);
+        res.status(200).json({message: "Password was reset successfully."});
+    } catch (error) {
+        next(error);
+    }
+};
+export const resetPasswordWithEmail = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+): Promise<void> => {
+    const {email, oldPassword, newPassword} = req.body;
+    try {
+        await UserService.changePasswordWithEmail(email, oldPassword, newPassword);
         res.status(200).json({message: "Password was reset successfully."});
     } catch (error) {
         next(error);
@@ -120,7 +135,6 @@ export const sendContactEmail = async (
     next: NextFunction
 ) => {
     const {name, email, subject, message, token} = req.body;
-
     try {
         const userData = token ? TokenService.validateAccessToken(token) : null;
         const recipientEmail = email || userData?.email;
@@ -134,6 +148,33 @@ export const sendContactEmail = async (
             .json({success: false, message: "Error. Email was not sent"});
     } catch (e) {
         next(e);
+    }
+};
+export const addAddress = async (req: Request, res: Response, next: NextFunction) => {
+    const {email, recipients_name, street_address, city, state, country, ZIP_code, phone_number} = req.body;
+    const addressData = {
+        recipients_name,
+        street_address,
+        city,
+        state,
+        country,
+        ZIP_code,
+        phone_number,
+    };
+    try {
+        await UserService.addAddress(email, addressData);
+        res.status(200).json({message: "Address was added successfully."});
+    } catch (error) {
+        next(error);
+    }
+};
+export const updateAddress = async (req: Request, res: Response, next: NextFunction) => {
+    const {email, updatedAddressData, addressId} = req.body;
+    try {
+        await UserService.updateAddress(email, addressId, updatedAddressData)
+        res.status(200).json("Address updated successfully");
+    } catch (error) {
+        next(error);
     }
 };
 export const googleOauthHandler = async (req: Request, res: Response) => {

@@ -1,5 +1,6 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import validator from "validator";
+import {addressSchema, IAddress} from "./AddressModel";
 
 export interface IUser extends Document {
   _id: string;
@@ -7,6 +8,7 @@ export interface IUser extends Document {
   name: string;
   surname: string;
   email: string;
+  addresses: IAddress[];
   picture: string;
   password: string;
   passwordResetToken: string | undefined;
@@ -32,6 +34,7 @@ const userSchema: Schema<IUser> = new Schema({
     lowercase: true,
     validate: [validator.isEmail, "Please, enter a valid email"],
   },
+  addresses: [addressSchema],
   picture: {
     type: String,
   },

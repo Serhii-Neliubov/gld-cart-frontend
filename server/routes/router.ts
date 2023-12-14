@@ -19,6 +19,7 @@ router.get("/tokens/oauth/google", userController.googleOauthHandler);
 // Reset password routes
 router.post("/forgot-password", userController.initiatePasswordReset);
 router.post("/reset-password/:token", userController.resetPasswordWithToken);
+router.post("/reset-password", userController.resetPasswordWithEmail);
 
 //Email routes
 router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.sendContactEmail);
@@ -29,6 +30,10 @@ router.post("/create-subscription-checkout", paymentController.createSubscriptio
 router.post("/cancel-subscription", authMiddleware.requireAuth, paymentController.cancelSubscription);
 router.get("/get-customer", authMiddleware.requireAuth, paymentController.createCustomer);
 router.post("/webhook", express.raw({type: "application/json"}), paymentController.handleStripeWebhook);
+
+//Addresses routes
+router.post("/add-address", userController.addAddress);
+router.put("/update-address", userController.updateAddress);
 
 //Basic product routes
 // router.post("/create-product", authMiddleware.requireAuth, storeController.create_product);

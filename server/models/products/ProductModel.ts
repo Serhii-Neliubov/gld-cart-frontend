@@ -1,7 +1,7 @@
 
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
-export interface Product extends Document {
+export interface IProduct extends Document {
   _id: string;
   title: string;
   brand: string;
@@ -11,7 +11,7 @@ export interface Product extends Document {
   cartQuantity: number;
 }
 
-export const productSchema = new Schema<Product>({
+export const productSchema = new Schema<IProduct>({
     title: { type: String, required: true },
     brand: { type: String, required: false },
     desc: { type: String, required: false },
@@ -20,5 +20,5 @@ export const productSchema = new Schema<Product>({
     cartQuantity: { type: Number},
 });
 
-const ProductModel = mongoose.model('products', productSchema) as Model<Product>;
+const ProductModel = mongoose.model('products', productSchema) as Model<IProduct>;
 export default ProductModel;
