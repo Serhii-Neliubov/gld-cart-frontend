@@ -68,7 +68,14 @@
   width: 33.33333%;
 }
 .main_content {
+  min-height: 600px;
   display: flex;
+  border-right: 1px solid gray;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
 }
 .main_block {
   border: 1px solid gray;
