@@ -1,34 +1,34 @@
-import express, {Router}          from "express";
-import * as userController        from "../controllers/userController";
+import express, {Router} from "express";
+import * as userController from "../controllers/userController";
 import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
-import * as paymentController     from "../controllers/paymentController";
-import * as authMiddleware        from "../middlewares/authMiddleware";
+import * as paymentController from "../controllers/paymentController";
+import * as authMiddleware from "../middlewares/authMiddleware";
 import * as vehicleController from "../controllers/vehicleController";
 
 const router: Router = Router();
 
 // Auth routes
-router.post("/signup", userController.signup_post);
-router.post("/login", userController.login_post);
-router.post("/logout", userController.logout_post);
-router.get("/refresh", userController.refresh_get);
+router.post("/signup", userController.signup);
+router.post("/login", userController.login);
+router.post("/logout", userController.logout);
+router.get("/refresh", userController.refresh);
 
 //GoogleAuth routes
 router.get("/tokens/oauth/google", userController.googleOauthHandler);
 
 // Reset password routes
-router.post("/forgot-password", userController.initiate_password_reset);
-router.post("/reset-password/:token", userController.reset_password);
+router.post("/forgot-password", userController.initiatePasswordReset);
+router.post("/reset-password/:token", userController.resetPasswordWithToken);
 
 //Email routes
-router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.send_contact_email);
+router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.sendContactEmail);
 
 //Payment routes
-router.post("/create-checkout-session", authMiddleware.requireAuth, paymentController.create_checkout);
-router.post("/create-subscription", authMiddleware.requireAuth, paymentController.create_subscription);
-router.post("/cancel-subscription", authMiddleware.requireAuth, paymentController.cancel_subscription);
-router.get("/get-customer", authMiddleware.requireAuth, paymentController.create_customer);
-router.post("/webhook", express.raw({type: "application/json"}), paymentController.create_order);
+router.post("/create-checkout-session", authMiddleware.requireAuth, paymentController.createPaymentCheckout);
+router.post("/create-subscription-checkout", paymentController.createSubscriptionCheckout);
+router.post("/cancel-subscription", authMiddleware.requireAuth, paymentController.cancelSubscription);
+router.get("/get-customer", authMiddleware.requireAuth, paymentController.createCustomer);
+router.post("/webhook", express.raw({type: "application/json"}), paymentController.handleStripeWebhook);
 
 //Basic product routes
 // router.post("/create-product", authMiddleware.requireAuth, storeController.create_product);
@@ -37,10 +37,10 @@ router.post("/webhook", express.raw({type: "application/json"}), paymentControll
 // router.get("/get_product", authMiddleware.requireAuth, storeController.get_product);
 
 //Vehicle routes
-router.post('/vehicle', vehicleController.createVehicle);
-router.get('/vehicles/:id', vehicleController.getVehicleById);
-router.get('/vehicles', vehicleController.getAllVehicles);
-router.put('/vehicles/:id', vehicleController.updateVehicle);
-router.delete('/vehicles/:id', vehicleController.deleteVehicle);
+router.post('/vehicle', authMiddleware.requireAuth, vehicleController.createVehicle);
+router.get('/vehicles/:id', authMiddleware.requireAuth, vehicleController.getVehicleById);
+router.get('/vehicles', authMiddleware.requireAuth, vehicleController.getAllVehicles);
+router.put('/vehicles/:id', authMiddleware.requireAuth, vehicleController.updateVehicle);
+router.delete('/vehicles/:id', authMiddleware.requireAuth, vehicleController.deleteVehicle);
 
 export default router;

@@ -22,7 +22,7 @@ interface IItem {
     cartQuantity: any;
 }
 
-export const create_customer = async (req: Request, res: Response, next: NextFunction) => {
+export const createCustomer = async (req: Request, res: Response, next: NextFunction) => {
     const email = req.body.email;
     const name = req.body.name;
     try {
@@ -52,7 +52,7 @@ export const create_customer = async (req: Request, res: Response, next: NextFun
         next(error);
     }
 };
-export const create_checkout = async (
+export const createPaymentCheckout = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -103,33 +103,45 @@ export const create_checkout = async (
         next(error);
     }
 };
-export const create_subscription = async (req: Request, res: Response, next: NextFunction)
-    : Promise<any> => {
-
-    const customer_id = req.body.customer_id;
-    const price_id = req.body.price_id;
-
+export const createSubscriptionCheckout = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+): Promise<void> => {
+    const user_id = req.body.userId;
+    const lookup_key = req.body.lookup_key;
+    console.log(`Lookup key is: ${lookup_key}`);
     try {
-        const subscription = await stripe.subscriptions.create({
-            customer: customer_id,
-            items: [{
-                price: price_id,
-            }],
-            payment_behavior: 'default_incomplete',
-            payment_settings: {save_default_payment_method: 'on_subscription'},
-            expand: ['latest_invoice.payment_intent'],
+        const customer = await stripe.customers.create({
+            metadata: {
+                userId: user_id,
+            },
         });
+        const prices = await stripe.prices.list({
+            lookup_keys: [lookup_key],
+            expand: ['data.product'],
+        });
+        const session = await stripe.checkout.sessions.create({
+            billing_address_collection: 'auto',
+            line_items: [
+                {
+                    price: prices.data[0].id,
+                    // For metered billing, do not pass quantity
+                    quantity: 1,
 
-        res.send({
-            subscriptionId: subscription.id,
-            clientSecret: subscription.latest_invoice.payment_intent.client_secret,
+                },
+            ],
+            mode: 'subscription',
+            success_url: `${process.env.CLIENT_URL}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${process.env.CLIENT_URL}?canceled=true`,
         });
+        // res.redirect(<string>session.url);
+        res.send({url: session.url});
     } catch (error) {
         next(error);
     }
 }
-
-export const cancel_subscription = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+export const cancelSubscription = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
         // @ts-ignore
         const deletedSubscription = await stripe.subscriptions.del(
@@ -140,43 +152,84 @@ export const cancel_subscription = async (req: Request, res: Response, next: Nex
         next(error);
     }
 }
-export const create_order = async (
-    req: Request,
-    res: Response
-): Promise<void> => {
-    try {
-        let event: Stripe.Event;
-        const signature = req.headers["stripe-signature"] as string | Buffer | string[];
-
+export const handleStripeWebhook = async (
+        req: Request,
+        res: Response
+    ): Promise<void> => {
         try {
-            event = stripe.webhooks.constructEvent(
-                req.body,
-                signature,
-                <string>process.env.STRIPE_WEBHOOK_SECRET
-            );
-        } catch (err) {
-            console.log(`⚠️  Webhook signature verification failed.`);
-            res.sendStatus(400);
-            return;
+            let event: Stripe.Event;
+            const signature = req.headers["stripe-signature"] as string | Buffer | string[];
+
+            try {
+                event = stripe.webhooks.constructEvent(
+                    req.body,
+                    signature,
+                    <string>process.env.STRIPE_WEBHOOK_SECRET
+                );
+            } catch (err) {
+                console.log(`⚠️  Webhook signature verification failed.`);
+                res.sendStatus(400);
+                return;
+            }
+            const data = event.data.object;
+            const eventType: string = event.type;
+
+            switch (eventType) {
+                // case 'customer.subscription.trial_will_end':
+                //     subscription = event.data.object;
+                //     status = subscription.status;
+                //     console.log(`Subscription status is ${status}.`);
+                //     // Then define and call a method to handle the subscription trial ending.
+                //     // handleSubscriptionTrialEnding(subscription);
+                //     break;
+                // case 'customer.subscription.deleted':
+                //     subscription = event.data.object;
+                //     status = subscription.status;
+                //     console.log(`Subscription status is ${status}.`);
+                //     // Then define and call a method to handle the subscription deleted.
+                //     // handleSubscriptionDeleted(subscriptionDeleted);
+                //     break;
+                // case 'customer.subscription.created':
+                //     subscription = event.data.object;
+                //     status = subscription.status;
+                //     console.log(`Subscription status is ${status}.`);
+                //     // Then define and call a method to handle the subscription created.
+                //     // handleSubscriptionCreated(subscription);
+                //     break;
+                // case 'customer.subscription.updated':
+                //     subscription = event.data.object;
+                //     status = subscription.status;
+                //     console.log(`Subscription status is ${status}.`);
+                //     // Then define and call a method to handle the subscription update.
+                //     // handleSubscriptionUpdated(subscription);
+                //     break;
+                case "checkout.session.completed":
+                    try {
+                        const customer = await stripe.customers.retrieve(
+                            (data as { customer: string }).customer
+                        );
+                        await StoreService.createOrder(customer, data);
+                    } catch (err) {
+                        console.log(err);
+                    }
+                    break;
+                case 'invoice.paid':
+                    // Continue to provision the subscription as payments continue to be made.
+                    // Store the status in your database and check when a user accesses your service.
+                    // This approach helps you avoid hitting rate limits.
+                    break;
+                case 'invoice.payment_failed':
+                    // The payment failed or the customer does not have a valid payment method.
+                    // The subscription becomes past_due. Notify your customer and send them to the
+                    // customer portal to update their payment information.
+                    break;
+                default:
+                    console.log(`Unhandled event type ${event.type}`);
+            }
+            res.send();
+        } catch
+            (error) {
+            console.log(error);
         }
-        const data = event.data.object;
-        const eventType: string = event.type;
-        switch (eventType) {
-            case "checkout.session.completed":
-                try {
-                    const customer = await stripe.customers.retrieve(
-                        (data as { customer: string }).customer
-                    );
-                    await StoreService.createOrder(customer, data);
-                } catch (err) {
-                    console.log(err);
-                }
-                break;
-            default:
-                console.log(`Unhandled event type ${event.type}`);
-        }
-        res.send();
-    } catch (error) {
-        console.log(error);
     }
-};
+;

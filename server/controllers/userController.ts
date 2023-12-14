@@ -5,7 +5,7 @@ import TokenService from "../services/token-service";
 import {v4 as uuidv4} from "uuid";
 import {getGoogleOAuthTokens, getGoogleUser,} from "../services/google-service";
 
-export const signup_post = async (
+export const signup = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -30,7 +30,7 @@ export const signup_post = async (
     }
 };
 
-export const login_post = async (
+export const login = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -50,7 +50,7 @@ export const login_post = async (
     }
 };
 
-export const logout_post = async (
+export const logout = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -65,7 +65,7 @@ export const logout_post = async (
     }
 };
 
-export const initiate_password_reset = async (
+export const initiatePasswordReset = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -82,7 +82,7 @@ export const initiate_password_reset = async (
     }
 };
 
-export const reset_password = async (
+export const resetPasswordWithToken = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -97,7 +97,7 @@ export const reset_password = async (
     }
 };
 
-export const refresh_get = async (
+export const refresh = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -114,7 +114,7 @@ export const refresh_get = async (
         next(e);
     }
 };
-export const send_contact_email = async (
+export const sendContactEmail = async (
     req: Request,
     res: Response,
     next: NextFunction
