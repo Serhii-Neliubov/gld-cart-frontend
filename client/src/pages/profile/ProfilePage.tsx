@@ -1,16 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../components/UI/Footer";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import React from "react";
+import axios from "axios";
+import { API_URL } from "../../http";
 
 const ProfilePage: FC = () => {
   const user = useSelector(userDataSelector);
+  const navigate = useNavigate();
   const [selectedLabel, setSelectedLabel] = useState("Profile");
   const dispatch = useDispatch<AppDispatch>();
+
+  const [changePasswordData, setChangePasswordData] = useState({
+    email: user.email,
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      axios.post(`${API_URL}/reset-password`, {
+        email: changePasswordData.email,
+        oldPassword: changePasswordData.oldPassword,
+        newPassword: changePasswordData.newPassword,
+      });
+      dispatch(logout());
+      navigate("/login");
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <>
@@ -100,7 +125,7 @@ const ProfilePage: FC = () => {
                   </h1>
                   <h2 className={styles.box_name}>Personal Details</h2>
                   <div className={styles.content_box_items}>
-                    <div className={styles.box_inputs}>
+                    <form className={styles.box_inputs}>
                       <div className={styles.inputs_column}>
                         <input
                           className={styles.input}
@@ -128,7 +153,7 @@ const ProfilePage: FC = () => {
                         className={styles.input}
                         type="text"
                       />
-                    </div>
+                    </form>
                     <div className={styles.button}>
                       <button className={styles.button}>Update Profile</button>
                     </div>
@@ -141,26 +166,52 @@ const ProfilePage: FC = () => {
                     Please Enter Your Current Password
                   </h2>
                   <div className={styles.content_box_items}>
-                    <div className={styles.box_inputs}>
+                    <form onSubmit={handleSubmit} className={styles.box_inputs}>
                       <input
                         placeholder="Old Password"
                         className={styles.input}
                         type="password"
+                        name="oldPassword"
+                        value={changePasswordData.oldPassword}
+                        onChange={(e) =>
+                          setChangePasswordData({
+                            ...changePasswordData,
+                            oldPassword: e.target.value,
+                          })
+                        }
                       />
                       <input
                         placeholder="New Password"
                         className={styles.input}
+                        name="newPassword"
                         type="password"
+                        value={changePasswordData.newPassword}
+                        onChange={(e) =>
+                          setChangePasswordData({
+                            ...changePasswordData,
+                            newPassword: e.target.value,
+                          })
+                        }
                       />
                       <input
                         placeholder="Confirm New Password"
                         className={styles.input}
+                        name="confirmPassword"
                         type="password"
+                        value={changePasswordData.confirmPassword}
+                        onChange={(e) =>
+                          setChangePasswordData({
+                            ...changePasswordData,
+                            confirmPassword: e.target.value,
+                          })
+                        }
                       />
-                    </div>
-                    <div className={styles.button}>
-                      <button className={styles.button}>Update</button>
-                    </div>
+                      <div className={styles.button}>
+                        <button type="submit" className={styles.button}>
+                          Update
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </>
               )}

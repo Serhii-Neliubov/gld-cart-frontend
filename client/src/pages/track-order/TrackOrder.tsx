@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Footer from "../../components/UI/Footer";
 import styles from "./TrackOrder.module.scss";
 import { Link } from "react-router-dom";
@@ -6,7 +6,9 @@ import { statuses } from "../../utils/TrackOrderStatuses";
 
 const TrackOrder: FC = () => {
   const [orderStatus] = useState<string>("");
-
+  useEffect((): void => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <div className={styles.main}>

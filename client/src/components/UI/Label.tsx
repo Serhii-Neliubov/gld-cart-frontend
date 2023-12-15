@@ -9,11 +9,7 @@ import { useTranslation } from "react-i18next";
 import { FC } from "react";
 import { RootState } from "../../redux/store";
 import IUser from "../../models/IUser";
-
-interface NavLinkProps {
-  to: string;
-  label: string;
-}
+import { NavLinkProps } from "../../interfaces/interfaces";
 
 const Label: FC = () => {
   const location = useLocation();

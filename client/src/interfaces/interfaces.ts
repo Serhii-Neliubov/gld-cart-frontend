@@ -45,3 +45,8 @@ export interface PaymentModalProps {
   secondInput?: string;
   secondInputTitle?: string;
 }
+// Label.tsx
+export interface NavLinkProps {
+  to: string;
+  label: string;
+}
