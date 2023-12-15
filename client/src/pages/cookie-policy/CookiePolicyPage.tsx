@@ -13,14 +13,12 @@ const CookiePolicyPage: FC = () => {
     <>
       <div className="__container">
         <div className={styles.body}>
-          <h1 className={styles.title}>Cookie Policy</h1>
+          <h1 className={styles.title}>{CookiePolicyData.title}</h1>
           <span className={styles.desc}>
-            We use cookies to enhance your browsing experience on our website.
-            By continuing to use our website, you consent to the use of cookies.
-            This policy explains how we use cookies and how you can manage them.
+            {CookiePolicyData.description_top}
           </span>
           <div className={styles.text}>
-            {CookiePolicyData.map((data) => {
+            {CookiePolicyData.items.map((data) => {
               return (
                 <TextSection
                   id={data.id}
@@ -31,8 +29,7 @@ const CookiePolicyPage: FC = () => {
             })}
           </div>
           <span className={styles.desc}>
-            By using our website, you agree to our use of cookies as explained
-            in this policy.
+            {CookiePolicyData.description_bottom}
           </span>
         </div>
       </div>

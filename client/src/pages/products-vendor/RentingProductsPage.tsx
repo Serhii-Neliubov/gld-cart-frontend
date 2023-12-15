@@ -28,7 +28,7 @@ const clearClick: IClearClick = {
 };
 
 const RentingProductsPage: FC = () => {
-  const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
+  const [isClicked, setIsClicked] = React.useState(clearClick);
   const [selectedButton, setSelectedButton] = React.useState<string | null>(
     null
   );

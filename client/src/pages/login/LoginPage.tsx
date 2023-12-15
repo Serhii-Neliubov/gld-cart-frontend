@@ -32,7 +32,6 @@ const LoginPage = () => {
     };
 
     const qs = new URLSearchParams(options);
-    console.log(qs.toString());
     return `${rootUrl}?${qs.toString()}`;
   }
   const dispatch = useDispatch<AppDispatch>();

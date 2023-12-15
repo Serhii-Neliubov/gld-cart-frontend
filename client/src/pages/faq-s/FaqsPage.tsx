@@ -13,9 +13,9 @@ const FaqsPage: FC = () => {
     <>
       <div className="__container">
         <div className={styles.body}>
-          <h1 className={styles.title}>FAQs</h1>
+          <h1 className={styles.title}>{FaqsData.title}</h1>
           <div className={styles.text}>
-            {FaqsData.map((data) => {
+            {FaqsData.items.map((data) => {
               return (
                 <TextSection
                   id={data.id}
