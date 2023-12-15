@@ -3,6 +3,8 @@ import Footer from "../../components/UI/Footer";
 import styles from "./TrackOrder.module.scss";
 import { Link } from "react-router-dom";
 import { statuses } from "../../utils/TrackOrderStatuses";
+import StatusBar from "./StatusBar";
+import StatusNumber from "./StatusNumber";
 
 const TrackOrder: FC = () => {
   const [orderStatus] = useState<string>("");
@@ -23,29 +25,14 @@ const TrackOrder: FC = () => {
               </span>
             </div>
             <div className={styles.label}>
-              {/* LABEL WITH STATUSES */}
+              {/* ITEM NUMBER STATUS */}
               {statuses.map((status, index) => {
                 return (
-                  <div className={styles.status}>
-                    <div
-                      className={
-                        orderStatus === status.status
-                          ? `${styles.status_bg_blue}`
-                          : `${styles.status_bg}`
-                      }
-                    >
-                      <span
-                        className={
-                          orderStatus === status.status
-                            ? `${styles.status_number_bg}`
-                            : `${styles.status_number}`
-                        }
-                      >
-                        {index + 1}
-                      </span>
-                    </div>
-                    <p className={styles.status_text}>{status.status}</p>
-                  </div>
+                  <StatusNumber
+                    status={status}
+                    index={index}
+                    orderStatus={orderStatus}
+                  />
                 );
               })}
             </div>
@@ -80,18 +67,10 @@ const TrackOrder: FC = () => {
                   Track your Order
                 </button>
               </div>
-              {/* MODAL WINDOWS WITH STATUS */}
-              {statuses.map((status) => {
+              {/* ITEM WINDOW STATUS */}
+              {statuses.map((object) => {
                 return (
-                  orderStatus === status.status && (
-                    <div className={styles.order_status_bar}>
-                      <div>
-                        <img src={status.img} alt="tick" />
-                        <span>Status : {status.status}</span>
-                      </div>
-                      <p>{status.text}</p>
-                    </div>
-                  )
+                  orderStatus === object.status && <StatusBar status={object} />
                 );
               })}
             </div>
