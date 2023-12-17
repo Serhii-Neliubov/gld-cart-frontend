@@ -7,22 +7,24 @@ import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import React from "react";
 import ChangePasswordMenu from "./ChangePasswordMenu";
-import axios from "axios";
-import { API_URL } from "../../http";
+import ChangeProfileData from "./ChangeProfileData";
+import AuthService from "../../services/AuthService";
 
 const ProfilePage: FC = () => {
   const user = useSelector(userDataSelector);
   const [selectedLabel, setSelectedLabel] = useState("Profile");
   const dispatch = useDispatch<AppDispatch>();
 
+  const [addressMenuOpen, setAddressMenuOpen] = useState(false);
+
   const [formData, setFormData] = useState({
-    id: user.id,
-    name: "",
-    surname: "",
-    email: "",
-    phone_number: "",
-    address: "",
-    BIO: "",
+    email: user.email,
+    recipient: "",
+    street: "",
+    city: "",
+    country: "",
+    zip: 0,
+    phone: "",
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,10 +35,38 @@ const ProfilePage: FC = () => {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    axios.put(`${API_URL}/update-personal-details`, formData);
-    dispatch(logout());
+
+    // Check if the user is authenticated
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("User not authenticated");
+      // Handle the case where the user is not authenticated
+      return;
+    }
+
+    try {
+      // Attempt to send the address with the authentication token
+      const response = await AuthService.sendAddress(
+        formData.email,
+        formData.recipient,
+        formData.street,
+        formData.city,
+        formData.country,
+        formData.zip,
+        formData.phone
+      );
+
+      // Log the response (for debugging purposes)
+      console.log("Address sent successfully:", response);
+
+      // Optionally, you can handle the response data or perform other actions
+    } catch (error) {
+      console.error("Error sending address:", error);
+
+      // Handle the error (e.g., show an error message to the user)
+    }
   };
 
   return (
@@ -120,110 +150,120 @@ const ProfilePage: FC = () => {
           </div>
           <div className={styles.content}>
             <div className={styles.content_box}>
-              {selectedLabel === "Profile" && (
-                <>
-                  <div className={styles.title}>
-                    <h1>
-                      Welcome Mr. {user.name} {user.surname}
-                    </h1>
-                  </div>
-
-                  <h2 className={styles.box_name}>Personal Details</h2>
-                  <div className={styles.content_box_items}>
-                    <form className={styles.box_inputs} onSubmit={handleSubmit}>
-                      <div className={styles.inputs_column}>
-                        <input
-                          className={styles.input}
-                          placeholder="Eleanor"
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                        />
-                        <input
-                          className={styles.input}
-                          placeholder="Pena"
-                          type="text"
-                          name="surname"
-                          value={formData.surname}
-                          onChange={handleChange}
-                        />
-                      </div>
-                      <input
-                        placeholder="alma.lawson@example.com"
-                        className={styles.input}
-                        type="text"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                      <input
-                        placeholder="0123 456 7889"
-                        className={styles.input}
-                        type="text"
-                        name="phone_number"
-                        value={formData.phone_number}
-                        onChange={handleChange}
-                      />
-                      <input
-                        placeholder="3304 Randall Drive"
-                        className={styles.input}
-                        type="text"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleChange}
-                      />
-                      <input
-                        placeholder="Hi there, this is my bio..."
-                        className={styles.input}
-                        type="text"
-                        name="BIO"
-                        value={formData.BIO}
-                        onChange={handleChange}
-                      />
-                      <div className={styles.button}>
-                        <button type="submit">Update Profile</button>
-                      </div>
-                    </form>
-                  </div>
-                </>
-              )}
-
+              <ChangeProfileData selectedLabel={selectedLabel} />
               <ChangePasswordMenu selectedLabel={selectedLabel} />
-              {selectedLabel === "Address" && (
+
+              {addressMenuOpen ? (
                 <div
                   style={{
                     display: "flex",
                     flexDirection: "column",
+                    gap: "5px",
                     justifyContent: "space-between",
                     height: "100%",
                   }}
                 >
                   <div className={styles.title_action}>
                     <h2 className={styles.box_name}>ADDRESS</h2>
-                    <button>+ Add New Address</button>
+                    <button onClick={() => setAddressMenuOpen(false)}>
+                      Return
+                    </button>
                   </div>
-                  <div className={styles.address_content}>
-                    <div className={styles.address_box}>
-                      <div className={styles.address}>
-                        <div className={styles.address_text}>
-                          <p>Wade Warren</p>
-                          <p>2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
-                          <p>(406) 555-0120</p>
-                        </div>
+                  <form className={styles.form} onSubmit={handleSubmit}>
+                    <input
+                      placeholder="Recipients name"
+                      className={styles.input}
+                      type="text"
+                      name="recipient"
+                      value={formData.recipient}
+                      onChange={handleChange}
+                    />
+                    <input
+                      placeholder="Street"
+                      className={styles.input}
+                      type="text"
+                      name="street"
+                      value={formData.street}
+                      onChange={handleChange}
+                    />
+                    <input
+                      placeholder="City"
+                      className={styles.input}
+                      type="text"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                    />
+                    <input
+                      placeholder="Country"
+                      className={styles.input}
+                      type="text"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                    />
+                    <input
+                      placeholder="ZIP Code"
+                      className={styles.input}
+                      type="text"
+                      name="zip"
+                      value={formData.zip}
+                      onChange={handleChange}
+                    />
+                    <input
+                      placeholder="Phone number"
+                      className={styles.input}
+                      type="text"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                    <button className={styles.sendbutton} type="submit">
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                selectedLabel === "Address" && (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      height: "100%",
+                    }}
+                  >
+                    <div className={styles.title_action}>
+                      <h2 className={styles.box_name}>ADDRESS</h2>
+                      <button onClick={() => setAddressMenuOpen(true)}>
+                        + Add New Address
+                      </button>
+                    </div>
+                    <div className={styles.address_content}>
+                      <div className={styles.address_box}>
+                        <div className={styles.address}>
+                          <div className={styles.address_text}>
+                            <p>Wade Warren</p>
+                            <p>
+                              2972 Westheimer Rd. Santa Ana, Illinois 85486{" "}
+                            </p>
+                            <p>(406) 555-0120</p>
+                          </div>
 
-                        <button>EDIT</button>
-                      </div>
-                      <div className={styles.address}>
-                        <div className={styles.address_text}>
-                          <p>Wade Warren</p>
-                          <p>2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
-                          <p>(406) 555-0120</p>
+                          <button>EDIT</button>
                         </div>
+                        <div className={styles.address}>
+                          <div className={styles.address_text}>
+                            <p>Wade Warren</p>
+                            <p>
+                              2972 Westheimer Rd. Santa Ana, Illinois 85486{" "}
+                            </p>
+                            <p>(406) 555-0120</p>
+                          </div>
 
-                        <button>EDIT</button>
-                      </div>
-                      {/* <div className={styles.address}>
+                          <button>EDIT</button>
+                        </div>
+                        {/* <div className={styles.address}>
                         <div className={styles.address_text}>
                           <p>Wade Warren</p>
                           <p>2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
@@ -259,9 +299,10 @@ const ProfilePage: FC = () => {
 
                         <button>EDIT</button>
                       </div> */}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )
               )}
             </div>
           </div>

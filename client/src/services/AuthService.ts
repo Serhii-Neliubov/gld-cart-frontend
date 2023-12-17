@@ -6,6 +6,37 @@ export default class AuthService {
     return $api.post("/login", { email, password });
   }
 
+  static async sendAddress(
+    email: string,
+    recipients_name: string,
+    street_address: string,
+    city: string,
+    country: string,
+    ZIP_code: number,
+    phone_number: string
+  ): Promise<AxiosResponse> {
+    // Retrieve the authentication token from localStorage
+    const token = localStorage.getItem("token");
+
+    // Include the token in the request headers if available
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+    // Send the address information along with the headers
+    return $api.post(
+      "/add-address",
+      {
+        email,
+        recipients_name,
+        street_address,
+        city,
+        country,
+        ZIP_code,
+        phone_number,
+      },
+      { headers }
+    );
+  }
+
   static async registration(
     type: string,
     name: string,
