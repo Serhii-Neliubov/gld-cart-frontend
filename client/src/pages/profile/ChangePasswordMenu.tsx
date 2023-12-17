@@ -14,14 +14,16 @@ export default function ChangePasswordMenu({
   selectedLabel,
 }: ChangePasswordMenuProps) {
   const user = useSelector(userDataSelector);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [changePasswordData, setChangePasswordData] = useState({
     email: user.email,
     oldPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {

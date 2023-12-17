@@ -15,13 +15,8 @@ export default class AuthService {
     ZIP_code: number,
     phone_number: string
   ): Promise<AxiosResponse> {
-    // Retrieve the authentication token from localStorage
     const token = localStorage.getItem("token");
-
-    // Include the token in the request headers if available
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
-
-    // Send the address information along with the headers
     return $api.post(
       "/add-address",
       {
@@ -35,6 +30,13 @@ export default class AuthService {
       },
       { headers }
     );
+  }
+
+  static async getAddresses(id: string): Promise<AxiosResponse> {
+    const token = localStorage.getItem("token");
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+    return $api.get(`/get-addresses/${id}`, { headers });
   }
 
   static async registration(

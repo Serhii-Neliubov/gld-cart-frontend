@@ -4,6 +4,7 @@ import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../http";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type ChangeProfileDataProps = {
   selectedLabel: string;
@@ -14,6 +15,7 @@ export default function ChangeProfileData({
 }: ChangeProfileDataProps) {
   const user = useSelector(userDataSelector);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     id: user.id,
@@ -37,6 +39,7 @@ export default function ChangeProfileData({
     e.preventDefault();
     axios.put(`${API_URL}/update-personal-details`, formData);
     dispatch(logout());
+    navigate("/");
   };
 
   return (
