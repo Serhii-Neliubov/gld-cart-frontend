@@ -177,7 +177,7 @@ export const updateAddress = async (req: Request, res: Response, next: NextFunct
     }
 };
 export const getAddresses = async(req: Request, res:Response, next: NextFunction) => {
-    const {id} = req.body;
+    const id = req.params.id;
     try {
         const addresses = await UserService.getAddresses(id);
         res.status(200).json(addresses);
