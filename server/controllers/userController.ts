@@ -170,12 +170,23 @@ export const addAddress = async (req: Request, res: Response, next: NextFunction
 export const updateAddress = async (req: Request, res: Response, next: NextFunction) => {
     const {email, updatedAddressData, addressId} = req.body;
     try {
-        await UserService.updateAddress(email, addressId, updatedAddressData)
+        await UserService.updateAddress(email, addressId, updatedAddressData);
         res.status(200).json("Address was updated successfully");
     } catch (error) {
         next(error);
     }
 };
+export const getAddresses = async(req: Request, res:Response, next: NextFunction) => {
+    const {id} = req.body;
+    try {
+        const addresses = await UserService.getAddresses(id);
+        res.status(200).json(addresses);
+    }
+    catch (error)
+    {
+        next(error);
+    }
+}
 export const googleOauthHandler = async (req: Request, res: Response) => {
     const code: string = req.query.code as string;
     const customParameter = req.query.state;

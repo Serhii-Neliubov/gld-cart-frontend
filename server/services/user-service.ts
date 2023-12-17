@@ -218,6 +218,15 @@ class UserService {
         Object.assign(user.addresses[addressIndex], updatedAddressData);
         await user.save();
     }
+    async getAddresses(id: string)
+    {
+        const user: IUser | null = await UserModel.findById(id);
+
+        if (!user) {
+            throw ApiError.BadRequest('User not found');
+        }
+        return user.addresses;
+    }
 
     async updatePersonalDetails(id: string, email: string, name: string, surname: string, phone_number: string, address: string, BIO: string) {
         const user = <IUser>(
