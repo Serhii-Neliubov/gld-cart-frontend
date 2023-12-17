@@ -206,3 +206,12 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
         return res.redirect(`${process.env.CLIENT_URL}/oauth/error`);
     }
 };
+export const updatePersonalDetails = async (req: Request, res: Response, next: NextFunction) => {
+    const {id, name, surname, email, phone_number, address, BIO} = req.body;
+    try {
+        await UserService.updatePersonalDetails(id, email, name, surname, phone_number, address, BIO);
+        res.status(200).json({message: 'User details updated successfully'});
+    } catch (error) {
+        next(error);
+    }
+};
