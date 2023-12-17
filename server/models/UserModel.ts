@@ -1,6 +1,6 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import validator from "validator";
-import {addressSchema, IAddress} from "./AddressModel";
+import { addressSchema, IAddress } from "./AddressModel";
 
 export interface IUser extends Document {
   _id: string;
@@ -11,7 +11,11 @@ export interface IUser extends Document {
   addresses: IAddress[];
   picture: string;
   password: string;
-  passwordResetToken: string | undefined;
+  passwordResetToken?: string;
+  activeSubscription: string | null;
+  BIO?: string;
+  phone_number?: string;
+  address?: string;
 }
 
 const userSchema: Schema<IUser> = new Schema({
@@ -46,7 +50,21 @@ const userSchema: Schema<IUser> = new Schema({
   passwordResetToken: {
     type: String,
   },
+  activeSubscription: {
+    type: String,
+    ref: 'Subscription',
+    default: null,
+  },
+  BIO: {
+    type: String,
+  },
+  phone_number: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
 });
 
-const UserModel: Model<IUser> = mongoose.model("users", userSchema) as Model<IUser>;
+const UserModel: Model<IUser> = mongoose.model("User", userSchema) as Model<IUser>;
 export default UserModel;
