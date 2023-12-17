@@ -108,17 +108,18 @@ export const createSubscriptionCheckout = async (
     res: Response,
     next: NextFunction
 ): Promise<void> => {
-    const user_id = req.body.userId;
-    const lookup_key = req.body.lookup_key;
-    console.log(`Lookup key is: ${lookup_key}`);
+
+    const userId = req.body.userId;
+    const lookupKey = req.body.lookup_key;
+
     try {
-        const customer = await stripe.customers.create({
+        await stripe.customers.create({
             metadata: {
-                userId: user_id,
+                userId: userId,
             },
         });
         const prices = await stripe.prices.list({
-            lookup_keys: [lookup_key],
+            lookup_keys: [lookupKey],
             expand: ['data.product'],
         });
         const session = await stripe.checkout.sessions.create({
@@ -126,9 +127,7 @@ export const createSubscriptionCheckout = async (
             line_items: [
                 {
                     price: prices.data[0].id,
-                    // For metered billing, do not pass quantity
                     quantity: 1,
-
                 },
             ],
             mode: 'subscription',

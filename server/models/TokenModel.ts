@@ -1,4 +1,3 @@
-
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface IToken extends Document {
@@ -9,7 +8,7 @@ export interface IToken extends Document {
 const tokenSchema: Schema<IToken> = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'User'
     },
     refreshToken: {
         type: String,
@@ -17,6 +16,6 @@ const tokenSchema: Schema<IToken> = new Schema({
     },
 });
 
-const TokenModel: Model<IToken> = mongoose.model('tokens', tokenSchema) as Model<IToken>;
+const TokenModel: Model<IToken> = mongoose.model('Token', tokenSchema) as Model<IToken>;
 
 export default TokenModel;

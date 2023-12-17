@@ -1,5 +1,5 @@
 import {IUser} from "../models/UserModel";
-import {addressSchema, IAddress} from "../models/AddressModel";
+import {IAddress} from "../models/AddressModel";
 class UserDto {
     id: string;
     type: string;
