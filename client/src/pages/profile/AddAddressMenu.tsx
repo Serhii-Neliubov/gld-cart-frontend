@@ -9,18 +9,28 @@ type AddAddressMenuProps = {
   setSelectedLabel: (value: string) => void;
 };
 
+type TypeFormData = {
+  email: string;
+  recipient: string;
+  street: string;
+  city: string;
+  country: string;
+  zip: undefined | number;
+  phone: string;
+};
+
 export default function AddAddressMenu({
   selectedLabel,
   setSelectedLabel,
 }: AddAddressMenuProps) {
   const user = useSelector(userDataSelector);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<TypeFormData>({
     email: user.email,
     recipient: "",
     street: "",
     city: "",
     country: "",
-    zip: 0,
+    zip: undefined,
     phone: "",
   });
 

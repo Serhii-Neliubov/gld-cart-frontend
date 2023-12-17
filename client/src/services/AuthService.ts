@@ -12,7 +12,7 @@ export default class AuthService {
     street_address: string,
     city: string,
     country: string,
-    ZIP_code: number,
+    ZIP_code: number | undefined,
     phone_number: string
   ): Promise<AxiosResponse> {
     const token = localStorage.getItem("token");
