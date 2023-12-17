@@ -4,7 +4,6 @@ import UserService from "../services/user-service";
 import TokenService from "../services/token-service";
 import {v4 as uuidv4} from "uuid";
 import {getGoogleOAuthTokens, getGoogleUser,} from "../services/google-service";
-import {IAddress} from "../models/AddressModel";
 
 
 export const signup = async (
@@ -172,7 +171,7 @@ export const updateAddress = async (req: Request, res: Response, next: NextFunct
     const {email, updatedAddressData, addressId} = req.body;
     try {
         await UserService.updateAddress(email, addressId, updatedAddressData)
-        res.status(200).json("Address updated successfully");
+        res.status(200).json("Address was updated successfully");
     } catch (error) {
         next(error);
     }

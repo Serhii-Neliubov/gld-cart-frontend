@@ -206,7 +206,6 @@ class UserService {
     }
 
     async updateAddress(email: string, addressId: Types.ObjectId, updatedAddressData: IAddress) {
-
         const user: IUser | null = await UserModel.findOne({email});
 
         if (!user) {
@@ -217,6 +216,23 @@ class UserService {
             throw ApiError.BadRequest('Address not found');
         }
         Object.assign(user.addresses[addressIndex], updatedAddressData);
+        await user.save();
+    }
+
+    async updatePersonalDetails(id: string, email: string, name: string, surname: string, phone_number: string, address: string, BIO: string) {
+        const user = <IUser>(
+            await UserModel.findByIdAndUpdate(id, {
+                name: name,
+                surname: surname,
+                email: email,
+                phone_number: phone_number,
+                address: address,
+                BIO: BIO
+            })
+        );
+        if (!user) {
+            throw ApiError.BadRequest("User not found");
+        }
         await user.save();
     }
 }
