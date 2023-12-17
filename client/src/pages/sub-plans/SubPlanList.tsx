@@ -1,9 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styles from "./SubPlansPage.module.scss";
 import { SubPlansData } from "../../utils/SubPlansData";
+import { useSelector } from "react-redux";
+import { userDataSelector } from "../../redux/Slices/userDataSlice";
+import axios from "axios";
+import { API_URL } from "../../http";
 
 export default function SubPlanList() {
+  const user = useSelector(userDataSelector);
+  const token = localStorage.getItem("token");
+  const headers = token ? { Authorization: `Bearer ${token}` } : {};
+  function toPaymentHandler(lookup_key: string) {
+    axios.post(
+      `${API_URL}/create-subscription-checkout`,
+      {
+        userId: user.id,
+        lookup_key: lookup_key,
+      },
+      { headers }
+    );
+  }
+
   return (
     <div className={styles.blocks}>
       {SubPlansData.map((subPlan) => (
@@ -38,13 +55,13 @@ export default function SubPlanList() {
                 </div>
               ))}
             </div>
-            <Link
-              to="/payment"
+            <button
+              onClick={() => toPaymentHandler(subPlan.lookup_key)}
               style={{ backgroundColor: `${subPlan.color}` }}
               className={styles.block_button}
             >
               Buy Now
-            </Link>
+            </button>
             <div className={styles.reminder}>
               *Check Terms and Conditions Apply
             </div>

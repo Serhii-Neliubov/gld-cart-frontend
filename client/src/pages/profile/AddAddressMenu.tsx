@@ -87,7 +87,8 @@ export default function AddAddressMenu({
 
   useEffect(() => {
     getAddresses();
-  }, []); // Removed addresses from the dependency array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return selectedLabel === "Add Address" ? (
     <div

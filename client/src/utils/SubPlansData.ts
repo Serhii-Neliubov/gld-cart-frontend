@@ -6,6 +6,7 @@ export type SubPlan = {
   color: string;
   advantages: string[];
   popular: boolean;
+  lookup_key?: string;
 };
 
 export const SubPlansData: SubPlan[] = [
@@ -48,6 +49,7 @@ export const SubPlansData: SubPlan[] = [
       "Other Products",
     ],
     popular: false,
+    lookup_key: "Products",
   },
   {
     img: "SubPlans/icon4.svg",

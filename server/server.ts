@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
-import express, {Express} from "express";
+import express, { Express } from "express";
 import cors from "cors";
-import mongoose, {ConnectOptions} from "mongoose";
+import mongoose, { ConnectOptions } from "mongoose";
 import router from "./routes/router";
 import cookieParser from "cookie-parser";
 import errorMiddleware from "./middlewares/errorMiddleware";
@@ -16,8 +16,8 @@ const port: number | string = process.env.PORT || 5000;
 const app: Express = express();
 
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    limit: 200, // limit each IP to 100 requests per windowMs
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  limit: 200, // limit each IP to 100 requests per windowMs
 });
 
 setupSocket(app);
@@ -26,50 +26,51 @@ app.set("trust proxy", 1);
 app.use(helmet());
 app.use(limiter);
 app.use(
-    (
-        req: express.Request,
-        res: express.Response,
-        next: express.NextFunction
-    ): void => {
-        if (req.originalUrl === "/webhook") {
-            next();
-        } else {
-            express.json()(req, res, next);
-            express.urlencoded({
-                extended: true,
-            });
-        }
+  (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ): void => {
+    if (req.originalUrl === "/webhook") {
+      next();
+    } else {
+      express.json()(req, res, next);
+      express.urlencoded({
+        extended: true,
+      });
     }
+  }
 );
 app.use(cookieParser());
 app.use(
-    cors({
-        origin: process.env.CLIENT_URL,
-        credentials: true,
-    })
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
 );
+
 app.use(router);
 app.use(errorMiddleware);
 const mongooseOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 } as ConnectOptions;
 
 if (process.env.DB_URL) {
-    mongoose
-        .connect(process.env.DB_URL, mongooseOptions)
-        .then(() => {
-            app.listen(process.env.DB_PORT, () => {
-                console.log(`DB is running on port ${process.env.DB_PORT}`);
-            });
-        })
-        .catch((error) => {
-            console.error("Error connecting to the database:", error);
-        });
+  mongoose
+    .connect(process.env.DB_URL, mongooseOptions)
+    .then(() => {
+      app.listen(process.env.DB_PORT, () => {
+        console.log(`DB is running on port ${process.env.DB_PORT}`);
+      });
+    })
+    .catch((error) => {
+      console.error("Error connecting to the database:", error);
+    });
 } else {
-    console.error("DB_URL environment variable is not defined.");
+  console.error("DB_URL environment variable is not defined.");
 }
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
