@@ -6,7 +6,7 @@ export interface IUser extends Document {
   _id: string;
   type: string;
   name: string;
-  surname: string;
+  surname: string | undefined;
   email: string;
   addresses: IAddress[];
   picture: string;
@@ -29,7 +29,6 @@ const userSchema: Schema<IUser> = new Schema({
   },
   surname: {
     type: String,
-    required: [true, "Please, enter your last name"],
   },
   email: {
     type: String,
