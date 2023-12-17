@@ -32,8 +32,6 @@ router.get("/get-customer", authMiddleware.requireAuth, paymentController.create
 router.post("/webhook", express.raw({type: "application/json"}), paymentController.handleStripeWebhook);
 
 //Addresses routes
-router.post("/add-address", userController.addAddress);
-router.put("/update-address", userController.updateAddress);
 router.post("/add-address", authMiddleware.requireAuth, userController.addAddress);
 router.put("/update-address", authMiddleware.requireAuth, userController.updateAddress);
 

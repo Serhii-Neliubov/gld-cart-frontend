@@ -49,9 +49,7 @@ app.use(
     })
 );
 app.use(router);
-// @ts-ignore
 app.use(errorMiddleware);
-
 const mongooseOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
