@@ -6,6 +6,23 @@ export default class AuthService {
     return $api.post("/login", { email, password });
   }
 
+  static async paymentRedirect(
+    userId: string,
+    lookup_key: string
+  ): Promise<AxiosResponse> {
+    const token = localStorage.getItem("token");
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+    const body = $api.post(
+      "/create-subscription-checkout",
+      {
+        userId,
+        lookup_key,
+      },
+      { headers }
+    );
+    return body;
+  }
+
   static async sendAddress(
     email: string,
     recipients_name: string,

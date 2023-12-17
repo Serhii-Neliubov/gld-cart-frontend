@@ -3,28 +3,27 @@ import styles from "./SubPlansPage.module.scss";
 import { SubPlansData } from "../../utils/SubPlansData";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "../../redux/Slices/userDataSlice";
-import axios from "axios";
-import { API_URL } from "../../http";
+import AuthService from "../../services/AuthService";
 
 export default function SubPlanList() {
   const user = useSelector(userDataSelector);
-  const token = localStorage.getItem("token");
-  const headers = token ? { Authorization: `Bearer ${token}` } : {};
-  function toPaymentHandler(lookup_key: string) {
-    axios.post(
-      `${API_URL}/create-subscription-checkout`,
-      {
-        userId: user.id,
-        lookup_key: lookup_key,
-      },
-      { headers }
-    );
+  async function toPaymentHandler(lookup_key: string) {
+    try {
+      const response = await AuthService.paymentRedirect(user.id, lookup_key);
+      console.log(response.data); // Access the data field
+      // Do something with response.data
+      window.location.href = response.data.url;
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error
+    }
   }
 
   return (
     <div className={styles.blocks}>
-      {SubPlansData.map((subPlan) => (
+      {SubPlansData.map((subPlan, index) => (
         <div
+          key={index}
           style={
             subPlan.popular
               ? { backgroundColor: `${subPlan.color}` }
@@ -45,7 +44,7 @@ export default function SubPlanList() {
             <span className={styles.block_price_desc}>Per User Monthly</span>
             <div className={styles.block_advantages}>
               {subPlan.advantages.map((advantage) => (
-                <div className={styles.block_advantage}>
+                <div key={advantage} className={styles.block_advantage}>
                   <img
                     style={{ backgroundColor: `${subPlan.color}` }}
                     src="SubPlans/tick.svg"

@@ -6,7 +6,7 @@ export type SubPlan = {
   color: string;
   advantages: string[];
   popular: boolean;
-  lookup_key?: string;
+  lookup_key: string;
 };
 
 export const SubPlansData: SubPlan[] = [
@@ -18,6 +18,7 @@ export const SubPlansData: SubPlan[] = [
     color: "#2283DC",
     advantages: ["Vehicles", "Houses", "Electronics"],
     popular: false,
+    lookup_key: "Renting",
   },
   {
     img: "SubPlans/icon2.svg",
@@ -34,6 +35,7 @@ export const SubPlansData: SubPlan[] = [
       "Other Services",
     ],
     popular: false,
+    lookup_key: "Professional Services",
   },
   {
     img: "SubPlans/icon3.svg",
@@ -53,13 +55,14 @@ export const SubPlansData: SubPlan[] = [
   },
   {
     img: "SubPlans/icon4.svg",
-    title: "Renting",
+    title: "Extended Renting",
     subtitle:
       "In this Package you can rent your products & Sell your Professional Services to your Clients",
     price: "150",
     color: "#FAB706",
     advantages: ["Renting Services", "Professional Services"],
     popular: true,
+    lookup_key: "Extended Renting",
   },
   {
     img: "SubPlans/icon5.svg",
@@ -70,5 +73,6 @@ export const SubPlansData: SubPlan[] = [
     color: "#7095F1",
     advantages: ["Renting Services", "Professional Services"],
     popular: true,
+    lookup_key: "All Services Package",
   },
 ];

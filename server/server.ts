@@ -48,7 +48,6 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(router);
 app.use(errorMiddleware);
 const mongooseOptions = {
