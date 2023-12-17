@@ -30,7 +30,6 @@ const AppRouter: FC = () => {
         });
         localStorage.setItem("token", data.accessToken);
         dispatch(checkAuth());
-        console.log(user);
         return data;
       } catch (e) {
         return null;
