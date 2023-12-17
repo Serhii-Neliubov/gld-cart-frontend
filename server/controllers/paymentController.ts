@@ -134,8 +134,7 @@ export const createSubscriptionCheckout = async (
             success_url: `${process.env.CLIENT_URL}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.CLIENT_URL}?canceled=true`,
         });
-        res.redirect(<string>session.url);
-        // res.send({url: session.url});
+        res.json({url: session.url});
     } catch (error) {
         next(error);
     }
