@@ -228,7 +228,7 @@ class UserService {
         return user.addresses;
     }
 
-    async updatePersonalDetails(id: string, email: string, name: string, surname: string, phone_number: string, address: string, BIO: string) {
+    async updatePersonalDetails(id: string | null, email: string | null, name: string | null, surname: string | null, phone_number: string | null, address: string | null, BIO: string | null) {
         const user = <IUser>(
             await UserModel.findByIdAndUpdate(id, {
                 name: name,
