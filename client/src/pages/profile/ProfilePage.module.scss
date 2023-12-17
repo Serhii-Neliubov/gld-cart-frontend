@@ -14,7 +14,6 @@
   color: white;
   text-align: right;
   justify-content: flex-end;
-  margin-top: 15px;
   button {
     padding: 10px 20px;
     background-color: #02a0a0;
@@ -65,18 +64,18 @@
 .input {
   border: 1px solid #252525;
   background: #fff;
-  padding: 22px;
+  padding: 16px 10px;
   height: 60px;
   outline: none;
   flex: 1 1 auto;
 }
 .inputs_column {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 .box_inputs {
   display: flex;
-  gap: 25px;
+  gap: 10px;
   flex-direction: column;
 }
 .button_item {
@@ -119,6 +118,8 @@
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 10;
 }
 .content {
   flex: 1 1 auto;

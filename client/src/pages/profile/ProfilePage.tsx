@@ -1,40 +1,42 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../../components/UI/Footer";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
-import { FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import React from "react";
+import ChangePasswordMenu from "./ChangePasswordMenu";
 import axios from "axios";
 import { API_URL } from "../../http";
 
 const ProfilePage: FC = () => {
   const user = useSelector(userDataSelector);
-  const navigate = useNavigate();
   const [selectedLabel, setSelectedLabel] = useState("Profile");
   const dispatch = useDispatch<AppDispatch>();
 
-  const [changePasswordData, setChangePasswordData] = useState({
-    email: user.email,
-    oldPassword: "",
-    newPassword: "",
-    confirmPassword: "",
+  const [formData, setFormData] = useState({
+    id: user.id,
+    name: "",
+    surname: "",
+    email: "",
+    phone_number: "",
+    address: "",
+    BIO: "",
   });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      axios.post(`${API_URL}/reset-password`, {
-        email: changePasswordData.email,
-        oldPassword: changePasswordData.oldPassword,
-        newPassword: changePasswordData.newPassword,
-      });
-      dispatch(logout());
-      navigate("/login");
-    } catch (e) {
-      console.error(e);
-    }
+    axios.put(`${API_URL}/update-personal-details`, formData);
+    dispatch(logout());
   };
 
   return (
@@ -120,101 +122,74 @@ const ProfilePage: FC = () => {
             <div className={styles.content_box}>
               {selectedLabel === "Profile" && (
                 <>
-                  <h1 className={styles.title}>
-                    Welcome Mr. {user.name} {user.surname}
-                  </h1>
+                  <div className={styles.title}>
+                    <h1>
+                      Welcome Mr. {user.name} {user.surname}
+                    </h1>
+                  </div>
+
                   <h2 className={styles.box_name}>Personal Details</h2>
                   <div className={styles.content_box_items}>
-                    <form className={styles.box_inputs}>
+                    <form className={styles.box_inputs} onSubmit={handleSubmit}>
                       <div className={styles.inputs_column}>
                         <input
                           className={styles.input}
-                          placeholder="Eleanor Pena"
+                          placeholder="Eleanor"
                           type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
                         />
                         <input
-                          placeholder="alma.lawson@example.com"
                           className={styles.input}
+                          placeholder="Pena"
                           type="text"
+                          name="surname"
+                          value={formData.surname}
+                          onChange={handleChange}
                         />
                       </div>
+                      <input
+                        placeholder="alma.lawson@example.com"
+                        className={styles.input}
+                        type="text"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
                       <input
                         placeholder="0123 456 7889"
                         className={styles.input}
                         type="text"
+                        name="phone_number"
+                        value={formData.phone_number}
+                        onChange={handleChange}
                       />
                       <input
                         placeholder="3304 Randall Drive"
                         className={styles.input}
                         type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
                       />
                       <input
                         placeholder="Hi there, this is my bio..."
                         className={styles.input}
                         type="text"
-                      />
-                    </form>
-                    <div className={styles.button}>
-                      <button className={styles.button}>Update Profile</button>
-                    </div>
-                  </div>
-                </>
-              )}
-              {selectedLabel === "Change Password" && (
-                <>
-                  <h2 className={styles.box_name}>
-                    Please Enter Your Current Password
-                  </h2>
-                  <div className={styles.content_box_items}>
-                    <form onSubmit={handleSubmit} className={styles.box_inputs}>
-                      <input
-                        placeholder="Old Password"
-                        className={styles.input}
-                        type="password"
-                        name="oldPassword"
-                        value={changePasswordData.oldPassword}
-                        onChange={(e) =>
-                          setChangePasswordData({
-                            ...changePasswordData,
-                            oldPassword: e.target.value,
-                          })
-                        }
-                      />
-                      <input
-                        placeholder="New Password"
-                        className={styles.input}
-                        name="newPassword"
-                        type="password"
-                        value={changePasswordData.newPassword}
-                        onChange={(e) =>
-                          setChangePasswordData({
-                            ...changePasswordData,
-                            newPassword: e.target.value,
-                          })
-                        }
-                      />
-                      <input
-                        placeholder="Confirm New Password"
-                        className={styles.input}
-                        name="confirmPassword"
-                        type="password"
-                        value={changePasswordData.confirmPassword}
-                        onChange={(e) =>
-                          setChangePasswordData({
-                            ...changePasswordData,
-                            confirmPassword: e.target.value,
-                          })
-                        }
+                        name="BIO"
+                        value={formData.BIO}
+                        onChange={handleChange}
                       />
                       <div className={styles.button}>
-                        <button type="submit" className={styles.button}>
-                          Update
-                        </button>
+                        <button type="submit">Update Profile</button>
                       </div>
                     </form>
                   </div>
                 </>
               )}
+
+              <ChangePasswordMenu selectedLabel={selectedLabel} />
               {selectedLabel === "Address" && (
                 <div
                   style={{
