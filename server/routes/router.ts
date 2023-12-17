@@ -26,7 +26,7 @@ router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.send
 
 //Payment routes
 router.post("/create-checkout-session", authMiddleware.requireAuth, paymentController.createPaymentCheckout);
-router.post("/create-subscription-checkout", paymentController.createSubscriptionCheckout);
+router.post("/create-subscription-checkout", authMiddleware.requireAuth, paymentController.createSubscriptionCheckout);
 router.post("/cancel-subscription", authMiddleware.requireAuth, paymentController.cancelSubscription);
 router.get("/get-customer", authMiddleware.requireAuth, paymentController.createCustomer);
 router.post("/webhook", express.raw({type: "application/json"}), paymentController.handleStripeWebhook);

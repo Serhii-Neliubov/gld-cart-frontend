@@ -134,8 +134,8 @@ export const createSubscriptionCheckout = async (
             success_url: `${process.env.CLIENT_URL}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.CLIENT_URL}?canceled=true`,
         });
-        // res.redirect(<string>session.url);
-        res.send({url: session.url});
+        res.redirect(<string>session.url);
+        // res.send({url: session.url});
     } catch (error) {
         next(error);
     }
@@ -201,7 +201,6 @@ export const handleStripeWebhook = async (
                 //     console.log(`Subscription status is ${status}.`);
                 //     // Then define and call a method to handle the subscription update.
                 //     // handleSubscriptionUpdated(subscription);
-                //     break;
                 case "checkout.session.completed":
                     try {
                         const customer = await stripe.customers.retrieve(
@@ -211,16 +210,6 @@ export const handleStripeWebhook = async (
                     } catch (err) {
                         console.log(err);
                     }
-                    break;
-                case 'invoice.paid':
-                    // Continue to provision the subscription as payments continue to be made.
-                    // Store the status in your database and check when a user accesses your service.
-                    // This approach helps you avoid hitting rate limits.
-                    break;
-                case 'invoice.payment_failed':
-                    // The payment failed or the customer does not have a valid payment method.
-                    // The subscription becomes past_due. Notify your customer and send them to the
-                    // customer portal to update their payment information.
                     break;
                 default:
                     console.log(`Unhandled event type ${event.type}`);
