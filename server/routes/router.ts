@@ -34,6 +34,8 @@ router.post("/webhook", express.raw({type: "application/json"}), paymentControll
 //Addresses routes
 router.post("/add-address", userController.addAddress);
 router.put("/update-address", userController.updateAddress);
+router.post("/add-address", authMiddleware.requireAuth, userController.addAddress);
+router.put("/update-address", authMiddleware.requireAuth, userController.updateAddress);
 
 //Personal details routes
 router.put("/update-personal-details", userController.updatePersonalDetails);
