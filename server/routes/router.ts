@@ -35,11 +35,9 @@ router.post("/webhook", express.raw({type: "application/json"}), paymentControll
 router.post("/add-address", userController.addAddress);
 router.put("/update-address", userController.updateAddress);
 
-//Basic product routes
-// router.post("/create-product", authMiddleware.requireAuth, storeController.create_product);
-// router.post("/update-product", authMiddleware.requireAuth, storeController.update_product);
-// router.post("/delete_product", authMiddleware.requireAuth, storeController.delete_product);
-// router.get("/get_product", authMiddleware.requireAuth, storeController.get_product);
+//Personal details routes
+router.put("/update-personal-details", userController.updatePersonalDetails);
+
 
 //Vehicle routes
 router.post('/vehicle', authMiddleware.requireAuth, vehicleController.createVehicle);
