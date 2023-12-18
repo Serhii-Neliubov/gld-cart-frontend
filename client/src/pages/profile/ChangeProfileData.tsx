@@ -35,17 +35,30 @@ export default function ChangeProfileData({
       [name]: value,
     }));
   };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      axios.put(`${API_URL}/update-personal-details`, formData, { headers });
+
+      // Фильтрация заполненных полей
+      const filledFields = Object.entries(formData)
+        .filter(([, value]) => value !== "")
+        .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+
+      // Проверка, что есть хотя бы одно заполненное поле
+      if (Object.keys(filledFields).length === 0) {
+        toast.error("No fields to update");
+        return;
+      }
+
+      await axios.put(`${API_URL}/update-personal-details`, filledFields, {
+        headers,
+      });
       toast.success("Profile updated successfully");
       dispatch(logout());
       navigate("/");
-    } catch (e) {
+    } catch (error) {
       toast.error("Error with updating profile");
     }
   };
