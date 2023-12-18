@@ -6,7 +6,6 @@ import { AuthResponse } from "../../models/response/AuthResponse";
 import { API_URL } from "../../http";
 import { RootState } from "../store";
 import { setValue } from "./isLoadingSlice";
-
 const initialState = {
   user: {} as IUser,
   isAuth: false,

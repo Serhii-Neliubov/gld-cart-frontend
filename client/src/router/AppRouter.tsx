@@ -14,6 +14,7 @@ import IUser from "../models/IUser";
 import axios from "axios";
 import { isLoading } from "../redux/Slices/isLoadingSlice";
 import Label from "../components/UI/Label";
+import toast from "react-hot-toast";
 
 const AppRouter: FC = () => {
   const isAuth = useSelector<RootState, boolean>(selectIsAuth);
@@ -30,8 +31,11 @@ const AppRouter: FC = () => {
         });
         localStorage.setItem("token", data.accessToken);
         dispatch(checkAuth());
+        toast.success("You successfully logged!");
         return data;
       } catch (e) {
+        toast.error("Auth, please!");
+
         return null;
       }
     };

@@ -3,6 +3,7 @@ import AuthService from "../../services/AuthService";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "../../redux/Slices/userDataSlice";
 import styles from "./ProfilePage.module.scss";
+import toast from "react-hot-toast";
 
 type AddAddressMenuProps = {
   selectedLabel: string;
@@ -53,7 +54,7 @@ export default function AddAddressMenu({
     }
 
     try {
-      const response = await AuthService.sendAddress(
+      await AuthService.sendAddress(
         formData.email,
         formData.recipient,
         formData.street,
@@ -62,10 +63,10 @@ export default function AddAddressMenu({
         formData.zip,
         formData.phone
       );
-
-      console.log("Address sent successfully:", response);
+      toast.success("Address add successfully");
     } catch (error) {
       console.error("Error sending address:", error);
+      toast.error("Error to adding the address");
     }
   };
 

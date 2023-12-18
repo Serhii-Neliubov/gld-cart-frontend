@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../http";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 type ChangeProfileDataProps = {
   selectedLabel: string;
@@ -37,9 +38,16 @@ export default function ChangeProfileData({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    axios.put(`${API_URL}/update-personal-details`, formData);
-    dispatch(logout());
-    navigate("/");
+    try {
+      const token = localStorage.getItem("token");
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+      axios.put(`${API_URL}/update-personal-details`, formData, { headers });
+      toast.success("Profile updated successfully");
+      dispatch(logout());
+      navigate("/");
+    } catch (e) {
+      toast.error("Error with updating profile");
+    }
   };
 
   return (

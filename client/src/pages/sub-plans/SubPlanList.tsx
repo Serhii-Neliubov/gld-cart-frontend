@@ -10,8 +10,6 @@ export default function SubPlanList() {
   async function toPaymentHandler(lookup_key: string) {
     try {
       const response = await AuthService.paymentRedirect(user.id, lookup_key);
-      console.log(response.data); // Access the data field
-      // Do something with response.data
       window.location.href = response.data.url;
     } catch (error) {
       console.error("Error:", error);

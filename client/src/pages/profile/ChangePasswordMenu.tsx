@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProfilePage.module.scss";
+import toast from "react-hot-toast";
 
 type ChangePasswordMenuProps = {
   selectedLabel: string;
@@ -33,9 +34,11 @@ export default function ChangePasswordMenu({
         newPassword: changePasswordData.newPassword,
       });
       dispatch(logout());
+      toast.success("You have successfully changed the password");
       navigate("/login");
     } catch (e) {
       console.error(e);
+      toast.success("You have an error");
     }
   };
 
