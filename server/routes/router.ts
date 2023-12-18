@@ -22,7 +22,7 @@ router.post("/reset-password/:token", userController.resetPasswordWithToken);
 router.post("/reset-password", userController.resetPasswordWithEmail);
 
 //Email routes
-router.post("/send-contact-email", rateLimitMiddlewareTyped, userController.sendContactEmail);
+router.post("/send-contact-email", authMiddleware.requireAuth, rateLimitMiddlewareTyped, userController.sendContactEmail);
 
 //Payment routes
 router.post("/create-checkout-session", authMiddleware.requireAuth, paymentController.createPaymentCheckout);
