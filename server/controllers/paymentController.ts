@@ -97,8 +97,7 @@ export const createPaymentCheckout = async (
             success_url: `${process.env.CLIENT_URL}/checkout-success`,
             cancel_url: `${process.env.CLIENT_URL}/checkout-failed`,
         });
-        res.redirect(<string>session.url);
-        // res.send({url: session.url});
+        res.json({url: session.url});
     } catch (error) {
         next(error);
     }
@@ -173,33 +172,6 @@ export const handleStripeWebhook = async (
             const eventType: string = event.type;
 
             switch (eventType) {
-                // case 'customer.subscription.trial_will_end':
-                //     subscription = event.data.object;
-                //     status = subscription.status;
-                //     console.log(`Subscription status is ${status}.`);
-                //     // Then define and call a method to handle the subscription trial ending.
-                //     // handleSubscriptionTrialEnding(subscription);
-                //     break;
-                // case 'customer.subscription.deleted':
-                //     subscription = event.data.object;
-                //     status = subscription.status;
-                //     console.log(`Subscription status is ${status}.`);
-                //     // Then define and call a method to handle the subscription deleted.
-                //     // handleSubscriptionDeleted(subscriptionDeleted);
-                //     break;
-                // case 'customer.subscription.created':
-                //     subscription = event.data.object;
-                //     status = subscription.status;
-                //     console.log(`Subscription status is ${status}.`);
-                //     // Then define and call a method to handle the subscription created.
-                //     // handleSubscriptionCreated(subscription);
-                //     break;
-                // case 'customer.subscription.updated':
-                //     subscription = event.data.object;
-                //     status = subscription.status;
-                //     console.log(`Subscription status is ${status}.`);
-                //     // Then define and call a method to handle the subscription update.
-                //     // handleSubscriptionUpdated(subscription);
                 case "checkout.session.completed":
                     try {
                         const customer = await stripe.customers.retrieve(
