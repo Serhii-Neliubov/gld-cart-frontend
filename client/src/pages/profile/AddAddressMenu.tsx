@@ -165,6 +165,7 @@ console.log(addresses)
         style={{
           display: "flex",
           flexDirection: "column",
+          alignItems: 'center',
           justifyContent: "space-between",
           height: "100%",
         }}
