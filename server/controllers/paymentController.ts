@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from "express";
 import Stripe from "stripe";
-import StoreService from "../services/order-service";
+import StoreService from "../services/orderService";
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {

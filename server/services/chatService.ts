@@ -27,8 +27,5 @@ class ChatService {
       message: msg.text,
     }));
   }
-
-
 }
-
 export default new ChatService();
