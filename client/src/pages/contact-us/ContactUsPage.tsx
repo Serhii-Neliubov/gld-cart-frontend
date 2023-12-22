@@ -1,137 +1,65 @@
-import { FC, useEffect, useState } from "react";
+import React from 'react'
+import { FC, FormEvent, useEffect, useState } from "react";
 import styles from "./ContactUsPage.module.scss";
 import Footer from "../../components/UI/Footer";
-import axios from "axios";
-import { API_URL } from "../../http";
-import { AuthResponse } from "../../models/response/AuthResponse";
+import $api, { API_URL } from "../../http";
 import { useNavigate } from "react-router-dom";
 import { IMessageData } from "../../interfaces/interfaces";
+import toast from "react-hot-toast";
+import {ContactInputList}  from "./ContactInputList";
 
 const ContactUsPage: FC = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState(false);
   const [messageData, setMessageData] = useState<IMessageData>({
     name: "",
     email: "",
     subject: "",
     message: "",
-    token: "",
+    value: "",
   });
 
-  async function sendMessageHandler() {
-    console.log(messageData);
+  async function sendMessageHandler(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
     try {
-      const response = await axios.post(
+      await $api.post(
         `${API_URL}/send-contact-email`,
         messageData
       );
-      console.log(response.data);
       navigate("/send-message");
     } catch (error) {
-      console.error(error);
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 2000);
-    }
-  }
-  async function getToken() {
-    try {
-      const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
-        withCredentials: true,
-      });
-      setMessageData((prevMessageData) => ({
-        ...prevMessageData,
-        token: response.data.accessToken,
-      }));
-    } catch (error) {
-      console.error(error);
+      toast.error("Error to sending message")
     }
   }
 
   useEffect((): void => {
     window.scrollTo(0, 0);
-    if (localStorage.getItem("token")) {
-      getToken();
-    }
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <div className={styles.body}>
         <div className="__container">
-          {error && (
-            <div style={{ color: "red" }}>Error to sending message</div>
-          )}
           <h1 className={styles.title}>Keep In Touch with Us</h1>
           <div className={styles.path}>
             <span>Home</span>
             <span>Contact</span>
           </div>
           <div className={styles.content}>
-            <div className={styles.form}>
+            <form className={styles.form} onSubmit={sendMessageHandler}>
               <h2 className={styles.content_title}>Sent A Message</h2>
-              <div className={styles.inputs}>
-                <div className={styles.input}>
-                  <span>Your Name</span>
-                  <input
-                    value={messageData.name}
-                    onChange={(e) =>
-                      setMessageData({ ...messageData, name: e.target.value })
-                    }
-                    type="text"
-                    placeholder="Cameron Williamson"
-                  />
-                </div>
-                <div className={styles.input}>
-                  <span>Your Email</span>
-                  <input
-                    value={messageData.email}
-                    onChange={(e) =>
-                      setMessageData({ ...messageData, email: e.target.value })
-                    }
-                    type="text"
-                    placeholder="Gldcart@mail.com"
-                  />
-                </div>
-                <div className={styles.input}>
-                  <span>Subject</span>
-                  <input
-                    value={messageData.subject}
-                    onChange={(e) =>
-                      setMessageData({
-                        ...messageData,
-                        subject: e.target.value,
-                      })
-                    }
-                    type="text"
-                    placeholder="Write your subject"
-                  />
-                </div>
-                <div className={styles.input}>
-                  <span>Your Message</span>
-                  <textarea
-                    value={messageData.message}
-                    onChange={(e) =>
-                      setMessageData({
-                        ...messageData,
-                        message: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-              </div>
+              <ContactInputList messageData={messageData} setMessageData={setMessageData}/>
               <div className={styles.checkbox}>
-                <input type="checkbox" />
+                <input type="checkbox"/>
                 <span>
                   Save my name, email, and website in this browser for the next
                   time I comment.
                 </span>
               </div>
-              <button onClick={sendMessageHandler} className={styles.button}>
+              <button className={styles.button}>
                 Send Message
               </button>
-            </div>
+            </form>
             <div className={styles.contacts}>
               <div className={styles.contacts_item}>
                 <img src="contact-us/icon1.svg" alt="Icon" />
@@ -162,7 +90,7 @@ const ContactUsPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 
