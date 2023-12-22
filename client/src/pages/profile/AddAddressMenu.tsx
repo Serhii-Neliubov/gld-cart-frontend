@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { ChangeEvent,  useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "../../redux/slices/userDataSlice";
 import styles from "./ProfilePage.module.scss";
@@ -54,9 +54,7 @@ function AddAddressMenu({
     }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     const token = localStorage.getItem("token");
 
     if (!token) {
