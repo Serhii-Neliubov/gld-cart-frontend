@@ -1,7 +1,7 @@
-import {NextFunction, Response, Request} from 'express';
+import {Response, Request} from 'express';
 import ApiError from '../exceptions/api-error';
 
-export default function errorHandler(err: Error, req: Request, res: Response, next: NextFunction
+export default function errorHandler(err: Error, req: Request, res: Response
 ) {
     console.log(err);
     if (err instanceof ApiError) {

@@ -1,6 +1,6 @@
 import OrderModel from "../models/OrderModel";
 import Stripe from "stripe";
-import ProductModel, {IProduct} from "../models/products/ProductModel";
+import {IProduct} from "../models/products/ProductModel";
 
 class OrderService {
     async createOrder(customer: Stripe.Customer | Stripe.DeletedCustomer, data: Stripe.Event.Data.Object) {
