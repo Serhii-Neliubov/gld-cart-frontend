@@ -1,11 +1,8 @@
 import React, { FC, useState } from "react";
 import styles from "./SpecificationsPage.module.scss";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { updateVehicle } from "../../../../redux/Slices/vehiclesItemSlice";
 
 const SpecificationsPage: FC = () => {
-  const dispatch = useDispatch();
   const [data, setData] = useState({
     manufacture_year: "",
     vehicle_number: "",
@@ -27,25 +24,6 @@ const SpecificationsPage: FC = () => {
       [fieldName]: value,
     }));
   };
-
-  const handleButtonClick = () => {
-    const keys = [
-      "manufacture_year",
-      "vehicle_number",
-      "specification",
-      "specification_details",
-      "fuel_type",
-      "engine_capacity",
-      "seat_capacity",
-      "storage_bag_capacity",
-      "air_bags",
-    ];
-
-    keys.forEach((key) => {
-      dispatch(updateVehicle({ key, value: data[key] }));
-    });
-  };
-
   const handleRadioChange = (vehicleType: string) => {
     setSelectedVehicleType(vehicleType);
   };
@@ -256,7 +234,6 @@ const SpecificationsPage: FC = () => {
         </button>
         <Link to="/renting-category-page/vehicles/photo-and-video/publishing">
           <button
-            onClick={handleButtonClick}
             style={{
               border: "1px solid blue",
               backgroundColor: "blue",

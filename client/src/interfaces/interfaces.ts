@@ -3,7 +3,7 @@ export interface IMessageData {
   email: string;
   subject: string;
   message: string;
-  token: string;
+  value: string
 }
 
 export interface IClearClick {

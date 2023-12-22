@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import AuthService from "../../services/AuthService";
 import { useSelector } from "react-redux";
-import { userDataSelector } from "../../redux/Slices/userDataSlice";
+import { userDataSelector } from "../../redux/slices/userDataSlice";
 import styles from "./ProfilePage.module.scss";
 import toast from "react-hot-toast";
+import AddressServices from "../../services/AddressServices";
 
 type AddAddressMenuProps = {
   selectedLabel: string;
@@ -54,7 +54,7 @@ export default function AddAddressMenu({
     }
 
     try {
-      await AuthService.sendAddress(
+      await AddressServices.sendAddress(
         formData.email,
         formData.recipient,
         formData.street,
@@ -79,7 +79,7 @@ export default function AddAddressMenu({
     }
 
     try {
-      const response = await AuthService.getAddresses(user.id);
+      const response = await AddressServices.getAddresses(user.id);
       console.log(response.data);
     } catch (error) {
       console.error("Error get addresses:", error);

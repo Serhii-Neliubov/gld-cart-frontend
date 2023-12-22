@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import styles from "./ForgottenPasswordPage.module.scss";
 import Login from "../../components/UI/Login";
 import { useDispatch } from "react-redux";
-import { setEmailValue } from "../../redux/Slices/resetPasswordEmailSlice";
+import { setEmailValue } from "../../redux/slices/resetPasswordEmailSlice";
 import { AppDispatch } from "../../redux/store";
 import axios from "axios";
 import { API_URL } from "../../http";

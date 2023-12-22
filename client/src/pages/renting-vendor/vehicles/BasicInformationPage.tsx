@@ -2,7 +2,7 @@ import React, { ChangeEvent, FC, useState } from "react";
 import styles from "./BasicInformationPage.module.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateVehicle } from "../../../redux/Slices/vehiclesItemSlice";
+import { updateVehicle } from "../../../redux/slices/vehiclesItemSlice";
 import { RootState } from "../../../redux/store";
 
 const BasicInformationPage: FC = () => {

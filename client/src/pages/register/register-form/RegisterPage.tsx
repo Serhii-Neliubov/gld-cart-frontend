@@ -3,7 +3,7 @@ import styles from "./RegisterPage.module.scss";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../redux/store";
-import { register } from "../../../redux/Slices/userDataSlice";
+import { register } from "../../../redux/slices/userDataSlice";
 import Login from "../../../components/UI/Login";
 
 interface IUser {

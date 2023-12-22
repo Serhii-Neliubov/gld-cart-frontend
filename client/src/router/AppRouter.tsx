@@ -9,10 +9,10 @@ import {
   checkAuth,
   selectIsAuth,
   userDataSelector,
-} from "../redux/Slices/userDataSlice";
+} from "../redux/slices/userDataSlice";
 import IUser from "../models/IUser";
 import axios from "axios";
-import { isLoading } from "../redux/Slices/isLoadingSlice";
+import { isLoading } from "../redux/slices/isLoadingSlice";
 import Label from "../components/UI/Label";
 import toast from "react-hot-toast";
 

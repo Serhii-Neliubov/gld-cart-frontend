@@ -5,7 +5,7 @@ import Login from "../../components/UI/Login";
 import { useEffect } from "react";
 import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/Slices/userDataSlice";
+import { login } from "../../redux/slices/userDataSlice";
 
 const LoginPage = () => {
   const [isEmptyEmail, setIsEmptyEmail] = useState<boolean>(false);

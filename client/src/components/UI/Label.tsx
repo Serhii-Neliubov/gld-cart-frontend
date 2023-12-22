@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import {
   selectIsAuth,
   userDataSelector,
-} from "../../redux/Slices/userDataSlice";
+} from "../../redux/slices/userDataSlice";
 import { useTranslation } from "react-i18next";
 import { FC } from "react";
 import { RootState } from "../../redux/store";

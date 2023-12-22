@@ -1,6 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
+
+type VehicleKeys = keyof IVehicle;
+
 interface IVehicle {
   category: string;
   subcategory: string;
@@ -24,6 +27,7 @@ interface IVehicle {
   storage_bag_capacity: string;
   air_bags: string;
 }
+
 
 interface vehiclesItemSlice {
   vehicle: IVehicle;
@@ -52,25 +56,38 @@ const initialState: vehiclesItemSlice = {
     seat_capacity: "",
     storage_bag_capacity: "",
     air_bags: "",
+
   },
 };
+
+// ... (previous imports and types)
 
 export const vehiclesItemSlice = createSlice({
   name: "vehicle item",
   initialState,
   reducers: {
     updateVehicle: (
-      state,
-      action: PayloadAction<{
-        key: string | string[];
-        value: string | string[];
-      }>
+        state,
+        action: PayloadAction<{
+          key: VehicleKeys | VehicleKeys[];
+          value: string | string[];
+        }>
     ) => {
       const { key, value } = action.payload;
-      state.vehicle[key] = value;
+
+      // Helper function for type assertion
+      const setValue = (state.vehicle as any) as (key: VehicleKeys, value: string | string[]) => void;
+
+      // Use the helper function to set the value
+      if (Array.isArray(key)) {
+        key.forEach((k, index) => setValue(k, value[index]));
+      } else {
+        setValue(key, value);
+      }
     },
   },
 });
+
 
 // Action creators are generated for each case reducer function
 export const { updateVehicle } = vehiclesItemSlice.actions;

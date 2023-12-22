@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./SubPlansPage.module.scss";
 import { SubPlansData } from "../../utils/SubPlansData";
 import { useSelector } from "react-redux";
-import { userDataSelector } from "../../redux/Slices/userDataSlice";
-import AuthService from "../../services/AuthService";
+import { userDataSelector } from "../../redux/slices/userDataSlice";
+import PaymentServices from "../../services/PaymentServices";
 
 export default function SubPlanList() {
   const user = useSelector(userDataSelector);
   async function toPaymentHandler(lookup_key: string) {
     try {
-      const response = await AuthService.paymentRedirect(user.id, lookup_key);
+      const response = await PaymentServices.paymentRedirect(user.id, lookup_key);
       window.location.href = response.data.url;
     } catch (error) {
       console.error("Error:", error);

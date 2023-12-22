@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./ProfilePage.module.scss";
-import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
+import { logout, userDataSelector } from "../../redux/slices/userDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../http";
 import axios from "axios";

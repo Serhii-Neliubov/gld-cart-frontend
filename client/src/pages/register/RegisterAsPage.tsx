@@ -3,7 +3,7 @@ import Login from "../../components/UI/Login";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setFalse, setTrue } from "../../redux/Slices/isvendorSlice";
+import { setFalse, setTrue } from "../../redux/slices/isvendorSlice";
 import { AppDispatch } from "../../redux/store";
 
 const RegisterAsPage: FC = () => {

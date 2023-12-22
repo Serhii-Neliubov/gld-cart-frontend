@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./RentingCategoryPage.module.scss";
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-import { updateVehicle } from "../../redux/Slices/vehiclesItemSlice";
+import { updateVehicle } from "../../redux/slices/vehiclesItemSlice";
 
 const clearClick = {
   vehicles: false,

@@ -3,7 +3,7 @@ import Footer from "../../components/UI/Footer";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { logout, userDataSelector } from "../../redux/Slices/userDataSlice";
+import { logout, userDataSelector } from "../../redux/slices/userDataSlice";
 import { FC, useState } from "react";
 import React from "react";
 import ChangePasswordMenu from "./ChangePasswordMenu";

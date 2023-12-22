@@ -5,7 +5,6 @@ import axios from "axios";
 import { AuthResponse } from "../../models/response/AuthResponse";
 import { API_URL } from "../../http";
 import { RootState } from "../store";
-import { setValue } from "./isLoadingSlice";
 const initialState = {
   user: {} as IUser,
   isAuth: false,
@@ -42,18 +41,11 @@ export const register = createAsyncThunk(
 );
 
 export const checkAuth = createAsyncThunk("/refresh", async () => {
-  setValue(true);
-  try {
     const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
       withCredentials: true,
     });
     localStorage.setItem("token", response.data.accessToken);
     return response.data;
-  } catch (e) {
-    console.log(e);
-  } finally {
-    setValue(false);
-  }
 });
 
 const authDataSlice = createSlice({
