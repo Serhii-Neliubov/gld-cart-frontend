@@ -1,4 +1,4 @@
-import vehicleService from "../services/vehicle-service";
+import vehicleService from "../services/vehicleService";
 import {Vehicle} from "../models/products/VehicleModel";
 import { Request, Response, NextFunction } from 'express';
 

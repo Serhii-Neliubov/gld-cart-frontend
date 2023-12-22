@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import ApiError from '../exceptions/api-error';
-import TokenService from '../services/token-service';
+import TokenService from '../services/tokenService';
 
 export const requireAuth = (req: Request, res: Response, next: NextFunction): void => {
   const authorizationHeader = req.headers.authorization as string;

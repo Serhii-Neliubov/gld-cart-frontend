@@ -1,5 +1,5 @@
 import {Server, Socket}                     from "socket.io";
-import chatService                          from "./services/chat-service";
+import chatService                          from "./services/chatService";
 import {createServer, Server as HttpServer} from "http";
 import {Express}                            from "express";
 

@@ -1,9 +1,9 @@
 import {NextFunction, Request, Response} from "express";
-import MailService from "../services/mail-service";
-import UserService from "../services/user-service";
-import TokenService from "../services/token-service";
+import MailService from "../services/mailService";
+import UserService from "../services/userService";
+import TokenService from "../services/tokenService";
 import {v4 as uuidv4} from "uuid";
-import {getGoogleOAuthTokens, getGoogleUser,} from "../services/google-service";
+import {getGoogleOAuthTokens, getGoogleUser,} from "../services/googleService";
 
 
 export const signup = async (

@@ -1,10 +1,10 @@
 import bcrypt from "bcrypt";
 import UserModel, {IUser} from "../models/UserModel";
 import TokenModel, {IToken} from "../models/TokenModel";
-import TokenService from "./token-service";
+import TokenService from "./tokenService";
 import UserDto from "../dtos/user-dto";
 import ApiError from "../exceptions/api-error";
-import mailService from "./mail-service";
+import mailService from "./mailService";
 import {IAddress} from "../models/AddressModel";
 import {Types} from "mongoose";
 
@@ -218,8 +218,8 @@ class UserService {
         Object.assign(user.addresses[addressIndex], updatedAddressData);
         await user.save();
     }
-    async getAddresses(id: string)
-    {
+
+    async getAddresses(id: string) {
         const user: IUser | null = await UserModel.findById(id);
 
         if (!user) {
