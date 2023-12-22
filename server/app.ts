@@ -13,7 +13,6 @@ import {addressesRoutes} from "./routes/addressesRoutes";
 import {emailRoutes} from "./routes/emailRoutes";
 import {paymentRoutes} from "./routes/paymentRoutes";
 import {personalDetailRoutes} from "./routes/personalDetailsRoutes";
-import vehicleModel from "./models/products/VehicleModel";
 import {vehicleRoutes} from "./routes/vehicleRoutes";
 
 export const app: Express = express();
