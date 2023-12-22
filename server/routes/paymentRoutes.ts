@@ -1,6 +1,6 @@
 import * as authMiddleware from "../middlewares/authMiddleware";
 import * as paymentController from "../controllers/paymentController";
-import router from "./router";
+import router from "../router";
 
 router.post("/create-checkout-session", authMiddleware.requireAuth, paymentController.createPaymentCheckout);
 router.post("/create-subscription-checkout", authMiddleware.requireAuth, paymentController.createSubscriptionCheckout);

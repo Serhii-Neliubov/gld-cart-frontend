@@ -1,5 +1,5 @@
 import * as userController from "../controllers/userController";
-import router from "./router";
+import router from "../router";
 
 router.post("/signup", userController.signup);
 router.post("/login", userController.login);

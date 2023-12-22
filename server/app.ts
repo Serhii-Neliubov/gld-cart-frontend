@@ -1,7 +1,7 @@
 import express, {Express} from "express";
 import cors from "cors";
 import mongoose, {ConnectOptions} from "mongoose";
-import router from "./routes/router";
+import router from "./router";
 import cookieParser from "cookie-parser";
 import errorMiddleware from "./middlewares/errorMiddleware";
 import rateLimit from "express-rate-limit";
