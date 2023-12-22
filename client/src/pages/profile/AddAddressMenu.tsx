@@ -20,7 +20,17 @@ type TypeFormData = {
   phone: string;
 };
 
-export default function AddAddressMenu({
+type TypeAddressData = {
+  ZIP_code: number;
+  street_address: string;
+  city: string;
+  recipients_name: string,
+  country: string;
+  phone: string;
+  _id: string
+};
+
+function AddAddressMenu({
   selectedLabel,
   setSelectedLabel,
 }: AddAddressMenuProps) {
@@ -34,6 +44,7 @@ export default function AddAddressMenu({
     zip: undefined,
     phone: "",
   });
+  const [addresses, setAddresses] = useState([])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -70,26 +81,17 @@ export default function AddAddressMenu({
     }
   };
 
-  const getAddresses = async (): Promise<void> => {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      console.error("User not authenticated");
-      return;
-    }
-
-    try {
-      const response = await AddressServices.getAddresses(user.id);
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error get addresses:", error);
-    }
-  };
-
   useEffect(() => {
-    getAddresses();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const fetchData = async () => {
+        const response = await AddressServices.getAddresses(user.id);
+        const data = response.data;
+        setAddresses(data)
+        // Now you can work with the data
+    };
+
+    fetchData();
   }, []);
+console.log(addresses)
 
   return selectedLabel === "Add Address" ? (
     <div
@@ -177,27 +179,21 @@ export default function AddAddressMenu({
         </div>
         <div className={styles.address_content}>
           <div className={styles.address_box}>
-            <div className={styles.address}>
-              <div className={styles.address_text}>
-                <p>Wade Warren</p>
-                <p>2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
-                <p>(406) 555-0120</p>
-              </div>
-
-              <button>EDIT</button>
-            </div>
-            <div className={styles.address}>
-              <div className={styles.address_text}>
-                <p>Wade Warren</p>
-                <p>2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
-                <p>(406) 555-0120</p>
-              </div>
-
-              <button>EDIT</button>
-            </div>
+            {addresses.map((address: TypeAddressData) =>
+               <div className={styles.address}>
+                 <div className={styles.address_text}>
+                   <p>{address.country}, {address.city}</p>
+                   <p>{address.street_address}, {address.ZIP_code} </p>
+                   <p>{address.recipients_name}</p>
+                 </div>
+                 <button>EDIT</button>
+               </div>
+            )}
           </div>
         </div>
       </div>
     )
   );
 }
+
+export default AddAddressMenu
