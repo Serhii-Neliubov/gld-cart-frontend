@@ -7,47 +7,32 @@ import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
 import {
   checkAuth,
-  selectIsAuth,
   userDataSelector,
 } from "../redux/slices/userDataSlice";
 import IUser from "../models/IUser";
-import axios from "axios";
-import { isLoading } from "../redux/slices/isLoadingSlice";
 import Label from "../components/UI/Label";
 import toast from "react-hot-toast";
+import $api from "../http";
 
 const AppRouter: FC = () => {
-  const isAuth = useSelector<RootState, boolean>(selectIsAuth);
   const user = useSelector<RootState, IUser>(userDataSelector);
-  const loading = useSelector<RootState, boolean>(isLoading);
-
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/refresh", {
-          withCredentials: true,
-        });
-        localStorage.setItem("token", data.accessToken);
+        await $api.get("http://localhost:3001/refresh", );
         dispatch(checkAuth());
         toast.success("You successfully logged!");
-        return data;
       } catch (e) {
         toast.error("Auth, please!");
-
-        return null;
       }
     };
 
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!isAuth) {
+  if (!user.type) {
     return (
       <BrowserRouter>
         <Header />
