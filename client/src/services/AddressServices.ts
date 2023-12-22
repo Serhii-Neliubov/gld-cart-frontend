@@ -28,5 +28,4 @@ export default class AddressServices {
     static async getAddresses(id: string): Promise<AxiosResponse> {
         return $api.get(`/get-addresses/${id}`, );
     }
-
 }
