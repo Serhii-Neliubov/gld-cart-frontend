@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { IMessageData } from '../../interfaces/interfaces';
-import {ContactInput} from './ContactInput'
+import { ContactInput } from './ContactInput'
 import styles from "./ContactUsPage.module.scss";
-
 
 const inputsList: inputsListType[] = [
     {
