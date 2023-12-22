@@ -1,9 +1,11 @@
 import * as userController from "../controllers/userController";
-import router from "../router";
+import {Router} from "express";
 
-router.post("/signup", userController.signup);
-router.post("/login", userController.login);
-router.post("/logout", userController.logout);
-router.get("/refresh", userController.refresh);
+export const authRoutes: Router = Router();
 
-router.get("/tokens/oauth/google", userController.googleOauthHandler);
+authRoutes.post("/signup", userController.signup);
+authRoutes.post("/login", userController.login);
+authRoutes.post("/logout", userController.logout);
+authRoutes.get("/refresh", userController.refresh);
+
+authRoutes.get("/tokens/oauth/google", userController.googleOauthHandler);

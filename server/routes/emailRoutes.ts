@@ -1,6 +1,7 @@
-import * as authMiddleware from "../middlewares/authMiddleware";
 import {rateLimitMiddlewareTyped} from "../middlewares/rateLimitMiddleware";
 import * as userController from "../controllers/userController";
-import router from "../router";
+import {Router} from "express";
 
-router.post("/send-contact-email", authMiddleware.requireAuth, rateLimitMiddlewareTyped, userController.sendContactEmail);
+export const emailRoutes: Router = Router();
+
+emailRoutes.post("/send-contact-email", rateLimitMiddlewareTyped, userController.sendContactEmail);

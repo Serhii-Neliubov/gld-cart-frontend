@@ -1,13 +1,20 @@
 import express, {Express} from "express";
 import cors from "cors";
 import mongoose, {ConnectOptions} from "mongoose";
-import router from "./router";
 import cookieParser from "cookie-parser";
 import errorMiddleware from "./middlewares/errorMiddleware";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import {appConfig} from "./config/appConfig";
 import bodyParser from "body-parser";
+import {authRoutes} from "./routes/authRoutes";
+import {passwordRoutes} from "./routes/passwordRoutes";
+import {addressesRoutes} from "./routes/addressesRoutes";
+import {emailRoutes} from "./routes/emailRoutes";
+import {paymentRoutes} from "./routes/paymentRoutes";
+import {personalDetailRoutes} from "./routes/personalDetailsRoutes";
+import vehicleModel from "./models/products/VehicleModel";
+import {vehicleRoutes} from "./routes/vehicleRoutes";
 
 export const app: Express = express();
 
@@ -29,7 +36,14 @@ app.use(
         credentials: true,
     })
 );
-app.use(router);
+app.use(authRoutes);
+app.use(passwordRoutes);
+app.use(addressesRoutes);
+app.use(emailRoutes);
+app.use(paymentRoutes);
+app.use(personalDetailRoutes);
+app.use(vehicleRoutes);
+
 app.use(errorMiddleware);
 const mongooseOptions = {
     useNewUrlParser: true,
