@@ -2,23 +2,28 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./ProfilePage.module.scss";
 import { logout, userDataSelector } from "../../redux/slices/userDataSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { API_URL } from "../../http";
-import axios from "axios";
+import $api, { API_URL } from "../../http";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-type ChangeProfileDataProps = {
-  selectedLabel: string;
-};
+type FormDataType = {
+  id: string,
+  name: undefined | string,
+  surname: undefined | string,
+  email: undefined | string,
+  phone_number: undefined | string,
+  address: undefined | string,
+  BIO: undefined | string,
+}
 
 export default function ChangeProfileData({
-  selectedLabel,
-}: ChangeProfileDataProps) {
+  selectedLabel
+}: {selectedLabel: string}) {
   const user = useSelector(userDataSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataType>({
     id: user.id,
     name: "",
     surname: "",
@@ -37,24 +42,14 @@ export default function ChangeProfileData({
   };
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const token = localStorage.getItem("token");
-      const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-      // Фильтрация заполненных полей
+    try {
       const filledFields = Object.entries(formData)
         .filter(([, value]) => value !== "")
         .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
 
-      // Проверка, что есть хотя бы одно заполненное поле
-      if (Object.keys(filledFields).length === 0) {
-        toast.error("No fields to update");
-        return;
-      }
-
-      await axios.put(`${API_URL}/update-personal-details`, filledFields, {
-        headers,
-      });
+      await $api.put(`${API_URL}/update-personal-details`, filledFields,
+      );
       toast.success("Profile updated successfully");
       dispatch(logout());
       navigate("/");
@@ -65,12 +60,10 @@ export default function ChangeProfileData({
 
   return (
     selectedLabel === "Profile" && (
-      <>
-        <div className={styles.title}>
-          <h1>
+      <React.Fragment>
+          <h1 className={styles.title}>
             Welcome Mr. {user.name} {user.surname}
           </h1>
-        </div>
 
         <h2 className={styles.box_name}>Personal Details</h2>
         <div className={styles.content_box_items}>
@@ -131,7 +124,7 @@ export default function ChangeProfileData({
             </div>
           </form>
         </div>
-      </>
+      </React.Fragment>
     )
   );
 }

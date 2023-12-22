@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./ContactUsPage.module.scss";
-import { IMessageData } from "../../interfaces/interfaces";
+import { IMessageData } from '@/interfaces/interfaces';
 
 type ContactInputProps = {
     title: string;

@@ -91,6 +91,7 @@
 .box_inputs {
   display: flex;
   gap: 10px;
+  margin-top: 10px;
   flex-direction: column;
 }
 .button_item {
@@ -132,7 +133,7 @@
   color: #353535;
   font-size: 30px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   position: relative;
   z-index: 10;
 }

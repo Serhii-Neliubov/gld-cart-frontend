@@ -1,10 +1,11 @@
+import React from 'react';
 import Footer from "../../../components/UI/Footer";
 import styles from "./RentingHousePage.module.scss";
 import { FC } from "react";
 
 const RentingHousePage: FC = () => {
   return (
-    <>
+    <React.Fragment>
       <div className={styles.body}>
         <div className="__container">
           <h1 className={styles.title}>Rental Listings</h1>
@@ -220,7 +221,7 @@ const RentingHousePage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

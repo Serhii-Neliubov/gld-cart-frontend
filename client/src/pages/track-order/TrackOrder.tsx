@@ -8,9 +8,11 @@ import StatusNumber from "./StatusNumber";
 
 const TrackOrder: FC = () => {
   const [orderStatus] = useState<string>("Delivered");
+
   useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div>
       <div className={styles.main}>

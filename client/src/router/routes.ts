@@ -24,7 +24,6 @@ import ItemPublishPage from "../components/UI/ItemPublishPage/ItemPublishPage";
 import Renting from "../pages/renting-buyer/Renting";
 import RentingCarPage from "../pages/renting-buyer/car/RentingCarPage";
 import RentingElectronicsPage from "../pages/renting-buyer/electronics/RentingElectronicsPage";
-import RentingHousePage from "../pages/renting-buyer/house/RentingCarPage";
 import RentingCategoryPage from "../pages/renting-vendor/RentingCategoryPage";
 import BasicInformationPage from "../pages/renting-vendor/vehicles/BasicInformationPage";
 import SpecificationsPage from "../pages/renting-vendor/vehicles/specifications/SpecificationsPage";
@@ -83,6 +82,7 @@ import LawnServiceSpecifications from "../pages/renting-vendor/lawn/photo-and-vi
 import LawnServicePublishing from "../pages/renting-vendor/lawn/photo-and-video/specifications/publishing/LawnServicePublishing";
 import TrackOrder from "../pages/track-order/TrackOrder";
 import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
+import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
 
 interface IRoutes {
   component: FC;
