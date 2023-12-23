@@ -6,7 +6,7 @@ export interface IUser extends Document {
   _id: string;
   type: string;
   name: string;
-  surname: string | undefined;
+  surname: string;
   email: string;
   addresses: IAddress[];
   picture: string;

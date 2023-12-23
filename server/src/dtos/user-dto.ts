@@ -4,7 +4,7 @@ class UserDto {
     id: string;
     type: string;
     name: string;
-    surname: string | undefined;
+    surname: string;
     email: string;
     addresses: IAddress[];
 

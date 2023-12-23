@@ -3,8 +3,7 @@ import MailService from "../services/mailService";
 import UserService from "../services/userService";
 import TokenService from "../services/tokenService";
 import {v4 as uuidv4} from "uuid";
-import {getGoogleOAuthTokens, getGoogleUser,} from "../services/googleService";
-
+import {GoogleOAuthService} from "../services/googleService";
 
 export const signup = async (
     req: Request,
@@ -124,8 +123,8 @@ export const refresh = async (
             maxAge: process.env.COOKIES_MAX_AGE as unknown as number,
         });
         return res.json(userData);
-    } catch (e) {
-        next(e);
+    } catch (error) {
+        next(error);
     }
 };
 export const sendContactEmail = async (
@@ -145,8 +144,8 @@ export const sendContactEmail = async (
         return res
             .status(400)
             .json({success: false, message: "Error. Email was not sent"});
-    } catch (e) {
-        next(e);
+    } catch (error) {
+        next(error);
     }
 };
 export const addAddress = async (req: Request, res: Response, next: NextFunction) => {
@@ -191,8 +190,9 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
     const code: string = req.query.code as string;
     const customParameter = req.query.state;
     try {
-        const {id_token, access_token} = await getGoogleOAuthTokens({code});
-        const googleUser = await getGoogleUser(id_token, access_token);
+        const googleData = new GoogleOAuthService();
+        const {id_token, access_token} = await googleData.getGoogleOAuthTokens({code});
+        const googleUser = await googleData.getGoogleUser(id_token, access_token);
 
         if (!googleUser.verified_email) {
             return res.status(403).send("Google account is not verified");
