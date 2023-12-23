@@ -84,12 +84,10 @@ function AddAddressMenu({
         const response = await AddressServices.getAddresses(user.id);
         const data = response.data;
         setAddresses(data)
-        // Now you can work with the data
     };
 
     fetchData();
   }, []);
-console.log(addresses)
 
   return selectedLabel === "Add Address" ? (
     <div

@@ -88,7 +88,7 @@ export default function ChangePasswordMenu({
               }
             />
             <div className={styles.button}>
-              <button type="submit" className={styles.button}>
+              <button type="submit">
                 Update
               </button>
             </div>
