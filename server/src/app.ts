@@ -49,17 +49,17 @@ const mongooseOptions = {
     useUnifiedTopology: true,
 } as ConnectOptions;
 
-if (appConfig.DB_URL) {
-    mongoose
-        .connect(appConfig.DB_URL as string, mongooseOptions)
-        .then(() => {
-            app.listen(appConfig.DB_PORT, () => {
-                console.log(`⚡️[database]: MongoDB is running on port ${appConfig.DB_PORT}`);
-            });
-        })
-        .catch((error) => {
-            console.error("Error connecting to the database:", error);
-        });
-} else {
+if (!appConfig.DB_URL) {
     console.error("DB_URL environment variable is not defined.");
+    process.exit(1);
 }
+mongoose
+    .connect(appConfig.DB_URL as string, mongooseOptions)
+    .then(() => {
+        app.listen(appConfig.DB_PORT, () => {
+            console.log(`⚡️[database]: MongoDB is running on port ${appConfig.DB_PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error("Error connecting to the database:", error);
+    });
