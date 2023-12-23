@@ -1,6 +1,11 @@
 import VehicleModel, {Vehicle} from "../models/products/VehicleModel";
+import {Logging} from "../util/logger";
 
 class VehicleService {
+    private logger: Logging;
+    constructor() {
+        this.logger = new Logging();
+    }
     async createVehicle(vehicleData: Vehicle): Promise<Vehicle> {
         return await VehicleModel.create(vehicleData);
     }

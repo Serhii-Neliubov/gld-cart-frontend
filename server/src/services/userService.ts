@@ -7,8 +7,15 @@ import ApiError from "../exceptions/api-error";
 import mailService from "./mailService";
 import {IAddress} from "../models/AddressModel";
 import {Types} from "mongoose";
+import {Logging} from "../util/logger";
 
 class UserService {
+    private logger: Logging;
+
+    constructor() {
+        this.logger = new Logging();
+    }
+
     async registration(
         type: string,
         name: string,
@@ -35,6 +42,8 @@ class UserService {
             TokenService.createTokens({...userDto});
         await TokenService.saveToken(userDto.id, tokens.refreshToken);
 
+        this.logger.logInfo(`User registered: ${email}`);
+
         return {...tokens, user: userDto};
     }
 
@@ -49,14 +58,18 @@ class UserService {
                     TokenService.createTokens({...userDto});
 
                 await TokenService.saveToken(userDto.id, tokens.refreshToken);
+                this.logger.logInfo(`User logged in: ${email}`);
                 return {...tokens, user: userDto};
             }
+            this.logger.logError(`Incorrect password for ${email}`);
             throw ApiError.BadRequest("Incorrect password");
         }
+        this.logger.logError(`User not found with email: ${email}`);
         throw ApiError.BadRequest("Incorrect email");
     }
 
     async logout(refreshToken: string) {
+        this.logger.logInfo(`User logged out`);
         return await TokenService.removeToken(refreshToken);
     }
 
@@ -81,12 +94,11 @@ class UserService {
         );
         {
             const userDto: UserDto = new UserDto(user);
-            console.log(userDto);
-
             const tokens: { accessToken: string; refreshToken: string } =
                 TokenService.createTokens({...userDto});
 
             await TokenService.saveToken(userDto.id, tokens.refreshToken);
+            this.logger.logInfo(`User logged in with Google: ${userDto.email}`);
             return {...tokens, user: userDto, picture: picture};
         }
     }
@@ -110,8 +122,10 @@ class UserService {
                 await user.save();
                 return;
             }
+            this.logger.logError(`Incorrect old password for email: ${email}`);
             throw ApiError.BadRequest("Incorrect old password");
         }
+        this.logger.logError(`User not found with email: ${email}`);
         throw ApiError.BadRequest("Incorrect email");
     }
 
@@ -120,6 +134,7 @@ class UserService {
             await UserModel.findOneAndUpdate({email}, {passwordResetToken: token})
         );
         if (!user) {
+            this.logger.logError(`User not found with email: ${email}`);
             throw ApiError.BadRequest("Incorrect email");
         }
         await mailService.sendResetPasswordMail(
@@ -137,8 +152,7 @@ class UserService {
         const tokenFromDb: IToken | null =
             await TokenService.findToken(refreshToken);
         if (!userData || !tokenFromDb) {
-            console.log(tokenFromDb);
-            console.log("refresh token is invalid");
+            this.logger.logError('Refresh token is invalid');
             throw ApiError.UnauthorizedError();
         }
         const user = <IUser>await UserModel.findById(userData.id);
@@ -181,27 +195,31 @@ class UserService {
         if (existingUser)
             return existingUser;
 
-        return <IUser>await UserModel.create({
-            type: type,
-            name: name,
-            surname: surname,
-            email: email,
-            picture: picture,
-            password: password,
+        const newUser = <IUser>await UserModel.create({
+            type,
+            name,
+            surname,
+            email,
+            picture,
+            password,
         });
+        this.logger.logInfo(`New user created with email: ${email}`);
+        return newUser;
     }
 
     async addAddress(email: string, addressData: IAddress) {
         const user = await UserModel.findOne({email});
-        if (!user)
+        if (!user) {
+            this.logger.logError(`User not found while adding address for email: ${email}`);
             throw ApiError.BadRequest("User not found");
+        }
 
         const newAddressId = new Types.ObjectId();
         const addressWithId = {...addressData, id: newAddressId};
 
         user.addresses.push(addressWithId);
         await user.save();
-
+        this.logger.logInfo(`Address added for user with email: ${email}`);
         return user;
     }
 
@@ -209,20 +227,24 @@ class UserService {
         const user: IUser | null = await UserModel.findOne({email});
 
         if (!user) {
+            this.logger.logError(`User not found while updating address for email: ${email}`);
             throw ApiError.BadRequest('User not found');
         }
         const addressIndex = user.addresses.findIndex(address => String(address.id) === String(addressId));
         if (addressIndex === -1) {
+            this.logger.logError(`Address not found for user with email: ${email}`);
             throw ApiError.BadRequest('Address not found');
         }
         Object.assign(user.addresses[addressIndex], updatedAddressData);
         await user.save();
+        this.logger.logInfo(`Address updated for user with email: ${email}`);
     }
 
     async getAddresses(id: string) {
         const user: IUser | null = await UserModel.findById(id);
 
         if (!user) {
+            this.logger.logError(`User not found while fetching addresses for ID: ${id}`);
             throw ApiError.BadRequest('User not found');
         }
         return user.addresses;
@@ -240,9 +262,11 @@ class UserService {
             })
         );
         if (!user) {
+            this.logger.logError(`User not found while updating details for ID: ${id}`);
             throw ApiError.BadRequest("User not found");
         }
         await user.save();
+        this.logger.logInfo(`Personal details updated for user with ID: ${id}`);
     }
 }
 

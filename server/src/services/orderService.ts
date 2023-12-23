@@ -1,8 +1,13 @@
 import OrderModel from "../models/OrderModel";
 import Stripe from "stripe";
 import {IProduct} from "../models/products/ProductModel";
+import {Logging} from "../util/logger";
 
 class OrderService {
+    private logger: Logging;
+    constructor() {
+        this.logger = new Logging();
+    }
     async createOrder(customer: Stripe.Customer | Stripe.DeletedCustomer, data: Stripe.Event.Data.Object) {
         if ("metadata" in customer &&
             "customer" in data &&

@@ -1,5 +1,6 @@
 import TokenModel, {IToken} from "../models/TokenModel";
 import jwt                  from "jsonwebtoken";
+import {Logging} from "../util/logger";
 
 interface TokenPayload {
     id: string;
@@ -12,6 +13,10 @@ interface TokenPayload {
 }
 
 class TokenService {
+    private logger: Logging;
+    constructor() {
+        this.logger = new Logging();
+    }
     createTokens(payload: {
         surname: string;
         name: string;

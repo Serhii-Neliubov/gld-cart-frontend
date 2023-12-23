@@ -2,10 +2,11 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import nodemailer from "nodemailer";
 import ApiError from "../exceptions/api-error";
+import {Logging} from "../util/logger";
 
 class MailService {
   private transporter: nodemailer.Transporter;
-
+  private logger: Logging;
   constructor() {
     this.transporter = nodemailer.createTransport({
       service: "gmail",
@@ -14,6 +15,7 @@ class MailService {
         pass: process.env.SMTP_USER_PASSWORD as string,
       },
     });
+    this.logger = new Logging();
   }
 
   async sendContactMail(name: string, email: string, subject: string, message: string) {
@@ -51,6 +53,7 @@ class MailService {
            </html>
 `,
     });
+   this.logger.logInfo('Reset password email was sent');
   }
 }
 
