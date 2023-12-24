@@ -1,43 +1,46 @@
 import * as dotenv from "dotenv";
+
 dotenv.config();
 import nodemailer from "nodemailer";
 import ApiError from "../exceptions/api-error";
-import {Logging} from "../util/logger";
+import {Logger} from "../util/logger";
 
 class MailService {
-  private transporter: nodemailer.Transporter;
-  private logger: Logging;
-  constructor() {
-    this.transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.SMTP_USER as string,
-        pass: process.env.SMTP_USER_PASSWORD as string,
-      },
-    });
-    this.logger = new Logging();
-  }
+    private transporter: nodemailer.Transporter;
+    private logger: Logger;
 
-  async sendContactMail(name: string, email: string, subject: string, message: string) {
-    try {
-      await this.transporter.sendMail({
-        from: "GLDCart Feedback",
-        to: process.env.FEEDBACK_EMAIL,
-        subject: subject,
-        text: `My name is: ${name}. My email is: ${email}. ${message}`,
-      });
-      console.log("email was sent");
-    } catch (error) {
-      throw ApiError.BadRequest("Failed to send email");
+    constructor() {
+        this.transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.SMTP_USER as string,
+                pass: process.env.SMTP_USER_PASSWORD as string,
+            },
+        });
+        this.logger = new Logger();
     }
-  }
 
-  async sendResetPasswordMail(email: string, link: string) {
-    await this.transporter.sendMail({
-      from: "GLDCart",
-      to: email,
-      subject: "Password reset on GLDCart.com",
-      html: `<!DOCTYPE html>
+    async sendContactMail(name: string, email: string, subject: string, message: string) {
+        try {
+            await this.transporter.sendMail({
+                from: "GLDCart Feedback",
+                to: process.env.FEEDBACK_EMAIL,
+                subject: subject,
+                text: `My name is: ${name}. My email is: ${email}. ${message}`,
+            });
+            this.logger.logInfo(`Email was sent to ${process.env.FEEDBACK_EMAIL}`);
+        } catch (error: any) {
+            this.logger.logError('Failed to send contact email', error);
+            throw ApiError.BadRequest("Failed to send email");
+        }
+    }
+
+    async sendResetPasswordMail(email: string, link: string) {
+        await this.transporter.sendMail({
+            from: "GLDCart",
+            to: email,
+            subject: "Password reset on GLDCart.com",
+            html: `<!DOCTYPE html>
            <html lang="en">
            <head>
            <meta charset="UTF-8">
@@ -52,9 +55,9 @@ class MailService {
            </body>
            </html>
 `,
-    });
-   this.logger.logInfo('Reset password email was sent');
-  }
+        });
+        this.logger.logInfo('Reset password email was sent');
+    }
 }
 
 export default new MailService();

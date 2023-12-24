@@ -11,7 +11,8 @@ export enum LogLevel {
     WARN = 'warn',
     ERROR = 'error',
 }
-export class Logging {
+
+export class Logger {
     private _logger: winston.Logger;
     private static _appName = 'GLD Cart';
 
@@ -22,12 +23,15 @@ export class Logging {
     public logInfo(msg: LogMessage, context?: LogContext) {
         this._log(msg, LogLevel.INFO, context);
     }
+
     public logWarn(msg: LogMessage, context?: LogContext) {
         this._log(msg, LogLevel.WARN, context);
     }
+
     public logError(msg: LogMessage, context?: LogContext) {
         this._log(msg, LogLevel.ERROR, context);
     }
+
     public logDebug(msg: LogMessage, context?: LogContext) {
         if (process.env.NODE_ENV !== 'production') {
             this._log(msg, LogLevel.DEBUG, context);
@@ -40,7 +44,7 @@ export class Logging {
 
     private _initializeWinston() {
         return winston.createLogger({
-            transports: Logging._getTransports(),
+            transports: Logger._getTransports(),
         });
     }
 
@@ -66,7 +70,7 @@ export class Logging {
                     `[${info.timestamp}] [${info.level.toUpperCase()}]: ${
                         info.message
                     } [CONTEXT] -> ${
-                        info.context ? '\n' + JSON.stringify(info.context, null, 2) : '{}' 
+                        info.context ? '\n' + JSON.stringify(info.context, null, 2) : '{}'
                     }`
             ),
             format.colorize({all: true})
@@ -75,7 +79,7 @@ export class Logging {
 
     private static _getFileTransport() {
         return new DailyRotateFile({
-            filename: `${Logging._appName}-%DATE%.log`,
+            filename: `${Logger._appName}-%DATE%.log`,
             zippedArchive: true,
             maxSize: '10m', // Rotate after 10MB
             maxFiles: '14d', // Only keep last 14 days
