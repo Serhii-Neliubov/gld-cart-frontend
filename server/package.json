@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "dev": "concurrently \"npx tsc -w\" \"nodemon dist/server.js\"",
-    "debug": ""
   },
   "keywords": [],
   "author": "",
