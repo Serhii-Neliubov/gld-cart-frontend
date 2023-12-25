@@ -83,6 +83,7 @@ import LawnServicePublishing from "../pages/renting-vendor/lawn/photo-and-video/
 import TrackOrder from "../pages/track-order/TrackOrder";
 import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
+import JobApplicationForm from "../components/UI/JobApplicationForm.tsx";
 
 interface IRoutes {
   component: FC;
@@ -95,6 +96,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: TrackOrder, path: "/track-an-order" },
   { component: Renting, path: "/renting" },
   { component: ContactUsPage, path: "/contact-us" },
+  { component: JobApplicationForm, path: "/personal-services/application-job-form" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
   { component: CookiePolicyPage, path: "/cookie-policy" },
   { component: ShippingPolicyPage, path: "/shipping-policy" },
