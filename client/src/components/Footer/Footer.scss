@@ -8,7 +8,11 @@
 }
 
 .footer__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -24,7 +28,12 @@
 .footer__links {
   margin-top: 1.5rem;
   margin-bottom: 1.625rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 1rem;
 }
@@ -33,6 +42,7 @@
   color: var(--Text, #fafafa);
   font-size: 16px;
   line-height: 150%;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
@@ -45,7 +55,12 @@
 }
 
 .footer__contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -58,19 +73,32 @@
 }
 
 .footer__social-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 0.9375rem;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .footer__download-services {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 0.5rem;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .footer__download-stores {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 0.3125rem;
 }
@@ -83,13 +111,24 @@
 }
 
 .footer__copyright-content {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .footer__trialshoopy {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -101,7 +140,11 @@
 
 .footer__trialshoopy-items {
   margin-top: 0.625rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 1.25rem;
 }
@@ -115,11 +158,12 @@
 
 .footer__reserved-text::after {
   content: "";
-  background-image: url("/public/icon-copyright.png");
+  background-image: url("/icon-copyright.png");
   position: absolute;
   top: 0.0625rem;
   left: 0;
+  -ms-transform: translateX(-130%);
   transform: translateX(-130%);
   width: 1.25rem;
   height: 1.25rem;
-}/*# sourceMappingURL=Footer.css.map */
+}

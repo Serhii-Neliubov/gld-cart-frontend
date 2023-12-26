@@ -13,7 +13,6 @@
 .label__title {
   display: flex;
   align-items: center;
-  font-family: Inter;
   font-size: 24px;
   font-weight: 700;
   line-height: 100%;
@@ -61,11 +60,10 @@
 
 .label__profile-btn span {
   color: #000;
-  font-family: Poppins;
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 112.5%;
   position: absolute;
   left: 120%;
-  text-wrap: nowrap;
+  text-wrap: none;
 }/*# sourceMappingURL=Label.css.map */
