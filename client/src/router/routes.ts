@@ -83,7 +83,7 @@ import LawnServicePublishing from "../pages/renting-vendor/lawn/photo-and-video/
 import TrackOrder from "../pages/track-order/TrackOrder";
 import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
-import JobApplicationForm from "../components/UI/JobApplicationForm.tsx";
+import JobApplicationForm from "../components/UI/JobApplicationForm/JobApplicationForm.tsx";
 
 interface IRoutes {
   component: FC;
