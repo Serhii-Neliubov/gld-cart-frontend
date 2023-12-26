@@ -14,6 +14,8 @@ import {emailRoutes} from "./routes/emailRoutes";
 import {paymentRoutes} from "./routes/paymentRoutes";
 import {personalDetailRoutes} from "./routes/personalDetailsRoutes";
 import {vehicleRoutes} from "./routes/vehicleRoutes";
+import {webhookRoutes} from "./routes/webhookRoutes";
+import {subscriptionRoutes} from "./routes/subscriptionRoutes";
 
 export const app: Express = express();
 
@@ -42,6 +44,8 @@ app.use(emailRoutes);
 app.use(paymentRoutes);
 app.use(personalDetailRoutes);
 app.use(vehicleRoutes);
+app.use(subscriptionRoutes);
+app.use(webhookRoutes);
 
 app.use(errorMiddleware);
 const mongooseOptions = {

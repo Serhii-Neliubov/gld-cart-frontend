@@ -1,13 +1,15 @@
 import OrderModel from "../models/OrderModel";
 import Stripe from "stripe";
 import {IProduct} from "../models/products/ProductModel";
-import {Logging} from "../util/logger";
+import {Logger} from "../util/logger";
 
 class OrderService {
-    private logger: Logging;
+    private logger: Logger;
+
     constructor() {
-        this.logger = new Logging();
+        this.logger = new Logger();
     }
+
     async createOrder(customer: Stripe.Customer | Stripe.DeletedCustomer, data: Stripe.Event.Data.Object) {
         if ("metadata" in customer &&
             "customer" in data &&
@@ -37,9 +39,6 @@ class OrderService {
             }
         }
     }
-    // async createProduct(name: string, brand: string, desc: string, price: number, image: string, cartQuantity: number) {
-    //     return <IProduct>await ProductModel.create({title: name, brand, desc, price, image, cartQuantity});
-    // }
 }
 
 export default new OrderService();

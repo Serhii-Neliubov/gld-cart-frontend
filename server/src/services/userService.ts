@@ -7,13 +7,13 @@ import ApiError from "../exceptions/api-error";
 import mailService from "./mailService";
 import {IAddress} from "../models/AddressModel";
 import {Types} from "mongoose";
-import {Logging} from "../util/logger";
+import {Logger} from "../util/logger";
 
 class UserService {
-    private logger: Logging;
+    private logger: Logger;
 
     constructor() {
-        this.logger = new Logging();
+        this.logger = new Logger();
     }
 
     async registration(
@@ -195,13 +195,15 @@ class UserService {
         if (existingUser)
             return existingUser;
 
+        const firstName = name.split(' ')[0];
+
         const newUser = <IUser>await UserModel.create({
-            type,
-            name,
-            surname,
-            email,
-            picture,
-            password,
+            type: type,
+            name: firstName,
+            surname: surname,
+            email: email,
+            picture: picture,
+            password: password,
         });
         this.logger.logInfo(`New user created with email: ${email}`);
         return newUser;
