@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SubPlansPage.module.scss";
-import { SubPlansData } from "../../utils/SubPlansData";
+import { SubPlansData } from "../../data/SubPlansData";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "../../redux/slices/userDataSlice";
 import PaymentServices from "../../services/PaymentServices";

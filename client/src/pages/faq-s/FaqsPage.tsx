@@ -1,6 +1,6 @@
 import Footer from "../../components/Footer/Footer.tsx";
-import { FaqsData } from "../../utils/FaqsData";
-import TextSection from "../cookie-policy/TextSection";
+import { FaqsData } from "../../data/FaqsData";
+import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./FaqsPage.module.scss";
 import { FC, useEffect } from "react";
 

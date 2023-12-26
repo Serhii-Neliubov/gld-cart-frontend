@@ -6,7 +6,7 @@ import $api, { API_URL } from "../../lib";
 import { useNavigate } from "react-router-dom";
 import { IMessageData } from "../../interfaces/interfaces";
 import toast from "react-hot-toast";
-import {ContactInputList}  from "./ContactInputList";
+import {ContactInputList}  from "./components/ContactInputList.tsx";
 
 const ContactUsPage: FC = () => {
   const navigate = useNavigate();

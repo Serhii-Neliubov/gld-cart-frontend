@@ -1,8 +1,8 @@
 import Footer from "../../components/Footer/Footer.tsx";
-import TextSection from "./TextSection";
+import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./CookiePolicyPage.module.scss";
 import { FC, useEffect } from "react";
-import { CookiePolicyData } from "../../utils/CookiePolicyData";
+import { CookiePolicyData } from "../../data/CookiePolicyData";
 
 const CookiePolicyPage: FC = () => {
   useEffect((): void => {

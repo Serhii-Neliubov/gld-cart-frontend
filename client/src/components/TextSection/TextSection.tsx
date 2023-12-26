@@ -1,14 +1,14 @@
 import React from "react";
-import styles from "./CookiePolicyPage.module.scss";
-import { TextSectionProps } from "../../interfaces/types";
+import styles from './TextSection.module.scss'
+import { TextSectionProps } from "../../interfaces/types.ts";
 
 export default function TextSection({ title, text, id }: TextSectionProps) {
   return (
     <div className={styles.text_container}>
-      <p className={styles.list_item}>
+      <p>
         {id}. {title}
       </p>
-      <ul className={styles.unordered_list}>
+      <ul>
         {text.map((text) => {
           return <li>{text}</li>;
         })}

@@ -7,7 +7,7 @@ import {DemoContainer} from "@mui/x-date-pickers/internals/demo";
 import { MultiInputTimeRangeField } from '@mui/x-date-pickers-pro';
 import { Textarea} from '@mui/joy';
 import Footer from '../Footer/Footer.tsx'
-import { DragAndDropWindow } from "../JobApplicationForm/DragAndDropWindow.tsx";
+import { DragAndDropWindow } from "./components/DragAndDropWindow.tsx";
 const JobApplicationForm: FC = () => {
     return (
         <React.Fragment>

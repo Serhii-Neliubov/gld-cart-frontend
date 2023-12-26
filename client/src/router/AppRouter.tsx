@@ -11,25 +11,13 @@ import {
 } from "../redux/slices/userDataSlice";
 import IUser from "../models/IUser";
 import Label from "../components/Label/Label.tsx";
-import toast from "react-hot-toast";
-import $api from "../lib";
 
 const AppRouter: FC = () => {
   const user = useSelector<RootState, IUser>(userDataSelector);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await $api.get("http://localhost:3001/refresh", );
-        dispatch(checkAuth());
-        toast.success("You successfully logged!");
-      } catch (e) {
-        toast.error("Auth, please!");
-      }
-    };
-
-    fetchData();
+      dispatch(checkAuth());
   }, []);
 
   if (!user.type) {

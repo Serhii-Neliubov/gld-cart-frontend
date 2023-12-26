@@ -1,5 +1,5 @@
 import React, {ChangeEvent, DragEvent, FC, useRef, useState} from 'react';
-import styles from "../JobApplicationForm/JobApplicationForm.module.scss";
+import styles from "../JobApplicationForm.module.scss";
 import Button from "@mui/material/Button";
 import {styled} from "@mui/joy";
 

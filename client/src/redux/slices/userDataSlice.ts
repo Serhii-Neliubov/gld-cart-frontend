@@ -5,6 +5,7 @@ import axios from "axios";
 import { AuthResponse } from "../../models/response/AuthResponse";
 import { API_URL } from "../../lib";
 import { RootState } from "../store";
+import toast from "react-hot-toast";
 const initialState = {
   user: {} as IUser,
   isAuth: false,
@@ -70,19 +71,23 @@ const authDataSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         localStorage.setItem("token", action.payload.accessToken);
         state.isAuth = true;
+        toast.success("You have successfully been logged!");
         state.user = action.payload.user;
       })
       .addCase(register.fulfilled, (state, action) => {
         localStorage.setItem("token", action.payload.accessToken);
         state.isAuth = true;
+        toast.success("You have successfully been registered!");
         state.user = action.payload.user;
       })
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.isAuth = true;
-        state.user = action.payload.user; // Set the user data from the action payload
+          toast.success("You successfully logged!");
+          state.user = action.payload.user; // Set the user data from the action payload
       })
       .addCase(checkAuth.rejected, (state) => {
         state.isAuth = false;
+        toast.error("You are not authorized user!");
         state.user = {} as IUser;
       });
   },
