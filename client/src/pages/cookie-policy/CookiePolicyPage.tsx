@@ -1,4 +1,4 @@
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 import TextSection from "./TextSection";
 import styles from "./CookiePolicyPage.module.scss";
 import { FC, useEffect } from "react";

@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import styles from "./SubPlansPage.module.scss";
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 import SubPlanList from "./SubPlanList";
 
 const SubPlansPage: FC = () => {

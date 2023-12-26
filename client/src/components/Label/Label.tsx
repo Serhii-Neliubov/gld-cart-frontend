@@ -1,15 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Label.scss";
 import { useSelector } from "react-redux";
-import {
-  selectIsAuth,
-  userDataSelector,
-} from "../../redux/slices/userDataSlice";
 import { useTranslation } from "react-i18next";
 import { FC } from "react";
-import { RootState } from "../../redux/store";
-import IUser from "../../models/IUser";
-import { NavLinkProps } from "../../interfaces/interfaces";
+import {RootState} from "../../redux/store.ts";
+import {selectIsAuth, userDataSelector} from "../../redux/slices/userDataSlice.ts";
+import IUser from "../../models/IUser.ts";
+import {NavLinkProps} from "../../interfaces/interfaces.ts";
 
 const Label: FC = () => {
   const location = useLocation();

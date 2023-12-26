@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from "./WishlistPage.module.scss";
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer";
 import { FC } from "react";
-import NoItems from "../../components/UI/NoItems";
+import NoItems from "../../components/NoItems/NoItems.tsx";
 
 const WishlistPage: FC = () => {
   return (

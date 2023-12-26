@@ -1,4 +1,4 @@
-import Footer from "../../../components/UI/Footer";
+import Footer from "../../../components/Footer/Footer.tsx";
 import styles from "./RentingElectronicsPage.module.scss";
 import { FC } from "react";
 

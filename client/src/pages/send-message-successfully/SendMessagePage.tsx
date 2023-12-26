@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./SendMessagePage.module.scss";
 import { FC, useEffect } from "react";
-import Login from "../../components/UI/Login";
+import Login from "../../components/Login/Login.tsx";
 
 const SendMessagePage: FC = () => {
   useEffect((): void => {

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FC } from "react";
-import Header from "../components/UI/Header";
+import Header from "../components/Header/Header.tsx";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
@@ -10,9 +10,9 @@ import {
   userDataSelector,
 } from "../redux/slices/userDataSlice";
 import IUser from "../models/IUser";
-import Label from "../components/UI/Label";
+import Label from "../components/Label/Label.tsx";
 import toast from "react-hot-toast";
-import $api from "../http";
+import $api from "../lib";
 
 const AppRouter: FC = () => {
   const user = useSelector<RootState, IUser>(userDataSelector);

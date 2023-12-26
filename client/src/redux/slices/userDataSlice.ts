@@ -3,7 +3,7 @@ import IUser from "../../models/IUser";
 import AuthService from "../../services/AuthService";
 import axios from "axios";
 import { AuthResponse } from "../../models/response/AuthResponse";
-import { API_URL } from "../../http";
+import { API_URL } from "../../lib";
 import { RootState } from "../store";
 const initialState = {
   user: {} as IUser,

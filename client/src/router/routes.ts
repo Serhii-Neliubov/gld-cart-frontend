@@ -20,7 +20,7 @@ import RegisterAsPage from "../pages/register/RegisterAsPage";
 import RegisterPage from "../pages/register/register-form/RegisterPage";
 import SubPlansPage from "../pages/sub-plans/SubPlansPage";
 import WishlistPage from "../pages/wishlist/WishlistPage";
-import ItemPublishPage from "../components/UI/ItemPublishPage/ItemPublishPage";
+import ItemPublishPage from "../components/ItemPublishPage/ItemPublishPage";
 import Renting from "../pages/renting-buyer/Renting";
 import RentingCarPage from "../pages/renting-buyer/car/RentingCarPage";
 import RentingElectronicsPage from "../pages/renting-buyer/electronics/RentingElectronicsPage";
@@ -83,7 +83,7 @@ import LawnServicePublishing from "../pages/renting-vendor/lawn/photo-and-video/
 import TrackOrder from "../pages/track-order/TrackOrder";
 import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
-import JobApplicationForm from "../components/UI/JobApplicationForm/JobApplicationForm.tsx";
+import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
 
 interface IRoutes {
   component: FC;

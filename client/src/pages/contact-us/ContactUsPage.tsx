@@ -1,8 +1,8 @@
 import React from 'react'
 import { FC, FormEvent, useEffect, useState } from "react";
 import styles from "./ContactUsPage.module.scss";
-import Footer from "../../components/UI/Footer";
-import $api, { API_URL } from "../../http";
+import Footer from "../../components/Footer/Footer.tsx";
+import $api, { API_URL } from "../../lib";
 import { useNavigate } from "react-router-dom";
 import { IMessageData } from "../../interfaces/interfaces";
 import toast from "react-hot-toast";

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Footer from "../../../components/UI/Footer";
+import Footer from "../../../components/Footer/Footer.tsx";
 import styles from "./RentingCarPage.module.scss";
 import CarList from "./CarList";
 

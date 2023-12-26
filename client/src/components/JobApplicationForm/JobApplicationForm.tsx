@@ -6,7 +6,7 @@ import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {DemoContainer} from "@mui/x-date-pickers/internals/demo";
 import { MultiInputTimeRangeField } from '@mui/x-date-pickers-pro';
 import { Textarea} from '@mui/joy';
-import Footer from '../Footer.tsx'
+import Footer from '../Footer/Footer.tsx'
 import { DragAndDropWindow } from "../JobApplicationForm/DragAndDropWindow.tsx";
 const JobApplicationForm: FC = () => {
     return (

@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
 import styles from "./ForgottenPasswordPage.module.scss";
-import Login from "../../components/UI/Login";
+import Login from "../../components/Login/Login.tsx";
 import { useDispatch } from "react-redux";
 import { setEmailValue } from "../../redux/slices/resetPasswordEmailSlice";
 import { AppDispatch } from "../../redux/store";
 import axios from "axios";
-import { API_URL } from "../../http";
+import { API_URL } from "../../lib";
 import { useNavigate } from "react-router-dom";
 
 const ForgottenPasswordPage: FC = () => {

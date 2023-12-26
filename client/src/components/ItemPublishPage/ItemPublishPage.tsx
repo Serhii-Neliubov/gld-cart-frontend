@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styles from "./ItemPublishPage.module.scss";
 import { Link } from "react-router-dom";
-import { RootState } from "../../../redux/store";
+import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 import RentingStage from "../RentingStage/RentingStage";
 

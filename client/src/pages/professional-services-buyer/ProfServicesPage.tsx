@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import styles from "./ProfServicesPage.module.scss";
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 import { Link } from "react-router-dom";
 
 const ProfServicesPage: FC = () => {

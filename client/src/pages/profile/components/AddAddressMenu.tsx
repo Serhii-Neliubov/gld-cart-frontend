@@ -1,9 +1,9 @@
 import React, { ChangeEvent,  useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { userDataSelector } from "../../redux/slices/userDataSlice";
-import styles from "./ProfilePage.module.scss";
+import { userDataSelector } from "../../../redux/slices/userDataSlice.ts";
+import styles from "../ProfilePage.module.scss";
 import toast from "react-hot-toast";
-import AddressServices from "../../services/AddressServices";
+import AddressServices from "../../../services/AddressServices.ts";
 
 type AddAddressMenuProps = {
   selectedLabel: string;
@@ -55,13 +55,6 @@ function AddAddressMenu({
   };
 
   const handleSubmit = async () => {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      console.error("User not authenticated");
-      return;
-    }
-
     try {
       await AddressServices.sendAddress(
         formData.email,
@@ -73,6 +66,7 @@ function AddAddressMenu({
         formData.phone
       );
       toast.success("Address add successfully");
+
     } catch (error) {
       console.error("Error sending address:", error);
       toast.error("Error to adding the address");
@@ -166,6 +160,7 @@ function AddAddressMenu({
           alignItems: 'center',
           justifyContent: "space-between",
           height: "100%",
+
         }}
       >
         <div className={styles.title_action}>

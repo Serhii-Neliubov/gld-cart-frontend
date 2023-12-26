@@ -1,4 +1,4 @@
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 import { TermsConditions } from "../../utils/TermsConditionsData";
 import TextSection from "../cookie-policy/TextSection";
 import styles from "./TermsConditionsPage.module.scss";

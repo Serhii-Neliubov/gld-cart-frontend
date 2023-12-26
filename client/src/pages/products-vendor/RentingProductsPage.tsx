@@ -5,7 +5,7 @@ import {
   ProductsData,
   RentingProductsData,
 } from "../../utils/RentingProductsData";
-import RentingStage from "../../components/UI/RentingStage/RentingStage";
+import RentingStage from "../../components/RentingStage/RentingStage";
 interface IClearClick {
   [key: string]: boolean;
 }

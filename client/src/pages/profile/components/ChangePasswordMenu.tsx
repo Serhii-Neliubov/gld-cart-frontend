@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { FormEvent, useState } from "react";
-import { API_URL } from "../../http";
+import { API_URL } from "../../../lib";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, userDataSelector } from "../../redux/slices/userDataSlice";
+import { logout, userDataSelector } from "../../../redux/slices/userDataSlice.ts";
 import { useNavigate } from "react-router-dom";
-import styles from "./ProfilePage.module.scss";
+import styles from "../ProfilePage.module.scss";
 import toast from "react-hot-toast";
 
 type ChangePasswordMenuProps = {

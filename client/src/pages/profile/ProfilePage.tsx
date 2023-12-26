@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { logout, userDataSelector } from "../../redux/slices/userDataSlice";
 import { FC, useState } from "react";
 import React from "react";
-import ChangePasswordMenu from "./ChangePasswordMenu";
-import ChangeProfileData from "./ChangeProfileData";
-import AddAddressMenu from "./AddAddressMenu";
+import ChangePasswordMenu from "./components/ChangePasswordMenu.tsx";
+import ChangeProfileData from "./components/ChangeProfileData.tsx";
+import AddAddressMenu from "./components/AddAddressMenu.tsx";
 
 const ProfilePage: FC = () => {
   const user = useSelector(userDataSelector);

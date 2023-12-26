@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import Login from "../../components/UI/Login";
+import Login from "../../components/Login/Login.tsx";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";

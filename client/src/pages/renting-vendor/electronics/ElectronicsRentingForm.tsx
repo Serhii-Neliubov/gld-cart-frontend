@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import styles from "./ElectronicsRentingForm.module.scss";
-import RentingForm from "../../../components/UI/RentingForm/RentingForm";
-import RentingActions from "../../../components/UI/RentingActions/RentingActions";
+import RentingForm from "../../../components/RentingForm/RentingForm";
+import RentingActions from "../../../components/RentingActions/RentingActions";
 
 const packageBlocks = [{ time: "Days" }, { time: "Weeks" }, { time: "Months" }];
 
