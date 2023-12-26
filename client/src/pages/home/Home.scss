@@ -830,7 +830,7 @@
   }
 
   &__button {
-    padding: 0.625rem 0 0 1.25rem;
+    padding: 0.625rem 1.25rem 0.625rem 2rem;
     width: 10.3125rem;
     border-radius: 0.375rem;
     border: 1.051px solid var(--gray-300, #dee2e7);
@@ -953,7 +953,6 @@
 }
 
 .shop-now__image {
-  -webkit-transform: translate(0, 5%);
   -ms-transform: translate(0, 5%);
   transform: translate(0, 5%);
 }
