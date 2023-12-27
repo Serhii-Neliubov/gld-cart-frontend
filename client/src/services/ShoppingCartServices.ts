@@ -1,13 +1,13 @@
 import { AxiosResponse } from "axios";
 import $api from "../lib";
-
 export default class ShoppingCart {
     static async sendShoppingCartItems(
         title: string,
         description: string,
-        price: string,
+        price: number,
         image: string,
         quantity: number,
+        userId: string
     ): Promise<AxiosResponse> {
         return $api.post(
             "/add-cart-item",
@@ -17,6 +17,7 @@ export default class ShoppingCart {
                 price,
                 image,
                 quantity,
+                userId
             },
         );
     }
