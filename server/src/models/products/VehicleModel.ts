@@ -1,6 +1,6 @@
 import mongoose, { Schema, Model, Document } from 'mongoose';
 
-export interface Vehicle extends Document {
+export interface IVehicle extends Document {
     image: string;
     title: string;
     price_day: string;
@@ -38,7 +38,7 @@ export interface Vehicle extends Document {
     vehicle_number: string;
 }
 
-const VehicleSchema = new Schema<Vehicle>({
+const VehicleSchema = new Schema<IVehicle>({
     image: { type: String, required: true },
     title: { type: String, required: true },
     price_day: { type: String, required: true },
@@ -76,6 +76,6 @@ const VehicleSchema = new Schema<Vehicle>({
     vehicle_number: { type: String, required: true },
 });
 
-const VehicleModel: Model<Vehicle> = mongoose.model('vehicles', VehicleSchema) as Model<Vehicle>;
+const VehicleModel: Model<IVehicle> = mongoose.model('vehicles', VehicleSchema) as Model<IVehicle>;
 
 export default VehicleModel;
