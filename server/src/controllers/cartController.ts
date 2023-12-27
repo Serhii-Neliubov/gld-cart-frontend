@@ -14,7 +14,7 @@ export const getCartItems = async (req: Request, res: Response, next: NextFuncti
 
 }
 export const addCartItemHandler = async (req: Request, res: Response, next: NextFunction) => {
-    const {userId, cartId, productId, title, brand, description, image, quantity, price} = req.body;
+    const {userId, cartId, productId, title, description, image, quantity, price} = req.body;
     try {
 
         if (quantity <= 0 || price <= 0) {

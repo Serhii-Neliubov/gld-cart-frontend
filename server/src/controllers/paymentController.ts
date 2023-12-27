@@ -6,16 +6,6 @@ interface ICheckoutRequestBody {
     userId: string;
     cartItems: IProduct[];
 }
-
-interface IItem {
-    name: any;
-    image: any;
-    desc: any;
-    id: any;
-    price: number;
-    cartQuantity: any;
-}
-
 export const createCustomer = async (req: Request, res: Response, next: NextFunction) => {
     const {email, name} = req.body;
     try {
