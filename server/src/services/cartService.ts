@@ -14,7 +14,7 @@ class CartService {
         const cartItems: ICart | null = await CartModel.findById(cartId);
 
         if (!cartItems) {
-            this.logger.logInfo(`Cart not found. Cart ID: ${cartId}`);
+            this.logger.logInfo(`Cart not found. Passed Cart ID: ${cartId}`);
             throw ApiError.BadRequest("Cart not found");
         }
 
@@ -22,25 +22,35 @@ class CartService {
         return cartItems;
     }
 
-    async addCartItem(cartId: string, productId: string, brand: string, description: string, title: string, image: string, quantity: number, price: number) {
-        const cart: ICart | null = await CartModel.findById(cartId);
+    async addCartItem(userId: string, cartId: string | null, title: string, description: string, image: string, quantity: number, price: number) {
+        let cart: ICart | null;
+
+        if (!cartId) {
+            cart = await CartModel.create({
+                user: userId,
+                totalPrice: 0,
+            });
+        } else {
+            cart = await CartModel.findById(cartId);
+        }
 
         if (!cart) {
+            this.logger.logError("Undefined error, while adding to cart");
             return null;
         }
 
-        cart.items.push({productId: productId,
+        cart.items.push({
             title: title,
-            brand: brand,
             description: description,
             price: price,
             image: image,
-            quantity: quantity} as IProduct);
+            quantity: quantity
+        } as IProduct);
 
         cart.totalPrice += quantity * price;
 
         await cart.save();
-        return cart;
+        return {cartId: cart.id, items: cart.items, totalPrice: cart.totalPrice};
     }
 
     async deleteCartItem(cart: string, itemId: string) {

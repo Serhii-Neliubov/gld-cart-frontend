@@ -14,13 +14,13 @@ export const getCartItems = async (req: Request, res: Response, next: NextFuncti
 
 }
 export const addCartItemHandler = async (req: Request, res: Response, next: NextFunction) => {
-    const {cartId, productId, title, brand, description, image, quantity, price} = req.body;
+    const {userId, cartId, productId, title, brand, description, image, quantity, price} = req.body;
     try {
 
-        if (!cartId || !productId || quantity <= 0 || price <= 0) {
+        if (quantity <= 0 || price <= 0) {
             return res.status(400).json({message: 'Invalid input'});
         }
-        const cart = await CartService.addCartItem(cartId, productId, title, brand, description, image, quantity, price);
+        const cart = await CartService.addCartItem(userId, cartId, title, description, image, quantity, price);
         res.status(200).json({message: 'Item added to cart', cart});
         return res.status(200).json({message: 'Item added to cart', cart});
 
