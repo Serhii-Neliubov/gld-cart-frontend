@@ -2,16 +2,8 @@ import {NextFunction, Request, Response} from "express";
 import UserService from "../services/userService";
 
 export const addAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
-    const {userId, recipients_name, street_address, city, state, country, ZIP_code, phone_number} = req.body;
-    const addressData = {
-        recipients_name,
-        street_address,
-        city,
-        state,
-        country,
-        ZIP_code,
-        phone_number,
-    };
+    const {userId, addressData} = req.body;
+
     try {
         await UserService.addAddress(userId, addressData);
         res.status(200).json({message: "Address was added successfully."});
