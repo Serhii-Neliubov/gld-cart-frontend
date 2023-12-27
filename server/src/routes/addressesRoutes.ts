@@ -1,9 +1,10 @@
 import * as authMiddleware from "../middlewares/authMiddleware";
-import * as userController from "../controllers/userController";
+import * as addressController from "../controllers/addressContoller";
 import {Router} from "express";
 
 export const addressesRoutes: Router = Router();
 
-addressesRoutes.post("/add-address", authMiddleware.requireAuth, userController.addAddress);
-addressesRoutes.get("/get-addresses/:id", authMiddleware.requireAuth, userController.getAddresses)
-addressesRoutes.put("/update-address", authMiddleware.requireAuth, userController.updateAddress);
+addressesRoutes.post("/add-address", authMiddleware.requireAuth, addressController.addAddressHandler);
+addressesRoutes.get("/get-addresses/:id", authMiddleware.requireAuth, addressController.getAddressesHandler)
+addressesRoutes.put("/update-address", authMiddleware.requireAuth, addressController.updateAddressHandler);
+addressesRoutes.delete("/delete-address", addressController.deleteAddressHandler);

@@ -8,7 +8,7 @@ export interface IAddress
     city: string;
     state?: string;
     country: string;
-    ZIP_code: number;
+    ZIP_code: string;
     phone_number: string;
 }
 
@@ -33,7 +33,7 @@ export const addressSchema :Schema<IAddress> = new Schema({
         required: true
     },
     ZIP_code: {
-        type: Number,
+        type: String,
         required: true
     },
     phone_number: {
