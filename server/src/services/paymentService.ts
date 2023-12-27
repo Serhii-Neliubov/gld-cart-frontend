@@ -1,6 +1,7 @@
 import {Logger} from "../util/logger";
 
 import Stripe from "stripe";
+import {IProduct} from "../models/products/ProductModel";
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -9,7 +10,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 });
 interface ICheckoutRequestBody {
     userId: string;
-    cartItems: IItem[];
+    cartItems: IProduct[];
 }
 interface IItem {
     name: any;
