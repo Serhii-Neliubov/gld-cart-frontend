@@ -12,14 +12,6 @@ interface ICheckoutRequestBody {
     userId: string;
     cartItems: IProduct[];
 }
-interface IItem {
-    name: any;
-    image: any;
-    desc: any;
-    id: any;
-    price: number;
-    cartQuantity: any;
-}
 
 class PaymentService {
     private logger: Logger;
@@ -69,20 +61,20 @@ class PaymentService {
                 },
             });
 
-            const line_items = requestBody.cartItems.map((item: IItem) => ({
+            const line_items = requestBody.cartItems.map((item: IProduct) => ({
                 price_data: {
                     currency: "usd",
                     product_data: {
-                        name: item.name,
+                        name: item.title,
                         images: [item.image],
-                        description: item.desc,
-                        metadata: {
-                            id: item.id,
-                        },
+                        description: item.description,
+                        // metadata: {
+                        //     id: item.productId,
+                        // },
                     },
                     unit_amount: item.price * 100,
                 },
-                quantity: item.cartQuantity,
+                quantity: item.quantity,
             }));
 
             const session = await stripe.checkout.sessions.create({
