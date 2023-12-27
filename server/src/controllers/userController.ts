@@ -148,44 +148,7 @@ export const sendContactEmail = async (
         next(error);
     }
 };
-export const addAddress = async (req: Request, res: Response, next: NextFunction) => {
-    const {email, recipients_name, street_address, city, state, country, ZIP_code, phone_number} = req.body;
-    const addressData = {
-        recipients_name,
-        street_address,
-        city,
-        state,
-        country,
-        ZIP_code,
-        phone_number,
-    };
-    try {
-        await UserService.addAddress(email, addressData);
-        res.status(200).json({message: "Address was added successfully."});
-    } catch (error) {
-        next(error);
-    }
-};
-export const updateAddress = async (req: Request, res: Response, next: NextFunction) => {
-    const {email, updatedAddressData, addressId} = req.body;
-    try {
-        await UserService.updateAddress(email, addressId, updatedAddressData);
-        res.status(200).json("Address was updated successfully");
-    } catch (error) {
-        next(error);
-    }
-};
-export const getAddresses = async(req: Request, res:Response, next: NextFunction) => {
-    const id = req.params.id;
-    try {
-        const addresses = await UserService.getAddresses(id);
-        res.status(200).json(addresses);
-    }
-    catch (error)
-    {
-        next(error);
-    }
-}
+
 export const googleOauthHandler = async (req: Request, res: Response) => {
     const code: string = req.query.code as string;
     const customParameter = req.query.state;
