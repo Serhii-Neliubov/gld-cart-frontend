@@ -145,7 +145,7 @@ class UserService {
 
     async refresh(refreshToken: string) {
         if (!refreshToken) {
-            console.log("there is no refresh token");
+            this.logger.logError('There is no refresh token');
             throw ApiError.UnauthorizedError();
         }
         const userData = TokenService.validateRefreshToken(refreshToken);
@@ -209,10 +209,11 @@ class UserService {
         return newUser;
     }
 
-    async addAddress(email: string, addressData: IAddress) {
-        const user = await UserModel.findOne({email});
+    async addAddress(userId: string, addressData: IAddress) {
+        const user = await UserModel.findById(userId);
+
         if (!user) {
-            this.logger.logError(`User not found while adding address for email: ${email}`);
+            this.logger.logError(`User ${userId} not found while adding address`);
             throw ApiError.BadRequest("User not found");
         }
 
@@ -221,7 +222,7 @@ class UserService {
 
         user.addresses.push(addressWithId);
         await user.save();
-        this.logger.logInfo(`Address added for user with email: ${email}`);
+        this.logger.logInfo(`Address added for user ${userId}`);
         return user;
     }
 
@@ -250,6 +251,26 @@ class UserService {
             throw ApiError.BadRequest('User not found');
         }
         return user.addresses;
+    }
+
+    async deleteAddress(email: string, addressId: Types.ObjectId) {
+        const user = await UserModel.findOne({email});
+        if (!user) {
+            this.logger.logError(`User not found while deleting address for email: ${email}`);
+            throw ApiError.BadRequest("User not found");
+        }
+
+        const addressIndex = user.addresses.findIndex(address => String(address.id) === String(addressId));
+        if (addressIndex === -1) {
+            this.logger.logError(`Address not found for user with email: ${email}`);
+            throw ApiError.BadRequest('Address not found');
+        }
+
+        user.addresses.splice(addressIndex, 1);
+        await user.save();
+
+        this.logger.logInfo(`Address deleted for user with email: ${email}`);
+        return user;
     }
 
     async updatePersonalDetails(id: string | null, email: string | null, name: string | null, surname: string | null, phone_number: string | null, address: string | null, BIO: string | null) {
