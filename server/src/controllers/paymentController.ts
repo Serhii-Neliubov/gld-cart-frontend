@@ -1,9 +1,10 @@
 import {NextFunction, Request, Response} from "express";
 import PaymentService from "../services/paymentService";
+import {IProduct} from "../models/products/ProductModel";
 
 interface ICheckoutRequestBody {
     userId: string;
-    cartItems: IItem[];
+    cartItems: IProduct[];
 }
 
 interface IItem {
