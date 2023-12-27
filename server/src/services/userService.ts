@@ -226,21 +226,21 @@ class UserService {
         return user;
     }
 
-    async updateAddress(email: string, addressId: Types.ObjectId, updatedAddressData: IAddress) {
-        const user: IUser | null = await UserModel.findOne({email});
+    async updateAddress(userId: string, addressId: Types.ObjectId, updatedAddressData: IAddress) {
+        const user: IUser | null = await UserModel.findById(userId);
 
         if (!user) {
-            this.logger.logError(`User not found while updating address for email: ${email}`);
+            this.logger.logError(`User ${userId} not found while updating address for email`);
             throw ApiError.BadRequest('User not found');
         }
         const addressIndex = user.addresses.findIndex(address => String(address.id) === String(addressId));
         if (addressIndex === -1) {
-            this.logger.logError(`Address not found for user with email: ${email}`);
+            this.logger.logError(`Address not found for user ${userId}`);
             throw ApiError.BadRequest('Address not found');
         }
         Object.assign(user.addresses[addressIndex], updatedAddressData);
         await user.save();
-        this.logger.logInfo(`Address updated for user with email: ${email}`);
+        this.logger.logInfo(`Address updated for user ${userId}`);
     }
 
     async getAddresses(id: string) {
