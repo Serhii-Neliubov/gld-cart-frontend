@@ -16,6 +16,7 @@ import {personalDetailRoutes} from "./routes/personalDetailsRoutes";
 import {vehicleRoutes} from "./routes/vehicleRoutes";
 import {webhookRoutes} from "./routes/webhookRoutes";
 import {subscriptionRoutes} from "./routes/subscriptionRoutes";
+import {cartRoutes} from "./routes/cartRoutes";
 
 export const app: Express = express();
 
@@ -46,6 +47,7 @@ app.use(personalDetailRoutes);
 app.use(vehicleRoutes);
 app.use(subscriptionRoutes);
 app.use(webhookRoutes);
+app.use(cartRoutes);
 
 app.use(errorMiddleware);
 const mongooseOptions = {
