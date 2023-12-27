@@ -222,7 +222,7 @@ class UserService {
 
         user.addresses.push(addressWithId);
         await user.save();
-        this.logger.logInfo(`Address added for user ${userId}`);
+        this.logger.logInfo(`Address added for user ${userId}`, user.addresses);
         return user;
     }
 
