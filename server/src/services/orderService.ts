@@ -20,7 +20,6 @@ class OrderService {
             "payment_status" in data) {
 
             const Items = JSON.parse(customer.metadata.cart) as IProduct[];
-            console.log(Items);
             try {
                 const newOrder = new OrderModel({
                     userId: customer.metadata.userId,
@@ -33,7 +32,7 @@ class OrderService {
                     payment_status: data.payment_status,
                 });
                 const savedOrder = await newOrder.save();
-                console.log("Processed OrderModel:", savedOrder);
+                this.logger.logInfo("Processed OrderModel:", savedOrder);
             } catch (err) {
                 console.log(err);
             }
