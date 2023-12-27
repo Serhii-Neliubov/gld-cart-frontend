@@ -48,6 +48,7 @@ export const DragAndDropWindow: FC = () => {
             if (fileInputRef.current) {
                 fileInputRef.current.value = '';
             }
+            console.log(files)
         } else {
             setFileDataName([]);
         }

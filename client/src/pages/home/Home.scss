@@ -772,7 +772,10 @@
   &__container {
     padding: 0;
   }
-
+  &_item-price{
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
   &__content {
     margin-bottom: 10rem;
     border: 1px solid rgba(128, 128, 128, 0.424);
@@ -800,6 +803,8 @@
   }
 
   &__item {
+    display: flex;
+    flex-direction: column;
     position: relative;
   }
 

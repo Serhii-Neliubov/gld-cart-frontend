@@ -2,27 +2,34 @@ import React, { FC, useEffect } from "react";
 import Footer from "../../components/Footer/Footer.tsx";
 import {useTranslation} from "react-i18next";
 import './Home.scss'
+import { SavedItem } from "./components/SavedItem.tsx";
+import { CompaniesList } from "./components/CompaniesList.tsx";
+import { BestSellings} from "./components/BestSellings.tsx";
 
 const Home: FC = () => {
     const { t } = useTranslation();
 
-    const SavedItems = [
+    const SavedItems: SavedItem[] = [
         {
+            title: 'iphone 12',
             backgroundImage: "url(HomePage/saved/img1.png)",
             price: "$99.50",
             desc: t("GoPro HERO6 4K Action Camera - Black"),
         },
         {
+            title: 'iphone 12',
             backgroundImage: "url(HomePage/saved/img1.png)",
             price: "$99.50",
             desc: t("GoPro HERO6 4K Action Camera - Black"),
         },
         {
+            title: 'iphone 12',
             backgroundImage: "url(HomePage/saved/img1.png)",
             price: "$99.50",
             desc: t("GoPro HERO6 4K Action Camera - Black"),
         },
         {
+            title: 'Iphone 12',
             backgroundImage: "url(HomePage/saved/img1.png)",
             price: "$99.50",
             desc: t("GoPro HERO6 4K Action Camera - Black"),
@@ -52,30 +59,7 @@ const Home: FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="page__companies companies">
-                <div className="companies__container">
-                    <div className="companies__items">
-                        <div className="companies__item">
-                            <img src="HomePage/companies/company1.png" alt="Image company"/>
-                        </div>
-                        <div className="companies__item">
-                            <img src="HomePage/companies/company2.png" alt="Image company"/>
-                        </div>
-                        <div className="companies__item">
-                            <img src="HomePage/companies/company3.png" alt="Image company"/>
-                        </div>
-                        <div className="companies__item">
-                            <img src="HomePage/companies/company4.png" alt="Image company"/>
-                        </div>
-                        <div className="companies__item">
-                            <img src="HomePage/companies/company5.png" alt="Image company"/>
-                        </div>
-                        <div className="companies__item">
-                            <img src="HomePage/companies/company6.png" alt="Image company"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <CompaniesList />
             <div className="page__explore explore">
                 <div className="explore__container">
                     <div className="explore__text">
@@ -107,67 +91,7 @@ const Home: FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="page__best-sellings best-sellings">
-                <div className="best-sellings__container">
-                    <div className="best-sellings__see-more">
-                        <h3>{t("Best Selling For Woman’s")}</h3>
-                        <p>{t("Easiest way to Buy best and good quality product")}</p>
-                        <button>{t("See more")}</button>
-                    </div>
-                    <div className="best-sellings__blocks blocks">
-                        <button className="blocks__arrow blocks__arrow_left"></button>
-
-                        <div className="blocks__items">
-                            <div className="best-sellings__block blocks__item">
-                                <picture>
-                                    <img
-                                        className="blocks__image"
-                                        src="HomePage/best-sellings/best1.png"
-                                        alt="Image"
-                                    />
-                                </picture>
-                                <h4 className="blocks__title">Giorgio Armani</h4>
-                                <div className="blocks__desc">
-                                    <p className="blocks__price">₹1250</p>
-                                    <p className="blocks__discount">₹2190</p>
-                                    <p className="blocks__percent">43% {t("off")}</p>
-                                </div>
-                            </div>
-                            <div className="best-sellings__block blocks__item">
-                                <picture>
-                                    <img
-                                        className="blocks__image"
-                                        src="HomePage/best-sellings/best1.png"
-                                        alt="Image"
-                                    />
-                                </picture>
-                                <h4 className="blocks__title">Giorgio Armani</h4>
-                                <div className="blocks__desc">
-                                    <p className="blocks__price">₹1250</p>
-                                    <p className="blocks__discount">₹2190</p>
-                                    <p className="blocks__percent">43% {t("off")}</p>
-                                </div>
-                            </div>
-                            <div className="best-sellings__block blocks__item">
-                                <picture>
-                                    <img
-                                        className="blocks__image"
-                                        src="HomePage/best-sellings/best1.png"
-                                        alt="Image"
-                                    />
-                                </picture>
-                                <h4 className="blocks__title">Giorgio Armani</h4>
-                                <div className="blocks__desc">
-                                    <p className="blocks__price">₹1250</p>
-                                    <p className="blocks__discount">₹2190</p>
-                                    <p className="blocks__percent">43% {t("off")}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button className="blocks__arrow blocks__arrow_right"></button>
-                    </div>
-                </div>
-            </div>
+            <BestSellings />
             <div className="page__super-discount super-discount">
                 <div className="super-discount__container">
                     <div className="super-discount__text">
@@ -240,17 +164,9 @@ const Home: FC = () => {
                     <div className="saved__content">
                         <h3 className="saved__title">{t("Saved for later")}</h3>
                         <div className="saved__items">
-                            {SavedItems.map((item) => {
+                            {SavedItems.map((item, index) => {
                                 return (
-                                    <div className="saved__item">
-                                        <div
-                                            className="saved__image"
-                                            style={{backgroundImage: `${item.backgroundImage}`}}
-                                        ></div>
-                                        <span className="saved__price">{item.price}</span>
-                                        <p className="saved__desc">{item.desc}</p>
-                                        <button className="saved__button">{t("Move to cart")}</button>
-                                    </div>
+                                    <SavedItem index={index} item={item}/>
                                 );
                             })}
                         </div>
