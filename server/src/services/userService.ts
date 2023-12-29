@@ -253,23 +253,23 @@ class UserService {
         return user.addresses;
     }
 
-    async deleteAddress(email: string, addressId: Types.ObjectId) {
-        const user = await UserModel.findOne({email});
+    async deleteAddress(userId: string, addressId: Types.ObjectId) {
+        const user = await UserModel.findById(userId);
         if (!user) {
-            this.logger.logError(`User not found while deleting address for email: ${email}`);
+            this.logger.logError(`User ${userId} not found while deleting address for email`);
             throw ApiError.BadRequest("User not found");
         }
 
         const addressIndex = user.addresses.findIndex(address => String(address.id) === String(addressId));
         if (addressIndex === -1) {
-            this.logger.logError(`Address not found for user with email: ${email}`);
+            this.logger.logError(`Address not found for user ${userId}`);
             throw ApiError.BadRequest('Address not found');
         }
 
         user.addresses.splice(addressIndex, 1);
         await user.save();
 
-        this.logger.logInfo(`Address deleted for user with email: ${email}`);
+        this.logger.logInfo(`Address deleted for user ${userId}`);
         return user;
     }
 
