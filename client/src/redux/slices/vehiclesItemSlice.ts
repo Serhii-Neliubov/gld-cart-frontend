@@ -37,7 +37,7 @@ const initialState: vehiclesItemSlice = {
   vehicle: {
     category: "Vehicles",
     subcategory: "",
-    items: "",
+    item: "",
     title: "",
     description: "",
     driver_choice: "",

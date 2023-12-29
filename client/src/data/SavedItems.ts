@@ -1,7 +1,7 @@
 export interface ISavedItems {
   backgroundImage: string;
   price: string;
-  desc: string;
+  description: string;
 }
 
 const SavedItems: ISavedItems[] = [

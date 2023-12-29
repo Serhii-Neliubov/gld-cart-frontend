@@ -62,8 +62,7 @@ function AddAddressMenu({
       toast.error("Error to adding the address");
     }
   };
-  const handleSubmitChanges = async (e) => {
-    e.preventDefault();
+  const handleSubmitChanges = async () => {
     try {
       await AddressServices.updateAddress(
           formData.userId,
@@ -82,7 +81,6 @@ function AddAddressMenu({
         const response = await AddressServices.getAddresses(user.id);
         const data = response.data;
         setAddresses(data)
-      console.log(addresses)
     };
 
     fetchData();

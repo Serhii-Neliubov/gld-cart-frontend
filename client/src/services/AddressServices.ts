@@ -35,7 +35,7 @@ export default class AddressServices {
         }
     ): Promise<AxiosResponse> {
         console.log({userId, addressData, addressId,})
-        return $api.post(
+        return $api.put(
             "/update-address",
             {
                 userId,
