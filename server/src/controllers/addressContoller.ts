@@ -3,7 +3,6 @@ import UserService from "../services/userService";
 
 export const addAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
     const {userId, addressData} = req.body;
-
     try {
         await UserService.addAddress(userId, addressData);
         res.status(200).json({message: "Address was added successfully."});
@@ -21,12 +20,12 @@ export const updateAddressHandler = async (req: Request, res: Response, next: Ne
     }
 };
 export const deleteAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
-    const {email, updatedAddressData, addressId} = req.body;
+    const {userId, addressId} = req.body;
     try {
-        await UserService.deleteAddress(email, addressId);
+        await UserService.deleteAddress(userId, addressId);
         res.status(200).json("Address was deleted successfully");
     } catch (error) {
-        next(Error)
+        next(error);
     }
 }
 export const getAddressesHandler = async (req: Request, res: Response, next: NextFunction) => {
