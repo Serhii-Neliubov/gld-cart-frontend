@@ -230,17 +230,17 @@ class UserService {
         const user: IUser | null = await UserModel.findById(userId);
 
         if (!user) {
-            this.logger.logError(`User ${userId} not found while updating address for email`);
-            throw ApiError.BadRequest('User not found');
+            this.logger.logError(`User ${userId} was not found while updating address for email`);
+            throw ApiError.BadRequest('User was not found');
         }
         const addressIndex = user.addresses.findIndex(address => String(address.id) === String(addressId));
         if (addressIndex === -1) {
-            this.logger.logError(`Address not found for user ${userId}`);
-            throw ApiError.BadRequest('Address not found');
+            this.logger.logError(`Address was not found for user ${userId}`);
+            throw ApiError.BadRequest('Address was not found');
         }
         Object.assign(user.addresses[addressIndex], addressData);
         await user.save();
-        this.logger.logInfo(`Address updated for user ${userId}`);
+        this.logger.logInfo(`Address was updated for user ${userId}`);
     }
 
     async getAddresses(id: string) {
