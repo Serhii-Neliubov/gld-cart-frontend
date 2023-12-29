@@ -226,7 +226,7 @@ class UserService {
         return user;
     }
 
-    async updateAddress(userId: string, addressId: Types.ObjectId, updatedAddressData: IAddress) {
+    async updateAddress(userId: string, addressId: Types.ObjectId, addressData: IAddress) {
         const user: IUser | null = await UserModel.findById(userId);
 
         if (!user) {
@@ -238,7 +238,7 @@ class UserService {
             this.logger.logError(`Address not found for user ${userId}`);
             throw ApiError.BadRequest('Address not found');
         }
-        Object.assign(user.addresses[addressIndex], updatedAddressData);
+        Object.assign(user.addresses[addressIndex], addressData);
         await user.save();
         this.logger.logInfo(`Address updated for user ${userId}`);
     }

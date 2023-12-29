@@ -11,9 +11,9 @@ export const addAddressHandler = async (req: Request, res: Response, next: NextF
     }
 };
 export const updateAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
-    const {userId, updatedAddressData, addressId} = req.body;
+    const {userId, addressData, addressId} = req.body;
     try {
-        await UserService.updateAddress(userId, addressId, updatedAddressData);
+        await UserService.updateAddress(userId, addressId, addressData);
         res.status(200).json("Address was updated successfully");
     } catch (error) {
         next(error);
