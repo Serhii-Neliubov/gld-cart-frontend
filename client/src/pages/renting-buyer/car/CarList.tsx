@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./RentingCarPage.module.scss";
-import { RentingCarData } from "../../../utils/RentingCarData";
+import { RentingCarData } from "../../../data/RentingCarData";
 import CarItem from "./CarItem";
 
 export default function CarList() {

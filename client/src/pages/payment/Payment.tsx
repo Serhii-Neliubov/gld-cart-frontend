@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
 import { clearModalActiveParams } from "./PaymentPage.tsx";
-import Footer from "../../components/UI/Footer.tsx";
+import Footer from "../../components/Footer/Footer.tsx";
 
 const Payment: FC = () => {
   const [modalActive, setModalActive] = useState<{

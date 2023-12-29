@@ -1,9 +1,9 @@
 import { AxiosResponse } from "axios";
-import $api from "../http";
+import $api from "../lib";
 
 export default class AddressServices {
     static async sendAddress(
-        email: string,
+        userId: string,
         recipients_name: string,
         street_address: string,
         city: string,
@@ -14,7 +14,32 @@ export default class AddressServices {
         return $api.post(
             "/add-address",
             {
-                email,
+                userId,
+                recipients_name,
+                street_address,
+                city,
+                country,
+                ZIP_code,
+                phone_number,
+            },
+        );
+    }
+
+    static async updateAddress(
+        userId: string,
+        addressId: string,
+        recipients_name: string,
+        street_address: string,
+        city: string,
+        country: string,
+        ZIP_code: number | undefined,
+        phone_number: string
+    ): Promise<AxiosResponse> {
+        return $api.post(
+            "/update-address",
+            {
+                userId,
+                addressId,
                 recipients_name,
                 street_address,
                 city,

@@ -1,7 +1,7 @@
 import styles from "./ProductsPage.module.scss";
 import { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 
 const categories = [
   { title: "Beauty of Skin", img: "Categories/img1.png", count: "2 products" },

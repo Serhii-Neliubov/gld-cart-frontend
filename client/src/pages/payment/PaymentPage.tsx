@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const clearModalActiveParams = {

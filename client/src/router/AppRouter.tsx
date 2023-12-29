@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FC } from "react";
-import Header from "../components/UI/Header";
+import Header from "../components/Header/Header.tsx";
 import { AppDispatch, RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "./routes";
@@ -10,26 +10,14 @@ import {
   userDataSelector,
 } from "../redux/slices/userDataSlice";
 import IUser from "../models/IUser";
-import Label from "../components/UI/Label";
-import toast from "react-hot-toast";
-import $api from "../http";
+import Label from "../components/Label/Label.tsx";
 
 const AppRouter: FC = () => {
   const user = useSelector<RootState, IUser>(userDataSelector);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await $api.get("http://localhost:3001/refresh", );
-        dispatch(checkAuth());
-        toast.success("You successfully logged!");
-      } catch (e) {
-        toast.error("Auth, please!");
-      }
-    };
-
-    fetchData();
+      dispatch(checkAuth());
   }, []);
 
   if (!user.type) {

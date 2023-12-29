@@ -4,8 +4,8 @@ import React, { FC, useState } from "react";
 import {
   ProductsData,
   RentingProductsData,
-} from "../../utils/RentingProductsData";
-import RentingStage from "../../components/UI/RentingStage/RentingStage";
+} from "../../data/RentingProductsData";
+import RentingStage from "../../components/RentingStage/RentingStage";
 interface IClearClick {
   [key: string]: boolean;
 }

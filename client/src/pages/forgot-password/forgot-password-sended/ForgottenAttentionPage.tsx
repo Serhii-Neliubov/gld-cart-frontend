@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./ForgottenAttentionPage.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Login from "../../../components/UI/Login";
+import Login from "../../../components/Login/Login.tsx";
 import { RootState } from "../../../redux/store";
 
 const ForgottenAttentionPage: FC = () => {

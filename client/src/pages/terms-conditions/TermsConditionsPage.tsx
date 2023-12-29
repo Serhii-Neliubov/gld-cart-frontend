@@ -1,6 +1,6 @@
-import Footer from "../../components/UI/Footer";
-import { TermsConditions } from "../../utils/TermsConditionsData";
-import TextSection from "../cookie-policy/TextSection";
+import Footer from "../../components/Footer/Footer.tsx";
+import { TermsConditions } from "../../data/TermsConditionsData";
+import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./TermsConditionsPage.module.scss";
 import { FC, useEffect } from "react";
 

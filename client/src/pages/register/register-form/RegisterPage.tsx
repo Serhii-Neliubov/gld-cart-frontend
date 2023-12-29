@@ -4,7 +4,7 @@ import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../redux/store";
 import { register } from "../../../redux/slices/userDataSlice";
-import Login from "../../../components/UI/Login";
+import Login from "../../../components/Login/Login.tsx";
 
 interface IUser {
   type: string;

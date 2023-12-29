@@ -1,7 +1,7 @@
 import styles from "./ShoppingCartPage.module.scss";
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 import { FC } from "react";
-import NoItems from "../../components/UI/NoItems";
+import NoItems from "../../components/NoItems/NoItems.tsx";
 
 const ShoppingCartPage: FC = () => {
   return (

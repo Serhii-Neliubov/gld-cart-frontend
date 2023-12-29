@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
-import Login from "../../components/UI/Login";
+import Login from "../../components/Login/Login.tsx";
 import { useEffect } from "react";
 import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";

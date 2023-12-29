@@ -2,8 +2,8 @@ import { FC, useState } from "react";
 import styles from "./NewPasswordPage.module.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { API_URL } from "../../../http";
-import Login from "../../../components/UI/Login";
+import { API_URL } from "../../../lib";
+import Login from "../../../components/Login/Login.tsx";
 
 const NewPasswordPage: FC = () => {
   const [password, setPassword] = useState<string>("");

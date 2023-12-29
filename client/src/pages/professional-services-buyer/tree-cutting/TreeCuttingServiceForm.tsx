@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styles from "./TreeCuttingServiceForm.module.scss";
 import { Link } from "react-router-dom";
-import RentingStage from "../../../components/UI/RentingStage/RentingStage";
+import RentingStage from "../../../components/RentingStage/RentingStage";
 
 const TreeCuttingServiceForm: FC = () => {
   return (

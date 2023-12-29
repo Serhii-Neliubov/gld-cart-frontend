@@ -11,9 +11,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.2",
+    "@mui/joy": "^5.0.0-beta.20",
+    "@mui/material": "^5.15.2",
+    "@mui/x-date-pickers": "^6.18.6",
+    "@mui/x-date-pickers-pro": "^6.18.6",
     "@reduxjs/toolkit": "^1.9.6",
     "@types/i18next": "^13.0.0",
     "axios": "^1.5.1",
+    "dayjs": "^1.11.10",
     "i18next": "^23.7.5",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.4.1",

@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import Footer from "../../components/UI/Footer";
+import Footer from "../../components/Footer/Footer.tsx";
 import styles from "./HelpAndSupport.module.scss";
 import { Link } from "react-router-dom";
 
