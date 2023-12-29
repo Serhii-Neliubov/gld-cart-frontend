@@ -10,19 +10,6 @@ type AddAddressMenuProps = {
   setSelectedLabel: (value: string) => void;
 };
 
-type TypeFormData = {
-  userId: string;
-  addressId: string,
-  addressData: {
-    recipient: string;
-    street: string;
-    city: string;
-    country: string;
-    zip: undefined | number;
-    phone: string;
-  }
-};
-
 type TypeAddressData = {
   ZIP_code: number;
   street_address: string;
@@ -38,16 +25,16 @@ function AddAddressMenu({
   setSelectedLabel,
 }: AddAddressMenuProps) {
   const user = useSelector(userDataSelector);
-  const [formData, setFormData] = useState<TypeFormData>({
+  const [formData, setFormData] = useState({
     userId: user.id,
     addressId: "",
     addressData: {
-      recipient: "",
-      street: "",
+      recipients_name: "",
+      street_address: "",
       city: "",
       country: "",
-      zip: undefined,
-      phone: "",
+      ZIP_code: undefined,
+      phone_number: "",
     }
   });
   const [addresses, setAddresses] = useState([])
@@ -68,34 +55,22 @@ function AddAddressMenu({
     try {
       await AddressServices.sendAddress(
           formData.userId,
-          formData.addressData.recipient,
-          formData.addressData.street,
-          formData.addressData.city,
-          formData.addressData.country,
-          formData.addressData.zip,
-          formData.addressData.phone
+          formData.addressData
       );
-      toast.success("Address add successfully");
+      toast.success("Address was added successfully");
     } catch (error) {
-      console.error("Error sending address:", error);
       toast.error("Error to adding the address");
     }
   };
   const handleSubmitChanges = async (e) => {
     e.preventDefault();
-    console.log(formData)
     try {
       await AddressServices.updateAddress(
           formData.userId,
           formData.addressId,
-          formData.addressData.recipient,
-          formData.addressData.street,
-          formData.addressData.city,
-          formData.addressData.country,
-          formData.addressData.zip,
-          formData.addressData.phone
+          formData.addressData,
       );
-      toast.success("Address add successfully");
+      toast.success("Address changed successfully");
     } catch (error) {
       console.error("Error sending address:", error);
       toast.error("Error to adding the address");
@@ -107,6 +82,7 @@ function AddAddressMenu({
         const response = await AddressServices.getAddresses(user.id);
         const data = response.data;
         setAddresses(data)
+      console.log(addresses)
     };
 
     fetchData();
@@ -132,16 +108,16 @@ function AddAddressMenu({
                 placeholder="Recipients name"
                 className={styles.input}
                 type="text"
-                name="recipient"
-                value={formData.addressData.recipient}
+                name="recipients_name"
+                value={formData.addressData.recipients_name}
                 onChange={handleChange}
             />
             <input
                 placeholder="Street"
                 className={styles.input}
                 type="text"
-                name="street"
-                value={formData.addressData.street}
+                name="street_address"
+                value={formData.addressData.street_address}
                 onChange={handleChange}
             />
             <input
@@ -164,16 +140,16 @@ function AddAddressMenu({
                 placeholder="ZIP Code"
                 className={styles.input}
                 type="text"
-                name="zip"
-                value={formData.addressData.zip}
+                name="ZIP_code"
+                value={formData.addressData.ZIP_code}
                 onChange={handleChange}
             />
             <input
                 placeholder="Phone number"
                 className={styles.input}
                 type="text"
-                name="phone"
-                value={formData.addressData.phone}
+                name="phone_number"
+                value={formData.addressData.phone_number}
                 onChange={handleChange}
             />
             <button className={styles.sendbutton} type="submit">
@@ -245,16 +221,16 @@ function AddAddressMenu({
                 placeholder="Recipients name"
                 className={styles.input}
                 type="text"
-                name="recipient"
-                value={formData.addressData.recipient}
+                name="recipients_name"
+                value={formData.addressData.recipients_name}
                 onChange={handleChange}
             />
             <input
                 placeholder="Street"
                 className={styles.input}
                 type="text"
-                name="street"
-                value={formData.addressData.street}
+                name="street_address"
+                value={formData.addressData.street_address}
                 onChange={handleChange}
             />
             <input
@@ -277,16 +253,16 @@ function AddAddressMenu({
                 placeholder="ZIP Code"
                 className={styles.input}
                 type="text"
-                name="zip"
-                value={formData.addressData.zip}
+                name="ZIP_code"
+                value={formData.addressData.ZIP_code}
                 onChange={handleChange}
             />
             <input
                 placeholder="Phone number"
                 className={styles.input}
                 type="text"
-                name="phone"
-                value={formData.addressData.phone}
+                name="phone_number"
+                value={formData.addressData.phone_number}
                 onChange={handleChange}
             />
             <button className={styles.sendbutton} type="submit">

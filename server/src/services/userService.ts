@@ -245,7 +245,6 @@ class UserService {
 
     async getAddresses(id: string) {
         const user: IUser | null = await UserModel.findById(id);
-
         if (!user) {
             this.logger.logError(`User not found while fetching addresses for ID: ${id}`);
             throw ApiError.BadRequest('User not found');
