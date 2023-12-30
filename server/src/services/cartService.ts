@@ -1,7 +1,8 @@
 import {Logger} from "../util/logger";
-import CartModel, {ICart} from "../models/CartModel";
+import {ICart, CartModel} from "../models/CartModel";
 import ApiError from "../exceptions/api-error";
-import {IProduct} from "../models/products/ProductModel";
+import mongoose, {ObjectId} from "mongoose";
+import ProductModel, {IProduct} from "../models/ProductModel";
 
 class CartService {
     private logger: Logger;
@@ -22,40 +23,63 @@ class CartService {
         return cartItems;
     }
 
-    async addCartItem(userId: string, cartId: string | null, title: string, description: string, image: string, quantity: number, price: number) {
-        let cart: ICart | null;
+    async addCartItem(userId: string, productId: string, quantity: number) {
+        try {
 
-        if (!cartId) {
-            cart = await CartModel.create({
-                user: userId,
-                totalPrice: 0,
-            });
-        } else {
-            cart = await CartModel.findById(cartId);
+            let cart = await CartModel.findOne({user: userId});
+
+            if (!cart)
+                cart = await CartModel.create({user: userId, items: []});
+
+            const product: IProduct | null = await ProductModel.findById(productId);
+            if (!product || product.quantity < quantity) {
+                throw ApiError.BadRequest('Product not found or insufficient quantity');
+            }
+
+            const cartItemIndex = cart.items.findIndex(item => item.product.toString() === productId);
+
+            if (cartItemIndex == -1)
+                cart.items.push({product: productId as unknown as ObjectId, quantity: quantity});
+             else
+                 cart.items[cartItemIndex].quantity += quantity;
+
+            await cart.save();
+
+            return cart;
+        } catch (error) {
+            throw error;
         }
-
-        if (!cart) {
-            this.logger.logError("Undefined error, while adding to cart");
-            return null;
-        }
-
-        cart.items.push({
-            title: title,
-            description: description,
-            price: price,
-            image: image,
-            quantity: quantity
-        } as IProduct);
-
-        cart.totalPrice += quantity * price;
-
-        await cart.save();
-        return {cartId: cart.id, items: cart.items, totalPrice: cart.totalPrice};
     }
 
-    async deleteCartItem(cart: string, itemId: string) {
 
+    async deleteCartItem(userId: string, productId: string) {
+        const session = await mongoose.startSession();
+        session.startTransaction();
+        try {
+            if (!userId || !productId) {
+                throw ApiError.BadRequest('Invalid inputs');
+            }
 
+            const cart = await CartModel.findOneAndUpdate(
+                {user: userId},
+                {$pull: {items: {product: productId}}},
+                {new: true, session}
+            );
+
+            if (!cart) {
+                throw ApiError.BadRequest('Cart not found');
+            }
+
+            await session.commitTransaction();
+            await session.endSession();
+
+            return cart;
+        } catch (error: any) {
+            await session.abortTransaction();
+            await session.endSession();
+            this.logger.logError(`Error deleting item from cart: ${error.message}`);
+            throw error;
+        }
     }
 }
 
