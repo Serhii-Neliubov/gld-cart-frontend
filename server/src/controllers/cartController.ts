@@ -1,40 +1,45 @@
 import {Response, Request, NextFunction} from "express";
 import {Logger} from "../util/logger";
 import CartService from "../services/cartService";
+import ApiError from "../exceptions/api-error";
 
 const logger = new Logger();
+
 export const getCartItems = async (req: Request, res: Response, next: NextFunction) => {
     const {cartId} = req.params;
     try {
         const cartItems = await CartService.getCartItems(cartId);
         res.status(200).json({cartItems: cartItems});
-    } catch (error) {
-        next(error);
+    } catch (error: any) {
+        logger.logError(`getCartItems error: ${error.message}`);
+        next(new ApiError(500, `Server error: ${error.message}`));
     }
-
 }
+
 export const addCartItemHandler = async (req: Request, res: Response, next: NextFunction) => {
-    const {userId, cartId, productId, title, description, image, quantity, price} = req.body;
+    const {userId, productId, quantity} = req.body;
+
+    if (typeof userId !== 'string' || typeof productId !== 'string' || typeof quantity !== 'number') {
+        logger.logError('Invalid request parameters. The userId and productId should be strings and quantity should be a number');
+        return next(new Error('Invalid request parameters. The userId and productId should be strings and quantity should be a number'));
+    }
     try {
-
-        if (quantity <= 0 || price <= 0) {
-            return res.status(400).json({message: 'Invalid input'});
-        }
-        const cart = await CartService.addCartItem(userId, cartId, title, description, image, quantity, price);
+        const cart = await CartService.addCartItem(userId, productId, quantity);
         res.status(200).json({message: 'Item added to cart', cart});
-
-    } catch (error) {
-        next(error);
+        logger.logInfo(`Adding product ${productId} to cart for user ${userId}`);
+    } catch (error: any) {
+        logger.logError(`addCartItemHandler error: ${error.message}`);
+        next(new ApiError(500, `Server error: ${error.message}`));
     }
 }
-export const deleteCartItemHandler = async (req: Request, res: Response, next: NextFunction) => {
+
+export const removeCartItemHandler = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const {cartId, itemId} = req.params;
-
-        const cart = await CartService.deleteCartItem(cartId, itemId);
-
+        const cart = await CartService.removeItem(cartId, itemId);
         return res.status(200).json({message: 'Item deleted from cart', cart});
-    } catch (error) {
-        next(error);
+    } catch (error: any) {
+        logger.logError(`removeCartItemHandler error: ${error.message}`);
+        next(new ApiError(500, `Server error: ${error.message}`));
     }
 }
