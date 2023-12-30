@@ -1,8 +1,7 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import {IProduct} from "./products/ProductModel";
 interface IWishlist extends Document {
     user: mongoose.Types.ObjectId;
-    products: mongoose.Types.ObjectId[] | IProduct[];
+    products: mongoose.Types.ObjectId[];
 }
 
 const wishlistSchema = new Schema<IWishlist>({
