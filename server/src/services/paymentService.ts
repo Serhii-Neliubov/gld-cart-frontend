@@ -1,7 +1,7 @@
 import {Logger} from "../util/logger";
 
 import Stripe from "stripe";
-import {IProduct} from "../models/products/ProductModel";
+import {IProduct} from "../models/ProductModel";
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -66,7 +66,7 @@ class PaymentService {
                     currency: "usd",
                     product_data: {
                         name: item.title,
-                        images: [item.image],
+                        images: [item.imageURL],
                         description: item.description,
                         // metadata: {
                         //     id: item.productId,

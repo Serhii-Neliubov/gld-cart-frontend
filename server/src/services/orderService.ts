@@ -1,6 +1,6 @@
 import OrderModel from "../models/OrderModel";
 import Stripe from "stripe";
-import {IProduct} from "../models/products/ProductModel";
+import {IProduct} from "../models/ProductModel";
 import {Logger} from "../util/logger";
 
 class OrderService {
