@@ -29,8 +29,8 @@ class ProductService {
   async createProduct(productData: Partial<IProduct>): Promise<IProduct> {
     try {
       this.logger.logInfo('Creating new product');
-      const newProduct = new ProductModel(productData);
-      return await newProduct.save();
+      const newProduct = await ProductModel.create(productData);
+      return newProduct;
     } catch (error: any) {
       this.logger.logError(`Error creating product: ${error.message}`);
       throw error;
