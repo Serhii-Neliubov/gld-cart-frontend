@@ -10,5 +10,5 @@ const subscriptionSchema: Schema<ISubscription> = new Schema({
     price: { type: Number, required: true },
 });
 
-const SubscriptionModel = mongoose.model<ISubscription>('Subscription', subscriptionSchema);
-export default SubscriptionModel;
+const Subscription = mongoose.model<ISubscription>('Subscription', subscriptionSchema);
+export default Subscription;

@@ -1,7 +1,7 @@
 import {Logger} from "../util/logger";
 
 import Stripe from "stripe";
-import {IProduct} from "../models/ProductModel";
+import {IProduct} from "../models/Product";
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {

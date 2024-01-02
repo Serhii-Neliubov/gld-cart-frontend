@@ -9,6 +9,6 @@ const wishlistSchema = new Schema<IWishlist>({
     products: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 });
 
-const Wishlist = mongoose.model<IWishlist>('Wishlist', wishlistSchema);
+const WishList = mongoose.model<IWishlist>('Wishlist', wishlistSchema);
 
-export { IWishlist, Wishlist };
+export default WishList;

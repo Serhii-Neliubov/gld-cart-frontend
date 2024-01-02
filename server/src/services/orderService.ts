@@ -1,6 +1,6 @@
-import OrderModel from "../models/OrderModel";
+import Order from "../models/Order";
 import Stripe from "stripe";
-import {IProduct} from "../models/ProductModel";
+import {IProduct} from "../models/Product";
 import {Logger} from "../util/logger";
 
 class OrderService {
@@ -21,7 +21,7 @@ class OrderService {
 
             const Items = JSON.parse(customer.metadata.cart) as IProduct[];
             try {
-                const newOrder = new OrderModel({
+                const newOrder = new Order({
                     userId: customer.metadata.userId,
                     customerId: data.customer,
                     paymentIntentId: data.payment_intent,

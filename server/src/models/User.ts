@@ -1,6 +1,6 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import validator from "validator";
-import { addressSchema, IAddress } from "./AddressModel";
+import { addressSchema, IAddress } from "./Address";
 
 export interface IUser extends Document {
   _id: string;
@@ -65,5 +65,5 @@ const userSchema: Schema<IUser> = new Schema({
   },
 });
 
-const UserModel: Model<IUser> = mongoose.model("User", userSchema) as Model<IUser>;
-export default UserModel;
+const User: Model<IUser> = mongoose.model("User", userSchema) as Model<IUser>;
+export default User;

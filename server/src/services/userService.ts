@@ -1,11 +1,11 @@
 import bcrypt from "bcrypt";
-import UserModel, {IUser} from "../models/UserModel";
-import TokenModel, {IToken} from "../models/TokenModel";
+import User, {IUser} from "../models/User";
+import Token, {IToken} from "../models/Token";
 import TokenService from "./tokenService";
 import UserDto from "../dtos/user-dto";
 import ApiError from "../exceptions/api-error";
 import mailService from "./mailService";
-import {IAddress} from "../models/AddressModel";
+import {IAddress} from "../models/Address";
 import {Types} from "mongoose";
 import {Logger} from "../util/logger";
 
@@ -23,13 +23,13 @@ class UserService {
         email: string,
         password: string
     ) {
-        const candidate = await UserModel.findOne({email});
+        const candidate = await User.findOne({email});
         if (candidate) {
             throw ApiError.BadRequest("That email is already registered");
         }
         const salt: string = await bcrypt.genSalt();
         const hashedPassword: string = await bcrypt.hash(password, salt);
-        const user: IUser = <IUser>await UserModel.create({
+        const user: IUser = <IUser>await User.create({
             type,
             name,
             surname,
@@ -48,7 +48,7 @@ class UserService {
     }
 
     async login(email: string, password: string) {
-        const user: IUser = <IUser>await UserModel.findOne({email});
+        const user: IUser = <IUser>await User.findOne({email});
 
         if (user) {
             const auth: boolean = await bcrypt.compare(password, user.password);
@@ -104,7 +104,7 @@ class UserService {
     }
 
     async changePasswordWithToken(token: string, newPassword: string) {
-        const user = <IUser>await UserModel.findOne({passwordResetToken: token});
+        const user = <IUser>await User.findOne({passwordResetToken: token});
         if (!user) {
             throw ApiError.BadRequest("Invalid or expired token");
         }
@@ -114,7 +114,7 @@ class UserService {
     }
 
     async changePasswordWithEmail(email: string, oldPassword: string, newPassword: string) {
-        const user = <IUser>await UserModel.findOne({email});
+        const user = <IUser>await User.findOne({email});
         if (user) {
             const auth: boolean = await bcrypt.compare(oldPassword, user.password);
             if (auth) {
@@ -131,7 +131,7 @@ class UserService {
 
     async requestPasswordReset(email: string, token: string) {
         const user = <IUser>(
-            await UserModel.findOneAndUpdate({email}, {passwordResetToken: token})
+            await User.findOneAndUpdate({email}, {passwordResetToken: token})
         );
         if (!user) {
             this.logger.logError(`User not found with email: ${email}`);
@@ -155,7 +155,7 @@ class UserService {
             this.logger.logError('Refresh token is invalid');
             throw ApiError.UnauthorizedError();
         }
-        const user = <IUser>await UserModel.findById(userData.id);
+        const user = <IUser>await User.findById(userData.id);
         const userDto: UserDto = new UserDto(user);
         const tokens: { accessToken: string; refreshToken: string } =
             TokenService.createTokens({...userDto});
@@ -166,8 +166,8 @@ class UserService {
 
     async deleteData(): Promise<void> {
         try {
-            await UserModel.collection.drop();
-            await TokenModel.collection.drop();
+            await User.collection.drop();
+            await Token.collection.drop();
         } catch (err) {
             console.error("Error dropping collection:", err);
         }
@@ -190,14 +190,14 @@ class UserService {
         picture: string,
         password: string
     ): Promise<IUser> {
-        const existingUser = <IUser>await UserModel.findOne({email: email});
+        const existingUser = <IUser>await User.findOne({email: email});
 
         if (existingUser)
             return existingUser;
 
         const firstName = name.split(' ')[0];
 
-        const newUser = <IUser>await UserModel.create({
+        const newUser = <IUser>await User.create({
             type: type,
             name: firstName,
             surname: surname,
@@ -210,7 +210,7 @@ class UserService {
     }
 
     async addAddress(userId: string, addressData: IAddress) {
-        const user = await UserModel.findById(userId);
+        const user = await User.findById(userId);
 
         if (!user) {
             this.logger.logError(`User ${userId} not found while adding address`);
@@ -227,7 +227,7 @@ class UserService {
     }
 
     async updateAddress(userId: string, addressId: Types.ObjectId, addressData: IAddress) {
-        const user: IUser | null = await UserModel.findById(userId);
+        const user: IUser | null = await User.findById(userId);
 
         if (!user) {
             this.logger.logError(`User ${userId} was not found while updating address for email`);
@@ -244,7 +244,7 @@ class UserService {
     }
 
     async getAddresses(id: string) {
-        const user: IUser | null = await UserModel.findById(id);
+        const user: IUser | null = await User.findById(id);
         if (!user) {
             this.logger.logError(`User not found while fetching addresses for ID: ${id}`);
             throw ApiError.BadRequest('User not found');
@@ -253,7 +253,7 @@ class UserService {
     }
 
     async deleteAddress(userId: string, addressId: Types.ObjectId) {
-        const user = await UserModel.findById(userId);
+        const user = await User.findById(userId);
         if (!user) {
             this.logger.logError(`User ${userId} not found while deleting address for email`);
             throw ApiError.BadRequest("User not found");
@@ -274,7 +274,7 @@ class UserService {
 
     async updatePersonalDetails(id: string | null, email: string | null, name: string | null, surname: string | null, phone_number: string | null, address: string | null, BIO: string | null) {
         const user = <IUser>(
-            await UserModel.findByIdAndUpdate(id, {
+            await User.findByIdAndUpdate(id, {
                 name: name,
                 surname: surname,
                 email: email,

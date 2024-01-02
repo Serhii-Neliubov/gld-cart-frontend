@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from "express";
 import PaymentService from "../services/paymentService";
-import {IProduct} from "../models/ProductModel";
+import {IProduct} from "../models/Product";
 
 interface ICheckoutRequestBody {
     userId: string;

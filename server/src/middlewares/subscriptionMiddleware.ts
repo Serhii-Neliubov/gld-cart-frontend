@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from "express";
 import ApiError from "../exceptions/api-error";
-import UserModel from "../models/UserModel";
+import User from "../models/User";
 
 export const requireSubscription = (requiredSubscriptionType: string) => {
     return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -11,7 +11,7 @@ export const requireSubscription = (requiredSubscriptionType: string) => {
                 return next(ApiError.UnauthorizedError());
             }
 
-            const user = await UserModel.findById(userId).populate('activeSubscription');
+            const user = await User.findById(userId).populate('activeSubscription');
 
             if (!user || !user.activeSubscription) {
                 res.status(403).json({ error: 'No active subscription found' });

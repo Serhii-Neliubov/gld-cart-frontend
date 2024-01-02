@@ -1,15 +1,14 @@
 import {NextFunction, Request, Response} from "express";
 import UserService from "../services/userService";
-import { Types } from "mongoose";
-import { IAddress } from "../models/AddressModel";
+import {Types} from "mongoose";
+import {IAddress} from "../models/Address";
 
 export const addAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
     const {userId, addressData} = req.body;
 
-    if(!Types.ObjectId.isValid(userId) || !isAddressValid(addressData)){
+    if (!Types.ObjectId.isValid(userId) || !isAddressValid(addressData)) {
         return next(new Error("Invalid userId or addressData"));
     }
-
     try {
         await UserService.addAddress(userId, addressData);
         res.status(200).json({message: "Address was added successfully."});
@@ -21,7 +20,7 @@ export const addAddressHandler = async (req: Request, res: Response, next: NextF
 export const updateAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
     const {userId, addressData, addressId} = req.body;
 
-    if(!Types.ObjectId.isValid(userId) || !Types.ObjectId.isValid(addressId) || !isAddressValid(addressData)){
+    if (!Types.ObjectId.isValid(userId) || !Types.ObjectId.isValid(addressId) || !isAddressValid(addressData)) {
         return next(new Error("Invalid userId, addressId or addressData"));
     }
 
@@ -36,7 +35,7 @@ export const updateAddressHandler = async (req: Request, res: Response, next: Ne
 export const deleteAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
     const {userId, addressId} = req.body;
 
-    if(!Types.ObjectId.isValid(userId) || !Types.ObjectId.isValid(addressId)){
+    if (!Types.ObjectId.isValid(userId) || !Types.ObjectId.isValid(addressId)) {
         return next(new Error("Invalid userId or addressId"));
     }
 
@@ -51,7 +50,7 @@ export const deleteAddressHandler = async (req: Request, res: Response, next: Ne
 export const getAddressesHandler = async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
 
-    if(!Types.ObjectId.isValid(id)){
+    if (!Types.ObjectId.isValid(id)) {
         return next(new Error("Invalid userId"));
     }
 

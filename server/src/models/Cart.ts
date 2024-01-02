@@ -24,5 +24,5 @@ const cartSchema: Schema<ICart> = new Schema({
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 });
-const CartModel: Model<ICart> = mongoose.model('Cart', cartSchema) as Model<ICart>;
-export  {ICart, ICartItem, CartModel};
+const Cart: Model<ICart> = mongoose.model('Cart', cartSchema) as Model<ICart>;
+export  {ICart, ICartItem, Cart};

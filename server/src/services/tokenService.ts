@@ -1,4 +1,4 @@
-import TokenModel, {IToken} from "../models/TokenModel";
+import Token, {IToken} from "../models/Token";
 import jwt                  from "jsonwebtoken";
 import {Logger} from "../util/logger";
 
@@ -49,21 +49,21 @@ class TokenService {
         refreshToken: string
     ): Promise<IToken | null> {
         const tokenData: IToken = <IToken>(
-            await TokenModel.findOne({user: userId})
+            await Token.findOne({user: userId})
         );
         if (tokenData) {
             tokenData.refreshToken = refreshToken;
             return tokenData.save();
         }
-        return await TokenModel.create({user: userId, refreshToken});
+        return await Token.create({user: userId, refreshToken});
     }
 
     async removeToken(refreshToken: string): Promise<{ deletedCount?: number }> {
-        return TokenModel.deleteOne({refreshToken});
+        return Token.deleteOne({refreshToken});
     }
 
     async findToken(refreshToken: string): Promise<IToken | null> {
-        return TokenModel.findOne({refreshToken});
+        return Token.findOne({refreshToken});
     }
 
     validateAccessToken(accessToken: string): TokenPayload | null {

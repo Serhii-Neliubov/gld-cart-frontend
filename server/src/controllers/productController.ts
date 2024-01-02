@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import  ProductService from '../services/productService';
-import { IProduct } from '../models/ProductModel';
+import { IProduct } from '../models/Product';
 
 
 export const getAllProducts = async (req: Request, res: Response): Promise<void> => {
