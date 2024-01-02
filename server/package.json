@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "concurrently \"npx tsc -w\" \"nodemon dist/server.js\""
+    "dev": "concurrently \"npx tsc -w\" \"nodemon dist/server.js\"",
+    "start": "node dist/server.js",
+    "postinstall": "tsc"
   },
   "keywords": [],
   "author": "",
