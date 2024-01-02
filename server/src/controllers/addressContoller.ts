@@ -6,8 +6,8 @@ import {IAddress} from "../models/Address";
 export const addAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
     const {userId, addressData} = req.body;
 
-    if (!Types.ObjectId.isValid(userId) || !isAddressValid(addressData)) {
-        return next(new Error("Invalid userId or addressData"));
+    if (!Types.ObjectId.isValid(userId)) {
+        return next(new Error("Invalid userId"));
     }
     try {
         await UserService.addAddress(userId, addressData);
@@ -20,8 +20,8 @@ export const addAddressHandler = async (req: Request, res: Response, next: NextF
 export const updateAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
     const {userId, addressData, addressId} = req.body;
 
-    if (!Types.ObjectId.isValid(userId) || !Types.ObjectId.isValid(addressId) || !isAddressValid(addressData)) {
-        return next(new Error("Invalid userId, addressId or addressData"));
+    if (!Types.ObjectId.isValid(userId) || !Types.ObjectId.isValid(addressId)) {
+        return next(new Error("Invalid userId or addressId"));
     }
 
     try {
@@ -63,20 +63,20 @@ export const getAddressesHandler = async (req: Request, res: Response, next: Nex
 };
 
 
-function isAddressValid(address: IAddress) {
-    const {
-        recipients_name,
-        street_address,
-        city,
-        country,
-        ZIP_code,
-        phone_number,
-    } = address;
-
-    const hasRequiredFields = recipients_name && street_address && city && country && ZIP_code && phone_number;
-
-    const isZipValid = /(^\d{5}$)/.test(ZIP_code);
-    const isPhoneValid = /(^\d{10}$)/.test(phone_number);
-
-    return hasRequiredFields && isZipValid && isPhoneValid;
-}
+// function isAddressValid(address: IAddress) {
+//     const {
+//         recipients_name,
+//         street_address,
+//         city,
+//         country,
+//         ZIP_code,
+//         phone_number,
+//     } = address;
+//
+//     const hasRequiredFields = recipients_name && street_address && city && country && ZIP_code && phone_number;
+//
+//     const isZipValid = /(^\d{5}$)/.test(ZIP_code);
+//     const isPhoneValid = /(^\d{10}$)/.test(phone_number);
+//
+//     return hasRequiredFields && isZipValid && isPhoneValid;
+// }
