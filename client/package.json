@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "preview": "vite preview",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite start",
+    "lint": "vite lint"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",

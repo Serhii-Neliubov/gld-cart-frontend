@@ -79,6 +79,7 @@ function AddAddressMenu({
   useEffect(() => {
     const fetchData = async () => {
         const response = await AddressServices.getAddresses(user.id);
+        console.log(user.id)
         const data = response.data;
         setAddresses(data)
     };

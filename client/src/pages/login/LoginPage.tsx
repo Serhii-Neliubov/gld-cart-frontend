@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/userDataSlice";
+import {API_URL} from "../../lib";
 
 const LoginPage = () => {
   const [isEmptyEmail, setIsEmptyEmail] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const LoginPage = () => {
   function getGoogleOAuthURL() {
     const rootUrl = "https://accounts.google.com/o/oauth2/v2/auth";
     const options = {
-      redirect_uri: "http://localhost:3001/tokens/oauth/google",
+      redirect_uri: `${API_URL}/tokens/oauth/google`,
       client_id:
         "779302160501-d6omdv1c2cdknj75b17epp22tc40u0eu.apps.googleusercontent.com",
       access_type: "offline",
