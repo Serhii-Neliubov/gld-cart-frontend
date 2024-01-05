@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import styles from "../ProfilePage.module.scss";
 import { logout, userDataSelector } from "../../../redux/slices/userDataSlice.ts";
 import { useDispatch, useSelector } from "react-redux";
-import $api, { API_URL } from "../../../lib";
+import $api, { API_URL } from "../../../lib/http.ts";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 

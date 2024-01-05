@@ -3,7 +3,7 @@ import IUser from "../../models/IUser";
 import AuthService from "../../services/AuthService";
 import axios from "axios";
 import { AuthResponse } from "../../models/response/AuthResponse";
-import { API_URL } from "../../lib";
+import { API_URL } from "../../lib/http.ts";
 import { RootState } from "../store";
 import toast from "react-hot-toast";
 const initialState = {
@@ -87,7 +87,6 @@ const authDataSlice = createSlice({
       })
       .addCase(checkAuth.rejected, (state) => {
         state.isAuth = false;
-        toast.error("You are not authorized user!");
         state.user = {} as IUser;
       });
   },

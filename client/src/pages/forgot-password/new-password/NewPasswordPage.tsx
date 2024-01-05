@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import styles from "./NewPasswordPage.module.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { API_URL } from "../../../lib";
+import { API_URL } from "../../../lib/http.ts";
 import Login from "../../../components/Login/Login.tsx";
 
 const NewPasswordPage: FC = () => {

@@ -118,7 +118,6 @@ h6 {
 [class*="__container"] {
     max-width: 75rem;
     margin: 0 auto;
-    padding: 0 0.9375rem;
 }
 
 [class*="-ibg"] {

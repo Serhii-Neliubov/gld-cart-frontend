@@ -109,7 +109,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: ProfServicesPage, path: "/personal-services" },
   { component: WishlistPage, path: "/wishlist" },
   { component: ShoppingCartPage, path: "/shopping-cart" },
-  { component: RentingCarPage, path: "renting-car" },
+  { component: RentingCarPage, path: "/renting-car" },
   { component: RentingCategoryPage, path: "/renting" },
   { component: RentingElectronicsPage, path: "/renting-electronics" },
   { component: RentingHousePage, path: "/renting-house" },

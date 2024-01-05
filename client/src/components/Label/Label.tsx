@@ -7,6 +7,8 @@ import {RootState} from "../../redux/store.ts";
 import {selectIsAuth, userDataSelector} from "../../redux/slices/userDataSlice.ts";
 import IUser from "../../models/IUser.ts";
 import {NavLinkProps} from "../../interfaces/interfaces.ts";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Label: FC = () => {
   const location = useLocation();
@@ -74,6 +76,11 @@ const Label: FC = () => {
           </nav>
         </div>
         <div className="label__actions">
+          <Skeleton
+              circle
+              height="100%"
+              containerClassName="avatar-skeleton"
+          />
           {user.type == "Vendor" ? null : (
             <>
               <Link
@@ -90,7 +97,6 @@ const Label: FC = () => {
               </Link>
             </>
           )}
-
           <Link
             to={isAuth ? "/profile" : "/login"}
             className="label__profile-btn"

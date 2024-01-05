@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter} from "react-router-dom";
 import { FC } from "react";
 import Header from "../components/Header/Header.tsx";
 import { AppDispatch, RootState } from "../redux/store";
@@ -22,7 +22,7 @@ const AppRouter: FC = () => {
 
   if (!user.type) {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Label />
         <Routes>
@@ -36,13 +36,13 @@ const AppRouter: FC = () => {
             );
           })}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 
   if (user.type === "Vendor") {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Label />
         <Routes>
@@ -56,13 +56,13 @@ const AppRouter: FC = () => {
             );
           })}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 
   if (user.type === "Buyer") {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Label />
         <Routes>
@@ -76,7 +76,7 @@ const AppRouter: FC = () => {
             );
           })}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 };

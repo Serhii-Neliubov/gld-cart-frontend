@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { FormEvent, useState } from "react";
-import { API_URL } from "../../../lib";
+import { API_URL } from "../../../lib/http.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, userDataSelector } from "../../../redux/slices/userDataSlice.ts";
 import { useNavigate } from "react-router-dom";

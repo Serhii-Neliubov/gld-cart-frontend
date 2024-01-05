@@ -1,6 +1,5 @@
 import axios from "axios";
 import { AuthResponse } from "../models/response/AuthResponse";
-
 export const API_URL = "https://test-gld-backend-a01fa3463a0e.herokuapp.com";
 
 const $api = axios.create({

@@ -1,4 +1,4 @@
-import $api from "../lib";
+import $api from "../lib/http.ts";
 import { AxiosResponse } from "axios";
 
 export default class AuthService {
