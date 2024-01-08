@@ -358,6 +358,6 @@ export const noAuthRotes: IRoutes[] = [
   { component: NotFound, path: "/not-found" },
   { component: ForgottenPasswordPage, path: "/forgotten-password" },
   { component: ForgottenAttentionPage, path: "/forgotten-attention" },
-  { component: NewPasswordPage, path: "/reset-password/:token" },
+  { component: NewPasswordPage, path: "/#/reset-password/:token" },
   { component: ContactUsPage, path: "/contact-us" },
 ];
