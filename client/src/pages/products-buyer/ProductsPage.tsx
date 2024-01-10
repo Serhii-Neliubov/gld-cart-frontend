@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer.tsx";
 
 const categories = [
   { title: "Beauty of Skin", img: "Categories/img1.png", count: "2 products" },
-  { title: "Bags", img: "Categories/img2.png", count: "2 products" },
+  { title: "bags", img: "Categories/img2.png", count: "2 products" },
   {
     title: "Awesome Lip Care",
     img: "Categories/img3.png",

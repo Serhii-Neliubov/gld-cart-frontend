@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react";
-import { Link } from "react-router-dom";
 import styles from "./RentingProductsPage.module.scss";
-import { RentingData } from "../../data/RentingData";
+import { ProductsData } from "../../data/ProductsData";
 import RentingStage from "../../components/RentingStage/RentingStage";
+import {PopupWindow} from "./components/bags/PopupWindow.tsx";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -49,7 +49,7 @@ const RentingProductsPage: FC = () => {
                 <div className={styles.main_content}>
                   {/* CATEGORY GENERATION */}
                   <div className={styles.main_items_1}>
-                    {RentingData.map((item) => (
+                    {ProductsData.map((item) => (
                         <button
                             key={item.name}
                             style={
@@ -76,7 +76,7 @@ const RentingProductsPage: FC = () => {
                   <div className={styles.main_items_2}>
                     {Object.keys(isClicked).map((key) =>
                         isClicked[key] ? (
-                            RentingData.filter((item) => item.category === key).map(
+                            ProductsData.filter((item) => item.category === key).map(
                                 (filteredItem) =>
                                     Object.keys(filteredItem.items).map((name) => (
                                         <button
@@ -98,15 +98,16 @@ const RentingProductsPage: FC = () => {
                         ) : null
                     )}
                   </div>
+                  <PopupWindow />
                   {/* ITEMS GENERATION */}
                   <div className={styles.main_items_3}>
-                    {RentingData.map((object) =>
+                    {ProductsData.map((object) =>
                         selectedButton &&
                         Object.keys(object.items).includes(selectedButton) ? (
                             object.items[selectedButton].map((arrayItem, index) => (
-                                <Link to="/" key={index} className={styles.main_item_3}>
+                                <button key={index} className={styles.main_item_3}>
                                   <span>{arrayItem}</span>
-                                </Link>
+                                </button>
                             ))
                         ) : null
                     )}

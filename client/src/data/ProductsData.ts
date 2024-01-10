@@ -1,39 +1,3 @@
-export const RentingData = {
-  sedans: [
-    { name: "Sedans" },
-    { name: "Coupes" },
-    { name: "Hatchbacks" },
-    { name: "Minivans" },
-    { name: "Pickup Trucks" },
-    { name: "Luxury Cars" },
-    { name: "Electric Cars" },
-    { name: "Hybrid Cars" },
-    { name: "Full-size Cars" },
-    { name: "Premium Cars" },
-    { name: "Economy Cars" },
-    { name: "Midsize Cars" },
-    { name: "Sports Cars" },
-    { name: "Vans" },
-    { name: "Jeep" },
-  ],
-  beautySub: [
-    { name: "Glowing skin" },
-    { name: "Healthy luminosity" },
-    { name: "Natural radiance" },
-    { name: "Youthful brightness" },
-    { name: "Dewy appearance" },
-    { name: "Other" },
-  ],
-  skinTexture: [
-    { name: "Silk-like softness" },
-    { name: "Pore refinement" },
-    { name: "Flawless finish" },
-    { name: "Velvety touch" },
-    { name: "Even skin tone" },
-    { name: "Other" },
-  ],
-};
-
 type ProductsDataProps = {
   image: string;
   name: string;

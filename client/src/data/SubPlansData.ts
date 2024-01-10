@@ -45,7 +45,7 @@ export const SubPlansData: SubPlan[] = [
     color: "rgba(220, 168, 34, 1)",
     advantages: [
       "Beauty of Skin",
-      "Bags",
+      "bags",
       "Awesome Lip Care",
       "Mobile & Tabs",
       "Other Products",

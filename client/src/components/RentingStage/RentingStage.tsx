@@ -19,7 +19,7 @@ export default function RentingStage({ coloredStage }: RentingStageProps) {
     <div className={styles.routings}>
       {routings.map((routing) => {
         return (
-          <div className={styles.routing}>
+          <div key={routing.id} className={styles.routing}>
             <div
               style={
                 coloredStage >= routing.id
