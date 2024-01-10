@@ -10,13 +10,13 @@ export const PopupWindow = () => {
     const [discountedPrice, setDiscountedPrice] = useState('');
     const [discount, setDiscount] = useState('');
 
-    const formData = {
-        gender: selectedGender,
-        priceType: selectedPriceType,
-        price: `${price}$`,
-        discountedPrice: `${discountedPrice}$`,
-        discount: `${discount}%`,
-    };
+    // const formData = {
+    //     gender: selectedGender,
+    //     priceType: selectedPriceType,
+    //     price: `${price}$`,
+    //     discountedPrice: `${discountedPrice}$`,
+    //     discount: `${discount}%`,
+    // };
 
     useEffect(() => {
         setPrice('');
@@ -24,13 +24,13 @@ export const PopupWindow = () => {
         setDiscountedPrice('');
     }, [selectedPriceType])
 
-    const sendFormDataHandler = () => {
-        if(!discount){
-            console.log({gender: formData.gender, priceType: formData.priceType, price: formData.price})
-        } else {
-            console.log({gender: formData.gender, priceType: formData.priceType, price: formData.discountedPrice, discount: formData.discount})
-        }
-    }
+    // const sendFormDataHandler = () => {
+    //     if(!discount){
+    //         console.log({gender: formData.gender, priceType: formData.priceType, price: formData.price})
+    //     } else {
+    //         console.log({gender: formData.gender, priceType: formData.priceType, price: formData.discountedPrice, discount: formData.discount})
+    //     }
+    // }
 
     if(stage == 1){
         return (
@@ -142,7 +142,7 @@ export const PopupWindow = () => {
                 <div className={styles.formActions}>
                     <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
                     <button onClick={() => setStage(2)} className={styles.formActionButtonBlue}>Next</button>
-                    <button className={styles.closeButton}>&times;</button>
+                    <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>
                 </div>
             </ModalWindow>
         )
@@ -231,7 +231,7 @@ export const PopupWindow = () => {
                 <div className={styles.formActions}>
                     <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
                     <button onClick={() => setStage(2)} className={styles.formActionButtonBlue}>Next</button>
-                    <button className={styles.closeButton}>&times;</button>
+                    <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>
                 </div>
             </ModalWindow>
         )
