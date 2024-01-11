@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 17px;
+  height: 78%;
 }
 .formBlock{
   display: flex;
@@ -95,6 +96,7 @@
 }
 
 .formActionButton{
+  max-height: 54px;
   border-radius: 5px;
   border: 0.5px solid rgba(0, 0, 0, 0.30);
   background-color: #FFF;
@@ -106,7 +108,13 @@
   }
 }
 
+.formActionButtonIcon{
+  width: 18px !important;
+  height: 18px !important;
+}
+
 .formActionButtonBlue{
+  max-height: 54px;
   color: #FFFFFF;
   border-radius: 5px;
   background-color: #009FD9;
@@ -119,3 +127,176 @@
 }
 
 // ==============================================
+
+.specificationsBlock{
+  border: 0.3px solid rgba(0, 0, 0, 0.30);
+  background: #FFF;
+  padding: 25px 100px 25px 25px;
+  margin-bottom: 18px;
+}
+
+.contentSubtitle{
+  color: #000;
+  font-size: 14px !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.specifications{
+  justify-content: space-between;
+  margin-top: 28px;
+  display: flex;
+}
+.specificationsColumn{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.specification{
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  & > input {
+    width: 17px;
+    height: 17px;
+  }
+  & > label {
+    color: #000;
+    font-family: "Poppins", serif;
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: normal;
+  }
+}
+
+.chooseColorBlock{
+  margin-bottom: 69px;
+  padding: 18px 0 18px 36px;
+  border: 0.3px solid rgba(0, 0, 0, 0.30);
+  background: #FFF;
+}
+
+.chooseColorBlockSubtitle{
+  color: #000;
+  font-size: 16px !important;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.chooseColorItems{
+  margin-top: 20px;
+  height: 0;
+  padding-bottom: 18px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.chooseColorItem{
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  &_purple{
+    background-color: #9302A0;
+    position: relative;
+    &:hover::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #9302A0;
+      border-radius: 50%;
+    }
+  }
+
+  &_green{
+    background-color: #318834;
+    position: relative;
+    &:hover::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #318834;
+      border-radius: 50%;
+    }
+  }
+
+  &_black{
+    background-color: #000;
+    position: relative;
+    &:hover::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #000;
+      border-radius: 50%;
+    }
+  }
+
+  &_blue{
+    background-color: #282684;
+    position: relative;
+    &:hover::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #282684;
+      border-radius: 50%;
+    }
+  }
+
+  &_red{
+    background-color: #ec0000;
+    position: relative;
+    &:hover::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #ec0000;
+      border-radius: 50%;
+    }
+  }
+}
+
+.chooseColorItem_addNew{
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid #808080;
+  color: #808080;
+  font-weight: 600;
+  cursor: pointer;
+}
