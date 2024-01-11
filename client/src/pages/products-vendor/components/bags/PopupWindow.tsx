@@ -2,21 +2,57 @@ import React, { useEffect, useState } from 'react';
 import styles from './PopupWindow.module.scss'
 import { ModalWindow } from "../../../../components/RentingProductsPopup/ModalWindow.tsx";
 
+type formDataProps = {
+    gender: string;
+    priceType: string;
+    price: string;
+    discountedPrice: string;
+    discount: string;
+    productMaterials: string[];
+    productColors: string[];
+    productFeatures: string[];
+    productSizes: string[];
+    [key: string]: string | string[];
+}
+
 export const PopupWindow = () => {
-    const [stage, setStage] = useState(1)
+    const [stage, setStage] = useState(1);
     const [selectedGender, setSelectedGender] = useState('');
     const [selectedPriceType, setSelectedPriceType] = useState('Full Price');
     const [price, setPrice] = useState('');
     const [discountedPrice, setDiscountedPrice] = useState('');
     const [discount, setDiscount] = useState('');
 
-    // const formData = {
-    //     gender: selectedGender,
-    //     priceType: selectedPriceType,
-    //     price: `${price}$`,
-    //     discountedPrice: `${discountedPrice}$`,
-    //     discount: `${discount}%`,
-    // };
+    const [mediumSizeValue, setMediumSizeValue] = useState(false)
+    const [smallSizeValue, setSmallSizeValue] = useState(false)
+    const [largeSizeValue, setLargeSizeValue] = useState(false)
+
+    const [formData, setFormData] = useState<formDataProps>({
+        gender: selectedGender,
+        priceType: selectedPriceType,
+        price: `${price}$`,
+        discountedPrice: `${discountedPrice}$`,
+        discount: `${discount}%`,
+        productMaterials: [],
+        productColors: [],
+        productFeatures: [],
+        productSizes: [],
+    });
+
+    const onChecked = (event:React.ChangeEvent<HTMLInputElement>, key: string, element: string) => {
+        let container = formData[key] as string[];
+
+        if(event.target.checked){
+            container.push(element)
+        } else {
+            container = container.filter((size) => size !== element);
+        }
+
+        setFormData({
+            ...formData,
+            [key]: container
+        })
+    }
 
     useEffect(() => {
         setPrice('');
@@ -24,13 +60,9 @@ export const PopupWindow = () => {
         setDiscountedPrice('');
     }, [selectedPriceType])
 
-    // const sendFormDataHandler = () => {
-    //     if(!discount){
-    //         console.log({gender: formData.gender, priceType: formData.priceType, price: formData.price})
-    //     } else {
-    //         console.log({gender: formData.gender, priceType: formData.priceType, price: formData.discountedPrice, discount: formData.discount})
-    //     }
-    // }
+    const sendFormDataHandler = () => {
+        console.log(formData)
+    }
 
     if(stage == 1){
         return (
@@ -236,49 +268,49 @@ export const PopupWindow = () => {
                         <span className={styles.categoryText}>Products Specification</span>
                         <div className={styles.content}>
                             <div className={styles.specificationsBlock}>
-                                <span className={styles.contentSubtitle}>Select the Material of your product</span>
+                                <span className={styles.contentSubtitle}>Select the Features of your product</span>
                                 <div className={styles.specifications}>
                                     <div className={styles.specificationsColumn}>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='AdjustableStrapsMaterial' type='checkbox'/>
                                             <label>Adjustable Straps</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='PocketsMaterial' type='checkbox'/>
                                             <label>Inner Pockets</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='MultipleCompartmentsMaterial' type='checkbox'/>
                                             <label>Multiple Compartments</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='LaptopCompartmentMaterial' type='checkbox'/>
                                             <label>Laptop Compartment</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='Eco-FriendlyMaterials' type='checkbox'/>
                                             <label>Eco-Friendly Materials</label>
                                         </div>
                                     </div>
                                     <div className={styles.specificationsColumn}>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='ZipperClosureMaterials' type='checkbox'/>
                                             <label>Zipper Closure</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='Water-ResistantMaterials' type='checkbox'/>
                                             <label>Water-Resistant</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='ExpandableMaterials' type='checkbox'/>
                                             <label>Expandable</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='RFIDBlockingMaterials' type='checkbox'/>
                                             <label>RFID Blocking</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input key='FabricBlendMaterials' type='checkbox'/>
                                             <label>Fabric Blend</label>
                                         </div>
                                     </div>
@@ -309,15 +341,39 @@ export const PopupWindow = () => {
                                 <div className={styles.specifications}>
                                     <div className={styles.specificationsColumn}>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input
+                                                key='MediumSize'
+                                                type='checkbox'
+                                                checked={mediumSizeValue}
+                                                onChange={event => {
+                                                    setMediumSizeValue(event.target.checked);
+                                                    onChecked(event, 'productSizes', 'Medium')
+                                                }}
+                                            />
                                             <label>Medium</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input
+                                                key='SmallSize'
+                                                type='checkbox'
+                                                checked={smallSizeValue}
+                                                onChange={event => {
+                                                    setSmallSizeValue(event.target.checked);
+                                                    onChecked(event, 'productSizes', 'Small')
+                                                }}
+                                            />
                                             <label>Small</label>
                                         </div>
                                         <div className={styles.specification}>
-                                            <input type='checkbox'/>
+                                            <input
+                                                key='LargeSize'
+                                                type='checkbox'
+                                                checked={largeSizeValue}
+                                                onChange={event => {
+                                                    setLargeSizeValue(event.target.checked);
+                                                    onChecked(event, 'productSizes', 'Large')
+                                                }}
+                                            />
                                             <label>Large</label>
                                         </div>
                                     </div>
@@ -328,7 +384,7 @@ export const PopupWindow = () => {
                 </form>
                 <div className={styles.formActions}>
                     <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
-                    <button disabled className={styles.formActionButtonBlue}>Complete</button>
+                    <button onClick={sendFormDataHandler} className={styles.formActionButtonBlue}>Finish</button>
                     <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>
                 </div>
             </ModalWindow>
