@@ -28,12 +28,9 @@ const clearClick: IClearClick = {
 
 const RentingProductsPage: FC = () => {
   const [isClicked, setIsClicked] = useState<IClearClick>(clearClick);
-  const [selectedButton, setSelectedButton] = useState<string | null>(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
+  const [selectedSubCategoryItem, setSelectedSubCategoryItem] = useState<string | null>(null);
   const [coloredStage, setColoredStage] = useState(0);
-
-  const handleButtonClick = (item: string) => {
-    setSelectedButton(item);
-  };
 
   return (
       <div className="__container">
@@ -63,7 +60,7 @@ const RentingProductsPage: FC = () => {
                                 [item.category]: true,
                               });
                               setColoredStage(1);
-                              setSelectedButton("");
+                              setSelectedSubCategory("");
                             }}
                             className={styles.main_item_1}
                         >
@@ -84,10 +81,10 @@ const RentingProductsPage: FC = () => {
                                             className={styles.main_item_2}
                                             style={{
                                               backgroundColor:
-                                                  selectedButton === name ? "#02A0A0" : "",
+                                                  selectedSubCategory === name ? "#02A0A0" : "",
                                             }}
                                             onClick={() => {
-                                              handleButtonClick(name);
+                                              setSelectedSubCategory(name);
                                               setColoredStage(2);
                                             }}
                                         >
@@ -102,10 +99,17 @@ const RentingProductsPage: FC = () => {
                   {/* ITEMS GENERATION */}
                   <div className={styles.main_items_3}>
                     {ProductsData.map((object) =>
-                        selectedButton &&
-                        Object.keys(object.items).includes(selectedButton) ? (
-                            object.items[selectedButton].map((arrayItem, index) => (
-                                <button key={index} className={styles.main_item_3}>
+                        selectedSubCategory &&
+                        Object.keys(object.items).includes(selectedSubCategory) ? (
+                            object.items[selectedSubCategory].map((arrayItem, index) => (
+                                <button
+                                    style={{backgroundColor: selectedSubCategoryItem === arrayItem ? "#02A0A0" : "",}}
+                                    onClick={() => {
+                                      setSelectedSubCategoryItem(arrayItem);
+                                    }}
+                                    key={index}
+                                    className={styles.main_item_3}
+                                >
                                   <span>{arrayItem}</span>
                                 </button>
                             ))

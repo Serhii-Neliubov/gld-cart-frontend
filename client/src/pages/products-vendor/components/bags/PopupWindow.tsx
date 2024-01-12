@@ -5,9 +5,6 @@ import { ModalWindow } from "../../../../components/RentingProductsPopup/ModalWi
 type formDataProps = {
     gender: string;
     priceType: string;
-    price: string;
-    discountedPrice: string;
-    discount: string;
     productMaterials: string[];
     productColors: string[];
     productFeatures: string[];
@@ -17,8 +14,6 @@ type formDataProps = {
 
 export const PopupWindow = () => {
     const [stage, setStage] = useState(1);
-    const [selectedGender, setSelectedGender] = useState('');
-    const [selectedPriceType, setSelectedPriceType] = useState('Full Price');
     const [price, setPrice] = useState('');
     const [discountedPrice, setDiscountedPrice] = useState('');
     const [discount, setDiscount] = useState('');
@@ -28,11 +23,8 @@ export const PopupWindow = () => {
     const [largeSizeValue, setLargeSizeValue] = useState(false)
 
     const [formData, setFormData] = useState<formDataProps>({
-        gender: selectedGender,
-        priceType: selectedPriceType,
-        price: `${price}$`,
-        discountedPrice: `${discountedPrice}$`,
-        discount: `${discount}%`,
+        gender: 'Man',
+        priceType: 'Full Price',
         productMaterials: [],
         productColors: [],
         productFeatures: [],
@@ -55,13 +47,21 @@ export const PopupWindow = () => {
     }
 
     useEffect(() => {
-        setPrice('');
-        setDiscount('');
-        setDiscountedPrice('');
-    }, [selectedPriceType])
+        if(formData.priceType === 'Full Price'){
+            setDiscount('');
+            setDiscountedPrice('');
+        } else if (formData.priceType === 'Discount Price'){
+            setPrice('');
+        }
+
+    }, [formData.priceType])
 
     const sendFormDataHandler = () => {
-        console.log(formData)
+        if(formData.priceType === 'Full Price'){
+            console.log({...formData, price: `${price}$`})
+        } else {
+            console.log({...formData, discount: `${discount}%`, discountedPrice: `${discountedPrice}$`})
+        }
     }
 
     if(stage == 1){
@@ -72,24 +72,24 @@ export const PopupWindow = () => {
                     <div className={styles.formBlock}>
                         <span className={styles.categoryText}>Category</span>
                         <div className={styles.formInputs}>
-                            <div onClick={() => setSelectedGender('Man')} className={styles.formInput}>
+                            <div onClick={() => setFormData({...formData, gender: 'Man'})} className={styles.formInput}>
                                 <input
-                                    checked={selectedGender === 'Man'}
+                                    checked={formData.gender === 'Man'}
                                     className={styles.formInput}
                                     type='radio'
                                     name='gender'
                                     id='man'
-                                    onChange={() => setSelectedGender('Man')}
+                                    onChange={() => setFormData({...formData, gender: 'Man'})}
                                 />
                                 <label htmlFor='man'>Man</label>
                             </div>
-                            <div onClick={() => setSelectedGender('Woman')} className={styles.formInput}>
+                            <div onClick={() => setFormData({...formData, gender: 'Woman'})} className={styles.formInput}>
                                 <input
-                                    checked={selectedGender === 'Woman'}
+                                    checked={formData.gender === 'Woman'}
                                     className={styles.formInput}
                                     type='radio'
                                     name='gender'
-                                    onChange={() => setSelectedGender('Woman')}
+                                    onChange={() => setFormData({...formData, gender: 'Woman'})}
                                     id='woman'
                                 />
                                 <label htmlFor='woman'>Woman</label>
@@ -100,13 +100,13 @@ export const PopupWindow = () => {
                         <span className={styles.categoryText}>Packages Details </span>
                         <div className={styles.packageDetailsBlock}>
                             <div className={styles.packageDetailsSubBlock}>
-                                <div onClick={() => setSelectedPriceType('Full Price')}
+                                <div onClick={() => setFormData({...formData, priceType: 'Full Price'})}
                                      className={styles.packageDetailsRadioInput}>
                                     <input
-                                        checked={selectedPriceType === 'Full Price'}
+                                        checked={formData.priceType === 'Full Price'}
                                         name='price'
                                         type='radio'
-                                        onChange={() => setSelectedPriceType('Full Price')}
+                                        onChange={() => setFormData({...formData, priceType: 'Full Price'})}
                                     />
                                     <label>Full Price</label>
                                 </div>
@@ -115,10 +115,9 @@ export const PopupWindow = () => {
                                         <input
                                             value={price}
                                             onChange={(e) => {
-                                                setSelectedGender('Discount Price')
                                                 setPrice(e.target.value)
                                             }}
-                                            disabled={selectedPriceType === 'Discount Price'}
+                                            disabled={formData.priceType === 'Discount Price'}
                                             type='number'
                                             placeholder='450$'
                                         />
@@ -127,28 +126,22 @@ export const PopupWindow = () => {
                                 </div>
                             </div>
                             <div className={styles.packageDetailsSubBlock}>
-                                <div
-                                    onClick={() => setSelectedPriceType('Discount Price')}
-                                    className={styles.packageDetailsRadioInput}
-                                >
+                                <div onClick={() => setFormData({...formData, priceType: 'Discount Price'})}
+                                     className={styles.packageDetailsRadioInput}>
                                     <input
-                                        checked={selectedPriceType === 'Discount Price'}
+                                        checked={formData.priceType === 'Discount Price'}
                                         name='price'
                                         type='radio'
-                                        onChange={(e) => {
-                                            setSelectedGender('Discount Price')
-                                            setPrice(e.target.value)
-                                        }
-                                        }
+                                        onChange={() => setFormData({...formData, priceType: 'Discount Price'})}
                                     />
-                                    <label>Discount Price</label>
+                                    <label>Full Price</label>
                                 </div>
                                 <div className={styles.packageDetailsInputs}>
                                     <div className={styles.packageDetailsTextInput}>
                                         <input
                                             value={discountedPrice}
                                             onChange={(e) => setDiscountedPrice(e.target.value)}
-                                            disabled={selectedPriceType === 'Full Price'}
+                                            disabled={formData.priceType === 'Full Price'}
                                             type='number'
                                             placeholder='450$'
                                         />
@@ -159,7 +152,7 @@ export const PopupWindow = () => {
                                             onChange={(e) => {
                                                 setDiscount(e.target.value)
                                             }}
-                                            disabled={selectedPriceType === 'Full Price'}
+                                            disabled={formData.priceType === 'Full Price'}
                                             type='number'
                                             placeholder='0%'
                                             value={discount}
