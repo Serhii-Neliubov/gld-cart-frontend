@@ -2,7 +2,9 @@ import React, { FC, useState } from "react";
 import styles from "./RentingProductsPage.module.scss";
 import { ProductsData } from "../../data/ProductsData";
 import RentingStage from "../../components/RentingStage/RentingStage";
-import {PopupWindow} from "./components/bags/PopupWindow.tsx";
+import { useDispatch } from "react-redux";
+import { setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
+import {AwesomeLipCare} from "./modal-windows/awesomeLipCare/AwesomeLipCare.tsx";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -27,10 +29,15 @@ const clearClick: IClearClick = {
 };
 
 const RentingProductsPage: FC = () => {
+  const dispatch = useDispatch();
+  const [stage, setStage] = useState(0);
+
   const [isClicked, setIsClicked] = useState<IClearClick>(clearClick);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
   const [selectedSubCategoryItem, setSelectedSubCategoryItem] = useState<string | null>(null);
   const [coloredStage, setColoredStage] = useState(0);
+
+  const subcategories = Object.keys(isClicked);
 
   return (
       <div className="__container">
@@ -71,7 +78,7 @@ const RentingProductsPage: FC = () => {
                   </div>
                   {/* SUBCATEGORY GENERATION */}
                   <div className={styles.main_items_2}>
-                    {Object.keys(isClicked).map((key) =>
+                    {subcategories.map((key) =>
                         isClicked[key] ? (
                             ProductsData.filter((item) => item.category === key).map(
                                 (filteredItem) =>
@@ -95,7 +102,6 @@ const RentingProductsPage: FC = () => {
                         ) : null
                     )}
                   </div>
-                  <PopupWindow />
                   {/* ITEMS GENERATION */}
                   <div className={styles.main_items_3}>
                     {ProductsData.map((object) =>
@@ -106,6 +112,11 @@ const RentingProductsPage: FC = () => {
                                     style={{backgroundColor: selectedSubCategoryItem === arrayItem ? "#02A0A0" : "",}}
                                     onClick={() => {
                                       setSelectedSubCategoryItem(arrayItem);
+                                      dispatch(setVendorSelectedItemValue(arrayItem));
+
+                                      if(object.category === 'bags'){
+                                        setStage(1)
+                                      }
                                     }}
                                     key={index}
                                     className={styles.main_item_3}
@@ -116,6 +127,8 @@ const RentingProductsPage: FC = () => {
                         ) : null
                     )}
                   </div>
+
+                  <AwesomeLipCare stage={stage} setStage={setStage}/>
                 </div>
               </div>
             </div>

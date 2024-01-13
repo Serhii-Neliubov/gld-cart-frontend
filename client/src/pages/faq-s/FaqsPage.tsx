@@ -1,3 +1,4 @@
+import React from 'react';
 import Footer from "../../components/Footer/Footer.tsx";
 import { FaqsData } from "../../data/FaqsData";
 import TextSection from "../../components/TextSection/TextSection.tsx";

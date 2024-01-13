@@ -44,7 +44,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="Payment/google.png" alt="Icon" />
+              <img src="/Payment/google.png" alt="Icon" />
               <span>Google Pay</span>
             </button>
             <button
@@ -56,7 +56,7 @@ const Payment: FC = () => {
                 modalActive.apple ? `${styles.block_active}` : `${styles.block}`
               }
             >
-              <img src="Payment/apple.svg" alt="Icon" />
+              <img src="/Payment/apple.svg" alt="Icon" />
               <span>Apple Pay</span>
             </button>
             <button
@@ -70,7 +70,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="Payment/credit-card.svg" alt="Icon" />
+              <img src="/Payment/credit-card.svg" alt="Icon" />
               <span>Credit Card</span>
             </button>
             <button
@@ -84,7 +84,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="Payment/img5.png" alt="Icon" />
+              <img src="/Payment/img5.png" alt="Icon" />
               <span>Cash on Delivery</span>
             </button>
           </div>

@@ -4,6 +4,7 @@ import userDataSlice from "./slices/userDataSlice";
 import resetPasswordEmailSlice from "./slices/resetPasswordEmailSlice";
 import isLoadingSlice from "./slices/isLoadingSlice";
 import vehiclesItemSlice from "./slices/vehiclesItemSlice";
+import vendorSelectedItemSlice from "./slices/vendorSelectedItemSlice.ts";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     userDataSlice: userDataSlice,
     setEmail: resetPasswordEmailSlice,
     vehicleDataSlice: vehiclesItemSlice,
+    vendorSelectedItemSlice: vendorSelectedItemSlice,
   },
 });
 

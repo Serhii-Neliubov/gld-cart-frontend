@@ -1,3 +1,4 @@
+import React from 'react';
 import Footer from "../../components/Footer/Footer.tsx";
 import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./CookiePolicyPage.module.scss";
@@ -10,7 +11,7 @@ const CookiePolicyPage: FC = () => {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>{CookiePolicyData.title}</h1>
@@ -34,7 +35,7 @@ const CookiePolicyPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

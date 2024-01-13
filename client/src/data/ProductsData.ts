@@ -533,7 +533,7 @@ export const ProductsData: ProductsDataProps = [
     name: "CPU",
     items: {
       "Central Processing Unit": [
-        "Core components of computers",
+        "Core modal-windows of computers",
         "Executes instructions, performs calculations",
         "Brain of the computer system",
         "Handles data processing tasks",

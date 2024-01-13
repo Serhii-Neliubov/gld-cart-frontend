@@ -9,7 +9,7 @@ const initialState: resetPasswordEmailSlice = {
 };
 
 export const resetPasswordEmailSlice = createSlice({
-  name: "vendor",
+  name: "resetPasswordEmailSlice",
   initialState,
   reducers: {
     setEmailValue: (state, action) => {
