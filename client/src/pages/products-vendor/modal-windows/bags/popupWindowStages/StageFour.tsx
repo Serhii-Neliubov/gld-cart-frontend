@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from "../Bags.module.scss";
 import {formDataProps} from "../Bags.tsx";
 import {ModalWindow} from "../../../../../components/RentingProductsPopup/ModalWindow.tsx";
@@ -8,15 +8,14 @@ type StageFourProps = {
     stage: number,
     onChecked: (event: React.ChangeEvent<HTMLInputElement>, key:string, element: string) => void,
     formData: formDataProps,
+    setFormData: (value: formDataProps) => void,
     price: string,
     discount: string,
     discountedPrice: string,
+    clearFormData: formDataProps
 }
 
-export const StageFour = ({setStage, stage, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
-    const [mediumSizeValue, setMediumSizeValue] = useState(false)
-    const [smallSizeValue, setSmallSizeValue] = useState(false)
-    const [largeSizeValue, setLargeSizeValue] = useState(false)
+export const StageFour = ({setStage, clearFormData, stage, setFormData, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
 
     const sendFormDataHandler = () => {
         if(formData.priceType === 'Full Price'){
@@ -43,11 +42,8 @@ export const StageFour = ({setStage, stage, onChecked, formData, price, discount
                                         <input
                                             key='MediumSize'
                                             type='checkbox'
-                                            checked={mediumSizeValue}
-                                            onChange={event => {
-                                                setMediumSizeValue(event.target.checked);
-                                                onChecked(event, 'productSizes', 'Medium')
-                                            }}
+                                            checked={formData.productSizes.includes('Medium')}
+                                            onChange={event => {onChecked(event, 'productSizes', 'Medium');}}
                                         />
                                         <label>Medium</label>
                                     </div>
@@ -55,11 +51,8 @@ export const StageFour = ({setStage, stage, onChecked, formData, price, discount
                                         <input
                                             key='SmallSize'
                                             type='checkbox'
-                                            checked={smallSizeValue}
-                                            onChange={event => {
-                                                setSmallSizeValue(event.target.checked);
-                                                onChecked(event, 'productSizes', 'Small')
-                                            }}
+                                            checked={formData.productSizes.includes('Small')}
+                                            onChange={event => {onChecked(event, 'productSizes', 'Small');}}
                                         />
                                         <label>Small</label>
                                     </div>
@@ -67,11 +60,8 @@ export const StageFour = ({setStage, stage, onChecked, formData, price, discount
                                         <input
                                             key='LargeSize'
                                             type='checkbox'
-                                            checked={largeSizeValue}
-                                            onChange={event => {
-                                                setLargeSizeValue(event.target.checked);
-                                                onChecked(event, 'productSizes', 'Large')
-                                            }}
+                                            checked={formData.productSizes.includes('Large')}
+                                            onChange={event => {onChecked(event, 'productSizes', 'Large');}}
                                         />
                                         <label>Large</label>
                                     </div>
@@ -83,7 +73,11 @@ export const StageFour = ({setStage, stage, onChecked, formData, price, discount
             </form>
             <div className={styles.formActions}>
                 <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
-                <button onClick={sendFormDataHandler} className={styles.formActionButtonBlue}>Finish</button>
+                <button onClick={() => {
+                    sendFormDataHandler();
+                    setFormData(clearFormData)
+                }} className={styles.formActionButtonBlue}>Finish
+                </button>
                 <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>
             </div>
         </ModalWindow>

@@ -86,7 +86,7 @@ export const StageOne = ({formData, setFormData, setStage, price, setPrice, disc
                                     type='radio'
                                     onChange={() => setFormData({...formData, priceType: 'Discount Price'})}
                                 />
-                                <label>Full Price</label>
+                                <label>Discount Price</label>
                             </div>
                             <div className={styles.packageDetailsInputs}>
                                 <div className={styles.packageDetailsTextInput}>

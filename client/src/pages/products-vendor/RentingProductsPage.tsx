@@ -4,7 +4,7 @@ import { ProductsData } from "../../data/ProductsData";
 import RentingStage from "../../components/RentingStage/RentingStage";
 import { useDispatch } from "react-redux";
 import { setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
-import {AwesomeLipCare} from "./modal-windows/awesomeLipCare/AwesomeLipCare.tsx";
+import { Bags } from "./modal-windows/bags/Bags.tsx";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -128,7 +128,7 @@ const RentingProductsPage: FC = () => {
                     )}
                   </div>
 
-                  <AwesomeLipCare stage={stage} setStage={setStage}/>
+                  <Bags stage={stage} setStage={setStage}/>
                 </div>
               </div>
             </div>

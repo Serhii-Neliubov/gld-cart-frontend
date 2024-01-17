@@ -217,12 +217,38 @@
       border: 1px solid #9302A0;
       border-radius: 50%;
     }
+
+    &_active::before {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #9302A0;
+        border-radius: 50%;
+    }
   }
 
   &_green{
     background-color: #318834;
     position: relative;
     &:hover::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #318834;
+      border-radius: 50%;
+    }
+
+    &_active:before {
       content: '';
       display: block;
       width: 24px;
@@ -251,6 +277,19 @@
       border: 1px solid #000;
       border-radius: 50%;
     }
+
+    &_active:before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #318834;
+      border-radius: 50%;
+    }
   }
 
   &_blue{
@@ -268,6 +307,19 @@
       border: 1px solid #282684;
       border-radius: 50%;
     }
+
+    &_active:before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #318834;
+      border-radius: 50%;
+    }
   }
 
   &_red{
@@ -283,6 +335,19 @@
       left: 50%;
       transform: translate(-50%, -50%);
       border: 1px solid #ec0000;
+      border-radius: 50%;
+    }
+
+    &_active:before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #318834;
       border-radius: 50%;
     }
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import { StageOne } from './popupWindowStages/StageOne.tsx';
 import {StageTwo} from "./popupWindowStages/StageTwo.tsx";
 import {StageThree} from "./popupWindowStages/StageThree.tsx";
@@ -14,6 +14,15 @@ export type formDataProps = {
     [key: string]: string | string[];
 }
 
+const clearFormData = {
+    gender: 'Man',
+    priceType: 'Full Price',
+    productMaterials: [],
+    productColors: [],
+    productFeatures: [],
+    productSizes: [],
+}
+
 type PopupWindowProps = {
     stage: number,
     setStage: (value: number) => void
@@ -25,19 +34,29 @@ export const Bags = ({stage, setStage}: PopupWindowProps) => {
     const [discountedPrice, setDiscountedPrice] = useState('');
     const [discount, setDiscount] = useState('');
 
-    const [formData, setFormData] = useState<formDataProps>({
-        gender: 'Man',
-        priceType: 'Full Price',
-        productMaterials: [],
-        productColors: [],
-        productFeatures: [],
-        productSizes: [],
-    });
+    const [formData, setFormData] = useState<formDataProps>(clearFormData);
 
-    const onChecked = (event:React.ChangeEvent<HTMLInputElement>, key: string, element: string) => {
+    const onChecked = (event: ChangeEvent<HTMLInputElement>, key: string, element: string) => {
         let container = formData[key] as string[];
 
         if(event.target.checked){
+            container.push(element)
+        } else {
+            container = container.filter((size) => size !== element);
+        }
+
+        setFormData({
+            ...formData,
+            [key]: container
+        })
+    }
+
+    console.log(formData)
+
+    const setColorHandler = (value: boolean,  key: string, element: string) => {
+        let container = formData[key] as string[];
+
+        if(!value){
             container.push(element)
         } else {
             container = container.filter((size) => size !== element);
@@ -73,14 +92,19 @@ export const Bags = ({stage, setStage}: PopupWindowProps) => {
                 setDiscount={setDiscount}
             /> }
             { stage === 2 && <StageTwo
+                onChecked={onChecked}
                 setStage={setStage}
                 stage={stage}
+                setColorHandler={setColorHandler}
             /> }
             { stage === 3 && <StageThree
+                onChecked={onChecked}
                 setStage={setStage}
                 stage={stage}
             /> }
             { stage === 4 && <StageFour
+                clearFormData={clearFormData}
+                setFormData={setFormData}
                 onChecked={onChecked}
                 formData={formData}
                 price={price}
