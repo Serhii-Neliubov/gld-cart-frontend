@@ -12,10 +12,10 @@ type StageFourProps = {
     price: string,
     discount: string,
     discountedPrice: string,
-    clearFormData: formDataProps
+    defaultFormData: formDataProps,
 }
 
-export const StageFour = ({setStage, clearFormData, stage, setFormData, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
+export const StageFour = ({setStage, defaultFormData, stage, setFormData, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
 
     const sendFormDataHandler = () => {
         if(formData.priceType === 'Full Price'){
@@ -75,7 +75,7 @@ export const StageFour = ({setStage, clearFormData, stage, setFormData, onChecke
                 <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
                 <button onClick={() => {
                     sendFormDataHandler();
-                    setFormData(clearFormData)
+                    setFormData(defaultFormData);
                 }} className={styles.formActionButtonBlue}>Finish
                 </button>
                 <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>
