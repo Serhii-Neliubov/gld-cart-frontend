@@ -16,7 +16,7 @@ const ProfilePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <>
+    <React.Fragment>
       <div className="__container">
         <div className={styles.body}>
           <div className={styles.sidebar}>
@@ -28,7 +28,7 @@ const ProfilePage: FC = () => {
                   : styles.button_item
               }
             >
-              <img src="ProfilePage/icon1.svg" alt="icon" />
+              <img src="/ProfilePage/icon1.svg" alt="icon" />
               <button>Profile</button>
             </div>
             <div
@@ -39,7 +39,7 @@ const ProfilePage: FC = () => {
                   : styles.button_item
               }
             >
-              <img src="ProfilePage/icon2.svg" alt="icon" />
+              <img src="/ProfilePage/icon2.svg" alt="icon" />
               <button>Address</button>
             </div>
             {user.type == "Buyer" && (
@@ -51,13 +51,13 @@ const ProfilePage: FC = () => {
                     : styles.button_item
                 }
               >
-                <img src="ProfilePage/icon3.svg" alt="icon" />
+                <img src="/ProfilePage/icon3.svg" alt="icon" />
                 <button>My Orders</button>
               </div>
             )}
             {user.type == "Buyer" && (
               <Link to="/wishlist" className={styles.button_item}>
-                <img src="ProfilePage/icon5.svg" alt="icon" />
+                <img src="/ProfilePage/icon5.svg" alt="icon" />
                 <button>Wishlist</button>
               </Link>
             )}
@@ -69,19 +69,19 @@ const ProfilePage: FC = () => {
                   : styles.button_item
               }
             >
-              <img src="ProfilePage/icon6.svg" alt="icon" />
+              <img src="/ProfilePage/icon6.svg" alt="icon" />
               <button>Change Password</button>
             </div>
             <Link to="/help-and-support" className={styles.button_item}>
-              <img src="ProfilePage/icon7.svg" alt="icon" />
+              <img src="/ProfilePage/icon7.svg" alt="icon" />
               <button>Help & Support</button>
             </Link>
             <Link to="/terms-and-conditions" className={styles.button_item}>
-              <img src="ProfilePage/icon8.svg" alt="icon" />
+              <img src="/ProfilePage/icon8.svg" alt="icon" />
               <button>Terms & conditions</button>
             </Link>
             <Link to="/contact-us" className={styles.button_item}>
-              <img src="ProfilePage/icon9.svg" alt="icon" />
+              <img src="/ProfilePage/icon9.svg" alt="icon" />
               <button>Contact Us</button>
             </Link>
             <Link
@@ -89,7 +89,7 @@ const ProfilePage: FC = () => {
               onClick={() => dispatch(logout())}
               className={styles.button_item}
             >
-              <img src="ProfilePage/icon10.svg" alt="icon" />
+              <img src="/ProfilePage/icon10.svg" alt="icon" />
               <button>Logout</button>
             </Link>
           </div>
@@ -106,7 +106,7 @@ const ProfilePage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

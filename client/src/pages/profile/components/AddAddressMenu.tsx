@@ -4,6 +4,7 @@ import { userDataSelector } from "../../../redux/slices/userDataSlice.ts";
 import styles from "../ProfilePage.module.scss";
 import toast from "react-hot-toast";
 import AddressServices from "../../../services/AddressServices.ts";
+import {ModalWindow} from "../../../components/RentingProductsPopup/ModalWindow.tsx";
 
 type AddAddressMenuProps = {
   selectedLabel: string;
@@ -37,7 +38,7 @@ function AddAddressMenu({
       phone_number: "",
     }
   });
-  const [addresses, setAddresses] = useState([])
+  const [addresses, setAddresses] = useState([]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -51,24 +52,28 @@ function AddAddressMenu({
 
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       await AddressServices.sendAddress(
           formData.userId,
           formData.addressData
       );
+      setSelectedLabel('Address');
       toast.success("Address was added successfully");
     } catch (error) {
       toast.error("Error to adding the address");
     }
   };
-  const handleSubmitChanges = async () => {
+  const handleSubmitChanges = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       await AddressServices.updateAddress(
           formData.userId,
           formData.addressId,
           formData.addressData,
       );
+      setSelectedLabel('Address');
       toast.success("Address changed successfully");
     } catch (error) {
       console.error("Error sending address:", error);
@@ -79,25 +84,16 @@ function AddAddressMenu({
   useEffect(() => {
     const fetchData = async () => {
         const response = await AddressServices.getAddresses(user.id);
-        console.log(user.id)
         const data = response.data;
         setAddresses(data)
     };
 
     fetchData();
-  }, []);
+  }, [selectedLabel]);
 
   if(selectedLabel === "Add Address"){
     return (
-        <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "5px",
-              justifyContent: "space-between",
-              height: "100%",
-            }}
-        >
+        <ModalWindow>
           <div className={styles.title_action}>
             <h2 className={styles.box_name}>ADDRESS</h2>
             <button onClick={() => setSelectedLabel("Address")}>Return</button>
@@ -155,7 +151,7 @@ function AddAddressMenu({
               Submit
             </button>
           </form>
-        </div>
+        </ModalWindow>
     )
   }
 
@@ -166,10 +162,9 @@ function AddAddressMenu({
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: 'center',
                   justifyContent: "space-between",
                   height: "100%",
-
+                  maxWidth: '790px'
                 }}
             >
               <div className={styles.title_action}>
@@ -181,7 +176,7 @@ function AddAddressMenu({
               <div className={styles.address_content}>
                 <div className={styles.address_box}>
                   {addresses.map((address: TypeAddressData) =>
-                      <div className={styles.address}>
+                      <div className={styles.address} key={address._id}>
                         <div className={styles.address_text}>
                           <p>{address.country}, {address.city}</p>
                           <p>{address.street_address}, {address.ZIP_code} </p>

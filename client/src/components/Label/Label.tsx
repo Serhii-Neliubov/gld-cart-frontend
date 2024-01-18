@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import "./Label.scss";
 import { useSelector } from "react-redux";
@@ -15,6 +16,7 @@ const Label: FC = () => {
   const isAuth = useSelector<RootState, boolean>(selectIsAuth);
   const user = useSelector<RootState, IUser>(userDataSelector);
   const { t } = useTranslation();
+
   const navLinks: NavLinkProps[] = [
     { to: "/", label: t("home") },
     {
@@ -82,7 +84,7 @@ const Label: FC = () => {
               containerClassName="avatar-skeleton"
           />
           {user.type == "Vendor" ? null : (
-            <>
+            <React.Fragment>
               <Link
                 to={!isAuth ? "/login" : "/wishlist"}
                 className="label__like-btn"
@@ -95,7 +97,7 @@ const Label: FC = () => {
               >
                 <img src="/trash-icon.svg" alt="Trash icon" />
               </Link>
-            </>
+            </React.Fragment>
           )}
           <Link
             to={isAuth ? "/profile" : "/login"}

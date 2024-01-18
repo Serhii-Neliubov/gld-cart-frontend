@@ -21,7 +21,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 100%;
@@ -54,7 +54,6 @@
   transition: all 0.3s ease;
   &_active {
     color: red;
-    font-weight: 700;
   }
 }
 
@@ -78,13 +77,12 @@
 
 .label__profile-btn span {
   color: #000;
-  font-family: Poppins;
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 112.5%;
   position: absolute;
   left: 120%;
-  text-wrap: nowrap;
+  white-space: nowrap;
 }
 .label__trash-btn {
   position: relative;
