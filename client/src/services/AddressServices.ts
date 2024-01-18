@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import $api from "../lib/http.ts";
+import IUser from "../models/IUser.ts";
 
 export default class AddressServices {
     static async sendAddress(
@@ -22,7 +23,12 @@ export default class AddressServices {
         );
     }
 
-    static async updateAddress(
+    static async updateAddresses(user: IUser){
+        const response = await AddressServices.getAddresses(user.id);
+        return response.data;
+    }
+
+    static async changeAddress(
         userId: string,
         addressId: string,
         addressData: {

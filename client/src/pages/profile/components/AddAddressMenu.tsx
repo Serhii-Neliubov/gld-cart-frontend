@@ -1,4 +1,4 @@
-import React, { ChangeEvent,  useEffect, useState } from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "../../../redux/slices/userDataSlice.ts";
 import styles from "../ProfilePage.module.scss";
@@ -21,10 +21,7 @@ type TypeAddressData = {
   _id: string
 };
 
-function AddAddressMenu({
-  selectedLabel,
-  setSelectedLabel,
-}: AddAddressMenuProps) {
+function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps) {
   const user = useSelector(userDataSelector);
   const [formData, setFormData] = useState({
     userId: user.id,
@@ -39,6 +36,16 @@ function AddAddressMenu({
     }
   });
   const [addresses, setAddresses] = useState([]);
+
+  const updateAddresses = async () => {
+    const response = await AddressServices.getAddresses(user.id);
+    const data = response.data;
+    setAddresses(data);
+  }
+
+  useEffect(() => {
+    updateAddresses();
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -61,6 +68,7 @@ function AddAddressMenu({
       );
       setSelectedLabel('Address');
       toast.success("Address was added successfully");
+      updateAddresses();
     } catch (error) {
       toast.error("Error to adding the address");
     }
@@ -68,28 +76,19 @@ function AddAddressMenu({
   const handleSubmitChanges = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await AddressServices.updateAddress(
+      await AddressServices.changeAddress(
           formData.userId,
           formData.addressId,
           formData.addressData,
       );
       setSelectedLabel('Address');
       toast.success("Address changed successfully");
+      updateAddresses();
     } catch (error) {
       console.error("Error sending address:", error);
       toast.error("Error to adding the address");
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-        const response = await AddressServices.getAddresses(user.id);
-        const data = response.data;
-        setAddresses(data)
-    };
-
-    fetchData();
-  }, [selectedLabel]);
 
   if(selectedLabel === "Add Address"){
     return (
