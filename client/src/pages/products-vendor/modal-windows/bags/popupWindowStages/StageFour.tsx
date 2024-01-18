@@ -3,6 +3,16 @@ import styles from "../Bags.module.scss";
 import {formDataProps} from "../Bags.tsx";
 import {ModalWindow} from "../../../../../components/RentingProductsPopup/ModalWindow.tsx";
 
+const defaultFormData = {
+    gender: 'Man',
+    priceType: 'Full Price',
+    productMaterials: [],
+    productColors: [],
+    productFeatures: [],
+    productSizes: [],
+    price: '',
+}
+
 type StageFourProps = {
     setStage: (number: number) => void,
     stage: number,
@@ -12,17 +22,18 @@ type StageFourProps = {
     price: string,
     discount: string,
     discountedPrice: string,
-    defaultFormData: formDataProps,
 }
 
-export const StageFour = ({setStage, defaultFormData, stage, setFormData, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
+export const StageFour = ({setStage, stage, setFormData, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
 
     const sendFormDataHandler = () => {
         if(formData.priceType === 'Full Price'){
             console.log({...formData, price: `${price}$`})
+            setFormData(defaultFormData);
             setStage(0);
         } else {
-            console.log({...formData, discount: `${discount}%`, discountedPrice: `${discountedPrice}$`})
+            console.log({...formData, discount: `${discount}%`, price: `${discountedPrice}$`})
+            setFormData(defaultFormData);
             setStage(0);
         }
     }
@@ -75,7 +86,6 @@ export const StageFour = ({setStage, defaultFormData, stage, setFormData, onChec
                 <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
                 <button onClick={() => {
                     sendFormDataHandler();
-                    setFormData(defaultFormData);
                 }} className={styles.formActionButtonBlue}>Finish
                 </button>
                 <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>

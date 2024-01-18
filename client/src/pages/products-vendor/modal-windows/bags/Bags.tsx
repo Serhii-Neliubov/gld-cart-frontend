@@ -14,15 +14,6 @@ export type formDataProps = {
     [key: string]: string | string[];
 }
 
-const defaultFormData = {
-    gender: 'Man',
-    priceType: 'Full Price',
-    productMaterials: [],
-    productColors: [],
-    productFeatures: [],
-    productSizes: [],
-}
-
 type PopupWindowProps = {
     stage: number,
     setStage: (value: number) => void
@@ -34,7 +25,14 @@ export const Bags = ({stage, setStage}: PopupWindowProps) => {
     const [discountedPrice, setDiscountedPrice] = useState('');
     const [discount, setDiscount] = useState('');
 
-    const [formData, setFormData] = useState<formDataProps>(defaultFormData);
+    const [formData, setFormData] = useState<formDataProps>({
+        gender: 'Man',
+        priceType: 'Full Price',
+        productMaterials: [],
+        productColors: [],
+        productFeatures: [],
+        productSizes: [],
+    });
 
     const onChecked = (event: ChangeEvent<HTMLInputElement>, key: string, element: string) => {
         let container = formData[key] as string[];
@@ -101,7 +99,6 @@ export const Bags = ({stage, setStage}: PopupWindowProps) => {
                 stage={stage}
             /> }
             { stage === 4 && <StageFour
-                defaultFormData={defaultFormData}
                 setFormData={setFormData}
                 onChecked={onChecked}
                 formData={formData}
@@ -111,13 +108,6 @@ export const Bags = ({stage, setStage}: PopupWindowProps) => {
                 setStage={setStage}
                 stage={stage}
             /> }
-            <button
-                style={{backgroundColor: '#EEE'}}
-                onClick={() => {
-                    setFormData(defaultFormData);
-                    console.log(formData);
-                }
-            }>Clear</button>
         </React.Fragment>
     )
 
