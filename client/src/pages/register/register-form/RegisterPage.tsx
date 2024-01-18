@@ -4,7 +4,7 @@ import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../redux/store";
 import { register } from "../../../redux/slices/userDataSlice";
-import Login from "../../../components/Login/Login.tsx";
+import BgWithParticles from "../../../components/BgWithParticles/BgWithParticles.tsx";
 
 interface IUser {
   type: string;
@@ -55,7 +55,7 @@ const RegisterPage: FC = () => {
       userData.surname.length &&
       userData.rePassword.length &&
       userData.password.length >= 8 &&
-      isEmptyEmail == false
+      !isEmptyEmail
     ) {
       dispatch(register(userData));
       navigate("/");
@@ -84,7 +84,7 @@ const RegisterPage: FC = () => {
   }
   return (
     <div className={styles.body}>
-      <Login>
+      <BgWithParticles>
         <div className={styles.components}>
           <div className={styles.content}>
             <h1 className={styles.title}>Sign up to Gldcart</h1>
@@ -185,7 +185,7 @@ const RegisterPage: FC = () => {
             Create my account
           </button>
         </div>
-      </Login>
+      </BgWithParticles>
     </div>
   );
 };

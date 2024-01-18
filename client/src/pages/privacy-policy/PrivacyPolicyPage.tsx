@@ -1,6 +1,6 @@
 import Footer from "../../components/Footer/Footer.tsx";
 import styles from "./PrivacyPolicyPage.module.scss";
-import { FC, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 
 const PrivacyPolicyPage: FC = () => {
   useEffect((): void => {
@@ -8,7 +8,7 @@ const PrivacyPolicyPage: FC = () => {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>Privacy Policy</h1>
@@ -126,7 +126,7 @@ const PrivacyPolicyPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

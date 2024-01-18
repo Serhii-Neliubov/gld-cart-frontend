@@ -3,7 +3,7 @@ import styles from "./NewPasswordPage.module.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../../../lib/http.ts";
-import Login from "../../../components/Login/Login.tsx";
+import BgWithParticles from "../../../components/BgWithParticles/BgWithParticles.tsx";
 
 const NewPasswordPage: FC = () => {
   const [password, setPassword] = useState<string>("");
@@ -23,7 +23,7 @@ const NewPasswordPage: FC = () => {
 
   return (
     <div className={styles.body}>
-      <Login>
+      <BgWithParticles>
         <div className={styles.components}>
           <div className={styles.content}>
             <h1 className={styles.title}>New password</h1>
@@ -51,7 +51,7 @@ const NewPasswordPage: FC = () => {
             Set a password
           </button>
         </div>
-      </Login>
+      </BgWithParticles>
     </div>
   );
 };

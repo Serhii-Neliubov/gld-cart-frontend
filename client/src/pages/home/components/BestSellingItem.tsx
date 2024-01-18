@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
 
-export type BestSellingsItem = {
+export type BestSellingItems = {
     image: string,
     price: string,
     title: string,
@@ -9,7 +9,7 @@ export type BestSellingsItem = {
     discount_percent: string,
 }
 
-export const BestSellingsItem = ({image, title, price, price_discount, discount_percent}: BestSellingsItem) => {
+export const BestSellingItems = ({image, title, price, price_discount, discount_percent}: BestSellingItems) => {
     const { t } = useTranslation();
 
     return (

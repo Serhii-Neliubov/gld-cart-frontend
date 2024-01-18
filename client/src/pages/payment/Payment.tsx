@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
 import { clearModalActiveParams } from "./PaymentPage.tsx";
@@ -17,7 +17,7 @@ const Payment: FC = () => {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>Select Payment Method</h1>
@@ -33,7 +33,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="Payment/google.png" alt="Icon" />
+              <img src="/Payment/google.png" alt="Icon" />
               <span>Google Pay</span>
             </button>
             <button
@@ -45,7 +45,7 @@ const Payment: FC = () => {
                 modalActive.apple ? `${styles.block_active}` : `${styles.block}`
               }
             >
-              <img src="Payment/apple.svg" alt="Icon" />
+              <img src="/Payment/apple.svg" alt="Icon" />
               <span>Apple Pay</span>
             </button>
             <button
@@ -59,7 +59,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="Payment/credit-card.svg" alt="Icon" />
+              <img src="/Payment/credit-card.svg" alt="Icon" />
               <span>Credit Card</span>
             </button>
             <button
@@ -73,7 +73,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="Payment/img5.png" alt="Icon" />
+              <img src="/Payment/img5.png" alt="Icon" />
               <span>Cash on Delivery</span>
             </button>
           </div>
@@ -96,7 +96,7 @@ const Payment: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

@@ -62,26 +62,26 @@ const ContactUsPage: FC = () => {
             </form>
             <div className={styles.contacts}>
               <div className={styles.contacts_item}>
-                <img src="contact-us/icon1.svg" alt="Icon" />
+                <img src="/contact-us/icon1.svg" alt="Icon" />
                 <p>contact@Gldcard.com</p>
                 <span>(406) 555-0120</span>
               </div>
               <div className={styles.contacts_item}>
-                <img src="contact-us/icon2.svg" alt="Icon" />
+                <img src="/contact-us/icon2.svg" alt="Icon" />
                 <span>6391 Elgin St. Celina, Delaware 10299</span>
               </div>
               <div className={styles.contacts_item}>
-                <img src="contact-us/icon3.svg" alt="Icon" />
+                <img src="/contact-us/icon3.svg" alt="Icon" />
                 <span style={{ margin: "12px 0" }}>Find on social media</span>
                 <div className={styles.socials}>
                   <a href="#" className={styles.social}>
-                    <img src="contact-us/social1.png" />
+                    <img src="/contact-us/social1.png" alt='Social image'/>
                   </a>
                   <a href="#" className={styles.social}>
-                    <img src="contact-us/social2.png" />
+                    <img src="/contact-us/social2.png" alt='Social image'/>
                   </a>
                   <a href="#" className={styles.social}>
-                    <img src="contact-us/social3.png" />
+                    <img src="/contact-us/social3.png" alt='Social image'/>
                   </a>
                 </div>
               </div>

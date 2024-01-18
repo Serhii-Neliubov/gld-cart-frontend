@@ -1,8 +1,8 @@
 import React from 'react';
 import {useTranslation} from "react-i18next";
-import {BestSellingsItem} from "./BestSellingsItem.tsx";
+import {BestSellingItems} from "./BestSellingItem.tsx";
 
-const bestSellingsItems: BestSellingsItem[] = [
+const bestSellingItems: BestSellingItems[] = [
     {
         image: 'HomePage/best-sellings/best1.png',
         title: 'Giorgio Armani',
@@ -41,8 +41,8 @@ export const BestSellings = () => {
                     <button className="blocks__arrow blocks__arrow_left"></button>
                     <div className="blocks__items">
 
-                        {bestSellingsItems.map((item) => {
-                            return <BestSellingsItem
+                        {bestSellingItems.map((item) => {
+                            return <BestSellingItems
                                 image={item.image}
                                 price={item.price}
                                 title={item.title}

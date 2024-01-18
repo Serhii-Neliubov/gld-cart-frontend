@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import styles from "./ForgottenPasswordPage.module.scss";
-import Login from "../../components/Login/Login.tsx";
+import BgWithParticles from "../../components/BgWithParticles/BgWithParticles.tsx";
 import { useDispatch } from "react-redux";
 import { setEmailValue } from "../../redux/slices/resetPasswordEmailSlice";
 import { AppDispatch } from "../../redux/store";
@@ -27,7 +27,7 @@ const ForgottenPasswordPage: FC = () => {
 
   return (
     <div className={styles.body}>
-      <Login>
+      <BgWithParticles>
         <div className={styles.components}>
           <div className={styles.content}>
             <h1 className={styles.title}>Forgotten Password</h1>
@@ -61,7 +61,7 @@ const ForgottenPasswordPage: FC = () => {
             Send Link
           </button>
         </div>
-      </Login>
+      </BgWithParticles>
     </div>
   );
 };

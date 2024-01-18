@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import Login from "../../components/Login/Login.tsx";
+import BgWithParticles from "../../components/BgWithParticles/BgWithParticles.tsx";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -15,7 +15,7 @@ const RegisterAsPage: FC = () => {
 
   return (
     <div className={styles.container}>
-      <Login>
+      <BgWithParticles>
         <div className={styles.body}>
           <h1 className={styles.title}>Register As A</h1>
           <p className={styles.text}>
@@ -38,7 +38,7 @@ const RegisterAsPage: FC = () => {
             Vendor
           </Link>
         </div>
-      </Login>
+      </BgWithParticles>
     </div>
   );
 };

@@ -44,7 +44,7 @@ export const SavedItem = ({ item }: SavedItemProps) => {
                 style={{backgroundImage: `${item.image}`}}
             ></div>
             <div className="saved_item-price">{item.title}</div>
-            <span className="saved__price">{item.price}</span>
+            <span className="saved__price">${item.price}</span>
             <p className="saved__desc">{item.description}</p>
             <button onClick={() => sendCartItemHandler(item)} className="saved__button">{t("Move to cart")}</button>
         </div>

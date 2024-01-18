@@ -1,5 +1,5 @@
 import styles from "./ProductsPage.module.scss";
-import { FC, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer.tsx";
 
@@ -46,11 +46,13 @@ const categories = [
 ];
 
 const ProductsPage: FC = () => {
+
   useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
-    <>
+    <React.Fragment>
       <div className={styles.body}>
         <div className="__container">
           <div className={styles.content}>
@@ -78,7 +80,7 @@ const ProductsPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

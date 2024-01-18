@@ -6,6 +6,7 @@ import { FC, useEffect } from "react";
 import { CookiePolicyData } from "../../data/CookiePolicyData";
 
 const CookiePolicyPage: FC = () => {
+  
   useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);

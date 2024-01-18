@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./Login.module.scss";
+import styles from "./BgWithParticles.module.scss";
 
 type LoginProps = {
   children: React.ReactNode;
 };
 
-const Login = ({ children }: LoginProps) => {
+const BgWithParticles = ({ children }: LoginProps) => {
   return (
     <div>
       <div className="__container">
@@ -28,4 +28,4 @@ const Login = ({ children }: LoginProps) => {
   );
 };
 
-export default Login;
+export default BgWithParticles;

@@ -38,7 +38,7 @@ const PaymentModal: FC<PaymentModalProps> = ({
 
           <a href="#">Pay Now</a>
         </div>
-        <img src="Payment/qr.png" alt="" />
+        <img src="/Payment/qr.png" alt="" />
       </div>
     </div>
   );

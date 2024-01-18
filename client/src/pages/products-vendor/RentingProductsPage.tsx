@@ -127,7 +127,6 @@ const RentingProductsPage: FC = () => {
                         ) : null
                     )}
                   </div>
-
                   <Bags stage={stage} setStage={setStage}/>
                 </div>
               </div>

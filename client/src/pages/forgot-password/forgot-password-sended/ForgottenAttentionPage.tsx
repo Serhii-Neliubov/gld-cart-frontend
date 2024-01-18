@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./ForgottenAttentionPage.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Login from "../../../components/Login/Login.tsx";
+import BgWithParticles from "../../../components/BgWithParticles/BgWithParticles.tsx";
 import { RootState } from "../../../redux/store";
 
 const ForgottenAttentionPage: FC = () => {
@@ -10,7 +10,7 @@ const ForgottenAttentionPage: FC = () => {
 
   return (
     <div className={styles.body}>
-      <Login>
+      <BgWithParticles>
         <div className={styles.components}>
           <div className={styles.content}>
             <h1 className={styles.title}>Password Reset Email Sent</h1>
@@ -27,7 +27,7 @@ const ForgottenAttentionPage: FC = () => {
             Login
           </Link>
         </div>
-      </Login>
+      </BgWithParticles>
     </div>
   );
 };

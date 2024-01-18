@@ -11,21 +11,21 @@ const Home: FC = () => {
 
     const SavedItems: SavedItem[] = [
         {
-            title: 'iphone 12',
+            title: 'Iphone 12',
             image: "url(HomePage/saved/img1.png)",
             price: 99.50,
             description: t("GoPro HERO6 4K Action Camera - Black"),
             quantity: 1,
         },
         {
-            title: 'iphone 13',
+            title: 'Iphone 13',
             image: "url(HomePage/saved/img1.png)",
             price: 99.50,
             description: t("GoPro HERO6 4K Action Camera - Black"),
             quantity: 1,
         },
         {
-            title: 'iphone 14',
+            title: 'Iphone 14',
             image: "url(HomePage/saved/img1.png)",
             price: 99.50,
             description: t("GoPro HERO6 4K Action Camera - Black"),
@@ -39,6 +39,7 @@ const Home: FC = () => {
             quantity: 1,
         },
     ];
+
   useEffect((): void => {
     window.scrollTo(0, 0);
   }, []);
@@ -51,7 +52,7 @@ const Home: FC = () => {
                     <div className="shop-now__content">
                         <div className="shop-now__info">
                             <div className="shop-now__icon">
-                                <img src="apple-icon.png" alt="Icon"/>
+                                <img src="/apple-icon.png" alt="Icon"/>
                             </div>
                             <div className="shop-now__description">iPhone 14 {t("series")}</div>
                         </div>
@@ -59,7 +60,7 @@ const Home: FC = () => {
                         <button className="shop-now__button">{t("Shop now")}</button>
                     </div>
                     <div className="shop-now__image">
-                        <img src="iphone-img.png" alt="Image"/>
+                        <img src="/iphone-img.png" alt="Image"/>
                     </div>
                 </div>
             </div>
@@ -182,7 +183,7 @@ const Home: FC = () => {
                     <div className="advantages__items">
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="HomePage/advantages/delivery.svg" alt="Icon"/>
+                                <img src="/HomePage/advantages/delivery.svg" alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Free Delivery</h4>
@@ -191,7 +192,7 @@ const Home: FC = () => {
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="HomePage/advantages/refund.svg" alt="Icon"/>
+                                <img src="/HomePage/advantages/refund.svg" alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Return & Refund</h4>
@@ -200,7 +201,7 @@ const Home: FC = () => {
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="HomePage/advantages/discount.svg" alt="Icon"/>
+                                <img src="/HomePage/advantages/discount.svg" alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Member Discount</h4>
@@ -209,7 +210,7 @@ const Home: FC = () => {
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="HomePage/advantages/support.svg" alt="Icon"/>
+                                <img src="/HomePage/advantages/support.svg" alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Support 24/7</h4>
