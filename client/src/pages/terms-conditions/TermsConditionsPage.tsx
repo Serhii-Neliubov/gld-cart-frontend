@@ -1,5 +1,5 @@
 import Footer from "../../components/Footer/Footer.tsx";
-import { TermsConditions } from "../../data/TermsConditionsData";
+import { TermsConditions } from "../../data/publicBuyerRules/TermsConditionsData.ts";
 import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./TermsConditionsPage.module.scss";
 import { FC, useEffect } from "react";

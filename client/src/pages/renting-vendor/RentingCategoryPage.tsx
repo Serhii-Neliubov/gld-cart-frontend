@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./RentingCategoryPage.module.scss";
 import React, {FC, useState} from "react";
 import RentingStage from "../../components/RentingStage/RentingStage.tsx";
-import {RentingData} from "../../data/RentingData.ts";
+import {RentingData} from "../../data/vendorProductsData/RentingData.ts";
 import {IClearClick} from "../../interfaces/IClearClick.ts";
 import {ModalsList} from "./modals/ModalsList.tsx";
 

@@ -1,38 +1,43 @@
-import React, { FC, useState } from "react";
-import styles from "./RentingProductsPage.module.scss";
-import { ProductsData } from "../../data/vendorProductsData/ProductsData.ts";
-import RentingStage from "../../components/RentingStage/RentingStage";
-import { useDispatch } from "react-redux";
-import { setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
-import { Bags } from "./modal-windows/bags/Bags.tsx";
+import styles from "./RentingProfservicesPage.module.scss";
+import React, {FC, useState} from "react";
+import RentingStage from "../../components/RentingStage/RentingStage.tsx";
+import {setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
+import {Bags} from "../products-vendor/modal-windows/bags/Bags.tsx";
+import {ProfessionalServicesData} from "../../data/vendorProductsData/ProfessionalServicesData.ts";
+import {useDispatch} from "react-redux";
 
 interface IClearClick {
   [key: string]: boolean;
 }
 
 const clearClick: IClearClick = {
-  beauty: false,
-  bags: false,
-  awesome: false,
-  mobileTablets: false,
-  necklaces: false,
-  clothing: false,
-  bluetooth: false,
-  facial: false,
-  shoes: false,
-  cpu: false,
-  discover: false,
-  headphones: false,
-  bracelets: false,
-  smartWatch: false,
-  earrings: false,
+  cleaning: false,
+  repairing: false,
+  gardening: false,
+  treeCutting: false,
+  lawnServices: false,
+  handyman: false,
+  snowRemoval: false,
+  pestControl: false,
+  electrical: false,
 };
 
-const RentingProductsPage: FC = () => {
+interface IClearClick {
+  cleaning: boolean;
+  repairing: boolean;
+  gardening: boolean;
+  treeCutting: boolean;
+  lawnServices: boolean;
+  handyman: boolean;
+  snowRemoval: boolean;
+  pestControl: boolean;
+  electrical: boolean;
+}
+
+const RentingProfservicesPage: FC = () => {
   const dispatch = useDispatch();
   const [stage, setStage] = useState(0);
-
-  const [isClicked, setIsClicked] = useState<IClearClick>(clearClick);
+  const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
   const [selectedSubCategoryItem, setSelectedSubCategoryItem] = useState<string | null>(null);
   const [coloredStage, setColoredStage] = useState(0);
@@ -43,7 +48,7 @@ const RentingProductsPage: FC = () => {
       <div className="__container">
         <div className={styles.body}>
           <div className={styles.content}>
-            <RentingStage coloredStage={coloredStage} />
+            <RentingStage coloredStage={coloredStage}/>
             <div className={styles.content_blocks}>
               <h1>
                 Select <span>PRODUCTS</span> Category
@@ -53,12 +58,12 @@ const RentingProductsPage: FC = () => {
                 <div className={styles.main_content}>
                   {/* CATEGORY GENERATION */}
                   <div className={styles.main_items_1}>
-                    {ProductsData.map((item) => (
+                    {ProfessionalServicesData.map((item) => (
                         <button
                             key={item.name}
                             style={
                               isClicked[item.category]
-                                  ? { backgroundColor: "#02A0A0" }
+                                  ? {backgroundColor: "#02A0A0"}
                                   : {}
                             }
                             onClick={() => {
@@ -71,7 +76,7 @@ const RentingProductsPage: FC = () => {
                             }}
                             className={styles.main_item_1}
                         >
-                          <img src={item.image} alt="img" />
+                          <img src={item.image} alt="img"/>
                           <span>{item.name}</span>
                         </button>
                     ))}
@@ -80,7 +85,7 @@ const RentingProductsPage: FC = () => {
                   <div className={styles.main_items_2}>
                     {subcategories.map((key) =>
                         isClicked[key] ? (
-                            ProductsData.filter((item) => item.category === key).map(
+                            ProfessionalServicesData.filter((item) => item.category === key).map(
                                 (filteredItem) =>
                                     Object.keys(filteredItem.items).map((name) => (
                                         <button
@@ -104,7 +109,7 @@ const RentingProductsPage: FC = () => {
                   </div>
                   {/* ITEMS GENERATION */}
                   <div className={styles.main_items_3}>
-                    {ProductsData.map((object) =>
+                    {ProfessionalServicesData.map((object) =>
                         selectedSubCategory &&
                         Object.keys(object.items).includes(selectedSubCategory) ? (
                             object.items[selectedSubCategory].map((arrayItem, index) => (
@@ -114,7 +119,7 @@ const RentingProductsPage: FC = () => {
                                       setSelectedSubCategoryItem(arrayItem);
                                       dispatch(setVendorSelectedItemValue(arrayItem));
 
-                                      if(object.category === 'bags'){
+                                      if (object.category === 'bags') {
                                         setStage(1)
                                       }
                                     }}
@@ -137,4 +142,4 @@ const RentingProductsPage: FC = () => {
   );
 };
 
-export default RentingProductsPage;
+export default RentingProfservicesPage;

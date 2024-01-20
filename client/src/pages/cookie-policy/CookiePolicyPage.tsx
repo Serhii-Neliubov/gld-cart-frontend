@@ -3,7 +3,7 @@ import Footer from "../../components/Footer/Footer.tsx";
 import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./CookiePolicyPage.module.scss";
 import { FC, useEffect } from "react";
-import { CookiePolicyData } from "../../data/CookiePolicyData";
+import { CookiePolicyData } from "../../data/publicBuyerRules/CookiePolicyData.ts";
 
 const CookiePolicyPage: FC = () => {
   

@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from "../../components/Footer/Footer.tsx";
-import { FaqsData } from "../../data/FaqsData";
+import { FaqsData } from "../../data/publicBuyerRules/FaqsData.ts";
 import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./FaqsPage.module.scss";
 import { FC, useEffect } from "react";

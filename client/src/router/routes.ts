@@ -51,7 +51,7 @@ import SnowRemovalServicePublishing from "../pages/professional-services-buyer/s
 import TreeCuttingServiceForm from "../pages/professional-services-buyer/tree-cutting/TreeCuttingServiceForm";
 import TreeCuttingServicePhoto from "../pages/professional-services-buyer/tree-cutting/photo-and-video/TreeCuttingServicePhoto";
 import TreeCuttingServicePublishing from "../pages/professional-services-buyer/tree-cutting/photo-and-video/specifications/publishing/TreeCuttingServicePublishing";
-import RentingProfservicesPage from "../pages/professional-services-vendor/RentingProductsPage";
+import RentingProfservicesPage from "../pages/professional-services-vendor/RentingProfservicesPage.tsx";
 import CleaningServiceForm from "../pages/professional-services-vendor/cleaning-services/CleaningServiceForm";
 import CleaningServicePhoto from "../pages/professional-services-vendor/cleaning-services/photo-and-video/CleaningServicePhoto";
 import CleaningServiceSpecifications from "../pages/professional-services-vendor/cleaning-services/photo-and-video/specifications/CleaningServiceSpecifications";
