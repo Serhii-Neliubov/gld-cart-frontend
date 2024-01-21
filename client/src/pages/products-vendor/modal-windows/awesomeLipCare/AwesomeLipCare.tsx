@@ -14,13 +14,8 @@ export type formDataProps = {
     [key: string]: string | string[];
 }
 
-type PopupWindowProps = {
-    stage: number,
-    setStage: (value: number) => void
-}
-
-export const AwesomeLipCare = ({stage, setStage}: PopupWindowProps) => {
-
+export const AwesomeLipCare = () => {
+    const [stage, setStage] = useState(1);
     const [price, setPrice] = useState('');
     const [discountedPrice, setDiscountedPrice] = useState('');
     const [discount, setDiscount] = useState('');

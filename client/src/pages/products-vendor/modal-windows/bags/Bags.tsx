@@ -4,6 +4,7 @@ import {StageTwo} from "./popupWindowStages/StageTwo.tsx";
 import {StageThree} from "./popupWindowStages/StageThree.tsx";
 import {StageFour} from "./popupWindowStages/StageFour.tsx";
 
+
 export type formDataProps = {
     gender: string;
     priceType: string;
@@ -14,12 +15,12 @@ export type formDataProps = {
     [key: string]: string | string[];
 }
 
-type PopupWindowProps = {
-    stage: number,
-    setStage: (value: number) => void,
+interface BagsProps{
+    closeModal: () => void
 }
 
-export const Bags = ({stage, setStage}: PopupWindowProps) => {
+export const Bags = ({closeModal}: BagsProps) => {
+    const [stage, setStage] = useState(1);
     const [price, setPrice] = useState('');
     const [discountedPrice, setDiscountedPrice] = useState('');
     const [discount, setDiscount] = useState('');
@@ -77,6 +78,7 @@ export const Bags = ({stage, setStage}: PopupWindowProps) => {
             { stage === 1 && <StageOne
                 formData={formData}
                 setStage={setStage}
+                closeModal={closeModal}
                 setFormData={setFormData}
                 price={price}
                 setPrice={setPrice}

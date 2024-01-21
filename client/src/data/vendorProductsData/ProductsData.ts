@@ -1,12 +1,12 @@
-type ProductsDataProps = {
+export type ProductsDataProps = {
   image: string;
   name: string;
   category: string;
   items: {
     [key: string]: string[];
   };
-}[];
-export const ProductsData: ProductsDataProps = [
+};
+export const ProductsData: ProductsDataProps[] = [
   {
     image: "ProductsCategoryPage/Vector-10.svg",
     category: "beauty",

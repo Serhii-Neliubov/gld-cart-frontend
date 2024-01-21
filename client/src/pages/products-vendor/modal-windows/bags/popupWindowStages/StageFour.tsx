@@ -33,6 +33,7 @@ export const StageFour = ({setStage, stage, setFormData, onChecked, formData, pr
         if(formData.priceType === 'Full Price'){
             console.log({...formData, price: `${price}$`, ...productData})
             setFormData(defaultFormData);
+            console.log(setStage)
             setStage(0);
         } else {
             console.log({...formData, discount: `${discount}%`, price: `${discountedPrice}$`, ...productData})

@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react";
 import styles from "./RentingProductsPage.module.scss";
-import { ProductsData } from "../../data/vendorProductsData/ProductsData.ts";
+import {ProductsData, ProductsDataProps} from "../../data/vendorProductsData/ProductsData.ts";
 import RentingStage from "../../components/RentingStage/RentingStage";
 import { useDispatch } from "react-redux";
 import { setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
-import { Bags } from "./modal-windows/bags/Bags.tsx";
 import {setProductCategory, setProductName, setProductSubcategory} from "../../redux/slices/vendorProductInfoSlice.ts";
+import { ModalList } from "./modal-windows/ModalList.tsx";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -31,13 +31,22 @@ const clearClick: IClearClick = {
 
 const RentingProductsPage: FC = () => {
   const dispatch = useDispatch();
-  const [stage, setStage] = useState(0);
-  const [isClicked, setIsClicked] = useState<IClearClick>(clearClick);
+  const [isClicked, setIsClicked] = useState<IClearClick>({...clearClick});
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
   const [selectedSubCategoryItem, setSelectedSubCategoryItem] = useState<string | null>(null);
   const [coloredStage, setColoredStage] = useState(0);
-
+  const [modalOpenValue, setModalOpenValue] = useState('');
   const subcategories = Object.keys(isClicked);
+  function productClickHandler(arrayItem: string, object: ProductsDataProps) {
+    setSelectedSubCategoryItem(arrayItem);
+    dispatch(setVendorSelectedItemValue(arrayItem));
+    dispatch(setProductName(arrayItem));
+    setModalOpenValue(object.category);
+  }
+
+  function closeModal() {
+    setModalOpenValue('');
+  }
 
   return (
       <div className="__container">
@@ -113,12 +122,7 @@ const RentingProductsPage: FC = () => {
                                 <button
                                     style={{backgroundColor: selectedSubCategoryItem === arrayItem ? "#02A0A0" : "",}}
                                     onClick={() => {
-                                      setSelectedSubCategoryItem(arrayItem);
-                                      dispatch(setVendorSelectedItemValue(arrayItem));
-                                      dispatch(setProductName(arrayItem));
-                                      if(object.category === 'bags'){
-                                        setStage(1)
-                                      }
+                                      productClickHandler(arrayItem, object)
                                     }}
                                     key={index}
                                     className={styles.main_item_3}
@@ -129,7 +133,7 @@ const RentingProductsPage: FC = () => {
                         ) : null
                     )}
                   </div>
-                  <Bags stage={stage} setStage={setStage}/>
+                  <ModalList closeModal={closeModal} modalOpenValue={modalOpenValue} />
                 </div>
               </div>
             </div>
