@@ -16,15 +16,13 @@ export type formDataProps = {
 
 type PopupWindowProps = {
     stage: number,
-    setStage: (value: number) => void
+    setStage: (value: number) => void,
 }
 
 export const Bags = ({stage, setStage}: PopupWindowProps) => {
-
     const [price, setPrice] = useState('');
     const [discountedPrice, setDiscountedPrice] = useState('');
     const [discount, setDiscount] = useState('');
-
     const [formData, setFormData] = useState<formDataProps>({
         gender: 'Man',
         priceType: 'Full Price',

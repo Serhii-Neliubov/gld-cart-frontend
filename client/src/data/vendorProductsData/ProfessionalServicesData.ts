@@ -6,6 +6,7 @@ type ProfessionalServicesDataType = {
     [key: string]: string[];
   };
 }[];
+
 export const ProfessionalServicesData: ProfessionalServicesDataType = [
   {
     image: "RentingProfservicesPage/icon1.svg",

@@ -3,9 +3,11 @@ import styles from "./RentingCategoryPage.module.scss";
 import React, {FC, useState} from "react";
 import RentingStage from "../../components/RentingStage/RentingStage.tsx";
 import {RentingData} from "../../data/vendorProductsData/RentingData.ts";
-import {IClearClick} from "../../interfaces/IClearClick.ts";
 import {ModalsList} from "./modals/ModalsList.tsx";
 
+interface IClearClick {
+  [key: string]: boolean;
+}
 const clearClick: IClearClick = {
   vehicles: false,
   houses: false,

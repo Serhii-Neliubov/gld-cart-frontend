@@ -22,20 +22,9 @@ const clearClick: IClearClick = {
   electrical: false,
 };
 
-interface IClearClick {
-  cleaning: boolean;
-  repairing: boolean;
-  gardening: boolean;
-  treeCutting: boolean;
-  lawnServices: boolean;
-  handyman: boolean;
-  snowRemoval: boolean;
-  pestControl: boolean;
-  electrical: boolean;
-}
-
 const RentingProfservicesPage: FC = () => {
   const dispatch = useDispatch();
+
   const [stage, setStage] = useState(0);
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);

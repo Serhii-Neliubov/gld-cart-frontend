@@ -2,6 +2,8 @@ import React from 'react';
 import styles from "../Bags.module.scss";
 import {formDataProps} from "../Bags.tsx";
 import {ModalWindow} from "../../../../../components/RentingProductsPopup/ModalWindow.tsx";
+import {useSelector} from "react-redux";
+import {vendorProductInfo} from "../../../../../redux/slices/vendorProductInfoSlice.ts";
 
 const defaultFormData = {
     gender: 'Man',
@@ -25,14 +27,15 @@ type StageFourProps = {
 }
 
 export const StageFour = ({setStage, stage, setFormData, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
+    const productData = useSelector(vendorProductInfo);
 
     const sendFormDataHandler = () => {
         if(formData.priceType === 'Full Price'){
-            console.log({...formData, price: `${price}$`})
+            console.log({...formData, price: `${price}$`, ...productData})
             setFormData(defaultFormData);
             setStage(0);
         } else {
-            console.log({...formData, discount: `${discount}%`, price: `${discountedPrice}$`})
+            console.log({...formData, discount: `${discount}%`, price: `${discountedPrice}$`, ...productData})
             setFormData(defaultFormData);
             setStage(0);
         }

@@ -5,6 +5,7 @@ import RentingStage from "../../components/RentingStage/RentingStage";
 import { useDispatch } from "react-redux";
 import { setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
 import { Bags } from "./modal-windows/bags/Bags.tsx";
+import {setProductCategory, setProductName, setProductSubcategory} from "../../redux/slices/vendorProductInfoSlice.ts";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -31,7 +32,6 @@ const clearClick: IClearClick = {
 const RentingProductsPage: FC = () => {
   const dispatch = useDispatch();
   const [stage, setStage] = useState(0);
-
   const [isClicked, setIsClicked] = useState<IClearClick>(clearClick);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
   const [selectedSubCategoryItem, setSelectedSubCategoryItem] = useState<string | null>(null);
@@ -66,6 +66,7 @@ const RentingProductsPage: FC = () => {
                                 ...clearClick,
                                 [item.category]: true,
                               });
+                              dispatch(setProductCategory(item.category));
                               setColoredStage(1);
                               setSelectedSubCategory("");
                             }}
@@ -91,6 +92,7 @@ const RentingProductsPage: FC = () => {
                                                   selectedSubCategory === name ? "#02A0A0" : "",
                                             }}
                                             onClick={() => {
+                                              dispatch(setProductSubcategory(name));
                                               setSelectedSubCategory(name);
                                               setColoredStage(2);
                                             }}
@@ -102,7 +104,7 @@ const RentingProductsPage: FC = () => {
                         ) : null
                     )}
                   </div>
-                  {/* ITEMS GENERATION */}
+                  {/* PRODUCTS GENERATION */}
                   <div className={styles.main_items_3}>
                     {ProductsData.map((object) =>
                         selectedSubCategory &&
@@ -113,7 +115,7 @@ const RentingProductsPage: FC = () => {
                                     onClick={() => {
                                       setSelectedSubCategoryItem(arrayItem);
                                       dispatch(setVendorSelectedItemValue(arrayItem));
-
+                                      dispatch(setProductName(arrayItem));
                                       if(object.category === 'bags'){
                                         setStage(1)
                                       }
