@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from "../AwesomeLipCare.module.scss";
-import {formDataProps} from "../AwesomeLipCare.tsx";
+import styles from "../mobileTablets.module.scss";
+import {formDataProps} from "../mobileTablets.tsx";
 import { ModalWindow } from '../../../../../components/RentingProductsPopup/ModalWindow.tsx';
 
 type StageOneProps = {
@@ -20,32 +20,32 @@ type StageOneProps = {
 export const StageOne = ({closeModal, formData, setFormData, setStage, price, setPrice, discountedPrice, setDiscountedPrice, discount, setDiscount}: StageOneProps) => {
     return(
         <ModalWindow closeModal={closeModal}>
-            <h1 className={styles.title}>You want to give your Awesome Lip Care</h1>
+            <h1 className={styles.title}>You want to give your Mobile Tablets</h1>
             <form className={styles.form}>
                 <div className={styles.formBlock}>
                     <span className={styles.categoryText}>The product  you want to sell is ?</span>
                     <div className={styles.formInputs}>
-                        <div onClick={() => setFormData({...formData, productType: 'Branded'})} className={styles.formInput}>
+                        <div onClick={() => setFormData({...formData, productType: 'New'})} className={styles.formInput}>
                             <input
-                                checked={formData.productType === 'Branded'}
+                                checked={formData.productType === 'New'}
                                 className={styles.formInput}
                                 type='radio'
                                 name='gender'
                                 id='Branded'
-                                onChange={() => setFormData({...formData, productType: 'Branded'})}
+                                onChange={() => setFormData({...formData, productType: 'New'})}
                             />
-                            <label htmlFor='man'>Branded</label>
+                            <label htmlFor='man'>New</label>
                         </div>
-                        <div onClick={() => setFormData({...formData, productType: 'Local'})} className={styles.formInput}>
+                        <div onClick={() => setFormData({...formData, productType: 'Used'})} className={styles.formInput}>
                             <input
-                                checked={formData.productType === 'Local'}
+                                checked={formData.productType === 'Used'}
                                 className={styles.formInput}
                                 type='radio'
                                 name='gender'
-                                onChange={() => setFormData({...formData, productType: 'Local'})}
+                                onChange={() => setFormData({...formData, productType: 'Used'})}
                                 id='Local'
                             />
-                            <label htmlFor='woman'>Local</label>
+                            <label htmlFor='woman'>Used</label>
                         </div>
                     </div>
                 </div>

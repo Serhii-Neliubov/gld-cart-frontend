@@ -4,12 +4,13 @@ import { ModalWindow } from '../../../../../components/RentingProductsPopup/Moda
 
 type StageTwoProps = {
     setStage: (number: number) => void;
-    stage: number
+    stage: number,
+    closeModal: () => void
 }
 
-export const StageTwo = ({setStage, stage}: StageTwoProps) => {
+export const StageTwo = ({closeModal, setStage, stage}: StageTwoProps) => {
     return (
-        <ModalWindow>
+        <ModalWindow closeModal={closeModal}>
             <h1 className={styles.title}>Awesome Lip Care Specification</h1>
             <form className={styles.form}>
                 <div className={styles.formBlock}>
@@ -81,7 +82,6 @@ export const StageTwo = ({setStage, stage}: StageTwoProps) => {
             <div className={styles.formActions}>
                 <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
                 <button onClick={() => setStage(3)} className={styles.formActionButtonBlue}>Next</button>
-                <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>
             </div>
         </ModalWindow>
     )

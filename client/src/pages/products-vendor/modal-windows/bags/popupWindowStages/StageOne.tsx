@@ -19,7 +19,7 @@ type StageOneProps = {
 
 export const StageOne = ({closeModal, formData, setFormData, setStage, price, setPrice, discountedPrice, setDiscountedPrice, discount, setDiscount}: StageOneProps) => {
     return(
-        <ModalWindow>
+        <ModalWindow closeModal={closeModal}>
             <h1 className={styles.title}>You want to give your Bags Products Form</h1>
             <form className={styles.form}>
                 <div className={styles.formBlock}>
@@ -119,10 +119,6 @@ export const StageOne = ({closeModal, formData, setFormData, setStage, price, se
             </form>
             <div className={styles.formActions}>
                 <button onClick={() => setStage(2)} className={styles.formActionButtonBlue}>Next</button>
-                <button onClick={() => {
-                    setStage(0);
-                    closeModal();
-                }} className={styles.closeButton}>&times;</button>
             </div>
         </ModalWindow>
     )

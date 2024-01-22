@@ -18,3 +18,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.closeButton{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  scale: 2;
+  z-index: 100;
+  transition: all .3s ease;
+  &:hover{
+    color: #009FD9;
+  }
+}

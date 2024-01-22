@@ -24,9 +24,10 @@ type StageFourProps = {
     price: string,
     discount: string,
     discountedPrice: string,
+    closeModal: () => void
 }
 
-export const StageFour = ({setStage, stage, setFormData, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
+export const StageFour = ({closeModal, setStage, stage, setFormData, onChecked, formData, price, discount, discountedPrice}: StageFourProps) => {
     const productData = useSelector(vendorProductInfo);
 
     const sendFormDataHandler = () => {
@@ -43,7 +44,7 @@ export const StageFour = ({setStage, stage, setFormData, onChecked, formData, pr
     }
 
     return (
-        <ModalWindow>
+        <ModalWindow closeModal={closeModal}>
             <h1 className={styles.title}>Bags PRODUCT Form Specification</h1>
             <form className={styles.form}>
                 <div className={styles.formBlock}>
@@ -90,9 +91,9 @@ export const StageFour = ({setStage, stage, setFormData, onChecked, formData, pr
                 <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
                 <button onClick={() => {
                     sendFormDataHandler();
+                    closeModal();
                 }} className={styles.formActionButtonBlue}>Finish
                 </button>
-                <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>
             </div>
         </ModalWindow>
     )

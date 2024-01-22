@@ -6,10 +6,11 @@ type StageTwoProps = {
     setStage: (number: number) => void;
     onChecked: (event: React.ChangeEvent<HTMLInputElement>, key:string, element: string) => void,
     setColorHandler: (value: boolean, key:string, element: string) => void,
-    stage: number
+    stage: number,
+    closeModal: () => void
 }
 
-export const StageTwo = ({setStage, stage, onChecked, setColorHandler}: StageTwoProps) => {
+export const StageTwo = ({closeModal, setStage, stage, onChecked, setColorHandler}: StageTwoProps) => {
 
     const [purpleColor, setPurpleColor] = useState(false);
     const [greenColor, setGreenColor] = useState(false);
@@ -29,7 +30,7 @@ export const StageTwo = ({setStage, stage, onChecked, setColorHandler}: StageTwo
     const [other, setOther] = useState(false);
 
     return (
-        <ModalWindow>
+        <ModalWindow closeModal={closeModal}>
             <h1 className={styles.title}>Bags PRODUCT Form Specification</h1>
             <form className={styles.form}>
                 <div className={styles.formBlock}>
@@ -215,7 +216,6 @@ export const StageTwo = ({setStage, stage, onChecked, setColorHandler}: StageTwo
             <div className={styles.formActions}>
                 <button onClick={() => setStage(stage - 1)} className={styles.formActionButton}>Back</button>
                 <button onClick={() => setStage(3)} className={styles.formActionButtonBlue}>Next</button>
-                <button onClick={() => setStage(0)} className={styles.closeButton}>&times;</button>
             </div>
         </ModalWindow>
     )

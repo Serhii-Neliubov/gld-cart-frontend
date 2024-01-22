@@ -14,7 +14,11 @@ export type formDataProps = {
     [key: string]: string | string[];
 }
 
-export const AwesomeLipCare = () => {
+type AwesomeLipCareProps = {
+    closeModal: () => void,
+}
+
+export const AwesomeLipCare = ({closeModal}: AwesomeLipCareProps) => {
     const [stage, setStage] = useState(1);
     const [price, setPrice] = useState('');
     const [discountedPrice, setDiscountedPrice] = useState('');
@@ -57,6 +61,7 @@ export const AwesomeLipCare = () => {
     return (
         <React.Fragment>
             { stage === 1 && <StageOne
+                closeModal={closeModal}
                 formData={formData}
                 setStage={setStage}
                 setFormData={setFormData}
@@ -69,14 +74,17 @@ export const AwesomeLipCare = () => {
             /> }
             { stage === 2 && <StageTwo
                 setStage={setStage}
+                closeModal={closeModal}
                 stage={stage}
             /> }
             { stage === 3 && <StageThree
                 setStage={setStage}
+                closeModal={closeModal}
                 stage={stage}
             /> }
             { stage === 4 && <StageFour
                 onChecked={onChecked}
+                closeModal={closeModal}
                 formData={formData}
                 price={price}
                 discount={discount}
