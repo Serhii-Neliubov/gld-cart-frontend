@@ -2,7 +2,6 @@ import styles from "./RentingProfservicesPage.module.scss";
 import React, {FC, useState} from "react";
 import RentingStage from "../../components/RentingStage/RentingStage.tsx";
 import {setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
-import {Bags} from "../products-vendor/modal-windows/bags/Bags.tsx";
 import {ProfessionalServicesData} from "../../data/vendorProductsData/ProfessionalServicesData.ts";
 import {useDispatch} from "react-redux";
 
@@ -25,10 +24,8 @@ const clearClick: IClearClick = {
 const RentingProfservicesPage: FC = () => {
   const dispatch = useDispatch();
 
-  const [stage, setStage] = useState(0);
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
-  const [selectedSubCategoryItem, setSelectedSubCategoryItem] = useState<string | null>(null);
   const [coloredStage, setColoredStage] = useState(0);
 
   const subcategories = Object.keys(isClicked);
@@ -103,14 +100,8 @@ const RentingProfservicesPage: FC = () => {
                         Object.keys(object.items).includes(selectedSubCategory) ? (
                             object.items[selectedSubCategory].map((arrayItem, index) => (
                                 <button
-                                    style={{backgroundColor: selectedSubCategoryItem === arrayItem ? "#02A0A0" : "",}}
                                     onClick={() => {
-                                      setSelectedSubCategoryItem(arrayItem);
                                       dispatch(setVendorSelectedItemValue(arrayItem));
-
-                                      if (object.category === 'bags') {
-                                        setStage(1)
-                                      }
                                     }}
                                     key={index}
                                     className={styles.main_item_3}
@@ -121,7 +112,6 @@ const RentingProfservicesPage: FC = () => {
                         ) : null
                     )}
                   </div>
-                  <Bags stage={stage} setStage={setStage}/>
                 </div>
               </div>
             </div>

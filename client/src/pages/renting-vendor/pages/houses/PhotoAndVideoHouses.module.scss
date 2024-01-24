@@ -1,0 +1,48 @@
+.photoBlocksContent{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  & > span{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.photoBlock{
+  width: 140px;
+  height: 140px;
+  border: 2px solid #ABABAB;
+  position: relative;
+  & > img {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.photoBlocks{
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputBlock{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  & > label{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & > input{
+    border: 1px solid #ABABAB;
+    padding: 14px;
+  }
+}

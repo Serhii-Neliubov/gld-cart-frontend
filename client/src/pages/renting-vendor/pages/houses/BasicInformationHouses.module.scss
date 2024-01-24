@@ -1,0 +1,199 @@
+
+.container{
+  padding-bottom: 50px;
+}
+.inputsCheckbox{
+  display: flex;
+  justify-content: space-between;
+}
+.title{
+  color: #000;
+  font-size: 32.854px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 17px;
+}
+
+.inputsTextBox{
+  display: flex;
+  gap: 25px;
+  width: 100%;
+}
+.content{
+  border: 1px solid black;
+  padding: 40px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.subtitle{
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.inputTextBox{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  & > label {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & > input {
+    outline: none;
+    border: 1px solid #ABABAB;
+    background: #FFF;
+    padding: 15px;
+  }
+}
+
+.inputsRadio{
+  & > span{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & > div{
+    margin-top: 8px;
+    display: flex;
+    gap: 30px;
+  }
+}
+.inputRadioBox{
+  display: flex;
+}
+.inputAreaBox{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & > label {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & > textarea {
+    outline: none;
+    border: 1px solid #ABABAB;
+    background: #FFF;
+    height: 107px;
+    width: 100%;
+    padding: 15px;
+    resize: none;
+  }
+}
+
+.inputRadioBox{
+  display: flex;
+  gap: 10px;
+}
+
+.packageDetails{
+  & > span {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+.inputCheckbox{
+  & > div{
+    margin: 25px 0;
+    display: flex;
+    gap: 10px;
+
+    & > label{
+      color: #000;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+}
+.inputsBox{
+  & > div {
+    display: flex;
+    gap: 20px;
+  }
+  .inputBox{
+    & > select{
+      border: 1px solid #ABABAB;
+      width: 144px;
+      padding: 10px;
+      height: 45px;
+      outline: none;
+
+      color: #696565;
+      font-size: 15.54px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+  & > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    & > span{
+      color: #000;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+
+    & > input {
+      border: 1px solid #ABABAB;
+      width: 144px;
+      padding: 10px 24px;
+      outline: none;
+    }
+  }
+}
+
+.actionButtons{
+  margin-top: 25px;
+  align-items: center;
+  gap: 15px;
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+.closeButton{
+  cursor: pointer;
+  padding: 10px 50px;
+  color: rgba(0, 0, 0, 0.20);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+.nextButton{
+  cursor: pointer;
+  padding: 10px 60px;
+  background: #1B6CD8;
+  color: #FFF;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

@@ -76,6 +76,9 @@ import {PublishComplete} from "../pages/renting-vendor/pages/vehicle/PublishComp
 import {BasicInformationElectronics} from "../pages/renting-vendor/pages/electronics/BasicInformationElectronics.tsx";
 import {PhotoAndVideoElectronics} from "../pages/renting-vendor/pages/electronics/PhotoAndVideoElectronics.tsx";
 import {SpecificationsElectronics} from "../pages/renting-vendor/pages/electronics/SpecificationsElectronics.tsx";
+import {BasicInformationHouses} from "../pages/renting-vendor/pages/houses/BasicInformationHouses.tsx";
+import {PhotoAndVideoHouses} from "../pages/renting-vendor/pages/houses/PhotoAndVideoHouses.tsx";
+import {SpecificationsHouses} from "../pages/renting-vendor/pages/houses/SpecificationsHouses.tsx";
 
 interface IRoutes {
   component: FC;
@@ -302,11 +305,28 @@ export const vendorRoutes: IRoutes[] = [
     component: PublishComplete,
     path: '/renting-category-page/electronics/basic-information/photo-and-video/specifications/publish-complete'
   },
+  // Houses
+  {
+    component: BasicInformationHouses,
+    path: "/renting-category-page/houses/basic-information",
+  },
+  {
+    component: PhotoAndVideoHouses,
+    path: '/renting-category-page/houses/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsHouses,
+    path: '/renting-category-page/houses/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishComplete,
+    path: '/renting-category-page/houses/basic-information/photo-and-video/specifications/publish-complete'
+  },
+
   {
     component: ItemPublishPage,
     path: "/renting-category-page/vehicles/photo-and-video/publishing",
   },
-
   {
     component: PublishSuccessfully,
     path: "/successfully-published",

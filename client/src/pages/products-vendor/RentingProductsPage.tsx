@@ -1,11 +1,10 @@
 import React, { FC, useState } from "react";
 import styles from "./RentingProductsPage.module.scss";
-import {ProductsData, ProductsDataProps} from "../../data/vendorProductsData/ProductsData.ts";
+import {ProductsData} from "../../data/vendorProductsData/ProductsData.ts";
 import RentingStage from "../../components/RentingStage/RentingStage";
 import { useDispatch } from "react-redux";
 import { setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
 import {setProductCategory, setProductName, setProductSubcategory} from "../../redux/slices/vendorProductInfoSlice.ts";
-import { ModalList } from "./modal-windows/ModalList.tsx";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -33,19 +32,11 @@ const RentingProductsPage: FC = () => {
   const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState<IClearClick>({...clearClick});
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
-  const [selectedSubCategoryItem, setSelectedSubCategoryItem] = useState<string | null>(null);
   const [coloredStage, setColoredStage] = useState(0);
-  const [modalOpenValue, setModalOpenValue] = useState('');
   const subcategories = Object.keys(isClicked);
-  function productClickHandler(arrayItem: string, object: ProductsDataProps) {
-    setSelectedSubCategoryItem(arrayItem);
+  function productClickHandler(arrayItem: string) {
     dispatch(setVendorSelectedItemValue(arrayItem));
     dispatch(setProductName(arrayItem));
-    setModalOpenValue(object.category);
-  }
-
-  function closeModal() {
-    setModalOpenValue('');
   }
 
   return (
@@ -120,9 +111,8 @@ const RentingProductsPage: FC = () => {
                         Object.keys(object.items).includes(selectedSubCategory) ? (
                             object.items[selectedSubCategory].map((arrayItem, index) => (
                                 <button
-                                    style={{backgroundColor: selectedSubCategoryItem === arrayItem ? "#02A0A0" : "",}}
                                     onClick={() => {
-                                      productClickHandler(arrayItem, object)
+                                      productClickHandler(arrayItem)
                                     }}
                                     key={index}
                                     className={styles.main_item_3}
@@ -133,7 +123,6 @@ const RentingProductsPage: FC = () => {
                         ) : null
                     )}
                   </div>
-                  <ModalList closeModal={closeModal} modalOpenValue={modalOpenValue} />
                 </div>
               </div>
             </div>
