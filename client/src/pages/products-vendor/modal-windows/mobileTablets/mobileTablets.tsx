@@ -4,7 +4,7 @@ import {StageTwo} from "./popupWindowStages/StageTwo.tsx";
 import {StageThree} from "./popupWindowStages/StageThree.tsx";
 
 export type formDataProps = {
-    productType: string;
+    condition: string;
     priceType: string;
     operatingSystem: string,
     processor: string,
@@ -26,7 +26,7 @@ export const MobileTablets = ({closeModal}: AwesomeLipCareProps) => {
     const [discount, setDiscount] = useState('');
 
     const [formData, setFormData] = useState<formDataProps>({
-        productType: 'New',
+        condition: 'New',
         priceType: 'Full Price',
         operatingSystem: '',
         processor: '',

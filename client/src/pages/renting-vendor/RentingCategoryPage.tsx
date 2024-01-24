@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
 import styles from "./RentingCategoryPage.module.scss";
 import React, {FC, useState} from "react";
 import RentingStage from "../../components/RentingStage/RentingStage.tsx";
 import {RentingData} from "../../data/vendorProductsData/RentingData.ts";
-import {ModalsList} from "./modals/ModalsList.tsx";
+import {setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
+import {setProductCategory, setProductName, setProductSubcategory} from "../../redux/slices/vendorProductInfoSlice.ts";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -14,15 +16,32 @@ const clearClick: IClearClick = {
   electronics: false,
 };
 
+const ROUTES = {
+  VEHICLES: 'vehicles',
+  HOUSES: 'houses',
+  ELECTRONICS: 'electronics'
+}
+
 const RentingCategoryPage: FC = () => {
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [coloredStage, setColoredStage] = useState(0);
-  const [selectedButton, setSelectedButton] = React.useState<string | null>(
-    null
-  );
-  const handleButtonClick = (item: string) => {
-    setSelectedButton(item);
-  };
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
+  const dispatch = useDispatch();
+  const subcategories = Object.keys(isClicked);
+  const navigate = useNavigate();
+  function productClickHandler(arrayItem: string, category: string) {
+    dispatch(setVendorSelectedItemValue(arrayItem));
+    dispatch(setProductName(arrayItem));
+
+    if(category === ROUTES.VEHICLES){
+      navigate('/renting-category-page/vehicle/basic-information')
+    } else if(category == ROUTES.HOUSES){
+      navigate('/renting-category-page/houses/basic-information')
+    } else if(category === ROUTES.ELECTRONICS){
+      navigate('/renting-category-page/electronics/basic-information')
+    }
+  }
+
   return (
     <React.Fragment>
       <div className="__container">
@@ -38,32 +57,33 @@ const RentingCategoryPage: FC = () => {
                 <div className={styles.main_content}>
                   {/* CATEGORY GENERATION */}
                   <div className={styles.main_items_1}>
-                    {RentingData.map((category) => (
+                    {RentingData.map((item) => (
                         <button
-                            key={category.name}
+                            key={item.name}
                             style={
-                              isClicked[category.category]
-                                  ? {backgroundColor: "#02A0A0"}
+                              isClicked[item.category]
+                                  ? { backgroundColor: "#02A0A0" }
                                   : {}
                             }
                             onClick={() => {
                               setIsClicked({
                                 ...clearClick,
-                                [category.category]: true,
+                                [item.category]: true,
                               });
+                              dispatch(setProductCategory(item.category));
                               setColoredStage(1);
-                              setSelectedButton("");
+                              setSelectedSubCategory("");
                             }}
                             className={styles.main_item_1}
                         >
-                          <img src={category.image} alt="img"/>
-                          <span>{category.name}</span>
+                          <img src={item.image} alt="img" />
+                          <span>{item.name}</span>
                         </button>
                     ))}
                   </div>
                   {/* SUBCATEGORY GENERATION */}
                   <div className={styles.main_items_2}>
-                    {Object.keys(isClicked).map((key) =>
+                    {subcategories.map((key) =>
                         isClicked[key] ? (
                             RentingData.filter((item) => item.category === key).map(
                                 (filteredItem) =>
@@ -73,10 +93,11 @@ const RentingCategoryPage: FC = () => {
                                             className={styles.main_item_2}
                                             style={{
                                               backgroundColor:
-                                                  selectedButton === name ? "#02A0A0" : "",
+                                                  selectedSubCategory === name ? "#02A0A0" : "",
                                             }}
                                             onClick={() => {
-                                              handleButtonClick(name);
+                                              dispatch(setProductSubcategory(name));
+                                              setSelectedSubCategory(name);
                                               setColoredStage(2);
                                             }}
                                         >
@@ -87,15 +108,21 @@ const RentingCategoryPage: FC = () => {
                         ) : null
                     )}
                   </div>
-                  {/* ITEMS GENERATION */}
+                  {/* PRODUCTS GENERATION */}
                   <div className={styles.main_items_3}>
                     {RentingData.map((object) =>
-                        selectedButton &&
-                        Object.keys(object.items).includes(selectedButton) ? (
-                            object.items[selectedButton].map((arrayItem, index) => (
-                                <Link to="/" key={index} className={styles.main_item_2}>
+                        selectedSubCategory &&
+                        Object.keys(object.items).includes(selectedSubCategory) ? (
+                            object.items[selectedSubCategory].map((arrayItem, index) => (
+                                <button
+                                    onClick={() => {
+                                      productClickHandler(arrayItem, object.category)
+                                    }}
+                                    key={index}
+                                    className={styles.main_item_1}
+                                >
                                   <span>{arrayItem}</span>
-                                </Link>
+                                </button>
                             ))
                         ) : null
                     )}
@@ -103,7 +130,6 @@ const RentingCategoryPage: FC = () => {
                 </div>
               </div>
             </div>
-            <ModalsList />
           </div>
         </div>
       </div>

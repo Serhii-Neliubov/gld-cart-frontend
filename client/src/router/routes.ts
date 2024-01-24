@@ -25,9 +25,6 @@ import Renting from "../pages/renting-buyer/Renting";
 import RentingCarPage from "../pages/renting-buyer/car/RentingCarPage";
 import RentingElectronicsPage from "../pages/renting-buyer/electronics/RentingElectronicsPage";
 import RentingCategoryPage from "../pages/renting-vendor/RentingCategoryPage";
-import BasicInformationPage from "../pages/renting-vendor/vehicles/BasicInformationPage";
-import SpecificationsPage from "../pages/renting-vendor/vehicles/specifications/SpecificationsPage";
-import BasicInformationPhoto from "../pages/renting-vendor/vehicles/specifications/photo-and-video/BasicInformationPhoto";
 import RentingProductsPage from "../pages/products-vendor/RentingProductsPage";
 import SendMessagePage from "../pages/send-message-successfully/SendMessagePage";
 import ProductsPage from "../pages/products-buyer/ProductsPage";
@@ -68,22 +65,17 @@ import RepairingServiceForm from "../pages/professional-services-vendor/repairin
 import RepairingServicePhoto from "../pages/professional-services-vendor/repairing/photo-and-video/RepairingServicePhoto";
 import RepairingServiceSpecifications from "../pages/professional-services-vendor/repairing/photo-and-video/specifications/RepairingServiceSpecifications";
 import RepairingServicePublishing from "../pages/professional-services-vendor/repairing/photo-and-video/specifications/publishing/RepairingServicePublishing";
-import ElectronicsRentingForm from "../pages/renting-vendor/electronics/ElectronicsRentingForm";
-import ElectronicsRentingPhoto from "../pages/renting-vendor/electronics/photo-and-video/ElectronicsRentingPhoto";
-import ElectronicsRentingSpecifications from "../pages/renting-vendor/electronics/photo-and-video/specifications/ElectronicsRentingSpecifications";
-import ElectronicsRentingPublishing from "../pages/renting-vendor/electronics/photo-and-video/specifications/publishing/ElectronicsRentingPublishing";
-import HouseRentingForm from "../pages/renting-vendor/house/HouseRentingForm";
-import HouseRentingPhoto from "../pages/renting-vendor/house/photo-and-video/HouseRentingPhoto";
-import HouseRentingSpecifications from "../pages/renting-vendor/house/photo-and-video/specifications/HouseRentingSpecifications";
-import HousePublishing from "../pages/renting-vendor/house/photo-and-video/specifications/publishing/HousePublishing";
-import LawnServiceForm from "../pages/renting-vendor/lawn/LawnServiceForm";
-import LawnServicePhoto from "../pages/renting-vendor/lawn/photo-and-video/LawnServicePhoto";
-import LawnServiceSpecifications from "../pages/renting-vendor/lawn/photo-and-video/specifications/LawnServiceSpecifications";
-import LawnServicePublishing from "../pages/renting-vendor/lawn/photo-and-video/specifications/publishing/LawnServicePublishing";
 import TrackOrder from "../pages/track-order/TrackOrder";
 import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
 import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
+import {BasicInformationVehicle} from "../pages/renting-vendor/pages/vehicle/BasicInformationVehicle.tsx";
+import {PhotoAndVideoVehicle} from "../pages/renting-vendor/pages/vehicle/PhotoAndVideoVehicle.tsx";
+import {SpecificationsVehicle} from "../pages/renting-vendor/pages/vehicle/./SpecificationsVehicle.tsx";
+import {PublishComplete} from "../pages/renting-vendor/pages/vehicle/PublishComplete.tsx";
+import {BasicInformationElectronics} from "../pages/renting-vendor/pages/electronics/BasicInformationElectronics.tsx";
+import {PhotoAndVideoElectronics} from "../pages/renting-vendor/pages/electronics/PhotoAndVideoElectronics.tsx";
+import {SpecificationsElectronics} from "../pages/renting-vendor/pages/electronics/SpecificationsElectronics.tsx";
 
 interface IRoutes {
   component: FC;
@@ -123,37 +115,6 @@ export const buyerRoutes: IRoutes[] = [
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
-  // House
-  { component: HouseRentingForm, path: "/renting-category-page/houses" },
-  {
-    component: HouseRentingPhoto,
-    path: "/renting-category-page/houses/photo-and-video",
-  },
-  {
-    component: HouseRentingSpecifications,
-    path: "/renting-category-page/houses/photo-and-video/specifications",
-  },
-  {
-    component: HousePublishing,
-    path: "/renting-category-page/houses/photo-and-video/specifications/publishing",
-  },
-  // Electronics
-  {
-    component: ElectronicsRentingForm,
-    path: "/renting-category-page/electronics",
-  },
-  {
-    component: ElectronicsRentingPhoto,
-    path: "/renting-category-page/electronics/photo-and-video",
-  },
-  {
-    component: ElectronicsRentingSpecifications,
-    path: "/renting-category-page/electronics/photo-and-video/specifications",
-  },
-  {
-    component: ElectronicsRentingPublishing,
-    path: "/renting-category-page/electronics/photo-and-video/specifications/publishing",
-  },
   // Cleaning Service
   {
     component: CleaningServiceForm,
@@ -221,23 +182,6 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: TreeCuttingServicePublishing,
     path: "/renting-category-page/tree-cutting/photo-and-video/specifications/publishing",
-  },
-  // Lawn Service
-  {
-    component: LawnServiceForm,
-    path: "/personal-services/lawn",
-  },
-  {
-    component: LawnServicePhoto,
-    path: "/personal-services/lawn/photo-and-video",
-  },
-  {
-    component: LawnServiceSpecifications,
-    path: "/renting-category-page/lawn/photo-and-video/specifications",
-  },
-  {
-    component: LawnServicePublishing,
-    path: "/renting-category-page/lawn/photo-and-video/specifications/publishing",
   },
   // Handyman Service
   {
@@ -324,15 +268,39 @@ export const vendorRoutes: IRoutes[] = [
   { component: HelpAndSupport, path: "/help-and-support" },
   { component: RentingProfservicesPage, path: "/personal-services" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
-  { component: BasicInformationPage, path: "/renting-category-page/vehicles" },
-
+  // Vehicles
   {
-    component: BasicInformationPhoto,
-    path: "/renting-category-page/vehicles/photo-and-video",
+    component: BasicInformationVehicle,
+    path: "/renting-category-page/vehicle/basic-information",
   },
   {
-    component: SpecificationsPage,
-    path: "/renting-category-page/vehicles/photo-and-video/specifications",
+    component: PhotoAndVideoVehicle,
+    path: '/renting-category-page/vehicle/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsVehicle,
+    path: '/renting-category-page/vehicle/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishComplete,
+    path: '/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'
+  },
+  // Electronics
+  {
+    component: BasicInformationElectronics,
+    path: "/renting-category-page/electronics/basic-information",
+  },
+  {
+    component: PhotoAndVideoElectronics,
+    path: '/renting-category-page/electronics/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsElectronics,
+    path: '/renting-category-page/electronics/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishComplete,
+    path: '/renting-category-page/electronics/basic-information/photo-and-video/specifications/publish-complete'
   },
   {
     component: ItemPublishPage,
