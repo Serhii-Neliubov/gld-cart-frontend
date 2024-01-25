@@ -32,7 +32,10 @@ const clearClick: IClearClick = {
 const ROUTES = {
   BEAUTY: 'beauty',
   BAGS: 'bags',
-  AWESOME: 'awesome'
+  AWESOME: 'awesome',
+  MOBILE_TABLETS: 'mobileTablets',
+  NECKLACES: 'necklaces',
+  CLOTHING: 'clothing'
 }
 
 const RentingProductsPage: FC = () => {
@@ -53,6 +56,12 @@ const RentingProductsPage: FC = () => {
       navigate('/products-category-page/bags/basic-information')
     } else if(category === ROUTES.AWESOME){
       navigate('/products-category-page/awesome/basic-information')
+    } else if(category === ROUTES.MOBILE_TABLETS){
+      navigate('/products-category-page/mobile-tablets/basic-information')
+    } else if(category === ROUTES.NECKLACES){
+      navigate('/products-category-page/necklaces/basic-information')
+    } else if(category === ROUTES.CLOTHING){
+      navigate('/products-category-page/clothing/basic-information')
     }
   }
 

@@ -62,6 +62,22 @@ import {SpecificationsBeauty} from "../pages/products-vendor/pages/beautyOfSkin/
 import {BasicInformationBags} from "../pages/products-vendor/pages/bags/BasicInformationBags.tsx";
 import {PhotoAndVideoBags} from "../pages/products-vendor/pages/bags/PhotoAndVideoBags.tsx";
 import {SpecificationsBags} from "../pages/products-vendor/pages/bags/SpecificationsBags.tsx";
+import {BasicInformationAwesome} from "../pages/products-vendor/pages/awesome/BasicInformationAwesome.tsx";
+import {PhotoAndVideoAwesome} from "../pages/products-vendor/pages/awesome/PhotoAndVideoAwesome.tsx";
+import {SpecificationsAwesome} from "../pages/products-vendor/pages/awesome/SpecificationsAwesome.tsx";
+import {
+  BasicInformationMobileTablets
+} from "../pages/products-vendor/pages/mobileTablets/BasicInformationMobileTablets.tsx";
+import {PhotoAndVideoMobileTablets} from "../pages/products-vendor/pages/mobileTablets/PhotoAndVideoMobileTablets.tsx";
+import {
+  SpecificationsMobileTablets
+} from "../pages/products-vendor/pages/mobileTablets/SpecificationsMobileTablets.tsx";
+import {BasicInformationNecklaces} from "../pages/products-vendor/pages/necklaces/BasicInformationNecklaces.tsx";
+import {PhotoAndVideoNecklaces} from "../pages/products-vendor/pages/necklaces/PhotoAndVideoNecklaces.tsx";
+import {SpecificationsNecklaces} from "../pages/products-vendor/pages/necklaces/SpecificationsNecklaces.tsx";
+import {BasicInformationClothing} from "../pages/products-vendor/pages/clothing/BasicInformationClothing.tsx";
+import {PhotoAndVideoClothing} from "../pages/products-vendor/pages/clothing/PhotoAndVideoClothing.tsx";
+import {SpecificationsClothing} from "../pages/products-vendor/pages/clothing/SpecificationsClothing.tsx";
 
 interface IRoutes {
   component: FC;
@@ -204,6 +220,58 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsBags,
     path: '/products-category-page/bags/basic-information/photo-and-video/specifications'
+  },
+  // Awesome Lip Care
+  {
+    component: BasicInformationAwesome,
+    path: "/products-category-page/awesome/basic-information",
+  },
+  {
+    component: PhotoAndVideoAwesome,
+    path: '/products-category-page/awesome/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsAwesome,
+    path: '/products-category-page/awesome/basic-information/photo-and-video/specifications'
+  },
+  // Awesome Lip Care
+  {
+    component: BasicInformationMobileTablets,
+    path: "/products-category-page/mobile-tablets/basic-information",
+  },
+  {
+    component: PhotoAndVideoMobileTablets,
+    path: '/products-category-page/mobile-tablets/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsMobileTablets,
+    path: '/products-category-page/mobile-tablets/basic-information/photo-and-video/specifications'
+  },
+  // Necklaces
+  {
+    component: BasicInformationNecklaces,
+    path: "/products-category-page/necklaces/basic-information",
+  },
+  {
+    component: PhotoAndVideoNecklaces,
+    path: '/products-category-page/necklaces/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsNecklaces,
+    path: '/products-category-page/necklaces/basic-information/photo-and-video/specifications'
+  },
+  // Bags
+  {
+    component: BasicInformationClothing,
+    path: "/products-category-page/clothing/basic-information",
+  },
+  {
+    component: PhotoAndVideoClothing,
+    path: '/products-category-page/clothing/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsClothing,
+    path: '/products-category-page/clothing/basic-information/photo-and-video/specifications'
   },
   // Houses
   {
