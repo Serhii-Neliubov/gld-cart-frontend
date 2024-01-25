@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PhotoAndVideoElectronics.module.scss'
-import {Layout} from "../../components/Layout.tsx";
+import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const PhotoAndVideoElectronics = () => {
     return (

@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './BasicInformationVehicle.module.scss'
-import {Layout} from "../../components/Layout.tsx";
+import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const BasicInformationVehicle = () => {
     return(
-        <Layout title='Vehicle Renting Form' subtitle='Basic information' stage={2} backLink='/renting-category-page' nextLink='/renting-category-page/electronics/basic-information/photo-and-video'>
+        <Layout title='Vehicle Renting Form' subtitle='Basic information' stage={2} backLink='/renting-category-page' nextLink='/renting-category-page/vehicle/basic-information/photo-and-video'>
             <div className={styles.inputTextBox}>
                 <label>Title</label>
                 <input placeholder='70 words max' maxLength={70}/>

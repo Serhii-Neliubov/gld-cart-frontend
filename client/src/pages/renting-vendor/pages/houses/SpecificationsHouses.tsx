@@ -1,6 +1,6 @@
 import React from 'react';
-import {Layout} from "../../components/Layout.tsx";
 import styles from './SpecificationsHouses.module.scss'
+import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const SpecificationsHouses = () => {
     return (

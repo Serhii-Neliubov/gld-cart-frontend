@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PhotoAndVideoHouses.module.scss'
-import {Layout} from "../../components/Layout.tsx";
+import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const PhotoAndVideoHouses = () => {
     return (

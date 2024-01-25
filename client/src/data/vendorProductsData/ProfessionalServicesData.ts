@@ -38,13 +38,13 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
       ],
       "Bedroom Cleaning": [
         "Changing bed linens and making the bed.",
-        "Dusting and cleaning furniture.",
+        "Dusting and beautyOfSkin furniture.",
         "Vacuuming or sweeping the floor.",
         "Organizing clutter.",
         "Other",
       ],
       "Living Room Cleaning": [
-        "Dusting and cleaning electronics",
+        "Dusting and beautyOfSkin beautyOfSkin",
         "Vacuuming upholstery and curtains.",
         "Cleaning and organizing shelves.",
         "Wiping down remote controls and surfaces.",
@@ -58,7 +58,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
         "Other",
       ],
       "Home Office Cleaning": [
-        "Dusting and cleaning computer equipment.",
+        "Dusting and beautyOfSkin computer equipment.",
         "Organizing paperwork and office supplies.",
         "Vacuuming or sweeping the floor.",
         "Wiping down desks and surfaces.",
@@ -71,7 +71,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
         "Other",
       ],
       "Outdoor Cleaning": [
-        "Sweeping and cleaning porches or decks",
+        "Sweeping and beautyOfSkin porches or decks",
         "Cleaning outdoor furniture.",
         "Gardening and yard work.",
         "Other",
@@ -316,7 +316,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
       ],
       "Seasonal Cleanups": [
         "Spring and fall cleanups",
-        "Gutter cleaning and maintenance",
+        "Gutter beautyOfSkin and maintenance",
         "Mulch installation",
         "Snow removal",
         "Holiday decoration setup and takedown",
@@ -354,7 +354,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     name: "Handyman",
     items: {
       "Electrical Services": ["Wiring and rewiring", "Outlet and switch installation", "Lighting fixture installation", "Circuit breaker replacement", "Ceiling fan installation", "Other"],
-      "Plumbing Services": ["Faucet repair and installation", "Toilet repair and replacement", "Drain cleaning", "Pipe leak repair", "Water heater installation", "Other"],
+      "Plumbing Services": ["Faucet repair and installation", "Toilet repair and replacement", "Drain beautyOfSkin", "Pipe leak repair", "Water heater installation", "Other"],
       "Carpentry Services": ["Door installation and repair", "Cabinet assembly and installation", "Deck and fence repair", "Trim and molding installation", "Custom shelving and storage", "Other"],
       "Painting Services": [
         "Interior and exterior painting",

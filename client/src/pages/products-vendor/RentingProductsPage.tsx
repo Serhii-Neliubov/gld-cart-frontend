@@ -5,6 +5,7 @@ import RentingStage from "../../components/RentingStage/RentingStage";
 import { useDispatch } from "react-redux";
 import { setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
 import {setProductCategory, setProductName, setProductSubcategory} from "../../redux/slices/vendorProductInfoSlice.ts";
+import {useNavigate} from "react-router-dom";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -28,15 +29,31 @@ const clearClick: IClearClick = {
   earrings: false,
 };
 
+const ROUTES = {
+  BEAUTY: 'beauty',
+  BAGS: 'bags',
+  AWESOME: 'awesome'
+}
+
 const RentingProductsPage: FC = () => {
   const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState<IClearClick>({...clearClick});
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
   const [coloredStage, setColoredStage] = useState(0);
   const subcategories = Object.keys(isClicked);
-  function productClickHandler(arrayItem: string) {
+  const navigate = useNavigate();
+  function productClickHandler(arrayItem: string, category: string) {
     dispatch(setVendorSelectedItemValue(arrayItem));
     dispatch(setProductName(arrayItem));
+    console.log(arrayItem)
+
+    if(category === ROUTES.BEAUTY){
+      navigate('/products-category-page/beauty/basic-information')
+    } else if(category == ROUTES.BAGS){
+      navigate('/products-category-page/bags/basic-information')
+    } else if(category === ROUTES.AWESOME){
+      navigate('/products-category-page/awesome/basic-information')
+    }
   }
 
   return (
@@ -112,7 +129,7 @@ const RentingProductsPage: FC = () => {
                             object.items[selectedSubCategory].map((arrayItem, index) => (
                                 <button
                                     onClick={() => {
-                                      productClickHandler(arrayItem)
+                                      productClickHandler(arrayItem, object.category)
                                     }}
                                     key={index}
                                     className={styles.main_item_3}

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Layout} from "../../components/Layout.tsx";
 import styles from './SpecificationsElectronics.module.scss'
+import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const SpecificationsElectronics = () => {
     return (

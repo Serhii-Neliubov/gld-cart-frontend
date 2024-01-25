@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from "../pages/vehicle/BasicInformationVehicle.module.scss";
-import RentingStage from "../../../components/RentingStage/RentingStage.tsx";
+import styles from "./BasicInformationVehicle.module.scss";
 import {useNavigate} from "react-router-dom";
+import RentingStage from "../RentingStage/RentingStage.tsx";
 
 type LayoutProps = {
     children: React.ReactNode,

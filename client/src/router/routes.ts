@@ -32,10 +32,6 @@ import PublishSuccessfully from "../pages/product-published-successfully/Publish
 import ProfServicesPage from "../pages/professional-services-buyer/ProfServicesPage";
 import CleaningPage from "../pages/professional-services-buyer/cleaning/CleaningPage";
 import GardeningPage from "../pages/professional-services-buyer/gardening/GardeningPage";
-import HandymanServiceForm from "../pages/professional-services-buyer/handyman/HandymanServiceForm";
-import HandymanServicePhoto from "../pages/professional-services-buyer/handyman/photo-and-video/HandymanServicePhoto";
-import HandymanServiceSpecifications from "../pages/professional-services-buyer/handyman/photo-and-video/specifications/HandymanServiceSpecifications";
-import HandymanServicePublishing from "../pages/professional-services-buyer/handyman/photo-and-video/specifications/publishing/HandymanServicePublishing";
 import PestControlServiceForm from "../pages/professional-services-buyer/pest-control/PestControlServiceForm";
 import PestControlServicePhoto from "../pages/professional-services-buyer/pest-control/photo-and-video/PestControlServicePhoto";
 import PestControlServiceSpecifications from "../pages/professional-services-buyer/pest-control/photo-and-video/specifications/PestControlServiceSpecifications";
@@ -45,26 +41,7 @@ import SnowRemovalServiceForm from "../pages/professional-services-buyer/snow-re
 import SnowRemovalServicePhoto from "../pages/professional-services-buyer/snow-removal/photo-and-video/SnowRemovalServicePhoto";
 import SnowRemovalServiceSpecifications from "../pages/professional-services-buyer/snow-removal/photo-and-video/specifications/SnowRemovalServiceSpecifications";
 import SnowRemovalServicePublishing from "../pages/professional-services-buyer/snow-removal/photo-and-video/specifications/publishing/SnowRemovalServicePublishing";
-import TreeCuttingServiceForm from "../pages/professional-services-buyer/tree-cutting/TreeCuttingServiceForm";
-import TreeCuttingServicePhoto from "../pages/professional-services-buyer/tree-cutting/photo-and-video/TreeCuttingServicePhoto";
-import TreeCuttingServicePublishing from "../pages/professional-services-buyer/tree-cutting/photo-and-video/specifications/publishing/TreeCuttingServicePublishing";
 import RentingProfservicesPage from "../pages/professional-services-vendor/RentingProfservicesPage.tsx";
-import CleaningServiceForm from "../pages/professional-services-vendor/cleaning-services/CleaningServiceForm";
-import CleaningServicePhoto from "../pages/professional-services-vendor/cleaning-services/photo-and-video/CleaningServicePhoto";
-import CleaningServiceSpecifications from "../pages/professional-services-vendor/cleaning-services/photo-and-video/specifications/CleaningServiceSpecifications";
-import CleaningServicePublishing from "../pages/professional-services-vendor/cleaning-services/photo-and-video/specifications/publishing/CleaningServicePublishing";
-import ElectricalServiceForm from "../pages/professional-services-vendor/electrical-service/ElectricalServiceForm";
-import ElectricalServicePhoto from "../pages/professional-services-vendor/electrical-service/photo-and-video/ElectricalServicePhoto";
-import ElectricalServiceSpecifications from "../pages/professional-services-vendor/electrical-service/photo-and-video/specifications/ElectricalServiceSpecifications";
-import ElectricalServicePublishing from "../pages/professional-services-vendor/electrical-service/photo-and-video/specifications/publishing/ElectricalServicePublishing";
-import GardeningServiceForm from "../pages/professional-services-vendor/gardening/GardeningServiceForm";
-import GardeningServicePhoto from "../pages/professional-services-vendor/gardening/photo-and-video/GardeningServicePhoto";
-import GardeningServiceSpecifications from "../pages/professional-services-vendor/gardening/photo-and-video/specifications/GardeningServiceSpecifications";
-import GardeningServicePublishing from "../pages/professional-services-vendor/gardening/photo-and-video/specifications/publishing/GardeningServicePublishing";
-import RepairingServiceForm from "../pages/professional-services-vendor/repairing/RepairingServiceForm";
-import RepairingServicePhoto from "../pages/professional-services-vendor/repairing/photo-and-video/RepairingServicePhoto";
-import RepairingServiceSpecifications from "../pages/professional-services-vendor/repairing/photo-and-video/specifications/RepairingServiceSpecifications";
-import RepairingServicePublishing from "../pages/professional-services-vendor/repairing/photo-and-video/specifications/publishing/RepairingServicePublishing";
 import TrackOrder from "../pages/track-order/TrackOrder";
 import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
@@ -79,6 +56,12 @@ import {SpecificationsElectronics} from "../pages/renting-vendor/pages/electroni
 import {BasicInformationHouses} from "../pages/renting-vendor/pages/houses/BasicInformationHouses.tsx";
 import {PhotoAndVideoHouses} from "../pages/renting-vendor/pages/houses/PhotoAndVideoHouses.tsx";
 import {SpecificationsHouses} from "../pages/renting-vendor/pages/houses/SpecificationsHouses.tsx";
+import {BasicInformationBeauty} from "../pages/products-vendor/pages/beautyOfSkin/BasicInformationBeauty.tsx";
+import {PhotoAndVideoBeauty} from "../pages/products-vendor/pages/beautyOfSkin/PhotoAndVideoBeauty.tsx";
+import {SpecificationsBeauty} from "../pages/products-vendor/pages/beautyOfSkin/SpecificationsBeauty.tsx";
+import {BasicInformationBags} from "../pages/products-vendor/pages/bags/BasicInformationBags.tsx";
+import {PhotoAndVideoBags} from "../pages/products-vendor/pages/bags/PhotoAndVideoBags.tsx";
+import {SpecificationsBags} from "../pages/products-vendor/pages/bags/SpecificationsBags.tsx";
 
 interface IRoutes {
   component: FC;
@@ -106,10 +89,10 @@ export const buyerRoutes: IRoutes[] = [
   { component: ShoppingCartPage, path: "/shopping-cart" },
   { component: RentingCarPage, path: "/renting-car" },
   { component: RentingCategoryPage, path: "/renting" },
-  { component: RentingElectronicsPage, path: "/renting-electronics" },
+  { component: RentingElectronicsPage, path: "/renting-beautyOfSkin" },
   { component: RentingHousePage, path: "/renting-house" },
   { component: RentingProductsPage, path: "/products-category-page" },
-  { component: CleaningPage, path: "/cleaning-page" },
+  { component: CleaningPage, path: "/beautyOfSkin-page" },
   { component: GardeningPage, path: "/gardening-page" },
   { component: RepairingPage, path: "/repairing-page" },
   { component: ProfilePage, path: "/profile" },
@@ -119,90 +102,10 @@ export const buyerRoutes: IRoutes[] = [
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
   // Cleaning Service
-  {
-    component: CleaningServiceForm,
-    path: "/personal-services/cleaning",
-  },
-  {
-    component: CleaningServicePhoto,
-    path: "/personal-services/cleaning/photo-and-video",
-  },
-  {
-    component: CleaningServiceSpecifications,
-    path: "/personal-services/cleaning/photo-and-video/specifications",
-  },
-  {
-    component: CleaningServicePublishing,
-    path: "/personal-services/cleaning/photo-and-video/specifications/publishing",
-  },
   // Repairing Service
-  {
-    component: RepairingServiceForm,
-    path: "/personal-services/repairing",
-  },
-  {
-    component: RepairingServicePhoto,
-    path: "/personal-services/repairing/photo-and-video",
-  },
-  {
-    component: RepairingServiceSpecifications,
-    path: "/renting-category-page/repairing/photo-and-video/specifications",
-  },
-  {
-    component: RepairingServicePublishing,
-    path: "/renting-category-page/repairing/photo-and-video/specifications/publishing",
-  },
   // Gardening Service
-  {
-    component: GardeningServiceForm,
-    path: "/personal-services/gardening",
-  },
-  {
-    component: GardeningServicePhoto,
-    path: "/personal-services/gardening/photo-and-video",
-  },
-  {
-    component: GardeningServiceSpecifications,
-    path: "/renting-category-page/gardening/photo-and-video/specifications",
-  },
-  {
-    component: GardeningServicePublishing,
-    path: "/renting-category-page/gardening/photo-and-video/specifications/publishing",
-  },
   // Tree Cutting Service
-  {
-    component: TreeCuttingServiceForm,
-    path: "/personal-services/tree-cutting",
-  },
-  {
-    component: TreeCuttingServicePhoto,
-    path: "/personal-services/tree-cutting/photo-and-video",
-  },
-  {
-    component: GardeningServiceSpecifications,
-    path: "/renting-category-page/tree-cutting/photo-and-video/specifications",
-  },
-  {
-    component: TreeCuttingServicePublishing,
-    path: "/renting-category-page/tree-cutting/photo-and-video/specifications/publishing",
-  },
   // Handyman Service
-  {
-    component: HandymanServiceForm,
-    path: "/personal-services/handyman",
-  },
-  {
-    component: HandymanServicePhoto,
-    path: "/personal-services/handyman/photo-and-video",
-  },
-  {
-    component: HandymanServiceSpecifications,
-    path: "/renting-category-page/handyman/photo-and-video/specifications",
-  },
-  {
-    component: HandymanServicePublishing,
-    path: "/renting-category-page/handyman/photo-and-video/specifications/publishing",
-  },
   // Snow Removal Service
   {
     component: SnowRemovalServiceForm,
@@ -238,22 +141,6 @@ export const vendorRoutes: IRoutes[] = [
     path: "/renting-category-page/pest-control/photo-and-video/specifications/publishing",
   },
   // Electrical Service
-  {
-    component: ElectricalServiceForm,
-    path: "/personal-services/electrical",
-  },
-  {
-    component: ElectricalServicePhoto,
-    path: "/personal-services/electrical/photo-and-video",
-  },
-  {
-    component: ElectricalServiceSpecifications,
-    path: "/renting-category-page/electrical/photo-and-video/specifications",
-  },
-  {
-    component: ElectricalServicePublishing,
-    path: "/renting-category-page/electrical/photo-and-video/specifications/publishing",
-  },
   // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },
   { component: ContactUsPage, path: "/contact-us" },
@@ -305,6 +192,19 @@ export const vendorRoutes: IRoutes[] = [
     component: PublishComplete,
     path: '/renting-category-page/electronics/basic-information/photo-and-video/specifications/publish-complete'
   },
+  // Bags
+  {
+    component: BasicInformationBags,
+    path: "/products-category-page/bags/basic-information",
+  },
+  {
+    component: PhotoAndVideoBags,
+    path: '/products-category-page/bags/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsBags,
+    path: '/products-category-page/bags/basic-information/photo-and-video/specifications'
+  },
   // Houses
   {
     component: BasicInformationHouses,
@@ -321,6 +221,23 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: PublishComplete,
     path: '/renting-category-page/houses/basic-information/photo-and-video/specifications/publish-complete'
+  },
+// Beauty
+  {
+    component: BasicInformationBeauty,
+    path: "/products-category-page/beauty/basic-information",
+  },
+  {
+    component: PhotoAndVideoBeauty,
+    path: '/products-category-page/beauty/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsBeauty,
+    path: '/products-category-page/beauty/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishComplete,
+    path: '/products-category-page/beauty/basic-information/photo-and-video/specifications/publish-complete'
   },
 
   {
