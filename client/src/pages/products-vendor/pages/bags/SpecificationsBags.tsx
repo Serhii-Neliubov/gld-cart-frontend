@@ -6,72 +6,213 @@ export const SpecificationsBags = () => {
     return (
         <Layout title='Bags PRODUCT Form' subtitle='Products Specification' stage={4}
                 backLink='/products-category-page/bags/basic-information/photo-and-video'
-                nextLink='/products-category-page/bags/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+            <span className={styles.tipTitle}>Select the Features of your product</span>
+            <div className={styles.checkboxInputsBox}>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Leather</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Nylon</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Denim</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Other</label>
+                    </div>
+                </div>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Canvas</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Polyester</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Suede</label>
+                    </div>
+                </div>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Vinyl</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Fabric Blend</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Synthetic Leather</label>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.choosingColor}>
+                <span>Select the Colour of your product</span>
+                <div>
+                    <button className={styles.choosingColorItem} style={{backgroundColor: '#9302A0'}}/>
+                    <button className={styles.choosingColorItem} style={{backgroundColor: '#318834'}}/>
+                    <button className={styles.choosingColorItem} style={{backgroundColor: '#000000'}}/>
+                    <button className={styles.choosingColorItem} style={{backgroundColor: '#282684'}}/>
+                    <button className={styles.choosingColorItem} style={{backgroundColor: '#EC0000'}}/>
+                    <button className={styles.addingColor}>+</button>
+                </div>
+            </div>
+            <span className={styles.tipTitle}>Select Size of products</span>
+            <div className={styles.checkboxInputsBox}>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Adjustable Straps</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Inner Pockets</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>RFID Blocking</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Other</label>
+                    </div>
+                </div>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Multiple Compartments</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Water-Resistant</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Expandable</label>
+                    </div>
+                </div>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Zipper Closure</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Laptop Compartment</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Eco-Friendly Materials</label>
+                    </div>
+                </div>
+            </div>
+            <span className={styles.tipTitle}>Select the type of closure for the bag</span>
+            <div className={styles.checkboxInputColumn}>
+                <div className={styles.checkboxInputs}>
+                    <input type='checkbox'/>
+                    <label>Medium</label>
+                </div>
+                <div className={styles.checkboxInputs}>
+                    <input type='checkbox'/>
+                    <label>Small</label>
+                </div>
+                <div className={styles.checkboxInputs}>
+                    <input type='checkbox'/>
+                    <label>Large</label>
+                </div>
+            </div>
+            <span className={styles.tipTitle}>Select the type of closure for the bag</span>
+            <div className={styles.checkboxInputsBox}>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Zipper</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Drawstring</label>
+                    </div>
+                </div>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Magnetic Snap</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Flap</label>
+                    </div>
+                </div>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Buckle</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Other</label>
+                    </div>
+                </div>
+            </div>
+            <span className={styles.tipTitle}>Select the type of closure for the bag</span>
+            <div className={styles.checkboxInputsBox}>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Shoulder Strap</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Backpack Straps</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Other</label>
+                    </div>
+                </div>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Crossbody Strap</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Detachable Strap</label>
+                    </div>
+                </div>
+                <div className={styles.checkboxInputColumn}>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>Handle</label>
+                    </div>
+                    <div className={styles.checkboxInputs}>
+                        <input type='checkbox'/>
+                        <label>No Strap (Clutch)</label>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.inputBox}>
+                <label>Pockets</label>
+                <input type='text'
+                       placeholder='Write the number and type of pockets in the bag (e.g., interior pockets, exterior pockets)'/>
+            </div>
+            <div className={styles.areaBox}>
+                <label>Care Instructions</label>
+                <textarea placeholder='Provide care and maintenance instructions for the bag'/>
+            </div>
             <div className={styles.inputBox}>
                 <label>How many product are in stock?</label>
                 <input type='number' placeholder='100'/>
-            </div>
-            <div className={styles.inputsRadio}>
-                <span>The product  you want to sell is ?</span>
-                <div>
-                    <div className={styles.inputRadioBox}>
-                        <label>Branded</label>
-                        <input type='radio'/>
-                    </div>
-                    <div className={styles.inputRadioBox}>
-                        <label>Local</label>
-                        <input type='radio'/>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.subtitle}>
-                <span>Select the appropriate skin type for which the product is suitable</span>
-            </div>
-            <div className={styles.checkboxInputs}>
-                <input type='checkbox'/>
-                <label>Normal</label>
-            </div>
-            <div className={styles.checkboxInputs}>
-                <input type='checkbox'/>
-                <label>Oily</label>
-            </div>
-            <div className={styles.checkboxInputs}>
-                <input type='checkbox'/>
-                <label>Dry</label>
-            </div>
-            <div className={styles.checkboxInputs}>
-                <input type='checkbox'/>
-                <label>Combination</label>
-            </div>
-            <div className={styles.checkboxInputs}>
-                <input type='checkbox'/>
-                <label>Sensitive</label>
-            </div>
-            <div className={styles.inputsRadio}>
-                <span>Paraben-Free: [Check if the product is paraben-free]</span>
-                <div>
-                    <div className={styles.inputRadioBox}>
-                        <label>Yes</label>
-                        <input type='radio'/>
-                    </div>
-                    <div className={styles.inputRadioBox}>
-                        <label>No</label>
-                        <input type='radio'/>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.inputsRadio}>
-                <span>Cruelty-Free: [Check if the product is cruelty-free]</span>
-                <div>
-                    <div className={styles.inputRadioBox}>
-                        <label>Yes</label>
-                        <input type='radio'/>
-                    </div>
-                    <div className={styles.inputRadioBox}>
-                        <label>No</label>
-                        <input type='radio'/>
-                    </div>
-                </div>
             </div>
         </Layout>
     )
