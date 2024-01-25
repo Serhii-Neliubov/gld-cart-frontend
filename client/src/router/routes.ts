@@ -78,6 +78,18 @@ import {SpecificationsNecklaces} from "../pages/products-vendor/pages/necklaces/
 import {BasicInformationClothing} from "../pages/products-vendor/pages/clothing/BasicInformationClothing.tsx";
 import {PhotoAndVideoClothing} from "../pages/products-vendor/pages/clothing/PhotoAndVideoClothing.tsx";
 import {SpecificationsClothing} from "../pages/products-vendor/pages/clothing/SpecificationsClothing.tsx";
+import {BasicInformationBluetooth} from "../pages/products-vendor/pages/bluetooth/BasicInformationBluetooth.tsx";
+import {PhotoAndVideoBluetooth} from "../pages/products-vendor/pages/bluetooth/PhotoAndVideoBluetooth.tsx";
+import {SpecificationsBluetooth} from "../pages/products-vendor/pages/bluetooth/SpecificationsBluetooth.tsx";
+import {BasicInformationFacial} from "../pages/products-vendor/pages/facial/BasicInformationFacial.tsx";
+import {PhotoAndVideoFacial} from "../pages/products-vendor/pages/facial/PhotoAndVideoFacial.tsx";
+import {SpecificationsFacial} from "../pages/products-vendor/pages/facial/SpecificationsFacial.tsx";
+import {BasicInformationShoes} from "../pages/products-vendor/pages/shoes/BasicInformationShoes.tsx";
+import {PhotoAndVideoShoes} from "../pages/products-vendor/pages/shoes/PhotoAndVideoShoes.tsx";
+import {SpecificationsShoes} from "../pages/products-vendor/pages/shoes/SpecificationsShoes.tsx";
+import {BasicInformationCpu} from "../pages/products-vendor/pages/cpu/BasicInformationCpu.tsx";
+import {PhotoAndVideoCpu} from "../pages/products-vendor/pages/cpu/PhotoAndVideoCpu.tsx";
+import {SpecificationsCpu} from "../pages/products-vendor/pages/cpu/SpecificationsCpu.tsx";
 
 interface IRoutes {
   component: FC;
@@ -260,7 +272,7 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsNecklaces,
     path: '/products-category-page/necklaces/basic-information/photo-and-video/specifications'
   },
-  // Bags
+  // Clothing
   {
     component: BasicInformationClothing,
     path: "/products-category-page/clothing/basic-information",
@@ -272,6 +284,58 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsClothing,
     path: '/products-category-page/clothing/basic-information/photo-and-video/specifications'
+  },
+  // Bluetooth
+  {
+    component: BasicInformationBluetooth,
+    path: "/products-category-page/bluetooth/basic-information",
+  },
+  {
+    component: PhotoAndVideoBluetooth,
+    path: '/products-category-page/bluetooth/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsBluetooth,
+    path: '/products-category-page/bluetooth/basic-information/photo-and-video/specifications'
+  },
+  // Facial Care
+  {
+    component: BasicInformationFacial,
+    path: "/products-category-page/facial/basic-information",
+  },
+  {
+    component: PhotoAndVideoFacial,
+    path: '/products-category-page/facial/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsFacial,
+    path: '/products-category-page/facial/basic-information/photo-and-video/specifications'
+  },
+  // Shoes
+  {
+    component: BasicInformationShoes,
+    path: "/products-category-page/shoes/basic-information",
+  },
+  {
+    component: PhotoAndVideoShoes,
+    path: '/products-category-page/shoes/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsShoes,
+    path: '/products-category-page/shoes/basic-information/photo-and-video/specifications'
+  },
+  // CPU
+  {
+    component: BasicInformationCpu,
+    path: "/products-category-page/cpu/basic-information",
+  },
+  {
+    component: PhotoAndVideoCpu,
+    path: '/products-category-page/cpu/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsCpu,
+    path: '/products-category-page/cpu/basic-information/photo-and-video/specifications'
   },
   // Houses
   {

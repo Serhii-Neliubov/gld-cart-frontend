@@ -35,7 +35,11 @@ const ROUTES = {
   AWESOME: 'awesome',
   MOBILE_TABLETS: 'mobileTablets',
   NECKLACES: 'necklaces',
-  CLOTHING: 'clothing'
+  CLOTHING: 'clothing',
+  BLUETOOTH: 'bluetooth',
+  FACIAL_LIP_CARE: 'facial',
+  SHOES: 'shoes',
+  CPU: 'cpu',
 }
 
 const RentingProductsPage: FC = () => {
@@ -62,6 +66,14 @@ const RentingProductsPage: FC = () => {
       navigate('/products-category-page/necklaces/basic-information')
     } else if(category === ROUTES.CLOTHING){
       navigate('/products-category-page/clothing/basic-information')
+    } else if(category === ROUTES.BLUETOOTH){
+      navigate('/products-category-page/bluetooth/basic-information')
+    } else if(category === ROUTES.FACIAL_LIP_CARE){
+      navigate('/products-category-page/facial/basic-information')
+    } else if(category === ROUTES.SHOES){
+      navigate('/products-category-page/shoes/basic-information')
+    } else if(category === ROUTES.CPU){
+      navigate('/products-category-page/cpu/basic-information')
     }
   }
 
