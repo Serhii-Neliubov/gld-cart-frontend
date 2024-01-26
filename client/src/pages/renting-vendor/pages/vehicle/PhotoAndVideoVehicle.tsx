@@ -4,7 +4,7 @@ import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const PhotoAndVideoVehicle = () => {
     return (
-        <Layout title='Vehicle Renting Form' subtitle='Photo and video' nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications' backLink='/products-category-page/beauty/basic-information' stage={3}>
+        <Layout title='Vehicle Renting Form' subtitle='Photo and video' nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications' backLink='/products-category-page/vehicle/basic-information' stage={3}>
             <div className={styles.photoBlocksContent}>
                 <span className={styles.uploadPhotosTitle}>UPLOAD UP TO 06 PHOTOS</span>
                 <div className={styles.photoBlocks}>

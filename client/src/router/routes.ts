@@ -48,7 +48,6 @@ import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
 import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
 import {BasicInformationVehicle} from "../pages/renting-vendor/pages/vehicle/BasicInformationVehicle.tsx";
 import {PhotoAndVideoVehicle} from "../pages/renting-vendor/pages/vehicle/PhotoAndVideoVehicle.tsx";
-import {SpecificationsVehicle} from "../pages/renting-vendor/pages/vehicle/./SpecificationsVehicle.tsx";
 import {PublishComplete} from "../pages/renting-vendor/pages/vehicle/PublishComplete.tsx";
 import {BasicInformationElectronics} from "../pages/renting-vendor/pages/electronics/BasicInformationElectronics.tsx";
 import {PhotoAndVideoElectronics} from "../pages/renting-vendor/pages/electronics/PhotoAndVideoElectronics.tsx";
@@ -105,6 +104,26 @@ import {SpecificationsSmartWatch} from "../pages/products-vendor/pages/smartWatc
 import {BasicInformationEarrings} from "../pages/products-vendor/pages/earrings/BasicInformationEarrings.tsx";
 import {PhotoAndVideoEarrings} from "../pages/products-vendor/pages/earrings/PhotoAndVideoEarrings.tsx";
 import {SpecificationsEarrings} from "../pages/products-vendor/pages/earrings/SpecificationsEarrings.tsx";
+import {SpecificationsVehicle} from "../pages/renting-vendor/pages/vehicle/SpecificationsVehicle.tsx";
+import {
+  BasicInformationCleaning
+} from "../pages/professional-services-vendor/pages/cleaning/BasicInformationCleaning.tsx";
+import {PhotoAndVideoCleaning} from "../pages/professional-services-vendor/pages/cleaning/PhotoAndVideoCleaning.tsx";
+import {SpecificationsCleaning} from "../pages/professional-services-vendor/pages/cleaning/SpecificationsCleaning.tsx";
+import {
+  BasicInformationRepairing
+} from "../pages/professional-services-vendor/pages/repairing/BasicInformationRepairing.tsx";
+import {PhotoAndVideoRepairing} from "../pages/professional-services-vendor/pages/repairing/PhotoAndVideoRepairing.tsx";
+import {
+  SpecificationsRepairing
+} from "../pages/professional-services-vendor/pages/repairing/SpecificationsRepairing.tsx";
+import {
+  BasicInformationGardening
+} from "../pages/professional-services-vendor/pages/gardening/BasicInformationGardening.tsx";
+import {PhotoAndVideoGardening} from "../pages/professional-services-vendor/pages/gardening/PhotoAndVideoGardening.tsx";
+import {
+  SpecificationsGardening
+} from "../pages/professional-services-vendor/pages/gardening/SpecificationsGardening.tsx";
 
 interface IRoutes {
   component: FC;
@@ -403,6 +422,45 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsSmartWatch,
     path: '/products-category-page/smart-watch/basic-information/photo-and-video/specifications'
+  },
+  // Cleaning
+  {
+    component: BasicInformationCleaning,
+    path: "/professional-services/cleaning/basic-information",
+  },
+  {
+    component: PhotoAndVideoCleaning,
+    path: '/professional-services/cleaning/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsCleaning,
+    path: '/professional-services/cleaning/basic-information/photo-and-video/specifications'
+  },
+  // Repairing
+  {
+    component: BasicInformationRepairing,
+    path: "/professional-services/repairing/basic-information",
+  },
+  {
+    component: PhotoAndVideoRepairing,
+    path: '/professional-services/repairing/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsRepairing,
+    path: '/professional-services/repairing/basic-information/photo-and-video/specifications'
+  },
+  // Gardening
+  {
+    component: BasicInformationGardening,
+    path: "/professional-services/gardening/basic-information",
+  },
+  {
+    component: PhotoAndVideoGardening,
+    path: '/professional-services/gardening/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsGardening,
+    path: '/professional-services/gardening/basic-information/photo-and-video/specifications'
   },
   // Earrings
   {

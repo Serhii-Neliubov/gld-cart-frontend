@@ -4,6 +4,8 @@ import RentingStage from "../../components/RentingStage/RentingStage.tsx";
 import {setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
 import {ProfessionalServicesData} from "../../data/vendorProductsData/ProfessionalServicesData.ts";
 import {useDispatch} from "react-redux";
+import {setProductCategory, setProductName, setProductSubcategory} from "../../redux/slices/vendorProductInfoSlice.ts";
+import {useNavigate} from "react-router-dom";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -21,6 +23,12 @@ const clearClick: IClearClick = {
   electrical: false,
 };
 
+const ROUTES = {
+  CLEANING: 'cleaning',
+  REPAIRING: 'repairing',
+  GARDENING: 'gardening',
+}
+
 const RentingProfservicesPage: FC = () => {
   const dispatch = useDispatch();
 
@@ -29,6 +37,20 @@ const RentingProfservicesPage: FC = () => {
   const [coloredStage, setColoredStage] = useState(0);
 
   const subcategories = Object.keys(isClicked);
+  const navigate = useNavigate();
+
+  function productClickHandler(arrayItem: string, category: string) {
+    dispatch(setVendorSelectedItemValue(arrayItem));
+    dispatch(setProductName(arrayItem));
+
+    if(category === ROUTES.CLEANING){
+      navigate('/professional-services/cleaning/basic-information')
+    } else if(category === ROUTES.REPAIRING){
+      navigate('/professional-services/repairing/basic-information')
+    } else if(category === ROUTES.GARDENING){
+      navigate('/professional-services/gardening/basic-information')
+    }
+  }
 
   return (
       <div className="__container">
@@ -49,7 +71,7 @@ const RentingProfservicesPage: FC = () => {
                             key={item.name}
                             style={
                               isClicked[item.category]
-                                  ? {backgroundColor: "#02A0A0"}
+                                  ? { backgroundColor: "#02A0A0" }
                                   : {}
                             }
                             onClick={() => {
@@ -57,12 +79,13 @@ const RentingProfservicesPage: FC = () => {
                                 ...clearClick,
                                 [item.category]: true,
                               });
+                              dispatch(setProductCategory(item.category));
                               setColoredStage(1);
                               setSelectedSubCategory("");
                             }}
                             className={styles.main_item_1}
                         >
-                          <img src={item.image} alt="img"/>
+                          <img src={item.image} alt="img" />
                           <span>{item.name}</span>
                         </button>
                     ))}
@@ -82,6 +105,7 @@ const RentingProfservicesPage: FC = () => {
                                                   selectedSubCategory === name ? "#02A0A0" : "",
                                             }}
                                             onClick={() => {
+                                              dispatch(setProductSubcategory(name));
                                               setSelectedSubCategory(name);
                                               setColoredStage(2);
                                             }}
@@ -93,7 +117,7 @@ const RentingProfservicesPage: FC = () => {
                         ) : null
                     )}
                   </div>
-                  {/* ITEMS GENERATION */}
+                  {/* PRODUCTS GENERATION */}
                   <div className={styles.main_items_3}>
                     {ProfessionalServicesData.map((object) =>
                         selectedSubCategory &&
@@ -101,10 +125,10 @@ const RentingProfservicesPage: FC = () => {
                             object.items[selectedSubCategory].map((arrayItem, index) => (
                                 <button
                                     onClick={() => {
-                                      dispatch(setVendorSelectedItemValue(arrayItem));
+                                      productClickHandler(arrayItem, object.category)
                                     }}
                                     key={index}
-                                    className={styles.main_item_3}
+                                    className={styles.main_item_1}
                                 >
                                   <span>{arrayItem}</span>
                                 </button>
