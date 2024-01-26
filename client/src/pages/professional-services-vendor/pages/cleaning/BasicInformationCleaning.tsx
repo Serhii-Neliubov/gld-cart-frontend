@@ -10,7 +10,7 @@ export const BasicInformationCleaning = () => {
                 <input placeholder='70 words max' maxLength={70}/>
             </div>
             <div className={styles.inputAreaBox}>
-                <label>Description</label>
+                <label>Service Description</label>
                 <textarea minLength={160} maxLength={9000} placeholder='Minimum 160 and maximum 9000 characters'/>
             </div>
             <div className={styles.inputRadioBox}>

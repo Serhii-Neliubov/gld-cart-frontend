@@ -124,6 +124,50 @@ import {PhotoAndVideoGardening} from "../pages/professional-services-vendor/page
 import {
   SpecificationsGardening
 } from "../pages/professional-services-vendor/pages/gardening/SpecificationsGardening.tsx";
+import {
+  BasicInformationTreeCutting
+} from "../pages/professional-services-vendor/pages/treeCutting/BasicInformationTreeCutting.tsx";
+import {
+  PhotoAndVideoTreeCutting
+} from "../pages/professional-services-vendor/pages/treeCutting/PhotoAndVideoTreeCutting.tsx";
+import {
+  SpecificationsTreeCutting
+} from "../pages/professional-services-vendor/pages/treeCutting/SpecificationsTreeCutting.tsx";
+import {SpecificationsLawn} from "../pages/professional-services-vendor/pages/lawnServices/SpecificationsLawn.tsx";
+import {PhotoAndVideoLawn} from "../pages/professional-services-vendor/pages/lawnServices/PhotoAndVideoLawn.tsx";
+import {BasicInformationLawn} from "../pages/professional-services-vendor/pages/lawnServices/BasicInformationLawn.tsx";
+import {
+  BasicInformationHandyman
+} from "../pages/professional-services-vendor/pages/handyman/BasicInformationHandyman.tsx";
+import {PhotoAndVideoHandyman} from "../pages/professional-services-vendor/pages/handyman/PhotoAndVideoHandyman.tsx";
+import {SpecificationsHandyman} from "../pages/professional-services-vendor/pages/handyman/SpecificationsHandyman.tsx";
+import {
+  BasicInformationSnowRemoval
+} from "../pages/professional-services-vendor/pages/snowRemoval/BasicInformationSnowRemoval.tsx";
+import {
+  PhotoAndVideoSnowRemoval
+} from "../pages/professional-services-vendor/pages/snowRemoval/PhotoAndVideoSnowRemoval.tsx";
+import {
+  SpecificationsSnowRemoval
+} from "../pages/professional-services-vendor/pages/snowRemoval/SpecificationsSnowRemoval.tsx";
+import {
+  BasicInformationPestControl
+} from "../pages/professional-services-vendor/pages/pestControl/BasicInformationPestControl.tsx";
+import {
+  PhotoAndVideoPestControl
+} from "../pages/professional-services-vendor/pages/pestControl/PhotoAndVideoPestControl.tsx";
+import {
+  SpecificationsPestControl
+} from "../pages/professional-services-vendor/pages/pestControl/SpecificationsPestControl.tsx";
+import {
+  BasicInformationElectrical
+} from "../pages/professional-services-vendor/pages/electrical/BasicInformationElectrical.tsx";
+import {
+  PhotoAndVideoElectrical
+} from "../pages/professional-services-vendor/pages/electrical/PhotoAndVideoElectrical.tsx";
+import {
+  SpecificationsElectrical
+} from "../pages/professional-services-vendor/pages/electrical/SpecificationsElectrical.tsx";
 
 interface IRoutes {
   component: FC;
@@ -461,6 +505,84 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsGardening,
     path: '/professional-services/gardening/basic-information/photo-and-video/specifications'
+  },
+  // Tree Cutting
+  {
+    component: BasicInformationTreeCutting,
+    path: "/professional-services/tree-cutting/basic-information",
+  },
+  {
+    component: PhotoAndVideoTreeCutting,
+    path: '/professional-services/tree-cutting/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsTreeCutting,
+    path: '/professional-services/tree-cutting/basic-information/photo-and-video/specifications'
+  },
+  // Lawn Services
+  {
+    component: BasicInformationLawn,
+    path: "/professional-services/lawn-services/basic-information",
+  },
+  {
+    component: PhotoAndVideoLawn,
+    path: '/professional-services/lawn-services/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsLawn,
+    path: '/professional-services/lawn-services/basic-information/photo-and-video/specifications'
+  },
+  // Handyman
+  {
+    component: BasicInformationHandyman,
+    path: "/professional-services/handyman/basic-information",
+  },
+  {
+    component: PhotoAndVideoHandyman,
+    path: '/professional-services/handyman/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsHandyman,
+    path: '/professional-services/handyman/basic-information/photo-and-video/specifications'
+  },
+  // Snow Removal
+  {
+    component: BasicInformationSnowRemoval,
+    path: "/professional-services/snow-removal/basic-information",
+  },
+  {
+    component: PhotoAndVideoSnowRemoval,
+    path: '/professional-services/snow-removal/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsSnowRemoval,
+    path: '/professional-services/snow-removal/basic-information/photo-and-video/specifications'
+  },
+  // Pest Control
+  {
+    component: BasicInformationPestControl,
+    path: "/professional-services/pest-control/basic-information",
+  },
+  {
+    component: PhotoAndVideoPestControl,
+    path: '/professional-services/pest-control/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsPestControl,
+    path: '/professional-services/pest-control/basic-information/photo-and-video/specifications'
+  },
+  // Electrical
+  {
+    component: BasicInformationElectrical,
+    path: "/professional-services/electrical/basic-information",
+  },
+  {
+    component: PhotoAndVideoElectrical,
+    path: '/professional-services/electrical/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsElectrical,
+    path: '/professional-services/electrical/basic-information/photo-and-video/specifications'
   },
   // Earrings
   {

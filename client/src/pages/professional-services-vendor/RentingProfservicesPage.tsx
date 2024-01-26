@@ -27,6 +27,12 @@ const ROUTES = {
   CLEANING: 'cleaning',
   REPAIRING: 'repairing',
   GARDENING: 'gardening',
+  TREE_CUTTING: 'treeCutting',
+  LAWN_SERVICES: 'lawnServices',
+  HANDYMAN: 'handyman',
+  SNOW_REMOVAL: 'snowRemoval',
+  PEST_CONTROL: 'pestControl',
+  ELECTRICAL: 'electrical',
 }
 
 const RentingProfservicesPage: FC = () => {
@@ -49,6 +55,18 @@ const RentingProfservicesPage: FC = () => {
       navigate('/professional-services/repairing/basic-information')
     } else if(category === ROUTES.GARDENING){
       navigate('/professional-services/gardening/basic-information')
+    } else if(category === ROUTES.TREE_CUTTING){
+      navigate('/professional-services/tree-cutting/basic-information')
+    } else if(category === ROUTES.LAWN_SERVICES){
+      navigate('/professional-services/lawn-services/basic-information')
+    } else if(category === ROUTES.HANDYMAN){
+      navigate('/professional-services/handyman/basic-information')
+    } else if(category === ROUTES.SNOW_REMOVAL){
+      navigate('/professional-services/snow-removal/basic-information')
+    } else if(category === ROUTES.PEST_CONTROL){
+      navigate('/professional-services/pest-control/basic-information')
+    } else if(category === ROUTES.ELECTRICAL){
+      navigate('/professional-services/electrical/basic-information')
     }
   }
 

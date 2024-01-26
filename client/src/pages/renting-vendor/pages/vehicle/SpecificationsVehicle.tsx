@@ -4,7 +4,7 @@ import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const SpecificationsVehicle = () => {
     return (
-        <Layout title='Vehicle Renting Form' subtitle='Vehicles SpecificationsGardening' stage={4}
+        <Layout title='Vehicle Renting Form' subtitle='Vehicles SpecificationsElectrical' stage={4}
                 backLink='/renting-category-page/vehicle/basic-information/photo-and-video'
                 nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputsBox}>
