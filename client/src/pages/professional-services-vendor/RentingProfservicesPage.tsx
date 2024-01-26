@@ -37,7 +37,7 @@ const RentingProfservicesPage: FC = () => {
             <RentingStage coloredStage={coloredStage}/>
             <div className={styles.content_blocks}>
               <h1>
-                Select <span>PRODUCTS</span> Category
+                Select <span>PROFESSIONAL SERVICES</span> Category
               </h1>
               <div className={styles.main_block}>
                 <h2>choose a category</h2>

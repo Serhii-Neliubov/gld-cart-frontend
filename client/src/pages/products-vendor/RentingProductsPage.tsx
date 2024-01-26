@@ -40,6 +40,11 @@ const ROUTES = {
   FACIAL_LIP_CARE: 'facial',
   SHOES: 'shoes',
   CPU: 'cpu',
+  DISCOVER_SKINCARE: 'discover',
+  HEADPHONES: 'headphones',
+  BRACELETS: 'bracelets',
+  SMART_WATCH: 'smartWatch',
+  EARRINGS: 'earrings'
 }
 
 const RentingProductsPage: FC = () => {
@@ -74,6 +79,16 @@ const RentingProductsPage: FC = () => {
       navigate('/products-category-page/shoes/basic-information')
     } else if(category === ROUTES.CPU){
       navigate('/products-category-page/cpu/basic-information')
+    } else if(category === ROUTES.DISCOVER_SKINCARE){
+      navigate('/products-category-page/discover-skincare/basic-information')
+    } else if(category === ROUTES.HEADPHONES){
+      navigate('/products-category-page/headphones/basic-information')
+    } else if(category === ROUTES.BRACELETS){
+      navigate('/products-category-page/bracelets/basic-information')
+    } else if(category === ROUTES.SMART_WATCH){
+      navigate('/products-category-page/smart-watch/basic-information')
+    } else if(category === ROUTES.EARRINGS){
+      navigate('/products-category-page/earrings/basic-information')
     }
   }
 

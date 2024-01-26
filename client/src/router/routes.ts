@@ -90,6 +90,21 @@ import {SpecificationsShoes} from "../pages/products-vendor/pages/shoes/Specific
 import {BasicInformationCpu} from "../pages/products-vendor/pages/cpu/BasicInformationCpu.tsx";
 import {PhotoAndVideoCpu} from "../pages/products-vendor/pages/cpu/PhotoAndVideoCpu.tsx";
 import {SpecificationsCpu} from "../pages/products-vendor/pages/cpu/SpecificationsCpu.tsx";
+import {BasicInformationDiscover} from "../pages/products-vendor/pages/discover/BasicInformationDiscover.tsx";
+import {PhotoAndVideoDiscover} from "../pages/products-vendor/pages/discover/PhotoAndVideoDiscover.tsx";
+import {SpecificationsDiscover} from "../pages/products-vendor/pages/discover/SpecificationsDiscover.tsx";
+import {BasicInformationHeadphones} from "../pages/products-vendor/pages/headphones/BasicInformationHeadphones.tsx";
+import {PhotoAndVideoHeadphones} from "../pages/products-vendor/pages/headphones/PhotoAndVideoHeadphones.tsx";
+import {SpecificationsHeadphones} from "../pages/products-vendor/pages/headphones/SpecificationsHeadphones.tsx";
+import {BasicInformationBracelets} from "../pages/products-vendor/pages/braceletes/BasicInformationBracelets.tsx";
+import {PhotoAndVideoBracelets} from "../pages/products-vendor/pages/braceletes/PhotoAndVideoBracelets.tsx";
+import {SpecificationsBracelets} from "../pages/products-vendor/pages/braceletes/SpecificationsBracelets.tsx";
+import {BasicInformationSmartWatch} from "../pages/products-vendor/pages/smartWatch/BasicInformationSmartWatch.tsx";
+import {PhotoAndVideoSmartWatch} from "../pages/products-vendor/pages/smartWatch/PhotoAndVideoSmartWatch.tsx";
+import {SpecificationsSmartWatch} from "../pages/products-vendor/pages/smartWatch/SpecificationsSmartWatch.tsx";
+import {BasicInformationEarrings} from "../pages/products-vendor/pages/earrings/BasicInformationEarrings.tsx";
+import {PhotoAndVideoEarrings} from "../pages/products-vendor/pages/earrings/PhotoAndVideoEarrings.tsx";
+import {SpecificationsEarrings} from "../pages/products-vendor/pages/earrings/SpecificationsEarrings.tsx";
 
 interface IRoutes {
   component: FC;
@@ -336,6 +351,71 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsCpu,
     path: '/products-category-page/cpu/basic-information/photo-and-video/specifications'
+  },
+  // Discover Skincare
+  {
+    component: BasicInformationDiscover,
+    path: "/products-category-page/discover-skincare/basic-information",
+  },
+  {
+    component: PhotoAndVideoDiscover,
+    path: '/products-category-page/discover-skincare/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsDiscover,
+    path: '/products-category-page/discover-skincare/basic-information/photo-and-video/specifications'
+  },
+  // Headphones
+  {
+    component: BasicInformationHeadphones,
+    path: "/products-category-page/headphones/basic-information",
+  },
+  {
+    component: PhotoAndVideoHeadphones,
+    path: '/products-category-page/headphones/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsHeadphones,
+    path: '/products-category-page/headphones/basic-information/photo-and-video/specifications'
+  },
+  // Bracelets
+  {
+    component: BasicInformationBracelets,
+    path: "/products-category-page/bracelets/basic-information",
+  },
+  {
+    component: PhotoAndVideoBracelets,
+    path: '/products-category-page/bracelets/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsBracelets,
+    path: '/products-category-page/bracelets/basic-information/photo-and-video/specifications'
+  },
+  // SmartWatch
+  {
+    component: BasicInformationSmartWatch,
+    path: "/products-category-page/smart-watch/basic-information",
+  },
+  {
+    component: PhotoAndVideoSmartWatch,
+    path: '/products-category-page/smart-watch/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsSmartWatch,
+    path: '/products-category-page/smart-watch/basic-information/photo-and-video/specifications'
+  },
+  // Earrings
+  {
+    component: BasicInformationEarrings,
+    path: "/products-category-page/earrings/basic-information",
+  },
+  {
+    component: PhotoAndVideoEarrings,
+    path: '/products-category-page/earrings/basic-information/photo-and-video'
+  },
+  {
+    component: SpecificationsEarrings,
+    path: '/products-category-page/earrings/basic-information/photo-and-video/specifications'
   },
   // Houses
   {
