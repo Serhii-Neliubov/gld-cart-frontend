@@ -6,7 +6,7 @@ export const SpecificationsNecklaces = () => {
     return (
         <Layout title='Necklaces PRODUCTS Form' subtitle='Products Specification' stage={4}
                 backLink='/products-category-page/necklaces/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/necklaces/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                     <label>Material</label>

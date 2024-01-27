@@ -6,7 +6,7 @@ export const SpecificationsRepairing = () => {
     return (
         <Layout title='Repairing SERVICES Form' subtitle='Repairing Specification' stage={4}
                 backLink='/professional-services/repairing/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/professional-services/repairing/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                     <label>Working Hours </label>

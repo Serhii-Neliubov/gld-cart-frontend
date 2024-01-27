@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './BasicInformationTreeCutting.module.scss'
 import {Layout} from "../../../../components/Vendor/Layout.tsx";
+import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 
 export const BasicInformationTreeCutting = () => {
+    useCategoryRedirect('treeCutting', '/personal-services');
+
     return(
         <Layout title='Tree Cutting SERVICES Form' subtitle='Basic information' stage={2} backLink='/personal-services' nextLink='/professional-services/tree-cutting/basic-information/photo-and-video'>
             <div className={styles.inputTextBox}>

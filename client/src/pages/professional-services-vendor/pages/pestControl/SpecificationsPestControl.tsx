@@ -6,7 +6,7 @@ export const SpecificationsPestControl = () => {
     return (
         <Layout title='Pest Control SERVICES Form ' subtitle='Pest Control Specification' stage={4}
                 backLink='/professional-services/pest-control/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/pest-control/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputsRadio}>
                 <span>Need Instrument for Pest Control Service</span>
                 <div>

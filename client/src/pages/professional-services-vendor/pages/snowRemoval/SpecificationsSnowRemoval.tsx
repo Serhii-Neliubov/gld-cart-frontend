@@ -6,7 +6,7 @@ export const SpecificationsSnowRemoval = () => {
     return (
         <Layout title='Snow Removal SERVICES Form' subtitle='Snow Removal Specification' stage={4}
                 backLink='/professional-services/snow-removal/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/professional-services/snow-removal/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputsRadio}>
                 <span>Need Instrument for Snow Removal Service</span>
                 <div>

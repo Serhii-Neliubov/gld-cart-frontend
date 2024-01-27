@@ -5,8 +5,8 @@ import {Layout} from "../../../../components/Vendor/Layout.tsx";
 export const SpecificationsAwesome = () => {
     return (
         <Layout title='Awesome Lip Care PRODUCT Form' subtitle='Products Specification' stage={4}
-                backLink='/products-category-page/bags/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                backLink='/products-category-page/awesome/basic-information/photo-and-video'
+                nextLink='/renting-category-page/awesome/basic-information/photo-and-video/specifications/publish-complete'>
             <span className={styles.tipTitle}>Select the Flavor of your product</span>
             <div className={styles.checkboxInputsBox}>
                 <div className={styles.checkboxInputColumn}>

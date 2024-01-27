@@ -1,13 +1,13 @@
-import React, { FC } from "react";
+import React from "react";
 import styles from "./ItemPublishPage.module.scss";
 import { Link } from "react-router-dom";
-import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
 import RentingStage from "../RentingStage/RentingStage";
 
-const ItemPublishPage: FC = () => {
-  const vehicleData = useSelector((state: RootState) => state);
-  console.log(vehicleData.vehicleDataSlice.vehicle);
+type ItemPublishPageProps = {
+    category: string,
+}
+
+const ItemPublishPage = ({category}: ItemPublishPageProps) => {
   return (
     <div
       style={{
@@ -24,7 +24,7 @@ const ItemPublishPage: FC = () => {
           <img src="/ItemPublishPage/close-button.svg" alt="" />
         </Link>
         <h1 className={styles.title}>
-          Your Vehicles Renting Form has <br /> been Successfully Completed
+          Your {category} Renting Form has <br /> been Successfully Completed
         </h1>
         <div className={styles.actions}>
           <button

@@ -2,5 +2,5 @@ import React from 'react';
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
 
 export const PublishCompleteHouses = () => {
-    return <ItemPublishPage />
+    return <ItemPublishPage category='Houses'/>
 }

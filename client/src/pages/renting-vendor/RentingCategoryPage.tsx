@@ -35,7 +35,7 @@ const RentingCategoryPage: FC = () => {
 
     if(category === ROUTES.VEHICLES){
       navigate('/renting-category-page/vehicle/basic-information')
-    } else if(category == ROUTES.HOUSES){
+    } else if(category === ROUTES.HOUSES){
       navigate('/renting-category-page/houses/basic-information')
     } else if(category === ROUTES.ELECTRONICS){
       navigate('/renting-category-page/electronics/basic-information')

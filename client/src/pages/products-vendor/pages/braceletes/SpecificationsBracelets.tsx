@@ -5,8 +5,8 @@ import {Layout} from "../../../../components/Vendor/Layout.tsx";
 export const SpecificationsBracelets = () => {
     return (
         <Layout title='Shoes PRODUCTS Form' subtitle='Products Specification' stage={4}
-                backLink='/products-category-page/smart-watch/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                backLink='/products-category-page/bracelets/basic-information/photo-and-video'
+                nextLink='/renting-category-page/bracelets/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.areaBox}>
                 <label>Material</label>
                 <textarea placeholder='Write about the primary material used for the bracelets'/>

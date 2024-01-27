@@ -6,7 +6,7 @@ export const SpecificationsHeadphones = () => {
     return (
         <Layout title='Headphones PRODUCTS Form' subtitle='Products Specification' stage={4}
                 backLink='/products-category-page/headphones/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/headphones/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputRadioBox}>
                 <span>The range of frequencies the headphones can reproduce (e.g.)</span>
                 <div className={styles.radioInputs}>

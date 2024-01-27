@@ -5,8 +5,8 @@ import {Layout} from "../../../../components/Vendor/Layout.tsx";
 export const SpecificationsBluetooth = () => {
     return (
         <Layout title='Bluetooth PRODUCTS Form' subtitle='Products Specification' stage={4}
-                backLink='/products-category-page/facial/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                backLink='/products-category-page/bluetooth/basic-information/photo-and-video'
+                nextLink='/renting-category-page/bluetooth/basic-information/photo-and-video/specifications/publish-complete'>
             <span className={styles.tipTitle}>Select the age group for which the clothing item is suitable</span>
             <div className={styles.checkboxInputsBox}>
                 <div className={styles.checkboxInputColumn}>

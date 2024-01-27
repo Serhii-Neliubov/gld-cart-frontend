@@ -6,7 +6,7 @@ export const SpecificationsDiscover = () => {
     return (
         <Layout title='Discover Skincare PRODUCTS Form' subtitle='Products Specification' stage={4}
                 backLink='/products-category-page/discover-skincare/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/discover-skincare/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputBox}>
                 <label>How many product are in stock?</label>
                 <input type='number' placeholder='400'/>

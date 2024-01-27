@@ -6,7 +6,7 @@ export const SpecificationsShoes = () => {
     return (
         <Layout title='Shoes PRODUCTS Form' subtitle='Products Specification' stage={4}
                 backLink='/products-category-page/shoes/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/shoes/basic-information/photo-and-video/specifications/publish-complete'>
             <span className={styles.tipTitle}>Select the age group for which the Shoes item is suitable</span>
             <div className={styles.checkboxInputsBox}>
                 <div className={styles.checkboxInputColumn}>

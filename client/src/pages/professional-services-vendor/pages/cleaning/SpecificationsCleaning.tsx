@@ -6,7 +6,7 @@ export const SpecificationsCleaning = () => {
     return (
         <Layout title='Cleaning SERVICES Form' subtitle='Cleaning Specification' stage={4}
                 backLink='/professional-services/cleaning/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/professional-services/cleaning/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                     <label>Working Hours </label>

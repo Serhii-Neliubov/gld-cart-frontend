@@ -4,9 +4,9 @@ import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const SpecificationsMobileTablets = () => {
     return (
-        <Layout title='Awesome Lip Care PRODUCT Form' subtitle='Products Specification' stage={4}
+        <Layout title='Mobile Tablets PRODUCT Form' subtitle='Products Specification' stage={4}
                 backLink='/products-category-page/mobile-tablets/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/mobile-tablets/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                     <label>Operating System</label>

@@ -6,7 +6,7 @@ export const SpecificationsLawn = () => {
     return (
         <Layout title='Lawn SERVICES Form' subtitle='Lawn Specification' stage={4}
                 backLink='/professional-services/lawn-services/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/professional-services/lawn-services/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputBox}>
                 <label>Working Hours</label>
                 <input placeholder='05' type='number'/>

@@ -47,6 +47,24 @@ const ROUTES = {
   EARRINGS: 'earrings'
 }
 
+const links = {
+  [ROUTES.BEAUTY]: '/products-category-page/beauty/basic-information',
+  [ROUTES.BAGS]: '/products-category-page/bags/basic-information',
+  [ROUTES.AWESOME]: '/products-category-page/awesome/basic-information',
+  [ROUTES.MOBILE_TABLETS]: '/products-category-page/mobile-tablets/basic-information',
+  [ROUTES.NECKLACES]: '/products-category-page/necklaces/basic-information',
+  [ROUTES.CLOTHING]: '/products-category-page/clothing/basic-information',
+  [ROUTES.BLUETOOTH]: '/products-category-page/bluetooth/basic-information',
+  [ROUTES.FACIAL_LIP_CARE]: '/products-category-page/facial/basic-information',
+  [ROUTES.SHOES]: '/products-category-page/shoes/basic-information',
+  [ROUTES.CPU]: '/products-category-page/cpu/basic-information',
+  [ROUTES.DISCOVER_SKINCARE]: '/products-category-page/discover-skincare/basic-information',
+  [ROUTES.HEADPHONES]: '/products-category-page/headphones/basic-information',
+  [ROUTES.BRACELETS]: '/products-category-page/bracelets/basic-information',
+  [ROUTES.SMART_WATCH]: '/products-category-page/smart-watch/basic-information',
+  [ROUTES.EARRINGS]: '/products-category-page/earrings/basic-information'
+}
+
 const RentingProductsPage: FC = () => {
   const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState<IClearClick>({...clearClick});
@@ -57,38 +75,11 @@ const RentingProductsPage: FC = () => {
   function productClickHandler(arrayItem: string, category: string) {
     dispatch(setVendorSelectedItemValue(arrayItem));
     dispatch(setProductName(arrayItem));
-    console.log(arrayItem)
 
-    if(category === ROUTES.BEAUTY){
-      navigate('/products-category-page/beauty/basic-information')
-    } else if(category == ROUTES.BAGS){
-      navigate('/products-category-page/bags/basic-information')
-    } else if(category === ROUTES.AWESOME){
-      navigate('/products-category-page/awesome/basic-information')
-    } else if(category === ROUTES.MOBILE_TABLETS){
-      navigate('/products-category-page/mobile-tablets/basic-information')
-    } else if(category === ROUTES.NECKLACES){
-      navigate('/products-category-page/necklaces/basic-information')
-    } else if(category === ROUTES.CLOTHING){
-      navigate('/products-category-page/clothing/basic-information')
-    } else if(category === ROUTES.BLUETOOTH){
-      navigate('/products-category-page/bluetooth/basic-information')
-    } else if(category === ROUTES.FACIAL_LIP_CARE){
-      navigate('/products-category-page/facial/basic-information')
-    } else if(category === ROUTES.SHOES){
-      navigate('/products-category-page/shoes/basic-information')
-    } else if(category === ROUTES.CPU){
-      navigate('/products-category-page/cpu/basic-information')
-    } else if(category === ROUTES.DISCOVER_SKINCARE){
-      navigate('/products-category-page/discover-skincare/basic-information')
-    } else if(category === ROUTES.HEADPHONES){
-      navigate('/products-category-page/headphones/basic-information')
-    } else if(category === ROUTES.BRACELETS){
-      navigate('/products-category-page/bracelets/basic-information')
-    } else if(category === ROUTES.SMART_WATCH){
-      navigate('/products-category-page/smart-watch/basic-information')
-    } else if(category === ROUTES.EARRINGS){
-      navigate('/products-category-page/earrings/basic-information')
+    if(links[category]){
+      navigate(links[category]);
+    } else {
+      navigate('/products-category-page');
     }
   }
 

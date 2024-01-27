@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './BasicInformationVehicle.module.scss'
 import {Layout} from "../../../../components/Vendor/Layout.tsx";
+import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 
 export const BasicInformationVehicle = () => {
+    useCategoryRedirect('vehicles', '/renting-category-page');
+
     return(
         <Layout title='Vehicle Renting Form' subtitle='Basic information' stage={2} backLink='/renting-category-page' nextLink='/renting-category-page/vehicle/basic-information/photo-and-video'>
             <div className={styles.inputTextBox}>

@@ -6,7 +6,7 @@ export const SpecificationsEarrings = () => {
     return (
         <Layout title='Earrings PRODUCTS Form' subtitle='Products Specification' stage={4}
                 backLink='/products-category-page/earrings/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/earrings/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.areaBox}>
                 <label>Material</label>
                 <textarea placeholder='Write about the primary material used for the bracelets'/>

@@ -20,7 +20,6 @@ import RegisterAsPage from "../pages/register/RegisterAsPage";
 import RegisterPage from "../pages/register/register-form/RegisterPage";
 import SubPlansPage from "../pages/sub-plans/SubPlansPage";
 import WishlistPage from "../pages/wishlist/WishlistPage";
-import ItemPublishPage from "../components/ItemPublishPage/ItemPublishPage";
 import Renting from "../pages/renting-buyer/Renting";
 import RentingCarPage from "../pages/renting-buyer/car/RentingCarPage";
 import RentingElectronicsPage from "../pages/renting-buyer/electronics/RentingElectronicsPage";
@@ -48,7 +47,7 @@ import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
 import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
 import {BasicInformationVehicle} from "../pages/renting-vendor/pages/vehicle/BasicInformationVehicle.tsx";
 import {PhotoAndVideoVehicle} from "../pages/renting-vendor/pages/vehicle/PhotoAndVideoVehicle.tsx";
-import {PublishComplete} from "../pages/renting-vendor/pages/vehicle/PublishComplete.tsx";
+import {PublishCompleteVehicle} from "../pages/renting-vendor/pages/vehicle/PublishCompleteVehicle.tsx";
 import {BasicInformationElectronics} from "../pages/renting-vendor/pages/electronics/BasicInformationElectronics.tsx";
 import {PhotoAndVideoElectronics} from "../pages/renting-vendor/pages/electronics/PhotoAndVideoElectronics.tsx";
 import {SpecificationsElectronics} from "../pages/renting-vendor/pages/electronics/SpecificationsElectronics.tsx";
@@ -168,6 +167,50 @@ import {
 import {
   SpecificationsElectrical
 } from "../pages/professional-services-vendor/pages/electrical/SpecificationsElectrical.tsx";
+import {
+  PublishCompleteSnowRemoval
+} from "../pages/professional-services-vendor/pages/snowRemoval/PublishCompleteSnowRemoval.tsx";
+import {
+  PublishCompletePestControl
+} from "../pages/professional-services-vendor/pages/pestControl/PublishCompletePestControl.tsx";
+import {PublishCompleteHouses} from "../pages/renting-vendor/pages/houses/PublishCompleteHouses.tsx";
+import {PublishCompleteElectronics} from "../pages/renting-vendor/pages/electronics/PublishCompleteElectronics.tsx";
+import {PublishCompleteBags} from "../pages/products-vendor/pages/bags/PublishCompleteBags.tsx";
+import {PublishCompleteBeauty} from "../pages/products-vendor/pages/beautyOfSkin/PublishCompleteBeauty.tsx";
+import {PublishCompleteAwesome} from "../pages/products-vendor/pages/awesome/PublishCompleteAwesome.tsx";
+import {
+  PublishCompleteMobileTablets
+} from "../pages/products-vendor/pages/mobileTablets/PublishCompleteMobileTablets.tsx";
+import {PublishCompleteNecklaces} from "../pages/products-vendor/pages/necklaces/PublishCompleteNecklaces.tsx";
+import {PublishCompleteClothing} from "../pages/products-vendor/pages/clothing/PublishCompleteClothing.tsx";
+import {PublishCompleteBluetooth} from "../pages/products-vendor/pages/bluetooth/PublishCompleteBluetooth.tsx";
+import {PublishCompleteFacial} from "../pages/products-vendor/pages/facial/PublishCompleteFacial.tsx";
+import {PublishCompleteShoes} from "../pages/products-vendor/pages/shoes/PublishCompleteShoes.tsx";
+import {PublishCompleteCpu} from "../pages/products-vendor/pages/cpu/PublishCompleteCpu.tsx";
+import {PublishCompleteDiscover} from "../pages/products-vendor/pages/discover/PublishCompleteDiscover.tsx";
+import {PublishCompleteHeadphones} from "../pages/products-vendor/pages/headphones/PublishCompleteHeadphones.tsx";
+import {PublishCompleteBracelets} from "../pages/products-vendor/pages/braceletes/PublishCompleteBracelets.tsx";
+import {PublishCompleteSmartWatch} from "../pages/products-vendor/pages/smartWatch/PublishCompleteSmartWatch.tsx";
+import {PublishCompleteEarrings} from "../pages/products-vendor/pages/earrings/PublishCompleteEarrings.tsx";
+import {
+  PublishCompleteCleaning
+} from "../pages/professional-services-vendor/pages/cleaning/PublishCompleteCleaning.tsx";
+import {
+  PublishCompleteRepairing
+} from "../pages/professional-services-vendor/pages/repairing/PublishCompleteRepairing.tsx";
+import {
+  PublishCompleteGardening
+} from "../pages/professional-services-vendor/pages/gardening/PublishCompleteGardening.tsx";
+import {
+  PublishCompleteTreeCutting
+} from "../pages/professional-services-vendor/pages/treeCutting/PublishCompleteTreeCutting.tsx";
+import {PublishCompleteLawn} from "../pages/professional-services-vendor/pages/lawnServices/PublishCompleteLawn.tsx";
+import {
+  PublishCompleteHandyman
+} from "../pages/professional-services-vendor/pages/handyman/PublishCompleteHandyman.tsx";
+import {
+  PublishCompleteElectrical
+} from "../pages/professional-services-vendor/pages/electrical/PublishCompleteElectrical.tsx";
 
 interface IRoutes {
   component: FC;
@@ -207,11 +250,6 @@ export const buyerRoutes: IRoutes[] = [
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
-  // Cleaning Service
-  // Repairing Service
-  // Gardening Service
-  // Tree Cutting Service
-  // Handyman Service
   // Snow Removal Service
   {
     component: SnowRemovalServiceForm,
@@ -224,6 +262,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SnowRemovalServiceSpecifications,
     path: "/renting-category-page/snow-removal/photo-and-video/specifications",
+  },
+  {
+    component: PublishCompleteSnowRemoval,
+    path: "/renting-category-page/snow-removal/photo-and-video/specifications/publish-complete",
   },
   {
     component: SnowRemovalServicePublishing,
@@ -241,6 +283,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: PestControlServiceSpecifications,
     path: "/renting-category-page/pest-control/photo-and-video/specifications",
+  },
+  {
+    component: PublishCompletePestControl,
+    path: "/renting-category-page/pest-control/basic-information/photo-and-video/specifications/publish-complete",
   },
   {
     component: PestControlServicePublishing,
@@ -278,7 +324,7 @@ export const vendorRoutes: IRoutes[] = [
     path: '/renting-category-page/vehicle/basic-information/photo-and-video/specifications'
   },
   {
-    component: PublishComplete,
+    component: PublishCompleteVehicle,
     path: '/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Electronics
@@ -295,7 +341,7 @@ export const vendorRoutes: IRoutes[] = [
     path: '/renting-category-page/electronics/basic-information/photo-and-video/specifications'
   },
   {
-    component: PublishComplete,
+    component: PublishCompleteElectronics,
     path: '/renting-category-page/electronics/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Bags
@@ -311,6 +357,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsBags,
     path: '/products-category-page/bags/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteBags,
+    path: '/renting-category-page/bags/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Awesome Lip Care
   {
     component: BasicInformationAwesome,
@@ -324,7 +374,11 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsAwesome,
     path: '/products-category-page/awesome/basic-information/photo-and-video/specifications'
   },
-  // Awesome Lip Care
+  {
+    component: PublishCompleteAwesome,
+    path: '/renting-category-page/awesome/basic-information/photo-and-video/specifications/publish-complete'
+  },
+  // Mobile Tablets
   {
     component: BasicInformationMobileTablets,
     path: "/products-category-page/mobile-tablets/basic-information",
@@ -336,6 +390,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsMobileTablets,
     path: '/products-category-page/mobile-tablets/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteMobileTablets,
+    path: '/renting-category-page/mobile-tablets/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Necklaces
   {
@@ -350,6 +408,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsNecklaces,
     path: '/products-category-page/necklaces/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteNecklaces,
+    path: '/renting-category-page/necklaces/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Clothing
   {
     component: BasicInformationClothing,
@@ -362,6 +424,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsClothing,
     path: '/products-category-page/clothing/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteClothing,
+    path: '/renting-category-page/clothing/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Bluetooth
   {
@@ -376,6 +442,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsBluetooth,
     path: '/products-category-page/bluetooth/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteBluetooth,
+    path: '/renting-category-page/bluetooth/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Facial Care
   {
     component: BasicInformationFacial,
@@ -388,6 +458,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsFacial,
     path: '/products-category-page/facial/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteFacial,
+    path: '/renting-category-page/facial/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Shoes
   {
@@ -402,6 +476,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsShoes,
     path: '/products-category-page/shoes/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteShoes,
+    path: '/renting-category-page/shoes/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // CPU
   {
     component: BasicInformationCpu,
@@ -414,6 +492,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsCpu,
     path: '/products-category-page/cpu/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteCpu,
+    path: '/renting-category-page/cpu/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Discover Skincare
   {
@@ -428,6 +510,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsDiscover,
     path: '/products-category-page/discover-skincare/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteDiscover,
+    path: '/renting-category-page/discover-skincare/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Headphones
   {
     component: BasicInformationHeadphones,
@@ -440,6 +526,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsHeadphones,
     path: '/products-category-page/headphones/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteHeadphones,
+    path: '/renting-category-page/headphones/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Bracelets
   {
@@ -454,6 +544,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsBracelets,
     path: '/products-category-page/bracelets/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteBracelets,
+    path: '/renting-category-page/bracelets/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // SmartWatch
   {
     component: BasicInformationSmartWatch,
@@ -466,6 +560,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsSmartWatch,
     path: '/products-category-page/smart-watch/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteSmartWatch,
+    path: '/renting-category-page/smart-watch/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Cleaning
   {
@@ -480,6 +578,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsCleaning,
     path: '/professional-services/cleaning/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteCleaning,
+    path: '/professional-services/cleaning/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Repairing
   {
     component: BasicInformationRepairing,
@@ -492,6 +594,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsRepairing,
     path: '/professional-services/repairing/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteRepairing,
+    path: '/professional-services/repairing/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Gardening
   {
@@ -506,6 +612,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsGardening,
     path: '/professional-services/gardening/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteGardening,
+    path: '/professional-services/gardening/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Tree Cutting
   {
     component: BasicInformationTreeCutting,
@@ -518,6 +628,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsTreeCutting,
     path: '/professional-services/tree-cutting/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteTreeCutting,
+    path: '/professional-services/tree-cutting/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Lawn Services
   {
@@ -532,6 +646,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsLawn,
     path: '/professional-services/lawn-services/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteLawn,
+    path: '/professional-services/lawn-services/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Handyman
   {
     component: BasicInformationHandyman,
@@ -544,6 +662,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsHandyman,
     path: '/professional-services/handyman/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteHandyman,
+    path: '/professional-services/handyman/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Snow Removal
   {
@@ -558,6 +680,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsSnowRemoval,
     path: '/professional-services/snow-removal/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteSnowRemoval,
+    path: '/professional-services/snow-removal/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Pest Control
   {
     component: BasicInformationPestControl,
@@ -570,6 +696,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsPestControl,
     path: '/professional-services/pest-control/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompletePestControl,
+    path: '/professional-services/pest-control/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Electrical
   {
@@ -584,6 +714,10 @@ export const vendorRoutes: IRoutes[] = [
     component: SpecificationsElectrical,
     path: '/professional-services/electrical/basic-information/photo-and-video/specifications'
   },
+  {
+    component: PublishCompleteElectrical,
+    path: '/professional-services/electrical/basic-information/photo-and-video/specifications/publish-complete'
+  },
   // Earrings
   {
     component: BasicInformationEarrings,
@@ -596,6 +730,10 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: SpecificationsEarrings,
     path: '/products-category-page/earrings/basic-information/photo-and-video/specifications'
+  },
+  {
+    component: PublishCompleteEarrings,
+    path: '/renting-category-page/earrings/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Houses
   {
@@ -611,7 +749,7 @@ export const vendorRoutes: IRoutes[] = [
     path: '/renting-category-page/houses/basic-information/photo-and-video/specifications'
   },
   {
-    component: PublishComplete,
+    component: PublishCompleteHouses,
     path: '/renting-category-page/houses/basic-information/photo-and-video/specifications/publish-complete'
   },
 // Beauty
@@ -628,13 +766,8 @@ export const vendorRoutes: IRoutes[] = [
     path: '/products-category-page/beauty/basic-information/photo-and-video/specifications'
   },
   {
-    component: PublishComplete,
+    component: PublishCompleteBeauty,
     path: '/products-category-page/beauty/basic-information/photo-and-video/specifications/publish-complete'
-  },
-
-  {
-    component: ItemPublishPage,
-    path: "/renting-category-page/vehicles/photo-and-video/publishing",
   },
   {
     component: PublishSuccessfully,

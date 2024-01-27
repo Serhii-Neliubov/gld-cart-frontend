@@ -4,9 +4,9 @@ import {Layout} from "../../../../components/Vendor/Layout.tsx";
 
 export const SpecificationsSmartWatch = () => {
     return (
-        <Layout title='Headphones PRODUCTS Form' subtitle='Products Specification' stage={4}
+        <Layout title='Smart Watch PRODUCTS Form' subtitle='Products Specification' stage={4}
                 backLink='/products-category-page/smart-watch/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/renting-category-page/smart-watch/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputRadioBox}>
                 <span>Compatibility of Smartwatch</span>
                 <div className={styles.radioInputs}>

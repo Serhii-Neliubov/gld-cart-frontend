@@ -5,8 +5,8 @@ import {Layout} from "../../../../components/Vendor/Layout.tsx";
 export const SpecificationsBeauty = () => {
     return (
         <Layout title='Beauty Skin Care PRODUCT Form ' subtitle='Products Specification' stage={4}
-                backLink='/products-category-page/electronics/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                backLink='/products-category-page/beauty/basic-information/photo-and-video'
+                nextLink='/products-category-page/beauty/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputBox}>
                 <label>How many product are in stock?</label>
                 <input type='number' placeholder='100'/>

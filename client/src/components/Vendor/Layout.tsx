@@ -14,6 +14,7 @@ type LayoutProps = {
 
 export const Layout = ({title, children, nextLink, stage, backLink, subtitle}: LayoutProps) => {
     const navigate = useNavigate();
+
     return (
         <div className='__container'>
             <div className={styles.container}>

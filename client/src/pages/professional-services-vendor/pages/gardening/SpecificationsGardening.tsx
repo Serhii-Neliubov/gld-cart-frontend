@@ -6,7 +6,7 @@ export const SpecificationsGardening = () => {
     return (
         <Layout title='Gardening Services Form' subtitle='Gardening Specification' stage={4}
                 backLink='/professional-services/gardening/basic-information/photo-and-video'
-                nextLink='/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'>
+                nextLink='/professional-services/gardening/basic-information/photo-and-video/specifications/publish-complete'>
             <div className={styles.inputBox}>
                 <label>Garden Size</label>
                 <input placeholder='Approximate size of the garden' />

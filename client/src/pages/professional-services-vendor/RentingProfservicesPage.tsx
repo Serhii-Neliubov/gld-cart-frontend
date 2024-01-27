@@ -35,6 +35,18 @@ const ROUTES = {
   ELECTRICAL: 'electrical',
 }
 
+const links = {
+  [ROUTES.CLEANING]: '/professional-services/cleaning/basic-information',
+  [ROUTES.REPAIRING]: '/professional-services/repairing/basic-information',
+  [ROUTES.GARDENING]: '/professional-services/gardening/basic-information',
+  [ROUTES.TREE_CUTTING]: '/professional-services/tree-cutting/basic-information',
+  [ROUTES.LAWN_SERVICES]: '/professional-services/lawn-services/basic-information',
+  [ROUTES.HANDYMAN]: '/professional-services/handyman/basic-information',
+  [ROUTES.SNOW_REMOVAL]: '/professional-services/snow-removal/basic-information',
+  [ROUTES.PEST_CONTROL]: '/professional-services/pest-control/basic-information',
+  [ROUTES.ELECTRICAL]: '/professional-services/electrical/basic-information',
+}
+
 const RentingProfservicesPage: FC = () => {
   const dispatch = useDispatch();
 
@@ -49,24 +61,10 @@ const RentingProfservicesPage: FC = () => {
     dispatch(setVendorSelectedItemValue(arrayItem));
     dispatch(setProductName(arrayItem));
 
-    if(category === ROUTES.CLEANING){
-      navigate('/professional-services/cleaning/basic-information')
-    } else if(category === ROUTES.REPAIRING){
-      navigate('/professional-services/repairing/basic-information')
-    } else if(category === ROUTES.GARDENING){
-      navigate('/professional-services/gardening/basic-information')
-    } else if(category === ROUTES.TREE_CUTTING){
-      navigate('/professional-services/tree-cutting/basic-information')
-    } else if(category === ROUTES.LAWN_SERVICES){
-      navigate('/professional-services/lawn-services/basic-information')
-    } else if(category === ROUTES.HANDYMAN){
-      navigate('/professional-services/handyman/basic-information')
-    } else if(category === ROUTES.SNOW_REMOVAL){
-      navigate('/professional-services/snow-removal/basic-information')
-    } else if(category === ROUTES.PEST_CONTROL){
-      navigate('/professional-services/pest-control/basic-information')
-    } else if(category === ROUTES.ELECTRICAL){
-      navigate('/professional-services/electrical/basic-information')
+    if(links[category]){
+      navigate(links[category]);
+    } else {
+      navigate('/personal-services');
     }
   }
 
