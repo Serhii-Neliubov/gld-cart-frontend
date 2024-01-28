@@ -45,9 +45,7 @@ import TrackOrder from "../pages/track-order/TrackOrder";
 import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
 import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
-import {BasicInformationVehicle} from "../pages/renting-vendor/pages/vehicle/BasicInformationVehicle.tsx";
-import {PhotoAndVideoVehicle} from "../pages/renting-vendor/pages/vehicle/PhotoAndVideoVehicle.tsx";
-import {PublishCompleteVehicle} from "../pages/renting-vendor/pages/vehicle/PublishCompleteVehicle.tsx";
+import {NewVehicle} from "../pages/renting-vendor/pages/vehicle/NewVehicle.tsx";
 import {BasicInformationElectronics} from "../pages/renting-vendor/pages/electronics/BasicInformationElectronics.tsx";
 import {PhotoAndVideoElectronics} from "../pages/renting-vendor/pages/electronics/PhotoAndVideoElectronics.tsx";
 import {SpecificationsElectronics} from "../pages/renting-vendor/pages/electronics/SpecificationsElectronics.tsx";
@@ -103,7 +101,6 @@ import {SpecificationsSmartWatch} from "../pages/products-vendor/pages/smartWatc
 import {BasicInformationEarrings} from "../pages/products-vendor/pages/earrings/BasicInformationEarrings.tsx";
 import {PhotoAndVideoEarrings} from "../pages/products-vendor/pages/earrings/PhotoAndVideoEarrings.tsx";
 import {SpecificationsEarrings} from "../pages/products-vendor/pages/earrings/SpecificationsEarrings.tsx";
-import {SpecificationsVehicle} from "../pages/renting-vendor/pages/vehicle/SpecificationsVehicle.tsx";
 import {
   BasicInformationCleaning
 } from "../pages/professional-services-vendor/pages/cleaning/BasicInformationCleaning.tsx";
@@ -312,20 +309,8 @@ export const vendorRoutes: IRoutes[] = [
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   // Vehicles
   {
-    component: BasicInformationVehicle,
-    path: "/renting-category-page/vehicle/basic-information",
-  },
-  {
-    component: PhotoAndVideoVehicle,
-    path: '/renting-category-page/vehicle/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsVehicle,
-    path: '/renting-category-page/vehicle/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteVehicle,
-    path: '/renting-category-page/vehicle/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewVehicle,
+    path: "/renting-category-page/new-vehicle-page",
   },
   // Electronics
   {
