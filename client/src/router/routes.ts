@@ -50,24 +50,12 @@ import {NewClothing} from "../pages/products-vendor/pages/clothing/NewClothing.t
 import {NewBluetooth} from "../pages/products-vendor/pages/bluetooth/NewBluetooth.tsx";
 import {NewFacialCare} from "../pages/products-vendor/pages/facial/NewFacialCare.tsx";
 import {NewShoes} from "../pages/products-vendor/pages/shoes/NewShoes.tsx";
-import {BasicInformationCpu} from "../pages/products-vendor/pages/cpu/BasicInformationCpu.tsx";
-import {PhotoAndVideoCpu} from "../pages/products-vendor/pages/cpu/PhotoAndVideoCpu.tsx";
-import {SpecificationsCpu} from "../pages/products-vendor/pages/cpu/SpecificationsCpu.tsx";
-import {BasicInformationDiscover} from "../pages/products-vendor/pages/discover/BasicInformationDiscover.tsx";
-import {PhotoAndVideoDiscover} from "../pages/products-vendor/pages/discover/PhotoAndVideoDiscover.tsx";
-import {SpecificationsDiscover} from "../pages/products-vendor/pages/discover/SpecificationsDiscover.tsx";
-import {BasicInformationHeadphones} from "../pages/products-vendor/pages/headphones/BasicInformationHeadphones.tsx";
-import {PhotoAndVideoHeadphones} from "../pages/products-vendor/pages/headphones/PhotoAndVideoHeadphones.tsx";
-import {SpecificationsHeadphones} from "../pages/products-vendor/pages/headphones/SpecificationsHeadphones.tsx";
-import {BasicInformationBracelets} from "../pages/products-vendor/pages/braceletes/BasicInformationBracelets.tsx";
-import {PhotoAndVideoBracelets} from "../pages/products-vendor/pages/braceletes/PhotoAndVideoBracelets.tsx";
-import {SpecificationsBracelets} from "../pages/products-vendor/pages/braceletes/SpecificationsBracelets.tsx";
-import {BasicInformationSmartWatch} from "../pages/products-vendor/pages/smartWatch/BasicInformationSmartWatch.tsx";
-import {PhotoAndVideoSmartWatch} from "../pages/products-vendor/pages/smartWatch/PhotoAndVideoSmartWatch.tsx";
-import {SpecificationsSmartWatch} from "../pages/products-vendor/pages/smartWatch/SpecificationsSmartWatch.tsx";
-import {BasicInformationEarrings} from "../pages/products-vendor/pages/earrings/BasicInformationEarrings.tsx";
-import {PhotoAndVideoEarrings} from "../pages/products-vendor/pages/earrings/PhotoAndVideoEarrings.tsx";
-import {SpecificationsEarrings} from "../pages/products-vendor/pages/earrings/SpecificationsEarrings.tsx";
+import {NewCpu} from "../pages/products-vendor/pages/cpu/NewCpu.tsx";
+import {NewDiscoverSkincare} from "../pages/products-vendor/pages/discover/NewDiscoverSkincare.tsx";
+import {NewHeadphones} from "../pages/products-vendor/pages/headphones/NewHeadphones.tsx";
+import {NewBracelets} from "../pages/products-vendor/pages/braceletes/NewBracelets.tsx";
+import {NewSmartWatch} from "../pages/products-vendor/pages/smartWatch/NewSmartWatch.tsx";
+import {NewEarrings} from "../pages/products-vendor/pages/earrings/NewEarrings.tsx";
 import {
   NewCleaning
 } from "../pages/professional-services-vendor/pages/cleaning/NewCleaning.tsx";
@@ -93,12 +81,6 @@ import {
 import {
   NewElectrical
 } from "../pages/professional-services-vendor/pages/electrical/NewElectrical.tsx";
-import {PublishCompleteCpu} from "../pages/products-vendor/pages/cpu/PublishCompleteCpu.tsx";
-import {PublishCompleteDiscover} from "../pages/products-vendor/pages/discover/PublishCompleteDiscover.tsx";
-import {PublishCompleteHeadphones} from "../pages/products-vendor/pages/headphones/PublishCompleteHeadphones.tsx";
-import {PublishCompleteBracelets} from "../pages/products-vendor/pages/braceletes/PublishCompleteBracelets.tsx";
-import {PublishCompleteSmartWatch} from "../pages/products-vendor/pages/smartWatch/PublishCompleteSmartWatch.tsx";
-import {PublishCompleteEarrings} from "../pages/products-vendor/pages/earrings/PublishCompleteEarrings.tsx";
 
 interface IRoutes {
   component: FC;
@@ -212,88 +194,28 @@ export const vendorRoutes: IRoutes[] = [
   },
   // CPU
   {
-    component: BasicInformationCpu,
-    path: "/products-category-page/cpu/basic-information",
-  },
-  {
-    component: PhotoAndVideoCpu,
-    path: '/products-category-page/cpu/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsCpu,
-    path: '/products-category-page/cpu/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteCpu,
-    path: '/renting-category-page/cpu/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewCpu,
+    path: "/products-category-page/new-cpu-page",
   },
   // Discover Skincare
   {
-    component: BasicInformationDiscover,
-    path: "/products-category-page/discover-skincare/basic-information",
-  },
-  {
-    component: PhotoAndVideoDiscover,
-    path: '/products-category-page/discover-skincare/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsDiscover,
-    path: '/products-category-page/discover-skincare/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteDiscover,
-    path: '/renting-category-page/discover-skincare/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewDiscoverSkincare,
+    path: "/products-category-page/new-discover-skincare-page",
   },
   // Headphones
   {
-    component: BasicInformationHeadphones,
-    path: "/products-category-page/headphones/basic-information",
-  },
-  {
-    component: PhotoAndVideoHeadphones,
-    path: '/products-category-page/headphones/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsHeadphones,
-    path: '/products-category-page/headphones/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteHeadphones,
-    path: '/renting-category-page/headphones/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewHeadphones,
+    path: "/products-category-page/new-headphones-page",
   },
   // Bracelets
   {
-    component: BasicInformationBracelets,
-    path: "/products-category-page/bracelets/basic-information",
-  },
-  {
-    component: PhotoAndVideoBracelets,
-    path: '/products-category-page/bracelets/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsBracelets,
-    path: '/products-category-page/bracelets/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteBracelets,
-    path: '/renting-category-page/bracelets/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewBracelets,
+    path: "/products-category-page/new-bracelets-page",
   },
   // SmartWatch
   {
-    component: BasicInformationSmartWatch,
-    path: "/products-category-page/smart-watch/basic-information",
-  },
-  {
-    component: PhotoAndVideoSmartWatch,
-    path: '/products-category-page/smart-watch/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsSmartWatch,
-    path: '/products-category-page/smart-watch/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteSmartWatch,
-    path: '/renting-category-page/smart-watch/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewSmartWatch,
+    path: "/products-category-page/new-smartwatch-page",
   },
   // Cleaning
   {
@@ -342,20 +264,8 @@ export const vendorRoutes: IRoutes[] = [
   },
   // Earrings
   {
-    component: BasicInformationEarrings,
-    path: "/products-category-page/earrings/basic-information",
-  },
-  {
-    component: PhotoAndVideoEarrings,
-    path: '/products-category-page/earrings/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsEarrings,
-    path: '/products-category-page/earrings/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteEarrings,
-    path: '/renting-category-page/earrings/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewEarrings,
+    path: "/products-category-page/new-earrings-page",
   },
   // Houses
   {

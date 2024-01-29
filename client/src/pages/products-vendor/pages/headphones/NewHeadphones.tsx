@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
-import styles from './NewMobileTablets.module.scss'
+import styles from './NewHeadphones.module.scss'
 import {Layout} from "../../../../components/Vendor/Layout.tsx";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
 
-export const NewMobileTablets = () => {
+export const NewHeadphones = () => {
     const [stage, setStage] = useState(3);
 
     return(
         <React.Fragment>
-            {stage < 6 && <Layout setStage={setStage} title='Mobile/Tablets Renting Form' subtitle='Basic information' stage={stage - 1}>
+            {stage < 6 && <Layout setStage={setStage} title='Headphones Renting Form' subtitle='Basic information' stage={stage - 1}>
                 {stage == 3 &&
                     <React.Fragment>
                         <div className={styles.inputTextBox}>
-                            <label>Product Title</label>
+                            <label>Service Title</label>
                             <input placeholder='70 words max' maxLength={70}/>
                         </div>
                         <div className={styles.inputAreaBox}>
@@ -20,16 +20,16 @@ export const NewMobileTablets = () => {
                             <textarea minLength={160} maxLength={9000}
                                       placeholder='Minimum 160 and maximum 9000 characters'/>
                         </div>
-                        <div className={styles.inputRadioBox}>
+                        <div className={styles.inputsRadio}>
                             <span>The product  you want to sell is ?</span>
                             <div className={styles.radioInputs}>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>New</label>
+                                    <label>Branded</label>
                                 </div>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>Used</label>
+                                    <label>Local</label>
                                 </div>
                             </div>
                         </div>
@@ -110,102 +110,72 @@ export const NewMobileTablets = () => {
                 }
                 {stage == 5 &&
                     <React.Fragment>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Operating System</label>
-                                <input type='text' placeholder='Specify the operating system'/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                <label>Processor</label>
-                                <input type='text' placeholder='Provide details about the processor'/>
-                            </div>
-                        </div>
-                        <div className={styles.inputBox}>
-                            <label>Memory (RAM)</label>
-                            <input type='text' placeholder='Specify the RAM capacity'/>
-                        </div>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Storage</label>
-                                <input type='text' placeholder='Indicate the storage capacity, e.g., SSD/HDD size'/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                <label>Screen/Display</label>
-                                <input type='text' placeholder='Provide information about the screen size, resolution'/>
-                            </div>
-                        </div>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Camera</label>
-                                <input type='text' placeholder='Specify camera features, including megapixels'/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                <label>Battery Life</label>
-                                <input type='text' placeholder='Estimate battery life in hours'/>
-                            </div>
-                        </div>
-                        <div className={styles.inputBox}>
-                            <label>Connectivity</label>
-                            <input type='text'
-                                   placeholder='connectivity options such as Wi-Fi, Bluetooth, USB ports, etc.'/>
-                        </div>
-                        <span className={styles.tipTitle}>Select the Additional Features of your product</span>
-                        <div className={styles.checkboxInputsBox}>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Fingerprint Sensor</label>
+                        <div className={styles.inputsRadio}>
+                            <span>The range of frequencies the headphones can reproduce (e.g.)</span>
+                            <div className={styles.radioInputs}>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>20kHz</label>
                                 </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Expandable Storage</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Dust Resistance</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Other</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Face Recognition</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Multi-Window Mode</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Keyboard Compatibility</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Stylus Support</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Water Resistance</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Case/Accessory Options</label>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>20Hz</label>
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.inputBox}>
-                            <label>How many product are in stock?</label>
-                            <input type='number' placeholder='100'/>
+                        <div className={styles.inputsRadio}>
+                            <span>Describe the charging method.</span>
+                            <div className={styles.radioInputs}>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>USB-C</label>
+                                </div>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>Wireless</label>
+                                </div>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>micro-USB</label>
+                                </div>
+                            </div>
+                        </div>
+                        <span className={styles.tipTitle}>Headphone Type of Property</span>
+                        <div className={styles.checkboxInputColumn}>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>Over-ear</label>
+                            </div>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>On-ear</label>
+                            </div>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>True wireless</label>
+                            </div>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>In-ear</label>
+                            </div>
+                        </div>
+                        <div className={styles.inputsRadio}>
+                            <span>Types of Colors.</span>
+                            <div className={styles.radioInputs}>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>Black</label>
+                                </div>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>White</label>
+                                </div>
+                            </div>
                         </div>
                     </React.Fragment>
                 }
             </Layout>}
-            {stage == 6 && <ItemPublishPage category='Mobile/Tablets'/>}
+            {stage == 6 && <ItemPublishPage category='Headphones'/>}
         </React.Fragment>
     )
 }

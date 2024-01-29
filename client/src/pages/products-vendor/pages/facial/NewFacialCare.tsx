@@ -106,24 +106,6 @@ export const NewFacialCare = () => {
                             <label>Promo Video (Optional)</label>
                             <input placeholder='Youtube link here'/>
                         </div>
-                        <span className={styles.uploadPhotosTitle}>UPLOAD RECENTLY WORK PHOTOS</span>
-                        <div className={styles.photoBlocks}>
-                            <div className={styles.photoBlock}>
-                                <img src='/photo-and-video-icon.svg' alt='icon'/>
-                            </div>
-                            <div className={styles.photoBlock}>
-                                <img src='/photo-and-video-icon.svg' alt='icon'/>
-                            </div>
-                            <div className={styles.photoBlock}>
-                                <img src='/photo-and-video-icon.svg' alt='icon'/>
-                            </div>
-                            <div className={styles.photoBlock}>
-                                <img src='/photo-and-video-icon.svg' alt='icon'/>
-                            </div>
-                            <div className={styles.photoBlock}>
-                                <img src='/photo-and-video-icon.svg' alt='icon'/>
-                            </div>
-                        </div>
                     </div>
                 }
                 {stage == 5 &&

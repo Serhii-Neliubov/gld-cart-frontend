@@ -57,12 +57,12 @@ const links = {
   [ROUTES.BLUETOOTH]: '/products-category-page/new-bluetooth-page',
   [ROUTES.FACIAL_LIP_CARE]: '/products-category-page/new-facial-care-page',
   [ROUTES.SHOES]: '/products-category-page/new-shoes-page',
-  [ROUTES.CPU]: '/products-category-page/new-awesome-cpu-page',
+  [ROUTES.CPU]: '/products-category-page/new-cpu-page',
   [ROUTES.DISCOVER_SKINCARE]: '/products-category-page/new-discover-skincare-page',
-  [ROUTES.HEADPHONES]: '/products-category-page/new-awesome-headphones-page',
-  [ROUTES.BRACELETS]: '/products-category-page/new-awesome-bracelets-page',
-  [ROUTES.SMART_WATCH]: '/products-category-page/new-awesome-smartwatch-page',
-  [ROUTES.EARRINGS]: '/products-category-page/new-awesome-earrings-page'
+  [ROUTES.HEADPHONES]: '/products-category-page/new-headphones-page',
+  [ROUTES.BRACELETS]: '/products-category-page/new-bracelets-page',
+  [ROUTES.SMART_WATCH]: '/products-category-page/new-smartwatch-page',
+  [ROUTES.EARRINGS]: '/products-category-page/new-earrings-page'
 }
 
 const RentingProductsPage: FC = () => {

@@ -1,35 +1,35 @@
 import React, {useState} from 'react';
-import styles from './NewMobileTablets.module.scss'
+import styles from './NewCpu.module.scss'
 import {Layout} from "../../../../components/Vendor/Layout.tsx";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
 
-export const NewMobileTablets = () => {
+export const NewCpu = () => {
     const [stage, setStage] = useState(3);
 
     return(
         <React.Fragment>
-            {stage < 6 && <Layout setStage={setStage} title='Mobile/Tablets Renting Form' subtitle='Basic information' stage={stage - 1}>
+            {stage < 6 && <Layout setStage={setStage} title='CPU Renting Form' subtitle='Basic information' stage={stage - 1}>
                 {stage == 3 &&
                     <React.Fragment>
                         <div className={styles.inputTextBox}>
-                            <label>Product Title</label>
+                            <label>Service Title</label>
                             <input placeholder='70 words max' maxLength={70}/>
                         </div>
                         <div className={styles.inputAreaBox}>
-                            <label>Products Description</label>
+                            <label>Products description</label>
                             <textarea minLength={160} maxLength={9000}
                                       placeholder='Minimum 160 and maximum 9000 characters'/>
                         </div>
-                        <div className={styles.inputRadioBox}>
+                        <div className={styles.inputsRadio}>
                             <span>The product  you want to sell is ?</span>
                             <div className={styles.radioInputs}>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>New</label>
+                                    <label>Branded</label>
                                 </div>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>Used</label>
+                                    <label>Local</label>
                                 </div>
                             </div>
                         </div>
@@ -112,89 +112,52 @@ export const NewMobileTablets = () => {
                     <React.Fragment>
                         <div className={styles.inputsBox}>
                             <div className={styles.inputBox}>
-                                <label>Operating System</label>
-                                <input type='text' placeholder='Specify the operating system'/>
+                                <label>CPU Model</label>
+                                <input placeholder='Specify the model or series of the CPU'/>
                             </div>
                             <div className={styles.inputBox}>
-                                <label>Processor</label>
-                                <input type='text' placeholder='Provide details about the processor'/>
+                                <label>Socket Type</label>
+                                <input placeholder='Indicate the socket type for compatibility'/>
                             </div>
                         </div>
                         <div className={styles.inputBox}>
-                            <label>Memory (RAM)</label>
-                            <input type='text' placeholder='Specify the RAM capacity'/>
+                            <label>Core Count</label>
+                            <input placeholder='Enter the number of CPU cores'/>
                         </div>
                         <div className={styles.inputsBox}>
                             <div className={styles.inputBox}>
-                                <label>Storage</label>
-                                <input type='text' placeholder='Indicate the storage capacity, e.g., SSD/HDD size'/>
+                                <label>Clock Speed</label>
+                                <input placeholder='Specify the base and boost clock speeds'/>
                             </div>
                             <div className={styles.inputBox}>
-                                <label>Screen/Display</label>
-                                <input type='text' placeholder='Provide information about the screen size, resolution'/>
+                                <label>Cache</label>
+                                <input placeholder='Specify the CPU cache size'/>
                             </div>
                         </div>
                         <div className={styles.inputsBox}>
                             <div className={styles.inputBox}>
-                                <label>Camera</label>
-                                <input type='text' placeholder='Specify camera features, including megapixels'/>
+                                <label>TDP (Thermal Design Power)</label>
+                                <input placeholder='Enter the TDP rating of the CPU in watts'/>
                             </div>
                             <div className={styles.inputBox}>
-                                <label>Battery Life</label>
-                                <input type='text' placeholder='Estimate battery life in hours'/>
+                                <label>Architecture</label>
+                                <input placeholder='Specify the CPU architecture (e.g., AMD Ryzen, Intel Core)'/>
                             </div>
                         </div>
                         <div className={styles.inputBox}>
-                            <label>Connectivity</label>
-                            <input type='text'
-                                   placeholder='connectivity options such as Wi-Fi, Bluetooth, USB ports, etc.'/>
+                            <label>Compatibility</label>
+                            <input placeholder='compatible motherboards or platforms if known'/>
                         </div>
-                        <span className={styles.tipTitle}>Select the Additional Features of your product</span>
-                        <div className={styles.checkboxInputsBox}>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Fingerprint Sensor</label>
+                        <div className={styles.inputsRadio}>
+                            <span>Integrated Graphics</span>
+                            <div className={styles.radioInputs}>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>Yes</label>
                                 </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Expandable Storage</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Dust Resistance</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Other</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Face Recognition</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Multi-Window Mode</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Keyboard Compatibility</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Stylus Support</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Water Resistance</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Case/Accessory Options</label>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>No</label>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +168,7 @@ export const NewMobileTablets = () => {
                     </React.Fragment>
                 }
             </Layout>}
-            {stage == 6 && <ItemPublishPage category='Mobile/Tablets'/>}
+            {stage == 6 && <ItemPublishPage category='Shoes'/>}
         </React.Fragment>
     )
 }

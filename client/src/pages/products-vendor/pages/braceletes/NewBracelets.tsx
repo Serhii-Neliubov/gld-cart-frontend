@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
-import styles from './NewMobileTablets.module.scss'
+import styles from './NewBracelets.module.scss'
 import {Layout} from "../../../../components/Vendor/Layout.tsx";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
 
-export const NewMobileTablets = () => {
+export const NewBracelets = () => {
     const [stage, setStage] = useState(3);
 
     return(
         <React.Fragment>
-            {stage < 6 && <Layout setStage={setStage} title='Mobile/Tablets Renting Form' subtitle='Basic information' stage={stage - 1}>
+            {stage < 6 && <Layout setStage={setStage} title='Bracelets Renting Form' subtitle='Basic information' stage={stage - 1}>
                 {stage == 3 &&
                     <React.Fragment>
                         <div className={styles.inputTextBox}>
-                            <label>Product Title</label>
+                            <label>Service Title</label>
                             <input placeholder='70 words max' maxLength={70}/>
                         </div>
                         <div className={styles.inputAreaBox}>
@@ -20,16 +20,29 @@ export const NewMobileTablets = () => {
                             <textarea minLength={160} maxLength={9000}
                                       placeholder='Minimum 160 and maximum 9000 characters'/>
                         </div>
-                        <div className={styles.inputRadioBox}>
+                        <div className={styles.inputsRadio}>
+                            <span>The Product you want to sell is for</span>
+                            <div className={styles.radioInputs}>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>Men</label>
+                                </div>
+                                <div className={styles.inputRadio}>
+                                    <input type='radio'/>
+                                    <label>Women</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.inputsRadio}>
                             <span>The product  you want to sell is ?</span>
                             <div className={styles.radioInputs}>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>New</label>
+                                    <label>Branded</label>
                                 </div>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>Used</label>
+                                    <label>Local</label>
                                 </div>
                             </div>
                         </div>
@@ -110,59 +123,105 @@ export const NewMobileTablets = () => {
                 }
                 {stage == 5 &&
                     <React.Fragment>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Operating System</label>
-                                <input type='text' placeholder='Specify the operating system'/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                <label>Processor</label>
-                                <input type='text' placeholder='Provide details about the processor'/>
+                        <div className={styles.areaBox}>
+                            <label>Material</label>
+                            <textarea placeholder='Write about the primary material used for the bracelets'/>
+                        </div>
+                        <div className={styles.choosingColor}>
+                            <span>Select the Colour of your product</span>
+                            <div>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#9302A0'}}/>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#318834'}}/>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#000000'}}/>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#282684'}}/>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#EC0000'}}/>
+                                <button className={styles.addingColor}>+</button>
                             </div>
                         </div>
-                        <div className={styles.inputBox}>
-                            <label>Memory (RAM)</label>
-                            <input type='text' placeholder='Specify the RAM capacity'/>
-                        </div>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Storage</label>
-                                <input type='text' placeholder='Indicate the storage capacity, e.g., SSD/HDD size'/>
+                        <span className={styles.tipTitle}>Select Size of products</span>
+                        <div className={styles.checkboxInputColumn}>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>Medium</label>
                             </div>
-                            <div className={styles.inputBox}>
-                                <label>Screen/Display</label>
-                                <input type='text' placeholder='Provide information about the screen size, resolution'/>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>Small</label>
                             </div>
-                        </div>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Camera</label>
-                                <input type='text' placeholder='Specify camera features, including megapixels'/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                <label>Battery Life</label>
-                                <input type='text' placeholder='Estimate battery life in hours'/>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>Large</label>
                             </div>
                         </div>
-                        <div className={styles.inputBox}>
-                            <label>Connectivity</label>
-                            <input type='text'
-                                   placeholder='connectivity options such as Wi-Fi, Bluetooth, USB ports, etc.'/>
-                        </div>
-                        <span className={styles.tipTitle}>Select the Additional Features of your product</span>
+                        <span className={styles.tipTitle}>Select the Metal type of bracelets</span>
                         <div className={styles.checkboxInputsBox}>
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Fingerprint Sensor</label>
+                                    <label>Sterling Silver</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Expandable Storage</label>
+                                    <label>White Gold</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Dust Resistance</label>
+                                    <label>Stainless Steel</label>
+                                </div>
+                            </div>
+                            <div className={styles.checkboxInputColumn}>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Gold</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Platinum</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Copper</label>
+                                </div>
+                            </div>
+                            <div className={styles.checkboxInputColumn}>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Rose Gold</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Titanium</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Other</label>
+                                </div>
+                            </div>
+                        </div>
+                        <span className={styles.tipTitle}>Select the type of closure for the Bracelets</span>
+                        <div className={styles.checkboxInputsBox}>
+                            <div className={styles.checkboxInputColumn}>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Lobster Clasp</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Magnetic Clasp</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Buckle</label>
+                                </div>
+                            </div>
+                            <div className={styles.checkboxInputColumn}>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Toggle Clasp</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Box Clasp</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
@@ -172,40 +231,22 @@ export const NewMobileTablets = () => {
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Face Recognition</label>
+                                    <label>Spring Ring Clasp</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Multi-Window Mode</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Keyboard Compatibility</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Stylus Support</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Water Resistance</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Case/Accessory Options</label>
+                                    <label>Slide Clasp</label>
                                 </div>
                             </div>
                         </div>
                         <div className={styles.inputBox}>
                             <label>How many product are in stock?</label>
-                            <input type='number' placeholder='100'/>
+                            <input type='number' placeholder='200'/>
                         </div>
                     </React.Fragment>
                 }
             </Layout>}
-            {stage == 6 && <ItemPublishPage category='Mobile/Tablets'/>}
+            {stage == 6 && <ItemPublishPage category='Bracelets'/>}
         </React.Fragment>
     )
 }
