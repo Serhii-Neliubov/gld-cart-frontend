@@ -22,6 +22,12 @@ const ROUTES = {
   ELECTRONICS: 'electronics'
 }
 
+const links = {
+  [ROUTES.VEHICLES]: '/renting-category-page/new-vehicle-page',
+  [ROUTES.HOUSES]: '/renting-category-page/new-houses-page',
+  [ROUTES.ELECTRONICS]: '/renting-category-page/new-electronics-page'
+}
+
 const RentingCategoryPage: FC = () => {
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [coloredStage, setColoredStage] = useState(0);
@@ -33,12 +39,8 @@ const RentingCategoryPage: FC = () => {
     dispatch(setVendorSelectedItemValue(arrayItem));
     dispatch(setProductName(arrayItem));
 
-    if(category === ROUTES.VEHICLES){
-      navigate('/renting-category-page/new-vehicle-page')
-    } else if(category === ROUTES.HOUSES){
-      navigate('/renting-category-page/houses/basic-information')
-    } else if(category === ROUTES.ELECTRONICS){
-      navigate('/renting-category-page/electronics/basic-information')
+    if(links[category]){
+      navigate(links[category]);
     }
   }
 

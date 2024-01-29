@@ -46,12 +46,8 @@ import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
 import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
 import {NewVehicle} from "../pages/renting-vendor/pages/vehicle/NewVehicle.tsx";
-import {BasicInformationElectronics} from "../pages/renting-vendor/pages/electronics/BasicInformationElectronics.tsx";
-import {PhotoAndVideoElectronics} from "../pages/renting-vendor/pages/electronics/PhotoAndVideoElectronics.tsx";
-import {SpecificationsElectronics} from "../pages/renting-vendor/pages/electronics/SpecificationsElectronics.tsx";
-import {BasicInformationHouses} from "../pages/renting-vendor/pages/houses/BasicInformationHouses.tsx";
-import {PhotoAndVideoHouses} from "../pages/renting-vendor/pages/houses/PhotoAndVideoHouses.tsx";
-import {SpecificationsHouses} from "../pages/renting-vendor/pages/houses/SpecificationsHouses.tsx";
+import {NewElectronics} from "../pages/renting-vendor/pages/electronics/NewElectronics.tsx";
+import {NewHouses} from "../pages/renting-vendor/pages/houses/NewHouses.tsx";
 import {BasicInformationBeauty} from "../pages/products-vendor/pages/beautyOfSkin/BasicInformationBeauty.tsx";
 import {PhotoAndVideoBeauty} from "../pages/products-vendor/pages/beautyOfSkin/PhotoAndVideoBeauty.tsx";
 import {SpecificationsBeauty} from "../pages/products-vendor/pages/beautyOfSkin/SpecificationsBeauty.tsx";
@@ -102,36 +98,18 @@ import {BasicInformationEarrings} from "../pages/products-vendor/pages/earrings/
 import {PhotoAndVideoEarrings} from "../pages/products-vendor/pages/earrings/PhotoAndVideoEarrings.tsx";
 import {SpecificationsEarrings} from "../pages/products-vendor/pages/earrings/SpecificationsEarrings.tsx";
 import {
-  BasicInformationCleaning
-} from "../pages/professional-services-vendor/pages/cleaning/BasicInformationCleaning.tsx";
-import {PhotoAndVideoCleaning} from "../pages/professional-services-vendor/pages/cleaning/PhotoAndVideoCleaning.tsx";
-import {SpecificationsCleaning} from "../pages/professional-services-vendor/pages/cleaning/SpecificationsCleaning.tsx";
+  NewCleaning
+} from "../pages/professional-services-vendor/pages/cleaning/NewCleaning.tsx";
 import {
-  BasicInformationRepairing
-} from "../pages/professional-services-vendor/pages/repairing/BasicInformationRepairing.tsx";
-import {PhotoAndVideoRepairing} from "../pages/professional-services-vendor/pages/repairing/PhotoAndVideoRepairing.tsx";
+  NewRepairing
+} from "../pages/professional-services-vendor/pages/repairing/NewRepairing.tsx";
 import {
-  SpecificationsRepairing
-} from "../pages/professional-services-vendor/pages/repairing/SpecificationsRepairing.tsx";
+  NewGardening
+} from "../pages/professional-services-vendor/pages/gardening/NewGardening.tsx";
 import {
-  BasicInformationGardening
-} from "../pages/professional-services-vendor/pages/gardening/BasicInformationGardening.tsx";
-import {PhotoAndVideoGardening} from "../pages/professional-services-vendor/pages/gardening/PhotoAndVideoGardening.tsx";
-import {
-  SpecificationsGardening
-} from "../pages/professional-services-vendor/pages/gardening/SpecificationsGardening.tsx";
-import {
-  BasicInformationTreeCutting
-} from "../pages/professional-services-vendor/pages/treeCutting/BasicInformationTreeCutting.tsx";
-import {
-  PhotoAndVideoTreeCutting
-} from "../pages/professional-services-vendor/pages/treeCutting/PhotoAndVideoTreeCutting.tsx";
-import {
-  SpecificationsTreeCutting
-} from "../pages/professional-services-vendor/pages/treeCutting/SpecificationsTreeCutting.tsx";
-import {SpecificationsLawn} from "../pages/professional-services-vendor/pages/lawnServices/SpecificationsLawn.tsx";
-import {PhotoAndVideoLawn} from "../pages/professional-services-vendor/pages/lawnServices/PhotoAndVideoLawn.tsx";
-import {BasicInformationLawn} from "../pages/professional-services-vendor/pages/lawnServices/BasicInformationLawn.tsx";
+  NewTreeCutting
+} from "../pages/professional-services-vendor/pages/treeCutting/NewTreeCutting.tsx";
+import {NewLawnServices} from "../pages/professional-services-vendor/pages/lawnServices/NewLawnServices.tsx";
 import {
   BasicInformationHandyman
 } from "../pages/professional-services-vendor/pages/handyman/BasicInformationHandyman.tsx";
@@ -170,8 +148,6 @@ import {
 import {
   PublishCompletePestControl
 } from "../pages/professional-services-vendor/pages/pestControl/PublishCompletePestControl.tsx";
-import {PublishCompleteHouses} from "../pages/renting-vendor/pages/houses/PublishCompleteHouses.tsx";
-import {PublishCompleteElectronics} from "../pages/renting-vendor/pages/electronics/PublishCompleteElectronics.tsx";
 import {PublishCompleteBags} from "../pages/products-vendor/pages/bags/PublishCompleteBags.tsx";
 import {PublishCompleteBeauty} from "../pages/products-vendor/pages/beautyOfSkin/PublishCompleteBeauty.tsx";
 import {PublishCompleteAwesome} from "../pages/products-vendor/pages/awesome/PublishCompleteAwesome.tsx";
@@ -189,19 +165,6 @@ import {PublishCompleteHeadphones} from "../pages/products-vendor/pages/headphon
 import {PublishCompleteBracelets} from "../pages/products-vendor/pages/braceletes/PublishCompleteBracelets.tsx";
 import {PublishCompleteSmartWatch} from "../pages/products-vendor/pages/smartWatch/PublishCompleteSmartWatch.tsx";
 import {PublishCompleteEarrings} from "../pages/products-vendor/pages/earrings/PublishCompleteEarrings.tsx";
-import {
-  PublishCompleteCleaning
-} from "../pages/professional-services-vendor/pages/cleaning/PublishCompleteCleaning.tsx";
-import {
-  PublishCompleteRepairing
-} from "../pages/professional-services-vendor/pages/repairing/PublishCompleteRepairing.tsx";
-import {
-  PublishCompleteGardening
-} from "../pages/professional-services-vendor/pages/gardening/PublishCompleteGardening.tsx";
-import {
-  PublishCompleteTreeCutting
-} from "../pages/professional-services-vendor/pages/treeCutting/PublishCompleteTreeCutting.tsx";
-import {PublishCompleteLawn} from "../pages/professional-services-vendor/pages/lawnServices/PublishCompleteLawn.tsx";
 import {
   PublishCompleteHandyman
 } from "../pages/professional-services-vendor/pages/handyman/PublishCompleteHandyman.tsx";
@@ -314,20 +277,8 @@ export const vendorRoutes: IRoutes[] = [
   },
   // Electronics
   {
-    component: BasicInformationElectronics,
-    path: "/renting-category-page/electronics/basic-information",
-  },
-  {
-    component: PhotoAndVideoElectronics,
-    path: '/renting-category-page/electronics/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsElectronics,
-    path: '/renting-category-page/electronics/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteElectronics,
-    path: '/renting-category-page/electronics/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewElectronics,
+    path: "/renting-category-page/new-electronics-page",
   },
   // Bags
   {
@@ -552,88 +503,28 @@ export const vendorRoutes: IRoutes[] = [
   },
   // Cleaning
   {
-    component: BasicInformationCleaning,
-    path: "/professional-services/cleaning/basic-information",
-  },
-  {
-    component: PhotoAndVideoCleaning,
-    path: '/professional-services/cleaning/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsCleaning,
-    path: '/professional-services/cleaning/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteCleaning,
-    path: '/professional-services/cleaning/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewCleaning,
+    path: "/professional-services/new-cleaning-page",
   },
   // Repairing
   {
-    component: BasicInformationRepairing,
-    path: "/professional-services/repairing/basic-information",
-  },
-  {
-    component: PhotoAndVideoRepairing,
-    path: '/professional-services/repairing/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsRepairing,
-    path: '/professional-services/repairing/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteRepairing,
-    path: '/professional-services/repairing/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewRepairing,
+    path: "/professional-services/new-repairing-page",
   },
   // Gardening
   {
-    component: BasicInformationGardening,
-    path: "/professional-services/gardening/basic-information",
-  },
-  {
-    component: PhotoAndVideoGardening,
-    path: '/professional-services/gardening/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsGardening,
-    path: '/professional-services/gardening/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteGardening,
-    path: '/professional-services/gardening/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewGardening,
+    path: "/professional-services/new-gardening-page",
   },
   // Tree Cutting
   {
-    component: BasicInformationTreeCutting,
-    path: "/professional-services/tree-cutting/basic-information",
-  },
-  {
-    component: PhotoAndVideoTreeCutting,
-    path: '/professional-services/tree-cutting/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsTreeCutting,
-    path: '/professional-services/tree-cutting/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteTreeCutting,
-    path: '/professional-services/tree-cutting/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewTreeCutting,
+    path: "/professional-services/new-tree-cutting-page",
   },
   // Lawn Services
   {
-    component: BasicInformationLawn,
-    path: "/professional-services/lawn-services/basic-information",
-  },
-  {
-    component: PhotoAndVideoLawn,
-    path: '/professional-services/lawn-services/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsLawn,
-    path: '/professional-services/lawn-services/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteLawn,
-    path: '/professional-services/lawn-services/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewLawnServices,
+    path: "/professional-services/new-lawn-services-page",
   },
   // Handyman
   {
@@ -722,20 +613,8 @@ export const vendorRoutes: IRoutes[] = [
   },
   // Houses
   {
-    component: BasicInformationHouses,
-    path: "/renting-category-page/houses/basic-information",
-  },
-  {
-    component: PhotoAndVideoHouses,
-    path: '/renting-category-page/houses/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsHouses,
-    path: '/renting-category-page/houses/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteHouses,
-    path: '/renting-category-page/houses/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewHouses,
+    path: "/renting-category-page/new-houses-page",
   },
 // Beauty
   {

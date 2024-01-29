@@ -30,22 +30,6 @@
   justify-content: space-between;
 }
 
-.inputBlock{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  & > label{
-    color: #000;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-  }
-  & > input{
-    border: 1px solid #ABABAB;
-    padding: 14px;
-  }
-}
 .inputsBox{
   display: flex;
   justify-content: space-between;
@@ -164,7 +148,22 @@
     resize: none;
   }
 }
-
+.inputBlock{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  & > label{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & > input{
+    border: 1px solid #ABABAB;
+    padding: 14px;
+  }
+}
 .inputRadioBox{
   display: flex;
   flex-direction: column;

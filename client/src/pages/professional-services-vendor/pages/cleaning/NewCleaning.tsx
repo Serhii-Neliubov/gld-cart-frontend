@@ -1,91 +1,38 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
-import styles from './NewVehicle.module.scss'
+import React, {useState} from 'react';
+import styles from './NewCleaning.module.scss'
 import {Layout} from "../../../../components/Vendor/Layout.tsx";
 import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
-import {useDispatch, useSelector} from "react-redux";
-import {setProductInformation, vendorProductInfo} from "../../../../redux/slices/vendorProductInfoSlice.ts";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
-import {useNavigate} from "react-router-dom";
 
-interface ProductInformation {
-    [key: string]: string;
-}
-
-export const NewVehicle = () => {
-    const dispatch = useDispatch();
-    const data = useSelector(vendorProductInfo);
+export const NewCleaning = () => {
     const [stage, setStage] = useState(3);
-    const navigator = useNavigate();
 
-    useCategoryRedirect('vehicles', '/renting-category-page');
-
-    useEffect(() => {
-        if(stage < 3){
-            navigator('/renting-category-page')
-        }
-    }, [navigator, stage]);
-
-    const handleInputChange = (
-        currentData: object,
-        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-        key: string,
-    ) => {
-        const inputValue = e.target.value;
-
-        dispatch(setProductInformation({
-            ...currentData,
-            [key]: inputValue,
-        }));
-    };
-
-    const onChecked = (currentData: object, event: ChangeEvent<HTMLInputElement>, key: string, element: string | object) => {
-        if (event.target.checked) {
-            dispatch(setProductInformation({ ...currentData, [key]: element }));
-        } else {
-            const updatedInfo: ProductInformation = { ...currentData };
-            delete updatedInfo[key];
-            dispatch(setProductInformation(updatedInfo));
-        }
-    }
-
-    console.log(data);
+    useCategoryRedirect('cleaning', '/personal-services');
 
     return(
         <React.Fragment>
-            {stage < 6 && <Layout setStage={setStage} title='Vehicle Renting Form' subtitle='Basic information' stage={stage - 1}>
+            {stage < 6 && <Layout setStage={setStage} title='Cleaning Renting Form' subtitle='Basic information' stage={stage - 1}>
                 {stage == 3 &&
                     <React.Fragment>
                         <div className={styles.inputTextBox}>
                             <label>Title</label>
-                            <input onChange={(event) => handleInputChange(data.info, event, 'title')} placeholder='70 words max'
-                                   maxLength={70}/>
+                            <input placeholder='70 words max' maxLength={70}/>
                         </div>
                         <div className={styles.inputAreaBox}>
-                            <label>Description</label>
-                            <textarea onChange={(event) => handleInputChange(data.info, event, 'description')} minLength={160}
-                                      maxLength={9000} placeholder='Minimum 160 and maximum 9000 characters'/>
+                            <label>Service Description</label>
+                            <textarea minLength={160} maxLength={9000}
+                                      placeholder='Minimum 160 and maximum 9000 characters'/>
                         </div>
                         <div className={styles.inputRadioBox}>
-                            <span>You want to rent your car</span>
+                            <span>You want to give your professional service in </span>
                             <div className={styles.radioInputs}>
                                 <div className={styles.inputRadio}>
-                                    <input
-                                        name='driver'
-                                        onChange={() => dispatch(setProductInformation({
-                                            ...data.info,
-                                            driver: 'Without Driver'
-                                        }))}
-                                        type='radio'
-                                    />
-                                    <label>Without Driver</label>
+                                    <input type='radio'/>
+                                    <label>Day</label>
                                 </div>
                                 <div className={styles.inputRadio}>
-                                    <input
-                                        onChange={() => dispatch(setProductInformation({...data.info, driver: 'With Driver'}))}
-                                        name='driver'
-                                        type='radio'
-                                    />
-                                    <label>With Driver</label>
+                                    <input type='radio'/>
+                                    <label>Night</label>
                                 </div>
                             </div>
                         </div>
@@ -94,11 +41,7 @@ export const NewVehicle = () => {
                             <div className={styles.inputsCheckbox}>
                                 <div className={styles.inputCheckbox}>
                                     <div>
-                                        <input
-                                            name='time'
-                                            onChange={(event) => onChecked(data.info, event, 'packageForDays', {})}
-                                            type='checkbox'
-                                        />
+                                        <input type='checkbox'/>
                                         <label>Renting Packages For Days </label>
                                     </div>
                                     <div className={styles.inputsBox}>
@@ -109,11 +52,7 @@ export const NewVehicle = () => {
                                             </div>
                                             <div className={styles.inputBox}>
                                                 <span>Day</span>
-                                                <select onChange={(event) => dispatch(setProductInformation({
-                                                    ...data.info, packageForDays: {
-                                                        amountOfDays: event.target.value
-                                                    }
-                                                }))}>
+                                                <select>
                                                     <option value='1 Day'>01 Day</option>
                                                     <option value='2 Days'>02 Days</option>
                                                     <option value='3 Days'>03 Days</option>
@@ -130,9 +69,7 @@ export const NewVehicle = () => {
                                 </div>
                                 <div className={styles.inputCheckbox}>
                                     <div>
-                                        <input name='time'
-                                               onChange={(event) => onChecked(data.info, event, 'packageForWeeks', {})}
-                                               type='checkbox'/>
+                                        <input type='checkbox'/>
                                         <label>Renting Packages For Weeks </label>
                                     </div>
                                     <div className={styles.inputsBox}>
@@ -143,17 +80,10 @@ export const NewVehicle = () => {
                                             </div>
                                             <div className={styles.inputBox}>
                                                 <span>Week</span>
-                                                <select onChange={(event) => dispatch(setProductInformation({
-                                                    ...data.info,
-                                                    packageForWeeks: {
-                                                        amountOfWeeks: event.target.value
-                                                    }
-                                                }))}>
+                                                <select>
                                                     <option value='1 Day'>01 Week</option>
                                                     <option value='2 Weeks'>02 Weeks</option>
                                                     <option value='3 Weeks'>03 Weeks</option>
-                                                    <option value='5 Weeks'>05 Weeks</option>
-                                                    <option value='8 Weeks'>08 Weeks</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -161,9 +91,7 @@ export const NewVehicle = () => {
                                 </div>
                                 <div className={styles.inputCheckbox}>
                                     <div>
-                                        <input name='time'
-                                               onChange={(event) => onChecked(data.info, event, 'packageForMonths', {})}
-                                               type='checkbox'/>
+                                        <input type='checkbox'/>
                                         <label>Renting Packages For Months </label>
                                     </div>
                                     <div className={styles.inputsBox}>
@@ -174,12 +102,7 @@ export const NewVehicle = () => {
                                             </div>
                                             <div className={styles.inputBox}>
                                                 <span>Month</span>
-                                                <select onChange={(event) => dispatch(setProductInformation({
-                                                    ...data.info,
-                                                    packageForMonths: {
-                                                        amountOfMonths: event.target.value
-                                                    }
-                                                }))}>
+                                                <select>
                                                     <option value='1 Month'>01 Month</option>
                                                     <option value='2 Months'>02 Months</option>
                                                     <option value='3 Months'>03 Months</option>
@@ -216,8 +139,26 @@ export const NewVehicle = () => {
                             </div>
                         </div>
                         <div className={styles.inputBlock}>
-                            <label>Promo Video</label>
+                            <label>Promo Video (Optional)</label>
                             <input placeholder='Youtube link here'/>
+                        </div>
+                        <span className={styles.uploadPhotosTitle}>UPLOAD RECENTLY WORK PHOTOS</span>
+                        <div className={styles.photoBlocks}>
+                            <div className={styles.photoBlock}>
+                                <img src='/photo-and-video-icon.svg' alt='icon'/>
+                            </div>
+                            <div className={styles.photoBlock}>
+                                <img src='/photo-and-video-icon.svg' alt='icon'/>
+                            </div>
+                            <div className={styles.photoBlock}>
+                                <img src='/photo-and-video-icon.svg' alt='icon'/>
+                            </div>
+                            <div className={styles.photoBlock}>
+                                <img src='/photo-and-video-icon.svg' alt='icon'/>
+                            </div>
+                            <div className={styles.photoBlock}>
+                                <img src='/photo-and-video-icon.svg' alt='icon'/>
+                            </div>
                         </div>
                     </div>
                 }
@@ -225,65 +166,49 @@ export const NewVehicle = () => {
                     <React.Fragment>
                         <div className={styles.inputsBox}>
                             <div className={styles.inputBox}>
-                                <label>Year of Manufacture</label>
-                                <input placeholder='Car Manufacture year'/>
+                                <label>Working Hours </label>
+                                <input placeholder='10' type='number'/>
                             </div>
                             <div className={styles.inputBox}>
-                                <label>Vehicle Plate Number</label>
-                                <input placeholder='AAA-123'/>
+                                <label>Number of PROFESSIONAL</label>
+                                <input placeholder='20' type='number'/>
                             </div>
                         </div>
                         <div className={styles.inputRadioBox}>
-                            <span>Vehicle Condition</span>
+                            <span>Need Cleaning Material</span>
                             <div className={styles.radioInputs}>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>New Vehicle</label>
+                                    <label>Yes</label>
                                 </div>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>Used Vehicle</label>
+                                    <label>No</label>
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Custom specification*</label>
-                                <input placeholder='Transmission'/>
+                        <span
+                            className={styles.tipTitle}>Select the age group for which the clothing item is suitable</span>
+                        <div className={styles.inputsCheckbox}>
+                            <div className={styles.checkboxInputColumn}>
+                                <div className={styles.inputCheckbox}>
+                                    <input type='checkbox'/>
+                                    <label>One Day after cleaning </label>
+                                </div>
+                                <div className={styles.inputCheckbox}>
+                                    <input type='checkbox'/>
+                                    <label>One Week after cleaning </label>
+                                </div>
+                                <div className={styles.inputCheckbox}>
+                                    <input type='checkbox'/>
+                                    <label>One Month after cleaning </label>
+                                </div>
                             </div>
-                            <div className={styles.inputBox}>
-                                <label>Specification details*</label>
-                                <input placeholder='Automatic'/>
-                            </div>
-                        </div>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Fuel type*</label>
-                                <input placeholder='Diesel'/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                <label>Engine capacity*</label>
-                                <input placeholder='1000 CC'/>
-                            </div>
-                        </div>
-                        <div className={styles.inputsBox}>
-                            <div className={styles.inputBox}>
-                                <label>Seat capacity</label>
-                                <input placeholder='04'/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                <label>Storage Bag capacity</label>
-                                <input placeholder='1 big bag and one small bag'/>
-                            </div>
-                        </div>
-                        <div className={styles.inputBox}>
-                            <label>Air bags</label>
-                            <input placeholder='02'/>
                         </div>
                     </React.Fragment>
                 }
             </Layout>}
-            {stage == 6 && <ItemPublishPage category='Vehicle'/>}
+            {stage == 6 && <ItemPublishPage category='Cleaning'/>}
         </React.Fragment>
     )
 }

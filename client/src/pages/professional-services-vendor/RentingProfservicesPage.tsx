@@ -36,15 +36,15 @@ const ROUTES = {
 }
 
 const links = {
-  [ROUTES.CLEANING]: '/professional-services/cleaning/basic-information',
-  [ROUTES.REPAIRING]: '/professional-services/repairing/basic-information',
-  [ROUTES.GARDENING]: '/professional-services/gardening/basic-information',
-  [ROUTES.TREE_CUTTING]: '/professional-services/tree-cutting/basic-information',
-  [ROUTES.LAWN_SERVICES]: '/professional-services/lawn-services/basic-information',
-  [ROUTES.HANDYMAN]: '/professional-services/handyman/basic-information',
-  [ROUTES.SNOW_REMOVAL]: '/professional-services/snow-removal/basic-information',
-  [ROUTES.PEST_CONTROL]: '/professional-services/pest-control/basic-information',
-  [ROUTES.ELECTRICAL]: '/professional-services/electrical/basic-information',
+  [ROUTES.CLEANING]: '/professional-services/new-cleaning-page',
+  [ROUTES.REPAIRING]: '/professional-services/new-repairing-page',
+  [ROUTES.GARDENING]: '/professional-services/new-gardening-page',
+  [ROUTES.TREE_CUTTING]: '/professional-services/new-tree-cutting-page',
+  [ROUTES.LAWN_SERVICES]: '/professional-services/new-lawn-services-page',
+  [ROUTES.HANDYMAN]: '/professional-services/new-handyman-page',
+  [ROUTES.SNOW_REMOVAL]: '/professional-services/new-snow-removal-page',
+  [ROUTES.PEST_CONTROL]: '/professional-services/new-pest-control-page',
+  [ROUTES.ELECTRICAL]: '/professional-services/new-electrical-page',
 }
 
 const RentingProfservicesPage: FC = () => {
