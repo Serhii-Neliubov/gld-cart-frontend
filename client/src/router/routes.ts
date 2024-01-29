@@ -43,27 +43,13 @@ import {NewBeautyOfSkin} from "../pages/products-vendor/pages/beautyOfSkin/NewBe
 import {NewBags} from "../pages/products-vendor/pages/bags/NewBags.tsx";
 import {NewAwesomeLipCare} from "../pages/products-vendor/pages/awesome/NewAwesomeLipCare.tsx";
 import {
-  BasicInformationMobileTablets
-} from "../pages/products-vendor/pages/mobileTablets/BasicInformationMobileTablets.tsx";
-import {PhotoAndVideoMobileTablets} from "../pages/products-vendor/pages/mobileTablets/PhotoAndVideoMobileTablets.tsx";
-import {
-  SpecificationsMobileTablets
-} from "../pages/products-vendor/pages/mobileTablets/SpecificationsMobileTablets.tsx";
-import {BasicInformationNecklaces} from "../pages/products-vendor/pages/necklaces/BasicInformationNecklaces.tsx";
-import {PhotoAndVideoNecklaces} from "../pages/products-vendor/pages/necklaces/PhotoAndVideoNecklaces.tsx";
-import {SpecificationsNecklaces} from "../pages/products-vendor/pages/necklaces/SpecificationsNecklaces.tsx";
-import {BasicInformationClothing} from "../pages/products-vendor/pages/clothing/BasicInformationClothing.tsx";
-import {PhotoAndVideoClothing} from "../pages/products-vendor/pages/clothing/PhotoAndVideoClothing.tsx";
-import {SpecificationsClothing} from "../pages/products-vendor/pages/clothing/SpecificationsClothing.tsx";
-import {BasicInformationBluetooth} from "../pages/products-vendor/pages/bluetooth/BasicInformationBluetooth.tsx";
-import {PhotoAndVideoBluetooth} from "../pages/products-vendor/pages/bluetooth/PhotoAndVideoBluetooth.tsx";
-import {SpecificationsBluetooth} from "../pages/products-vendor/pages/bluetooth/SpecificationsBluetooth.tsx";
-import {BasicInformationFacial} from "../pages/products-vendor/pages/facial/BasicInformationFacial.tsx";
-import {PhotoAndVideoFacial} from "../pages/products-vendor/pages/facial/PhotoAndVideoFacial.tsx";
-import {SpecificationsFacial} from "../pages/products-vendor/pages/facial/SpecificationsFacial.tsx";
-import {BasicInformationShoes} from "../pages/products-vendor/pages/shoes/BasicInformationShoes.tsx";
-import {PhotoAndVideoShoes} from "../pages/products-vendor/pages/shoes/PhotoAndVideoShoes.tsx";
-import {SpecificationsShoes} from "../pages/products-vendor/pages/shoes/SpecificationsShoes.tsx";
+  NewMobileTablets
+} from "../pages/products-vendor/pages/mobileTablets/NewMobileTablets.tsx";
+import {NewNecklaces} from "../pages/products-vendor/pages/necklaces/NewNecklaces.tsx";
+import {NewClothing} from "../pages/products-vendor/pages/clothing/NewClothing.tsx";
+import {NewBluetooth} from "../pages/products-vendor/pages/bluetooth/NewBluetooth.tsx";
+import {NewFacialCare} from "../pages/products-vendor/pages/facial/NewFacialCare.tsx";
+import {NewShoes} from "../pages/products-vendor/pages/shoes/NewShoes.tsx";
 import {BasicInformationCpu} from "../pages/products-vendor/pages/cpu/BasicInformationCpu.tsx";
 import {PhotoAndVideoCpu} from "../pages/products-vendor/pages/cpu/PhotoAndVideoCpu.tsx";
 import {SpecificationsCpu} from "../pages/products-vendor/pages/cpu/SpecificationsCpu.tsx";
@@ -107,14 +93,6 @@ import {
 import {
   NewElectrical
 } from "../pages/professional-services-vendor/pages/electrical/NewElectrical.tsx";
-import {
-  PublishCompleteMobileTablets
-} from "../pages/products-vendor/pages/mobileTablets/PublishCompleteMobileTablets.tsx";
-import {PublishCompleteNecklaces} from "../pages/products-vendor/pages/necklaces/PublishCompleteNecklaces.tsx";
-import {PublishCompleteClothing} from "../pages/products-vendor/pages/clothing/PublishCompleteClothing.tsx";
-import {PublishCompleteBluetooth} from "../pages/products-vendor/pages/bluetooth/PublishCompleteBluetooth.tsx";
-import {PublishCompleteFacial} from "../pages/products-vendor/pages/facial/PublishCompleteFacial.tsx";
-import {PublishCompleteShoes} from "../pages/products-vendor/pages/shoes/PublishCompleteShoes.tsx";
 import {PublishCompleteCpu} from "../pages/products-vendor/pages/cpu/PublishCompleteCpu.tsx";
 import {PublishCompleteDiscover} from "../pages/products-vendor/pages/discover/PublishCompleteDiscover.tsx";
 import {PublishCompleteHeadphones} from "../pages/products-vendor/pages/headphones/PublishCompleteHeadphones.tsx";
@@ -204,105 +182,33 @@ export const vendorRoutes: IRoutes[] = [
   },
   // Mobile Tablets
   {
-    component: BasicInformationMobileTablets,
-    path: "/products-category-page/mobile-tablets/basic-information",
-  },
-  {
-    component: PhotoAndVideoMobileTablets,
-    path: '/products-category-page/mobile-tablets/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsMobileTablets,
-    path: '/products-category-page/mobile-tablets/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteMobileTablets,
-    path: '/renting-category-page/mobile-tablets/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewMobileTablets,
+    path: "/products-category-page/new-mobile-tablets-page",
   },
   // Necklaces
   {
-    component: BasicInformationNecklaces,
-    path: "/products-category-page/necklaces/basic-information",
-  },
-  {
-    component: PhotoAndVideoNecklaces,
-    path: '/products-category-page/necklaces/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsNecklaces,
-    path: '/products-category-page/necklaces/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteNecklaces,
-    path: '/renting-category-page/necklaces/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewNecklaces,
+    path: "/products-category-page/new-necklaces-page",
   },
   // Clothing
   {
-    component: BasicInformationClothing,
-    path: "/products-category-page/clothing/basic-information",
-  },
-  {
-    component: PhotoAndVideoClothing,
-    path: '/products-category-page/clothing/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsClothing,
-    path: '/products-category-page/clothing/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteClothing,
-    path: '/renting-category-page/clothing/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewClothing,
+    path: "/products-category-page/new-clothing-page",
   },
   // Bluetooth
   {
-    component: BasicInformationBluetooth,
-    path: "/products-category-page/bluetooth/basic-information",
-  },
-  {
-    component: PhotoAndVideoBluetooth,
-    path: '/products-category-page/bluetooth/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsBluetooth,
-    path: '/products-category-page/bluetooth/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteBluetooth,
-    path: '/renting-category-page/bluetooth/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewBluetooth,
+    path: "/products-category-page/new-bluetooth-page",
   },
   // Facial Care
   {
-    component: BasicInformationFacial,
-    path: "/products-category-page/facial/basic-information",
-  },
-  {
-    component: PhotoAndVideoFacial,
-    path: '/products-category-page/facial/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsFacial,
-    path: '/products-category-page/facial/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteFacial,
-    path: '/renting-category-page/facial/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewFacialCare,
+    path: "/products-category-page/new-facial-care-page",
   },
   // Shoes
   {
-    component: BasicInformationShoes,
-    path: "/products-category-page/shoes/basic-information",
-  },
-  {
-    component: PhotoAndVideoShoes,
-    path: '/products-category-page/shoes/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsShoes,
-    path: '/products-category-page/shoes/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteShoes,
-    path: '/renting-category-page/shoes/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewShoes,
+    path: "/products-category-page/new-shoes-page",
   },
   // CPU
   {

@@ -55,7 +55,7 @@ const links = {
   [ROUTES.NECKLACES]: '/products-category-page/new-necklaces-page',
   [ROUTES.CLOTHING]: '/products-category-page/new-clothing-page',
   [ROUTES.BLUETOOTH]: '/products-category-page/new-bluetooth-page',
-  [ROUTES.FACIAL_LIP_CARE]: '/products-category-page/new-facial-lip-care-page',
+  [ROUTES.FACIAL_LIP_CARE]: '/products-category-page/new-facial-care-page',
   [ROUTES.SHOES]: '/products-category-page/new-shoes-page',
   [ROUTES.CPU]: '/products-category-page/new-awesome-cpu-page',
   [ROUTES.DISCOVER_SKINCARE]: '/products-category-page/new-discover-skincare-page',

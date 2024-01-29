@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
-import styles from './NewAwesomeLipCare.module.scss'
+import styles from './NewShoes.module.scss'
 import {Layout} from "../../../../components/Vendor/Layout.tsx";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
 
-export const NewAwesomeLipCare = () => {
+export const NewShoes = () => {
     const [stage, setStage] = useState(3);
 
     return(
         <React.Fragment>
-            {stage < 6 && <Layout setStage={setStage} title='Awesome Lip Care Renting Form' subtitle='Basic information' stage={stage - 1}>
+            {stage < 6 && <Layout setStage={setStage} title='Shoes Renting Form' subtitle='Basic information' stage={stage - 1}>
                 {stage == 3 &&
                     <React.Fragment>
                         <div className={styles.inputTextBox}>
-                            <label>Product Title</label>
+                            <label>Service Title</label>
                             <input placeholder='70 words max' maxLength={70}/>
                         </div>
                         <div className={styles.inputAreaBox}>
@@ -20,16 +20,16 @@ export const NewAwesomeLipCare = () => {
                             <textarea minLength={160} maxLength={9000}
                                       placeholder='Minimum 160 and maximum 9000 characters'/>
                         </div>
-                        <div className={styles.inputRadioBox}>
-                            <span>The product  you want to sell is ?</span>
+                        <div className={styles.inputsRadio}>
+                            <span>The Product you want to sell is for</span>
                             <div className={styles.radioInputs}>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>Branded</label>
+                                    <label>Men</label>
                                 </div>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>Local</label>
+                                    <label>Women</label>
                                 </div>
                             </div>
                         </div>
@@ -128,142 +128,88 @@ export const NewAwesomeLipCare = () => {
                 }
                 {stage == 5 &&
                     <React.Fragment>
-                        <span className={styles.tipTitle}>Select the Flavor of your product</span>
+                        <span
+                            className={styles.tipTitle}>Select the age group for which the Shoes item is suitable</span>
                         <div className={styles.checkboxInputsBox}>
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Original</label>
+                                    <label>Adult</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Strawberry</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Citrus</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Other</label>
+                                    <label>Infant</label>
                                 </div>
                             </div>
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Cherry</label>
+                                    <label>Teen</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Coconut</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Watermelon</label>
+                                    <label>All Ages</label>
                                 </div>
                             </div>
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Mint</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Vanilla</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Berry</label>
+                                    <label>Child</label>
                                 </div>
                             </div>
                         </div>
-                        <span className={styles.tipTitle}>Select the Ingredients used in your product</span>
-                        <div className={styles.checkboxInputsBox}>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Beeswax</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Jojoba Oil</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Lanolin</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Other</label>
-                                </div>
+                        <span className={styles.tipTitle}>Select Size of products</span>
+                        <div className={styles.checkboxInputColumn}>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>Medium</label>
                             </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Shea Butter</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Vitamin E</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Castor Seed Oil</label>
-                                </div>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>Small</label>
                             </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Coconut Oil</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Sunflower Seed Oil</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Olive Oil</label>
-                                </div>
+                            <div className={styles.checkboxInputs}>
+                                <input type='checkbox'/>
+                                <label>Large</label>
                             </div>
                         </div>
-                        <span className={styles.tipTitle}>Select the Features of your product</span>
+                        <div className={styles.choosingColor}>
+                            <span>Select the Colour of your product</span>
+                            <div>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#9302A0'}}/>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#318834'}}/>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#000000'}}/>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#282684'}}/>
+                                <button className={styles.choosingColorItem} style={{backgroundColor: '#EC0000'}}/>
+                                <button className={styles.addingColor}>+</button>
+                            </div>
+                        </div>
+                        <span className={styles.tipTitle}>Select the type of closure for the shoes</span>
                         <div className={styles.checkboxInputsBox}>
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>SPF Protection</label>
+                                    <label>Lace-Up</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Tinted</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Long-Lasting</label>
+                                    <label>Zipper</label>
                                 </div>
                             </div>
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Hydrating Formula</label>
+                                    <label>Velcro</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Vegan</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Exfoliating</label>
+                                    <label>Buckle</label>
                                 </div>
                             </div>
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Natural Ingredients</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Dermatologist-Tested</label>
+                                    <label>Slip-On</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
@@ -272,17 +218,21 @@ export const NewAwesomeLipCare = () => {
                             </div>
                         </div>
                         <div className={styles.inputBox}>
+                            <label>Write the weight of the shoes</label>
+                            <input type='text' placeholder='0.5 kg'/>
+                        </div>
+                        <div className={styles.inputBox}>
+                            <label>Specify the material of the shoe soles</label>
+                            <input type='text'/>
+                        </div>
+                        <div className={styles.inputBox}>
                             <label>How many product are in stock?</label>
                             <input type='number' placeholder='100'/>
-                        </div>
-                        <div className={styles.areaBox}>
-                            <label>Care Instructions</label>
-                            <textarea placeholder='Provide care and maintenance instructions for the bag'/>
                         </div>
                     </React.Fragment>
                 }
             </Layout>}
-            {stage == 6 && <ItemPublishPage category='Awesome Lip Care'/>}
+            {stage == 6 && <ItemPublishPage category='Shoes'/>}
         </React.Fragment>
     )
 }

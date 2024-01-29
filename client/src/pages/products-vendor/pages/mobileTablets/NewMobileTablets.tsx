@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import styles from './NewAwesomeLipCare.module.scss'
+import styles from './NewMobileTablets.module.scss'
 import {Layout} from "../../../../components/Vendor/Layout.tsx";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
 
-export const NewAwesomeLipCare = () => {
+export const NewMobileTablets = () => {
     const [stage, setStage] = useState(3);
 
     return(
         <React.Fragment>
-            {stage < 6 && <Layout setStage={setStage} title='Awesome Lip Care Renting Form' subtitle='Basic information' stage={stage - 1}>
+            {stage < 6 && <Layout setStage={setStage} title='Mobile/Tablets Renting Form' subtitle='Basic information' stage={stage - 1}>
                 {stage == 3 &&
                     <React.Fragment>
                         <div className={styles.inputTextBox}>
@@ -25,11 +25,11 @@ export const NewAwesomeLipCare = () => {
                             <div className={styles.radioInputs}>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>Branded</label>
+                                    <label>New</label>
                                 </div>
                                 <div className={styles.inputRadio}>
                                     <input type='radio'/>
-                                    <label>Local</label>
+                                    <label>Used</label>
                                 </div>
                             </div>
                         </div>
@@ -128,146 +128,91 @@ export const NewAwesomeLipCare = () => {
                 }
                 {stage == 5 &&
                     <React.Fragment>
-                        <span className={styles.tipTitle}>Select the Flavor of your product</span>
-                        <div className={styles.checkboxInputsBox}>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Original</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Strawberry</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Citrus</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Other</label>
-                                </div>
+                        <div className={styles.inputsBox}>
+                            <div className={styles.inputBox}>
+                                <label>Operating System</label>
+                                <input type='text' placeholder='Specify the operating system'/>
                             </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Cherry</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Coconut</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Watermelon</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Mint</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Vanilla</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Berry</label>
-                                </div>
+                            <div className={styles.inputBox}>
+                                <label>Processor</label>
+                                <input type='text' placeholder='Provide details about the processor'/>
                             </div>
                         </div>
-                        <span className={styles.tipTitle}>Select the Ingredients used in your product</span>
-                        <div className={styles.checkboxInputsBox}>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Beeswax</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Jojoba Oil</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Lanolin</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Other</label>
-                                </div>
+                        <div className={styles.inputBox}>
+                            <label>Memory (RAM)</label>
+                            <input type='text' placeholder='Specify the RAM capacity'/>
+                        </div>
+                        <div className={styles.inputsBox}>
+                            <div className={styles.inputBox}>
+                                <label>Storage</label>
+                                <input type='text' placeholder='Indicate the storage capacity, e.g., SSD/HDD size'/>
                             </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Shea Butter</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Vitamin E</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Castor Seed Oil</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Coconut Oil</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Sunflower Seed Oil</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Olive Oil</label>
-                                </div>
+                            <div className={styles.inputBox}>
+                                <label>Screen/Display</label>
+                                <input type='text' placeholder='Provide information about the screen size, resolution'/>
                             </div>
                         </div>
-                        <span className={styles.tipTitle}>Select the Features of your product</span>
+                        <div className={styles.inputsBox}>
+                            <div className={styles.inputBox}>
+                                <label>Camera</label>
+                                <input type='text' placeholder='Specify camera features, including megapixels'/>
+                            </div>
+                            <div className={styles.inputBox}>
+                                <label>Battery Life</label>
+                                <input type='text' placeholder='Estimate battery life in hours'/>
+                            </div>
+                        </div>
+                        <div className={styles.inputBox}>
+                            <label>Connectivity</label>
+                            <input type='text'
+                                   placeholder='connectivity options such as Wi-Fi, Bluetooth, USB ports, etc.'/>
+                        </div>
+                        <span className={styles.tipTitle}>Select the Additional Features of your product</span>
                         <div className={styles.checkboxInputsBox}>
                             <div className={styles.checkboxInputColumn}>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>SPF Protection</label>
+                                    <label>Fingerprint Sensor</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Tinted</label>
+                                    <label>Expandable Storage</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
-                                    <label>Long-Lasting</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Hydrating Formula</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Vegan</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Exfoliating</label>
-                                </div>
-                            </div>
-                            <div className={styles.checkboxInputColumn}>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Natural Ingredients</label>
-                                </div>
-                                <div className={styles.checkboxInputs}>
-                                    <input type='checkbox'/>
-                                    <label>Dermatologist-Tested</label>
+                                    <label>Dust Resistance</label>
                                 </div>
                                 <div className={styles.checkboxInputs}>
                                     <input type='checkbox'/>
                                     <label>Other</label>
+                                </div>
+                            </div>
+                            <div className={styles.checkboxInputColumn}>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Face Recognition</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Multi-Window Mode</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Keyboard Compatibility</label>
+                                </div>
+                            </div>
+                            <div className={styles.checkboxInputColumn}>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Stylus Support</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Water Resistance</label>
+                                </div>
+                                <div className={styles.checkboxInputs}>
+                                    <input type='checkbox'/>
+                                    <label>Case/Accessory Options</label>
                                 </div>
                             </div>
                         </div>
@@ -275,14 +220,10 @@ export const NewAwesomeLipCare = () => {
                             <label>How many product are in stock?</label>
                             <input type='number' placeholder='100'/>
                         </div>
-                        <div className={styles.areaBox}>
-                            <label>Care Instructions</label>
-                            <textarea placeholder='Provide care and maintenance instructions for the bag'/>
-                        </div>
                     </React.Fragment>
                 }
             </Layout>}
-            {stage == 6 && <ItemPublishPage category='Awesome Lip Care'/>}
+            {stage == 6 && <ItemPublishPage category='Mobile/Tablets'/>}
         </React.Fragment>
     )
 }
