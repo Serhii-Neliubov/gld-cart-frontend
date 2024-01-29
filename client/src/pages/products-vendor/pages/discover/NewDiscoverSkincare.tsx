@@ -8,7 +8,7 @@ export const NewDiscoverSkincare = () => {
 
     return(
         <React.Fragment>
-            {stage < 6 && <Layout setStage={setStage} title='CPU Renting Form' subtitle='Basic information' stage={stage - 1}>
+            {stage < 6 && <Layout setStage={setStage} title='Discover Skincare Renting Form' subtitle='Basic information' stage={stage - 1}>
                 {stage == 3 &&
                     <React.Fragment>
                         <div className={styles.inputTextBox}>
@@ -225,7 +225,7 @@ export const NewDiscoverSkincare = () => {
                     </React.Fragment>
                 }
             </Layout>}
-            {stage == 6 && <ItemPublishPage category='Shoes'/>}
+            {stage == 6 && <ItemPublishPage category='Discover Skincare'/>}
         </React.Fragment>
     )
 }

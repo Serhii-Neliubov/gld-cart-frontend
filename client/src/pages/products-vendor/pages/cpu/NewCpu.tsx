@@ -168,7 +168,7 @@ export const NewCpu = () => {
                     </React.Fragment>
                 }
             </Layout>}
-            {stage == 6 && <ItemPublishPage category='Shoes'/>}
+            {stage == 6 && <ItemPublishPage category='CPU'/>}
         </React.Fragment>
     )
 }
