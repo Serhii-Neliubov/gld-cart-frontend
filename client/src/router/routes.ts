@@ -31,15 +31,7 @@ import PublishSuccessfully from "../pages/product-published-successfully/Publish
 import ProfServicesPage from "../pages/professional-services-buyer/ProfServicesPage";
 import CleaningPage from "../pages/professional-services-buyer/cleaning/CleaningPage";
 import GardeningPage from "../pages/professional-services-buyer/gardening/GardeningPage";
-import PestControlServiceForm from "../pages/professional-services-buyer/pest-control/PestControlServiceForm";
-import PestControlServicePhoto from "../pages/professional-services-buyer/pest-control/photo-and-video/PestControlServicePhoto";
-import PestControlServiceSpecifications from "../pages/professional-services-buyer/pest-control/photo-and-video/specifications/PestControlServiceSpecifications";
-import PestControlServicePublishing from "../pages/professional-services-buyer/pest-control/photo-and-video/specifications/publishing/PestControlServicePublishing";
 import RepairingPage from "../pages/professional-services-buyer/repairing/RepairingPage";
-import SnowRemovalServiceForm from "../pages/professional-services-buyer/snow-removal/SnowRemovalServiceForm";
-import SnowRemovalServicePhoto from "../pages/professional-services-buyer/snow-removal/photo-and-video/SnowRemovalServicePhoto";
-import SnowRemovalServiceSpecifications from "../pages/professional-services-buyer/snow-removal/photo-and-video/specifications/SnowRemovalServiceSpecifications";
-import SnowRemovalServicePublishing from "../pages/professional-services-buyer/snow-removal/photo-and-video/specifications/publishing/SnowRemovalServicePublishing";
 import RentingProfservicesPage from "../pages/professional-services-vendor/RentingProfservicesPage.tsx";
 import TrackOrder from "../pages/track-order/TrackOrder";
 import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
@@ -111,43 +103,17 @@ import {
 } from "../pages/professional-services-vendor/pages/treeCutting/NewTreeCutting.tsx";
 import {NewLawnServices} from "../pages/professional-services-vendor/pages/lawnServices/NewLawnServices.tsx";
 import {
-  BasicInformationHandyman
-} from "../pages/professional-services-vendor/pages/handyman/BasicInformationHandyman.tsx";
-import {PhotoAndVideoHandyman} from "../pages/professional-services-vendor/pages/handyman/PhotoAndVideoHandyman.tsx";
-import {SpecificationsHandyman} from "../pages/professional-services-vendor/pages/handyman/SpecificationsHandyman.tsx";
+  NewHandyman
+} from "../pages/professional-services-vendor/pages/handyman/NewHandyman.tsx";
 import {
-  BasicInformationSnowRemoval
-} from "../pages/professional-services-vendor/pages/snowRemoval/BasicInformationSnowRemoval.tsx";
+  NewSnowRemoval
+} from "../pages/professional-services-vendor/pages/snowRemoval/NewSnowRemoval.tsx";
 import {
-  PhotoAndVideoSnowRemoval
-} from "../pages/professional-services-vendor/pages/snowRemoval/PhotoAndVideoSnowRemoval.tsx";
+  NewPestControl
+} from "../pages/professional-services-vendor/pages/pestControl/NewPestControl.tsx";
 import {
-  SpecificationsSnowRemoval
-} from "../pages/professional-services-vendor/pages/snowRemoval/SpecificationsSnowRemoval.tsx";
-import {
-  BasicInformationPestControl
-} from "../pages/professional-services-vendor/pages/pestControl/BasicInformationPestControl.tsx";
-import {
-  PhotoAndVideoPestControl
-} from "../pages/professional-services-vendor/pages/pestControl/PhotoAndVideoPestControl.tsx";
-import {
-  SpecificationsPestControl
-} from "../pages/professional-services-vendor/pages/pestControl/SpecificationsPestControl.tsx";
-import {
-  BasicInformationElectrical
-} from "../pages/professional-services-vendor/pages/electrical/BasicInformationElectrical.tsx";
-import {
-  PhotoAndVideoElectrical
-} from "../pages/professional-services-vendor/pages/electrical/PhotoAndVideoElectrical.tsx";
-import {
-  SpecificationsElectrical
-} from "../pages/professional-services-vendor/pages/electrical/SpecificationsElectrical.tsx";
-import {
-  PublishCompleteSnowRemoval
-} from "../pages/professional-services-vendor/pages/snowRemoval/PublishCompleteSnowRemoval.tsx";
-import {
-  PublishCompletePestControl
-} from "../pages/professional-services-vendor/pages/pestControl/PublishCompletePestControl.tsx";
+  NewElectrical
+} from "../pages/professional-services-vendor/pages/electrical/NewElectrical.tsx";
 import {PublishCompleteBags} from "../pages/products-vendor/pages/bags/PublishCompleteBags.tsx";
 import {PublishCompleteBeauty} from "../pages/products-vendor/pages/beautyOfSkin/PublishCompleteBeauty.tsx";
 import {PublishCompleteAwesome} from "../pages/products-vendor/pages/awesome/PublishCompleteAwesome.tsx";
@@ -165,12 +131,6 @@ import {PublishCompleteHeadphones} from "../pages/products-vendor/pages/headphon
 import {PublishCompleteBracelets} from "../pages/products-vendor/pages/braceletes/PublishCompleteBracelets.tsx";
 import {PublishCompleteSmartWatch} from "../pages/products-vendor/pages/smartWatch/PublishCompleteSmartWatch.tsx";
 import {PublishCompleteEarrings} from "../pages/products-vendor/pages/earrings/PublishCompleteEarrings.tsx";
-import {
-  PublishCompleteHandyman
-} from "../pages/professional-services-vendor/pages/handyman/PublishCompleteHandyman.tsx";
-import {
-  PublishCompleteElectrical
-} from "../pages/professional-services-vendor/pages/electrical/PublishCompleteElectrical.tsx";
 
 interface IRoutes {
   component: FC;
@@ -201,7 +161,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: RentingElectronicsPage, path: "/renting-beautyOfSkin" },
   { component: RentingHousePage, path: "/renting-house" },
   { component: RentingProductsPage, path: "/products-category-page" },
-  { component: CleaningPage, path: "/beautyOfSkin-page" },
+  { component: CleaningPage, path: "/cleaning-page" },
   { component: GardeningPage, path: "/gardening-page" },
   { component: RepairingPage, path: "/repairing-page" },
   { component: ProfilePage, path: "/profile" },
@@ -210,49 +170,11 @@ export const buyerRoutes: IRoutes[] = [
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
-  // Snow Removal Service
-  {
-    component: SnowRemovalServiceForm,
-    path: "/personal-services/snow-removal",
-  },
-  {
-    component: SnowRemovalServicePhoto,
-    path: "/personal-services/snow-removal/photo-and-video",
-  },
-  {
-    component: SnowRemovalServiceSpecifications,
-    path: "/renting-category-page/snow-removal/photo-and-video/specifications",
-  },
-  {
-    component: PublishCompleteSnowRemoval,
-    path: "/renting-category-page/snow-removal/photo-and-video/specifications/publish-complete",
-  },
-  {
-    component: SnowRemovalServicePublishing,
-    path: "/renting-category-page/snow-removal/photo-and-video/specifications/publishing",
-  },
   // Pest Control Service
   {
-    component: PestControlServiceForm,
-    path: "/personal-services/pest-control",
+    component: NewPestControl,
+    path: "/professional-services/new-pest-control-page",
   },
-  {
-    component: PestControlServicePhoto,
-    path: "/personal-services/pest-control/photo-and-video",
-  },
-  {
-    component: PestControlServiceSpecifications,
-    path: "/renting-category-page/pest-control/photo-and-video/specifications",
-  },
-  {
-    component: PublishCompletePestControl,
-    path: "/renting-category-page/pest-control/basic-information/photo-and-video/specifications/publish-complete",
-  },
-  {
-    component: PestControlServicePublishing,
-    path: "/renting-category-page/pest-control/photo-and-video/specifications/publishing",
-  },
-  // Electrical Service
   // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },
   { component: ContactUsPage, path: "/contact-us" },
@@ -528,71 +450,23 @@ export const vendorRoutes: IRoutes[] = [
   },
   // Handyman
   {
-    component: BasicInformationHandyman,
-    path: "/professional-services/handyman/basic-information",
-  },
-  {
-    component: PhotoAndVideoHandyman,
-    path: '/professional-services/handyman/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsHandyman,
-    path: '/professional-services/handyman/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteHandyman,
-    path: '/professional-services/handyman/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewHandyman,
+    path: "/professional-services/new-handyman-page",
   },
   // Snow Removal
   {
-    component: BasicInformationSnowRemoval,
-    path: "/professional-services/snow-removal/basic-information",
-  },
-  {
-    component: PhotoAndVideoSnowRemoval,
-    path: '/professional-services/snow-removal/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsSnowRemoval,
-    path: '/professional-services/snow-removal/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteSnowRemoval,
-    path: '/professional-services/snow-removal/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewSnowRemoval,
+    path: "/professional-services/new-snow-removal-page",
   },
   // Pest Control
   {
-    component: BasicInformationPestControl,
+    component: NewPestControl,
     path: "/professional-services/pest-control/basic-information",
-  },
-  {
-    component: PhotoAndVideoPestControl,
-    path: '/professional-services/pest-control/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsPestControl,
-    path: '/professional-services/pest-control/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompletePestControl,
-    path: '/professional-services/pest-control/basic-information/photo-and-video/specifications/publish-complete'
   },
   // Electrical
   {
-    component: BasicInformationElectrical,
-    path: "/professional-services/electrical/basic-information",
-  },
-  {
-    component: PhotoAndVideoElectrical,
-    path: '/professional-services/electrical/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsElectrical,
-    path: '/professional-services/electrical/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteElectrical,
-    path: '/professional-services/electrical/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewElectrical,
+    path: "/professional-services/new-electrical-page",
   },
   // Earrings
   {
