@@ -27,7 +27,6 @@ import RentingCategoryPage from "../pages/renting-vendor/RentingCategoryPage";
 import RentingProductsPage from "../pages/products-vendor/RentingProductsPage";
 import SendMessagePage from "../pages/send-message-successfully/SendMessagePage";
 import ProductsPage from "../pages/products-buyer/ProductsPage";
-import PublishSuccessfully from "../pages/product-published-successfully/PublishSuccessfully";
 import ProfServicesPage from "../pages/professional-services-buyer/ProfServicesPage";
 import CleaningPage from "../pages/professional-services-buyer/cleaning/CleaningPage";
 import GardeningPage from "../pages/professional-services-buyer/gardening/GardeningPage";
@@ -40,15 +39,9 @@ import JobApplicationForm from "../components/JobApplicationForm/JobApplicationF
 import {NewVehicle} from "../pages/renting-vendor/pages/vehicle/NewVehicle.tsx";
 import {NewElectronics} from "../pages/renting-vendor/pages/electronics/NewElectronics.tsx";
 import {NewHouses} from "../pages/renting-vendor/pages/houses/NewHouses.tsx";
-import {BasicInformationBeauty} from "../pages/products-vendor/pages/beautyOfSkin/BasicInformationBeauty.tsx";
-import {PhotoAndVideoBeauty} from "../pages/products-vendor/pages/beautyOfSkin/PhotoAndVideoBeauty.tsx";
-import {SpecificationsBeauty} from "../pages/products-vendor/pages/beautyOfSkin/SpecificationsBeauty.tsx";
-import {BasicInformationBags} from "../pages/products-vendor/pages/bags/BasicInformationBags.tsx";
-import {PhotoAndVideoBags} from "../pages/products-vendor/pages/bags/PhotoAndVideoBags.tsx";
-import {SpecificationsBags} from "../pages/products-vendor/pages/bags/SpecificationsBags.tsx";
-import {BasicInformationAwesome} from "../pages/products-vendor/pages/awesome/BasicInformationAwesome.tsx";
-import {PhotoAndVideoAwesome} from "../pages/products-vendor/pages/awesome/PhotoAndVideoAwesome.tsx";
-import {SpecificationsAwesome} from "../pages/products-vendor/pages/awesome/SpecificationsAwesome.tsx";
+import {NewBeautyOfSkin} from "../pages/products-vendor/pages/beautyOfSkin/NewBeautyOfSkin.tsx";
+import {NewBags} from "../pages/products-vendor/pages/bags/NewBags.tsx";
+import {NewAwesomeLipCare} from "../pages/products-vendor/pages/awesome/NewAwesomeLipCare.tsx";
 import {
   BasicInformationMobileTablets
 } from "../pages/products-vendor/pages/mobileTablets/BasicInformationMobileTablets.tsx";
@@ -114,9 +107,6 @@ import {
 import {
   NewElectrical
 } from "../pages/professional-services-vendor/pages/electrical/NewElectrical.tsx";
-import {PublishCompleteBags} from "../pages/products-vendor/pages/bags/PublishCompleteBags.tsx";
-import {PublishCompleteBeauty} from "../pages/products-vendor/pages/beautyOfSkin/PublishCompleteBeauty.tsx";
-import {PublishCompleteAwesome} from "../pages/products-vendor/pages/awesome/PublishCompleteAwesome.tsx";
 import {
   PublishCompleteMobileTablets
 } from "../pages/products-vendor/pages/mobileTablets/PublishCompleteMobileTablets.tsx";
@@ -204,37 +194,13 @@ export const vendorRoutes: IRoutes[] = [
   },
   // Bags
   {
-    component: BasicInformationBags,
-    path: "/products-category-page/bags/basic-information",
-  },
-  {
-    component: PhotoAndVideoBags,
-    path: '/products-category-page/bags/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsBags,
-    path: '/products-category-page/bags/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteBags,
-    path: '/renting-category-page/bags/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewBags,
+    path: "/products-category-page/new-bags-page",
   },
   // Awesome Lip Care
   {
-    component: BasicInformationAwesome,
-    path: "/products-category-page/awesome/basic-information",
-  },
-  {
-    component: PhotoAndVideoAwesome,
-    path: '/products-category-page/awesome/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsAwesome,
-    path: '/products-category-page/awesome/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteAwesome,
-    path: '/renting-category-page/awesome/basic-information/photo-and-video/specifications/publish-complete'
+    component: NewAwesomeLipCare,
+    path: "/products-category-page/new-awesome-lip-care-page",
   },
   // Mobile Tablets
   {
@@ -492,24 +458,8 @@ export const vendorRoutes: IRoutes[] = [
   },
 // Beauty
   {
-    component: BasicInformationBeauty,
-    path: "/products-category-page/beauty/basic-information",
-  },
-  {
-    component: PhotoAndVideoBeauty,
-    path: '/products-category-page/beauty/basic-information/photo-and-video'
-  },
-  {
-    component: SpecificationsBeauty,
-    path: '/products-category-page/beauty/basic-information/photo-and-video/specifications'
-  },
-  {
-    component: PublishCompleteBeauty,
-    path: '/products-category-page/beauty/basic-information/photo-and-video/specifications/publish-complete'
-  },
-  {
-    component: PublishSuccessfully,
-    path: "/successfully-published",
+    component: NewBeautyOfSkin,
+    path: "/products-category-page/new-beauty-of-skin-page",
   },
 ];
 

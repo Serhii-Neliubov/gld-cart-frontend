@@ -48,21 +48,21 @@ const ROUTES = {
 }
 
 const links = {
-  [ROUTES.BEAUTY]: '/products-category-page/beauty/basic-information',
-  [ROUTES.BAGS]: '/products-category-page/bags/basic-information',
-  [ROUTES.AWESOME]: '/products-category-page/awesome/basic-information',
-  [ROUTES.MOBILE_TABLETS]: '/products-category-page/mobile-tablets/basic-information',
-  [ROUTES.NECKLACES]: '/products-category-page/necklaces/basic-information',
-  [ROUTES.CLOTHING]: '/products-category-page/clothing/basic-information',
-  [ROUTES.BLUETOOTH]: '/products-category-page/bluetooth/basic-information',
-  [ROUTES.FACIAL_LIP_CARE]: '/products-category-page/facial/basic-information',
-  [ROUTES.SHOES]: '/products-category-page/shoes/basic-information',
-  [ROUTES.CPU]: '/products-category-page/cpu/basic-information',
-  [ROUTES.DISCOVER_SKINCARE]: '/products-category-page/discover-skincare/basic-information',
-  [ROUTES.HEADPHONES]: '/products-category-page/headphones/basic-information',
-  [ROUTES.BRACELETS]: '/products-category-page/bracelets/basic-information',
-  [ROUTES.SMART_WATCH]: '/products-category-page/smart-watch/basic-information',
-  [ROUTES.EARRINGS]: '/products-category-page/earrings/basic-information'
+  [ROUTES.BEAUTY]: '/products-category-page/new-beauty-of-skin-page',
+  [ROUTES.BAGS]: '/products-category-page/new-bags-page',
+  [ROUTES.AWESOME]: '/products-category-page/new-awesome-lip-care-page',
+  [ROUTES.MOBILE_TABLETS]: '/products-category-page/new-mobile-tablets-page',
+  [ROUTES.NECKLACES]: '/products-category-page/new-necklaces-page',
+  [ROUTES.CLOTHING]: '/products-category-page/new-clothing-page',
+  [ROUTES.BLUETOOTH]: '/products-category-page/new-bluetooth-page',
+  [ROUTES.FACIAL_LIP_CARE]: '/products-category-page/new-facial-lip-care-page',
+  [ROUTES.SHOES]: '/products-category-page/new-shoes-page',
+  [ROUTES.CPU]: '/products-category-page/new-awesome-cpu-page',
+  [ROUTES.DISCOVER_SKINCARE]: '/products-category-page/new-discover-skincare-page',
+  [ROUTES.HEADPHONES]: '/products-category-page/new-awesome-headphones-page',
+  [ROUTES.BRACELETS]: '/products-category-page/new-awesome-bracelets-page',
+  [ROUTES.SMART_WATCH]: '/products-category-page/new-awesome-smartwatch-page',
+  [ROUTES.EARRINGS]: '/products-category-page/new-awesome-earrings-page'
 }
 
 const RentingProductsPage: FC = () => {

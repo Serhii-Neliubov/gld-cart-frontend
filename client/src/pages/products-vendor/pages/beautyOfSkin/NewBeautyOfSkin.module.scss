@@ -1,3 +1,78 @@
+.photoBlocksContent{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  & > span{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.photoBlock{
+  width: 140px;
+  height: 140px;
+  border: 2px solid #ABABAB;
+  position: relative;
+  & > img {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.photoBlocks{
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputsBox{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.inputBox{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  & > label{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & > input {
+    border: 1px solid #ABABAB;
+    padding: 14px;
+    outline: none;
+  }
+}
+.inputsRadio{
+  & > span{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & > div {
+    margin-top: 10px;
+    display: flex;
+    gap: 25px;
+  }
+}
+.inputRadioBox{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 8px;
+}
+
 
 .container{
   padding-bottom: 50px;
@@ -73,7 +148,22 @@
     resize: none;
   }
 }
-
+.inputBlock{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  & > label{
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & > input{
+    border: 1px solid #ABABAB;
+    padding: 14px;
+  }
+}
 .inputRadioBox{
   display: flex;
   flex-direction: column;
@@ -109,7 +199,7 @@
 }
 .inputCheckbox{
   & > div{
-    margin: 25px 0;
+    margin: 15px 0;
     display: flex;
     gap: 10px;
 
@@ -183,7 +273,22 @@
   line-height: normal;
   border: 1px solid rgba(0, 0, 0, 0.20);
 }
+.tipTitle{
+  font-weight: 600;
+}
+.checkboxInputColumn{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  & > div {
+    display: flex;
+    gap: 10px;
 
+    & > label{
+      font-weight: 600;
+    }
+  }
+}
 .nextButton{
   cursor: pointer;
   padding: 10px 60px;
