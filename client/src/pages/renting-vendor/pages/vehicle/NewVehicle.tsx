@@ -8,6 +8,7 @@ import {
   vendorProductInfo,
 } from "../../../../redux/slices/vendorProductInfoSlice.ts";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
+import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 
 interface ProductInformation {
   [key: string]: string;
@@ -255,32 +256,7 @@ export const NewVehicle = () => {
             </React.Fragment>
           )}
           {stage == 4 && (
-            <div className={styles.photoBlocksContent}>
-              <span className={styles.uploadPhotosTitle}>
-                UPLOAD UP TO 06 PHOTOS
-              </span>
-              <div className={styles.photoBlocks}>
-                <div className={styles.photoBlock}>
-                  <img src="/photo-and-video-icon.svg" alt="icon" />
-                </div>
-                <div className={styles.photoBlock}>
-                  <img src="/photo-and-video-icon.svg" alt="icon" />
-                </div>
-                <div className={styles.photoBlock}>
-                  <img src="/photo-and-video-icon.svg" alt="icon" />
-                </div>
-                <div className={styles.photoBlock}>
-                  <img src="/photo-and-video-icon.svg" alt="icon" />
-                </div>
-                <div className={styles.photoBlock}>
-                  <img src="/photo-and-video-icon.svg" alt="icon" />
-                </div>
-              </div>
-              <div className={styles.inputBlock}>
-                <label>Promo Video</label>
-                <input placeholder="Youtube link here" />
-              </div>
-            </div>
+            <PhotoAndVideoBlock />
           )}
           {stage == 5 && (
             <React.Fragment>

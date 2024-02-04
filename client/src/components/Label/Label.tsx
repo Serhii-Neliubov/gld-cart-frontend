@@ -62,14 +62,26 @@ const Label: FC = () => {
                   </Link>
                 </li>
               ))}
+              {user.type === 'Buyer' && <li className="label__item">
+                <Link
+                    to="/driver-license"
+                    className={`label__link ${
+                        location.pathname === "/driver-license"
+                            ? "label__link_active"
+                            : ""
+                    }`}
+                >
+                  DRIVER SERVICES
+                </Link>
+              </li>}
               <li className="label__item">
                 <Link
-                  to="/contact-us"
-                  className={`label__link ${
-                    location.pathname === "/contact-us"
-                      ? "label__link_active"
-                      : ""
-                  }`}
+                    to="/contact-us"
+                    className={`label__link ${
+                        location.pathname === "/contact-us"
+                            ? "label__link_active"
+                            : ""
+                    }`}
                 >
                   Contact Us
                 </Link>
