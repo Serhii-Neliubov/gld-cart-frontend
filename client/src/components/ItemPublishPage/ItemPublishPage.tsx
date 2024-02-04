@@ -2,12 +2,16 @@ import React from "react";
 import styles from "./ItemPublishPage.module.scss";
 import { Link } from "react-router-dom";
 import RentingStage from "../RentingStage/RentingStage";
+import {useDispatch} from "react-redux";
+import {resetVendorProductInfo} from "../../redux/slices/vendorProductInfoSlice.ts";
 
 type ItemPublishPageProps = {
     category: string,
 }
 
 const ItemPublishPage = ({category}: ItemPublishPageProps) => {
+    const dispatch = useDispatch();
+
   return (
     <div
       style={{
@@ -38,6 +42,7 @@ const ItemPublishPage = ({category}: ItemPublishPageProps) => {
           </button>
           <Link to="/successfully-published">
             <button
+                onClick={() => dispatch(resetVendorProductInfo())}
               style={{
                 border: "1px solid blue",
                 backgroundColor: "blue",

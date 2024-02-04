@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, {ChangeEvent, useState} from "react";
 import styles from "./NewHouses.module.scss";
 import { Layout } from "../../../../components/Vendor/Layout.tsx";
 import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
+import {useDispatch, useSelector} from "react-redux";
+import {setProductInformation, vendorProductInfo} from "../../../../redux/slices/vendorProductInfoSlice.ts";
 
 export const NewHouses = () => {
   const [stage, setStage] = useState(3);
+  const data = useSelector(vendorProductInfo);
+  const dispatch = useDispatch();
 
   useCategoryRedirect("houses", "/renting-category-page", stage);
+
+  const handleInputChange = (
+      currentData: object,
+      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+      key: string
+  ) => {
+    const inputValue = e.target.value;
+
+    dispatch(
+        setProductInformation({
+          ...currentData,
+          [key]: inputValue,
+        })
+    );
+  };
 
   return (
     <React.Fragment>
@@ -22,11 +41,16 @@ export const NewHouses = () => {
             <React.Fragment>
               <div className={styles.inputBox}>
                 <label>Title</label>
-                <input placeholder="70 words max" maxLength={70} />
+                <input onChange={(event) =>
+                    handleInputChange(data.info, event, "title")
+                } placeholder="70 words max" maxLength={70} />
               </div>
               <div className={styles.inputAreaBox}>
                 <label>Description</label>
                 <textarea
+                    onChange={(event) =>
+                        handleInputChange(data.info, event, "description")
+                    }
                   minLength={160}
                   maxLength={9000}
                   placeholder="Minimum 160 and maximum 9000 characters"
@@ -35,11 +59,16 @@ export const NewHouses = () => {
               <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                   <label>City</label>
-                  <input placeholder="Write your house city" maxLength={70} />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "city")
+                  } placeholder="Write your house city" maxLength={70} />
                 </div>
                 <div className={styles.inputBox}>
                   <label>Address</label>
                   <input
+                      onChange={(event) =>
+                          handleInputChange(data.info, event, "address")
+                      }
                     placeholder="Write your house address"
                     maxLength={70}
                   />

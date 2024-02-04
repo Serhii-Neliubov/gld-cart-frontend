@@ -138,7 +138,9 @@ export const NewVehicle = () => {
                       <div>
                         <div className={styles.inputBox}>
                           <span>Rent Price</span>
-                          <input placeholder="450$" />
+                          <input onChange={(event) =>
+                              handleInputChange(data.info, event, "dayRentPrice")
+                          } placeholder="450$" />
                         </div>
                         <div className={styles.inputBox}>
                           <span>Day</span>
@@ -183,7 +185,9 @@ export const NewVehicle = () => {
                       <div>
                         <div className={styles.inputBox}>
                           <span>Rent Price</span>
-                          <input placeholder="450$" />
+                          <input onChange={(event) =>
+                              handleInputChange(data.info, event, "weekRentPrice")
+                          } placeholder="450$" />
                         </div>
                         <div className={styles.inputBox}>
                           <span>Week</span>
@@ -224,7 +228,9 @@ export const NewVehicle = () => {
                       <div>
                         <div className={styles.inputBox}>
                           <span>Rent Price</span>
-                          <input placeholder="450$" />
+                          <input onChange={(event) =>
+                              handleInputChange(data.info, event, "monthlyRentPrice")
+                          } placeholder="450$" />
                         </div>
                         <div className={styles.inputBox}>
                           <span>Month</span>
@@ -263,22 +269,40 @@ export const NewVehicle = () => {
               <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                   <label>Year of Manufacture</label>
-                  <input placeholder="Car Manufacture year" />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "manufactureCarYear")
+                  } type='number' placeholder="Car Manufacture year" />
                 </div>
                 <div className={styles.inputBox}>
                   <label>Vehicle Plate Number</label>
-                  <input placeholder="AAA-123" />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "plateNumber")
+                  } placeholder="AAA-123" />
                 </div>
               </div>
               <div className={styles.inputRadioBox}>
                 <span>Vehicle Condition</span>
                 <div className={styles.radioInputs}>
                   <div className={styles.inputRadio}>
-                    <input type="radio" />
+                    <input onChange={() =>
+                        dispatch(
+                            setProductInformation({
+                              ...data.info,
+                              vehicleCondition: "New Vehicle",
+                            })
+                        )
+                    } type="radio" />
                     <label>New Vehicle</label>
                   </div>
                   <div className={styles.inputRadio}>
-                    <input type="radio" />
+                    <input onChange={() =>
+                        dispatch(
+                            setProductInformation({
+                              ...data.info,
+                              vehicleCondition: "Used Vehicle",
+                            })
+                        )
+                    } type="radio" />
                     <label>Used Vehicle</label>
                   </div>
                 </div>
@@ -286,36 +310,50 @@ export const NewVehicle = () => {
               <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                   <label>Custom specification*</label>
-                  <input placeholder="Transmission" />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "customSpecifications")
+                  } placeholder="Transmission" />
                 </div>
                 <div className={styles.inputBox}>
                   <label>Specification details*</label>
-                  <input placeholder="Automatic" />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "specificationDetails")
+                  } placeholder="Automatic" />
                 </div>
               </div>
               <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                   <label>Fuel type*</label>
-                  <input placeholder="Diesel" />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "fuelType")
+                  } placeholder="Diesel" />
                 </div>
                 <div className={styles.inputBox}>
                   <label>Engine capacity*</label>
-                  <input placeholder="1000 CC" />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "engineCapacity")
+                  } placeholder="1000 CC" />
                 </div>
               </div>
               <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                   <label>Seat capacity</label>
-                  <input placeholder="04" />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "seatCapacity")
+                  } type='number' placeholder="04" />
                 </div>
                 <div className={styles.inputBox}>
                   <label>Storage Bag capacity</label>
-                  <input placeholder="1 big bag and one small bag" />
+                  <input onChange={(event) =>
+                      handleInputChange(data.info, event, "storageBagCapacity")
+                  } placeholder="1 big bag and one small bag" />
                 </div>
               </div>
               <div className={styles.inputBox}>
                 <label>Air bags</label>
-                <input placeholder="02" />
+                <input onChange={(event) =>
+                    handleInputChange(data.info, event, "airBags")
+                } type='number' placeholder="02" />
               </div>
             </React.Fragment>
           )}

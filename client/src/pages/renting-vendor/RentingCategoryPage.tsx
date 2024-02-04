@@ -3,13 +3,19 @@ import React, {FC, useState} from "react";
 import RentingStage from "../../components/RentingStage/RentingStage.tsx";
 import {RentingData} from "../../data/vendorProductsData/RentingData.ts";
 import {setVendorSelectedItemValue} from "../../redux/slices/vendorSelectedItemSlice.ts";
-import {setProductCategory, setProductName, setProductSubcategory} from "../../redux/slices/vendorProductInfoSlice.ts";
+import {
+  resetVendorProductInfo,
+  setProductCategory,
+  setProductName,
+  setProductSubcategory
+} from "../../redux/slices/vendorProductInfoSlice.ts";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
 interface IClearClick {
   [key: string]: boolean;
 }
+
 const clearClick: IClearClick = {
   vehicles: false,
   houses: false,
@@ -68,6 +74,7 @@ const RentingCategoryPage: FC = () => {
                                   : {}
                             }
                             onClick={() => {
+                              dispatch(resetVendorProductInfo())
                               setIsClicked({
                                 ...clearClick,
                                 [item.category]: true,

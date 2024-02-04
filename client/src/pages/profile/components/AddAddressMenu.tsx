@@ -4,7 +4,6 @@ import { userDataSelector } from "../../../redux/slices/userDataSlice.ts";
 import styles from "../ProfilePage.module.scss";
 import toast from "react-hot-toast";
 import AddressServices from "../../../services/AddressServices.ts";
-import {ModalWindow} from "../../../components/RentingProductsPopup/ModalWindow.tsx";
 
 type AddAddressMenuProps = {
   selectedLabel: string;
@@ -15,10 +14,11 @@ type TypeAddressData = {
   ZIP_code: number;
   street_address: string;
   city: string;
-  recipients_name: string,
+  recipients_name: string;
   country: string;
   phone: string;
-  _id: string
+  _id: string;
+  forEffectiveDelivery: string; // Add this line
 };
 
 function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps) {
@@ -33,6 +33,8 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
       country: "",
       ZIP_code: undefined,
       phone_number: "",
+      landmark: '',
+      forEffectiveDelivery: 'Home'
     }
   });
   const [addresses, setAddresses] = useState([]);
@@ -92,69 +94,140 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
 
   if(selectedLabel === "Add Address"){
     return (
-        <ModalWindow>
-          <div className={styles.title_action}>
-            <h2 className={styles.box_name}>ADDRESS</h2>
-            <button onClick={() => setSelectedLabel("Address")}>Return</button>
-          </div>
+        <div className={styles.contentAddressBox}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <input
-                placeholder="Recipients name"
-                className={styles.input}
-                type="text"
-                name="recipients_name"
-                value={formData.addressData.recipients_name}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="Street"
-                className={styles.input}
-                type="text"
-                name="street_address"
-                value={formData.addressData.street_address}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="City"
-                className={styles.input}
-                type="text"
-                name="city"
-                value={formData.addressData.city}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="Country"
-                className={styles.input}
-                type="text"
-                name="country"
-                value={formData.addressData.country}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="ZIP Code"
-                className={styles.input}
-                type="text"
-                name="ZIP_code"
-                value={formData.addressData.ZIP_code}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="Phone number"
-                className={styles.input}
-                type="text"
-                name="phone_number"
-                value={formData.addressData.phone_number}
-                onChange={handleChange}
-            />
-            <button className={styles.sendbutton} type="submit">
-              Submit
-            </button>
+            <div className={styles.inputColumns}>
+              <label className={styles.inputBox}>
+                Full Name
+                <input
+                    placeholder="Enter full name"
+                    className={styles.input}
+                    type="text"
+                    name="recipients_name"
+                    value={formData.addressData.recipients_name}
+                    onChange={handleChange}
+                />
+              </label>
+              <label className={styles.inputBox}>
+                Address
+                <input
+                    placeholder="House no. / building / street / area"
+                    className={styles.input}
+                    type="text"
+                    name="street_address"
+                    value={formData.addressData.street_address}
+                    onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className={styles.inputColumns}>
+              <label className={styles.inputBox}>
+                Phone number
+                <input
+                    placeholder="Enter mobile number"
+                    className={styles.input}
+                    type="text"
+                    name="phone_number"
+                    value={formData.addressData.phone_number}
+                    onChange={handleChange}
+                />
+              </label>
+              <label className={styles.inputBox}>
+                Landmark (Optional)
+                <input
+                    placeholder="E.g.  beside train station"
+                    className={styles.input}
+                    type="text"
+                    name="landmark"
+                    value={formData.addressData.landmark}
+                    onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className={styles.inputColumns}>
+              <label className={styles.inputBox}>
+                Country
+                <input
+                    placeholder="Country"
+                    className={styles.input}
+                    type="text"
+                    name="country"
+                    value={formData.addressData.country}
+                    onChange={handleChange}
+                />
+              </label>
+              <div className={styles.boxForEffectiveDelivery}>
+                <span>Select a label for effective delivery:</span>
+                <div className={styles.labelsForEffectiveDelivery}>
+                  <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setFormData((prevData) => ({
+                          ...prevData,
+                          addressData: {
+                            ...prevData.addressData,
+                            forEffectiveDelivery: 'Home',
+                          },
+                        }))
+                      }}
+                      className={formData.addressData.forEffectiveDelivery === 'Home' ? `${styles.labelForEffectiveDelivery_active} ${styles.labelForEffectiveDelivery}` : styles.labelForEffectiveDelivery}
+                  >
+                    Home
+                  </button>
+                  <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setFormData((prevData) => ({
+                          ...prevData,
+                          addressData: {
+                            ...prevData.addressData,
+                            forEffectiveDelivery: 'Office',
+                          },
+                        }))
+                      }}
+                      className={formData.addressData.forEffectiveDelivery === 'Office' ? `${styles.labelForEffectiveDelivery_active} ${styles.labelForEffectiveDelivery}` : styles.labelForEffectiveDelivery}
+                  >
+                    Office
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.inputColumns}>
+              <label className={styles.inputBox}>
+                City
+                <input
+                    placeholder="City"
+                    className={styles.input}
+                    type="text"
+                    name="city"
+                    value={formData.addressData.city}
+                    onChange={handleChange}
+                />
+              </label>
+              <label className={styles.inputBox}>
+                ZIP Code
+                <input
+                    placeholder="ZIP Code"
+                    className={styles.input}
+                    type="text"
+                    name="ZIP_code"
+                    value={formData.addressData.ZIP_code}
+                    onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className={styles.button_actions}>
+              <button onClick={() => setSelectedLabel("Address")}>Return</button>
+              <button type="submit">
+                Submit
+              </button>
+            </div>
           </form>
-        </ModalWindow>
+        </div>
     )
   }
 
-  if(selectedLabel === "Address"){
+  if (selectedLabel === "Address") {
     return (
         selectedLabel === "Address" && (
             <div
@@ -168,7 +241,7 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
             >
               <div className={styles.title_action}>
                 <h2 className={styles.box_name}>ADDRESS</h2>
-                <button onClick={() => setSelectedLabel("Add Address")}>
+                <button  onClick={() => setSelectedLabel("Add Address")}>
                   + Add New Address
                 </button>
               </div>
@@ -184,7 +257,8 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
                         <button onClick={() => {
                           formData.addressId = address._id;
                           setSelectedLabel('Edit Address')
-                        }}>EDIT</button>
+                        }}>EDIT
+                        </button>
                       </div>
                   )}
                 </div>
@@ -194,73 +268,136 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
     )
   }
 
-  if(selectedLabel === "Edit Address"){
+  if (selectedLabel === "Edit Address") {
     return (
-        <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "5px",
-              justifyContent: "space-between",
-              height: "100%",
-            }}
-        >
-          <div className={styles.title_action}>
-            <h2 className={styles.box_name}>EDIT</h2>
-            <button onClick={() => setSelectedLabel("Address")}>Return</button>
-          </div>
+        <div className={styles.contentAddressBox}>
           <form className={styles.form} onSubmit={handleSubmitChanges}>
-            <input
-                placeholder="Recipients name"
-                className={styles.input}
-                type="text"
-                name="recipients_name"
-                value={formData.addressData.recipients_name}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="Street"
-                className={styles.input}
-                type="text"
-                name="street_address"
-                value={formData.addressData.street_address}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="City"
-                className={styles.input}
-                type="text"
-                name="city"
-                value={formData.addressData.city}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="Country"
-                className={styles.input}
-                type="text"
-                name="country"
-                value={formData.addressData.country}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="ZIP Code"
-                className={styles.input}
-                type="text"
-                name="ZIP_code"
-                value={formData.addressData.ZIP_code}
-                onChange={handleChange}
-            />
-            <input
-                placeholder="Phone number"
-                className={styles.input}
-                type="text"
-                name="phone_number"
-                value={formData.addressData.phone_number}
-                onChange={handleChange}
-            />
-            <button className={styles.sendbutton} type="submit">
-              Edit
-            </button>
+            <div className={styles.inputColumns}>
+              <label className={styles.inputBox}>
+                Full Name
+                <input
+                    placeholder="Enter full name"
+                    className={styles.input}
+                    type="text"
+                    name="recipients_name"
+                    value={formData.addressData.recipients_name}
+                    onChange={handleChange}
+                />
+              </label>
+              <label className={styles.inputBox}>
+                Address
+                <input
+                    placeholder="House no. / building / street / area"
+                    className={styles.input}
+                    type="text"
+                    name="street_address"
+                    value={formData.addressData.street_address}
+                    onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className={styles.inputColumns}>
+              <label className={styles.inputBox}>
+                Phone number
+                <input
+                    placeholder="Enter mobile number"
+                    className={styles.input}
+                    type="text"
+                    name="phone_number"
+                    value={formData.addressData.phone_number}
+                    onChange={handleChange}
+                />
+              </label>
+              <label className={styles.inputBox}>
+                Landmark (Optional)
+                <input
+                    placeholder="E.g.  beside train station"
+                    className={styles.input}
+                    type="text"
+                    name="landmark"
+                    value={formData.addressData.landmark}
+                    onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className={styles.inputColumns}>
+              <label className={styles.inputBox}>
+                Country
+                <input
+                    placeholder="Country"
+                    className={styles.input}
+                    type="text"
+                    name="country"
+                    value={formData.addressData.country}
+                    onChange={handleChange}
+                />
+              </label>
+              <div className={styles.boxForEffectiveDelivery}>
+                <span>Select a label for effective delivery:</span>
+                <div className={styles.labelsForEffectiveDelivery}>
+                  <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setFormData((prevData) => ({
+                          ...prevData,
+                          addressData: {
+                            ...prevData.addressData,
+                            forEffectiveDelivery: 'Home',
+                          },
+                        }))
+                      }}
+                      className={formData.addressData.forEffectiveDelivery === 'Home' ? `${styles.labelForEffectiveDelivery_active} ${styles.labelForEffectiveDelivery}` : styles.labelForEffectiveDelivery}
+                  >
+                    Home
+                  </button>
+                  <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setFormData((prevData) => ({
+                          ...prevData,
+                          addressData: {
+                            ...prevData.addressData,
+                            forEffectiveDelivery: 'Office',
+                          },
+                        }))
+                      }}
+                      className={formData.addressData.forEffectiveDelivery === 'Office' ? `${styles.labelForEffectiveDelivery_active} ${styles.labelForEffectiveDelivery}` : styles.labelForEffectiveDelivery}
+                  >
+                    Office
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.inputColumns}>
+              <label className={styles.inputBox}>
+                City
+                <input
+                    placeholder="City"
+                    className={styles.input}
+                    type="text"
+                    name="city"
+                    value={formData.addressData.city}
+                    onChange={handleChange}
+                />
+              </label>
+              <label className={styles.inputBox}>
+                ZIP Code
+                <input
+                    placeholder="ZIP Code"
+                    className={styles.input}
+                    type="text"
+                    name="ZIP_code"
+                    value={formData.addressData.ZIP_code}
+                    onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className={styles.button_actions}>
+              <button onClick={() => setSelectedLabel("Address")}>Return</button>
+              <button type="submit">
+                Edit
+              </button>
+            </div>
           </form>
         </div>
     )

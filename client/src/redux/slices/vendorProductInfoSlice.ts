@@ -4,7 +4,7 @@ export interface vendorProductInfoSlice {
     category: string;
     subcategory: string;
     product: string;
-    info: {}
+    info: object
 }
 
 const initialState: vendorProductInfoSlice = {
@@ -30,10 +30,13 @@ export const vendorProductInfoSlice = createSlice({
         setProductInformation: (state, action) => {
             state.info = action.payload;
         },
+        resetVendorProductInfo: () => {
+            return initialState;
+        },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { setProductInformation, setProductName, setProductSubcategory, setProductCategory } = vendorProductInfoSlice.actions;
+export const { resetVendorProductInfo, setProductInformation, setProductName, setProductSubcategory, setProductCategory } = vendorProductInfoSlice.actions;
 export const vendorProductInfo = (state: { vendorProductInfo: vendorProductInfoSlice }) => state.vendorProductInfo;
 export default vendorProductInfoSlice.reducer;
