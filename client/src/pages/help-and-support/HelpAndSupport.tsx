@@ -75,7 +75,7 @@ const HelpAndSupport: FC = () => {
                 at 021-111-132729 | Mon - Sat (09:00 am till 09:00 pm).
               </p>
               <a href="#">
-                <Link to="/chat-answers">
+                <Link to="/support-chat">
                   <button className={styles.content_button}>
                     LIVE CHAT NOW!
                   </button>

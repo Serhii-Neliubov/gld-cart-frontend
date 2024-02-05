@@ -1,0 +1,125 @@
+.content{
+  padding: 50px 0;
+  position: relative;
+}
+.chatBoxContainer{
+  height: 500px;
+  margin: 50px 0;
+}
+.chatBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > h1{
+    margin-bottom: 60px;
+    color: rgb(0, 0, 0);
+    font-size: 35.15px;
+    font-weight: 700;
+    line-height: 52.94px;
+    text-align: center;
+  }
+}
+.backButton{
+  border-radius: 10px;
+  width: 58px;
+  height: 58px;
+  position: relative;
+  background: rgb(241, 241, 241);
+
+  &::after{
+    position: absolute;
+    content: '';
+    width: 36px;
+    height: 36px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("/SupportChat/arrow-left.svg");
+  }
+}
+
+.faqsButton{
+  border-radius: 50%;
+  width: 73px;
+  height: 73px;
+  position: relative;
+  background: rgb(241, 241, 241);
+
+  &::after{
+    position: absolute;
+    content: '';
+    width: 48.5px;
+    height: 48.5px;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    background-image: url("/SupportChat/ask-vector.svg");
+  }
+}
+.actionButtons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo{
+  width: 126px;
+  height: 126px;
+  position: relative;
+}
+
+.chatAreaInput{
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  height: 92px;
+  align-items: center;
+  padding: 24px 18px;
+  border: 1.44px solid rgb(165, 165, 165);
+  border-radius: 22.57px;
+  background: rgb(247, 247, 247);
+}
+
+.textInput{
+  width: 100%;
+  height: 100%;
+  outline: none;
+  background: none;
+
+  font-size: 17.13px;
+  font-weight: 400;
+  line-height: 25.8px;
+  text-align: left;
+}
+
+.questionBox{
+  cursor: pointer;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1.33px solid rgb(222, 222, 223);
+  border-radius: 22.57px;
+  background: rgb(247, 247, 248);
+  height: 115px;
+
+  & > div{
+    color: rgb(0, 0, 0);
+    font-size: 17.13px;
+    font-weight: 400;
+    line-height: 25.8px;
+    text-align: left;
+
+    max-width: 400px;
+  }
+}
+
+.questionBoxesColumn{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.questionBoxes{
+  display: flex;
+  gap: 20px;
+}
