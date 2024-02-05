@@ -62,7 +62,7 @@ const Label: FC = () => {
                   </Link>
                 </li>
               ))}
-              {user.type === 'Buyer' && <li className="label__item">
+              <li className="label__item">
                 <Link
                     to="/driver-license"
                     className={`label__link ${
@@ -73,7 +73,7 @@ const Label: FC = () => {
                 >
                   DRIVER SERVICES
                 </Link>
-              </li>}
+              </li>
               <li className="label__item">
                 <Link
                     to="/contact-us"

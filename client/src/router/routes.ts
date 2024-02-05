@@ -81,6 +81,7 @@ import {
 import {
   NewElectrical
 } from "../pages/professional-services-vendor/pages/electrical/NewElectrical.tsx";
+import {DriverLicense} from "../pages/driver-licese/DriverLicense.tsx";
 
 interface IRoutes {
   component: FC;
@@ -89,6 +90,7 @@ interface IRoutes {
 
 export const buyerRoutes: IRoutes[] = [
   { component: Home, path: "/" },
+  { component: DriverLicense, path: "/driver-license" },
   { component: CarPage, path: "/renting-car/:id" },
   { component: TrackOrder, path: "/track-an-order" },
   { component: Renting, path: "/renting" },
@@ -120,6 +122,7 @@ export const buyerRoutes: IRoutes[] = [
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
+  { component: DriverLicense, path: "/driver-license" },
   // Pest Control Service
   {
     component: NewPestControl,

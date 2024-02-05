@@ -3,7 +3,7 @@ import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
 import Footer from "../../components/Footer/Footer.tsx";
 
-// eslint-disable-next-line react-refresh/only-export-components
+// eslint-disable-next-line react-refresh/only-export-stages
 export const clearModalActiveParams = {
   google: false,
   apple: false,

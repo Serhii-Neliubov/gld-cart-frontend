@@ -12,18 +12,24 @@ export const PhotoAndVideoBlock: React.FC = () => {
         const selectedFiles = event.target.files;
 
         if (selectedFiles && selectedFiles.length > 0) {
-            const fileURL = URL.createObjectURL(selectedFiles[0]);
+            const fileReader = new FileReader();
 
-            setFiles((prevFiles) =>
-                prevFiles.map((url, i) => (i === index ? fileURL : url))
-            );
+            fileReader.onload = (e) => {
+                const fileDataURL = e.target?.result as string;
 
-            dispatch(
-                setProductInformation({
-                    ...data.info,
-                    images: files.map((url, i) => (i === index ? fileURL : url)).filter(Boolean),
-                })
-            );
+                setFiles((prevFiles) =>
+                    prevFiles.map((url, i) => (i === index ? fileDataURL : url))
+                );
+
+                dispatch(
+                    setProductInformation({
+                        ...data.info,
+                        images: files.map((url, i) => (i === index ? fileDataURL : url)).filter(Boolean),
+                    })
+                );
+            };
+
+            fileReader.readAsDataURL(selectedFiles[0]);
         }
     };
 
