@@ -1,11 +1,11 @@
 import React, {ChangeEvent} from 'react';
 import styles from "../NewVehicle.module.scss";
-import {setProductInformation, vendorProductInfo} from "../../../../../redux/slices/vendorProductInfoSlice.ts";
+import {
+    setProductDescription,
+    setProductInformation, setProductTitle,
+    vendorProductInfo
+} from "../../../../../redux/slices/vendorProductInfoSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
-
-interface ProductInformation {
-    [key: string]: string;
-}
 
 export const BasicInformation = () => {
     const dispatch = useDispatch();
@@ -26,21 +26,6 @@ export const BasicInformation = () => {
         );
     };
 
-    const onChecked = (
-        currentData: object,
-        event: ChangeEvent<HTMLInputElement>,
-        key: string,
-        element: string | object
-    ) => {
-        if (event.target.checked) {
-            dispatch(setProductInformation({ ...currentData, [key]: element }));
-        } else {
-            const updatedInfo: ProductInformation = { ...currentData };
-            delete updatedInfo[key];
-            dispatch(setProductInformation(updatedInfo));
-        }
-    };
-
     return (
         <React.Fragment>
             <div className={styles.inputTextBox}>
@@ -48,7 +33,7 @@ export const BasicInformation = () => {
                 <input
                     required={true}
                     onChange={(event) =>
-                        handleInputChange(data.info, event, "title")
+                        dispatch(setProductTitle(event.target.value))
                     }
                     placeholder="70 words max"
                     maxLength={70}
@@ -58,7 +43,7 @@ export const BasicInformation = () => {
                 <label>Description</label>
                 <textarea
                     onChange={(event) =>
-                        handleInputChange(data.info, event, "description")
+                        dispatch(setProductDescription(event.target.value))
                     }
                     minLength={160}
                     maxLength={9000}
@@ -74,7 +59,7 @@ export const BasicInformation = () => {
                             onChange={() =>
                                 dispatch(
                                     setProductInformation({
-                                        ...data.info,
+                                        ...data.attributes,
                                         driver: "Without Driver",
                                     })
                                 )
@@ -88,7 +73,7 @@ export const BasicInformation = () => {
                             onChange={() =>
                                 dispatch(
                                     setProductInformation({
-                                        ...data.info,
+                                        ...data.attributes,
                                         driver: "With Driver",
                                     })
                                 )
@@ -107,9 +92,6 @@ export const BasicInformation = () => {
                         <div>
                             <input
                                 name="time"
-                                onChange={(event) =>
-                                    onChecked(data.info, event, "packageForDays", {})
-                                }
                                 type="checkbox"
                             />
                             <label>Renting Packages For Days </label>
@@ -119,7 +101,7 @@ export const BasicInformation = () => {
                                 <div className={styles.inputBox}>
                                     <span>Rent Price</span>
                                     <input onChange={(event) =>
-                                        handleInputChange(data.info, event, "dayRentPrice")
+                                        handleInputChange(data.attributes, event, "dayRentPrice")
                                     } placeholder="450$" />
                                 </div>
                                 <div className={styles.inputBox}>
@@ -128,10 +110,8 @@ export const BasicInformation = () => {
                                         onChange={(event) =>
                                             dispatch(
                                                 setProductInformation({
-                                                    ...data.info,
-                                                    packageForDays: {
-                                                        amountOfDays: event.target.value,
-                                                    },
+                                                    ...data.attributes,
+                                                    amountOfDays: event.target.value,
                                                 })
                                             )
                                         }
@@ -154,9 +134,6 @@ export const BasicInformation = () => {
                         <div>
                             <input
                                 name="time"
-                                onChange={(event) =>
-                                    onChecked(data.info, event, "packageForWeeks", {})
-                                }
                                 type="checkbox"
                             />
                             <label>Renting Packages For Weeks </label>
@@ -166,7 +143,7 @@ export const BasicInformation = () => {
                                 <div className={styles.inputBox}>
                                     <span>Rent Price</span>
                                     <input onChange={(event) =>
-                                        handleInputChange(data.info, event, "weekRentPrice")
+                                        handleInputChange(data.attributes, event, "weekRentPrice")
                                     } placeholder="450$" />
                                 </div>
                                 <div className={styles.inputBox}>
@@ -175,10 +152,8 @@ export const BasicInformation = () => {
                                         onChange={(event) =>
                                             dispatch(
                                                 setProductInformation({
-                                                    ...data.info,
-                                                    packageForWeeks: {
-                                                        amountOfWeeks: event.target.value,
-                                                    },
+                                                    ...data.attributes,
+                                                    amountOfWeeks: event.target.value,
                                                 })
                                             )
                                         }
@@ -197,9 +172,6 @@ export const BasicInformation = () => {
                         <div>
                             <input
                                 name="time"
-                                onChange={(event) =>
-                                    onChecked(data.info, event, "packageForMonths", {})
-                                }
                                 type="checkbox"
                             />
                             <label>Renting Packages For Months </label>
@@ -209,7 +181,7 @@ export const BasicInformation = () => {
                                 <div className={styles.inputBox}>
                                     <span>Rent Price</span>
                                     <input onChange={(event) =>
-                                        handleInputChange(data.info, event, "monthlyRentPrice")
+                                        handleInputChange(data.attributes, event, "monthlyRentPrice")
                                     } placeholder="450$" />
                                 </div>
                                 <div className={styles.inputBox}>
@@ -218,10 +190,8 @@ export const BasicInformation = () => {
                                         onChange={(event) =>
                                             dispatch(
                                                 setProductInformation({
-                                                    ...data.info,
-                                                    packageForMonths: {
-                                                        amountOfMonths: event.target.value,
-                                                    },
+                                                    ...data.attributes,
+                                                    amountOfMonths: event.target.value,
                                                 })
                                             )
                                         }

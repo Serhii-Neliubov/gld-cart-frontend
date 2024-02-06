@@ -2,8 +2,13 @@ import React from "react";
 import styles from "./ItemPublishPage.module.scss";
 import { Link } from "react-router-dom";
 import RentingStage from "../RentingStage/RentingStage";
-import {useDispatch} from "react-redux";
-import {resetVendorProductInfo} from "../../redux/slices/vendorProductInfoSlice.ts";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    resetVendorProductInfo,
+    vendorProductInfo,
+} from "../../redux/slices/vendorProductInfoSlice.ts";
+import axios from "axios";
+import {API_URL} from "../../lib/http.ts";
 
 type ItemPublishPageProps = {
     category: string,
@@ -11,6 +16,17 @@ type ItemPublishPageProps = {
 
 const ItemPublishPage = ({category}: ItemPublishPageProps) => {
     const dispatch = useDispatch();
+    const data = useSelector(vendorProductInfo);
+
+    async function sendProductInfoHandler() {
+        dispatch(resetVendorProductInfo())
+
+        await axios.post(`${API_URL}/products`, data, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+    }
 
   return (
     <div
@@ -42,7 +58,7 @@ const ItemPublishPage = ({category}: ItemPublishPageProps) => {
           </button>
           <Link to="/successfully-published">
             <button
-                onClick={() => dispatch(resetVendorProductInfo())}
+                onClick={sendProductInfoHandler}
               style={{
                 border: "1px solid blue",
                 backgroundColor: "blue",

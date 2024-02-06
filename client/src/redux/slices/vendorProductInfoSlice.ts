@@ -3,15 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface vendorProductInfoSlice {
     category: string;
     subcategory: string;
-    product: string;
-    info: object
+    product_name: string;
+    description: string,
+    title: string,
+    images: [],
+    attributes: object
 }
 
 const initialState: vendorProductInfoSlice = {
     category: "",
     subcategory: "",
-    product: "",
-    info: {},
+    product_name: "",
+    description: '',
+    title: '',
+    images: [],
+    attributes: {},
 };
 
 export const vendorProductInfoSlice = createSlice({
@@ -19,7 +25,7 @@ export const vendorProductInfoSlice = createSlice({
     initialState,
     reducers: {
         setProductName: (state, action) => {
-            state.product = action.payload;
+            state.product_name = action.payload;
         },
         setProductCategory: (state, action) => {
             state.category = action.payload;
@@ -27,8 +33,17 @@ export const vendorProductInfoSlice = createSlice({
         setProductSubcategory: (state, action) => {
             state.subcategory = action.payload;
         },
+        setProductDescription: (state, action) => {
+            state.description = action.payload;
+        },
         setProductInformation: (state, action) => {
-            state.info = action.payload;
+            state.attributes = action.payload;
+        },
+        setProductTitle: (state, action) => {
+            state.title = action.payload;
+        },
+        setProductImages: (state, action) => {
+            state.images = action.payload; // сохраняем массив строк с именами файлов
         },
         resetVendorProductInfo: () => {
             return initialState;
@@ -37,6 +52,6 @@ export const vendorProductInfoSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { resetVendorProductInfo, setProductInformation, setProductName, setProductSubcategory, setProductCategory } = vendorProductInfoSlice.actions;
+export const { setProductImages, setProductDescription, setProductTitle , resetVendorProductInfo, setProductInformation, setProductName, setProductSubcategory, setProductCategory } = vendorProductInfoSlice.actions;
 export const vendorProductInfo = (state: { vendorProductInfo: vendorProductInfoSlice }) => state.vendorProductInfo;
 export default vendorProductInfoSlice.reducer;

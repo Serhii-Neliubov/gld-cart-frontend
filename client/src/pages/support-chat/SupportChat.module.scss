@@ -2,11 +2,18 @@
   padding: 50px 0;
   position: relative;
 }
+.message{
+  display: flex;
+}
+.chatBox{
+  overflow-y: scroll;
+  height: 500px;
+}
 .chatBoxContainer{
   height: 500px;
   margin: 50px 0;
 }
-.chatBox{
+.noActiveChatBox{
   display: flex;
   flex-direction: column;
   align-items: center;

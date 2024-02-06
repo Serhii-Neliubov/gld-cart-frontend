@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from "./BasicInformationVehicle.module.scss";
 import RentingStage from "../RentingStage/RentingStage.tsx";
+import {useSelector} from "react-redux";
+import {vendorProductInfo} from "../../redux/slices/vendorProductInfoSlice.ts";
 
 type LayoutProps = {
     children: React.ReactNode,
@@ -11,6 +13,9 @@ type LayoutProps = {
 }
 
 export const Layout = ({setStage, title, children, stage, subtitle}: LayoutProps) => {
+    const data = useSelector(vendorProductInfo);
+    console.log(data);
+
     return (
         <div className='__container'>
             <div className={styles.container}>

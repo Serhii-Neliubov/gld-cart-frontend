@@ -28,13 +28,13 @@ export const SpecificationInformation = () => {
                 <div className={styles.inputBox}>
                     <label>Year of Manufacture</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.info, event, "manufactureCarYear")
+                        handleInputChange(data.attributes, event, "manufactureCarYear")
                     } type='number' placeholder="Car Manufacture year" />
                 </div>
                 <div className={styles.inputBox}>
                     <label>Vehicle Plate Number</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.info, event, "plateNumber")
+                        handleInputChange(data.attributes, event, "plateNumber")
                     } placeholder="AAA-123" />
                 </div>
             </div>
@@ -45,7 +45,7 @@ export const SpecificationInformation = () => {
                         <input onChange={() =>
                             dispatch(
                                 setProductInformation({
-                                    ...data.info,
+                                    ...data.attributes,
                                     vehicleCondition: "New Vehicle",
                                 })
                             )
@@ -56,7 +56,7 @@ export const SpecificationInformation = () => {
                         <input onChange={() =>
                             dispatch(
                                 setProductInformation({
-                                    ...data.info,
+                                    ...data.attributes,
                                     vehicleCondition: "Used Vehicle",
                                 })
                             )
@@ -69,13 +69,13 @@ export const SpecificationInformation = () => {
                 <div className={styles.inputBox}>
                     <label>Custom specification*</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.info, event, "customSpecifications")
+                        handleInputChange(data.attributes, event, "customSpecifications")
                     } placeholder="Transmission" />
                 </div>
                 <div className={styles.inputBox}>
                     <label>Specification details*</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.info, event, "specificationDetails")
+                        handleInputChange(data.attributes, event, "specificationDetails")
                     } placeholder="Automatic" />
                 </div>
             </div>
@@ -83,13 +83,13 @@ export const SpecificationInformation = () => {
                 <div className={styles.inputBox}>
                     <label>Fuel type*</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.info, event, "fuelType")
+                        handleInputChange(data.attributes, event, "fuelType")
                     } placeholder="Diesel" />
                 </div>
                 <div className={styles.inputBox}>
                     <label>Engine capacity*</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.info, event, "engineCapacity")
+                        handleInputChange(data.attributes, event, "engineCapacity")
                     } placeholder="1000 CC" />
                 </div>
             </div>
@@ -97,20 +97,20 @@ export const SpecificationInformation = () => {
                 <div className={styles.inputBox}>
                     <label>Seat capacity</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.info, event, "seatCapacity")
+                        handleInputChange(data.attributes, event, "seatCapacity")
                     } type='number' placeholder="04" />
                 </div>
                 <div className={styles.inputBox}>
                     <label>Storage Bag capacity</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.info, event, "storageBagCapacity")
+                        handleInputChange(data.attributes, event, "storageBagCapacity")
                     } placeholder="1 big bag and one small bag" />
                 </div>
             </div>
             <div className={styles.inputBox}>
                 <label>Air bags</label>
                 <input onChange={(event) =>
-                    handleInputChange(data.info, event, "airBags")
+                    handleInputChange(data.attributes, event, "airBags")
                 } type='number' placeholder="02" />
             </div>
         </React.Fragment>
