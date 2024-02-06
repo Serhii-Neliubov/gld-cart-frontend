@@ -1,30 +1,26 @@
-import React, {ChangeEvent} from 'react';
+import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import styles from "../NewVehicle.module.scss";
-import {
-    setProductDescription,
-    setProductInformation, setProductTitle,
-    vendorProductInfo
-} from "../../../../../redux/slices/vendorProductInfoSlice.ts";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
+import {vendorProductInfo} from "../../../../../redux/slices/vendorProductInfoSlice.ts";
+import {IVendorProductData} from "../../../../../models/IVendorProductData.tsx";
 
-export const BasicInformation = () => {
-    const dispatch = useDispatch();
+type BasicInformationProps = {
+    formData: IVendorProductData;
+    setFormData: Dispatch<SetStateAction<IVendorProductData>>;
+}
+
+export const BasicInformation = ({setFormData, formData}: BasicInformationProps) => {
     const data = useSelector(vendorProductInfo);
 
-    const handleInputChange = (
-        currentData: object,
-        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-        key: string
-    ) => {
-        const inputValue = e.target.value;
+    useEffect(() => {
+        setFormData({
+            ...formData,
+            category: data.category,
+            subcategory: data.subcategory,
+            product_name: data.product_name
+        });
+    }, []);
 
-        dispatch(
-            setProductInformation({
-                ...currentData,
-                [key]: inputValue,
-            })
-        );
-    };
 
     return (
         <React.Fragment>
@@ -33,7 +29,7 @@ export const BasicInformation = () => {
                 <input
                     required={true}
                     onChange={(event) =>
-                        dispatch(setProductTitle(event.target.value))
+                        setFormData({...formData, title: event.target.value})
                     }
                     placeholder="70 words max"
                     maxLength={70}
@@ -43,7 +39,7 @@ export const BasicInformation = () => {
                 <label>Description</label>
                 <textarea
                     onChange={(event) =>
-                        dispatch(setProductDescription(event.target.value))
+                        setFormData({...formData, description: event.target.value})
                     }
                     minLength={160}
                     maxLength={9000}
@@ -57,12 +53,13 @@ export const BasicInformation = () => {
                         <input
                             name="driver"
                             onChange={() =>
-                                dispatch(
-                                    setProductInformation({
-                                        ...data.attributes,
-                                        driver: "Without Driver",
-                                    })
-                                )
+                                setFormData({
+                                    ...formData,
+                                    attributes: {
+                                        ...formData.attributes,
+                                        driver: 'Without Driver'
+                                    }
+                                })
                             }
                             type="radio"
                         />
@@ -71,12 +68,13 @@ export const BasicInformation = () => {
                     <div className={styles.inputRadio}>
                         <input
                             onChange={() =>
-                                dispatch(
-                                    setProductInformation({
-                                        ...data.attributes,
-                                        driver: "With Driver",
-                                    })
-                                )
+                                setFormData({
+                                    ...formData,
+                                    attributes: {
+                                        ...formData.attributes,
+                                        driver: 'With Driver'
+                                    }
+                                })
                             }
                             name="driver"
                             type="radio"
@@ -101,19 +99,26 @@ export const BasicInformation = () => {
                                 <div className={styles.inputBox}>
                                     <span>Rent Price</span>
                                     <input onChange={(event) =>
-                                        handleInputChange(data.attributes, event, "dayRentPrice")
+                                        setFormData({
+                                            ...formData,
+                                            attributes: {
+                                                ...formData.attributes,
+                                                dayRentPrice: event.target.value
+                                            }
+                                        })
                                     } placeholder="450$" />
                                 </div>
                                 <div className={styles.inputBox}>
                                     <span>Day</span>
                                     <select
                                         onChange={(event) =>
-                                            dispatch(
-                                                setProductInformation({
-                                                    ...data.attributes,
-                                                    amountOfDays: event.target.value,
-                                                })
-                                            )
+                                            setFormData({
+                                                ...formData,
+                                                attributes: {
+                                                    ...formData.attributes,
+                                                    amountOfDays: event.target.value
+                                                }
+                                            })
                                         }
                                     >
                                         <option value="1 Day">01 Day</option>
@@ -143,19 +148,26 @@ export const BasicInformation = () => {
                                 <div className={styles.inputBox}>
                                     <span>Rent Price</span>
                                     <input onChange={(event) =>
-                                        handleInputChange(data.attributes, event, "weekRentPrice")
+                                        setFormData({
+                                            ...formData,
+                                            attributes: {
+                                                ...formData.attributes,
+                                                weeklyRentPrice: event.target.value
+                                            }
+                                        })
                                     } placeholder="450$" />
                                 </div>
                                 <div className={styles.inputBox}>
                                     <span>Week</span>
                                     <select
                                         onChange={(event) =>
-                                            dispatch(
-                                                setProductInformation({
-                                                    ...data.attributes,
-                                                    amountOfWeeks: event.target.value,
-                                                })
-                                            )
+                                            setFormData({
+                                                ...formData,
+                                                attributes: {
+                                                    ...formData.attributes,
+                                                    amountOfWeeks: event.target.value
+                                                }
+                                            })
                                         }
                                     >
                                         <option value="1 Day">01 Week</option>
@@ -181,19 +193,26 @@ export const BasicInformation = () => {
                                 <div className={styles.inputBox}>
                                     <span>Rent Price</span>
                                     <input onChange={(event) =>
-                                        handleInputChange(data.attributes, event, "monthlyRentPrice")
+                                        setFormData({
+                                            ...formData,
+                                            attributes: {
+                                                ...formData.attributes,
+                                                monthlyRentPrice: event.target.value
+                                            }
+                                        })
                                     } placeholder="450$" />
                                 </div>
                                 <div className={styles.inputBox}>
                                     <span>Month</span>
                                     <select
                                         onChange={(event) =>
-                                            dispatch(
-                                                setProductInformation({
-                                                    ...data.attributes,
-                                                    amountOfMonths: event.target.value,
-                                                })
-                                            )
+                                            setFormData({
+                                                ...formData,
+                                                attributes: {
+                                                    ...formData.attributes,
+                                                    amountOfMonths: event.target.value
+                                                }
+                                            })
                                         }
                                     >
                                         <option value="1 Month">01 Month</option>

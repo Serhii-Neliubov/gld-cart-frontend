@@ -6,8 +6,9 @@ export interface vendorProductInfoSlice {
     product_name: string;
     description: string,
     title: string,
-    images: [],
-    attributes: object
+    images: File[],
+    attributes: object,
+    [key: string]: string | object | File[]
 }
 
 const initialState: vendorProductInfoSlice = {

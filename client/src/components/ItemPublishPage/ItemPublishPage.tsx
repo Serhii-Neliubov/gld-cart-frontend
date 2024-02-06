@@ -2,26 +2,39 @@ import React from "react";
 import styles from "./ItemPublishPage.module.scss";
 import { Link } from "react-router-dom";
 import RentingStage from "../RentingStage/RentingStage";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {
     resetVendorProductInfo,
-    vendorProductInfo,
 } from "../../redux/slices/vendorProductInfoSlice.ts";
 import axios from "axios";
 import {API_URL} from "../../lib/http.ts";
+import {IVendorProductData} from "../../models/IVendorProductData.tsx";
 
 type ItemPublishPageProps = {
     category: string,
+    formData: IVendorProductData,
 }
 
-const ItemPublishPage = ({category}: ItemPublishPageProps) => {
+const ItemPublishPage = ({category, formData}: ItemPublishPageProps) => {
     const dispatch = useDispatch();
-    const data = useSelector(vendorProductInfo);
 
     async function sendProductInfoHandler() {
-        dispatch(resetVendorProductInfo())
+        dispatch(resetVendorProductInfo());
+        const images = new FormData();
 
-        await axios.post(`${API_URL}/products`, data, {
+        Object.entries(formData).forEach(([key, value]) => {
+            if(key !== 'images'){
+                images.append(key, value as string);
+            }
+        });
+
+        formData.images.filter(value => !!value).forEach(file=> {
+            images.append('images', file);
+        })
+
+        console.log('images: ', images)
+
+        await axios.post(`${API_URL}/products`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },

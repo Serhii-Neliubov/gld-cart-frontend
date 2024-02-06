@@ -1,40 +1,36 @@
-import React, {ChangeEvent} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import styles from "../NewVehicle.module.scss";
-import {setProductInformation, vendorProductInfo} from "../../../../../redux/slices/vendorProductInfoSlice.ts";
-import {useDispatch, useSelector} from "react-redux";
+import {IVendorProductData} from "../../../../../models/IVendorProductData.tsx";
 
-export const SpecificationInformation = () => {
-    const dispatch = useDispatch();
-    const data = useSelector(vendorProductInfo);
+type SpecificationInformationProps = {
+    formData: IVendorProductData;
+    setFormData: Dispatch<SetStateAction<IVendorProductData>>;
+}
 
-    const handleInputChange = (
-        currentData: object,
-        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-        key: string
-    ) => {
-        const inputValue = e.target.value;
-
-        dispatch(
-            setProductInformation({
-                ...currentData,
-                [key]: inputValue,
-            })
-        );
-    };
+export const SpecificationInformation = ({setFormData, formData}: SpecificationInformationProps) => {
 
     return (
         <React.Fragment>
             <div className={styles.inputsBox}>
                 <div className={styles.inputBox}>
                     <label>Year of Manufacture</label>
-                    <input onChange={(event) =>
-                        handleInputChange(data.attributes, event, "manufactureCarYear")
+                    <input onChange={() =>
+                        setFormData({
+                            ...formData,
+                            attributes: {
+                                ...formData.attributes,
+                                yearOfManufacture: 'Without Driver'
+                            }
+                        })
                     } type='number' placeholder="Car Manufacture year" />
                 </div>
                 <div className={styles.inputBox}>
                     <label>Vehicle Plate Number</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.attributes, event, "plateNumber")
+                        setFormData({...formData, attributes: {
+                                ...formData.attributes,
+                                vehiclePlateNumber: event.target.value
+                            }})
                     } placeholder="AAA-123" />
                 </div>
             </div>
@@ -43,23 +39,19 @@ export const SpecificationInformation = () => {
                 <div className={styles.radioInputs}>
                     <div className={styles.inputRadio}>
                         <input onChange={() =>
-                            dispatch(
-                                setProductInformation({
-                                    ...data.attributes,
-                                    vehicleCondition: "New Vehicle",
-                                })
-                            )
+                            setFormData({...formData, attributes: {
+                                    ...formData.attributes,
+                                    vehiclePlateNumber: 'New Vehicle'
+                                }})
                         } type="radio" />
                         <label>New Vehicle</label>
                     </div>
                     <div className={styles.inputRadio}>
                         <input onChange={() =>
-                            dispatch(
-                                setProductInformation({
-                                    ...data.attributes,
-                                    vehicleCondition: "Used Vehicle",
-                                })
-                            )
+                            setFormData({...formData, attributes: {
+                                    ...formData.attributes,
+                                    vehiclePlateNumber: 'Used Vehicle'
+                                }})
                         } type="radio" />
                         <label>Used Vehicle</label>
                     </div>
@@ -69,13 +61,19 @@ export const SpecificationInformation = () => {
                 <div className={styles.inputBox}>
                     <label>Custom specification*</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.attributes, event, "customSpecifications")
+                        setFormData({...formData, attributes: {
+                                ...formData.attributes,
+                                transmission: event.target.value
+                            }})
                     } placeholder="Transmission" />
                 </div>
                 <div className={styles.inputBox}>
                     <label>Specification details*</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.attributes, event, "specificationDetails")
+                        setFormData({...formData, attributes: {
+                                ...formData.attributes,
+                                specificationDetails: event.target.value
+                            }})
                     } placeholder="Automatic" />
                 </div>
             </div>
@@ -83,13 +81,19 @@ export const SpecificationInformation = () => {
                 <div className={styles.inputBox}>
                     <label>Fuel type*</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.attributes, event, "fuelType")
+                        setFormData({...formData, attributes: {
+                                ...formData.attributes,
+                                fuelType: event.target.value
+                            }})
                     } placeholder="Diesel" />
                 </div>
                 <div className={styles.inputBox}>
                     <label>Engine capacity*</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.attributes, event, "engineCapacity")
+                        setFormData({...formData, attributes: {
+                                ...formData.attributes,
+                                engineCapacity: event.target.value
+                            }})
                     } placeholder="1000 CC" />
                 </div>
             </div>
@@ -97,20 +101,29 @@ export const SpecificationInformation = () => {
                 <div className={styles.inputBox}>
                     <label>Seat capacity</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.attributes, event, "seatCapacity")
+                        setFormData({...formData, attributes: {
+                                ...formData.attributes,
+                                seatCapacity: event.target.value
+                            }})
                     } type='number' placeholder="04" />
                 </div>
                 <div className={styles.inputBox}>
                     <label>Storage Bag capacity</label>
                     <input onChange={(event) =>
-                        handleInputChange(data.attributes, event, "storageBagCapacity")
+                        setFormData({...formData, attributes: {
+                                ...formData.attributes,
+                                storageBagCapacity: event.target.value
+                            }})
                     } placeholder="1 big bag and one small bag" />
                 </div>
             </div>
             <div className={styles.inputBox}>
                 <label>Air bags</label>
                 <input onChange={(event) =>
-                    handleInputChange(data.attributes, event, "airBags")
+                    setFormData({...formData, attributes: {
+                            ...formData.attributes,
+                            airBags: event.target.value
+                        }})
                 } type='number' placeholder="02" />
             </div>
         </React.Fragment>

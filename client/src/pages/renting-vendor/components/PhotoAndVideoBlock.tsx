@@ -1,47 +1,43 @@
-import React, {ChangeEvent, useState} from 'react';
-import styles from "../pages/vehicle/NewVehicle.module.scss";
-import {useDispatch} from "react-redux";
-import {setProductImages} from "../../../redux/slices/vendorProductInfoSlice.ts";
+import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import styles from '../pages/vehicle/NewVehicle.module.scss';
+import { IVendorProductData } from '../../../models/IVendorProductData.tsx';
 
-export const PhotoAndVideoBlock: React.FC = () => {
-    const [files, setFiles] = useState<File[]>(new Array(6).fill(null));
-    const dispatch = useDispatch();
+type PhotoAndVideoBlockProps = {
+    formData: IVendorProductData;
+    setFormData: Dispatch<SetStateAction<IVendorProductData>>;
+};
 
-    const getFile = (event: ChangeEvent<HTMLInputElement>, index: number) => {
-        const selectedFiles = event.target.files;
-
-        if (selectedFiles && selectedFiles.length > 0) {
-            setFiles(prevFiles =>
-                prevFiles.map((file, i) => i === index ? selectedFiles[0] : file)
-            );
+export const PhotoAndVideoBlock = ({ setFormData, formData }: PhotoAndVideoBlockProps) => {
+    const handleFileSelection = (index: number) => (event: ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = event.target.files && event.target.files[0];
+        if (selectedFile) {
+            setFormData(prevData => {
+                const newImages = [...prevData.images];
+                newImages[index] = selectedFile;
+                return { ...prevData, images: newImages };
+            });
         }
     };
-
-    dispatch(setProductImages(files));
-
     return (
         <div className={styles.photoBlocksContent}>
-            <span className={styles.uploadPhotosTitle}>
-                UPLOAD UP TO 06 PHOTOS
-            </span>
+            <span className={styles.uploadPhotosTitle}>UPLOAD UP TO 06 PHOTOS</span>
             <div className={styles.photoBlocks}>
-                {files.map((file, index) => (
-                    <div className={styles.photoBlock} key={index}>
-                        <img
-                            className={file && styles.choosedImage}
-                            src={file ? URL.createObjectURL(file) : '/photo-and-video-icon.svg'}
-                            alt="icon"
-                            onClick={() => {
-                                const fileInput = document.getElementById(
-                                    `fileInput-${index}`
-                                ) as HTMLInputElement;
-                                fileInput?.click();
-                            }}
-                        />
+                {Array.from({ length: 6 }, (_, index) => (
+                    <div className={styles.photoBlock} key={index} onClick={() => {
+                        const fileInput = document.getElementById(`fileInput-${index}`) as HTMLInputElement;
+                        fileInput.click();
+                    }}>
+                        <div className={styles.clickableArea}>
+                            <img
+                                className={styles.choosedImage}
+                                src={formData.images[index] ? URL.createObjectURL(formData.images[index]) : '/photo-and-video-icon.svg'}
+                                alt="icon"
+                            />
+                        </div>
                         <input
                             type="file"
                             id={`fileInput-${index}`}
-                            onChange={(e) => getFile(e, index)}
+                            onChange={handleFileSelection(index)}
                             style={{ display: 'none' }}
                         />
                     </div>
@@ -49,7 +45,7 @@ export const PhotoAndVideoBlock: React.FC = () => {
             </div>
             <div className={styles.inputBlock}>
                 <label>Promo Video</label>
-                <input placeholder="Youtube link here" />
+                <input placeholder="Youtube link here"/>
             </div>
         </div>
     );
