@@ -306,5 +306,6 @@ export const noAuthRotes: IRoutes[] = [
   { component: ContactUsPage, path: "/contact-us" },
   { component: ProfServicesPage, path: "/professional-services" },
   { component: ProductsPage, path: "/products" },
+  { component: SendMessagePage, path: "/send-message" },
 
 ];

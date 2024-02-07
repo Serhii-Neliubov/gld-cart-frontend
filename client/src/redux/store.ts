@@ -2,14 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import isvendorSlice from "./slices/isvendorSlice";
 import userDataSlice from "./slices/userDataSlice";
 import resetPasswordEmailSlice from "./slices/resetPasswordEmailSlice";
-import isLoadingSlice from "./slices/isLoadingSlice";
 import vendorSelectedItemSlice from "./slices/vendorSelectedItemSlice.ts";
 import vendorProductInfoSlice from "./slices/vendorProductInfoSlice.ts";
 
 export const store = configureStore({
   reducer: {
     isVendor: isvendorSlice,
-    isLoading: isLoadingSlice,
     userDataSlice: userDataSlice,
     setEmail: resetPasswordEmailSlice,
     vendorSelectedItemSlice: vendorSelectedItemSlice,
