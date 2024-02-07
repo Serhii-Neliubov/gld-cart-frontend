@@ -33,7 +33,7 @@ type house = {
 export const HouseList = () => {
     const [houses, setHouses] = useState<house[]>([]);
 
-    async function getCars() {
+    async function getHouses() {
         try {
             const response = await $api.get('/products/search/category/houses');
             setHouses(response.data); // Обновляем состояние cars данными из ответа сервера
@@ -43,7 +43,7 @@ export const HouseList = () => {
     }
 
     useEffect(() => {
-        getCars();
+        getHouses();
     }, []);
 
 

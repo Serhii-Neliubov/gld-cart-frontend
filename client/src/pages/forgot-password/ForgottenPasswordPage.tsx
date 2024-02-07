@@ -52,9 +52,9 @@ const ForgottenPasswordPage: FC = () => {
             </div>
           </form>
           <button
-            onClick={() => {
+            onClick={async () => {
               dispatch(setEmailValue(email));
-              sendEmailHandler();
+              await sendEmailHandler();
             }}
             className={styles.button}
           >

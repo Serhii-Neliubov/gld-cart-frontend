@@ -17,7 +17,7 @@ export const NewHouses = () => {
     images: [],
     category: '',
     subcategory: '',
-    product_name: '',
+    renting_name: '',
   });
 
   console.log(formData);
@@ -44,7 +44,7 @@ export const NewHouses = () => {
           )}
         </Layout>
       )}
-      {stage == 6 && <ItemPublishPage formData={formData} category="Houses" />}
+      {stage == 6 && <ItemPublishPage link='renting' formData={formData} category="Houses" />}
     </React.Fragment>
   );
 };

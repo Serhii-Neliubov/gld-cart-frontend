@@ -70,7 +70,7 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
       );
       setSelectedLabel('Address');
       toast.success("Address was added successfully");
-      updateAddresses();
+      await updateAddresses();
     } catch (error) {
       toast.error("Error to adding the address");
     }
@@ -85,7 +85,7 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
       );
       setSelectedLabel('Address');
       toast.success("Address changed successfully");
-      updateAddresses();
+      await updateAddresses();
     } catch (error) {
       console.error("Error sending address:", error);
       toast.error("Error to adding the address");

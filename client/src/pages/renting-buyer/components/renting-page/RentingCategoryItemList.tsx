@@ -22,7 +22,7 @@ const rentingCategories:IRentingCategory[] = [
     {
         title: 'Electronics',
         imageURL: 'RentingPage/img3.png',
-        href: '/renting-beautyOfSkin'
+        href: '/renting-electronics'
     }
 ]
 

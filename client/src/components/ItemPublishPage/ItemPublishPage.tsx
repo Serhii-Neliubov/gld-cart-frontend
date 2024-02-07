@@ -6,16 +6,16 @@ import {useDispatch} from "react-redux";
 import {
     resetVendorProductInfo,
 } from "../../redux/slices/vendorProductInfoSlice.ts";
-import axios from "axios";
-import {API_URL} from "../../lib/http.ts";
+import $api, {API_URL} from "../../lib/http.ts";
 import {IVendorProductData} from "../../models/IVendorProductData.tsx";
 
 type ItemPublishPageProps = {
     category: string,
     formData: IVendorProductData,
+    link: string,
 }
 
-const ItemPublishPage = ({category, formData}: ItemPublishPageProps) => {
+const ItemPublishPage = ({category, formData, link}: ItemPublishPageProps) => {
     const dispatch = useDispatch();
 
     async function sendProductInfoHandler() {
@@ -34,7 +34,7 @@ const ItemPublishPage = ({category, formData}: ItemPublishPageProps) => {
 
         console.log('images: ', images)
 
-        await axios.post(`${API_URL}/products`, formData, {
+        await $api.post(`${API_URL}/${link}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -69,7 +69,7 @@ const ItemPublishPage = ({category, formData}: ItemPublishPageProps) => {
           >
             Save as Draft
           </button>
-          <Link to="/successfully-published">
+          <Link to="/">
             <button
                 onClick={sendProductInfoHandler}
               style={{

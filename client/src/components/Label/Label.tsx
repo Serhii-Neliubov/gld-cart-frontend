@@ -20,23 +20,25 @@ const Label: FC = () => {
   const navLinks: NavLinkProps[] = [
     { to: "/", label: t("home") },
     {
-      to: !isAuth
-        ? "login"
-        : user.type == "Vendor"
+      to: user.type == "Vendor"
         ? "/renting-category-page"
         : "/renting",
       label: t("renting"),
     },
     {
-      to: !isAuth
-        ? "login"
-        : user.type == "Vendor"
+      to: user.type == "Vendor"
         ? "/products-category-page"
         : "/products",
       label: t("products"),
     },
     {
-      to: user.type ? "/personal-services" : "login",
+      to: user.type
+          ? "/driver-license"
+          : "/login",
+      label: t("driver license"),
+    },
+    {
+      to: "/professional-services",
       label: t("professional services"),
     },
   ];
@@ -62,18 +64,6 @@ const Label: FC = () => {
                   </Link>
                 </li>
               ))}
-              <li className="label__item">
-                <Link
-                    to="/driver-license"
-                    className={`label__link ${
-                        location.pathname === "/driver-license"
-                            ? "label__link_active"
-                            : ""
-                    }`}
-                >
-                  DRIVER SERVICES
-                </Link>
-              </li>
               <li className="label__item">
                 <Link
                     to="/contact-us"

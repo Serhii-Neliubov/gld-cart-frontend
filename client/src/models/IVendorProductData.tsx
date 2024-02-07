@@ -5,5 +5,7 @@ export type IVendorProductData = {
     images: File[];
     category: string;
     subcategory: string;
-    product_name: string;
+    renting_name?: string;
+    service_name?: string;
+    product_name?: string;
 }

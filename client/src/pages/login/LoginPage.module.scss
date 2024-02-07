@@ -37,7 +37,7 @@
   position: relative;
   &::after {
     content: "";
-    top: 166px;
+    top: 145px;
     left: 0;
     position: absolute;
     width: 100%;
@@ -75,7 +75,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
   p {
     color: #49535b;
     font-size: 16px;
@@ -129,7 +129,6 @@
   color: #55585b;
   font-size: 15px;
   line-height: 173.333%; /* */
-  position: relative;
   margin-bottom: 20px;
 }
 

@@ -16,7 +16,7 @@ export const NewVehicle = () => {
     images: [],
     category: '',
     subcategory: '',
-    product_name: '',
+    renting_name: '',
   });
 
   useCategoryRedirect("vehicles", "/renting-category-page", stage);
@@ -41,7 +41,7 @@ export const NewVehicle = () => {
           )}
         </Layout>
       )}
-      {stage == 6 && <ItemPublishPage formData={formData} category="Vehicle" />}
+      {stage == 6 && <ItemPublishPage link='renting' formData={formData} category="Vehicle" />}
     </React.Fragment>
   );
 };

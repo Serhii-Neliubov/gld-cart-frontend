@@ -1,7 +1,6 @@
 import {NextFunction, Request, Response} from "express";
 import UserService from "../services/userService";
 import {Types} from "mongoose";
-import {IAddress} from "../models/Address";
 
 export const addAddressHandler = async (req: Request, res: Response, next: NextFunction) => {
     const {userId, addressData} = req.body;

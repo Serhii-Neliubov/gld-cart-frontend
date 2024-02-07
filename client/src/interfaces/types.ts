@@ -1,4 +1,5 @@
-// TextSection.tsx
+import React from 'react';
+
 export type TextSectionProps = {
   id: number;
   title: string;

@@ -94,10 +94,6 @@ const RegisterPage: FC = () => {
                 Log in
               </Link>
             </div>
-            <button className={styles.google_button}>
-              Sign up with google
-            </button>
-            <p className={styles.email_bar}>or Sign up with Email</p>
             <form>
               <div className={styles.form}>
                 <div className={styles.form_column_wrap}>

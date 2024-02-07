@@ -14,9 +14,13 @@ const initialState = {
 export const login = createAsyncThunk(
   "/login",
   async (payload: { email: string; password: string }) => {
-    const response = await AuthService.login(payload.email, payload.password);
-    localStorage.setItem("token", response.data.accessToken);
-    return response.data;
+      try {
+          const response = await AuthService.login(payload.email, payload.password);
+          localStorage.setItem("token", response.data.accessToken);
+          return response.data;
+      }catch (error){
+          toast.error('Incorrect password or email');
+      }
   }
 );
 

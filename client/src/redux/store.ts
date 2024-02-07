@@ -3,7 +3,6 @@ import isvendorSlice from "./slices/isvendorSlice";
 import userDataSlice from "./slices/userDataSlice";
 import resetPasswordEmailSlice from "./slices/resetPasswordEmailSlice";
 import isLoadingSlice from "./slices/isLoadingSlice";
-import vehiclesItemSlice from "./slices/vehiclesItemSlice";
 import vendorSelectedItemSlice from "./slices/vendorSelectedItemSlice.ts";
 import vendorProductInfoSlice from "./slices/vendorProductInfoSlice.ts";
 
@@ -13,7 +12,6 @@ export const store = configureStore({
     isLoading: isLoadingSlice,
     userDataSlice: userDataSlice,
     setEmail: resetPasswordEmailSlice,
-    vehicleDataSlice: vehiclesItemSlice,
     vendorSelectedItemSlice: vendorSelectedItemSlice,
     vendorProductInfo: vendorProductInfoSlice,
   },

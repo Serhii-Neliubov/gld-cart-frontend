@@ -1,8 +1,8 @@
 import React, {Dispatch, SetStateAction, useEffect} from 'react';
-import styles from "../NewVehicle.module.scss";
+import styles from "../NewCleaning.module.scss";
+import {IVendorProductData} from "../../../../../models/IVendorProductData.tsx";
 import {useSelector} from "react-redux";
 import {vendorProductInfo} from "../../../../../redux/slices/vendorProductInfoSlice.ts";
-import {IVendorProductData} from "../../../../../models/IVendorProductData.tsx";
 
 type BasicInformationProps = {
     formData: IVendorProductData;
@@ -17,69 +17,51 @@ export const BasicInformation = ({setFormData, formData}: BasicInformationProps)
             ...formData,
             category: data.category,
             subcategory: data.subcategory,
-            renting_name: data.product_name
+            service_name: data.product_name
         });
     }, []);
-
 
     return (
         <React.Fragment>
             <div className={styles.inputTextBox}>
                 <label>Title</label>
-                <input
-                    required={true}
-                    onChange={(event) =>
-                        setFormData({...formData, title: event.target.value})
-                    }
-                    placeholder="70 words max"
-                    maxLength={70}
-                />
+                <input onChange={(event) => setFormData({...formData, title: event.target.value})} placeholder="70 words max" maxLength={70} />
             </div>
             <div className={styles.inputAreaBox}>
-                <label>Description</label>
+                <label>Service Description</label>
                 <textarea
-                    onChange={(event) =>
-                        setFormData({...formData, description: event.target.value})
-                    }
+                    onChange={(event) => setFormData({...formData, description: event.target.value})}
                     minLength={160}
                     maxLength={9000}
                     placeholder="Minimum 160 and maximum 9000 characters"
                 />
             </div>
             <div className={styles.inputRadioBox}>
-                <span>You want to rent your car</span>
+                <span>You want to give your professional service in </span>
                 <div className={styles.radioInputs}>
                     <div className={styles.inputRadio}>
-                        <input
-                            name="driver"
-                            onChange={() =>
-                                setFormData({
-                                    ...formData,
-                                    attributes: {
-                                        ...formData.attributes,
-                                        driver: 'Without Driver'
-                                    }
-                                })
-                            }
-                            type="radio"
-                        />
-                        <label>Without Driver</label>
+                        <input onChange={() =>
+                            setFormData({
+                                ...formData,
+                                attributes: {
+                                    ...formData.attributes,
+                                    wantToGiveProfServicesIn: 'Day'
+                                }
+                            })
+                        } type="radio" />
+                        <label>Day</label>
                     </div>
                     <div className={styles.inputRadio}>
-                        <input
-                            onChange={() =>
-                                setFormData({
-                                    ...formData,
-                                    attributes: {
-                                        ...formData.attributes,
-                                        driver: 'With Driver'
-                                    }
-                                })
-                            }
-                            name="driver"
-                            type="radio"
-                        />
-                        <label>With Driver</label>
+                        <input onChange={() =>
+                            setFormData({
+                                ...formData,
+                                attributes: {
+                                    ...formData.attributes,
+                                    wantToGiveProfServicesIn: 'Night'
+                                }
+                            })
+                        } type="radio" />
+                        <label>Night</label>
                     </div>
                 </div>
             </div>
@@ -106,7 +88,7 @@ export const BasicInformation = ({setFormData, formData}: BasicInformationProps)
                                                 dayRentPrice: event.target.value
                                             }
                                         })
-                                    } placeholder="450$" />
+                                    } placeholder="450$"/>
                                 </div>
                                 <div className={styles.inputBox}>
                                     <span>Day</span>
@@ -155,7 +137,7 @@ export const BasicInformation = ({setFormData, formData}: BasicInformationProps)
                                                 weeklyRentPrice: event.target.value
                                             }
                                         })
-                                    } placeholder="450$" />
+                                    } placeholder="450$"/>
                                 </div>
                                 <div className={styles.inputBox}>
                                     <span>Week</span>
@@ -200,7 +182,7 @@ export const BasicInformation = ({setFormData, formData}: BasicInformationProps)
                                                 monthlyRentPrice: event.target.value
                                             }
                                         })
-                                    } placeholder="450$" />
+                                    } placeholder="450$"/>
                                 </div>
                                 <div className={styles.inputBox}>
                                     <span>Month</span>

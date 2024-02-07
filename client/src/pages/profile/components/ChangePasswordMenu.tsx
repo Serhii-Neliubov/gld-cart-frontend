@@ -25,10 +25,10 @@ export default function ChangePasswordMenu({
     confirmPassword: "",
   });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      axios.post(`${API_URL}/reset-password`, {
+      await axios.post(`${API_URL}/reset-password`, {
         email: changePasswordData.email,
         oldPassword: changePasswordData.oldPassword,
         newPassword: changePasswordData.newPassword,

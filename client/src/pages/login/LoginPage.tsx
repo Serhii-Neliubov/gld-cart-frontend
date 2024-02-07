@@ -80,13 +80,12 @@ const LoginPage = () => {
               Forgot password?
             </Link>
           </div>
-          <Link
-            to="/"
+          <button
             onClick={() => dispatch(login(userData))}
             className={styles.button}
           >
             Login
-          </Link>
+          </button>
         </div>
       </BgWithParticles>
     </div>

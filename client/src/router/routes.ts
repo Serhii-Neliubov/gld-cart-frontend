@@ -97,7 +97,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: TrackOrder, path: "/track-an-order" },
   { component: Renting, path: "/renting" },
   { component: ContactUsPage, path: "/contact-us" },
-  { component: JobApplicationForm, path: "/personal-services/application-job-form" },
+  { component: JobApplicationForm, path: "/professional-services/application-job-form" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
   { component: CookiePolicyPage, path: "/cookie-policy" },
   { component: ShippingPolicyPage, path: "/shipping-policy" },
@@ -107,12 +107,12 @@ export const buyerRoutes: IRoutes[] = [
   { component: PaymentPage, path: "/payment" },
   { component: ProductsPage, path: "/products" },
   { component: SendMessagePage, path: "/send-message" },
-  { component: ProfServicesPage, path: "/personal-services" },
+  { component: ProfServicesPage, path: "/professional-services" },
   { component: WishlistPage, path: "/wishlist" },
   { component: ShoppingCartPage, path: "/shopping-cart" },
   { component: RentingCarPage, path: "/renting-car" },
   { component: RentingCategoryPage, path: "/renting" },
-  { component: RentingElectronicsPage, path: "/renting-beautyOfSkin" },
+  { component: RentingElectronicsPage, path: "/renting-electronics" },
   { component: RentingHousePage, path: "/renting-house" },
   { component: RentingProductsPage, path: "/products-category-page" },
   { component: CleaningPage, path: "/cleaning-page" },
@@ -146,7 +146,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: RentingProductsPage, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
   { component: HelpAndSupport, path: "/help-and-support" },
-  { component: RentingProfservicesPage, path: "/personal-services" },
+  { component: RentingProfservicesPage, path: "/professional-services" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   // Vehicles
   {
@@ -287,7 +287,11 @@ export const vendorRoutes: IRoutes[] = [
 
 export const noAuthRotes: IRoutes[] = [
   { component: Home, path: "/" },
+  { component: RentingElectronicsPage, path: "/renting-electronics" },
   { component: RegisterAsPage, path: "/user-type-page" },
+  { component: Renting, path: "/renting" },
+  { component: RentingCarPage, path: "/renting-car" },
+  { component: RentingHousePage, path: "/renting-house" },
   { component: LoginPage, path: "/login" },
   { component: RegisterPage, path: "/register-page" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
@@ -300,4 +304,7 @@ export const noAuthRotes: IRoutes[] = [
   { component: ForgottenAttentionPage, path: "/forgotten-attention" },
   { component: NewPasswordPage, path: "/#/reset-password/:token" },
   { component: ContactUsPage, path: "/contact-us" },
+  { component: ProfServicesPage, path: "/professional-services" },
+  { component: ProductsPage, path: "/products" },
+
 ];

@@ -33,7 +33,7 @@ type electronic = {
 export default function ElectronicsList() {
     const [electronic, setElectronic] = useState<electronic[]>([]);
 
-    async function getCars() {
+    async function getElectronics() {
         try {
             const response = await $api.get('/products/search/category/electronics');
             setElectronic(response.data); // Обновляем состояние cars данными из ответа сервера
@@ -43,7 +43,7 @@ export default function ElectronicsList() {
     }
 
     useEffect(() => {
-        getCars();
+        getElectronics();
     }, []);
 
     console.log(electronic);
