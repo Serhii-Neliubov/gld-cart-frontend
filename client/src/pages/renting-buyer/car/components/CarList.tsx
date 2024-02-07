@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import styles from "./RentingCarPage.module.scss";
-import CarItem from "./CarItem";
-import $api from "../../../lib/http.ts";
+import styles from "../RentingCarPage.module.scss";
+import $api from "../../../../lib/http.ts";
+import Product from "../../components/product/Product.tsx";
 
 type car = {
   _id: string,
@@ -35,7 +35,7 @@ export default function CarList() {
 
   async function getCars() {
     try {
-      const response = await $api.get('/products?category=vehicles');
+      const response = await $api.get('/products/search/category/vehicles');
       setCars(response.data); // Обновляем состояние cars данными из ответа сервера
     } catch (error) {
       console.error("Error fetching cars:", error);
@@ -50,30 +50,17 @@ export default function CarList() {
 
   return (
     <div className={styles.items}>
-      {cars.map((car) => {
+      {cars.map((car, index) => {
         return (
-            <div>
-              <h1>{car.product_name}</h1>
-              <h2>{car.description}</h2>
-              <h2>{car.description}</h2>
-            </div>
-            // <CarItem
-            //     key={index}
-          //   id={car.id}
-          //   image={car.image}
-          //   title={car.title}
-          //   price_day={car.price_day}
-          //   price_week={car.price_week}
-          //   price_month={car.price_month}
-          //   advantage1={car.advantage1}
-          //   advantage2={car.advantage2}
-          //   advantage3={car.advantage3}
-          //   advantage4={car.advantage4}
-          //   advantage5={car.advantage5}
-          //   advantage6={car.advantage6}
-          //   taxes={car.taxes}
-          //   total_price={car.total_price}
-          // />
+            <Product
+                key={index}
+              id={car._id}
+              image={car.images[0]}
+              title={car.product_name}
+              price_day={car.attributes.dayRentPrice}
+              price_week={car.attributes.weeklyRentPrice}
+              price_month={car.attributes.monthlyRentPrice}
+          />
         );
       })}
     </div>

@@ -1,7 +1,7 @@
 export type IVendorProductData = {
     title: string;
     description: string;
-    attributes: { [key: string]: string };
+    attributes: { [key: string]: string | string[] };
     images: File[];
     category: string;
     subcategory: string;

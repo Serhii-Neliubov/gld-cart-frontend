@@ -33,7 +33,6 @@ import GardeningPage from "../pages/professional-services-buyer/gardening/Garden
 import RepairingPage from "../pages/professional-services-buyer/repairing/RepairingPage";
 import RentingProfservicesPage from "../pages/professional-services-vendor/RentingProfservicesPage.tsx";
 import TrackOrder from "../pages/track-order/TrackOrder";
-import CarPage from "../pages/renting-buyer/car/car-page/CarPage";
 import RentingHousePage from "../pages/renting-buyer/house/RentingHousePage";
 import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
 import {NewVehicle} from "../pages/renting-vendor/pages/vehicle/NewVehicle.tsx";
@@ -83,6 +82,7 @@ import {
 } from "../pages/professional-services-vendor/pages/electrical/NewElectrical.tsx";
 import {DriverLicense} from "../pages/driver-licese/DriverLicense.tsx";
 import {SupportChat} from "../pages/support-chat/SupportChat.tsx";
+import CarPage from "../pages/renting-buyer/car/components/car-page/CarPage.tsx";
 
 interface IRoutes {
   component: FC;

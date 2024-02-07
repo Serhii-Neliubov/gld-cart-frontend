@@ -5,9 +5,22 @@ import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishP
 import {BasicInformation} from "./stages/BasicInformation.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
+import {IVendorProductData} from "../../../../models/IVendorProductData.tsx";
 
 export const NewHouses = () => {
   const [stage, setStage] = useState(3);
+
+  const [formData, setFormData] = useState<IVendorProductData>({
+    title: '',
+    description: '',
+    attributes: {},
+    images: [],
+    category: '',
+    subcategory: '',
+    product_name: '',
+  });
+
+  console.log(formData);
 
   useCategoryRedirect("houses", "/renting-category-page", stage);
 
@@ -21,17 +34,17 @@ export const NewHouses = () => {
           stage={stage - 1}
         >
           {stage == 3 && (
-            <BasicInformation />
+            <BasicInformation formData={formData} setFormData={setFormData} />
           )}
           {stage == 4 && (
-              <PhotoAndVideoBlock />
+              <PhotoAndVideoBlock formData={formData} setFormData={setFormData} />
           )}
           {stage == 5 && (
-            <SpecificationInformation />
+            <SpecificationInformation formData={formData} setFormData={setFormData} />
           )}
         </Layout>
       )}
-      {stage == 6 && <ItemPublishPage category="Houses" />}
+      {stage == 6 && <ItemPublishPage formData={formData} category="Houses" />}
     </React.Fragment>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./Renting.module.scss";
+import styles from "../../Renting.module.scss";
 import { RentingCategoryItem } from './RentingCategoryItem';
 
 export interface IRentingCategory {

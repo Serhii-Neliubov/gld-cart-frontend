@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Footer from "../../../components/Footer/Footer.tsx";
 import styles from "./RentingCarPage.module.scss";
-import CarList from "./CarList";
+import CarList from "./components/CarList.tsx";
 
 const RentingCarPage: FC = () => {
   return (
@@ -24,23 +24,23 @@ const RentingCarPage: FC = () => {
                 </div>
                 <div className={styles.filter_blocks}>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-5.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-5.svg" alt="Img" />
                     <p>Select Location</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-1.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-1.svg" alt="Img" />
                     <p>Pik-up Date</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-2.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-2.svg" alt="Img" />
                     <p>Pik-up Time</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-3.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-3.svg" alt="Img" />
                     <p>Drop-off Date</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-4.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-4.svg" alt="Img" />
                     <p>Drop-off Time</p>
                   </button>
                 </div>

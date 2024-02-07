@@ -5,9 +5,19 @@ import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishP
 import {BasicInformation} from "./stages/BasicInformation.tsx";
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
+import {IVendorProductData} from "../../../../models/IVendorProductData.tsx";
 
 export const NewElectronics = () => {
   const [stage, setStage] = useState(3);
+  const [formData, setFormData] = useState<IVendorProductData>({
+    title: '',
+    description: '',
+    attributes: {},
+    images: [],
+    category: '',
+    subcategory: '',
+    product_name: '',
+  });
 
   useCategoryRedirect("electronics", "/renting-category-page", stage);
 
@@ -21,17 +31,17 @@ export const NewElectronics = () => {
           stage={stage - 1}
         >
           {stage == 3 && (
-            <BasicInformation />
+            <BasicInformation formData={formData} setFormData={setFormData}/>
           )}
           {stage == 4 && (
-              <PhotoAndVideoBlock />
+              <PhotoAndVideoBlock formData={formData} setFormData={setFormData}/>
           )}
           {stage == 5 && (
-            <SpecificationInformation />
+            <SpecificationInformation formData={formData} setFormData={setFormData}/>
           )}
         </Layout>
       )}
-      {stage == 6 && <ItemPublishPage category="Electronics" />}
+      {stage == 6 && <ItemPublishPage formData={formData} category="Electronics" />}
     </React.Fragment>
   );
 };

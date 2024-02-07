@@ -2,7 +2,7 @@ import React from 'react';
 import { FC, useEffect } from "react";
 import styles from "./Renting.module.scss";
 import Footer from "../../components/Footer/Footer.tsx";
-import { RentingCategoryItemList } from './RentingCategoryItemList';
+import {RentingCategoryItemList} from "./components/renting-page/RentingCategoryItemList.tsx";
 
 const Renting: FC = () => {
 

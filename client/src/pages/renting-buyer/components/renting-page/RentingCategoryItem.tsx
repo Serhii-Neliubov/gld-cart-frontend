@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./Renting.module.scss";
+import styles from "../../Renting.module.scss";
 import { Link } from 'react-router-dom';
 import { IRentingCategory } from './RentingCategoryItemList';
 

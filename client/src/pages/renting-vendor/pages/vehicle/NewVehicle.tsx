@@ -21,8 +21,6 @@ export const NewVehicle = () => {
 
   useCategoryRedirect("vehicles", "/renting-category-page", stage);
 
-  console.log('Data: ', formData)
-
   return (
     <React.Fragment>
       {stage < 6 && (
@@ -43,7 +41,7 @@ export const NewVehicle = () => {
           )}
         </Layout>
       )}
-      {stage == 6 && <ItemPublishPage setFormData={setFormData} formData={formData} category="Vehicle" />}
+      {stage == 6 && <ItemPublishPage formData={formData} category="Vehicle" />}
     </React.Fragment>
   );
 };
