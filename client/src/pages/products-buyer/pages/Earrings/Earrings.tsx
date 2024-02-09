@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './BeautyOfSkin.module.scss';
+import styles from './Earrings.module.scss';
 import Footer from '../../../../components/Footer/Footer';
 
-export const BeautyOfSkin = () => {
+export const Earrings = () => {
     return (
         <React.Fragment>
             <div className='__container'>
@@ -156,7 +156,7 @@ export const BeautyOfSkin = () => {
                         </div>
                     </div>
                     <div className={styles.products}>
-                        <span className={styles.productsTitle}>Beauty of Skin</span>
+                        <span className={styles.productsTitle}>Earrings</span>
                         <div className={styles.actionButtons}>
                             <div>
                                 <button className={styles.defaultSortButton}>

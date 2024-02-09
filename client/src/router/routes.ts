@@ -84,6 +84,20 @@ import {DriverLicense} from "../pages/driver-licese/DriverLicense.tsx";
 import {SupportChat} from "../pages/support-chat/SupportChat.tsx";
 import CarPage from "../pages/renting-buyer/car/components/car-page/CarPage.tsx";
 import {BeautyOfSkin} from "../pages/products-buyer/pages/BeautyOfSkin/BeautyOfSkin.tsx";
+import {Bags} from "../pages/products-buyer/pages/Bags/Bags.tsx";
+import {AwesomeLipCare} from "../pages/products-buyer/pages/AwesomeLipCare/AwesomeLipCare.tsx";
+import {MobileTablets} from "../pages/products-buyer/pages/MobileTablets/MobileTablets.tsx";
+import {Necklaces} from "../pages/products-buyer/pages/Necklaces/Necklaces.tsx";
+import {Clothing} from "../pages/products-buyer/pages/Clothing/Clothing.tsx";
+import {Bluetooth} from "../pages/products-buyer/pages/Bluetooth/Bluetooth.tsx";
+import {FacialCare} from "../pages/products-buyer/pages/FacialCare/FacialCare.tsx";
+import {Shoes} from "../pages/products-buyer/pages/Shoes/Shoes.tsx";
+import {Cpu} from "../pages/products-buyer/pages/Cpu/Cpu.tsx";
+import {Headphones} from "../pages/products-buyer/pages/Headphones/Headphones.tsx";
+import {Bracelets} from "../pages/products-buyer/pages/Bracelets/Bracelets.tsx";
+import {SmartWatch} from "../pages/products-buyer/pages/SmartWatch/SmartWatch.tsx";
+import {Earrings} from "../pages/products-buyer/pages/Earrings/Earrings.tsx";
+import {DiscoverSkincare} from "../pages/products-buyer/pages/DiscoverSkincare/DiscoverSkincare.tsx";
 
 interface IRoutes {
   component: FC;
@@ -107,7 +121,24 @@ export const buyerRoutes: IRoutes[] = [
   { component: NotFound, path: "/not-found" },
   { component: PaymentPage, path: "/payment" },
   { component: ProductsPage, path: "/products" },
+  // Products
   { component: BeautyOfSkin, path: "/products/beauty-of-skin" },
+  { component: Bags, path: "/products/bags" },
+  { component: AwesomeLipCare, path: "/products/awesome-lip-care" },
+  { component: MobileTablets, path: "/products/mobile-tablets" },
+  { component: Necklaces, path: "/products/necklaces" },
+  { component: Clothing, path: "/products/clothing" },
+  { component: Bluetooth, path: "/products/bluetooth" },
+  { component: FacialCare, path: "/products/facial-care" },
+  { component: Shoes, path: "/products/shoes" },
+  { component: Cpu, path: "/products/cpu" },
+  { component: DiscoverSkincare, path: "/products/discover-skincare" },
+  { component: Headphones, path: "/products/headphones" },
+  { component: Bracelets, path: "/products/bracelets" },
+  { component: SmartWatch, path: "/products/smart-watch" },
+  { component: Earrings, path: "/products/earrings" },
+
+  // -----------------------
   { component: SendMessagePage, path: "/send-message" },
   { component: ProfServicesPage, path: "/professional-services" },
   { component: WishlistPage, path: "/wishlist" },
@@ -185,7 +216,7 @@ export const vendorRoutes: IRoutes[] = [
     component: NewClothing,
     path: "/products-category-page/new-clothing-page",
   },
-  // Bluetooth
+  // Headphones
   {
     component: NewBluetooth,
     path: "/products-category-page/new-bluetooth-page",
