@@ -98,6 +98,7 @@ import {Bracelets} from "../pages/products-buyer/pages/Bracelets/Bracelets.tsx";
 import {SmartWatch} from "../pages/products-buyer/pages/SmartWatch/SmartWatch.tsx";
 import {Earrings} from "../pages/products-buyer/pages/Earrings/Earrings.tsx";
 import {DiscoverSkincare} from "../pages/products-buyer/pages/DiscoverSkincare/DiscoverSkincare.tsx";
+import {ProductPage} from "../pages/products-buyer/components/ProductPage.tsx";
 
 interface IRoutes {
   component: FC;
@@ -137,8 +138,8 @@ export const buyerRoutes: IRoutes[] = [
   { component: Bracelets, path: "/products/bracelets" },
   { component: SmartWatch, path: "/products/smart-watch" },
   { component: Earrings, path: "/products/earrings" },
-
   // -----------------------
+  { component: ProductPage, path: "/product-page" },
   { component: SendMessagePage, path: "/send-message" },
   { component: ProfServicesPage, path: "/professional-services" },
   { component: WishlistPage, path: "/wishlist" },
