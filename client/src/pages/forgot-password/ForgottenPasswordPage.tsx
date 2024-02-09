@@ -15,9 +15,10 @@ const ForgottenPasswordPage: FC = () => {
 
   async function sendEmailHandler() {
     try {
-      await axios.post(`${API_URL}/forgot-password`, {
+      await axios.post(`${API_URL}/password/initiate`, {
         email,
       });
+      navigate('/login');
     } catch (error) {
       console.error(error);
     } finally {

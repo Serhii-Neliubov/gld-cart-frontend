@@ -15,11 +15,11 @@ export default class AddressServices {
             phone_number: string
         }
     ): Promise<AxiosResponse> {
+        console.log(addressData);
         return $api.post(
-            "/add-address",
+            `/address/${userId}`,
             {
-                userId,
-                addressData
+                ...addressData
             },
         );
     }
@@ -43,11 +43,9 @@ export default class AddressServices {
     ): Promise<AxiosResponse> {
         console.log({userId, addressData, addressId,})
         return $api.put(
-            "/update-address",
+            `/address/${userId}/${addressId}`,
             {
-                userId,
-                addressId,
-                addressData
+                ...addressData
             },
         );
     }

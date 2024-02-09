@@ -41,7 +41,7 @@ export const NewVehicle = () => {
           )}
         </Layout>
       )}
-      {stage == 6 && <ItemPublishPage link='products' formData={formData} category="Vehicle" />}
+      {stage == 6 && <ItemPublishPage link='renting' formData={formData} category="Vehicle" />}
     </React.Fragment>
   );
 };

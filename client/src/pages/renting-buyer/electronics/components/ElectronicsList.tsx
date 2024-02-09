@@ -35,7 +35,7 @@ export default function ElectronicsList() {
 
     async function getElectronics() {
         try {
-            const response = await $api.get('/products/search/category/electronics');
+            const response = await $api.get('/renting/category/electronics');
             setElectronic(response.data); // Обновляем состояние cars данными из ответа сервера
         } catch (error) {
             console.error("Error fetching cars:", error);

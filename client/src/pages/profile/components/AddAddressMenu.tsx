@@ -33,7 +33,6 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
       country: "",
       ZIP_code: undefined,
       phone_number: "",
-      landmark: '',
       forEffectiveDelivery: 'Home'
     }
   });
@@ -72,6 +71,7 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
       toast.success("Address was added successfully");
       await updateAddresses();
     } catch (error) {
+      console.log(error);
       toast.error("Error to adding the address");
     }
   };
@@ -139,8 +139,6 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
                     className={styles.input}
                     type="text"
                     name="landmark"
-                    value={formData.addressData.landmark}
-                    onChange={handleChange}
                 />
               </label>
             </div>
@@ -315,8 +313,6 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
                     className={styles.input}
                     type="text"
                     name="landmark"
-                    value={formData.addressData.landmark}
-                    onChange={handleChange}
                 />
               </label>
             </div>

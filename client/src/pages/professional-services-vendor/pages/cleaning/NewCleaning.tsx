@@ -16,7 +16,7 @@ export const NewCleaning = () => {
     images: [],
     category: '',
     subcategory: '',
-    renting_name: '',
+    service_name: '',
   });
 
   useCategoryRedirect("cleaning", "/personal-services", stage);

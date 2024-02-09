@@ -35,7 +35,7 @@ export const HouseList = () => {
 
     async function getHouses() {
         try {
-            const response = await $api.get('/products/search/category/houses');
+            const response = await $api.get('/renting/category/houses');
             setHouses(response.data); // Обновляем состояние cars данными из ответа сервера
         } catch (error) {
             console.error("Error fetching cars:", error);

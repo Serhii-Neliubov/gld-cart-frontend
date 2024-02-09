@@ -7,7 +7,7 @@ import StatusBar from "./StatusBar";
 import StatusNumber from "./StatusNumber";
 
 const TrackOrder: FC = () => {
-  const [orderStatus] = useState<string>("Delivered");
+  const [orderStatus] = useState<string>("Order Placed");
 
   useEffect((): void => {
     window.scrollTo(0, 0);

@@ -35,7 +35,7 @@ export default function CarList() {
 
   async function getCars() {
     try {
-      const response = await $api.get('/products/search/category/vehicles');
+      const response = await $api.get('/renting/category/vehicles');
       setCars(response.data); // Обновляем состояние cars данными из ответа сервера
     } catch (error) {
       console.error("Error fetching cars:", error);

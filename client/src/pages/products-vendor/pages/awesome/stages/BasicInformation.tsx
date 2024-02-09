@@ -17,7 +17,7 @@ export const BasicInformation = ({setFormData, formData}: BasicInformationProps)
             ...formData,
             category: data.category,
             subcategory: data.subcategory,
-            service_name: data.product_name
+            product_name: data.product_name
         });
     }, []);
 

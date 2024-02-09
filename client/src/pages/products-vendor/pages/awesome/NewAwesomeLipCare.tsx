@@ -17,7 +17,7 @@ export const NewAwesomeLipCare = () => {
     images: [],
     category: '',
     subcategory: '',
-    service_name: '',
+    product_name: '',
   });
 
   useCategoryRedirect("awesome", "/products-category-page", stage);

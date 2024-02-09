@@ -12,7 +12,7 @@ const NewPasswordPage: FC = () => {
   async function sendNewPasswordHandler() {
     console.log(password);
     try {
-      const response = await axios.post(`${API_URL}/reset-password/${token}`, {
+      const response = await axios.post(`${API_URL}/password/reset/${token}`, {
         newPassword: password,
       });
       console.log(response.data);
