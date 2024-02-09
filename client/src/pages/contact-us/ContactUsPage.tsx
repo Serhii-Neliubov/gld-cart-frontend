@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { FC, FormEvent, useEffect, useState } from "react";
 import styles from "./ContactUsPage.module.scss";
 import Footer from "../../components/Footer/Footer.tsx";

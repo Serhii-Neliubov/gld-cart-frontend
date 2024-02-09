@@ -2,6 +2,7 @@ import { AxiosResponse } from "axios";
 import $api from "../lib/http.ts";
 import IUser from "../models/IUser.ts";
 
+
 export default class AddressServices {
     static async sendAddress(
         userId: string,
@@ -52,6 +53,6 @@ export default class AddressServices {
     }
 
     static async getAddresses(id: string): Promise<AxiosResponse> {
-        return $api.get(`/get-address/${id}`, );
+        return $api.get(`/address/${id}`, );
     }
 }

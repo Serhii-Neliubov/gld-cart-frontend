@@ -9,6 +9,13 @@
   font-weight: 500;
   line-height: 100%;
 }
+.subtitle {
+  text-align: center;
+  color: #55585b;
+  font-size: 20px;
+  line-height: 144%;
+  margin-bottom: 50px;
+}
 .path {
   display: flex;
   gap: 13px;
@@ -41,7 +48,7 @@
   align-items: center;
   padding: 50px;
   background-color: #fff;
-  box-shadow: 0px 30px 70px 0px rgba(1, 15, 28, 0.1);
+  box-shadow: 0 30px 70px 0 rgba(1, 15, 28, 0.1);
 }
 .textarea{
   border: 1px solid #eee;

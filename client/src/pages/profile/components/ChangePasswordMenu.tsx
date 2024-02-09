@@ -14,6 +14,7 @@ type ChangePasswordMenuProps = {
 export default function ChangePasswordMenu({
   selectedLabel,
 }: ChangePasswordMenuProps) {
+
   const user = useSelector(userDataSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,23 +29,26 @@ export default function ChangePasswordMenu({
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_URL}/reset-password`, {
-        email: changePasswordData.email,
-        oldPassword: changePasswordData.oldPassword,
-        newPassword: changePasswordData.newPassword,
-      });
-      dispatch(logout());
-      toast.success("You have successfully changed the password");
-      navigate("/login");
+        if(changePasswordData.newPassword !== changePasswordData.confirmPassword){
+            return toast.error("Passwords do not match");
+        } else {
+            await axios.post(`${API_URL}/reset-password`, {
+                email: changePasswordData.email,
+                oldPassword: changePasswordData.oldPassword,
+                newPassword: changePasswordData.newPassword,
+            });
+            dispatch(logout());
+            toast.success("You have successfully changed the password");
+            navigate("/login");
+        }
     } catch (e) {
-      console.error(e);
-      toast.success("You have an error");
+        toast.error("Old password is incorrect");
     }
   };
 
   return (
     selectedLabel === "Change Password" && (
-      <>
+      <React.Fragment>
         <h2 className={styles.box_name}>Please Enter Your Current Password</h2>
         <div className={styles.content_box_items}>
           <form onSubmit={handleSubmit} className={styles.box_inputs}>
@@ -94,7 +98,7 @@ export default function ChangePasswordMenu({
             </div>
           </form>
         </div>
-      </>
+      </React.Fragment>
     )
   );
 }

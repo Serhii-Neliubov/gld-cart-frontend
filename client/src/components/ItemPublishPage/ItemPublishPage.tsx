@@ -32,7 +32,7 @@ const ItemPublishPage = ({category, formData, link}: ItemPublishPageProps) => {
             images.append('images', file);
         })
 
-        console.log('images: ', images)
+        console.log('images: ', formData)
 
         await $api.post(`${API_URL}/${link}`, formData, {
             headers: {
