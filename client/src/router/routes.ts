@@ -83,6 +83,7 @@ import {
 import {DriverLicense} from "../pages/driver-licese/DriverLicense.tsx";
 import {SupportChat} from "../pages/support-chat/SupportChat.tsx";
 import CarPage from "../pages/renting-buyer/car/components/car-page/CarPage.tsx";
+import {BeautyOfSkin} from "../pages/products-buyer/pages/BeautyOfSkin/BeautyOfSkin.tsx";
 
 interface IRoutes {
   component: FC;
@@ -106,6 +107,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: NotFound, path: "/not-found" },
   { component: PaymentPage, path: "/payment" },
   { component: ProductsPage, path: "/products" },
+  { component: BeautyOfSkin, path: "/products/beauty-of-skin" },
   { component: SendMessagePage, path: "/send-message" },
   { component: ProfServicesPage, path: "/professional-services" },
   { component: WishlistPage, path: "/wishlist" },
