@@ -83,11 +83,9 @@
 }
 
 .description {
-  display: flex;
-  width: 470px;
   font-size: 15px;
-  font-weight: 500;
-  text-align: left;
+  text-wrap: normal;
+  word-wrap: break-word;
 }
 
 .price{
@@ -168,12 +166,10 @@
   gap: 15px;
 
   & > input{
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
+    padding: 10px 15px 10px 30px;
+    overflow: auto;
     text-align: center;
     background-color: rgb(243, 245, 246);
-    width: 120px;
     color: #000;
   }
 
@@ -185,8 +181,10 @@
 }
 
 .addToWishlist{
+  position: relative;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
   & > span:first-child{
     background-repeat: no-repeat;
     background-image: url("/ProductPage/wishlistIcon.svg");
@@ -197,6 +195,16 @@
   & > span:last-child{
     background-repeat: no-repeat;
     background-image: url("/ProductPage/askIcon.svg");
+  }
+
+  &::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    bottom: -20px;
+    left: 0;
+    height: 1px;
+    background-color: #E0E2E3;
   }
 }
 
@@ -273,5 +281,103 @@
     color: rgb(1, 15, 28);
     font-size: 44px;
     font-weight: 500;
+  }
+}
+.seeMoreBtn{
+  margin-left: 5px;
+  color: #1b6cd8;
+}
+
+.productInfoActionButtons{
+  margin: 60px 0;
+  justify-content: center;
+  display: flex;
+  gap: 30px;
+  position: relative;
+  &::after{
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #E0E2E3;
+  }
+
+
+}
+
+.productInfoActionButton{
+  color: rgb(160, 162, 164);
+
+  &_active{
+    position: relative;
+    color: black;
+
+    &::after{
+      position: absolute;
+      bottom: -20px;
+      z-index: 5;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+    }
+  }
+}
+
+.productInfoDescription{
+  word-break: break-word;
+}
+.relatedItems{
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+.relatedItem{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: start;
+  & > div{
+    border-radius: 14px;
+    display: flex;
+    background-color: rgb(238, 238, 238);
+    justify-content: center;
+    align-items: center;
+    padding: 42px 23px;
+    width: 240px;
+    height: 180px;
+  }
+
+  & > span{
+    color: rgb(28, 28, 28);
+    font-size: 19px;
+    font-weight: 600;
+  }
+
+  & > p{
+    color: rgb(96, 96, 96);
+    font-size: 17px;
+    box-sizing: border-box;
+    max-width: 240px;
+    word-break: break-word;
+  }
+
+  & > div > img{
+    height: 100%;
+  }
+
+  & > button{
+    padding: 12px 12px 12px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgb(34, 131, 220);
+    border-radius: 8px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 }

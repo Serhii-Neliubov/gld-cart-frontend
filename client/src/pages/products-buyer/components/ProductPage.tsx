@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './ProductPage.module.scss';
 import Footer from '../../../components/Footer/Footer';
 
 export const ProductPage = () => {
+    const initialText = "joasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuq";
+    const [showMore, setShowMore] = useState(false);
+    const [showDetails, setShowDetails] = useState('description');
+
     return (
         <React.Fragment>
             <div className='__container'>
@@ -21,7 +25,7 @@ export const ProductPage = () => {
                                 <img src='/ProductPage/imageProduct.png' alt=''/>
                             </div>
                             <div className={styles.bigImage}>
-                            <img src='/ProductPage/imageProduct.png' alt=''/>
+                                <img src='/ProductPage/imageProduct.png' alt=''/>
                             </div>
                         </div>
                         <div className={styles.productInfo}>
@@ -33,9 +37,14 @@ export const ProductPage = () => {
                                 <div>In-Stock</div>
                                 <span>(0 Reviews)</span>
                             </div>
-                            <div className={styles.description}>
-                                joasdojiqwfuiuwquviquivwojqoasdasda
-                                sdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuq
+                            <div className={styles.descriptionContainer}>
+                                <span
+                                    className={styles.description}>{showMore ? initialText : `${initialText.slice(0, 100)}...`}</span>
+                                {initialText.length > 100 && (
+                                    <button onClick={() => setShowMore((prev) => !prev)} className={styles.seeMoreBtn}>
+                                        {showMore ? "See less" : "See more"}
+                                    </button>
+                                )}
                             </div>
                             <div className={styles.price}>
                                 <span>$580</span>
@@ -80,7 +89,7 @@ export const ProductPage = () => {
                                 <img src='/ProductPage/social4.png' alt='icon'/>
                             </div>
                             <div className={styles.returnTipText}>
-                            <p>30 days easy returns</p>
+                                <p>30 days easy returns</p>
                                 <p>Order yours before 2.30pm for same day dispatch</p>
                             </div>
                             <div className={styles.guaranteedSafe}>
@@ -89,14 +98,118 @@ export const ProductPage = () => {
                             </div>
                         </div>
                     </div>
+                    <div className={styles.productLabelBottom}>
+                        <div className={styles.productInfoActionButtons}>
+                            <button
+                                onClick={() => setShowDetails('description')}
+                                className={showDetails === 'description' ?
+                                    `${styles.productInfoActionButton} ${styles.productInfoActionButton_active}` :
+                                    `${styles.productInfoActionButton}`}>
+                                Description
+                            </button>
+                            <button
+                            onClick={() => setShowDetails('additional information')}
+                                className={showDetails === 'additional information' ?
+                                `${styles.productInfoActionButton} ${styles.productInfoActionButton_active}` :
+                                `${styles.productInfoActionButton}`}>
+                                Additional Information
+                            </button>
+                            <button
+                                onClick={() => setShowDetails('reviews')}
+                                className={showDetails === 'reviews' ?
+                                `${styles.productInfoActionButton} ${styles.productInfoActionButton_active}` :
+                                `${styles.productInfoActionButton}`}>
+                                Reviews (0)
+                            </button>
+                        </div>
+                        <div className={styles.productInfoDetails}>
+                            {showDetails === 'description' && <div>
+                                <p className={styles.productInfoDescription}>{initialText}</p>
+                            </div>}
+                            {showDetails === 'additional information' && <div>
+                                <span>Weight</span>
+                                <p>0.5 kg</p>
+                                <span>Dimensions</span>
+                                <p>12 x 12 x 12 cm</p>
+                            </div>}
+                            {showDetails === 'reviews' && <div>123</div>}
+                        </div>
+                    </div>
                     <div className={styles.relatedProducts}>
                         <span>Next Day Products</span>
                         <h2>Related Products</h2>
-
+                        <div className={styles.relatedItems}>
+                            <div className={styles.relatedItem}>
+                                <div>
+                                    <img src='/ProductPage/imageProduct.png' alt='image'/>
+                                </div>
+                                <span>$99.50</span>
+                                <p>Revitalize nourish and soothe lips.</p>
+                                <button>
+                                    <img src='/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    Move to cart
+                                </button>
+                            </div>
+                            <div className={styles.relatedItem}>
+                                <div>
+                                    <img src='/ProductPage/imageProduct.png' alt='image'/>
+                                </div>
+                                <span>$99.50</span>
+                                <p>Revitalize nourish and soothe lips.</p>
+                                <button>
+                                    <img src='/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    Move to cart
+                                </button>
+                            </div>
+                            <div className={styles.relatedItem}>
+                                <div>
+                                    <img src='/ProductPage/imageProduct.png' alt='image'/>
+                                </div>
+                                <span>$99.50</span>
+                                <p>Revitalize nourish and soothe lips.</p>
+                                <button>
+                                    <img src='/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    Move to cart
+                                </button>
+                            </div>
+                            <div className={styles.relatedItem}>
+                                <div>
+                                    <img src='/ProductPage/imageProduct.png' alt='image'/>
+                                </div>
+                                <span>$99.50</span>
+                                <p>Revitalize nourish and soothe lips.</p>
+                                <button>
+                                    <img src='/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    Move to cart
+                                </button>
+                            </div>
+                            <div className={styles.relatedItem}>
+                                <div>
+                                    <img src='/ProductPage/imageProduct.png' alt='image'/>
+                                </div>
+                                <span>$99.50</span>
+                                <p>Revitalize nourish and soothe lips.</p>
+                                <button>
+                                    <img src='/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    Move to cart
+                                </button>
+                            </div>
+                            <div className={styles.relatedItem}>
+                                <div>
+                                    <img src='/ProductPage/imageProduct.png' alt='image'/>
+                                </div>
+                                <span>$99.50</span>
+                                <p>Revitalize nourish and soothe lips.</p>
+                                <button>
+                                    <img src='/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    Move to cart
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <Footer />
+            <Footer/>
         </React.Fragment>
 
     )
