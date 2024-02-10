@@ -32,14 +32,14 @@ const Label: FC = () => {
       label: t("products"),
     },
     {
+      to: "/professional-services",
+      label: t("professional services"),
+    },
+    {
       to: user.type
           ? "/driver-license"
           : "/login",
       label: t("driver license"),
-    },
-    {
-      to: "/professional-services",
-      label: t("professional services"),
     },
   ];
 

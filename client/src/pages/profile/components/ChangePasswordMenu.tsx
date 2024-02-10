@@ -32,7 +32,7 @@ export default function ChangePasswordMenu({
         if(changePasswordData.newPassword !== changePasswordData.confirmPassword){
             return toast.error("Passwords do not match");
         } else {
-            await axios.post(`${API_URL}/reset-password`, {
+            await axios.post(`${API_URL}/reset/:token`, {
                 email: changePasswordData.email,
                 oldPassword: changePasswordData.oldPassword,
                 newPassword: changePasswordData.newPassword,
