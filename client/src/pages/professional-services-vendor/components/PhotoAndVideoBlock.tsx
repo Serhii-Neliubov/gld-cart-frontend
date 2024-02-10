@@ -47,6 +47,7 @@ export const PhotoAndVideoBlock = ({ setFormData, formData }: PhotoAndVideoBlock
                 <label>Promo Video</label>
                 <input placeholder="Youtube link here"/>
             </div>
+
         </div>
     );
 };
