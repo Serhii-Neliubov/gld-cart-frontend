@@ -7,13 +7,13 @@ import PaymentServices from "../../services/PaymentServices";
 
 export default function SubPlanList() {
   const user = useSelector(userDataSelector);
+
   async function toPaymentHandler(lookup_key: string) {
     try {
       const response = await PaymentServices.paymentRedirect(user.id, lookup_key);
       window.location.href = response.data.url;
     } catch (error) {
       console.error("Error:", error);
-      // Handle error
     }
   }
 
@@ -45,7 +45,7 @@ export default function SubPlanList() {
                 <div key={advantage} className={styles.block_advantage}>
                   <img
                     style={{ backgroundColor: `${subPlan.color}` }}
-                    src="SubPlans/tick.svg"
+                    src="/SubPlans/tick.svg"
                     alt="Icon"
                   />
                   <span>{advantage}</span>

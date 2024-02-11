@@ -7,9 +7,13 @@ import { FC } from "react";
 import {RootState} from "../../redux/store.ts";
 import {selectIsAuth, userDataSelector} from "../../redux/slices/userDataSlice.ts";
 import IUser from "../../models/IUser.ts";
-import {NavLinkProps} from "../../interfaces/interfaces.ts";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+
+interface NavLinkProps {
+  to: string;
+  label: string;
+}
 
 const Label: FC = () => {
   const location = useLocation();

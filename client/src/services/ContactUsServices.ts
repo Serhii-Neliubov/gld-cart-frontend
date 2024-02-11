@@ -1,5 +1,5 @@
 import $api, {API_URL} from "../lib/http.ts";
-import {IMessageData} from "../interfaces/interfaces.ts";
+import {IMessageData} from "../models/IMessageData.ts";
 import toast from "react-hot-toast";
 
 export class ContactUsServices{

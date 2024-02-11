@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './TextSection.module.scss'
-import { TextSectionProps } from "../../interfaces/types.ts";
+import {TextSectionProps} from "../../models/ITextSection.ts";
 
 export default function TextSection({ title, text, id }: TextSectionProps) {
   return (

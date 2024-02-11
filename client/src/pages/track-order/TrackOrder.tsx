@@ -1,20 +1,17 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import Footer from "../../components/Footer/Footer.tsx";
 import styles from "./TrackOrder.module.scss";
 import { Link } from "react-router-dom";
 import { statuses } from "../../data/TrackOrderStatuses";
-import StatusBar from "./StatusBar";
-import StatusNumber from "./StatusNumber";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const TrackOrder: FC = () => {
-  const [orderStatus] = useState<string>("Order Placed");
+  useDefaultScrollPosition();
 
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [orderStatus] = useState<string>("Delivered");
 
   return (
-    <div>
+    <React.Fragment>
       <div className={styles.main}>
         <div className="__container">
           <div className={styles.content}>
@@ -30,11 +27,26 @@ const TrackOrder: FC = () => {
               {/* ITEM NUMBER STATUS */}
               {statuses.map((status, index) => {
                 return (
-                  <StatusNumber
-                    status={status}
-                    index={index}
-                    orderStatus={orderStatus}
-                  />
+                    <div className={styles.status}>
+                        <div
+                            className={
+                              orderStatus === status.status
+                                  ? `${styles.status_bg_blue}`
+                                  : `${styles.status_bg}`
+                            }
+                        >
+                        <span
+                            className={
+                              orderStatus === status.status
+                                  ? `${styles.status_number_bg}`
+                                  : `${styles.status_number}`
+                            }
+                        >
+                          {index + 1}
+                        </span>
+                      </div>
+                      <p className={styles.status_text}>{status.status}</p>
+                    </div>
                 );
               })}
             </div>
@@ -46,10 +58,10 @@ const TrackOrder: FC = () => {
             <div className={styles.track_content}>
               <div>
                 <span className={styles.track_enter_number}>
-                  Enter your phone number below:
+                  Enter your track number below:
                 </span>
                 <div className={styles.track_number}>
-                  <span>Tracker Number</span>
+                <span>Tracker Number</span>
                   <input
                     type="text"
                     placeholder="Enter number e.g 111 222 333 123 "
@@ -72,15 +84,22 @@ const TrackOrder: FC = () => {
               {/* ITEM WINDOW STATUS */}
               {statuses.map((object) => {
                 return (
-                  orderStatus === object.status && <StatusBar status={object} />
-                );
-              })}
+                  orderStatus === object.status &&
+                    <div className={styles.order_status_bar}>
+                      <div>
+                        <img src={object.img} alt="tick"/>
+                        <span>Status : {object.status}</span>
+                      </div>
+                      <p>{object.text}</p>
+                    </div>
+                )}
+              )}
             </div>
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+      <Footer/>
+    </React.Fragment>
   );
 };
 

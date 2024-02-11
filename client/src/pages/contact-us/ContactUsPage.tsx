@@ -3,7 +3,7 @@ import { FC, FormEvent, useState } from "react";
 import styles from "./ContactUsPage.module.scss";
 import Footer from "../../components/Footer/Footer.tsx";
 import { useNavigate } from "react-router-dom";
-import { IMessageData } from "../../interfaces/interfaces";
+import { IMessageData } from "../../models/IMessageData";
 import {ContactInputList}  from "./components/ContactInputList.tsx";
 import {ContactUsServices} from "../../services/ContactUsServices.ts";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";

@@ -1,14 +1,14 @@
+import React from 'react';
 import Footer from "../../components/Footer/Footer.tsx";
 import styles from "./ShippingPolicyPage.module.scss";
-import { FC, useEffect } from "react";
+import { FC } from "react";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const ShippingPolicyPage: FC = () => {
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+  useDefaultScrollPosition();
 
   return (
-    <>
+    <React.Fragment>
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>Shipping Policy</h1>
@@ -164,7 +164,7 @@ const ShippingPolicyPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 
