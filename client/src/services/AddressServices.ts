@@ -16,15 +16,20 @@ export default class AddressServices {
         }
     ) {
         try {
-            toast.success("Address was added successfully");
-            return $api.post(
+            await $api.post(
                 `/address/${userId}`,
                 {
                     ...addressData
                 },
             );
+
+            toast.success("Address was added successfully");
+
+            return { success: true };
         } catch (error) {
             toast.error("An error occurred while sending the address");
+
+            return { success: false };
         }
 
     }
@@ -42,15 +47,20 @@ export default class AddressServices {
         }
     ) {
         try {
-            toast.success("Address changed successfully");
-            return $api.put(
+            await $api.put(
                 `/address/${userId}/${addressId}`,
                 {
                     ...addressData
                 },
             );
+
+            toast.success("Address changed successfully");
+
+            return { success: true };
         } catch (error) {
             toast.error("An error occurred while changing the address");
+
+            return { success: false };
         }
     }
 

@@ -65,10 +65,12 @@ function AddAddressMenu({selectedLabel, setSelectedLabel}: AddAddressMenuProps) 
     event.preventDefault();
 
     try {
-      await AddressServices.sendAddress(formData.userId, formData.addressData);
-      await updateAddresses();
+      const result = await AddressServices.sendAddress(formData.userId, formData.addressData);
 
-      setSelectedLabel('Address');
+      if (result && result.success) {
+        setSelectedLabel('Address');
+        await updateAddresses();
+      }
 
     } catch (error) {
       console.log(error);
@@ -79,10 +81,13 @@ function AddAddressMenu({selectedLabel, setSelectedLabel}: AddAddressMenuProps) 
     event.preventDefault();
 
     try {
-      await AddressServices.changeAddress(formData.userId, formData.addressId, formData.addressData,);
-      await updateAddresses();
+      const result = await AddressServices.changeAddress(formData.userId, formData.addressId, formData.addressData,);
 
-      setSelectedLabel('Address');
+      if (result && result.success) {
+        setSelectedLabel('Address');
+        await updateAddresses();
+      }
+
     } catch (error) {
       console.error("Error sending address:", error);
     }
