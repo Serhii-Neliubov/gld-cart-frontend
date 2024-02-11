@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from './RentingProductPage.module.scss';
 import Footer from "../../../../components/Footer/Footer.tsx";
+import useDefaultScrollPosition from "../../../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 export const RentingProductPage = () => {
+
+    useDefaultScrollPosition();
+
     return (
         <React.Fragment>
             <div className='__container'>

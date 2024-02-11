@@ -4,23 +4,22 @@ import BgWithParticles from "../../components/BgWithParticles/BgWithParticles.ts
 import { useDispatch } from "react-redux";
 import { setEmailValue } from "../../redux/slices/resetPasswordEmailSlice";
 import { AppDispatch } from "../../redux/store";
-import axios from "axios";
-import { API_URL } from "../../lib/http.ts";
 import { useNavigate } from "react-router-dom";
+import {PasswordServices} from "../../services/PasswordServices.ts";
+import toast from "react-hot-toast";
 
 const ForgottenPasswordPage: FC = () => {
   const [email, setEmail] = useState<string>("");
+
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   async function sendEmailHandler() {
     try {
-      await axios.post(`${API_URL}/password/initiate`, {
-        email,
-      });
+      await PasswordServices.sendResetEmail(email);
       navigate('/login');
     } catch (error) {
-      console.error(error);
+      toast.error("An error occurred while sending the email");
     } finally {
       navigate("/forgotten-attention");
     }

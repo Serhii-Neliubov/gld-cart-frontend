@@ -1,29 +1,19 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import styles from "../ProfilePage.module.scss";
-import { logout, userDataSelector } from "../../../redux/slices/userDataSlice.ts";
-import { useDispatch, useSelector } from "react-redux";
-import $api, { API_URL } from "../../../lib/http.ts";
+import {logout, userDataSelector} from "../../../redux/slices/userDataSlice.ts";
+import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-
-type FormDataType = {
-  id: string,
-  name: undefined | string,
-  surname: undefined | string,
-  email: undefined | string,
-  phone_number: undefined | string,
-  address: undefined | string,
-  BIO: undefined | string,
-}
+import {IProfileData} from "../../../models/IProfileData.ts";
+import {ChangeProfileDataServices} from "../../../services/ChangeProfileDataServices.ts";
 
 export default function ChangeProfileData({
   selectedLabel
 }: {selectedLabel: string}) {
   const user = useSelector(userDataSelector);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState<FormDataType>({
+  const [formData, setFormData] = useState<IProfileData>({
     id: user.id,
     name: "",
     surname: "",
@@ -44,27 +34,20 @@ export default function ChangeProfileData({
     e.preventDefault();
 
     try {
-      const filledFields = Object.entries(formData)
-        .filter(([, value]) => value !== "")
-        .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-
-      await $api.put(`${API_URL}/update-personal-details`, filledFields,
-      );
-      toast.success("Profile updated successfully");
+      await ChangeProfileDataServices.updateProfileData(formData);
       dispatch(logout());
       navigate("/");
     } catch (error) {
-      toast.error("Error with updating profile");
+      console.log(error);
     }
   };
 
   return (
     selectedLabel === "Profile" && (
       <React.Fragment>
-          <h1 className={styles.title}>
-            Welcome Mr. {user.name} {user.surname}
-          </h1>
-
+        <h1 className={styles.title}>
+          Welcome Mr. {user.name} {user.surname}
+        </h1>
         <h2 className={styles.box_name}>Personal Details</h2>
         <div className={styles.content_box_items}>
           <form className={styles.box_inputs} onSubmit={handleSubmit}>

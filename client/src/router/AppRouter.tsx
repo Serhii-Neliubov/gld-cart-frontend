@@ -18,7 +18,7 @@ const AppRouter: FC = () => {
 
   useEffect(() => {
       dispatch(checkAuth());
-  }, []);
+  }, [dispatch]);
 
   if (!user.type) {
     return (

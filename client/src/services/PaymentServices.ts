@@ -7,14 +7,13 @@ export default class PaymentServices {
         userId: string,
         lookup_key: string
     ): Promise<AxiosResponse> {
-        const body = $api.post(
+        return $api.post(
             "/create-subscription-checkout",
             {
                 userId,
                 lookup_key,
             },
         );
-        return body;
     }
 
 }

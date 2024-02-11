@@ -1,15 +1,15 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import Footer from "../../components/Footer/Footer.tsx";
 import styles from "./HelpAndSupport.module.scss";
 import { Link } from "react-router-dom";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const HelpAndSupport: FC = () => {
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+
+  useDefaultScrollPosition();
 
   return (
-    <>
+    <React.Fragment>
       <div className="__container">
         <h1 className={styles.title}>Hi, how can we help you?</h1>
         <div className={styles.blocks}>
@@ -87,7 +87,7 @@ const HelpAndSupport: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

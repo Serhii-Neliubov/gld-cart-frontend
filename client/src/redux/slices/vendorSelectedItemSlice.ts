@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {RootState} from "../store.ts";
 
 export interface vendorSelectedItemSlice {
     value: string;
@@ -21,5 +20,4 @@ export const vendorSelectedItemSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { setVendorSelectedItemValue } = vendorSelectedItemSlice.actions;
-export const selectVendorSelectedItemValue = (state: RootState) => state.vendorSelectedItemSlice.value;
 export default vendorSelectedItemSlice.reducer;

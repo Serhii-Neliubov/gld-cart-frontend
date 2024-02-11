@@ -84,7 +84,7 @@ export default function ChangePasswordMenu({
               name="confirmPassword"
               type="password"
               value={changePasswordData.confirmPassword}
-              onChange={(e) =>
+              onChange=  {(e) =>
                 setChangePasswordData({
                   ...changePasswordData,
                   confirmPassword: e.target.value,

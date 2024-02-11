@@ -1,14 +1,16 @@
 import React from 'react';
-import { FC, FormEvent, useEffect, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import styles from "./ContactUsPage.module.scss";
 import Footer from "../../components/Footer/Footer.tsx";
-import $api, { API_URL } from "../../lib/http.ts";
 import { useNavigate } from "react-router-dom";
 import { IMessageData } from "../../interfaces/interfaces";
-import toast from "react-hot-toast";
 import {ContactInputList}  from "./components/ContactInputList.tsx";
+import {ContactUsServices} from "../../services/ContactUsServices.ts";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const ContactUsPage: FC = () => {
+  useDefaultScrollPosition();
+
   const navigate = useNavigate();
   const [messageData, setMessageData] = useState<IMessageData>({
     name: "",
@@ -22,19 +24,12 @@ const ContactUsPage: FC = () => {
     event.preventDefault()
 
     try {
-      await $api.post(
-        `${API_URL}/send-contact-email`,
-        messageData
-      );
+      await ContactUsServices.sendMessage(messageData);
       navigate("/send-message");
     } catch (error) {
-      toast.error("Error to sending message")
+      console.log(error);
     }
   }
-
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <React.Fragment>

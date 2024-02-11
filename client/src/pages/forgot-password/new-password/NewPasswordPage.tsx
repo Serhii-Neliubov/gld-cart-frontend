@@ -1,23 +1,22 @@
 import { FC, useState } from "react";
 import styles from "./NewPasswordPage.module.scss";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { API_URL } from "../../../lib/http.ts";
+import {useNavigate, useParams} from "react-router-dom";
 import BgWithParticles from "../../../components/BgWithParticles/BgWithParticles.tsx";
+import {PasswordServices} from "../../../services/PasswordServices.ts";
+import toast from "react-hot-toast";
 
 const NewPasswordPage: FC = () => {
   const [password, setPassword] = useState<string>("");
   const { token } = useParams();
+  const navigate = useNavigate();
 
   async function sendNewPasswordHandler() {
-    console.log(password);
     try {
-      const response = await axios.post(`${API_URL}/password/reset/${token}`, {
-        newPassword: password,
-      });
-      console.log(response.data);
+      await PasswordServices.sendResetPassword(password, token);
+      toast.success("Password changed successfully");
+      navigate("/login");
     } catch (error) {
-      console.error(error);
+      toast.error("An error occurred while changing the password");
     }
   }
 
