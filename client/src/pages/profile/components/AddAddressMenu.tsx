@@ -2,7 +2,6 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "../../../redux/slices/userDataSlice.ts";
 import styles from "../ProfilePage.module.scss";
-import toast from "react-hot-toast";
 import AddressServices from "../../../services/AddressServices.ts";
 
 type AddAddressMenuProps = {
@@ -18,27 +17,29 @@ type TypeAddressData = {
   country: string;
   phone: string;
   _id: string;
-  forEffectiveDelivery: string; // Add this line
+  forEffectiveDelivery: string;
 };
 
-function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps) {
+const clearAddressFormData = {
+  addressId: "",
+  addressData: {
+    recipients_name: "",
+    street_address: "",
+    city: "",
+    country: "",
+    ZIP_code: undefined,
+    phone_number: "",
+    forEffectiveDelivery: 'Home'
+  }
+}
+
+function AddAddressMenu({selectedLabel, setSelectedLabel}: AddAddressMenuProps) {
   const user = useSelector(userDataSelector);
-  const [formData, setFormData] = useState({
-    userId: user.id,
-    addressId: "",
-    addressData: {
-      recipients_name: "",
-      street_address: "",
-      city: "",
-      country: "",
-      ZIP_code: undefined,
-      phone_number: "",
-      forEffectiveDelivery: 'Home'
-    }
-  });
+
+  const [formData, setFormData] = useState({...clearAddressFormData, userId: user.id});
   const [addresses, setAddresses] = useState([]);
 
-  const updateAddresses = async () => {
+  async function updateAddresses() {
     const response = await AddressServices.getAddresses(user.id);
     const data = response.data;
     setAddresses(data);
@@ -50,6 +51,7 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     setFormData((prevData) => ({
       ...prevData,
       addressData: {
@@ -57,45 +59,39 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
         [name]: value,
       },
     }));
-
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const sendAddressHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     try {
-      await AddressServices.sendAddress(
-          formData.userId,
-          formData.addressData
-      );
-      setSelectedLabel('Address');
-      toast.success("Address was added successfully");
+      await AddressServices.sendAddress(formData.userId, formData.addressData);
       await updateAddresses();
+
+      setSelectedLabel('Address');
+
     } catch (error) {
       console.log(error);
-      toast.error("Error to adding the address");
     }
   };
-  const handleSubmitChanges = async (event: React.FormEvent<HTMLFormElement>) => {
+
+  const changeAddressHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     try {
-      await AddressServices.changeAddress(
-          formData.userId,
-          formData.addressId,
-          formData.addressData,
-      );
-      setSelectedLabel('Address');
-      toast.success("Address changed successfully");
+      await AddressServices.changeAddress(formData.userId, formData.addressId, formData.addressData,);
       await updateAddresses();
+
+      setSelectedLabel('Address');
     } catch (error) {
       console.error("Error sending address:", error);
-      toast.error("Error to adding the address");
     }
   };
 
   if(selectedLabel === "Add Address"){
     return (
         <div className={styles.contentAddressBox}>
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <form className={styles.form} onSubmit={sendAddressHandler}>
             <div className={styles.inputColumns}>
               <label className={styles.inputBox}>
                 Full Name
@@ -269,7 +265,7 @@ function AddAddressMenu({selectedLabel, setSelectedLabel,}: AddAddressMenuProps)
   if (selectedLabel === "Edit Address") {
     return (
         <div className={styles.contentAddressBox}>
-          <form className={styles.form} onSubmit={handleSubmitChanges}>
+          <form className={styles.form} onSubmit={changeAddressHandler}>
             <div className={styles.inputColumns}>
               <label className={styles.inputBox}>
                 Full Name

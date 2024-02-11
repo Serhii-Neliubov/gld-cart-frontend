@@ -8,6 +8,6 @@ export const DriverLicense = () => {
     const user = useSelector(userDataSelector);
 
     return (
-        user.type === 'Buyer' ? <DriverLicenseBuyer /> : <DriverLicenseVendor />
+        user.type === 'Vendor' ? <DriverLicenseBuyer /> : <DriverLicenseVendor />
     );
 }

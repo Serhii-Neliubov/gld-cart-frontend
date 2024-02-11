@@ -3,15 +3,15 @@ import Footer from "../../components/Footer/Footer.tsx";
 import { FaqsData } from "../../data/publicBuyerRules/FaqsData.ts";
 import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./FaqsPage.module.scss";
-import { FC, useEffect } from "react";
+import { FC } from "react";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const FaqsPage: FC = () => {
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+
+    useDefaultScrollPosition();
 
   return (
-    <>
+    <React.Fragment>
       <div className="__container">
         <div className={styles.body}>
           <h1 className={styles.title}>{FaqsData.title}</h1>
@@ -29,7 +29,7 @@ const FaqsPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

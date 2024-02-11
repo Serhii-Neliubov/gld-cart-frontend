@@ -1,53 +1,39 @@
-import axios from "axios";
 import React, { FormEvent, useState } from "react";
-import { API_URL } from "../../../lib/http.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, userDataSelector } from "../../../redux/slices/userDataSlice.ts";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import styles from "../ProfilePage.module.scss";
-import toast from "react-hot-toast";
+import {PasswordServices} from "../../../services/PasswordServices.ts";
 
-type ChangePasswordMenuProps = {
-  selectedLabel: string;
-};
+const clearPasswordData = {
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+}
 
-export default function ChangePasswordMenu({
-  selectedLabel,
-}: ChangePasswordMenuProps) {
-
+export default function ChangePasswordMenu() {
   const user = useSelector(userDataSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [changePasswordData, setChangePasswordData] = useState({
-    email: user.email,
-    oldPassword: "",
-    newPassword: "",
-    confirmPassword: "",
-  });
+  const [changePasswordData, setChangePasswordData] = useState({...clearPasswordData, email: user.email});
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-        if(changePasswordData.newPassword !== changePasswordData.confirmPassword){
-            return toast.error("Passwords do not match");
-        } else {
-            await axios.post(`${API_URL}/reset/:token`, {
-                email: changePasswordData.email,
-                oldPassword: changePasswordData.oldPassword,
-                newPassword: changePasswordData.newPassword,
-            });
-            dispatch(logout());
-            toast.success("You have successfully changed the password");
-            navigate("/login");
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        try {
+            const response = await PasswordServices.changeOldPassword(changePasswordData.newPassword, changePasswordData.oldPassword, changePasswordData.email, changePasswordData.confirmPassword);
+
+            if (response && response.success) {
+                dispatch(logout());
+                navigate("/login");
+            }
+        } catch (error) {
+            console.log(error);
         }
-    } catch (e) {
-        toast.error("Old password is incorrect");
-    }
-  };
+    };
 
   return (
-    selectedLabel === "Change Password" && (
       <React.Fragment>
         <h2 className={styles.box_name}>Please Enter Your Current Password</h2>
         <div className={styles.content_box_items}>
@@ -99,6 +85,5 @@ export default function ChangePasswordMenu({
           </form>
         </div>
       </React.Fragment>
-    )
   );
 }

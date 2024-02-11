@@ -95,12 +95,9 @@ const ProfilePage: FC = () => {
           </div>
           <div className={styles.content}>
             <div className={styles.content_box}>
-              <ChangeProfileData selectedLabel={selectedLabel} />
-              <ChangePasswordMenu selectedLabel={selectedLabel} />
-              <AddAddressMenu
-                selectedLabel={selectedLabel}
-                setSelectedLabel={setSelectedLabel}
-              />
+              {selectedLabel === 'Profile' && <ChangeProfileData />}
+              {selectedLabel === 'Change Password' && <ChangePasswordMenu />}
+              <AddAddressMenu selectedLabel={selectedLabel} setSelectedLabel={setSelectedLabel}/>
             </div>
           </div>
         </div>

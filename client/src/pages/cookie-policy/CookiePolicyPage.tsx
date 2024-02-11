@@ -2,14 +2,13 @@ import React from 'react';
 import Footer from "../../components/Footer/Footer.tsx";
 import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./CookiePolicyPage.module.scss";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { CookiePolicyData } from "../../data/publicBuyerRules/CookiePolicyData.ts";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const CookiePolicyPage: FC = () => {
   
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+  useDefaultScrollPosition();
 
   return (
     <React.Fragment>

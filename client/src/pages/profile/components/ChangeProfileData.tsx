@@ -6,9 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {IProfileData} from "../../../models/IProfileData.ts";
 import {ChangeProfileDataServices} from "../../../services/ChangeProfileDataServices.ts";
 
-export default function ChangeProfileData({
-  selectedLabel
-}: {selectedLabel: string}) {
+export default function ChangeProfileData() {
   const user = useSelector(userDataSelector);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,7 +41,6 @@ export default function ChangeProfileData({
   };
 
   return (
-    selectedLabel === "Profile" && (
       <React.Fragment>
         <h1 className={styles.title}>
           Welcome Mr. {user.name} {user.surname}
@@ -108,6 +105,5 @@ export default function ChangeProfileData({
           </form>
         </div>
       </React.Fragment>
-    )
-  );
+    );
 }

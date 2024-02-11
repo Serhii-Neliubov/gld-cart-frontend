@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import $api from "../lib/http.ts";
-import IUser from "../models/IUser.ts";
+import toast from "react-hot-toast";
 
 
 export default class AddressServices {
@@ -14,19 +14,19 @@ export default class AddressServices {
             ZIP_code: number | undefined;
             phone_number: string
         }
-    ): Promise<AxiosResponse> {
-        console.log(addressData);
-        return $api.post(
-            `/address/${userId}`,
-            {
-                ...addressData
-            },
-        );
-    }
+    ) {
+        try {
+            toast.success("Address was added successfully");
+            return $api.post(
+                `/address/${userId}`,
+                {
+                    ...addressData
+                },
+            );
+        } catch (error) {
+            toast.error("An error occurred while sending the address");
+        }
 
-    static async updateAddresses(user: IUser){
-        const response = await AddressServices.getAddresses(user.id);
-        return response.data;
     }
 
     static async changeAddress(
@@ -40,14 +40,18 @@ export default class AddressServices {
             ZIP_code: number | undefined;
             phone_number: string
         }
-    ): Promise<AxiosResponse> {
-        console.log({userId, addressData, addressId,})
-        return $api.put(
-            `/address/${userId}/${addressId}`,
-            {
-                ...addressData
-            },
-        );
+    ) {
+        try {
+            toast.success("Address changed successfully");
+            return $api.put(
+                `/address/${userId}/${addressId}`,
+                {
+                    ...addressData
+                },
+            );
+        } catch (error) {
+            toast.error("An error occurred while changing the address");
+        }
     }
 
     static async getAddresses(id: string): Promise<AxiosResponse> {
