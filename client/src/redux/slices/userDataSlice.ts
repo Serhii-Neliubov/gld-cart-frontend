@@ -78,22 +78,36 @@ const authDataSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(login.fulfilled, (state, action) => {
-                localStorage.setItem("token", action.payload.accessToken);
-                state.isAuth = true;
-                toast.success("You have successfully been logged!");
-                state.user = action.payload.user;
+                try {
+                    localStorage.setItem("token", action.payload.accessToken);
+                    state.isAuth = true;
+                    toast.success("You have successfully been logged!");
+                    state.user = action.payload.user;
+                } catch (error){
+                    console.log(error);
+                }
             })
             .addCase(register.fulfilled, (state, action) => {
-                localStorage.setItem("token", action.payload.accessToken);
-                state.isAuth = true;
-                toast.success("You have successfully been registered!");
-                state.user = action.payload.user;
+                try {
+                    if (action.payload) {
+                        localStorage.setItem("token", action.payload.accessToken);
+                        state.isAuth = true;
+                        toast.success("You have successfully been registered!");
+                        state.user = action.payload.user;
+                    }
+                } catch (error){
+                    console.log(error);
+                }
             })
             .addCase(checkAuth.fulfilled, (state, action) => {
-                if (action.payload) {
-                    state.isAuth = true;
-                    toast.success("You successfully logged!");
-                    state.user = action.payload.user;
+                try{
+                    if (action.payload) {
+                        state.isAuth = true;
+                        toast.success("You successfully logged!");
+                        state.user = action.payload.user;
+                    }
+                } catch (error){
+                    console.log(error);
                 }
             })
             .addCase(checkAuth.rejected, (state) => {
