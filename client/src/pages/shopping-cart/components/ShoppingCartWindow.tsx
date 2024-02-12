@@ -1,7 +1,29 @@
 import React from 'react';
 import styles from './ShoppingCartWindow.module.scss';
+import {cartItem} from "../ShoppingCartPage.tsx";
+import $api, {API_URL} from "../../../lib/http.ts";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "../../../redux/slices/userDataSlice.ts";
 
-export const ShoppingCartWindow = () => {
+interface ShoppingCartWindow{
+    cartItems: cartItem[] | undefined
+}
+
+export const ShoppingCartWindow = ({cartItems}: ShoppingCartWindow) => {
+    const user = useSelector(userDataSelector);
+    const removeCartItemHandler = async (itemId: string) => {
+        try {
+            await $api.delete(`${API_URL}/cart/delete-item`, {
+                params: {
+                    userId: user.id,
+                    itemId: itemId
+                }
+            });
+        } catch (error) {
+            console.error("An error occurred while removing item from cart:", error);
+        }
+    };
+
     return (
         <div className={styles.content}>
             <div className={styles.productBox}>
@@ -12,51 +34,23 @@ export const ShoppingCartWindow = () => {
                     <span></span>
                 </div>
                 <div className={styles.productList}>
-                    <div className={styles.productContent}>
-                        <div className={styles.productInfo}>
-                            <img alt='' src='/ShoppingCard/product.png'/>
-                            <span>Cool Headphones</span>
+                    {cartItems?.map((item) => {
+                        return <div key={item._id} className={styles.productContent}>
+                            <div className={styles.productInfo}>
+                                <img alt='image' src={item.productId.images[0]}/>
+                                <span>{item.productId.product_name}</span>
+                            </div>
+                            <span className={styles.productPrice}>$500.00</span>
+                            <div className={styles.productQuantity}>
+                                <button>-</button>
+                                <span>{item.quantity}</span>
+                                <button>+</button>
+                            </div>
+                            <div className={styles.removeProduct}>
+                                <button onClick={() => removeCartItemHandler(item._id)}>&times; Remove</button>
+                            </div>
                         </div>
-                        <span className={styles.productPrice}>$500.00</span>
-                        <div className={styles.productQuantity}>
-                            <button>-</button>
-                            <span>2</span>
-                            <button>+</button>
-                        </div>
-                        <div className={styles.removeProduct}>
-                            <button>&times; Remove</button>
-                        </div>
-                    </div>
-                    <div className={styles.productContent}>
-                        <div className={styles.productInfo}>
-                            <img alt='' src='/ShoppingCard/product.png'/>
-                            <span>Cool Headphones</span>
-                        </div>
-                        <span className={styles.productPrice}>$500.00</span>
-                        <div className={styles.productQuantity}>
-                            <button>-</button>
-                            <span>2</span>
-                            <button>+</button>
-                        </div>
-                        <div className={styles.removeProduct}>
-                            <button>&times; Remove</button>
-                        </div>
-                    </div>
-                    <div className={styles.productContent}>
-                        <div className={styles.productInfo}>
-                            <img alt='' src='/ShoppingCard/product.png'/>
-                            <span>Cool Headphones</span>
-                        </div>
-                        <span className={styles.productPrice}>$500.00</span>
-                        <div className={styles.productQuantity}>
-                            <button>-</button>
-                            <span>2</span>
-                            <button>+</button>
-                        </div>
-                        <div className={styles.removeProduct}>
-                            <button>&times; Remove</button>
-                        </div>
-                    </div>
+                    })}
                 </div>
             </div>
             <div className={styles.checkoutMenu}>

@@ -247,6 +247,12 @@
   max-height: 670px;
   padding: 63px 25px;
   border: 1px solid rgba(0,0,0,0.11);
+
+  & > img{
+    max-width: 470px;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 .smallImages{
   display: flex;

@@ -140,7 +140,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: SmartWatch, path: "/products/smart-watch" },
   { component: Earrings, path: "/products/earrings" },
   // -----------------------
-  { component: ProductPage, path: "/product-page" },
+  { component: ProductPage, path: "/product-page/:id" },
   { component: RentingProductPage, path: "/renting-product-page" },
   { component: SendMessagePage, path: "/send-message" },
   { component: ProfServicesPage, path: "/professional-services" },

@@ -114,6 +114,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
+  & > img{
+    max-width: 80px;
+  }
 }
 
 .productPrice{

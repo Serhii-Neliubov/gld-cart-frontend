@@ -1,8 +1,33 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './BeautyOfSkin.module.scss';
 import Footer from '../../../../components/Footer/Footer';
+import $api, {API_URL} from "../../../../lib/http.ts";
+import {useNavigate} from "react-router-dom";
+
+type product = {
+    "reviews": [],
+    "_id": string,
+    "product_name": string,
+    "category": string,
+    "subcategory": string,
+    "description": string,
+    "images": string[],
+    "attributes": object,
+}
 
 export const BeautyOfSkin = () => {
+    const [products, setProducts] = React.useState([])
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getProductsData();
+    }, []);
+
+    const getProductsData = async() => {
+        const response = await $api.get(`${API_URL}/products/category/awesome`);
+        setProducts(response.data);
+    }
+
     return (
         <React.Fragment>
             <div className='__container'>
@@ -178,62 +203,22 @@ export const BeautyOfSkin = () => {
                             </div>
                         </div>
                         <div className={styles.productList}>
-                            <div className={styles.productItem}>
-                                <div className={styles.productImage}>
-                                    <img src='/TopRatedProducts/productImage.png' alt=''/>
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <p>Product Tag</p>
-                                    <span>Product Name</span>
-                                    <div>(rating)</div>
-                                    <div className={styles.productPrice}>
-                                        <span>$130.00</span>
-                                        <p>$123.50</p>
+                            {products.map((product: product) => {
+                                return <div key={product._id} onClick={() => navigate(`/product-page/${product._id}`)} className={styles.productItem}>
+                                    <div className={styles.productImage}>
+                                        <img src={product.images[0]} alt=''/>
+                                    </div>
+                                    <div className={styles.productInfo}>
+                                        <p>Product Tag</p>
+                                        <span>{product.product_name}</span>
+                                        <div>(rating)</div>
+                                        <div className={styles.productPrice}>
+                                            <span>$130.00</span>
+                                            <p>$123.50</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={styles.productItem}>
-                                <div className={styles.productImage}>
-                                    <img src='/TopRatedProducts/productImage.png' alt=''/>
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <p>Product Tag</p>
-                                    <span>Product Name</span>
-                                    <div>(rating)</div>
-                                    <div className={styles.productPrice}>
-                                        <span>$130.00</span>
-                                        <p>$123.50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.productItem}>
-                                <div className={styles.productImage}>
-                                    <img src='/TopRatedProducts/productImage.png' alt=''/>
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <p>Product Tag</p>
-                                    <span>Product Name</span>
-                                    <div>(rating)</div>
-                                    <div className={styles.productPrice}>
-                                        <span>$130.00</span>
-                                        <p>$123.50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.productItem}>
-                                <div className={styles.productImage}>
-                                    <img src='/TopRatedProducts/productImage.png' alt=''/>
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <p>Product Tag</p>
-                                    <span>Product Name</span>
-                                    <div>(rating)</div>
-                                    <div className={styles.productPrice}>
-                                        <span>$130.00</span>
-                                        <p>$123.50</p>
-                                    </div>
-                                </div>
-                            </div>
+                            })}
                         </div>
                     </div>
 

@@ -64,32 +64,22 @@ function AddAddressMenu({selectedLabel, setSelectedLabel}: AddAddressMenuProps) 
   const sendAddressHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    try {
-      const result = await AddressServices.sendAddress(formData.userId, formData.addressData);
+    const result = await AddressServices.sendAddress(formData.userId, formData.addressData);
 
-      if (result && result.success) {
-        setSelectedLabel('Address');
-        await updateAddresses();
-      }
-
-    } catch (error) {
-      console.log(error);
+    if (result.success) {
+      setSelectedLabel('Address');
+      await updateAddresses();
     }
   };
 
   const changeAddressHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    try {
-      const result = await AddressServices.changeAddress(formData.userId, formData.addressId, formData.addressData,);
+    const result = await AddressServices.changeAddress(formData.userId, formData.addressId, formData.addressData,);
 
-      if (result && result.success) {
-        setSelectedLabel('Address');
-        await updateAddresses();
-      }
-
-    } catch (error) {
-      console.error("Error sending address:", error);
+    if (result.success) {
+      setSelectedLabel('Address');
+      await updateAddresses();
     }
   };
 

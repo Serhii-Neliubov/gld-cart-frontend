@@ -53,13 +53,14 @@ export default class AddressServices {
                     ...addressData
                 },
             );
-
             toast.success("Address changed successfully");
-
             return { success: true };
-        } catch (error) {
-            toast.error("An error occurred while changing the address");
-
+        } catch (error: any) {
+            if (error.response && error.response.data && error.response.data.message) {
+                toast.error(error.response.data.message);
+            } else {
+                toast.error("An error occurred while changing the address");
+            }
             return { success: false };
         }
     }

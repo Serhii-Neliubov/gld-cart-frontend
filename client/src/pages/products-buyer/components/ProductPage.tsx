@@ -1,11 +1,54 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './ProductPage.module.scss';
 import Footer from '../../../components/Footer/Footer';
+import $api, {API_URL} from "../../../lib/http.ts";
+import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "../../../redux/slices/userDataSlice.ts";
+
+type product = {
+    "reviews": [],
+    "_id": string,
+    "product_name": string,
+    "category": string,
+    "subcategory": string,
+    "description": string,
+    "images": string[],
+    "attributes": object,
+}
 
 export const ProductPage = () => {
     const initialText = "joasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuq";
     const [showMore, setShowMore] = useState(false);
     const [showDetails, setShowDetails] = useState('description');
+    const [product, setProduct] = useState<product>();
+    const params = useParams();
+    const user = useSelector(userDataSelector);
+
+    useEffect(() => {
+        getProductData();
+    }, []);
+
+    const getProductData = async() => {
+        const response = await $api.get(`${API_URL}/products/${params.id}`);
+        setProduct(response.data);
+    }
+
+    const addToCartHandler = async() => {
+        await $api.post(`${API_URL}/cart/add-item`, {
+            userId: user.id,
+            item: {
+                productId: product?._id,
+            }
+        });
+    }
+
+    const addToWishlistHandler = async() => {
+        await $api.post(`${API_URL}/wishlist`, {
+            userId: user.id,
+            productId: product?._id,
+        });
+    }
 
     return (
         <React.Fragment>
@@ -25,7 +68,7 @@ export const ProductPage = () => {
                                 <img src='/ProductPage/imageProduct.png' alt=''/>
                             </div>
                             <div className={styles.bigImage}>
-                                <img src='/ProductPage/imageProduct.png' alt=''/>
+                                <img src={product?.images[0]} alt=''/>
                             </div>
                         </div>
                         <div className={styles.productInfo}>
@@ -68,11 +111,11 @@ export const ProductPage = () => {
                                 <span>Quantity</span>
                                 <div className={styles.addToCart}>
                                     <input max="9" min='0' type='number' placeholder='1'/>
-                                    <button>Add to Cart</button>
+                                    <button onClick={addToCartHandler}>Add to Cart</button>
                                 </div>
                             </div>
                             <button className={styles.buyNow}>Buy Now</button>
-                            <div className={styles.addToWishlist}>
+                            <div onClick={addToWishlistHandler} className={styles.addToWishlist}>
                                 <span>Add Wishlist</span>
                                 <span>Ask a question</span>
                             </div>

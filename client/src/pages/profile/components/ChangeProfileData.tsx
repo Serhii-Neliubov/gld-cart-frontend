@@ -6,20 +6,21 @@ import { useNavigate } from "react-router-dom";
 import {IProfileData} from "../../../models/IProfileData.ts";
 import {ChangeProfileDataServices} from "../../../services/ChangeProfileDataServices.ts";
 
+const ClearProfileData = {
+  name: "",
+  surname: "",
+  email: "",
+  phone_number: "",
+  address: "",
+  BIO: "",
+}
+
 export default function ChangeProfileData() {
   const user = useSelector(userDataSelector);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState<IProfileData>({
-    id: user.id,
-    name: "",
-    surname: "",
-    email: "",
-    phone_number: "",
-    address: "",
-    BIO: "",
-  });
+  const [formData, setFormData] = useState<IProfileData>({id: user.id, ...ClearProfileData});
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -33,7 +34,9 @@ export default function ChangeProfileData() {
 
     try {
       await ChangeProfileDataServices.updateProfileData(formData);
+
       dispatch(logout());
+
       navigate("/");
     } catch (error) {
       console.log(error);
