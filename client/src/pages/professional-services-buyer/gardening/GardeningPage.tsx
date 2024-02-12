@@ -64,10 +64,10 @@ const GardeningPage: FC = () => {
                   </div>
                   <div className={styles.advantages}>
                     <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
+                      Luxury Limousine Selection
                     </span>
                     <span className={styles.advantage}>
-                      High Safety and Nurity
+                      High Safety and Purity
                     </span>
                     <span className={styles.advantage}>
                       Fixed Price & Bonus System
@@ -79,7 +79,7 @@ const GardeningPage: FC = () => {
                       Clean, Polite & Knowledgeable
                     </span>
                     <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
+                      Luxury Limousine Selection
                     </span>
                   </div>
                 </div>
@@ -105,10 +105,10 @@ const GardeningPage: FC = () => {
                   </div>
                   <div className={styles.advantages}>
                     <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
+                      Luxury Limousine Selection
                     </span>
                     <span className={styles.advantage}>
-                      High Safety and Nurity
+                      High Safety and Purity
                     </span>
                     <span className={styles.advantage}>
                       Fixed Price & Bonus System
@@ -120,7 +120,7 @@ const GardeningPage: FC = () => {
                       Clean, Polite & Knowledgeable
                     </span>
                     <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
+                      Luxury Limousine Selection
                     </span>
                   </div>
                 </div>
@@ -146,10 +146,10 @@ const GardeningPage: FC = () => {
                   </div>
                   <div className={styles.advantages}>
                     <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
+                      Luxury Limousine Selection
                     </span>
                     <span className={styles.advantage}>
-                      High Safety and Nurity
+                      High Safety and Purity
                     </span>
                     <span className={styles.advantage}>
                       Fixed Price & Bonus System
@@ -161,7 +161,7 @@ const GardeningPage: FC = () => {
                       Clean, Polite & Knowledgeable
                     </span>
                     <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
+                      Luxury Limousine Selection
                     </span>
                   </div>
                 </div>
@@ -187,10 +187,10 @@ const GardeningPage: FC = () => {
                   </div>
                   <div className={styles.advantages}>
                     <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
+                      Luxury Limousine Selection
                     </span>
                     <span className={styles.advantage}>
-                      High Safety and Nurity
+                      High Safety and Purity
                     </span>
                     <span className={styles.advantage}>
                       Fixed Price & Bonus System
@@ -202,7 +202,7 @@ const GardeningPage: FC = () => {
                       Clean, Polite & Knowledgeable
                     </span>
                     <span className={styles.advantage}>
-                      Luxury Limousine Selectiont
+                      Luxury Limousine Selection
                     </span>
                   </div>
                 </div>
