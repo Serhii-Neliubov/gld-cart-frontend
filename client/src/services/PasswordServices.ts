@@ -29,11 +29,7 @@ export class PasswordServices{
         }
     }
 
-    static async changeOldPassword(newPassword: string,
-                                   oldPassword: string,
-                                   email: string | undefined,
-                                   confirmPassword: string,
-    ) {
+    static async changeOldPassword(newPassword: string, oldPassword: string, email: string | undefined, confirmPassword: string,) {
         try {
             if (newPassword == confirmPassword) {
                 await $api.post(
@@ -54,4 +50,5 @@ export class PasswordServices{
             return { success: false };
         }
     }
+
 }

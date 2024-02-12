@@ -323,6 +323,7 @@ export const vendorRoutes: IRoutes[] = [
 
 export const noAuthRotes: IRoutes[] = [
   { component: Home, path: "/" },
+  { component: CleaningPage, path: "/cleaning-page" },
   { component: RentingElectronicsPage, path: "/renting-electronics" },
   { component: RegisterAsPage, path: "/user-type-page" },
   { component: Renting, path: "/renting" },

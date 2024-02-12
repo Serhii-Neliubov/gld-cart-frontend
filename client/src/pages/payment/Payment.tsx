@@ -1,20 +1,14 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
 import { clearModalActiveParams } from "./PaymentPage.tsx";
 import Footer from "../../components/Footer/Footer.tsx";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const Payment: FC = () => {
-  const [modalActive, setModalActive] = useState<{
-    google: boolean;
-    apple: boolean;
-    credit: boolean;
-    delivery: boolean;
-  }>(clearModalActiveParams);
+  const [modalActive, setModalActive] = useState(clearModalActiveParams);
 
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+  useDefaultScrollPosition();
 
   return (
     <React.Fragment>

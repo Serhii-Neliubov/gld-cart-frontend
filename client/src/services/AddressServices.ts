@@ -1,4 +1,4 @@
-import { AxiosResponse } from "axios";
+import {AxiosError, AxiosResponse} from "axios";
 import $api from "../lib/http.ts";
 import toast from "react-hot-toast";
 
@@ -31,7 +31,6 @@ export default class AddressServices {
 
             return { success: false };
         }
-
     }
 
     static async changeAddress(
@@ -53,14 +52,19 @@ export default class AddressServices {
                     ...addressData
                 },
             );
+
             toast.success("Address changed successfully");
+
             return { success: true };
-        } catch (error: any) {
-            if (error.response && error.response.data && error.response.data.message) {
-                toast.error(error.response.data.message);
+        } catch (err: unknown) {
+            const error = err as AxiosError;
+
+            if (error.message) {
+                toast.error(error.message);
             } else {
                 toast.error("An error occurred while changing the address");
             }
+
             return { success: false };
         }
     }

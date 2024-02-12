@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const HelpAndSupport: FC = () => {
-
   useDefaultScrollPosition();
 
   return (

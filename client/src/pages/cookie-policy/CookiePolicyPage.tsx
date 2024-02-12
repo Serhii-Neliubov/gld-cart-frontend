@@ -7,7 +7,6 @@ import { CookiePolicyData } from "../../data/publicBuyerRules/CookiePolicyData.t
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const CookiePolicyPage: FC = () => {
-  
   useDefaultScrollPosition();
 
   return (

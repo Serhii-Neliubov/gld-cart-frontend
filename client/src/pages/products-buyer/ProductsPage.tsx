@@ -1,7 +1,8 @@
 import styles from "./ProductsPage.module.scss";
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer.tsx";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const categories = [
   { link: '/products/beauty-of-skin', title: "Beauty of Skin", img: "Categories/img1.png", count: "2 products" },
@@ -52,10 +53,7 @@ const categories = [
 ];
 
 const ProductsPage: FC = () => {
-
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+  useDefaultScrollPosition();
 
   return (
     <React.Fragment>

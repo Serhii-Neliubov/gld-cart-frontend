@@ -1,10 +1,11 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import Footer from "../../components/Footer/Footer.tsx";
 import {useTranslation} from "react-i18next";
 import './Home.scss'
 import { SavedItem } from "./components/SavedItem.tsx";
 import { CompaniesList } from "./components/CompaniesList.tsx";
 import { BestSellings} from "./components/BestSellings.tsx";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const Home: FC = () => {
     const { t } = useTranslation();
@@ -40,9 +41,7 @@ const Home: FC = () => {
         },
     ];
 
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+    useDefaultScrollPosition();
 
   return (
     <React.Fragment>

@@ -1,11 +1,10 @@
 import Footer from "../../components/Footer/Footer.tsx";
 import styles from "./PrivacyPolicyPage.module.scss";
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const PrivacyPolicyPage: FC = () => {
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+  useDefaultScrollPosition();
 
   return (
     <React.Fragment>

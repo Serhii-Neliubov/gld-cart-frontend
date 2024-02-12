@@ -41,7 +41,7 @@ export default function Product({id, image, title, price_day, price_week, price_
                 <div className={styles.total_price}>
                     <h3>Total Rental Price</h3>
                     <p>Incl. taxes</p>
-                    <span>${total_price}</span>
+                    <span>${total_price.toFixed(0)}</span>
                 </div>
                 <button onClick={() => navigate(`/renting-car/${id}`)}>Reserve</button>
             </div>

@@ -1,11 +1,11 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import Footer from "../../../components/Footer/Footer.tsx";
 import styles from "./RentingCarPage.module.scss";
 import CarList from "./components/CarList.tsx";
 
 const RentingCarPage: FC = () => {
   return (
-    <>
+    <React.Fragment>
       <div className={styles.body}>
         <div className="__container">
           <h1 className={styles.title}>Rental Listings</h1>
@@ -56,7 +56,7 @@ const RentingCarPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

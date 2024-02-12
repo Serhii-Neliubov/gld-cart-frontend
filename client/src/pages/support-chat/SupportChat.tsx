@@ -36,9 +36,8 @@ export const SupportChat = () => {
                                     <div className={styles.message}>{message}</div>
                                 )}
                             </div>
-                        </div>
-                            :
-                            <div className={styles.noActiveChatBox}>
+                        </div> :
+                        <div className={styles.noActiveChatBox}>
                                 <h1>How can I help you?</h1>
                                 <div className={styles.questionBoxes}>
                                     <div className={styles.questionBoxesColumn}>
@@ -83,7 +82,7 @@ export const SupportChat = () => {
                                     </div>
                                 </div>
                             </div>
-                            }
+                    }
                         </div>
                         <div className={styles.chatAreaInput}>
                         <button>

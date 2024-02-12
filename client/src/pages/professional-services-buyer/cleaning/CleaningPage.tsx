@@ -1,11 +1,11 @@
 import Footer from "../../../components/Footer/Footer.tsx";
 import styles from "./CleaningPage.module.scss";
-import { FC } from "react";
+import React, { FC } from "react";
 import {CleaningList} from "./components/CleaningList.tsx";
 
 const CleaningPage: FC = () => {
   return (
-    <>
+    <React.Fragment>
       <div className={styles.body}>
         <div className="__container">
           <h1 className={styles.title}>Rental Listings</h1>
@@ -56,7 +56,7 @@ const CleaningPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

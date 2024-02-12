@@ -2,25 +2,24 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
 import BgWithParticles from "../../components/BgWithParticles/BgWithParticles.tsx";
-import { useEffect } from "react";
 import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/userDataSlice";
 import AuthService from "../../services/AuthService.ts";
+import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const LoginPage = () => {
-  const [isEmptyEmail, setIsEmptyEmail] = useState<boolean>(false);
+  const [isEmptyEmail, setIsEmptyEmail] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
-  const [userData, setUserData] = useState<{ email: string; password: string }>(
+  useDefaultScrollPosition();
+
+  const [userData, setUserData] = useState(
     {
       email: "",
       password: "",
     }
   );
 
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div className={styles.body}>

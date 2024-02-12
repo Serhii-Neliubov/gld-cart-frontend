@@ -1,11 +1,11 @@
 import Footer from "../../../components/Footer/Footer.tsx";
 import styles from "./RentingElectronicsPage.module.scss";
-import { FC } from "react";
+import React, { FC } from "react";
 import ElectronicsList from "./components/ElectronicsList.tsx";
 
 const RentingElectronicsPage: FC = () => {
   return (
-    <>
+    <React.Fragment>
       <div className={styles.body}>
         <div className="__container">
           <h1 className={styles.title}>Rental Listings</h1>
@@ -24,23 +24,23 @@ const RentingElectronicsPage: FC = () => {
                 </div>
                 <div className={styles.filter_blocks}>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-5.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-5.svg" alt="Img" />
                     <p>Select Location</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-1.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-1.svg" alt="Img" />
                     <p>Pik-up Date</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-2.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-2.svg" alt="Img" />
                     <p>Pik-up Time</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-3.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-3.svg" alt="Img" />
                     <p>Drop-off Date</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="RentingCar/Vector-4.svg" alt="Img" />
+                    <img src="/RentingCar/Vector-4.svg" alt="Img" />
                     <p>Drop-off Time</p>
                   </button>
                 </div>
@@ -56,7 +56,7 @@ const RentingElectronicsPage: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 };
 
