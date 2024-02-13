@@ -13,10 +13,10 @@ export const ShoppingCartWindow = ({cartItems}: ShoppingCartWindow) => {
     const user = useSelector(userDataSelector);
     const removeCartItemHandler = async (itemId: string) => {
         try {
-            await $api.delete(`${API_URL}/cart/delete-item`, {
+            await $api.delete(`${API_URL}/cart/remove-item`, {
                 params: {
                     userId: user.id,
-                    itemId: itemId
+                    productId: itemId
                 }
             });
         } catch (error) {
