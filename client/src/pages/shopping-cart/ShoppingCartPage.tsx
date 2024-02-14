@@ -37,7 +37,8 @@ const ShoppingCartPage: FC = () => {
     const getCartItems = async () => {
         try {
             const response = await $api.get(`${API_URL}/cart/user/${user.id}`);
-            setCartItems(response.data.items);
+            setCartItems(response.data);
+            console.log(response.data)
             setLoading(false);
         } catch (error) {
             console.error("Error fetching cart items:", error);
