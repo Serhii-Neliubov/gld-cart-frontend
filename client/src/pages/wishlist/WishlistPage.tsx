@@ -38,7 +38,7 @@ const WishlistPage: FC = () => {
     try {
       const response = await $api.get(`${API_URL}/wishlist/${user.id}`);
       setWishlistItems(response.data.items);
-      console.log(response.data)
+      console.log(response.data.items)
       setLoading(false);
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -57,8 +57,8 @@ const WishlistPage: FC = () => {
           </div>
           {loading ? (
             <p>Loading...</p>
-          ) : wishlistItems.length ? (
-            <WishlistWindow wishlistItems={wishlistItems}/>
+          ) : wishlistItems?.length ? (
+            <WishlistWindow setWishlistItems={setWishlistItems} wishlistItems={wishlistItems}/>
           ) : (
             <NoItems title="No Cart Items Found" />
           )}

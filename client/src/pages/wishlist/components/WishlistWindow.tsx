@@ -7,9 +7,10 @@ import {userDataSelector} from "../../../redux/slices/userDataSlice.ts";
 
 type WishlistWindowProps = {
     wishlistItems: wishlistItems[]
+    setWishlistItems: (wishlistItems: wishlistItems[]) => void
 }
 
-export const WishlistWindow = ({wishlistItems}: WishlistWindowProps) => {
+export const WishlistWindow = ({wishlistItems, setWishlistItems}: WishlistWindowProps) => {
     const user = useSelector(userDataSelector);
 
     const addToCartHandler = async(id: string) => {
@@ -19,6 +20,17 @@ export const WishlistWindow = ({wishlistItems}: WishlistWindowProps) => {
                 productId: id,
             }
         });
+    }
+
+    const removeWishlistItemHandler = async (itemId: string) => {
+        const response = await $api.delete(`${API_URL}/wishlist`, {
+            data: {
+                userId: user.id,
+                productId: itemId,
+            }
+        });
+
+        setWishlistItems(response.data.items);
     }
 
     return (
@@ -32,7 +44,7 @@ export const WishlistWindow = ({wishlistItems}: WishlistWindowProps) => {
                 </div>
                 <div className={styles.productList}>
                     {wishlistItems.map((item: wishlistItems) => {
-                        return <div key={item.productId._id} className={styles.productContent}>
+                        return <div key={item._id} className={styles.productContent}>
                             <div className={styles.productInfo}>
                                 <img alt='' src='/ShoppingCard/product.png'/>
                                 <span>{item.productId.product_name}</span>
@@ -40,7 +52,7 @@ export const WishlistWindow = ({wishlistItems}: WishlistWindowProps) => {
                             <span className={styles.productPrice}>$500.00</span>
                             <button onClick={() => addToCartHandler(item.productId._id)} className={styles.addToCart}>Add to Cart</button>
                             <div className={styles.removeProduct}>
-                                <button>&times; Remove</button>
+                                <button onClick={() => removeWishlistItemHandler(item.productId._id)}>&times; Remove</button>
                             </div>
                         </div>
                     })}
