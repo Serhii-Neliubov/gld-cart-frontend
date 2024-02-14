@@ -5,11 +5,10 @@ import { FC } from "react";
 import NoItems from "../../components/NoItems/NoItems.tsx";
 import { WishlistWindow } from './components/WishlistWindow.tsx';
 import $api, {API_URL} from "../../lib/http.ts";
-import {ShoppingCartWindow} from "../shopping-cart/components/ShoppingCartWindow.tsx";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "../../redux/slices/userDataSlice.ts";
 
-type wishlistItems = {
+export type wishlistItems = {
   "productId": {
     "reviews": string[],
     "_id": string,

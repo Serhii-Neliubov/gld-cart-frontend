@@ -37,7 +37,7 @@ const ShoppingCartPage: FC = () => {
     const getCartItems = async () => {
         try {
             const response = await $api.get(`${API_URL}/cart/user/${user.id}`);
-            setCartItems(response.data);
+            setCartItems(response.data.items);
             console.log(response.data)
             setLoading(false);
         } catch (error) {
@@ -57,8 +57,8 @@ const ShoppingCartPage: FC = () => {
           </div>
             {loading ? (
                 <p>Loading...</p>
-            ) : cartItems.length ? (
-                <ShoppingCartWindow cartItems={cartItems} />
+            ) : cartItems?.length ? (
+                <ShoppingCartWindow setCartItems={setCartItems} cartItems={cartItems} />
             ) : (
                 <NoItems title="No Cart Items Found" />
             )}

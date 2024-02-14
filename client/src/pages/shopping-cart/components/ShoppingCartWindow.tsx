@@ -6,19 +6,22 @@ import {useSelector} from "react-redux";
 import {userDataSelector} from "../../../redux/slices/userDataSlice.ts";
 
 interface ShoppingCartWindow{
-    cartItems: cartItem[] | undefined
+    cartItems: cartItem[] | undefined,
+    setCartItems: (cartItems: cartItem[]) => void,
 }
 
-export const ShoppingCartWindow = ({cartItems}: ShoppingCartWindow) => {
+export const ShoppingCartWindow = ({cartItems, setCartItems}: ShoppingCartWindow) => {
     const user = useSelector(userDataSelector);
     const removeCartItemHandler = async (itemId: string) => {
         try {
-            await $api.delete(`${API_URL}/cart/remove-item`, {
-                params: {
+            const response = await $api.delete(`${API_URL}/cart/remove-item`, {
+                data: {
                     userId: user.id,
                     productId: itemId
                 }
             });
+
+            setCartItems(response.data.items);
         } catch (error) {
             console.error("An error occurred while removing item from cart:", error);
         }
@@ -47,7 +50,7 @@ export const ShoppingCartWindow = ({cartItems}: ShoppingCartWindow) => {
                                 <button>+</button>
                             </div>
                             <div className={styles.removeProduct}>
-                                <button onClick={() => removeCartItemHandler(item._id)}>&times; Remove</button>
+                                <button onClick={() => removeCartItemHandler(item.productId._id)}>&times; Remove</button>
                             </div>
                         </div>
                     })}
