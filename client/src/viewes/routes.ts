@@ -18,7 +18,6 @@ import NotFound from "../viewes/not-found/NotFound";
 import PaymentPage from "../viewes/payment/PaymentPage";
 import RegisterAsPage from "../viewes/register/RegisterAsPage";
 import RegisterPage from "../viewes/register/register-form/RegisterPage";
-import SubPlansPage from "../viewes/sub-plans/SubPlansPage";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
 import Renting from "../viewes/renting-buyer/Renting";
 import RentingCarPage from "../viewes/renting-buyer/car/RentingCarPage";
@@ -33,7 +32,6 @@ import GardeningPage from "../viewes/professional-services-buyer/gardening/Garde
 import RepairingPage from "../viewes/professional-services-buyer/repairing/RepairingPage";
 import TrackOrder from "../viewes/track-order/TrackOrder";
 import RentingHousePage from "../viewes/renting-buyer/house/RentingHousePage";
-import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
 import {NewVehicle} from "./renting-vendor/pages/vehicle/NewVehicle.tsx";
 import {NewElectronics} from "./renting-vendor/pages/electronics/NewElectronics.tsx";
 import {NewHouses} from "./renting-vendor/pages/houses/NewHouses.tsx";
@@ -114,7 +112,6 @@ export const buyerRoutes: IRoutes[] = [
   { component: TrackOrder, path: "/track-an-order" },
   { component: Renting, path: "/renting" },
   { component: ContactUsPage, path: "/contact-us" },
-  { component: JobApplicationForm, path: "/professional-services/application-job-form" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
   { component: CookiePolicyPage, path: "/cookie-policy" },
   { component: ShippingPolicyPage, path: "/shipping-policy" },
@@ -176,7 +173,6 @@ export const vendorRoutes: IRoutes[] = [
   { component: TermsConditionsPage, path: "/terms-and-conditions" },
   { component: FaqsPage, path: "/faq-s" },
   { component: NotFound, path: "/not-found" },
-  { component: SubPlansPage, path: "/sub-plans" },
   { component: PaymentPage, path: "/payment" },
   { component: SendMessagePage, path: "/send-message" },
   { component: RentingProductsPage, path: "/products-category-page" },

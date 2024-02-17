@@ -17,16 +17,28 @@ const App: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-      dispatch(checkAuth());
+    dispatch(checkAuth());
   }, [dispatch]);
 
-  if (!user.type) {
-    return (
-      <BrowserRouter>
-        <Header />
-        <Label />
-        <Routes>
-          {noAuthRotes.map((route) => {
+  return (
+    <BrowserRouter>
+      <Header/>
+      <Label/>
+      <Routes>
+        {!user.type &&
+          noAuthRotes.map((route) => {
+            return (
+              <Route
+                Component={route.component}
+                path={route.path}
+                key={route.path}
+              />
+            )
+          })
+        }
+
+        {user.type === 'Buyer' &&
+          buyerRoutes.map((route) => {
             return (
               <Route
                 Component={route.component}
@@ -34,51 +46,22 @@ const App: FC = () => {
                 key={route.path}
               />
             );
-          })}
-        </Routes>
-      </BrowserRouter>
-    );
-  }
+          })
+        }
 
-  if (user.type === "Vendor") {
-    return (
-      <BrowserRouter>
-        <Header />
-        <Label />
-        <Routes>
-          {vendorRoutes.map((route) => {
+        {user.type === 'Vendor' &&
+          vendorRoutes.map((route) => {
             return (
               <Route
                 Component={route.component}
                 path={route.path}
                 key={route.path}
               />
-            );
-          })}
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-
-  if (user.type === "Buyer") {
-    return (
-      <BrowserRouter>
-        <Header />
-        <Label />
-        <Routes>
-          {buyerRoutes.map((route) => {
-            return (
-              <Route
-                Component={route.component}
-                path={route.path}
-                key={route.path}
-              />
-            );
-          })}
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-};
-
+            )
+          })
+        }
+      </Routes>
+    </BrowserRouter>
+  );
+}
 export default App;
