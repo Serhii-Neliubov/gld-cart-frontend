@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { vendorProductInfo } from "../../store/slices/vendorProductInfoSlice.ts";
+import { vendorProductInfo } from "@/store/slices/vendorProductInfoSlice.ts";
 
 const useCategoryRedirect = (
   category: string,

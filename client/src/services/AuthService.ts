@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import $api, {API_URL} from "../utils/interceptors/interceptors.ts";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 export default class AuthService {
   static async login(email: string, password: string): Promise<AxiosResponse> {

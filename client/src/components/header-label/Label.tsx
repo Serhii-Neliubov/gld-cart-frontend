@@ -4,9 +4,9 @@ import "./Label.scss";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { FC } from "react";
-import {RootState} from "../../store/store.ts";
-import {selectIsAuth, userDataSelector} from "../../store/slices/userDataSlice.ts";
-import IUser from "../../utils/models/IUser.ts";
+import {RootState} from "@/store/store.ts";
+import {selectIsAuth, userDataSelector} from "@/store/slices/userDataSlice.ts";
+import IUser from "@/utils/models/IUser.ts";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 

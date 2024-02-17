@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
-import "./index.scss";
+import "@/index.scss";
 import { Provider } from "react-redux";
-import { store } from "./store/store.ts";
-import "./i18n";
+import { store } from "@/store/store.ts";
+import "@/i18n";
 import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
-import App from "./App.tsx";
+import App from "@/App.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <Suspense fallback={<div>Loading...</div>}>

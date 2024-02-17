@@ -5,9 +5,9 @@ import RentingStage from "../renting-stages/RentingStage";
 import {useDispatch} from "react-redux";
 import {
     resetVendorProductInfo,
-} from "../../store/slices/vendorProductInfoSlice.ts";
-import {IVendorProductData} from "../../utils/models/IVendorProductData.tsx";
-import $api, {API_URL} from "../../utils/interceptors/interceptors.ts";
+} from "@/store/slices/vendorProductInfoSlice.ts";
+import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 type ItemPublishPageProps = {
     category: string,
@@ -52,7 +52,7 @@ const ItemPublishPage = ({category, formData, link}: ItemPublishPageProps) => {
       <RentingStage coloredStage={5} />
       <div className={styles.content}>
         <Link className={styles.close_button} to="/">
-          <img src="../../assets/ItemPublishPage/close-button.svg" alt="" />
+          <img src="@/assets/images/ItemPublishPage/close-button.svg" alt="" />
         </Link>
         <h1 className={styles.title}>
           Your {category} Renting Form has <br /> been Successfully Completed

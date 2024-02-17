@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import IUser from "../../utils/models/IUser";
-import AuthService from "../../services/AuthService";
+import IUser from "@/utils/models/IUser";
+import AuthService from "@/services/AuthService";
 import axios from "axios";
-import { AuthResponse } from "../../utils/models/response/AuthResponse";
-import { RootState } from "../store";
+import { AuthResponse } from "@/utils/models/response/AuthResponse.ts";
+import { RootState } from "@/store/store.ts";
 import toast from "react-hot-toast";
-import {API_URL} from "../../utils/interceptors/interceptors.ts";
+import {API_URL} from "@/utils/interceptors/interceptors.ts";
 const initialState = {
     user: {} as IUser,
     isAuth: false,
@@ -116,7 +116,7 @@ const authDataSlice = createSlice({
             });
     },
 });
-export const { setAuth, setUser, logout } = authDataSlice.actions;
+export const { logout } = authDataSlice.actions;
 export default authDataSlice.reducer;
 
 export const selectIsAuth = (state: RootState) => state.userDataSlice.isAuth;
