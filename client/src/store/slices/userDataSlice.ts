@@ -5,7 +5,7 @@ import axios from "axios";
 import { AuthResponse } from "../../models/response/AuthResponse";
 import { RootState } from "../store";
 import toast from "react-hot-toast";
-import {API_URL} from "../../lib/interceptors.ts";
+import {API_URL} from "../../utils/interceptors.ts";
 const initialState = {
     user: {} as IUser,
     isAuth: false,

@@ -6,7 +6,7 @@ import NoItems from "../../components/NoItems/NoItems.tsx";
 import {ShoppingCartWindow} from "./components/ShoppingCartWindow.tsx";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "../../store/slices/userDataSlice.ts";
-import $api, {API_URL} from "../../lib/interceptors.ts";
+import $api, {API_URL} from "../../utils/interceptors.ts";
 
 export type cartItem = {
     "productId": {

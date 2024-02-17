@@ -13,13 +13,13 @@ const BgWithParticles = ({ children }: LoginProps) => {
           <div className={styles.content}>{children}</div>
           <div className={styles.decoration}>
             <div className={styles.first_elem}>
-              <img src="/Login/decor1.png" alt="Icon" />
+              <img src="../../assets/Login/decor1.png" alt="Icon" />
             </div>
             <div className={styles.second_elem}>
-              <img src="/Login/decor2.png" alt="Icon" />
+              <img src="../../assets/Login/decor2.png" alt="Icon" />
             </div>
             <div className={styles.third_elem}>
-              <img src="/Login/decor3.png" alt="Icon" />
+              <img src="../../assets/Login/decor3.png" alt="Icon" />
             </div>
           </div>
         </div>

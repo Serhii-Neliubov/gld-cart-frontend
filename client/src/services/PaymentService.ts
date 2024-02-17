@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import $api from "../lib/interceptors.ts";
+import $api from "../utils/interceptors.ts";
 
 export default class PaymentService {
 

@@ -1,0 +1,46 @@
+.body {
+  max-width: 1060px;
+  padding-top: 46px;
+  padding-bottom: 0;
+}
+
+.desc {
+  color: #000;
+  font-size: 18px;
+  line-height: 175%;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #000;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.text_container {
+  line-height: 150%;
+}
+
+.text {
+  margin-top: 20px;
+  display: flex;
+  font-size: 18px;
+  flex-direction: column;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+.text li {
+  padding-left: 20px;
+  position: relative;
+}
+.text li::before {
+  content: "";
+  top: 10px;
+  left: 0;
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #000;
+}/*# sourceMappingURL=ShippingPolicyPage.module.css.map */

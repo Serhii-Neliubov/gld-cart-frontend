@@ -7,7 +7,7 @@ import {
     resetVendorProductInfo,
 } from "../../store/slices/vendorProductInfoSlice.ts";
 import {IVendorProductData} from "../../models/IVendorProductData.tsx";
-import $api, {API_URL} from "../../lib/interceptors.ts";
+import $api, {API_URL} from "../../utils/interceptors.ts";
 
 type ItemPublishPageProps = {
     category: string,
@@ -52,7 +52,7 @@ const ItemPublishPage = ({category, formData, link}: ItemPublishPageProps) => {
       <RentingStage coloredStage={5} />
       <div className={styles.content}>
         <Link className={styles.close_button} to="/">
-          <img src="/ItemPublishPage/close-button.svg" alt="" />
+          <img src="../../assets/ItemPublishPage/close-button.svg" alt="" />
         </Link>
         <h1 className={styles.title}>
           Your {category} Renting Form has <br /> been Successfully Completed

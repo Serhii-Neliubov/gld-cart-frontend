@@ -4,21 +4,21 @@ import {BestSellingItems} from "./BestSellingItem.tsx";
 
 const bestSellingItems: BestSellingItems[] = [
     {
-        image: 'HomePage/best-sellings/best1.png',
+        image: '../../../src/assets/HomePage/best-sellings/best1.png',
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',
         discount_percent: '43',
     },
     {
-        image: 'HomePage/best-sellings/best1.png',
+        image: '../../../src/assets/HomePage/best-sellings/best1.png',
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',
         discount_percent: '43',
     },
     {
-        image: 'HomePage/best-sellings/best1.png',
+        image: '../../../src/assets/HomePage/best-sellings/best1.png',
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',
@@ -41,8 +41,9 @@ export const BestSellings = () => {
                     <button className="blocks__arrow blocks__arrow_left"></button>
                     <div className="blocks__items">
 
-                        {bestSellingItems.map((item) => {
+                        {bestSellingItems.map((item, index) => {
                             return <BestSellingItems
+                                key={index}
                                 image={item.image}
                                 price={item.price}
                                 title={item.title}

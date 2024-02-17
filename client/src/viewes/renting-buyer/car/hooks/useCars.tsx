@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import $api from "../../../../lib/interceptors.ts";
+import $api from "../../../../utils/interceptors.ts";
 
 type car = {
     _id: string,

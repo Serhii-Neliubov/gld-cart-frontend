@@ -90,16 +90,16 @@ const Footer: FC = () => {
               <h3 className="footer__links-title">social links</h3>
               <div className="footer__social-items">
                 <a href="#" className="footer__social-item">
-                  <img src="/HomePage/footer/social-icon1.svg" alt="Social" />
+                  <img src="../../../src/assets/HomePage/footer/social-icon1.svg" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="/HomePage/footer/social-icon2.png" alt="Social" />
+                  <img src="../../../src/assets/HomePage/footer/social-icon2.png" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="/HomePage/footer/social-icon3.svg" alt="Social" />
+                  <img src="../../../src/assets/HomePage/footer/social-icon3.svg" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="/HomePage/footer/social-icon4.svg" alt="Social" />
+                  <img src="../../../src/assets/HomePage/footer/social-icon4.svg" alt="Social" />
                 </a>
               </div>
             </div>
@@ -107,14 +107,14 @@ const Footer: FC = () => {
               <h3 className="footer__links-title">Download App</h3>
               <div className="footer__download-services">
                 <a href="#" className="footer__download-qr">
-                  <img src="/HomePage/footer/qr.jpg" alt="Image" />
+                  <img src="../../../src/assets/HomePage/footer/qr.jpg" alt="Image" />
                 </a>
                 <div className="footer__download-stores">
                   <a className="footer__download-store" href="#">
-                    <img src="/HomePage/footer/AppStore.png" alt="Image" />
+                    <img src="../../../src/assets/HomePage/footer/AppStore.png" alt="Image" />
                   </a>
                   <a className="footer__download-store" href="#">
-                    <img src="/HomePage/footer/GooglePlay.png" alt="Image" />
+                    <img src="../../../src/assets/HomePage/footer/GooglePlay.png" alt="Image" />
                   </a>
                 </div>
               </div>
@@ -128,13 +128,13 @@ const Footer: FC = () => {
             <div className="footer__trialshoopy">
               <h4 className="footer__trialshoopy-title">trialshoopy accepts</h4>
               <div className="footer__trialshoopy-items">
-                <img src="/HomePage/footer/cards/visa.png" alt="Visa" />
+                <img src="../../../src/assets/HomePage/footer/cards/visa.png" alt="Visa" />
                 <img
-                  src="/HomePage/footer/cards/mastercard.png"
+                  src="../../../src/assets/HomePage/footer/cards/mastercard.png"
                   alt="Master Card"
                 />
-                <img src="/HomePage/footer/cards/bhim.png" alt="BHIM UPI" />
-                <img src="/HomePage/footer/cards/r.png" alt=" R" />
+                <img src="../../../src/assets/HomePage/footer/cards/bhim.png" alt="BHIM UPI" />
+                <img src="../../../src/assets/HomePage/footer/cards/r.png" alt=" R" />
               </div>
             </div>
             <div className="footer__reserved">

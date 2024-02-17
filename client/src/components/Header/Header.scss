@@ -2,7 +2,6 @@
   position: relative;
   padding: 40px 0;
 }
-
 .header__container {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -115,7 +114,7 @@
 }
 
 .header__search-btn {
-  background-image: url("/HomePage/header/search-icon.svg");
+  background-image: url("../../assets/HomePage/header/search-icon.svg");
   width: 1.5rem;
   height: 1.5rem;
   background-size: cover;

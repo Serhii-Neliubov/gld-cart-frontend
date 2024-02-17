@@ -1,0 +1,389 @@
+.content{
+  padding: 70px 0;
+}
+
+.label{
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  & > span{
+    position: relative;
+
+    &:not(:last-child){
+      &::after{
+        content: '';
+        top: 5px;
+        right: -9px;
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: rgb(85, 88, 91);
+      }
+    }
+
+    &:not(:last-child){
+      color: rgb(85, 88, 91);
+      font-size: 16px;
+      font-weight: 400;
+      text-align: left;
+    }
+
+  }
+}
+
+.product{
+  display: flex;
+  justify-content: space-between;
+}
+
+.productInfo{
+  width: 467px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.productTitle{
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+
+  & > h1{
+    color: rgb(0, 0, 0);
+    font-size: 28px;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  & > p{
+    color: rgb(139, 139, 139);
+    font-size: 14.65px;
+    font-weight: 400;
+    text-align: left;
+  }
+}
+
+.inStock{
+  display: flex;
+  gap: 90px;
+  align-items: center;
+
+  & > div{
+    background: rgba(9, 137, 255, 0.06);
+
+    color: rgb(9, 137, 255);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: left;
+    padding: 10px 20px;
+  }
+}
+
+.description {
+  font-size: 15px;
+  text-wrap: normal;
+  word-wrap: break-word;
+}
+
+.price{
+  & > span{
+    color: rgb(1, 15, 28);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 26px;
+    text-align: left;
+  }
+  & > span:first-child{
+    color: rgb(118, 122, 125);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    text-decoration-line: line-through;
+  }
+}
+
+.colorsBox{
+  display: flex;
+  flex-direction: column;
+  & > p{
+    color: rgb(1, 15, 28);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+}
+.colors{
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+.colorCircle{
+  border-radius: 13px;
+  width: 26px;
+  height: 26px;
+  background: rgb(104, 143, 64);
+}
+
+.buyNow{
+  background: rgb(2, 160, 160);
+  padding: 15px 0;
+  color: white;
+}
+
+.actionButtons{
+  & > span{
+    color: rgb(1, 15, 28);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+  }
+}
+
+.flashSale{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  & > span{
+    color: rgb(0, 0, 0);
+    font-size: 17.05px;
+    font-weight: 500;
+    line-height: 27.71px;
+    text-align: center;
+  }
+
+  padding: 15px;
+  border: 1px solid rgb(236, 0, 0);
+  background-color: rgb(254, 247, 248);
+}
+
+.addToCart{
+  margin-top: 8px;
+  display: flex;
+  gap: 15px;
+
+  & > input{
+    padding: 10px 15px 10px 30px;
+    overflow: auto;
+    text-align: center;
+    background-color: rgb(243, 245, 246);
+    color: #000;
+  }
+
+  & > button{
+    border: 1px solid rgb(224, 226, 227);
+    padding: 10px 0;
+    width: 100%;
+  }
+}
+
+.addToWishlist{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  & > span:first-child{
+    background-repeat: no-repeat;
+    background-image: url("../../../assets/ProductPage/wishlistIcon.svg");
+  }
+  & > span{
+    padding-left: 20px;
+  }
+  & > span:last-child{
+    background-repeat: no-repeat;
+    background-image: url("../../../assets/ProductPage/askIcon.svg");
+  }
+
+  &::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    bottom: -20px;
+    left: 0;
+    height: 1px;
+    background-color: #E0E2E3;
+  }
+}
+
+.productSpecificDetails{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  & > span{
+    display: flex;
+    gap: 10px;
+
+    & > p{
+      color: #8B8B8B;
+    }
+  }
+}
+
+.returnTipText{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #55585B;
+}
+
+.socials{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guaranteedSafe{
+  background-color: #F3F5F6;
+  padding: 18px 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #55585B;
+}
+.bigImage{
+  max-height: 670px;
+  padding: 63px 25px;
+  border: 1px solid rgba(0,0,0,0.11);
+
+  & > img{
+    max-width: 470px;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.smallImages{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  & > img{
+    width: 80px;
+    height: 80px;
+    padding: 10px 15px;
+    border: 1px solid rgba(0,0,0,0.11);
+  }
+}
+.images{
+  display: flex;
+  gap: 8px;
+}
+
+.relatedProducts{
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  & > span{
+    text-align: center;
+    color: rgb(9, 137, 255);
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  & > h2{
+    text-align: center;
+    color: rgb(1, 15, 28);
+    font-size: 44px;
+    font-weight: 500;
+  }
+}
+.seeMoreBtn{
+  margin-left: 5px;
+  color: #1b6cd8;
+}
+
+.productInfoActionButtons{
+  margin: 60px 0;
+  justify-content: center;
+  display: flex;
+  gap: 30px;
+  position: relative;
+  &::after{
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #E0E2E3;
+  }
+
+
+}
+
+.productInfoActionButton{
+  color: rgb(160, 162, 164);
+
+  &_active{
+    position: relative;
+    color: black;
+
+    &::after{
+      position: absolute;
+      bottom: -20px;
+      z-index: 5;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+    }
+  }
+}
+
+.productInfoDescription{
+  word-break: break-word;
+}
+.relatedItems{
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+.relatedItem{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: start;
+  & > div{
+    border-radius: 14px;
+    display: flex;
+    background-color: rgb(238, 238, 238);
+    justify-content: center;
+    align-items: center;
+    padding: 42px 23px;
+    width: 240px;
+    height: 180px;
+  }
+
+  & > span{
+    color: rgb(28, 28, 28);
+    font-size: 19px;
+    font-weight: 600;
+  }
+
+  & > p{
+    color: rgb(96, 96, 96);
+    font-size: 17px;
+    box-sizing: border-box;
+    max-width: 240px;
+    word-break: break-word;
+  }
+
+  & > div > img{
+    height: 100%;
+  }
+
+  & > button{
+    padding: 12px 12px 12px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgb(34, 131, 220);
+    border-radius: 8px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}

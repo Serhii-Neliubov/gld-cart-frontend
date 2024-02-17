@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styles from './BeautyOfSkin.module.scss';
 import Footer from '../../../../components/Footer/Footer';
 import {useNavigate} from "react-router-dom";
-import $api, {API_URL} from "../../../../lib/interceptors.ts";
+import $api, {API_URL} from "../../../../utils/interceptors.ts";
 
 type product = {
     "reviews": [],
