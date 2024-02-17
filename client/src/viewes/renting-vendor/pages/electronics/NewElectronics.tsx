@@ -5,7 +5,7 @@ import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishP
 import {BasicInformation} from "./stages/BasicInformation.tsx";
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
-import {IVendorProductData} from "../../../../models/IVendorProductData.tsx";
+import {IVendorProductData} from "../../../../utils/models/IVendorProductData.tsx";
 
 export const NewElectronics = () => {
   const [stage, setStage] = useState(3);

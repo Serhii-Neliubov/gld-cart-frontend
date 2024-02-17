@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./SubPlansPage.module.scss";
-import { SubPlansData } from "../../data/SubPlansData";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "../../store/slices/userDataSlice";
 import PaymentService from "../../services/PaymentService.ts";
+import {SubPlansData} from "../../assets/data/SubPlansData.ts";
 
 export default function SubPlanList() {
   const user = useSelector(userDataSelector);

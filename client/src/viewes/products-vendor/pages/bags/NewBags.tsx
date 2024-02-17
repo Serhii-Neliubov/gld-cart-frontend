@@ -101,19 +101,19 @@ export const NewBags = () => {
               </span>
               <div className={styles.photoBlocks}>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/photo-and-video-icon.svg" alt="icon" />
+                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/photo-and-video-icon.svg" alt="icon" />
+                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/photo-and-video-icon.svg" alt="icon" />
+                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/photo-and-video-icon.svg" alt="icon" />
+                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/photo-and-video-icon.svg" alt="icon" />
+                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
               </div>
               <div className={styles.inputBlock}>

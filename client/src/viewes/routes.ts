@@ -31,7 +31,6 @@ import ProfServicesPage from "../viewes/professional-services-buyer/ProfServices
 import CleaningPage from "../viewes/professional-services-buyer/cleaning/CleaningPage";
 import GardeningPage from "../viewes/professional-services-buyer/gardening/GardeningPage";
 import RepairingPage from "../viewes/professional-services-buyer/repairing/RepairingPage";
-import RentingProfservicesPage from "../viewes/professional-services-vendor/RentingProfservicesPage.tsx";
 import TrackOrder from "../viewes/track-order/TrackOrder";
 import RentingHousePage from "../viewes/renting-buyer/house/RentingHousePage";
 import JobApplicationForm from "../components/JobApplicationForm/JobApplicationForm.tsx";
@@ -100,6 +99,7 @@ import {Earrings} from "./products-buyer/pages/Earrings/Earrings.tsx";
 import {DiscoverSkincare} from "./products-buyer/pages/DiscoverSkincare/DiscoverSkincare.tsx";
 import {ProductPage} from "./products-buyer/components/ProductPage.tsx";
 import {RentingProductPage} from "./renting-buyer/components/product-page/RentingProductPage.tsx";
+import RentingProfessionalServicesPage from "./professional-services-vendor/RentingProfessionalServicesPage.tsx";
 
 interface IRoutes {
   component: FC;
@@ -182,7 +182,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: RentingProductsPage, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
   { component: HelpAndSupport, path: "/help-and-support" },
-  { component: RentingProfservicesPage, path: "/professional-services" },
+  { component: RentingProfessionalServicesPage, path: "/professional-services" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   // Vehicles
   {

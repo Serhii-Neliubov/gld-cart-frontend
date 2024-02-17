@@ -6,7 +6,7 @@ import NoItems from "../../components/NoItems/NoItems.tsx";
 import { WishlistWindow } from './components/WishlistWindow.tsx';
 import {useSelector} from "react-redux";
 import {userDataSelector} from "../../store/slices/userDataSlice.ts";
-import $api, {API_URL} from "../../utils/interceptors.ts";
+import $api, {API_URL} from "../../utils/interceptors/interceptors.ts";
 
 export type wishlistItems = {
   "productId": {

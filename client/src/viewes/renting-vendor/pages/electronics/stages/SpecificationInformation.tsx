@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import styles from "../NewElectronics.module.scss";
-import {IVendorProductData} from "../../../../../models/IVendorProductData.tsx";
+import {IVendorProductData} from "../../../../../utils/models/IVendorProductData.tsx";
 
 type BasicInformationProps = {
     formData: IVendorProductData;

@@ -51,7 +51,7 @@ const Home: FC = () => {
                     <div className="shop-now__content">
                         <div className="shop-now__info">
                             <div className="shop-now__icon">
-                                <img src="../../../src/assets/apple-icon.png" alt="Icon"/>
+                                <img src="../../assets/images/apple-icon.png" alt="Icon"/>
                             </div>
                             <div className="shop-now__description">iPhone 14 {t("series")}</div>
                         </div>
@@ -59,7 +59,7 @@ const Home: FC = () => {
                         <button className="shop-now__button">{t("Shop now")}</button>
                     </div>
                     <div className="shop-now__image">
-                        <img src="../../../src/assets/iphone-img.png" alt="Image"/>
+                        <img src="../../assets/images/iphone-img.png" alt="Image"/>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@ const Home: FC = () => {
                     <div className="advantages__items">
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="../../../src/assets/HomePage/advantages/delivery.svg" alt="Icon"/>
+                                <img src="../../assets/images/HomePage/advantages/delivery.svg" alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Free Delivery</h4>
@@ -191,7 +191,7 @@ const Home: FC = () => {
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="../../../src/assets/HomePage/advantages/refund.svg" alt="Icon"/>
+                                <img src="../../assets/images/HomePage/advantages/refund.svg" alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Return & Refund</h4>
@@ -200,7 +200,7 @@ const Home: FC = () => {
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="../../../src/assets/HomePage/advantages/discount.svg" alt="Icon"/>
+                                <img src="../../assets/images/HomePage/advantages/discount.svg" alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Member Discount</h4>
@@ -209,7 +209,7 @@ const Home: FC = () => {
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="../../../src/assets/HomePage/advantages/support.svg" alt="Icon"/>
+                                <img src="../../assets/images/HomePage/advantages/support.svg" alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Support 24/7</h4>

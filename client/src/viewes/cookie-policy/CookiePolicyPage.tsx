@@ -3,8 +3,8 @@ import Footer from "../../components/Footer/Footer.tsx";
 import TextSection from "../../components/TextSection/TextSection.tsx";
 import styles from "./CookiePolicyPage.module.scss";
 import { FC } from "react";
-import { CookiePolicyData } from "../../data/publicBuyerRules/CookiePolicyData.ts";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import {CookiePolicyData} from "../../assets/data/publicBuyerRules/CookiePolicyData.ts";
 
 const CookiePolicyPage: FC = () => {
   useDefaultScrollPosition();

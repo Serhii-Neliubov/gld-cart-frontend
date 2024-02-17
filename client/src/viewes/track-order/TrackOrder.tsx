@@ -2,9 +2,9 @@ import React, { FC, useState } from "react";
 import Footer from "../../components/Footer/Footer.tsx";
 import styles from "./TrackOrder.module.scss";
 import { Link } from "react-router-dom";
-import { statuses } from "../../data/TrackOrderStatuses";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 import { useInput } from "../../hooks/useInput/useInput.tsx";
+import { statuses } from "../../assets/data/TrackOrderStatuses.ts";
 
 const TrackOrder: FC = () => {
   useDefaultScrollPosition();

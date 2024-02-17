@@ -2,7 +2,7 @@ import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import styles from "../NewVehicle.module.scss";
 import {useSelector} from "react-redux";
 import {vendorProductInfo} from "../../../../../store/slices/vendorProductInfoSlice.ts";
-import {IVendorProductData} from "../../../../../models/IVendorProductData.tsx";
+import {IVendorProductData} from "../../../../../utils/models/IVendorProductData.tsx";
 
 type BasicInformationProps = {
     formData: IVendorProductData;

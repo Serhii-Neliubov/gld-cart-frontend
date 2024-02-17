@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import $api from "../utils/interceptors.ts";
+import $api from "../utils/interceptors/interceptors.ts";
 export default class ShoppingCart {
     static async sendShoppingCartItems(
         title: string,

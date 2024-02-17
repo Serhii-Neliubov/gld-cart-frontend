@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { FC } from "react";
 import {RootState} from "../../store/store.ts";
 import {selectIsAuth, userDataSelector} from "../../store/slices/userDataSlice.ts";
-import IUser from "../../models/IUser.ts";
+import IUser from "../../utils/models/IUser.ts";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
@@ -95,13 +95,13 @@ const Label: FC = () => {
                 to={!isAuth ? "/login" : "/wishlist"}
                 className="label__like-btn"
               >
-                <img src="../../../src/assets/like-icon.svg" alt="Like icon" />
+                <img src="../../assets/images/like-icon.svg" alt="Like icon" />
               </Link>
               <Link
                 to={!isAuth ? "/login" : "/shopping-cart"}
                 className="label__trash-btn"
               >
-                <img src="../../../src/assets/trash-icon.svg" alt="Trash icon" />
+                <img src="../../assets/images/trash-icon.svg" alt="Trash icon" />
               </Link>
             </React.Fragment>
           )}
@@ -109,7 +109,7 @@ const Label: FC = () => {
             to={isAuth ? "/profile" : "/login"}
             className="label__profile-btn"
           >
-            <img src="../../../src/assets/profile-icon.svg" alt="Profile icon" />
+            <img src="../../assets/images/profile-icon.svg" alt="Profile icon" />
             <span>
               {user.name} {user.surname}
             </span>

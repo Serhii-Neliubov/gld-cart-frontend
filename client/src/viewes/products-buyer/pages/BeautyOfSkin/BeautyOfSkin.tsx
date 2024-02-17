@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styles from './BeautyOfSkin.module.scss';
 import Footer from '../../../../components/Footer/Footer';
 import {useNavigate} from "react-router-dom";
-import $api, {API_URL} from "../../../../utils/interceptors.ts";
+import $api, {API_URL} from "../../../../utils/interceptors/interceptors.ts";
 
 type product = {
     "reviews": [],
@@ -134,7 +134,7 @@ export const BeautyOfSkin = () => {
                                 <h5 className={styles.filterCategoryTitle}>Top Rated Products</h5>
                                 <div className={styles.topRatedProductsItems}>
                                     <div className={styles.topRatedProductsItem}>
-                                        <img src='../../../../assets/TopRatedProducts/headphones.png' alt='img'/>
+                                        <img src='../../../../assets/images/TopRatedProducts/headphones.png' alt='img'/>
                                         <div>
                                             <div className={styles.rating}>(rating)</div>
                                             <span>Headphones Wireless</span>
@@ -142,7 +142,7 @@ export const BeautyOfSkin = () => {
                                         </div>
                                     </div>
                                     <div className={styles.topRatedProductsItem}>
-                                        <img src='../../../../assets/TopRatedProducts/iphone12.png' alt='img'/>
+                                        <img src='../../../../assets/images/TopRatedProducts/iphone12.png' alt='img'/>
                                         <div>
                                             <div className={styles.rating}>(rating)</div>
                                             <span>Iphone 12 pro</span>
@@ -150,7 +150,7 @@ export const BeautyOfSkin = () => {
                                         </div>
                                     </div>
                                     <div className={styles.topRatedProductsItem}>
-                                        <img src='../../../../assets/TopRatedProducts/appleWatch.png' alt='img'/>
+                                        <img src='../../../../assets/images/TopRatedProducts/appleWatch.png' alt='img'/>
                                         <div>
                                             <div className={styles.rating}>(rating)</div>
                                             <span>Apple Watch Sport</span>
@@ -163,14 +163,14 @@ export const BeautyOfSkin = () => {
                                 <h6 className={styles.filterCategoryTitle}>Popular Brands</h6>
                                 <div className={styles.popularBrandsItems}>
                                     <div className={styles.popularBrandsColumn}>
-                                        <img src='../../../../assets/TopRatedProducts/img1.png' alt=''/>
-                                        <img src='../../../../assets/TopRatedProducts/img2.png' alt=''/>
-                                        <img src='../../../../assets/TopRatedProducts/img3.png' alt=''/>
+                                        <img src='../../../../assets/images/TopRatedProducts/img1.png' alt=''/>
+                                        <img src='../../../../assets/images/TopRatedProducts/img2.png' alt=''/>
+                                        <img src='../../../../assets/images/TopRatedProducts/img3.png' alt=''/>
                                     </div>
                                     <div className={styles.popularBrandsColumn}>
-                                        <img src='../../../../assets/TopRatedProducts/img4.png' alt=''/>
-                                        <img src='../../../../assets/TopRatedProducts/img5.png' alt=''/>
-                                        <img src='../../../../assets/TopRatedProducts/img6.png' alt=''/>
+                                        <img src='../../../../assets/images/TopRatedProducts/img4.png' alt=''/>
+                                        <img src='../../../../assets/images/TopRatedProducts/img5.png' alt=''/>
+                                        <img src='../../../../assets/images/TopRatedProducts/img6.png' alt=''/>
                                     </div>
                                 </div>
                             </div>
@@ -185,10 +185,10 @@ export const BeautyOfSkin = () => {
                         <div className={styles.actionButtons}>
                             <div>
                                 <button className={styles.defaultSortButton}>
-                                    <img src='../../../../assets/TopRatedProducts/defaultIcon.svg' alt=''/>
+                                    <img src='../../../../assets/images/TopRatedProducts/defaultIcon.svg' alt=''/>
                                 </button>
                                 <button className={styles.menuSortButton}>
-                                    <img src='../../../../assets/TopRatedProducts/menuSort.svg' alt=''/>
+                                    <img src='../../../../assets/images/TopRatedProducts/menuSort.svg' alt=''/>
                                 </button>
                             </div>
                             <p>Showing 1-12 of 37 results</p>
@@ -197,7 +197,7 @@ export const BeautyOfSkin = () => {
                                     <option>Default Sorting</option>
                                 </select>
                                 <button className={styles.filterButton}>
-                                    <img src='../../../../assets/TopRatedProducts/filterIcon.svg' alt=''/>
+                                    <img src='../../../../assets/images/TopRatedProducts/filterIcon.svg' alt=''/>
                                     Filter
                                 </button>
                             </div>

@@ -1,11 +1,11 @@
-import styles from "./RentingProfservicesPage.module.scss";
+import styles from "./RentingProfessionalServicesPage.module.scss";
 import React, {FC, useState} from "react";
 import RentingStage from "../../components/RentingStage/RentingStage.tsx";
 import {setVendorSelectedItemValue} from "../../store/slices/vendorSelectedItemSlice.ts";
-import {ProfessionalServicesData} from "../../data/vendorProductsData/ProfessionalServicesData.ts";
 import {useDispatch} from "react-redux";
 import {setProductCategory, setProductName, setProductSubcategory} from "../../store/slices/vendorProductInfoSlice.ts";
 import {useNavigate} from "react-router-dom";
+import {ProfessionalServicesData} from "../../assets/data/vendorProductsData/ProfessionalServicesData.ts";
 
 interface IClearClick {
   [key: string]: boolean;
@@ -47,7 +47,7 @@ const links = {
   [ROUTES.ELECTRICAL]: '/professional-services/new-electrical-page',
 }
 
-const RentingProfservicesPage: FC = () => {
+const RentingProfessionalServicesPage: FC = () => {
   const dispatch = useDispatch();
 
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
@@ -161,4 +161,4 @@ const RentingProfservicesPage: FC = () => {
   );
 };
 
-export default RentingProfservicesPage;
+export default RentingProfessionalServicesPage;

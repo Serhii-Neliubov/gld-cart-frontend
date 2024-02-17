@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import styles from "../NewPestControl.module.scss";
-import {IVendorProductData} from "../../../../../models/IVendorProductData.tsx";
+import {IVendorProductData} from "../../../../../utils/models/IVendorProductData.tsx";
 import {useSelector} from "react-redux";
 import {vendorProductInfo} from "../../../../../store/slices/vendorProductInfoSlice.ts";
 

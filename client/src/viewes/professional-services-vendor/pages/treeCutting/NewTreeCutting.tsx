@@ -5,7 +5,7 @@ import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishP
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
-import {IVendorProductData} from "../../../../models/IVendorProductData.tsx";
+import {IVendorProductData} from "../../../../utils/models/IVendorProductData.tsx";
 
 export const NewTreeCutting = () => {
   const [stage, setStage] = useState(3);

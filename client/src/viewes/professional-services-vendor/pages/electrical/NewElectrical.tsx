@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Layout } from "../../../../components/Vendor/Layout.tsx";
 import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
-import {IVendorProductData} from "../../../../models/IVendorProductData.tsx";
+import {IVendorProductData} from "../../../../utils/models/IVendorProductData.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";

@@ -5,7 +5,7 @@ import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCatego
 import {BasicInformation} from "./stages/BasicInformation.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
-import {IVendorProductData} from "../../../../models/IVendorProductData.tsx";
+import {IVendorProductData} from "../../../../utils/models/IVendorProductData.tsx";
 
 export const NewAwesomeLipCare = () => {
   const [stage, setStage] = useState(3);

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import styles from '../RentingProductsPage.module.scss';
-import {IVendorProductData} from '../../../models/IVendorProductData.tsx';
+import {IVendorProductData} from '../../../utils/models/IVendorProductData.tsx';
 
 type PhotoAndVideoBlockProps = {
     formData: IVendorProductData;

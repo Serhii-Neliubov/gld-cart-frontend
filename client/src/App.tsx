@@ -9,7 +9,7 @@ import {
   checkAuth,
   userDataSelector,
 } from "./store/slices/userDataSlice.ts";
-import IUser from "./models/IUser";
+import IUser from "./utils/models/IUser";
 import Label from "./components/Label/Label";
 
 const App: FC = () => {
