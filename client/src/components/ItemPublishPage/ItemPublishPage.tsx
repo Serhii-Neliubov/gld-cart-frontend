@@ -5,9 +5,9 @@ import RentingStage from "../RentingStage/RentingStage";
 import {useDispatch} from "react-redux";
 import {
     resetVendorProductInfo,
-} from "../../redux/slices/vendorProductInfoSlice.ts";
-import $api, {API_URL} from "../../lib/http.ts";
+} from "../../store/slices/vendorProductInfoSlice.ts";
 import {IVendorProductData} from "../../models/IVendorProductData.tsx";
+import $api, {API_URL} from "../../lib/interceptors.ts";
 
 type ItemPublishPageProps = {
     category: string,
@@ -31,8 +31,6 @@ const ItemPublishPage = ({category, formData, link}: ItemPublishPageProps) => {
         formData.images.filter(value => !!value).forEach(file=> {
             images.append('images', file);
         })
-
-        console.log('images: ', formData)
 
         await $api.post(`${API_URL}/${link}`, formData, {
             headers: {
