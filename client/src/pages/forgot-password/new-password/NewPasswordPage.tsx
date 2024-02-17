@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import styles from "./NewPasswordPage.module.scss";
+import styles from "../ForgottenPasswordPage.module.scss";
 import {useNavigate, useParams} from "react-router-dom";
 import BgWithParticles from "../../../components/BgWithParticles/BgWithParticles.tsx";
 import {PasswordServices} from "../../../services/PasswordServices.ts";

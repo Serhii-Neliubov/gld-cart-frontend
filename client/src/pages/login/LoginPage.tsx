@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
 import BgWithParticles from "../../components/BgWithParticles/BgWithParticles.tsx";
@@ -7,19 +6,15 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/userDataSlice";
 import AuthService from "../../services/AuthService.ts";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import {useInput} from "../../hooks/useInput/useInput.tsx";
 
 const LoginPage = () => {
-  const [isEmptyEmail, setIsEmptyEmail] = useState(false);
-  const dispatch = useDispatch<AppDispatch>();
   useDefaultScrollPosition();
 
-  const [userData, setUserData] = useState(
-    {
-      email: "",
-      password: "",
-    }
-  );
+  const dispatch = useDispatch<AppDispatch>();
 
+  const email = useInput('');
+  const password = useInput('');
 
   return (
     <div className={styles.body}>
@@ -40,18 +35,11 @@ const LoginPage = () => {
           </div>
           <form>
             <div className={styles.form}>
-              <div className={`${isEmptyEmail ? styles.error : styles.input}`}>
+              <div className={styles.input}>
                 <span>Your Email</span>
                 <input
-                  onChange={(e) => {
-                    const isValidEmail =
-                      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(
-                        e.target.value
-                      );
-                    setIsEmptyEmail(!isValidEmail);
-                    setUserData({ ...userData, email: e.target.value });
-                  }}
-                  value={userData.email}
+                  onChange={email.onChange}
+                  value={email.value}
                   type="email"
                   placeholder="Gldcart@gmail.com"
                 />
@@ -61,10 +49,8 @@ const LoginPage = () => {
                 <input
                   type="password"
                   placeholder="Password"
-                  value={userData.password}
-                  onChange={(e) =>
-                    setUserData({ ...userData, password: e.target.value })
-                  }
+                  value={password.value}
+                  onChange={password.onChange}
                 />
               </div>
             </div>
@@ -74,13 +60,12 @@ const LoginPage = () => {
               <input type="checkbox" />
               <span>Remember me</span>
             </div>
-
             <Link className={styles.link} to="/forgotten-password">
               Forgot password?
             </Link>
           </div>
           <button
-            onClick={() => dispatch(login(userData))}
+            onClick={() => dispatch(login({ email: email.value, password: password.value }))}
             className={styles.button}
           >
             Login

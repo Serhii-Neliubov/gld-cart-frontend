@@ -3,5 +3,5 @@ export interface IMessageData {
     email: string;
     subject: string;
     message: string;
-    [value: string]: string
+    token: string | null;
 }

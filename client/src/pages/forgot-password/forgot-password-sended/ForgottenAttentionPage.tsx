@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styles from "./ForgottenAttentionPage.module.scss";
+import styles from "../ForgottenPasswordPage.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import BgWithParticles from "../../../components/BgWithParticles/BgWithParticles.tsx";

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { setEmailValue } from "../../redux/slices/resetPasswordEmailSlice";
 import { AppDispatch } from "../../redux/store";
 import { useNavigate } from "react-router-dom";
-import {PasswordServices} from "../../services/PasswordServices.ts";
+import { PasswordServices } from "../../services/PasswordServices.ts";
 import toast from "react-hot-toast";
 
 const ForgottenPasswordPage: FC = () => {

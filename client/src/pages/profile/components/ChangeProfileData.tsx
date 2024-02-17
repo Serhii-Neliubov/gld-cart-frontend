@@ -1,42 +1,38 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { FormEvent } from "react";
 import styles from "../ProfilePage.module.scss";
 import {logout, userDataSelector} from "../../../redux/slices/userDataSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {IProfileData} from "../../../models/IProfileData.ts";
 import {ChangeProfileDataServices} from "../../../services/ChangeProfileDataServices.ts";
-
-const ClearProfileData = {
-  name: "",
-  surname: "",
-  email: "",
-  phone_number: "",
-  address: "",
-  BIO: "",
-}
+import {useInput} from "../../../hooks/useInput/useInput.tsx";
 
 export default function ChangeProfileData() {
   const user = useSelector(userDataSelector);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState<IProfileData>({id: user.id, ...ClearProfileData});
+  const name = useInput('');
+  const surname = useInput('');
+  const email = useInput('');
+  const phoneNumber = useInput('');
+  const address = useInput('');
+  const bio = useInput('');
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      await ChangeProfileDataServices.updateProfileData(formData);
+      await ChangeProfileDataServices.updateProfileData({
+        id: user.id,
+        email: email.value,
+        name: name.value,
+        surname: surname.value,
+        phone_number: phoneNumber.value,
+        address: address.value,
+        BIO: bio.value,
+      });
 
       dispatch(logout());
-
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -50,24 +46,23 @@ export default function ChangeProfileData() {
         </h1>
         <h2 className={styles.box_name}>Personal Details</h2>
         <div className={styles.content_box_items}>
-          <form className={styles.box_inputs} onSubmit={handleSubmit}>
+          <form className={styles.box_inputs} onSubmit={submitHandler}>
             <div className={styles.inputs_column}>
               <input
                 className={styles.input}
                 placeholder="Eleanor"
                 type="text"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
+                value={name.value}
+                onChange={name.onChange}
               />
-
               <input
                 className={styles.input}
                 placeholder="Pena"
                 type="text"
                 name="surname"
-                value={formData.surname}
-                onChange={handleChange}
+                value={surname.value}
+                onChange={surname.onChange}
               />
             </div>
             <input
@@ -75,32 +70,32 @@ export default function ChangeProfileData() {
               className={styles.input}
               type="text"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={email.value}
+              onChange={email.onChange}
             />
             <input
               placeholder="0123 456 7889"
               className={styles.input}
               type="text"
               name="phone_number"
-              value={formData.phone_number}
-              onChange={handleChange}
+              value={phoneNumber.value}
+              onChange={phoneNumber.onChange}
             />
             <input
               placeholder="3304 Randall Drive"
               className={styles.input}
               type="text"
               name="address"
-              value={formData.address}
-              onChange={handleChange}
+              value={address.value}
+              onChange={address.onChange}
             />
             <input
               placeholder="Hi there, this is my bio..."
               className={styles.input}
               type="text"
               name="BIO"
-              value={formData.BIO}
-              onChange={handleChange}
+              value={bio.value}
+              onChange={bio.onChange}
             />
             <div className={styles.button}>
               <button type="submit">Update Profile</button>

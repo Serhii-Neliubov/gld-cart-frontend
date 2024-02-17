@@ -4,10 +4,14 @@ import styles from "./TrackOrder.module.scss";
 import { Link } from "react-router-dom";
 import { statuses } from "../../data/TrackOrderStatuses";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import { useInput } from "../../hooks/useInput/useInput.tsx";
 
 const TrackOrder: FC = () => {
   useDefaultScrollPosition();
 
+  const orderNumber = useInput('');
+
+  const [isAgree, setIsAgree] = useState<boolean>(false);
   const [orderStatus] = useState<string>("Delivered");
 
   return (
@@ -64,11 +68,13 @@ const TrackOrder: FC = () => {
                 <span>Tracker Number</span>
                   <input
                     type="text"
+                    onChange={orderNumber.onChange}
+                    value={orderNumber.value}
                     placeholder="Enter number e.g 111 222 333 123 "
                   />
                 </div>
                 <label className={styles.track_agree}>
-                  <input type="checkbox" />
+                  <input checked={isAgree} onChange={() => setIsAgree(prev => !prev)} type="checkbox" />
                   <p>
                     Yes. I agree to{" "}
                     <Link to="/terms-and-conditions" style={{ color: "red" }}>
