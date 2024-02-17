@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
-import BgWithParticles from "../../components/BgWithParticles/BgWithParticles.tsx";
+import BgWithParticles from "../../components/bg-with-particles/BgWithParticles.tsx";
 import { AppDispatch } from "../../store/store";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/slices/userDataSlice";

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Shoes.module.scss';
-import Footer from '../../../../components/Footer/Footer';
+import Footer from '../../../../components/footer/Footer';
 
 export const Shoes = () => {
     return (

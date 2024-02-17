@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ItemPublishPage.module.scss";
 import { Link } from "react-router-dom";
-import RentingStage from "../RentingStage/RentingStage";
+import RentingStage from "../renting-stages/RentingStage";
 import {useDispatch} from "react-redux";
 import {
     resetVendorProductInfo,

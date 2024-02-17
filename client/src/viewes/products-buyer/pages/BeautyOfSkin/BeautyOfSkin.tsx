@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from './BeautyOfSkin.module.scss';
-import Footer from '../../../../components/Footer/Footer';
+import Footer from '../../../../components/footer/Footer';
 import {useNavigate} from "react-router-dom";
 import $api, {API_URL} from "../../../../utils/interceptors/interceptors.ts";
 

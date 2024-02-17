@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from "../../../components/Footer/Footer.tsx";
+import Footer from "../../../components/footer/Footer.tsx";
 import styles from "./RentingHousePage.module.scss";
 import { FC } from "react";
 import {HouseList} from "./components/HouseList.tsx";

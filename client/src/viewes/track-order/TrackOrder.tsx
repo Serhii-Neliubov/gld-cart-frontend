@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import Footer from "../../components/Footer/Footer.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 import styles from "./TrackOrder.module.scss";
 import { Link } from "react-router-dom";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";

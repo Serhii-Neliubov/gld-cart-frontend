@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Footer from "../../components/Footer/Footer.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../store/store";

@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
 import { clearModalActiveParams } from "./PaymentPage.tsx";
-import Footer from "../../components/Footer/Footer.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const Payment: FC = () => {

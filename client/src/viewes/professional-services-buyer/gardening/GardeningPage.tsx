@@ -1,4 +1,4 @@
-import Footer from "../../../components/Footer/Footer.tsx";
+import Footer from "../../../components/footer/Footer.tsx";
 import styles from "./GardeningPage.module.scss";
 import React, { FC } from "react";
 
@@ -23,23 +23,23 @@ const GardeningPage: FC = () => {
                 </div>
                 <div className={styles.filter_blocks}>
                   <button className={styles.filter_block}>
-                    <img src="/RentingCar/Vector-5.svg" alt="Img" />
+                    <img src="../../../../src/assets/images/RentingCar/Vector-5.svg" alt="Img" />
                     <p>Select Location</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="/RentingCar/Vector-1.svg" alt="Img" />
+                    <img src="../../../../src/assets/images/RentingCar/Vector-1.svg" alt="Img" />
                     <p>Pik-up Date</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="/RentingCar/Vector-2.svg" alt="Img" />
+                    <img src="../../../../src/assets/images/RentingCar/Vector-2.svg" alt="Img" />
                     <p>Pik-up Time</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="/RentingCar/Vector-3.svg" alt="Img" />
+                    <img src="../../../../src/assets/images/RentingCar/Vector-3.svg" alt="Img" />
                     <p>Drop-off Date</p>
                   </button>
                   <button className={styles.filter_block}>
-                    <img src="/RentingCar/Vector-4.svg" alt="Img" />
+                    <img src="../../../../src/assets/images/RentingCar/Vector-4.svg" alt="Img" />
                     <p>Drop-off Time</p>
                   </button>
                 </div>
@@ -53,7 +53,7 @@ const GardeningPage: FC = () => {
             <div className={styles.items}>
               <div className={styles.item}>
                 <div className={styles.image}>
-                  <img src="/GardeningPage/image1.png" alt="Image" />
+                  <img src="../../../../src/assets/images/GardeningPage/image1.png" alt="Image" />
                 </div>
                 <div className={styles.item_text}>
                   <h2 className={styles.item_title}>tree cutting</h2>
@@ -94,7 +94,7 @@ const GardeningPage: FC = () => {
               </div>
               <div className={styles.item}>
                 <div className={styles.image}>
-                  <img src="/GardeningPage/image2.png" alt="Image" />
+                  <img src="../../../../src/assets/images/GardeningPage/image2.png" alt="Image" />
                 </div>
                 <div className={styles.item_text}>
                   <h2 className={styles.item_title}>Grass Cutting</h2>
@@ -135,7 +135,7 @@ const GardeningPage: FC = () => {
               </div>
               <div className={styles.item}>
                 <div className={styles.image}>
-                  <img src="/GardeningPage/image3.png" alt="Image" />
+                  <img src="../../../../src/assets/images/GardeningPage/image3.png" alt="Image" />
                 </div>
                 <div className={styles.item_text}>
                   <h2 className={styles.item_title}>plants cutting </h2>
@@ -176,7 +176,7 @@ const GardeningPage: FC = () => {
               </div>
               <div className={styles.item}>
                 <div className={styles.image}>
-                  <img src="/GardeningPage/image4.png" alt="Image" />
+                  <img src="../../../../src/assets/images/GardeningPage/image4.png" alt="Image" />
                 </div>
                 <div className={styles.item_text}>
                   <h2 className={styles.item_title}>plants reshaping</h2>

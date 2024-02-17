@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Bracelets.module.scss';
-import Footer from '../../../../components/Footer/Footer';
+import Footer from '../../../../components/footer/Footer';
 
 export const Bracelets = () => {
     return (

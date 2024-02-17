@@ -1,7 +1,7 @@
 import styles from "./ProductsPage.module.scss";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../components/Footer/Footer.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const categories = [

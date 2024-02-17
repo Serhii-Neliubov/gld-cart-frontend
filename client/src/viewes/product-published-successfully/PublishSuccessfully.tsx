@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styles from "./PublishSuccessfully.module.scss";
 import { Link } from "react-router-dom";
-import RentingStage from "../../components/RentingStage/RentingStage.tsx";
+import RentingStage from "../../components/renting-stages/RentingStage.tsx";
 
 const PublishSuccessfully: FC = () => {
   return (

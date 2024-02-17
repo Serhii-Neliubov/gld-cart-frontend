@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './ProductPage.module.scss';
-import Footer from '../../../components/Footer/Footer';
+import Footer from '../../../components/footer/Footer';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "../../../store/slices/userDataSlice.ts";

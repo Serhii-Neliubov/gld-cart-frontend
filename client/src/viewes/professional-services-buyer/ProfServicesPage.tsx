@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styles from "./ProfServicesPage.module.scss";
-import Footer from "../../components/Footer/Footer.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 import { Link } from "react-router-dom";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 

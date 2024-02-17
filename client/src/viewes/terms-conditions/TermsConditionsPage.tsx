@@ -1,10 +1,10 @@
 import React from 'react';
-import Footer from "../../components/Footer/Footer.tsx";
-import TextSection from "../../components/TextSection/TextSection.tsx";
+import Footer from "../../components/footer/Footer.tsx";
+import TextSection from "../../components/text-paragraph/TextSection.tsx";
 import styles from "./TermsConditionsPage.module.scss";
 import { FC } from "react";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import {TermsConditions} from "../../assets/data/publicBuyerRules/TermsConditionsData.ts";
+import {TermsConditions} from "../../assets/data/public-rules/TermsConditionsData.ts";
 
 const TermsConditionsPage: FC = () => {
   useDefaultScrollPosition();

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { FC, FormEvent } from "react";
 import styles from "./ContactUsPage.module.scss";
-import Footer from "../../components/Footer/Footer.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 import { useNavigate } from "react-router-dom";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 import {useInput} from "../../hooks/useInput/useInput.tsx";

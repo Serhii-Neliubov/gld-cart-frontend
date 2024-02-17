@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import styles from "./WishlistPage.module.scss";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/footer/Footer";
 import { FC } from "react";
-import NoItems from "../../components/NoItems/NoItems.tsx";
+import NoItems from "../../components/no-items-page/NoItems.tsx";
 import { WishlistWindow } from './components/WishlistWindow.tsx';
 import {useSelector} from "react-redux";
 import {userDataSelector} from "../../store/slices/userDataSlice.ts";

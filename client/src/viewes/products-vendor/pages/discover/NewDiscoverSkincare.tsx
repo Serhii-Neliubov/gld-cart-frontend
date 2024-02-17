@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./NewDiscoverSkincare.module.scss";
 import { Layout } from "../../../../components/Vendor/Layout.tsx";
-import ItemPublishPage from "../../../../components/ItemPublishPage/ItemPublishPage.tsx";
+import ItemPublishPage from "../../../../components/item-published/ItemPublishPage.tsx";
 import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 
 export const NewDiscoverSkincare = () => {

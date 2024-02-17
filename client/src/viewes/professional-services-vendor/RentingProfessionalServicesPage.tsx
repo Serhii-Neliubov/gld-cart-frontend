@@ -1,11 +1,11 @@
 import styles from "./RentingProfessionalServicesPage.module.scss";
 import React, {FC, useState} from "react";
-import RentingStage from "../../components/RentingStage/RentingStage.tsx";
+import RentingStage from "../../components/renting-stages/RentingStage.tsx";
 import {setVendorSelectedItemValue} from "../../store/slices/vendorSelectedItemSlice.ts";
 import {useDispatch} from "react-redux";
 import {setProductCategory, setProductName, setProductSubcategory} from "../../store/slices/vendorProductInfoSlice.ts";
 import {useNavigate} from "react-router-dom";
-import {ProfessionalServicesData} from "../../assets/data/vendorProductsData/ProfessionalServicesData.ts";
+import {ProfessionalServicesData} from "../../assets/data/vendor-categories/ProfessionalServicesData.ts";
 
 interface IClearClick {
   [key: string]: boolean;

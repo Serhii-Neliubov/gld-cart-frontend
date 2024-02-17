@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Footer from "../../components/Footer/Footer.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 import styles from "./HelpAndSupport.module.scss";
 import { Link } from "react-router-dom";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
@@ -14,7 +14,7 @@ const HelpAndSupport: FC = () => {
         <div className={styles.blocks}>
           <div className={styles.block}>
             <div className={styles.block_text}>
-              <img src="/HelpAndSupport/icon1.svg" alt="Image" />
+              <img src="../../../src/assets/images/HelpAndSupport/icon1.svg" alt="Image" />
               <span>I Want To Know Where My Order Is</span>
             </div>
             <p className={styles.text}>
@@ -23,7 +23,7 @@ const HelpAndSupport: FC = () => {
           </div>
           <div className={styles.block}>
             <div className={styles.block_text}>
-              <img src="/HelpAndSupport/icon2.svg" alt="Image" />
+              <img src="../../../src/assets/images/HelpAndSupport/icon2.svg" alt="Image" />
               <span>I Want To Return An Item</span>
             </div>
             <p className={styles.text}>
@@ -32,7 +32,7 @@ const HelpAndSupport: FC = () => {
           </div>
           <div className={styles.block}>
             <div className={styles.block_text}>
-              <img src="/HelpAndSupport/icon3.svg" alt="Image" />
+              <img src="../../../src/assets/images/HelpAndSupport/icon3.svg" alt="Image" />
               <span>I Want To Cancel An Order</span>
             </div>
             <p className={styles.text}>
@@ -54,7 +54,7 @@ const HelpAndSupport: FC = () => {
           <div className={styles.contact_content}>
             <img
               className={styles.logo}
-              src="/HelpAndSupport/logo1.png"
+              src="../../../src/assets/images/HelpAndSupport/logo1.png"
               alt="Image"
             />
             <div className={styles.contact_sidebar}>

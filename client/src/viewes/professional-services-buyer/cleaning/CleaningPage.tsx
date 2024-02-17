@@ -1,4 +1,4 @@
-import Footer from "../../../components/Footer/Footer.tsx";
+import Footer from "../../../components/footer/Footer.tsx";
 import styles from "./CleaningPage.module.scss";
 import React, { FC } from "react";
 import {CleaningList} from "./components/CleaningList.tsx";

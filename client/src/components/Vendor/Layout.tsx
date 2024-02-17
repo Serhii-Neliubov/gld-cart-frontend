@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./BasicInformationVehicle.module.scss";
-import RentingStage from "../RentingStage/RentingStage.tsx";
+import RentingStage from "../renting-stages/RentingStage.tsx";
 
 type LayoutProps = {
     children: React.ReactNode,

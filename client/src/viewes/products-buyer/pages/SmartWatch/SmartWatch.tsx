@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SmartWatch.module.scss';
-import Footer from '../../../../components/Footer/Footer';
+import Footer from '../../../../components/footer/Footer';
 
 export const SmartWatch = () => {
     return (

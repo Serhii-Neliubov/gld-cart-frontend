@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Footer from "../../components/Footer/Footer.tsx";
+import Footer from "../../components/footer/Footer.tsx";
 import {useTranslation} from "react-i18next";
 import './Home.scss'
 import { SavedItem } from "./components/SavedItem.tsx";
