@@ -2,23 +2,25 @@ import React from 'react';
 import {useTranslation} from "react-i18next";
 import {BestSellingItems} from "./BestSellingItem.tsx";
 
+import imageBest1 from 'src/assets/images/HomePage/best-sellings/best1.png';
+
 const bestSellingItems: BestSellingItems[] = [
     {
-        image: 'src/assets/images/HomePage/best-sellings/best1.png',
+        image: imageBest1,
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',
         discount_percent: '43',
     },
     {
-        image: 'src/assets/images/HomePage/best-sellings/best1.png',
+        image: imageBest1,
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',
         discount_percent: '43',
     },
     {
-        image: 'src/assets/images/HomePage/best-sellings/best1.png',
+        image: imageBest1,
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',

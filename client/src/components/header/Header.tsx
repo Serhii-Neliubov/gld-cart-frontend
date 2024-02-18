@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
+import imageLogoURL from '@/assets/images/HomePage/header/logo.png'
+import imageArrowDown from '@/assets/images/HomePage/header/arrow-down.svg'
+
 const languages = ["English", "Russian", "Ukrainian", "German"];
 
 const Header: FC = () => {
@@ -26,7 +29,7 @@ const Header: FC = () => {
     <div className="header">
       <div className="header__container">
         <Link to="/" className="header__logo">
-          <img src="src/assets/images/HomePage/header/logo.png" alt="Logo" />
+          <img src={imageLogoURL} alt="Logo" />
         </Link>
         <div className="header__input">
           <input placeholder={t("What are you looking for?")} type="text" />
@@ -37,7 +40,7 @@ const Header: FC = () => {
           className="header__button-lang"
         >
           <span>{language}</span>
-          <img src="src/assets/images/HomePage/header/arrow-down.svg" alt="arrow down" />
+          <img src={imageArrowDown} alt="arrow down" />
           {openLanguageModal && (
             <div className="header__language-modal">
               {languages

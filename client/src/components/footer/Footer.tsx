@@ -2,6 +2,19 @@ import { FC } from "react";
 import "./Footer.scss";
 import { Link } from "react-router-dom";
 
+import imageSocial1 from "@/assets/images/HomePage/footer/social-icon1.svg";
+import imageSocial2 from "@/assets/images/HomePage/footer/social-icon2.png";
+import imageSocial3 from "@/assets/images/HomePage/footer/social-icon3.svg";
+import imageSocial4 from "@/assets/images/HomePage/footer/social-icon4.svg";
+import imageQR from "@/assets/images/HomePage/footer/qr.jpg";
+import imageAppStore from "@/assets/images/HomePage/footer/AppStore.png";
+import imageGooglePlay from "@/assets/images/HomePage/footer/GooglePlay.png";
+import imageVisa from "@/assets/images/HomePage/footer/cards/visa.png";
+import imageMasterCard from "@/assets/images/HomePage/footer/cards/mastercard.png";
+import imageBHIM from "@/assets/images/HomePage/footer/cards/bhim.png";
+import imageR from "@/assets/images/HomePage/footer/cards/r.png";
+
+
 const Footer: FC = () => {
   return (
     <footer className="footer">
@@ -90,16 +103,16 @@ const Footer: FC = () => {
               <h3 className="footer__links-title">social links</h3>
               <div className="footer__social-items">
                 <a href="#" className="footer__social-item">
-                  <img src="src/assets/images/HomePage/footer/social-icon1.svg" alt="Social" />
+                  <img src={imageSocial1} alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="src/assets/images/HomePage/footer/social-icon2.png" alt="Social" />
+                  <img src={imageSocial2} alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="src/assets/images/HomePage/footer/social-icon3.svg" alt="Social" />
+                  <img src={imageSocial3} alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="src/assets/images/HomePage/footer/social-icon4.svg" alt="Social" />
+                  <img src={imageSocial4} alt="Social" />
                 </a>
               </div>
             </div>
@@ -107,14 +120,14 @@ const Footer: FC = () => {
               <h3 className="footer__links-title">Download App</h3>
               <div className="footer__download-services">
                 <a href="#" className="footer__download-qr">
-                  <img src="src/assets/images/HomePage/footer/qr.jpg" alt="Image" />
+                  <img src={imageQR} alt="Image" />
                 </a>
                 <div className="footer__download-stores">
                   <a className="footer__download-store" href="#">
-                    <img src="src/assets/images/HomePage/footer/AppStore.png" alt="Image" />
+                    <img src={imageAppStore} alt="Image" />
                   </a>
                   <a className="footer__download-store" href="#">
-                    <img src="src/assets/images/HomePage/footer/GooglePlay.png" alt="Image" />
+                    <img src={imageGooglePlay} alt="Image" />
                   </a>
                 </div>
               </div>
@@ -128,13 +141,13 @@ const Footer: FC = () => {
             <div className="footer__trialshoopy">
               <h4 className="footer__trialshoopy-title">Trialshoopy accepts</h4>
               <div className="footer__trialshoopy-items">
-                <img src="src/assets/images/HomePage/footer/cards/visa.png" alt="Visa" />
+                <img src={imageVisa} alt="Visa" />
                 <img
-                  src="src/assets/images/HomePage/footer/cards/mastercard.png"
+                  src={imageMasterCard}
                   alt="Master Card"
                 />
-                <img src="src/assets/images/HomePage/footer/cards/bhim.png" alt="BHIM UPI" />
-                <img src="src/assets/images/HomePage/footer/cards/r.png" alt=" R" />
+                <img src={imageBHIM} alt="BHIM UPI" />
+                <img src={imageR} alt=" R" />
               </div>
             </div>
             <div className="footer__reserved">

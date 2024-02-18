@@ -45,13 +45,12 @@
     width: 25px;
     height: 25px;
     position: absolute;
-    background-image: url("/HelpAndSupport/arrow-right.svg");
+    background-image: url("@/assets/images/HelpAndSupport/arrow-right.svg");
   }
 }
 .content_button {
   position: relative;
   color: #fff;
-  position: relative;
   line-height: normal;
   padding: 20px 50px 20px 100px;
   background-color: #02a0a0;
@@ -65,7 +64,7 @@
     top: 45%;
     left: 12%;
     transform: translate(0, -50%);
-    background-image: url("/HelpAndSupport/chaticon.png");
+    background-image: url("@/assets/images/HelpAndSupport/chaticon.png");
     background-repeat: no-repeat;
   }
   &:hover {

@@ -4,55 +4,6 @@
   display: flex;
   gap: 30px;
 }
-.filterTitle{
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 15px;
-  h1{
-    color: rgb(0, 0, 0);
-    font-size: 39.5px;
-    font-weight: 600;
-    line-height: 59px;
-  }
-
-  & > span{
-    color: rgba(0, 0, 0, 0.67);
-    font-size: 14.53px;
-    font-weight: 500;
-    line-height: 22px;
-  }
-}
-
-.filterParams{
-  background: rgba(247, 247, 247, 0.74);
-  width: 327px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.filterCategoryTitle{
-  color: rgb(0, 0, 0);
-  font-size: 15.51px;
-  font-weight: 600;
-  line-height: 23px;
-  text-align: left;
-
-  margin-bottom: 32px;
-
-  &::after{
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.1);
-    display: block;
-    margin-bottom: 10px;
-  }
-}
 .productStatusItems{
   display: flex;
   flex-direction: column;
@@ -90,32 +41,6 @@
     }
 
   & > div {
-    border: 0.72px solid rgba(0, 0, 0, 0.12);
-    border-radius: 1.44px;
-    display: flex;
-    width: 23px;
-    height: 23px;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-.filterByColorItems{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.filterByColorItem{
-  display: flex;
-
-  & > label{
-    flex: 1 1 auto;
-    padding-left: 10px;
-  }
-
-  & > div{
-    box-sizing: border-box;
     border: 0.72px solid rgba(0, 0, 0, 0.12);
     border-radius: 1.44px;
     display: flex;
@@ -181,19 +106,6 @@
   }
 }
 
-.resetFilter{
-  & > button {
-    margin-top: 10px;
-    color: rgb(255, 255, 255);
-    font-size: 15.51px;
-    align-items: end;
-    font-weight: 500;
-    line-height: 23px;
-    text-align: left;
-    padding: 10px 20px;
-    background-color: rgb(2, 160, 160);
-  }
-}
 .popularBrandsItems{
   display: flex;
   align-items: center;
@@ -207,56 +119,6 @@
     width: 70px;
   }
 }
-.filter_price{
-  display: flex;
-  flex-direction: column;
-  & > div{
-    display: flex;
-    justify-content: space-between;
-  }
-  & > div > button{
-    background-color: #efefef;
-    padding: 5px 20px;
-  }
-}
-.filter_price_text {
-  display: flex;
-  align-items: center;
-  p {
-    color: rgba(0, 0, 0, 0.46);
-    font-size: 12.806px;
-    font-weight: 500;
-  }
-}
-
-.filter_label {
-  width: 100%;
-  background-color: #0989ff;
-  height: 5px;
-  margin: 12px 0;
-  position: relative;
-
-  &::after {
-    content: "";
-    width: 5px;
-    height: 12px;
-    position: absolute;
-    background-color: #0989ff;
-    top: -4px;
-    left: 0;
-  }
-
-  &::before {
-    content: "";
-    width: 5px;
-    height: 12px;
-    position: absolute;
-    background-color: #0989ff;
-    top: -4px;
-    right: 0;
-  }
-}
-
 .productsTitle{
   color: rgb(0, 0, 0);
   font-size: 32px;

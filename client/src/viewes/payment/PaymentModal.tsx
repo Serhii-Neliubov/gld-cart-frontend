@@ -1,11 +1,14 @@
 import { FC } from "react";
 import styles from "./PaymentModal.module.scss";
 
+import imageQR from "@/assets/images/Payment/qr.png";
+
 interface PaymentModalProps {
   title: string;
   secondInput?: string;
   secondInputTitle?: string;
 }
+
 const PaymentModal: FC<PaymentModalProps> = ({
   title,
   secondInput = "Enter your password",
@@ -42,7 +45,7 @@ const PaymentModal: FC<PaymentModalProps> = ({
 
           <a href="#">Pay Now</a>
         </div>
-        <img src="/Payment/qr.png" alt="" />
+        <img src={imageQR} alt="Image" />
       </div>
     </div>
   );

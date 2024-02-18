@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from './IdConfirmationStage.module.scss'
+
+import imagePhotoExample from '@/assets/images/DriverLicense/verificationExamplePhoto.jpeg'
 
 type ProfilePictureStageProps = {
     setStage: (value: (prev: number) => number) => void
@@ -32,7 +34,7 @@ export const IdConfirmationStage = ({setStage}: ProfilePictureStageProps) => {
                     <div className={styles.imageBox}>
                         <span className={styles.subtitle}>ID Confirmation</span>
                         <div className={styles.userImage}>
-                            <img src={file ? file : 'src/assets/images/DriverLicense/verificationExamplePhoto.jpeg'} alt='image'/>
+                            <img src={file ? file : imagePhotoExample} alt='image'/>
                         </div>
                         <button className={styles.imageBoxButton}>
                             Add a photo

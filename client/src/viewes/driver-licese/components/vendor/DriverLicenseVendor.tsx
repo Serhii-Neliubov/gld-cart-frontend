@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {ProfilePictureStage} from "./stages/ProfilePictureStage/ProfilePictureStage.tsx";
-import {PhoneNumberStage} from "./stages/PhoneNumberStage/PhoneNumberStage.tsx";
-import {IdConfirmationStage} from "./stages/IdConfirmationStage/IdConfirmationStage.tsx";
+import React, { useState } from 'react';
+import { ProfilePictureStage } from './stages/ProfilePictureStage/ProfilePictureStage.tsx';
+import { PhoneNumberStage } from './stages/PhoneNumberStage/PhoneNumberStage.tsx';
+import { IdConfirmationStage } from './stages/IdConfirmationStage/IdConfirmationStage.tsx';
 
 export const DriverLicenseVendor = () => {
     const [stage, setStage] = useState(1);

@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
-import styles from "../ForgottenPasswordPage.module.scss";
-import {useNavigate, useParams} from "react-router-dom";
-import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
-import toast from "react-hot-toast";
-import {PasswordService} from "services/PasswordService.ts";
+import styles from '../ForgottenPasswordPage.module.scss';
+import { useNavigate, useParams } from 'react-router-dom';
+import BgWithParticles from '@/components/bg-with-particles/BgWithParticles.tsx';
+import toast from 'react-hot-toast';
+import { PasswordService } from 'services/PasswordService.ts';
 
 const NewPasswordPage: FC = () => {
   const [password, setPassword] = useState<string>("");

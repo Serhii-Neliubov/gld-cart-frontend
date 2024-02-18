@@ -118,7 +118,7 @@
   }
 
   &__arrow_right {
-    background-image: url("../../assets/images/HomePage/best-sellings/arrow-left.svg");
+    background-image: url("@/assets/images/HomePage/best-sellings/arrow-left.svg");
     -ms-transform: scaleX(-1) translateX(-25px);
     transform: scaleX(-1) translateX(-25px);
     top: 9rem;
@@ -126,7 +126,7 @@
   }
 
   &__arrow_left {
-    background-image: url("../../assets/images/HomePage/best-sellings/arrow-left.svg");
+    background-image: url("@/assets/images/HomePage/best-sellings/arrow-left.svg");
     top: 9rem;
     -ms-transform: translateX(-25px);
     transform: translateX(-25px);
@@ -242,7 +242,7 @@
 }
 
 .explore__block-fashion {
-  background-image: url("../../assets/images/HomePage/explore/image4.jpg");
+  background-image: url("@/assets/images/HomePage/explore/image4.jpg");
 }
 
 .explore__block-fashion {
@@ -307,7 +307,7 @@
 }
 
 .explore__block-electronics {
-  background-image: url("../../assets/images/HomePage/explore/image3.jpg");
+  background-image: url("@/assets/images/HomePage/explore/image3.jpg");
 }
 
 .explore__block-electronics {
@@ -350,7 +350,7 @@
 }
 
 .explore__block-shops {
-  background-image: url("../../assets/images/HomePage/explore/image2.jpg");
+  background-image: url("@/assets/images/HomePage/explore/image2.jpg");
 }
 
 .explore__block-shops {
@@ -393,7 +393,7 @@
 }
 
 .explore__block-furniture {
-  background-image: url("../../assets/images/HomePage/explore/image1.jpg");
+  background-image: url("@/assets/images/HomePage/explore/image1.jpg");
 }
 
 .explore__block-furniture {
@@ -510,7 +510,7 @@
 }
 
 .featured__block-1 {
-  background-image: url("../../assets/images/HomePage/new-arrival/img1.jpg");
+  background-image: url('@/assets/images/HomePage/new-arrival/img1.jpg');
 }
 
 .featured__block-1 {
@@ -520,7 +520,7 @@
 }
 
 .featured__block-2 {
-  background-image: url("../../assets/images/HomePage/new-arrival/img2.jpg");
+  background-image: url('@/assets/images/HomePage/new-arrival/img2.jpg');
 }
 
 .featured__block-2 {
@@ -531,7 +531,7 @@
 }
 
 .featured__block-4 {
-  background-image: url("../../assets/images/HomePage/new-arrival/img4.jpg");
+  background-image: url('@/assets/images/HomePage/new-arrival/img4.jpg');
 }
 
 .featured__block-4 {
@@ -542,7 +542,7 @@
 }
 
 .featured__block-3 {
-  background-image: url("../../assets/images/HomePage/new-arrival/img3.jpg");
+  background-image: url('@/assets/images/HomePage/new-arrival/img3.jpg');
 }
 
 .featured__block-3 {
@@ -850,7 +850,7 @@
   &__button::before {
     content: "";
     position: absolute;
-    background-image: url("../../assets/images/HomePage/saved/shopping_cart.svg");
+    background-image: url("@/assets/images/HomePage/saved/shopping_cart.svg");
     width: 1.25rem;
     height: 1.25rem;
     top: 0.5rem;
@@ -911,7 +911,16 @@
   width: 3.4375rem;
   height: 100%;
 }
+.saved__item_image{
+  margin-bottom: 10px;
+  background-color: #e3e3e3;
+  border-radius: 13px;
 
+  & > img{
+    width: 100%;
+    height: 100%;
+  }
+}
 .shop-now__description {
   margin-top: 0.625rem;
 }
@@ -942,7 +951,7 @@
   -ms-transform: translate(130%, 0);
   transform: translate(190%, 0);
   right: 0;
-  background-image: url("../../assets/images/arrow-right.svg");
+  background-image: url("@/assets/images/arrow-right.svg");
   width: 1.875rem;
   height: 1.875rem;
 }
@@ -962,7 +971,7 @@
   transform: translate(0, 5%);
 }
 .super-discount__container {
-  background-image: url("../../assets/images/HomePage/featured/super-discount-bg.png");
+  background-image: url("@/assets/images/HomePage/featured/super-discount-bg.png");
 }
 .super-discount {
   margin-bottom: 7.875rem;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../RentingCarPage.module.scss";
 import Product from "../../components/product/Product.tsx";
-import {useCars} from "../hooks/useCars.tsx";
+import { useCars } from "../hooks/useCars.tsx";
 
 export default function CarList() {
   const cars = useCars();

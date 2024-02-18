@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './RentingProductPage.module.scss';
-import Footer from "../../../../components/footer/Footer.tsx";
+import Footer from "@/components/footer/Footer.tsx";
 import useDefaultScrollPosition from "../../../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 export const RentingProductPage = () => {

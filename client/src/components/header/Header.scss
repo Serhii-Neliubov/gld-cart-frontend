@@ -79,42 +79,37 @@
 }
 
 .header__input input:focus::-webkit-input-placeholder {
-  /* Стили для скрытия плейсхолдера при фокусе */
   opacity: 0;
   -webkit-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
 }
 
 .header__input input:focus::-moz-placeholder {
-  /* Стили для скрытия плейсхолдера при фокусе */
   opacity: 0;
   -moz-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
 }
 
 .header__input input:focus:-ms-input-placeholder {
-  /* Стили для скрытия плейсхолдера при фокусе */
   opacity: 0;
   -ms-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
 }
 
 .header__input input:focus::-ms-input-placeholder {
-  /* Стили для скрытия плейсхолдера при фокусе */
   opacity: 0;
   -ms-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
 }
 
 .header__input input:focus::placeholder {
-  /* Стили для скрытия плейсхолдера при фокусе */
   opacity: 0;
   -webkit-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
 }
 
 .header__search-btn {
-  background-image: url("../../assets/images/HomePage/header/search-icon.svg");
+  background-image: url("@/assets/images/HomePage/header/search-icon.svg");
   width: 1.5rem;
   height: 1.5rem;
   background-size: cover;

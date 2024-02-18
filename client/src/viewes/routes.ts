@@ -318,6 +318,8 @@ export const vendorRoutes: IRoutes[] = [
 ];
 
 export const noAuthRotes: IRoutes[] = [
+  { component: ProductPage, path: "/product-page/:id" },
+  { component: BeautyOfSkin, path: "/products/beauty-of-skin" },
   { component: Home, path: "/" },
   { component: CleaningPage, path: "/cleaning-page" },
   { component: RentingElectronicsPage, path: "/renting-electronics" },

@@ -1,47 +1,23 @@
-import React, { FC } from "react";
-import Footer from "@/components/footer/Footer.tsx";
-import { useTranslation } from "react-i18next";
+import React, { FC } from 'react';
+import Footer from '@/components/footer/Footer.tsx';
+import { useTranslation } from 'react-i18next';
 import './Home.scss'
-import { SavedItem } from "./components/SavedItem.tsx";
-import { CompaniesList } from "./components/CompaniesList.tsx";
-import { BestSellings} from "./components/BestSellings.tsx";
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import { SavedItem } from './components/SavedItem.tsx';
+import { CompaniesList } from './components/CompaniesList.tsx';
+import { BestSellings} from './components/BestSellings.tsx';
+import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
+
+import imageAppleIcon from '@/assets/images/apple-icon.png';
+import imageIphone from '@/assets/images/iphone-img.png';
+import imageAdvantage1 from '@/assets/images/HomePage/advantages/delivery.svg';
+import imageAdvantage2 from '@/assets/images/HomePage/advantages/refund.svg';
+import imageAdvantage3 from '@/assets/images/HomePage/advantages/discount.svg';
+import imageAdvantage4 from '@/assets/images/HomePage/advantages/support.svg';
 
 const Home: FC = () => {
-    const { t } = useTranslation();
-
-    const SavedItems: SavedItem[] = [
-        {
-            title: 'Iphone 12',
-            image: "url(src/assets/images/HomePage/saved/img1.png)",
-            price: 99.50,
-            description: t("GoPro HERO6 4K Action Camera - Black"),
-            quantity: 1,
-        },
-        {
-            title: 'Iphone 13',
-            image: "url(src/assets/images/HomePage/saved/img1.png)",
-            price: 99.50,
-            description: t("GoPro HERO6 4K Action Camera - Black"),
-            quantity: 1,
-        },
-        {
-            title: 'Iphone 14',
-            image: "url(src/assets/images/HomePage/saved/img1.png)",
-            price: 99.50,
-            description: t("GoPro HERO6 4K Action Camera - Black"),
-            quantity: 1,
-        },
-        {
-            title: 'Iphone 15',
-            image: "url(src/assets/images/HomePage/saved/img1.png)",
-            price: 99.50,
-            description: t("GoPro HERO6 4K Action Camera - Black"),
-            quantity: 1,
-        },
-    ];
-
     useDefaultScrollPosition();
+
+    const { t } = useTranslation();
 
   return (
     <React.Fragment>
@@ -51,7 +27,7 @@ const Home: FC = () => {
                     <div className="shop-now__content">
                         <div className="shop-now__info">
                             <div className="shop-now__icon">
-                                <img src="src/assets/images/apple-icon.png" alt="Icon"/>
+                                <img src={imageAppleIcon} alt="Icon"/>
                             </div>
                             <div className="shop-now__description">iPhone 14 {t("series")}</div>
                         </div>
@@ -59,7 +35,7 @@ const Home: FC = () => {
                         <button className="shop-now__button">{t("Shop now")}</button>
                     </div>
                     <div className="shop-now__image">
-                        <img src="src/assets/images/iphone-img.png" alt="Image"/>
+                        <img src={imageIphone} alt="Image"/>
                     </div>
                 </div>
             </div>
@@ -168,11 +144,7 @@ const Home: FC = () => {
                     <div className="saved__content">
                         <h3 className="saved__title">{t("Saved for later")}</h3>
                         <div className="saved__items">
-                            {SavedItems.map((item, index) => {
-                                return (
-                                    <SavedItem key={index} index={index} item={item}/>
-                                );
-                            })}
+                            <SavedItem />
                         </div>
                     </div>
                 </div>
@@ -182,7 +154,7 @@ const Home: FC = () => {
                     <div className="advantages__items">
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="src/assets/images/HomePage/advantages/delivery.svg" alt="Icon"/>
+                                <img src={imageAdvantage1} alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Free Delivery</h4>
@@ -191,7 +163,7 @@ const Home: FC = () => {
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="src/assets/images/HomePage/advantages/refund.svg" alt="Icon"/>
+                                <img src={imageAdvantage2} alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Return & Refund</h4>
@@ -200,16 +172,16 @@ const Home: FC = () => {
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="src/assets/images/HomePage/advantages/discount.svg" alt="Icon"/>
+                                <img src={imageAdvantage3} alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Member Discount</h4>
-                                <p className="advantages__desc">Onevery order over $140.00</p>
+                                <p className="advantages__desc">On every order over $140.00</p>
                             </div>
                         </div>
                         <div className="advantages__item">
                             <div className="advantages__image">
-                                <img src="src/assets/images/HomePage/advantages/support.svg" alt="Icon"/>
+                                <img src={imageAdvantage4} alt="Icon"/>
                             </div>
                             <div className="advantages__text">
                                 <h4 className="advantages__title">Support 24/7</h4>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { useTranslation } from "react-i18next";
-import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import ShoppingCart from "@/services/ShoppingCartService.ts";
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { userDataSelector } from '@/store/slices/userDataSlice.ts';
+import ShoppingCart from '@/services/ShoppingCartService.ts';
+import imageSavedItem1 from '@/assets/images/HomePage/saved/img1.png';
 
 export type SavedItem = {
     title: string,
@@ -12,18 +13,44 @@ export type SavedItem = {
     quantity: number,
 }
 
-type SavedItemProps = {
-    item: SavedItem,
-    index: number
-}
-
-export const SavedItem = ({ item }: SavedItemProps) => {
+export const SavedItem = () => {
     const { t } = useTranslation();
     const user = useSelector(userDataSelector)
 
-    function sendCartItemHandler(item: SavedItem) {
-        try{
-            const response = ShoppingCart.sendShoppingCartItems(
+  const SavedItems: SavedItem[] = [
+    {
+      title: 'Iphone 12',
+      image: imageSavedItem1,
+      price: 99.50,
+      description: t("GoPro HERO6 4K Action Camera - Black"),
+      quantity: 1,
+    },
+    {
+      title: 'Iphone 13',
+      image: imageSavedItem1,
+      price: 99.50,
+      description: t("GoPro HERO6 4K Action Camera - Black"),
+      quantity: 1,
+    },
+    {
+      title: 'Iphone 14',
+      image: imageSavedItem1,
+      price: 99.50,
+      description: t("GoPro HERO6 4K Action Camera - Black"),
+      quantity: 1,
+    },
+    {
+      title: 'Iphone 15',
+      image: imageSavedItem1,
+      price: 99.50,
+      description: t("GoPro HERO6 4K Action Camera - Black"),
+      quantity: 1,
+    },
+  ];
+
+  async function sendCartItemHandler (item: SavedItem) {
+        try {
+            await ShoppingCart.sendShoppingCartItems(
                 item.title,
                 item.description,
                 item.price,
@@ -31,22 +58,28 @@ export const SavedItem = ({ item }: SavedItemProps) => {
                 item.quantity,
                 user.id
             )
-            console.log(response)
         } catch (e){
             console.log(e)
         }
     }
 
     return (
-        <div className="saved__item">
-            <div
-                className="saved__image"
-                style={{backgroundImage: `${item.image}`}}
-            ></div>
-            <div className="saved_item-price">{item.title}</div>
-            <span className="saved__price">${item.price}</span>
-            <p className="saved__desc">{item.description}</p>
-            <button onClick={() => sendCartItemHandler(item)} className="saved__button">{t("Move to cart")}</button>
-        </div>
+        SavedItems.map((item, index) => {
+          return (
+            <div key={index} className="saved__item">
+              <div className='saved__item_image'>
+                <img
+                  src={item.image}
+                  alt='image'
+                />
+              </div>
+              <div className="saved_item-price">{item.title}</div>
+              <span className="saved__price">${item.price}</span>
+              <p className="saved__desc">{item.description}</p>
+              <button onClick={() => sendCartItemHandler(item)}
+                      className="saved__button">{t("Move to cart")}</button>
+            </div>
+          );
+        })
     )
 }

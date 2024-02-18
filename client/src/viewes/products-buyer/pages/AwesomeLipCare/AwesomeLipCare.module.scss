@@ -155,32 +155,6 @@
   }
 }
 
-.topRatedProductsItem{
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
-  & > div{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-    & > span{
-      color: rgb(0, 0, 0);
-      font-size: 13.94px;
-      font-weight: 600;
-      text-align: left;
-    }
-
-    & > p{
-      color: rgb(141, 141, 141);
-      font-size: 12.79px;
-      font-weight: 500;
-      text-align: left;
-    }
-  }
-}
-
 .resetFilter{
   & > button {
     margin-top: 10px;

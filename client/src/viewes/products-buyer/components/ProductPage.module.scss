@@ -187,14 +187,14 @@
   margin-bottom: 15px;
   & > span:first-child{
     background-repeat: no-repeat;
-    background-image: url("../../../assets/images/ProductPage/wishlistIcon.svg");
+    background-image: url("@/assets/images/ProductPage/wishlistIcon.svg");
   }
   & > span{
     padding-left: 20px;
   }
   & > span:last-child{
     background-repeat: no-repeat;
-    background-image: url("../../../assets/images/ProductPage/askIcon.svg");
+    background-image: url("@/assets/images/ProductPage/askIcon.svg");
   }
 
   &::after{

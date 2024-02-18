@@ -1,9 +1,13 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./PaymentPage.module.scss";
 import PaymentModal from "./PaymentModal";
-import Footer from "../../components/footer/Footer.tsx";
+import Footer from "@/components/footer/Footer.tsx";
 
-// eslint-disable-next-line react-refresh/only-export-components
+import imagePaymentGoogle from "@/assets/images/Payment/google.png";
+import imagePaymentApple from "@/assets/images/Payment/apple.svg";
+import imagePaymentCreditCard from "@/assets/images/Payment/credit-card.svg";
+import imagePaymentCashOnDelivery from "@/assets/images/Payment/img5.png";
+
 export const clearModalActiveParams = {
   google: false,
   apple: false,
@@ -44,7 +48,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="/Payment/google.png" alt="Icon" />
+              <img src={imagePaymentGoogle} alt="Icon" />
               <span>Google Pay</span>
             </button>
             <button
@@ -56,7 +60,7 @@ const Payment: FC = () => {
                 modalActive.apple ? `${styles.block_active}` : `${styles.block}`
               }
             >
-              <img src="/Payment/apple.svg" alt="Icon" />
+              <img src={imagePaymentApple} alt="Icon" />
               <span>Apple Pay</span>
             </button>
             <button
@@ -70,7 +74,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="/Payment/credit-card.svg" alt="Icon" />
+              <img src={imagePaymentCreditCard} alt="Icon" />
               <span>Credit Card</span>
             </button>
             <button
@@ -84,7 +88,7 @@ const Payment: FC = () => {
                   : `${styles.block}`
               }
             >
-              <img src="/Payment/img5.png" alt="Icon" />
+              <img src={imagePaymentCashOnDelivery} alt="Icon" />
               <span>Cash on Delivery</span>
             </button>
           </div>

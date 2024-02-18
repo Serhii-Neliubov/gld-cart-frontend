@@ -1,8 +1,13 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 import Footer from "@/components/footer/Footer.tsx";
-import styles from "./HelpAndSupport.module.scss";
-import { Link } from "react-router-dom";
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import styles from './HelpAndSupport.module.scss';
+import { Link } from 'react-router-dom';
+import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
+
+import imageIcon1 from '@/assets/images/HelpAndSupport/icon1.svg';
+import imageIcon2 from '@/assets/images/HelpAndSupport/icon2.svg';
+import imageIcon3 from '@/assets/images/HelpAndSupport/icon3.svg';
+import imageSupportLogo from '@/assets/images/HelpAndSupport/logo1.png';
 
 const HelpAndSupport: FC = () => {
   useDefaultScrollPosition();
@@ -14,7 +19,7 @@ const HelpAndSupport: FC = () => {
         <div className={styles.blocks}>
           <div className={styles.block}>
             <div className={styles.block_text}>
-              <img src="../../../src/assets/images/HelpAndSupport/icon1.svg" alt="Image" />
+              <img src={imageIcon1} alt="Image" />
               <span>I Want To Know Where My Order Is</span>
             </div>
             <p className={styles.text}>
@@ -23,7 +28,7 @@ const HelpAndSupport: FC = () => {
           </div>
           <div className={styles.block}>
             <div className={styles.block_text}>
-              <img src="../../../src/assets/images/HelpAndSupport/icon2.svg" alt="Image" />
+              <img src={imageIcon2} alt="Image" />
               <span>I Want To Return An Item</span>
             </div>
             <p className={styles.text}>
@@ -32,7 +37,7 @@ const HelpAndSupport: FC = () => {
           </div>
           <div className={styles.block}>
             <div className={styles.block_text}>
-              <img src="../../../src/assets/images/HelpAndSupport/icon3.svg" alt="Image" />
+              <img src={imageIcon3} alt="Image" />
               <span>I Want To Cancel An Order</span>
             </div>
             <p className={styles.text}>
@@ -54,7 +59,7 @@ const HelpAndSupport: FC = () => {
           <div className={styles.contact_content}>
             <img
               className={styles.logo}
-              src="../../../src/assets/images/HelpAndSupport/logo1.png"
+              src={imageSupportLogo}
               alt="Image"
             />
             <div className={styles.contact_sidebar}>

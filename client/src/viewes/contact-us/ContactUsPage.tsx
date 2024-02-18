@@ -1,11 +1,18 @@
-import React, {useState} from 'react';
-import { FC, FormEvent } from "react";
-import styles from "./ContactUsPage.module.scss";
-import Footer from "@/components/footer/Footer.tsx";
-import { useNavigate } from "react-router-dom";
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
-import {ContactUsService} from "@/services/ContactUsService.ts";
+import React, { useState } from 'react';
+import { FC, FormEvent } from 'react';
+import styles from './ContactUsPage.module.scss';
+import Footer from '@/components/footer/Footer.tsx';
+import { useNavigate } from 'react-router-dom';
+import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
+import { useInput } from '@/hooks/useInput/useInput.tsx';
+import { ContactUsService } from '@/services/ContactUsService.ts';
+
+import imageContactUs1 from "@/assets/images/contact-us/icon1.svg";
+import imageContactUs2 from "@/assets/images/contact-us/icon2.svg";
+import imageContactUs3 from "@/assets/images/contact-us/icon3.svg";
+import imageSocialIcon1 from "@/assets/images/contact-us/social1.png";
+import imageSocialIcon2 from "@/assets/images/contact-us/social2.png";
+import imageSocialIcon3 from "@/assets/images/contact-us/social3.png";
 
 const ContactUsPage: FC = () => {
   useDefaultScrollPosition();
@@ -97,26 +104,26 @@ const ContactUsPage: FC = () => {
             </form>
             <div className={styles.contacts}>
               <div className={styles.contacts_item}>
-                <img src="src/assets/images/contact-us/icon1.svg" alt="Icon"/>
+                <img src={imageContactUs1} alt="Icon"/>
                 <p>contact@Gldcard.com</p>
                 <span>(406) 555-0120</span>
               </div>
               <div className={styles.contacts_item}>
-                <img src="src/assets/images/contact-us/icon2.svg" alt="Icon"/>
+                <img src={imageContactUs2} alt="Icon"/>
                 <span>6391 Elgin St. Celina, Delaware 10299</span>
               </div>
               <div className={styles.contacts_item}>
-                <img src="src/assets/images/contact-us/icon3.svg" alt="Icon"/>
+                <img src={imageContactUs3} alt="Icon"/>
                 <span style={{margin: "12px 0"}}>Find on social media</span>
                 <div className={styles.socials}>
                   <a href="#" className={styles.social}>
-                    <img src="src/assets/images/contact-us/social1.png" alt='Social image'/>
+                    <img src={imageSocialIcon1} alt='Social image'/>
                   </a>
                   <a href="#" className={styles.social}>
-                    <img src="src/assets/images/contact-us/social2.png" alt='Social image'/>
+                    <img src={imageSocialIcon2} alt='Social image'/>
                   </a>
                   <a href="#" className={styles.social}>
-                    <img src="src/assets/images/contact-us/social3.png" alt='Social image'/>
+                    <img src={imageSocialIcon3} alt='Social image'/>
                   </a>
                 </div>
               </div>

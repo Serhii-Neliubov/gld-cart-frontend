@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import styles from './ProfilePictureStage.module.scss'
 
+import imageCircle from '../../assets/images/DriverLicense/greenCircle.png'
+
 type ProfilePictureStageProps = {
     setStage: (value: (prev: number) => number) => void
 }
@@ -31,7 +33,7 @@ export const ProfilePictureStage = ({setStage}: ProfilePictureStageProps) => {
                 <div className={styles.imageBoxContent}>
                     <div className={styles.imageBox}>
                         <div className={styles.userImage}>
-                            <img src={file ? file : 'src/assets/images/DriverLicense/greenCircle.png'} alt='image'/>
+                            <img src={file ? file : imageCircle} alt='image'/>
                         </div>
                         <span className={styles.imageBoxTip}>Please provide a clear photo of your face host can recognize you.</span>
                     </div>
