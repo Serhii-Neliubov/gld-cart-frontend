@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './WishlistWindow.module.scss';
 import {wishlistItems} from "../WishlistPage.tsx";
 import {useSelector} from "react-redux";
-import {userDataSelector} from "../../../store/slices/userDataSlice.ts";
-import $api, {API_URL} from "../../../utils/interceptors/interceptors.ts";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 type WishlistWindowProps = {
     wishlistItems: wishlistItems[]
@@ -46,7 +46,7 @@ export const WishlistWindow = ({wishlistItems, setWishlistItems}: WishlistWindow
                     {wishlistItems.map((item: wishlistItems) => {
                         return <div key={item._id} className={styles.productContent}>
                             <div className={styles.productInfo}>
-                                <img alt='' src='../../../assets/images/ShoppingCard/product.png'/>
+                                <img alt='' src='src/assets/images/ShoppingCard/product.png'/>
                                 <span>{item.productId.product_name}</span>
                             </div>
                             <span className={styles.productPrice}>$500.00</span>

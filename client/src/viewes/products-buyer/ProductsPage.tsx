@@ -66,9 +66,9 @@ const ProductsPage: FC = () => {
               <span>Only Categories</span>
             </div>
             <div className={styles.blocks}>
-              {categories.map((category) => {
+              {categories.map((category, index) => {
                 return (
-                  <Link to={category.link} className={styles.block}>
+                  <Link key={index} to={category.link} className={styles.block}>
                     <img
                       className={styles.image}
                       src={category.img}

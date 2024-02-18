@@ -1,10 +1,10 @@
 import React, { FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, userDataSelector } from "../../../store/slices/userDataSlice.ts";
+import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
 import {useNavigate} from "react-router-dom";
 import styles from "../ProfilePage.module.scss";
-import {useInput} from "../../../hooks/useInput/useInput.tsx";
-import {PasswordService} from "../../../services/PasswordService.ts";
+import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {PasswordService} from "services/PasswordService.ts";
 
 export default function PasswordMenu() {
   const user = useSelector(userDataSelector);

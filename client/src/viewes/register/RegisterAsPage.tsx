@@ -1,17 +1,16 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setFalse, setTrue } from "@/store/slices/isvendorSlice.ts";
 import { AppDispatch } from "@/store/store.ts";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const RegisterAsPage: FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  useDefaultScrollPosition();
 
-  useEffect((): void => {
-    window.scrollTo(0, 0);
-  }, []);
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <div className={styles.container}>

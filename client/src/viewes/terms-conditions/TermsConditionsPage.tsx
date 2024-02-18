@@ -1,10 +1,10 @@
 import React from 'react';
-import Footer from "../../components/footer/Footer.tsx";
-import TextSection from "../../components/text-paragraph/TextSection.tsx";
+import Footer from "@/components/footer/Footer.tsx";
+import TextSection from "@/components/text-paragraph/TextSection.tsx";
 import styles from "./TermsConditionsPage.module.scss";
 import { FC } from "react";
-import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import {TermsConditions} from "../../assets/data/public-rules/TermsConditionsData.ts";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import {TermsConditions} from "@/assets/data/public-rules/TermsConditionsData.ts";
 
 const TermsConditionsPage: FC = () => {
   useDefaultScrollPosition();
@@ -16,9 +16,10 @@ const TermsConditionsPage: FC = () => {
           <h1 className={styles.title}>{TermsConditions.title}</h1>
           <span className={styles.desc}>{TermsConditions.description_top}</span>
           <div className={styles.text}>
-            {TermsConditions.list_text.map((li) => {
+            {TermsConditions.list_text.map((li, index) => {
               return (
                 <TextSection
+                  key={index}
                   id={li.id}
                   title={li.title}
                   text={li.text.map((text) => text)}

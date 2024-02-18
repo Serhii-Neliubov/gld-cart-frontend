@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from "react-i18next";
 import {useSelector} from "react-redux";
-import {userDataSelector} from "../../../store/slices/userDataSlice.ts";
-import ShoppingCart from "../../../services/ShoppingCartService.ts";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import ShoppingCart from "@/services/ShoppingCartService.ts";
 
 export type SavedItem = {
     title: string,

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "./SendMessagePage.module.scss";
 import { FC } from "react";
-import BgWithParticles from "../../components/bg-with-particles/BgWithParticles.tsx";
-import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const SendMessagePage: FC = () => {
   useDefaultScrollPosition();

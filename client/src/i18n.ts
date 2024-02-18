@@ -13,6 +13,9 @@ const i18nConfig: InitOptions = {
   interpolation: {
     escapeValue: false,
   },
+  backend: {
+    loadPath: 'src/assets/locales/{{lng}}/{{ns}}.json' // Замените 'your_custom_path' на путь к вашей новой папке
+  }
 };
 
 i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init(i18nConfig);

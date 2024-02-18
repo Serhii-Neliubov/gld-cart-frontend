@@ -163,14 +163,14 @@ export const BeautyOfSkin = () => {
                                 <h6 className={styles.filterCategoryTitle}>Popular Brands</h6>
                                 <div className={styles.popularBrandsItems}>
                                     <div className={styles.popularBrandsColumn}>
-                                        <img src='src/assets/images/TopRatedProducts/img1.png' alt=''/>
-                                        <img src='src/assets/images/TopRatedProducts/img2.png' alt=''/>
-                                        <img src='src/assets/images/TopRatedProducts/img3.png' alt=''/>
+                                        <img src='src/assets/images/TopRatedProducts/img1.png' alt='Image'/>
+                                        <img src='src/assets/images/TopRatedProducts/img2.png' alt='Image'/>
+                                        <img src='src/assets/images/TopRatedProducts/img3.png' alt='Image'/>
                                     </div>
                                     <div className={styles.popularBrandsColumn}>
-                                        <img src='src/assets/images/TopRatedProducts/img4.png' alt=''/>
-                                        <img src='src/assets/images/TopRatedProducts/img5.png' alt=''/>
-                                        <img src='src/assets/images/TopRatedProducts/img6.png' alt=''/>
+                                        <img src='src/assets/images/TopRatedProducts/img4.png' alt='Image'/>
+                                        <img src='src/assets/images/TopRatedProducts/img5.png' alt='Image'/>
+                                        <img src='src/assets/images/TopRatedProducts/img6.png' alt='Image'/>
                                     </div>
                                 </div>
                             </div>

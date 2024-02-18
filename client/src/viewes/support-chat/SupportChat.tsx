@@ -22,7 +22,7 @@ export const SupportChat = () => {
                         <button className={styles.backButton}/>
                     </Link>
                     <Link to='/'>
-                        <img className={styles.logo} src='/SupportChat/logo.png' alt='logo'/>
+                        <img className={styles.logo} src='src/assets/images/SupportChat/logo.png' alt='logo'/>
                     </Link>
                     <Link to='/faq-s'>
                         <button className={styles.faqsButton}/>
@@ -48,7 +48,7 @@ export const SupportChat = () => {
                                             <div>
                                                 <span>How do I create an account on the shopping site?</span>
                                             </div>
-                                            <img src='/SupportChat/arrow-top.svg' alt='arrow top icon'/>
+                                            <img src='src/assets/images/SupportChat/arrow-top.svg' alt='arrow top icon'/>
                                         </div>
                                         <div onClick={() => {
                                             setInputValue('Checkout or "Place Order" to complete your purchase?')
@@ -57,7 +57,7 @@ export const SupportChat = () => {
                                             <div>
                                                 <span>Checkout or "Place Order" to complete your purchase?</span>
                                             </div>
-                                            <img src='/SupportChat/arrow-top.svg' alt='arrow top icon'/>
+                                            <img src='src/assets/images/SupportChat/arrow-top.svg' alt='arrow top icon'/>
                                         </div>
                                     </div>
                                     <div className={styles.questionBoxesColumn}>
@@ -68,7 +68,7 @@ export const SupportChat = () => {
                                             <div>
                                                 <span>Add them to your cart or wish list?</span>
                                             </div>
-                                            <img src='/SupportChat/arrow-top.svg' alt='arrow top icon'/>
+                                            <img src='src/assets/images/SupportChat/arrow-top.svg' alt='arrow top icon'/>
                                         </div>
                                         <div onClick={() => {
                                             setInputValue('How do I apply a promo code or discount during checkout?')
@@ -77,7 +77,7 @@ export const SupportChat = () => {
                                             <div>
                                                 <span>How do I apply a promo code or discount during checkout?</span>
                                             </div>
-                                            <img src='/SupportChat/arrow-top.svg' alt='arrow top icon'/>
+                                            <img src='src/assets/images/SupportChat/arrow-top.svg' alt='arrow top icon'/>
                                         </div>
                                     </div>
                                 </div>
@@ -86,17 +86,17 @@ export const SupportChat = () => {
                         </div>
                         <div className={styles.chatAreaInput}>
                         <button>
-                        <img src='/SupportChat/voice-input.svg' className={styles.voiceInput} alt='voice input'/>
+                        <img src='src/assets/images/SupportChat/voice-input.svg' className={styles.voiceInput} alt='voice input'/>
                     </button>
                     <input value={inputValue} onChange={(event) => setInputValue(event.target.value)} className={styles.textInput} placeholder='Write here anything...'/>
                     <button>
-                        <img src='/SupportChat/emodji-file.svg' className={styles.voiceInput} alt='emodji input'/>
+                        <img src='src/assets/images/SupportChat/emodji-file.svg' className={styles.voiceInput} alt='emodji input'/>
                     </button>
                     <button>
-                        <img src='/SupportChat/file-input.svg' className={styles.voiceInput} alt='file input'/>
+                        <img src='src/assets/images/SupportChat/file-input.svg' className={styles.voiceInput} alt='file input'/>
                     </button>
                     <button onClick={sendMessageHandler}>
-                        <img src='/SupportChat/send-message-button.svg' className={styles.voiceInput}
+                        <img src='src/assets/images/SupportChat/send-message-button.svg' className={styles.voiceInput}
                              alt='send message'/>
                     </button>
                 </div>

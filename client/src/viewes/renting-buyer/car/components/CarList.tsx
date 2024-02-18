@@ -8,10 +8,10 @@ export default function CarList() {
 
   return (
     <div className={styles.items}>
-      {cars.map((car, index) => {
+      {cars.map((car) => {
         return (
             <Product
-                key={index}
+                key={car._id}
               id={car._id}
               image={car.images[0]}
               title={car.product_name}

@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import "@/index.scss";
 import { Provider } from "react-redux";
 import { store } from "@/store/store.ts";
-import "@/i18n";
+import "./i18n.ts";
 import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import App from "@/App.tsx";

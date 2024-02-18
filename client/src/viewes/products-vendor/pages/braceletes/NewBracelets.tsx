@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./NewBracelets.module.scss";
-import { Layout } from "../../../../components/Vendor/Layout.tsx";
-import ItemPublishPage from "../../../../components/item-published/ItemPublishPage.tsx";
-import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
+import { Layout } from "@/components/Vendor/Layout.tsx";
+import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
+import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 
 export const NewBracelets = () => {
   const [stage, setStage] = useState(3);

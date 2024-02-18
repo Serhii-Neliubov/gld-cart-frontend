@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react";
-import Footer from "../../components/footer/Footer.tsx";
+import Footer from "@/components/footer/Footer.tsx";
 import styles from "./TrackOrder.module.scss";
 import { Link } from "react-router-dom";
-import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import { useInput } from "../../hooks/useInput/useInput.tsx";
-import { statuses } from "../../assets/data/TrackOrderStatuses.ts";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import { useInput } from "@/hooks/useInput/useInput.tsx";
+import { statuses } from "@/assets/data/TrackOrderStatuses.ts";
 
 const TrackOrder: FC = () => {
   useDefaultScrollPosition();
@@ -31,7 +31,7 @@ const TrackOrder: FC = () => {
               {/* ITEM NUMBER STATUS */}
               {statuses.map((status, index) => {
                 return (
-                    <div className={styles.status}>
+                    <div key={index} className={styles.status}>
                         <div
                             className={
                               orderStatus === status.status
@@ -88,10 +88,10 @@ const TrackOrder: FC = () => {
                 </button>
               </div>
               {/* ITEM WINDOW STATUS */}
-              {statuses.map((object) => {
+              {statuses.map((object, index) => {
                 return (
                   orderStatus === object.status &&
-                    <div className={styles.order_status_bar}>
+                    <div key={index} className={styles.order_status_bar}>
                       <div>
                         <img src={object.img} alt="tick"/>
                         <span>Status : {object.status}</span>

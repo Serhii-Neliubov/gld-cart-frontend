@@ -18,6 +18,7 @@ interface IUser {
 
 const RegisterPage: FC = () => {
   useDefaultScrollPosition();
+
   const dispatch = useDispatch<AppDispatch>();
   const navigate: NavigateFunction = useNavigate();
 

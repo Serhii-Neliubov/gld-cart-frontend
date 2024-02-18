@@ -11,25 +11,26 @@ export interface IRentingCategory {
 const rentingCategories:IRentingCategory[] = [
     {
         title: 'Vehicles',
-        imageURL: 'RentingPage/img1.png',
+        imageURL: 'src/assets/images/RentingPage/img1.png',
         href: '/renting-car'
     },
     {
         title: 'Houses',
-        imageURL: 'RentingPage/img2.png',
+        imageURL: 'src/assets/images/RentingPage/img2.png',
         href: '/renting-house'
     },
     {
         title: 'Electronics',
-        imageURL: 'RentingPage/img3.png',
+        imageURL: 'src/assets/images/RentingPage/img3.png',
         href: '/renting-electronics'
     }
 ]
 
 export const RentingCategoryItemList = () => {
     return <div className={styles.blocks}>
-        {rentingCategories.map((item) =>
+        {rentingCategories.map((item, index) =>
             <RentingCategoryItem
+                key={index}
                 href={item.href}
                 imageURL={item.imageURL}
                 title={item.title}

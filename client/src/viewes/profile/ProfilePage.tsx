@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import Footer from "../../components/footer/Footer.tsx";
+import Footer from "@/components/footer/Footer.tsx";
 import styles from "./ProfilePage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../../store/store";
-import { logout, userDataSelector } from "../../store/slices/userDataSlice";
+import { AppDispatch } from "@/store/store.ts";
+import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
 import { FC, useState } from "react";
 import React from "react";
 import PasswordMenu from "./components/PasswordMenu.tsx";
@@ -28,7 +28,7 @@ const ProfilePage: FC = () => {
                   : styles.button_item
               }
             >
-              <img src="/ProfilePage/icon1.svg" alt="icon" />
+              <img src="src/assets/images/ProfilePage/icon1.svg" alt="icon" />
               <button>Profile</button>
             </div>
             <div
@@ -39,7 +39,7 @@ const ProfilePage: FC = () => {
                   : styles.button_item
               }
             >
-              <img src="/ProfilePage/icon2.svg" alt="icon" />
+              <img src="src/assets/images/ProfilePage/icon2.svg" alt="icon" />
               <button>Address</button>
             </div>
             {user.type == "Buyer" && (
@@ -51,13 +51,13 @@ const ProfilePage: FC = () => {
                     : styles.button_item
                 }
               >
-                <img src="/ProfilePage/icon3.svg" alt="icon" />
+                <img src="src/assets/images/ProfilePage/icon3.svg" alt="icon" />
                 <button>My Orders</button>
               </div>
             )}
             {user.type == "Buyer" && (
               <Link to="/wishlist" className={styles.button_item}>
-                <img src="/ProfilePage/icon5.svg" alt="icon" />
+                <img src="src/assets/images/ProfilePage/icon5.svg" alt="icon" />
                 <button>Wishlist</button>
               </Link>
             )}
@@ -69,19 +69,19 @@ const ProfilePage: FC = () => {
                   : styles.button_item
               }
             >
-              <img src="/ProfilePage/icon6.svg" alt="icon" />
+              <img src="src/assets/images/ProfilePage/icon6.svg" alt="icon" />
               <button>Change Password</button>
             </div>
             <Link to="/help-and-support" className={styles.button_item}>
-              <img src="/ProfilePage/icon7.svg" alt="icon" />
+              <img src="src/assets/images/ProfilePage/icon7.svg" alt="icon" />
               <button>Help & Support</button>
             </Link>
             <Link to="/terms-and-conditions" className={styles.button_item}>
-              <img src="/ProfilePage/icon8.svg" alt="icon" />
+              <img src="src/assets/images/ProfilePage/icon8.svg" alt="icon" />
               <button>Terms & conditions</button>
             </Link>
             <Link to="/contact-us" className={styles.button_item}>
-              <img src="/ProfilePage/icon9.svg" alt="icon" />
+              <img src="src/assets/images/ProfilePage/icon9.svg" alt="icon" />
               <button>Contact Us</button>
             </Link>
             <Link
@@ -89,7 +89,7 @@ const ProfilePage: FC = () => {
               onClick={() => dispatch(logout())}
               className={styles.button_item}
             >
-              <img src="/ProfilePage/icon10.svg" alt="icon" />
+              <img src="src/assets/images/ProfilePage/icon10.svg" alt="icon" />
               <button>Logout</button>
             </Link>
           </div>

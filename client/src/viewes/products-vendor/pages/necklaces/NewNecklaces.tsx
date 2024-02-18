@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./NewNecklaces.module.scss";
-import { Layout } from "../../../../components/Vendor/Layout.tsx";
-import ItemPublishPage from "../../../../components/item-published/ItemPublishPage.tsx";
-import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
+import { Layout } from "@/components/Vendor/Layout.tsx";
+import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
+import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 
 export const NewNecklaces = () => {
   const [stage, setStage] = useState(3);
@@ -114,19 +114,19 @@ export const NewNecklaces = () => {
               </span>
               <div className={styles.photoBlocks}>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
+                  <img src="src/assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
+                  <img src="src/assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
+                  <img src="src/assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
+                  <img src="src/assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
                 <div className={styles.photoBlock}>
-                  <img src="../../../../assets/images/photo-and-video-icon.svg" alt="icon" />
+                  <img src="src/assets/images/photo-and-video-icon.svg" alt="icon" />
                 </div>
               </div>
               <div className={styles.inputBlock}>

@@ -24,7 +24,7 @@
       position: absolute;
       right: -25px;
       top: 25%;
-      background-image: url("/RentingCategory/Vector.svg");
+      background-image: url("src/assets/images/RentingCategory/Vector.svg");
       background-repeat: no-repeat;
       background-size: cover;
       width: 10px;
@@ -93,7 +93,7 @@
   &::after {
     content: "";
     position: absolute;
-    background-image: url("RentingCategory/arrow-right.svg");
+    background-image: url("src/assets/images/RentingCategory/arrow-right.svg");
     background-size: cover;
     width: 15px;
     height: 15px;
@@ -116,7 +116,7 @@
   &::after {
     content: "";
     position: absolute;
-    background-image: url("RentingCategory/arrow-right.svg");
+    background-image: url("src/assets/images/RentingCategory/arrow-right.svg");
     background-size: cover;
     width: 15px;
     height: 15px;

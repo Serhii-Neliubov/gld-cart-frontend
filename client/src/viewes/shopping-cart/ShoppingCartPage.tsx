@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import styles from "./ShoppingCartPage.module.scss";
-import Footer from "../../components/footer/Footer.tsx";
+import Footer from "@/components/footer/Footer.tsx";
 import { FC } from "react";
-import NoItems from "../../components/no-items-page/NoItems.tsx";
+import NoItems from "@/components/no-items-page/NoItems.tsx";
 import {ShoppingCartWindow} from "./components/ShoppingCartWindow.tsx";
 import {useSelector} from "react-redux";
-import {userDataSelector} from "../../store/slices/userDataSlice.ts";
-import $api, {API_URL} from "../../utils/interceptors/interceptors.ts";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 export type cartItem = {
     "productId": {

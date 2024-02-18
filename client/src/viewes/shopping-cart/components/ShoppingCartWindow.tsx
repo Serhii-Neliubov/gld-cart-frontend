@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './ShoppingCartWindow.module.scss';
 import {cartItem} from "../ShoppingCartPage.tsx";
 import {useSelector} from "react-redux";
-import {userDataSelector} from "../../../store/slices/userDataSlice.ts";
-import $api, {API_URL} from "../../../utils/interceptors/interceptors.ts";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 interface ShoppingCartWindow{
     cartItems: cartItem[] | undefined,

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Layout } from "../../../../components/Vendor/Layout.tsx";
+import { Layout } from "@/components/Vendor/Layout.tsx";
 import useCategoryRedirect from "../../../../hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 import ItemPublishPage from "../../../../components/item-published/ItemPublishPage.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
