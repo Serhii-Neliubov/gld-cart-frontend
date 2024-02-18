@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import Footer from "../../components/footer/Footer.tsx";
+import Footer from "@/components/footer/Footer.tsx";
 import styles from "./HelpAndSupport.module.scss";
 import { Link } from "react-router-dom";
-import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 const HelpAndSupport: FC = () => {
   useDefaultScrollPosition();

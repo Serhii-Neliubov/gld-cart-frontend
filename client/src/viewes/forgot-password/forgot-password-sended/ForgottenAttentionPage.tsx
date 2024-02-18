@@ -2,8 +2,8 @@ import { FC } from "react";
 import styles from "../ForgottenPasswordPage.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import BgWithParticles from "../../../components/bg-with-particles/BgWithParticles.tsx";
-import { RootState } from "../../../store/store";
+import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
+import { RootState } from "@/store/store.ts";
 
 const ForgottenAttentionPage: FC = () => {
   const email: string = useSelector((state: RootState) => state.setEmail.value);

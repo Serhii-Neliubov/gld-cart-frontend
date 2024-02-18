@@ -1,16 +1,16 @@
 import styles from "./RentingCategoryPage.module.scss";
 import React, {FC, useState} from "react";
-import RentingStage from "../../components/renting-stages/RentingStage.tsx";
-import {setVendorSelectedItemValue} from "../../store/slices/vendorSelectedItemSlice.ts";
+import RentingStage from "@/components/renting-stages/RentingStage.tsx";
+import {setVendorSelectedItemValue} from "@/store/slices/vendorSelectedItemSlice.ts";
 import {
   resetVendorProductInfo,
   setProductCategory,
   setProductName,
   setProductSubcategory
-} from "../../store/slices/vendorProductInfoSlice.ts";
+} from "@/store/slices/vendorProductInfoSlice.ts";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {RentingData} from "../../assets/data/vendor-categories/RentingData.ts";
+import {RentingData} from "@/assets/data/vendor-categories/RentingData.ts";
 
 interface IClearClick {
   [key: string]: boolean;

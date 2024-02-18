@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./LoginPage.module.scss";
-import BgWithParticles from "../../components/bg-with-particles/BgWithParticles.tsx";
-import { AppDispatch } from "../../store/store";
+import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
+import { AppDispatch } from "@/store/store.ts";
 import { useDispatch } from "react-redux";
-import { login } from "../../store/slices/userDataSlice";
-import AuthService from "../../services/AuthService.ts";
+import { login } from "@/store/slices/userDataSlice.ts";
+import AuthService from "@/services/AuthService.ts";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import {useInput} from "../../hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput/useInput.tsx";
 
 const LoginPage = () => {
   useDefaultScrollPosition();

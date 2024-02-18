@@ -1,12 +1,12 @@
 import { FC, useState } from "react";
 import styles from "./ForgottenPasswordPage.module.scss";
-import BgWithParticles from "../../components/bg-with-particles/BgWithParticles.tsx";
+import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
 import { useDispatch } from "react-redux";
-import { setEmailValue } from "../../store/slices/resetPasswordEmailSlice";
-import { AppDispatch } from "../../store/store";
+import { setEmailValue } from "@/store/slices/resetPasswordEmailSlice.ts";
+import { AppDispatch } from "@/store/store.ts";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import {PasswordService} from "../../services/PasswordService.ts";
+import {PasswordService} from "services/PasswordService.ts";
 
 const ForgottenPasswordPage: FC = () => {
   const [email, setEmail] = useState<string>("");

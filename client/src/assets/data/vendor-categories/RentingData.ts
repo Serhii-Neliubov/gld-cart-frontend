@@ -9,7 +9,7 @@ type RentingDataProps = {
 
 export const RentingData: RentingDataProps = [
     {
-        image: "RentingCategory/ph_car.png",
+        image: "src/assets/images/RentingCategory/ph_car.png",
         category: "vehicles",
         name: "Vehicles",
         items: {
@@ -241,7 +241,7 @@ export const RentingData: RentingDataProps = [
         },
     },
     {
-        image: "RentingCategory/game-icons_house.png",
+        image: "src/assets/images/RentingCategory/game-icons_house.png",
         category: "houses",
         name: "Houses",
         items: {
@@ -321,7 +321,7 @@ export const RentingData: RentingDataProps = [
         },
     },
     {
-        image: "RentingCategory/pajamas_mobile.png",
+        image: "src/assets/images/RentingCategory/pajamas_mobile.png",
         category: "electronics",
         name: "Electronics",
         items: {

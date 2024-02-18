@@ -23,13 +23,13 @@
     "noFallthroughCasesInSwitch": true,
     "allowJs": true,
     "incremental": true,
-    "esModuleInterop": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "baseUrl": ".",
+
     "paths": {
 
       "@/*": ["./src/*", "./dist/*", ""],
@@ -40,6 +40,7 @@
 
     },
   },
+  "esModuleInterop": true,
   "include": ["src"],
   "references": [
     {

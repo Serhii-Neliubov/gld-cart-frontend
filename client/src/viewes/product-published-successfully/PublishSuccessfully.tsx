@@ -8,7 +8,7 @@ const PublishSuccessfully: FC = () => {
     <div className={`__container ${styles.body}`}>
       <RentingStage coloredStage={6} />
       <div className={styles.border}>
-        <img src="../../assets/images/PublishedSuccessfully/tick.svg" alt="Image" />
+        <img src="src/assets/images/PublishedSuccessfully/tick.svg" alt="Image" />
         <h1>Your Product have Successfully Published </h1>
         <Link to="/">
           <button className={styles.button}>Go To Category Page</button>

@@ -95,13 +95,13 @@ const Label: FC = () => {
                 to={!isAuth ? "/login" : "/wishlist"}
                 className="label__like-btn"
               >
-                <img src="../../assets/images/like-icon.svg" alt="Like icon" />
+                <img src="src/assets/images/like-icon.svg" alt="Like icon" />
               </Link>
               <Link
                 to={!isAuth ? "/login" : "/shopping-cart"}
                 className="label__trash-btn"
               >
-                <img src="../../assets/images/trash-icon.svg" alt="Trash icon" />
+                <img src="src/assets/images/trash-icon.svg" alt="Trash icon" />
               </Link>
             </React.Fragment>
           )}
@@ -109,7 +109,7 @@ const Label: FC = () => {
             to={isAuth ? "/profile" : "/login"}
             className="label__profile-btn"
           >
-            <img src="../../assets/images/profile-icon.svg" alt="Profile icon" />
+            <img src="src/assets/images/profile-icon.svg" alt="Profile icon" />
             <span>
               {user.name} {user.surname}
             </span>

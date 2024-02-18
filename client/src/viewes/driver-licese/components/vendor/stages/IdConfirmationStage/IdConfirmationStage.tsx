@@ -32,7 +32,7 @@ export const IdConfirmationStage = ({setStage}: ProfilePictureStageProps) => {
                     <div className={styles.imageBox}>
                         <span className={styles.subtitle}>ID Confirmation</span>
                         <div className={styles.userImage}>
-                            <img src={file ? file : '/DriverLicense/verificationExamplePhoto.jpeg'} alt='image'/>
+                            <img src={file ? file : 'src/assets/images/DriverLicense/verificationExamplePhoto.jpeg'} alt='image'/>
                         </div>
                         <button className={styles.imageBoxButton}>
                             Add a photo

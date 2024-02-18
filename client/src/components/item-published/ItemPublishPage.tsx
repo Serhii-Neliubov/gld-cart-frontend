@@ -52,7 +52,7 @@ const ItemPublishPage = ({category, formData, link}: ItemPublishPageProps) => {
       <RentingStage coloredStage={5} />
       <div className={styles.content}>
         <Link className={styles.close_button} to="/">
-          <img src="@/assets/images/ItemPublishPage/close-button.svg" alt="" />
+          <img src="src/assets/images/ItemPublishPage/close-button.svg" alt="" />
         </Link>
         <h1 className={styles.title}>
           Your {category} Renting Form has <br /> been Successfully Completed

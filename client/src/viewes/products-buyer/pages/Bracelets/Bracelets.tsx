@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Bracelets.module.scss';
-import Footer from '../../../../components/footer/Footer';
+import Footer from '@/components/footer/Footer';
 
 export const Bracelets = () => {
     return (
@@ -109,7 +109,7 @@ export const Bracelets = () => {
                                 <h5 className={styles.filterCategoryTitle}>Top Rated Products</h5>
                                 <div className={styles.topRatedProductsItems}>
                                     <div className={styles.topRatedProductsItem}>
-                                        <img src='../../../../assets/images/TopRatedProducts/headphones.png' alt='img'/>
+                                        <img src='src/assets/images/TopRatedProducts/headphones.png' alt='img'/>
                                         <div>
                                             <div className={styles.rating}>(rating)</div>
                                             <span>Headphones Wireless</span>
@@ -117,7 +117,7 @@ export const Bracelets = () => {
                                         </div>
                                     </div>
                                     <div className={styles.topRatedProductsItem}>
-                                        <img src='../../../../assets/images/TopRatedProducts/iphone12.png' alt='img'/>
+                                        <img src='src/assets/images/TopRatedProducts/iphone12.png' alt='img'/>
                                         <div>
                                             <div className={styles.rating}>(rating)</div>
                                             <span>Iphone 12 pro</span>
@@ -125,7 +125,7 @@ export const Bracelets = () => {
                                         </div>
                                     </div>
                                     <div className={styles.topRatedProductsItem}>
-                                        <img src='../../../../assets/images/TopRatedProducts/appleWatch.png' alt='img'/>
+                                        <img src='src/assets/images/TopRatedProducts/appleWatch.png' alt='img'/>
                                         <div>
                                             <div className={styles.rating}>(rating)</div>
                                             <span>Apple Watch Sport</span>
@@ -138,14 +138,14 @@ export const Bracelets = () => {
                                 <h6 className={styles.filterCategoryTitle}>Popular Brands</h6>
                                 <div className={styles.popularBrandsItems}>
                                     <div className={styles.popularBrandsColumn}>
-                                        <img src='../../../../assets/images/TopRatedProducts/img1.png' alt=''/>
-                                        <img src='../../../../assets/images/TopRatedProducts/img2.png' alt=''/>
-                                        <img src='../../../../assets/images/TopRatedProducts/img3.png' alt=''/>
+                                        <img src='src/assets/images/TopRatedProducts/img1.png' alt=''/>
+                                        <img src='src/assets/images/TopRatedProducts/img2.png' alt=''/>
+                                        <img src='src/assets/images/TopRatedProducts/img3.png' alt=''/>
                                     </div>
                                     <div className={styles.popularBrandsColumn}>
-                                        <img src='../../../../assets/images/TopRatedProducts/img4.png' alt=''/>
-                                        <img src='../../../../assets/images/TopRatedProducts/img5.png' alt=''/>
-                                        <img src='../../../../assets/images/TopRatedProducts/img6.png' alt=''/>
+                                        <img src='src/assets/images/TopRatedProducts/img4.png' alt=''/>
+                                        <img src='src/assets/images/TopRatedProducts/img5.png' alt=''/>
+                                        <img src='src/assets/images/TopRatedProducts/img6.png' alt=''/>
                                     </div>
                                 </div>
                             </div>
@@ -160,10 +160,10 @@ export const Bracelets = () => {
                         <div className={styles.actionButtons}>
                             <div>
                                 <button className={styles.defaultSortButton}>
-                                    <img src='../../../../assets/images/TopRatedProducts/defaultIcon.svg' alt=''/>
+                                    <img src='src/assets/images/TopRatedProducts/defaultIcon.svg' alt=''/>
                                 </button>
                                 <button className={styles.menuSortButton}>
-                                    <img src='../../../../assets/images/TopRatedProducts/menuSort.svg' alt=''/>
+                                    <img src='src/assets/images/TopRatedProducts/menuSort.svg' alt=''/>
                                 </button>
                             </div>
                             <p>Showing 1-12 of 37 results</p>
@@ -172,7 +172,7 @@ export const Bracelets = () => {
                                     <option>Default Sorting</option>
                                 </select>
                                 <button className={styles.filterButton}>
-                                    <img src='../../../../assets/images/TopRatedProducts/filterIcon.svg' alt=''/>
+                                    <img src='src/assets/images/TopRatedProducts/filterIcon.svg' alt=''/>
                                     Filter
                                 </button>
                             </div>
@@ -180,7 +180,7 @@ export const Bracelets = () => {
                         <div className={styles.productList}>
                             <div className={styles.productItem}>
                                 <div className={styles.productImage}>
-                                    <img src='../../../../assets/images/TopRatedProducts/productImage.png' alt=''/>
+                                    <img src='src/assets/images/TopRatedProducts/productImage.png' alt=''/>
                                 </div>
                                 <div className={styles.productInfo}>
                                     <p>Product Tag</p>
@@ -194,7 +194,7 @@ export const Bracelets = () => {
                             </div>
                             <div className={styles.productItem}>
                                 <div className={styles.productImage}>
-                                    <img src='../../../../assets/images/TopRatedProducts/productImage.png' alt=''/>
+                                    <img src='src/assets/images/TopRatedProducts/productImage.png' alt=''/>
                                 </div>
                                 <div className={styles.productInfo}>
                                     <p>Product Tag</p>
@@ -208,7 +208,7 @@ export const Bracelets = () => {
                             </div>
                             <div className={styles.productItem}>
                                 <div className={styles.productImage}>
-                                    <img src='../../../../assets/images/TopRatedProducts/productImage.png' alt=''/>
+                                    <img src='src/assets/images/TopRatedProducts/productImage.png' alt=''/>
                                 </div>
                                 <div className={styles.productInfo}>
                                     <p>Product Tag</p>
@@ -222,7 +222,7 @@ export const Bracelets = () => {
                             </div>
                             <div className={styles.productItem}>
                                 <div className={styles.productImage}>
-                                    <img src='../../../../assets/images/TopRatedProducts/productImage.png' alt=''/>
+                                    <img src='src/assets/images/TopRatedProducts/productImage.png' alt=''/>
                                 </div>
                                 <div className={styles.productInfo}>
                                     <p>Product Tag</p>

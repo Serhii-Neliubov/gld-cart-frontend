@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import styles from './ProductPage.module.scss';
-import Footer from '../../../components/footer/Footer';
+import Footer from '@/components/footer/Footer';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {userDataSelector} from "../../../store/slices/userDataSlice.ts";
-import $api, {API_URL} from "../../../utils/interceptors/interceptors.ts";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 type product = {
     "reviews": [],
@@ -62,10 +62,10 @@ export const ProductPage = () => {
                     <div className={styles.product}>
                         <div className={styles.images}>
                             <div className={styles.smallImages}>
-                                <img src='../../../assets/images/ProductPage/imageProduct.png' alt=''/>
-                                <img src='../../../assets/images/ProductPage/imageProduct.png' alt=''/>
-                                <img src='../../../assets/images/ProductPage/imageProduct.png' alt=''/>
-                                <img src='../../../assets/images/ProductPage/imageProduct.png' alt=''/>
+                                <img src='src/assets/images/ProductPage/imageProduct.png' alt=''/>
+                                <img src='src/assets/images/ProductPage/imageProduct.png' alt=''/>
+                                <img src='src/assets/images/ProductPage/imageProduct.png' alt=''/>
+                                <img src='src/assets/images/ProductPage/imageProduct.png' alt=''/>
                             </div>
                             <div className={styles.bigImage}>
                                 <img src={product?.images[0]} alt=''/>
@@ -104,7 +104,7 @@ export const ProductPage = () => {
                                 </div>
                             </div>
                             <div className={styles.flashSale}>
-                                <img src='../../../assets/images/ProductPage/fireIcon.png' alt='image'/>
+                                <img src='src/assets/images/ProductPage/fireIcon.png' alt='image'/>
                                 <span>Flash Sale: Ends in 5 days</span>
                             </div>
                             <div className={styles.actionButtons}>
@@ -126,10 +126,10 @@ export const ProductPage = () => {
                             </div>
                             <div className={styles.socials}>
                                 <span>Share:</span>
-                                <img src='../../../assets/images/ProductPage/social1.png' alt='icon'/>
-                                <img src='../../../assets/images/ProductPage/social2.png' alt='icon'/>
-                                <img src='../../../assets/images/ProductPage/social3.png' alt='icon'/>
-                                <img src='../../../assets/images/ProductPage/social4.png' alt='icon'/>
+                                <img src='src/assets/images/ProductPage/social1.png' alt='icon'/>
+                                <img src='src/assets/images/ProductPage/social2.png' alt='icon'/>
+                                <img src='src/assets/images/ProductPage/social3.png' alt='icon'/>
+                                <img src='src/assets/images/ProductPage/social4.png' alt='icon'/>
                             </div>
                             <div className={styles.returnTipText}>
                                 <p>30 days easy returns</p>
@@ -137,7 +137,7 @@ export const ProductPage = () => {
                             </div>
                             <div className={styles.guaranteedSafe}>
                                 <p>Guaranteed safe & secure checkout</p>
-                                <img src='../../../assets/images/ProductPage/paymentMethods.png' alt='icon'/>
+                                <img src='src/assets/images/ProductPage/paymentMethods.png' alt='icon'/>
                             </div>
                         </div>
                     </div>
@@ -184,67 +184,67 @@ export const ProductPage = () => {
                         <div className={styles.relatedItems}>
                             <div className={styles.relatedItem}>
                                 <div>
-                                    <img src='../../../assets/images/ProductPage/imageProduct.png' alt='image'/>
+                                    <img src='src/assets/images/ProductPage/imageProduct.png' alt='image'/>
                                 </div>
                                 <span>$99.50</span>
                                 <p>Revitalize nourish and soothe lips.</p>
                                 <button>
-                                    <img src='../../../assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    <img src='src/assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
                                     Move to cart
                                 </button>
                             </div>
                             <div className={styles.relatedItem}>
                                 <div>
-                                    <img src='../../../assets/images/ProductPage/imageProduct.png' alt='image'/>
+                                    <img src='src/assets/images/ProductPage/imageProduct.png' alt='image'/>
                                 </div>
                                 <span>$99.50</span>
                                 <p>Revitalize nourish and soothe lips.</p>
                                 <button>
-                                    <img src='../../../assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    <img src='src/assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
                                     Move to cart
                                 </button>
                             </div>
                             <div className={styles.relatedItem}>
                                 <div>
-                                    <img src='../../../assets/images/ProductPage/imageProduct.png' alt='image'/>
+                                    <img src='src/assets/images/ProductPage/imageProduct.png' alt='image'/>
                                 </div>
                                 <span>$99.50</span>
                                 <p>Revitalize nourish and soothe lips.</p>
                                 <button>
-                                    <img src='../../../assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    <img src='src/assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
                                     Move to cart
                                 </button>
                             </div>
                             <div className={styles.relatedItem}>
                                 <div>
-                                    <img src='../../../assets/images/ProductPage/imageProduct.png' alt='image'/>
+                                    <img src='src/assets/images/ProductPage/imageProduct.png' alt='image'/>
                                 </div>
                                 <span>$99.50</span>
                                 <p>Revitalize nourish and soothe lips.</p>
                                 <button>
-                                    <img src='../../../assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    <img src='src/assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
                                     Move to cart
                                 </button>
                             </div>
                             <div className={styles.relatedItem}>
                                 <div>
-                                    <img src='../../../assets/images/ProductPage/imageProduct.png' alt='image'/>
+                                    <img src='src/assets/images/ProductPage/imageProduct.png' alt='image'/>
                                 </div>
                                 <span>$99.50</span>
                                 <p>Revitalize nourish and soothe lips.</p>
                                 <button>
-                                    <img src='../../../assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    <img src='src/assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
                                     Move to cart
                                 </button>
                             </div>
                             <div className={styles.relatedItem}>
                                 <div>
-                                    <img src='../../../assets/images/ProductPage/imageProduct.png' alt='image'/>
+                                    <img src='src/assets/images/ProductPage/imageProduct.png' alt='image'/>
                                 </div>
                                 <span>$99.50</span>
                                 <p>Revitalize nourish and soothe lips.</p>
                                 <button>
-                                    <img src='../../../assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
+                                    <img src='src/assets/images/HomePage/saved/shopping_cart.svg' alt=''/>
                                     Move to cart
                                 </button>
                             </div>

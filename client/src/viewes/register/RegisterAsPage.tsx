@@ -1,10 +1,10 @@
 import { FC, useEffect } from "react";
-import BgWithParticles from "../../components/bg-with-particles/BgWithParticles.tsx";
+import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
 import styles from "./RegisterAsPage.module.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setFalse, setTrue } from "../../store/slices/isvendorSlice";
-import { AppDispatch } from "../../store/store";
+import { setFalse, setTrue } from "@/store/slices/isvendorSlice.ts";
+import { AppDispatch } from "@/store/store.ts";
 
 const RegisterAsPage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();

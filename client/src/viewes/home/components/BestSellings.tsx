@@ -4,21 +4,21 @@ import {BestSellingItems} from "./BestSellingItem.tsx";
 
 const bestSellingItems: BestSellingItems[] = [
     {
-        image: '../../../src/assets/HomePage/best-sellings/best1.png',
+        image: 'src/assets/images/HomePage/best-sellings/best1.png',
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',
         discount_percent: '43',
     },
     {
-        image: '../../../src/assets/HomePage/best-sellings/best1.png',
+        image: 'src/assets/images/HomePage/best-sellings/best1.png',
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',
         discount_percent: '43',
     },
     {
-        image: '../../../src/assets/HomePage/best-sellings/best1.png',
+        image: 'src/assets/images/HomePage/best-sellings/best1.png',
         title: 'Giorgio Armani',
         price: '1250',
         price_discount: '2190',

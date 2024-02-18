@@ -2,9 +2,10 @@ import { FC, useEffect, useState } from "react";
 import styles from "./RegisterPage.module.scss";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../store/store";
-import { register } from "../../../store/slices/userDataSlice";
-import BgWithParticles from "../../../components/bg-with-particles/BgWithParticles.tsx";
+import { AppDispatch, RootState } from "@/store/store.ts";
+import { register } from "@/store/slices/userDataSlice.ts";
+import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 interface IUser {
   type: string;
@@ -16,6 +17,7 @@ interface IUser {
 }
 
 const RegisterPage: FC = () => {
+  useDefaultScrollPosition();
   const dispatch = useDispatch<AppDispatch>();
   const navigate: NavigateFunction = useNavigate();
 
@@ -37,14 +39,11 @@ const RegisterPage: FC = () => {
   const [isEmptyRePassword, setIsEmptyRePassword] = useState<boolean>(false);
 
   useEffect((): void => {
-    window.scrollTo(0, 0);
-
     if (isVendor) {
       setUserData({ ...userData, type: "Vendor" });
     } else {
       setUserData({ ...userData, type: "Buyer" });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function sendFormHandler(): void {

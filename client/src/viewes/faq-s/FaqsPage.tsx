@@ -4,7 +4,7 @@ import TextSection from "../../components/text-paragraph/TextSection.tsx";
 import styles from "./FaqsPage.module.scss";
 import { FC } from "react";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import {FaqsData} from "../../assets/data/public-rules/FaqsData.ts";
+import {FaqsData} from "@/assets/data/public-rules/FaqsData.ts";
 
 const FaqsPage: FC = () => {
 

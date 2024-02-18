@@ -11,7 +11,7 @@ const Footer: FC = () => {
             <h3 className="footer__links-title">Online Shopping</h3>
             <a href="#" className="footer__link">
               {" "}
-              Furnitures{" "}
+              Furniture's{" "}
             </a>
             <nav className="footer__links">
               <a href="#" className="footer__link">
@@ -41,7 +41,7 @@ const Footer: FC = () => {
                 Near By Jewellery
               </a>
               <a href="#" className="footer__link">
-                Near By Furnitures
+                Near By Furniture's
               </a>
               <a href="#" className="footer__link">
                 Near By Electronics
@@ -84,22 +84,22 @@ const Footer: FC = () => {
           <div className="footer__contacts">
             <div className="footer__email">
               <h3 className="footer__links-title">email</h3>
-              <span className="footer__link-mail">Gldcart@gmail.com</span>
+              <span className="footer__link-mail">Gldcartsrcgmail.com</span>
             </div>
             <div className="footer__socials">
               <h3 className="footer__links-title">social links</h3>
               <div className="footer__social-items">
                 <a href="#" className="footer__social-item">
-                  <img src="../../assets/images/HomePage/footer/social-icon1.svg" alt="Social" />
+                  <img src="src/assets/images/HomePage/footer/social-icon1.svg" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="../../assets/images/HomePage/footer/social-icon2.png" alt="Social" />
+                  <img src="src/assets/images/HomePage/footer/social-icon2.png" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="../../assets/images/HomePage/footer/social-icon3.svg" alt="Social" />
+                  <img src="src/assets/images/HomePage/footer/social-icon3.svg" alt="Social" />
                 </a>
                 <a href="#" className="footer__social-item">
-                  <img src="../../assets/images/HomePage/footer/social-icon4.svg" alt="Social" />
+                  <img src="src/assets/images/HomePage/footer/social-icon4.svg" alt="Social" />
                 </a>
               </div>
             </div>
@@ -107,14 +107,14 @@ const Footer: FC = () => {
               <h3 className="footer__links-title">Download App</h3>
               <div className="footer__download-services">
                 <a href="#" className="footer__download-qr">
-                  <img src="../../assets/images/HomePage/footer/qr.jpg" alt="Image" />
+                  <img src="src/assets/images/HomePage/footer/qr.jpg" alt="Image" />
                 </a>
                 <div className="footer__download-stores">
                   <a className="footer__download-store" href="#">
-                    <img src="../../assets/images/HomePage/footer/AppStore.png" alt="Image" />
+                    <img src="src/assets/images/HomePage/footer/AppStore.png" alt="Image" />
                   </a>
                   <a className="footer__download-store" href="#">
-                    <img src="../../assets/images/HomePage/footer/GooglePlay.png" alt="Image" />
+                    <img src="src/assets/images/HomePage/footer/GooglePlay.png" alt="Image" />
                   </a>
                 </div>
               </div>
@@ -126,15 +126,15 @@ const Footer: FC = () => {
         <div className="footer__container">
           <div className="footer__copyright-content">
             <div className="footer__trialshoopy">
-              <h4 className="footer__trialshoopy-title">trialshoopy accepts</h4>
+              <h4 className="footer__trialshoopy-title">Trialshoopy accepts</h4>
               <div className="footer__trialshoopy-items">
-                <img src="../../assets/images/HomePage/footer/cards/visa.png" alt="Visa" />
+                <img src="src/assets/images/HomePage/footer/cards/visa.png" alt="Visa" />
                 <img
-                  src="../../assets/images/HomePage/footer/cards/mastercard.png"
+                  src="src/assets/images/HomePage/footer/cards/mastercard.png"
                   alt="Master Card"
                 />
-                <img src="../../assets/images/HomePage/footer/cards/bhim.png" alt="BHIM UPI" />
-                <img src="../../assets/images/HomePage/footer/cards/r.png" alt=" R" />
+                <img src="src/assets/images/HomePage/footer/cards/bhim.png" alt="BHIM UPI" />
+                <img src="src/assets/images/HomePage/footer/cards/r.png" alt=" R" />
               </div>
             </div>
             <div className="footer__reserved">

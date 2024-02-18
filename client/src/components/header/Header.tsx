@@ -26,7 +26,7 @@ const Header: FC = () => {
     <div className="header">
       <div className="header__container">
         <Link to="/" className="header__logo">
-          <img src="../../assets/images/HomePage/header/logo.png" alt="Logo" />
+          <img src="src/assets/images/HomePage/header/logo.png" alt="Logo" />
         </Link>
         <div className="header__input">
           <input placeholder={t("What are you looking for?")} type="text" />
@@ -37,7 +37,7 @@ const Header: FC = () => {
           className="header__button-lang"
         >
           <span>{language}</span>
-          <img src="../../assets/images/HomePage/header/arrow-down.svg" alt="arrow down" />
+          <img src="src/assets/images/HomePage/header/arrow-down.svg" alt="arrow down" />
           {openLanguageModal && (
             <div className="header__language-modal">
               {languages

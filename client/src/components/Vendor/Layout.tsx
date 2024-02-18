@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./BasicInformationVehicle.module.scss";
+import styles from "./Layout.module.scss";
 import RentingStage from "../renting-stages/RentingStage.tsx";
 
 type LayoutProps = {
