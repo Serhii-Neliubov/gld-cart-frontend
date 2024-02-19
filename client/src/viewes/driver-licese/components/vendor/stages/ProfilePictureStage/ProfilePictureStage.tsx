@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './ProfilePictureStage.module.scss'
 
-import imageCircle from '../../assets/images/DriverLicense/greenCircle.png'
+import imageCircle from '@/assets/images/DriverLicense/greenCircle.png'
 
 type ProfilePictureStageProps = {
     setStage: (value: (prev: number) => number) => void

@@ -2,7 +2,7 @@ import React from 'react';
 import {useTranslation} from "react-i18next";
 import {BestSellingItems} from "./BestSellingItem.tsx";
 
-import imageBest1 from 'src/assets/images/HomePage/best-sellings/best1.png';
+import imageBest1 from '@/assets/images/HomePage/best-sellings/best1.png';
 
 const bestSellingItems: BestSellingItems[] = [
     {
