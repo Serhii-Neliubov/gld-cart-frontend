@@ -3,6 +3,11 @@ import styles from './SmartWatch.module.scss';
 import Footer from '@/components/footer/Footer';
 import { ProductFilter } from "@/components/product-filter/ProductFilter.tsx";
 
+import imageProduct from '@/assets/images/TopRatedProducts/productImage.png';
+import imageDefaultIcon from '@/assets/images/TopRatedProducts/defaultIcon.svg';
+import imageMenuSort from '@/assets/images/TopRatedProducts/menuSort.svg';
+import imageFilterIcon from '@/assets/images/TopRatedProducts/filterIcon.svg';
+
 export const SmartWatch = () => {
     return (
         <React.Fragment>
@@ -14,10 +19,10 @@ export const SmartWatch = () => {
                         <div className={styles.actionButtons}>
                             <div>
                                 <button className={styles.defaultSortButton}>
-                                    <img src='src/assets/images/TopRatedProducts/defaultIcon.svg' alt=''/>
+                                    <img src={imageDefaultIcon} alt='Image'/>
                                 </button>
                                 <button className={styles.menuSortButton}>
-                                    <img src='src/assets/images/TopRatedProducts/menuSort.svg' alt=''/>
+                                    <img src={imageMenuSort} alt='Image'/>
                                 </button>
                             </div>
                             <p>Showing 1-12 of 37 results</p>
@@ -26,7 +31,7 @@ export const SmartWatch = () => {
                                     <option>Default Sorting</option>
                                 </select>
                                 <button className={styles.filterButton}>
-                                    <img src='src/assets/images/TopRatedProducts/filterIcon.svg' alt=''/>
+                                    <img src={imageFilterIcon} alt='Image'/>
                                     Filter
                                 </button>
                             </div>
@@ -34,7 +39,7 @@ export const SmartWatch = () => {
                         <div className={styles.productList}>
                             <div className={styles.productItem}>
                                 <div className={styles.productImage}>
-                                    <img src='src/assets/images/TopRatedProducts/productImage.png' alt=''/>
+                                    <img src={imageProduct} alt='Image'/>
                                 </div>
                                 <div className={styles.productInfo}>
                                     <p>Product Tag</p>
@@ -48,7 +53,7 @@ export const SmartWatch = () => {
                             </div>
                             <div className={styles.productItem}>
                                 <div className={styles.productImage}>
-                                    <img src='src/assets/images/TopRatedProducts/productImage.png' alt=''/>
+                                    <img src={imageProduct} alt='Image'/>
                                 </div>
                                 <div className={styles.productInfo}>
                                     <p>Product Tag</p>
@@ -62,7 +67,7 @@ export const SmartWatch = () => {
                             </div>
                             <div className={styles.productItem}>
                                 <div className={styles.productImage}>
-                                    <img src='src/assets/images/TopRatedProducts/productImage.png' alt=''/>
+                                    <img src={imageProduct} alt='Image'/>
                                 </div>
                                 <div className={styles.productInfo}>
                                     <p>Product Tag</p>
@@ -76,7 +81,7 @@ export const SmartWatch = () => {
                             </div>
                             <div className={styles.productItem}>
                                 <div className={styles.productImage}>
-                                    <img src='src/assets/images/TopRatedProducts/productImage.png' alt=''/>
+                                    <img src={imageProduct} alt='Image'/>
                                 </div>
                                 <div className={styles.productInfo}>
                                     <p>Product Tag</p>
