@@ -1,0 +1,224 @@
+.content{
+  margin-top: 90px;
+  padding-bottom: 50px;
+  display: flex;
+  gap: 30px;
+}
+.productStatusItems{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.productStatusItem{
+  display: flex;
+  gap: 15px;
+}
+.categoriesItems{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoriesItem{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    & > label{
+      flex: 1 1 auto;
+      padding-left: 15px;
+      position: relative;
+
+      &::after{
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 25%;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgb(235, 235, 235);
+      }
+    }
+
+  & > div {
+    border: 0.72px solid rgba(0, 0, 0, 0.12);
+    border-radius: 1.44px;
+    display: flex;
+    width: 23px;
+    height: 23px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.colorCircle{
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+
+  &_sand{
+    background: #F5E6C8;
+  }
+  &_antiqueBrass{
+    background: #C88E5A;
+  }
+  &_pishkinTan{
+    background: #D3A77F;
+  }
+  &_iridium{
+    background: #B0B0B0;
+  }
+  &_purpleBlue{
+    background: #6A5ACD;
+  }
+  &_lightGrey{
+    background: #D3D3D3;
+  }
+  &_babyPink{
+    background: #FFC0CB;
+  }
+}
+
+.topRatedProductsItem{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & > div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    & > span{
+      color: rgb(0, 0, 0);
+      font-size: 13.94px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    & > p{
+      color: rgb(141, 141, 141);
+      font-size: 12.79px;
+      font-weight: 500;
+      text-align: left;
+    }
+  }
+}
+
+.popularBrandsItems{
+  display: flex;
+  align-items: center;
+  gap: 62px;
+}
+.popularBrandsColumn{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  & > img{
+    width: 70px;
+  }
+}
+.productsTitle{
+  color: rgb(0, 0, 0);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: left;
+}
+
+.actionButtons{
+  margin: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div{
+    display: flex;
+    gap: 20px;
+  }
+}
+
+.products {
+  width: 100%;
+}
+
+.defaultSortButton{
+  width: 42px;
+  height: 42px;
+  border: 1px solid #000000;
+}
+
+.menuSortButton{
+  width: 42px;
+  height: 42px;
+  border: 1px solid #818487;
+}
+
+.sortOptionButton{
+  font-family: "Poppins", serif;
+  padding: 12px 30px;
+  border: 1px solid #E4E5E6;
+  background: #F9F9F9;
+}
+
+.filterButton{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(2, 15, 28);
+  color: white;
+  padding: 0 39px;
+}
+
+.productImage{
+  padding: 70px 30px;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  max-width: 295px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  & > img{
+    max-width: 285px;
+    object-fit: cover;
+    max-height: 145px;
+  }
+}
+
+.productInfo{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & > p {
+    color: #8B8B8B;
+  }
+
+}
+
+.productPrice{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  & > span{
+    color: rgb(0, 0, 0);
+    font-size: 18.35px;
+    font-weight: 400;
+  }
+  & > p{
+    color: rgb(118, 122, 125);
+    font-size: 14.13px;
+    font-weight: 400;
+    line-height: 21px;
+    text-decoration-line: line-through;
+  }
+}
+
+.productList{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
