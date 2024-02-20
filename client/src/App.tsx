@@ -4,10 +4,7 @@ import { FC } from "react";
 import { AppDispatch, RootState } from "./store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { noAuthRotes, buyerRoutes, vendorRoutes } from "@/viewes/routes";
-import {
-  checkAuth,
-  userDataSelector,
-} from "./store/slices/userDataSlice.ts";
+import { checkAuth, userDataSelector } from "./store/slices/userDataSlice.ts";
 import IUser from "@/utils/models/IUser.ts";
 import Header from "@/components/header/Header.tsx";
 import Label from "@/components/header-label/Label.tsx";
