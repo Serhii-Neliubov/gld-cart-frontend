@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styles from './ProductPage.module.scss';
 import Footer from '@/components/footer/Footer';
-import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 import imageProduct from '@/assets/images/ProductPage/imageProduct.png';
@@ -13,7 +13,7 @@ import imageSocial2 from '@/assets/images/ProductPage/social2.png';
 import imageSocial3 from '@/assets/images/ProductPage/social3.png';
 import imageSocial4 from '@/assets/images/ProductPage/social4.png';
 import imagePaymentMethods from '@/assets/images/ProductPage/paymentMethods.png';
-import imageShoppingCart from '@/assets/images/ProductPage/shoppingCart.png';
+import imageShoppingCart from '@/assets/images/trash-icon.svg';
 
 type product = {
     "reviews": [],

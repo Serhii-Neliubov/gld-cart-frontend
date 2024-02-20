@@ -20,65 +20,49 @@ const App: FC = () => {
     dispatch(checkAuth());
   }, [dispatch]);
 
-  if (!user.type) {
     return (
       <BrowserRouter>
         <Header />
         <Label />
         <Routes>
-          {noAuthRotes.map((route, index) => {
-            return (
-              <Route
-                Component={route.component}
-                path={route.path}
-                key={index}
-              />
-            );
-          })}
-        </Routes>
-      </BrowserRouter>
-    );
-  }
+          {!user.type && (
+            noAuthRotes.map((route, index) => {
+              return (
+                <Route
+                  Component={route.component}
+                  path={route.path}
+                  key={index}
+                />
+              );
+            })
+          )}
 
-  if (user.type === "Vendor") {
-    return (
-      <BrowserRouter>
-        <Header />
-        <Label />
-        <Routes>
-          {vendorRoutes.map((route) => {
-            return (
-              <Route
-                Component={route.component}
-                path={route.path}
-                key={route.path}
-              />
-            );
-          })}
-        </Routes>
-      </BrowserRouter>
-    );
-  }
+          {user.type === 'Vendor' && (
+            vendorRoutes.map((route) => {
+              return (
+                <Route
+                  Component={route.component}
+                  path={route.path}
+                  key={route.path}
+                />
+              );
+            })
+          )}
 
-  if (user.type === "Buyer") {
-    return (
-      <BrowserRouter>
-        <Header />
-        <Label />
-        <Routes>
-          {buyerRoutes.map((route) => {
-            return (
-              <Route
-                Component={route.component}
-                path={route.path}
-                key={route.path}
-              />
-            );
-          })}
+          {user.type === 'Buyer' && (
+            buyerRoutes.map((route) => {
+              return (
+                <Route
+                  Component={route.component}
+                  path={route.path}
+                  key={route.path}
+                />
+              );
+            })
+          )}
         </Routes>
       </BrowserRouter>
     );
-  }
 };
 
 export default App;

@@ -154,6 +154,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: ProfilePage, path: "/profile" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: HelpAndSupport, path: "/help-and-support" },
+  { component: NotFound, path: "/*" },
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
