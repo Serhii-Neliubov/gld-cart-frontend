@@ -9,7 +9,7 @@ import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 export type cartItem = {
-    "productId": {
+    "product": {
         "reviews": [],
         "_id": string,
         "product_name": string,
@@ -38,7 +38,7 @@ const ShoppingCartPage: FC = () => {
         try {
             const response = await $api.get(`${API_URL}/cart/user/${user.id}`);
             setCartItems(response.data.items);
-            console.log(response.data)
+            console.log('ewaponaw', response.data.items)
             setLoading(false);
         } catch (error) {
             console.error("Error fetching cart items:", error);

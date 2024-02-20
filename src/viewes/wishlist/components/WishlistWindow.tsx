@@ -1,32 +1,33 @@
 import React from 'react';
 import styles from './WishlistWindow.module.scss';
-import {wishlistItems} from "../WishlistPage.tsx";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import {WishlistItem} from "@/viewes/wishlist/WishlistPage.tsx";
 
 type WishlistWindowProps = {
-    wishlistItems: wishlistItems[]
-    setWishlistItems: (wishlistItems: wishlistItems[]) => void
+    wishlistItems: WishlistItem[]
+    setWishlistItems: (wishlistItems: WishlistItem[]) => void
 }
 
 export const WishlistWindow = ({wishlistItems, setWishlistItems}: WishlistWindowProps) => {
     const user = useSelector(userDataSelector);
 
-    const addToCartHandler = async(id: string) => {
+    const addToCartHandler = async(productId: string) => {
         await $api.post(`${API_URL}/cart/add-item`, {
             userId: user.id,
             item: {
-                productId: id,
+                product: productId,
             }
         });
+
     }
 
     const removeWishlistItemHandler = async (itemId: string) => {
         const response = await $api.delete(`${API_URL}/wishlist`, {
             data: {
                 userId: user.id,
-                productId: itemId,
+                product: itemId,
             }
         });
 
@@ -43,16 +44,16 @@ export const WishlistWindow = ({wishlistItems, setWishlistItems}: WishlistWindow
                     <span></span>
                 </div>
                 <div className={styles.productList}>
-                    {wishlistItems.map((item: wishlistItems) => {
+                    {wishlistItems.map((item) => {
                         return <div key={item._id} className={styles.productContent}>
                             <div className={styles.productInfo}>
                                 <img alt='' src='src/assets/images/ShoppingCard/product.png'/>
-                                <span>{item.productId.product_name}</span>
+                                <span>{item.product.product_name}</span>
                             </div>
                             <span className={styles.productPrice}>$500.00</span>
-                            <button onClick={() => addToCartHandler(item.productId._id)} className={styles.addToCart}>Add to Cart</button>
+                            <button onClick={() => addToCartHandler(item.product._id)} className={styles.addToCart}>Add to Cart</button>
                             <div className={styles.removeProduct}>
-                                <button onClick={() => removeWishlistItemHandler(item.productId._id)}>&times; Remove</button>
+                                <button onClick={() => removeWishlistItemHandler(item.product._id)}>&times; Remove</button>
                             </div>
                         </div>
                     })}

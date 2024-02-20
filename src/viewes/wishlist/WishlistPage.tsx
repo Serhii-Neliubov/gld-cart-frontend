@@ -8,9 +8,9 @@ import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
-export type wishlistItems = {
-  "productId": {
-    "reviews": string[],
+export type WishlistItem = {
+  product: {
+    "reviews": [],
     "_id": string,
     "product_name": string,
     "category": string,
@@ -19,14 +19,13 @@ export type wishlistItems = {
     "images": string[],
     "attributes": object,
   },
-  "quantity": number,
-  "_id": string,
-  "createdAt": string,
-  "updatedAt": string
+  _id: string,
+  createdAt: string,
+  updatedAt: string,
 }
 
 const WishlistPage: FC = () => {
-  const [wishlistItems, setWishlistItems] = useState<wishlistItems[]>([]);
+  const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
   const [loading, setLoading] = useState(true);
   const user = useSelector(userDataSelector);
 
@@ -38,6 +37,7 @@ const WishlistPage: FC = () => {
     try {
       const response = await $api.get(`${API_URL}/wishlist/${user.id}`);
       setWishlistItems(response.data.items);
+      console.log(response.data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching cart items:", error);

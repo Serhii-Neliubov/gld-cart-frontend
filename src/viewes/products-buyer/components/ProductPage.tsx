@@ -47,15 +47,18 @@ export const ProductPage = () => {
         await $api.post(`${API_URL}/cart/add-item`, {
             userId: user.id,
             item: {
-                productId: product?._id,
+                product: product?._id,
             }
         });
+
     }
 
     const addToWishlistHandler = async() => {
         await $api.post(`${API_URL}/wishlist`, {
             userId: user.id,
-            productId: product?._id,
+            item: {
+                product: product?._id,
+            }
         });
     }
 

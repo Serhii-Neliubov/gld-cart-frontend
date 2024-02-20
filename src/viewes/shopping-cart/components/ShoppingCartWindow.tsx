@@ -17,7 +17,7 @@ export const ShoppingCartWindow = ({cartItems, setCartItems}: ShoppingCartWindow
             const response = await $api.delete(`${API_URL}/cart/remove-item`, {
                 data: {
                     userId: user.id,
-                    productId: itemId
+                    product: itemId
                 }
             });
 
@@ -40,8 +40,8 @@ export const ShoppingCartWindow = ({cartItems, setCartItems}: ShoppingCartWindow
                     {cartItems?.map((item) => {
                         return <div key={item._id} className={styles.productContent}>
                             <div className={styles.productInfo}>
-                                <img alt='image' src={item.productId.images[0]}/>
-                                <span>{item.productId.product_name}</span>
+                                <img alt='image' src={item.product.images[0]}/>
+                                <span>{item.product.product_name}</span>
                             </div>
                             <span className={styles.productPrice}>$500.00</span>
                             <div className={styles.productQuantity}>
@@ -50,7 +50,7 @@ export const ShoppingCartWindow = ({cartItems, setCartItems}: ShoppingCartWindow
                                 <button>+</button>
                             </div>
                             <div className={styles.removeProduct}>
-                                <button onClick={() => removeCartItemHandler(item.productId._id)}>&times; Remove</button>
+                                <button onClick={() => removeCartItemHandler(item.product._id)}>&times; Remove</button>
                             </div>
                         </div>
                     })}
