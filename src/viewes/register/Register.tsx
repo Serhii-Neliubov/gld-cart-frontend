@@ -1,22 +1,13 @@
-import {FC, FormEvent, useState} from "react";
+import { FC, FormEvent, useState } from "react";
 import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
 import styles from "./Register.module.scss";
 import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import {Link, NavigateFunction, useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "@/store/store.ts";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store/store.ts";
+import { useInput } from "@/hooks/useInput/useInput.tsx";
 import toast from "react-hot-toast";
-import {register} from "@/store/slices/userDataSlice.ts";
-
-interface IUser {
-  type: string;
-  name: string;
-  surname: string;
-  email: string;
-  password: string;
-  rePassword: string;
-}
+import { register } from "@/store/slices/userDataSlice.ts";
 
 const Register: FC = () => {
   useDefaultScrollPosition();
@@ -31,7 +22,7 @@ const Register: FC = () => {
   const password = useInput('');
   const rePassword = useInput('');
 
-  const user: IUser = {
+  const user = {
     type: userType,
     name: name.value,
     surname: surname.value,
@@ -43,11 +34,11 @@ const Register: FC = () => {
   function sendFormHandler(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if(user.password !== user.rePassword){
+    if(user.password !== user.rePassword) {
       toast.error('Passwords do not match');
     }
 
-    if(user && user.password === user.rePassword){
+    if(user && user.password === user.rePassword) {
       try {
         dispatch(register(user));
         navigate('/');
@@ -60,7 +51,8 @@ const Register: FC = () => {
   return (
     <div className={styles.container}>
       <BgWithParticles>
-        {userType ? <div className={styles.components}>
+        {userType ?
+          <div className={styles.components}>
             <div className={styles.content}>
               <h1 className={styles.title}>Sign up to Gldcart</h1>
               <div className={styles.log_link}>
@@ -130,8 +122,8 @@ const Register: FC = () => {
                   Create my account
                 </button>
               </form>
-            </div>
-          </div> : <div className={styles.body}>
+            </div></div> :
+          <div className={styles.body}>
           <h1 className={styles.title}>Register As A</h1>
           <p className={styles.text}>
             Join our platform and showcase your products and Services to a wide
@@ -150,7 +142,8 @@ const Register: FC = () => {
           >
             Vendor
           </button>
-        </div>}
+        </div>
+        }
       </BgWithParticles>
     </div>
   );
