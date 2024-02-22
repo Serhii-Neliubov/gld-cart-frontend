@@ -15,13 +15,13 @@ const useCategoryRedirect = (
     if (data.category !== category) {
       navigator(navigate);
     }
-  }, [data, navigator]);
+  }, [category, data, navigate, navigator]);
 
   useEffect(() => {
     if (stage < 3) {
       navigator(navigate);
     }
-  }, [navigator, stage]);
+  }, [navigate, navigator, stage]);
 };
 
 export default useCategoryRedirect;

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { login } from "@/store/slices/userDataSlice.ts";
 import AuthService from "@/services/AuthService.ts";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import { useInput } from "@/hooks/useInput/useInput.tsx";
 
 const LoginPage = () => {
   useDefaultScrollPosition();
