@@ -1,27 +1,69 @@
-.components {
-  padding: 55px;
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
-.error {
-  border: 1px solid red;
-  width: 100%;
-  position: relative;
-  span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: red;
-    transform: translate(8%, -50%);
-    background-color: #fff;
-    padding: 0 10px;
+.container {
+  padding-bottom: 100px;
+}
+.title {
+  color: #010f1c;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 120%;
+}
+.text {
+  color: #000;
+  font-size: 14px;
+  max-width: 388px;
+  margin-top: 33px;
+  margin-bottom: 67px;
+}
+.button_blue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 346px;
+  height: 67px;
+  margin-bottom: 39px;
+  border-radius: 15px;
+  border: 1px solid #e0e2e3;
+  background-color: #2283dc;
+
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 150%; /*  */
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #2282dcd3;
   }
-  input {
-    padding: 18px;
-    outline: none;
-    width: 100%;
-    &:focus::placeholder {
-      transition: all 0.3s ease;
-      opacity: 0;
-    }
+}
+.button_green {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 346px;
+  height: 67px;
+  margin-bottom: 39px;
+  border-radius: 15px;
+  border: 1px solid #e0e2e3;
+  background: #02a0a0;
+
+  color: #fff;
+  font-family: Poppins, serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 150%; /*  */
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #02a0a0dc;
   }
 }
 .content {
@@ -32,7 +74,12 @@
   align-items: center;
   position: relative;
 }
-
+.components{
+  padding: 55px;
+}
+.body{
+  padding: 55px;
+}
 .title {
   margin-bottom: 5px;
   color: #010f1c;
@@ -42,7 +89,6 @@
   font-weight: 500;
   line-height: 120%; /*  */
 }
-
 .log_link {
   display: flex;
   align-items: center;
@@ -84,7 +130,7 @@
   &::after {
     content: "";
     position: absolute;
-    background-image: url("../../../assets/images/google-icon.svg");
+    background-image: url("../../assets/images/google-icon.svg");
     background-repeat: no-repeat;
     width: 15px;
     height: 15px;
@@ -119,7 +165,6 @@
   line-height: 173.333%; /* */
   margin-bottom: 20px;
 }
-
 .check_box {
   display: flex;
   gap: 10px;
@@ -132,7 +177,6 @@
     line-height: 173.333%; /*  */
   }
 }
-
 .input {
   border: 1px solid #eee;
   padding: 18px;

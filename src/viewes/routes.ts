@@ -16,8 +16,8 @@ import NewPasswordPage from "../viewes/forgot-password/new-password/NewPasswordP
 import LoginPage from "../viewes/login/LoginPage";
 import NotFound from "../viewes/not-found/NotFound";
 import PaymentPage from "../viewes/payment/PaymentPage";
-import RegisterAsPage from "../viewes/register/RegisterAsPage";
-import RegisterPage from "../viewes/register/register-form/RegisterPage";
+import Register from "./register/Register.tsx";
+import RegisterForm from "./register/register-form/RegisterForm.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
 import Renting from "../viewes/renting-buyer/Renting";
 import RentingCarPage from "../viewes/renting-buyer/car/RentingCarPage";
@@ -324,12 +324,12 @@ export const noAuthRotes: IRoutes[] = [
   { component: Home, path: "/" },
   { component: CleaningPage, path: "/cleaning-page" },
   { component: RentingElectronicsPage, path: "/renting-electronics" },
-  { component: RegisterAsPage, path: "/user-type-page" },
+  { component: Register, path: "/user-type-page" },
   { component: Renting, path: "/renting" },
   { component: RentingCarPage, path: "/renting-car" },
   { component: RentingHousePage, path: "/renting-house" },
   { component: LoginPage, path: "/login" },
-  { component: RegisterPage, path: "/register-page" },
+  { component: RegisterForm, path: "/register-page" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
   { component: CookiePolicyPage, path: "/cookie-policy" },
   { component: ShippingPolicyPage, path: "/shipping-policy" },
