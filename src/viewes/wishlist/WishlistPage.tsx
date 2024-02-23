@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./WishlistPage.module.scss";
 import Footer from "@/components/footer/Footer";
 import { FC } from "react";
 import NoItems from "@/components/no-items-page/NoItems.tsx";
 import { WishlistWindow } from './components/WishlistWindow.tsx';
-import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import { useSelector } from "react-redux";
+import { userDataSelector } from "@/store/slices/userDataSlice.ts";
+import Wishlist from "services/WishlistService.ts";
 
 export type WishlistItem = {
   product: {
@@ -29,14 +29,11 @@ const WishlistPage: FC = () => {
   const [loading, setLoading] = useState(true);
   const user = useSelector(userDataSelector);
 
-  useEffect(() => {
-    getWishlistItems();
-  }, []);
-
   const getWishlistItems = async () => {
     try {
-      const response = await $api.get(`${API_URL}/wishlist/${user.id}`);
-      setWishlistItems(response.data.items);
+      const data = await Wishlist.getItems(user);
+
+      setWishlistItems(data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -45,6 +42,10 @@ const WishlistPage: FC = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    getWishlistItems();
+  }, []);
 
   return (
     <React.Fragment>
@@ -60,7 +61,7 @@ const WishlistPage: FC = () => {
           ) : wishlistItems?.length ? (
             <WishlistWindow setWishlistItems={setWishlistItems} wishlistItems={wishlistItems}/>
           ) : (
-            <NoItems title="No Cart Items Found" />
+            <NoItems title="No Wishlist Items Found" />
           )}
         </div>
       </div>

@@ -1,28 +1,22 @@
-import { AxiosResponse } from "axios";
-import $api from "@/utils/interceptors/interceptors.ts";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 export default class ShoppingCart {
-    static async sendShoppingCartItems(
-        title: string,
-        description: string,
-        price: number,
-        image: string,
-        quantity: number,
-        userId: string
-    ): Promise<AxiosResponse> {
-        return $api.post(
-            "/add-cart-item",
-            {
-                title,
-                description,
-                price,
-                image,
-                quantity,
-                userId
-            },
-        );
-    }
+  static async addToCart (productId: string | undefined, userId: string) {
+    await $api.post(`${API_URL}/cart/add-item`, {
+      userId: userId,
+      item: {
+        product: productId,
+      }
+    });
+  }
 
-    static async getShoppingCartItems(id: string): Promise<AxiosResponse> {
-        return $api.get(`/cart/${id}`, );
-    }
+  static async removeItem (itemId: string, userId: string) {
+    const response = await $api.delete(`${API_URL}/cart/remove-item`, {
+      data: {
+        userId: userId,
+        product: itemId,
+      }
+    });
+
+    return response.data.items;
+  }
 }

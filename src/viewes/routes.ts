@@ -15,7 +15,6 @@ import ForgottenAttentionPage from "../viewes/forgot-password/forgot-password-se
 import NewPasswordPage from "../viewes/forgot-password/new-password/NewPasswordPage";
 import LoginPage from "../viewes/login/LoginPage";
 import NotFound from "../viewes/not-found/NotFound";
-import PaymentPage from "../viewes/payment/PaymentPage";
 import Register from "./register/Register.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
 import Renting from "../viewes/renting-buyer/Renting";
@@ -117,7 +116,6 @@ export const buyerRoutes: IRoutes[] = [
   { component: TermsConditionsPage, path: "/terms-and-conditions" },
   { component: FaqsPage, path: "/faq-s" },
   { component: NotFound, path: "/not-found" },
-  { component: PaymentPage, path: "/payment" },
   { component: ProductsPage, path: "/products" },
   // Products
   { component: BeautyOfSkin, path: "/products/beauty-of-skin" },
@@ -170,7 +168,6 @@ export const vendorRoutes: IRoutes[] = [
   { component: TermsConditionsPage, path: "/terms-and-conditions" },
   { component: FaqsPage, path: "/faq-s" },
   { component: NotFound, path: "/not-found" },
-  { component: PaymentPage, path: "/payment" },
   { component: SendMessagePage, path: "/send-message" },
   { component: RentingProductsPage, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },

@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './ShoppingCartWindow.module.scss';
-import {cartItem} from "../ShoppingCartPage.tsx";
-import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import { cartItem } from "../ShoppingCartPage.tsx";
+import { useSelector } from "react-redux";
+import { userDataSelector } from "@/store/slices/userDataSlice.ts";
+import ShoppingCart from "services/ShoppingCartService.ts";
 
 interface ShoppingCartWindow{
     cartItems: cartItem[] | undefined,
@@ -12,19 +12,10 @@ interface ShoppingCartWindow{
 
 export const ShoppingCartWindow = ({cartItems, setCartItems}: ShoppingCartWindow) => {
     const user = useSelector(userDataSelector);
-    const removeCartItemHandler = async (itemId: string) => {
-        try {
-            const response = await $api.delete(`${API_URL}/cart/remove-item`, {
-                data: {
-                    userId: user.id,
-                    product: itemId
-                }
-            });
 
-            setCartItems(response.data.items);
-        } catch (error) {
-            console.error("An error occurred while removing item from cart:", error);
-        }
+    const removeCartItemHandler = async (itemId: string) => {
+        const data = await ShoppingCart.removeItem(itemId, user.id);
+        setCartItems(data);
     };
 
     return (
@@ -50,7 +41,7 @@ export const ShoppingCartWindow = ({cartItems, setCartItems}: ShoppingCartWindow
                                 <button>+</button>
                             </div>
                             <div className={styles.removeProduct}>
-                                <button onClick={() => removeCartItemHandler(item.product._id)}>&times; Remove</button>
+                                <button onClick={() => removeCartItemHandler(item._id)}>&times; Remove</button>
                             </div>
                         </div>
                     })}

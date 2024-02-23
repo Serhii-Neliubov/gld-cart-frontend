@@ -2,8 +2,9 @@ import React from 'react';
 import styles from './WishlistWindow.module.scss';
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 import {WishlistItem} from "@/viewes/wishlist/WishlistPage.tsx";
+import ShoppingCart from "services/ShoppingCartService.ts";
+import Wishlist from "services/WishlistService.ts";
 
 type WishlistWindowProps = {
     wishlistItems: WishlistItem[]
@@ -13,25 +14,9 @@ type WishlistWindowProps = {
 export const WishlistWindow = ({wishlistItems, setWishlistItems}: WishlistWindowProps) => {
     const user = useSelector(userDataSelector);
 
-    const addToCartHandler = async(productId: string) => {
-        await $api.post(`${API_URL}/cart/add-item`, {
-            userId: user.id,
-            item: {
-                product: productId,
-            }
-        });
-
-    }
-
     const removeWishlistItemHandler = async (itemId: string) => {
-        const response = await $api.delete(`${API_URL}/wishlist`, {
-            data: {
-                userId: user.id,
-                product: itemId,
-            }
-        });
-
-        setWishlistItems(response.data.items);
+        const data = await Wishlist.removeItem(itemId, user.id);
+        setWishlistItems(data);
     }
 
     return (
@@ -51,7 +36,7 @@ export const WishlistWindow = ({wishlistItems, setWishlistItems}: WishlistWindow
                                 <span>{item.product.product_name}</span>
                             </div>
                             <span className={styles.productPrice}>$500.00</span>
-                            <button onClick={() => addToCartHandler(item.product._id)} className={styles.addToCart}>Add to Cart</button>
+                            <button onClick={() => ShoppingCart.addToCart(item.product._id, user.id)} className={styles.addToCart}>Add to Cart</button>
                             <div className={styles.removeProduct}>
                                 <button onClick={() => removeWishlistItemHandler(item.product._id)}>&times; Remove</button>
                             </div>

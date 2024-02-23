@@ -14,6 +14,8 @@ import imageSocial3 from '@/assets/images/ProductPage/social3.png';
 import imageSocial4 from '@/assets/images/ProductPage/social4.png';
 import imagePaymentMethods from '@/assets/images/ProductPage/paymentMethods.png';
 import imageShoppingCart from '@/assets/images/trash-icon.svg';
+import Wishlist from "services/WishlistService.ts";
+import ShoppingCart from "services/ShoppingCartService.ts";
 
 type product = {
     "reviews": [],
@@ -41,25 +43,6 @@ export const ProductPage = () => {
     const getProductData = async() => {
         const response = await $api.get(`${API_URL}/products/${params.id}`);
         setProduct(response.data);
-    }
-
-    const addToCartHandler = async() => {
-        await $api.post(`${API_URL}/cart/add-item`, {
-            userId: user.id,
-            item: {
-                product: product?._id,
-            }
-        });
-
-    }
-
-    const addToWishlistHandler = async() => {
-        await $api.post(`${API_URL}/wishlist`, {
-            userId: user.id,
-            item: {
-                product: product?._id,
-            }
-        });
     }
 
     return (
@@ -123,11 +106,11 @@ export const ProductPage = () => {
                                 <span>Quantity</span>
                                 <div className={styles.addToCart}>
                                     <input max="9" min='0' type='number' placeholder='1'/>
-                                    <button onClick={addToCartHandler}>Add to Cart</button>
+                                    <button onClick={() => ShoppingCart.addToCart(product?._id, user.id)}>Add to Cart</button>
                                 </div>
                             </div>
                             <button className={styles.buyNow}>Buy Now</button>
-                            <div onClick={addToWishlistHandler} className={styles.addToWishlist}>
+                            <div onClick={() => Wishlist.addItem(product?._id, user.id)} className={styles.addToWishlist}>
                                 <span>Add Wishlist</span>
                                 <span>Ask a question</span>
                             </div>

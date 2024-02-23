@@ -12,10 +12,10 @@ import { register } from "@/store/slices/userDataSlice.ts";
 const Register: FC = () => {
   useDefaultScrollPosition();
 
-  const [userType, setUserType] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const navigate: NavigateFunction = useNavigate();
 
+  const [userType, setUserType] = useState("");
   const name = useInput('');
   const surname = useInput('');
   const email = useInput('');
