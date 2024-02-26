@@ -1,0 +1,89 @@
+.body{
+  background-color: #EEF1F5;
+  padding: 140px 0;
+
+}
+
+.routePath{
+  display: flex;
+  gap: 30px;
+  position: relative;
+
+  color: rgb(0, 0, 0);
+  font-size: 21.71px;
+  font-weight: 400;
+  line-height: 33px;
+  text-align: left;
+
+  margin-bottom: 60px;
+
+  &::before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #B8B8B8;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 16%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.paymentForm{
+  max-width: 590px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  color: rgb(0, 0, 0);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 77px;
+  text-align: left;
+}
+.formInput{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  & > input{
+    padding: 10px 20px;
+  }
+
+  & > textarea{
+    resize: none;
+    height: 100px;
+    padding: 10px 20px;
+  }
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & > label{
+    display: flex;
+  }
+
+  & > div{
+    display: flex;
+    gap: 20px;
+  }
+}
+
+h3{
+  color: rgb(0, 0, 0);
+  font-size: 34.63px;
+  font-weight: 700;
+  line-height: 42px;
+  text-align: left;
+}

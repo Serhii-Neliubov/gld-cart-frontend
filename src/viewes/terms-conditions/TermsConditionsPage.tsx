@@ -16,10 +16,10 @@ const TermsConditionsPage: FC = () => {
           <h1 className={styles.title}>{TermsConditions.title}</h1>
           <span className={styles.desc}>{TermsConditions.description_top}</span>
           <div className={styles.text}>
-            {TermsConditions.list_text.map((li, index) => {
+            {TermsConditions.list_text.map(li => {
               return (
                 <TextSection
-                  key={index}
+                  key={li.id}
                   id={li.id}
                   title={li.title}
                   text={li.text.map((text) => text)}

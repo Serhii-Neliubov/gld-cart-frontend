@@ -26,14 +26,7 @@ export type WishlistItem = {
 
 const WishlistPage: FC = () => {
   const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
-  const [loading, setLoading] = useState(true);
   const user = useSelector(userDataSelector);
-
-  const getWishlistItems = async () => {
-    const data = await Wishlist.getItems(user);
-    setWishlistItems(data);
-    setLoading(false);
-  };
 
   const removeWishlistItemHandler = async (itemId: string | undefined) => {
     const data = await Wishlist.removeItem(itemId, user.id);
@@ -46,6 +39,11 @@ const WishlistPage: FC = () => {
   }
 
   useEffect(() => {
+    const getWishlistItems = async () => {
+      const data = await Wishlist.getItems(user);
+      setWishlistItems(data);
+    };
+
     getWishlistItems();
   }, []);
 
@@ -58,9 +56,7 @@ const WishlistPage: FC = () => {
             <span>Home</span>
             <span>Wishlist</span>
           </div>
-          {loading ? (
-            <p>Loading...</p>
-          ) : wishlistItems?.length ? (
+          {wishlistItems?.length ? (
             <div className={styles.content}>
               <div className={styles.productBox}>
                 <div className={styles.label}>

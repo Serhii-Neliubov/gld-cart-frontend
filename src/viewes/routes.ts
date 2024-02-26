@@ -96,6 +96,7 @@ import {DiscoverSkincare} from "@/viewes/products-buyer/pages/discover-skincare/
 import {ProductPage} from "./products-buyer/components/ProductPage.tsx";
 import {RentingProductPage} from "./renting-buyer/components/product-page/RentingProductPage.tsx";
 import RentingProfessionalServicesPage from "./professional-services-vendor/RentingProfessionalServicesPage.tsx";
+import {PaymentCheckout} from "@/viewes/checkout-payment/PaymentCheckout.tsx";
 
 interface IRoutes {
   component: FC;
@@ -104,6 +105,7 @@ interface IRoutes {
 
 export const buyerRoutes: IRoutes[] = [
   { component: Home, path: "/" },
+  { component: PaymentCheckout, path: "/checkout-payment" },
   { component: SupportChat, path: "/support-chat" },
   { component: DriverLicense, path: "/driver-license" },
   { component: CarPage, path: "/renting-car/:id" },
