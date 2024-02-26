@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import styles from './PaymentCheckout.module.scss';
-import {useInput} from "@/hooks/useInput/useInput.tsx";
-import {PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
+import { useInput } from "@/hooks/useInput/useInput.tsx";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import toast from "react-hot-toast";
 export const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const [message, setMessage] = useState<string>('');
 
-  const [isLoading, setIsLoading] = useState(false);
   const [orderNotes, setOrderNotes] = useState('');
   const name = useInput('');
   const surname = useInput('');
@@ -30,32 +29,14 @@ export const PaymentForm = () => {
     if (!clientSecret) {
       return;
     }
-
-    stripe.retrievePaymentIntent(clientSecret).then(({paymentIntent}) => {
-      switch (paymentIntent?.status) {
-        case "succeeded":
-          setMessage("Payment succeeded!");
-          break;
-        case "processing":
-          setMessage("Your payment is processing.");
-          break;
-        case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
-          break;
-        default:
-          setMessage("Something went wrong.");
-          break;
-      }
-    });
   }, [stripe]);
 
-  const checkoutPaymentHandler = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const checkoutPaymentHandler = async (event: React.FormEvent) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
-    setIsLoading(true);
 
     const {error} = await stripe.confirmPayment({
       elements,
@@ -65,17 +46,16 @@ export const PaymentForm = () => {
     });
 
     if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message as string);
+      toast.error(error.message as string);
     } else {
-      setMessage("An unexpected error occurred.");
+      toast.error(error.message as string);
     }
-    setIsLoading(false);
 }
 
 
   return (
     <React.Fragment>
-      <PaymentElement id="payment-element" />
+      <PaymentElement className={styles.paymentElement} id="payment-element" />
       <div className={styles.body}>
         <div className={`${styles.content} __container`}>
           <div className={styles.paymentForm}>
@@ -84,7 +64,7 @@ export const PaymentForm = () => {
               <span>Home</span>
               <span>Checkout</span>
             </div>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={checkoutPaymentHandler}>
               <h3>Billing Details</h3>
               <div className={styles.inputGroup}>
                 <label className={styles.formInput} htmlFor='name'>
@@ -135,13 +115,9 @@ export const PaymentForm = () => {
                 <textarea value={orderNotes} onChange={event => setOrderNotes(event.target.value)} name='orderNotes'
                           placeholder='Note about your order'/>
               </label>
-              <button type='submit' disabled={isLoading || !stripe || !elements} id="submit">
-              <span id="button-text">
-                {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-              </span>
+              <button className={styles.checkoutButton} type='submit' disabled={!stripe || !elements} id="submit">
+                Checkout
               </button>
-              {message && <div id="payment-message">{message}</div>}
-              <button onClick={checkoutPaymentHandler}>Poletela Pilulya</button>
             </form>
           </div>
           <div className={styles.yourOrderBlock}>

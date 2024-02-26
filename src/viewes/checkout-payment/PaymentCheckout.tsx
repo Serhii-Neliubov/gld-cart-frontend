@@ -19,6 +19,35 @@ export const PaymentCheckout = () => {
 
   const appearance = {
     theme: 'stripe',
+    variables: {
+      display: 'flex',
+      flexDirection: 'column',
+
+    },
+    rules: {
+      '.Input': {
+        padding: '20px 30px',
+        borderRadius: '0',
+        border: '1px solid rgb(217, 217, 217)',
+        background: 'rgb(255, 255, 255)',
+      },
+      '.Input::placeholder': {
+        fontFamily: 'Poppins, sans-serif',
+        color: 'rgb(189, 189, 189)',
+        fontSize: '20px',
+        fontWeight: '700',
+        lineHeight: '30px',
+        textAlign: 'left',
+      },
+      '.Label': {
+        fontFamily: 'Poppins, sans-serif',
+        color: 'rgb(0, 0, 0)',
+        fontSize: '20px',
+        fontWeight: '700',
+        lineHeight: '30px',
+        textAlign: 'left',
+      },
+    }
   };
 
   const options = {
@@ -32,7 +61,7 @@ export const PaymentCheckout = () => {
     <React.Fragment>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <PaymentForm clientSecret={clientSecret} />
+          <PaymentForm />
         </Elements>
       )}
       <Footer/>
