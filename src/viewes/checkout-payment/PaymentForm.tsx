@@ -1,8 +1,81 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './PaymentCheckout.module.scss';
+import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
 export const PaymentForm = () => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [message, setMessage] = useState<string>('');
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [orderNotes, setOrderNotes] = useState('');
+  const name = useInput('');
+  const surname = useInput('');
+  const country = useInput('');
+  const street = useInput('');
+  const town = useInput('');
+  const zipcode = useInput('');
+  const phone = useInput('');
+  const email = useInput('');
+
+  useEffect(() => {
+    if (!stripe) {
+      return;
+    }
+
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      "payment_intent_client_secret"
+    );
+
+    if (!clientSecret) {
+      return;
+    }
+
+    stripe.retrievePaymentIntent(clientSecret).then(({paymentIntent}) => {
+      switch (paymentIntent?.status) {
+        case "succeeded":
+          setMessage("Payment succeeded!");
+          break;
+        case "processing":
+          setMessage("Your payment is processing.");
+          break;
+        case "requires_payment_method":
+          setMessage("Your payment was not successful, please try again.");
+          break;
+        default:
+          setMessage("Something went wrong.");
+          break;
+      }
+    });
+  }, [stripe]);
+
+  const checkoutPaymentHandler = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
+
+    if (!stripe || !elements) {
+      return;
+    }
+    setIsLoading(true);
+
+    const {error} = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: "http://localhost:5173/checkout-payment/success",
+      },
+    });
+
+    if (error.type === "card_error" || error.type === "validation_error") {
+      setMessage(error.message as string);
+    } else {
+      setMessage("An unexpected error occurred.");
+    }
+    setIsLoading(false);
+}
+
+
   return (
     <React.Fragment>
+      <PaymentElement id="payment-element" />
       <div className={styles.body}>
         <div className={`${styles.content} __container`}>
           <div className={styles.paymentForm}>
@@ -16,47 +89,63 @@ export const PaymentForm = () => {
               <div className={styles.inputGroup}>
                 <label className={styles.formInput} htmlFor='name'>
                   First Name
-                  <input type='text' id='name' name='name' placeholder='First Name' required/>
+                  <input value={name.value} onChange={name.onChange} type='text' id='name' name='name'
+                         placeholder='First Name' required/>
                 </label>
                 <label className={styles.formInput} htmlFor='surname'>
                   Last Name
-                  <input type='text' id='surnae' name='surname' placeholder='Last Name' required/>
+                  <input value={surname.value} onChange={surname.onChange} type='text' id='surname' name='surname'
+                         placeholder='Last Name' required/>
                 </label>
               </div>
               <label className={styles.formInput} htmlFor='country'>
                 Country
-                <input type='text' id='country' name='country' placeholder='United States (US)' required/>
+                <input value={country.value} onChange={country.onChange} type='text' id='country' name='country'
+                       placeholder='United States (US)' required/>
               </label>
               <label className={styles.formInput} htmlFor='street'>
                 Street
-                <input type='text' id='street' name='street' placeholder='Full address' required/>
+                <input value={street.value} onChange={street.onChange} type='text' id='street' name='street'
+                       placeholder='Full address' required/>
               </label>
               <div className={styles.inputGroup}>
                 <label className={styles.formInput} htmlFor='town'>
                   Town / City
-                  <input type='text' id='town' name='town' placeholder='town' required/>
+                  <input value={town.value} onChange={town.onChange} type='text' id='town' name='town'
+                         placeholder='town' required/>
                 </label>
                 <label className={styles.formInput} htmlFor='zipcode'>
                   Postcode / ZIP
-                  <input type='text' id='zipcode' name='zipcode' placeholder='Zip Code' required/>
+                  <input value={zipcode.value} onChange={zipcode.onChange} type='text' id='zipcode' name='zipcode'
+                         placeholder='Zip Code' required/>
                 </label>
               </div>
               <label className={styles.formInput} htmlFor='phone'>
                 Phone
-                <input type='text' id='phone' name='phone' required placeholder='phone number'/>
+                <input value={phone.value} onChange={phone.onChange} type='text' id='phone' name='phone' required
+                       placeholder='phone number'/>
               </label>
               <label className={styles.formInput} htmlFor='email'>
-                Street
-                <input type='text' id='email' name='email' required placeholder='email'/>
+                Email Address
+                <input value={email.value} onChange={email.onChange} type='text' id='email' name='email' required
+                       placeholder='email'/>
               </label>
               <label className={styles.formInput} htmlFor='orderNotes'>
                 Order Notes
-                <textarea name='orderNotes' placeholder='Note about your order'/>
+                <textarea value={orderNotes} onChange={event => setOrderNotes(event.target.value)} name='orderNotes'
+                          placeholder='Note about your order'/>
               </label>
+              <button type='submit' disabled={isLoading || !stripe || !elements} id="submit">
+              <span id="button-text">
+                {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+              </span>
+              </button>
+              {message && <div id="payment-message">{message}</div>}
+              <button onClick={checkoutPaymentHandler}>Poletela Pilulya</button>
             </form>
           </div>
           <div className={styles.yourOrderBlock}>
-            <h2>Your Order</h2>
+          <h2>Your Order</h2>
             <div className={styles.orderItem}>
               <div className={styles.itemInfo}>
                 <div className={styles.itemName}>Product Name</div>
