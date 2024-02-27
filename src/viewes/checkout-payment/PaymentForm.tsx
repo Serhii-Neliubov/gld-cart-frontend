@@ -36,6 +36,12 @@ export const PaymentForm = () => {
     }
   }, [stripe]);
 
+  const checkoutFormHandler = () => {
+    if(name && surname && country && street && town && zipcode && phone && email){
+      setPaymentMenu(true);
+    }
+  }
+
   const checkoutPaymentHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     setPaymentMenu(true);
@@ -73,6 +79,7 @@ export const PaymentForm = () => {
 
   return (
     <React.Fragment>
+<<<<<<< HEAD
       {paymentMenu ? (
         <div className="__container">
           <PaymentElement
@@ -82,6 +89,13 @@ export const PaymentForm = () => {
           <button className={styles.checkoutButton}>Pay Now</button>
         </div>
       ) : (
+=======
+      {paymentMenu ?
+        <div className='__container'>
+          <PaymentElement className={styles.paymentElement} id="payment-element"/>
+          <button onClick={checkoutPaymentHandler} className={styles.checkoutButton}>Pay Now</button>
+        </div> :
+>>>>>>> refs/remotes/origin/main
         <div className={styles.body}>
           <div className={`${styles.content} __container`}>
             <div className={styles.paymentForm}>
@@ -90,7 +104,7 @@ export const PaymentForm = () => {
                 <span>Home</span>
                 <span>Checkout</span>
               </div>
-              <form className={styles.form} onSubmit={checkoutPaymentHandler}>
+              <form className={styles.form} onSubmit={checkoutFormHandler}>
                 <h3>Billing Details</h3>
                 <div className={styles.inputGroup}>
                   <label className={styles.formInput} htmlFor="name">
