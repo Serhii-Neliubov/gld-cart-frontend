@@ -32,6 +32,12 @@ export const PaymentForm = () => {
     }
   }, [stripe]);
 
+  const checkoutFormHandler = () => {
+    if(name && surname && country && street && town && zipcode && phone && email){
+      setPaymentMenu(true);
+    }
+  }
+
   const checkoutPaymentHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     setPaymentMenu(true);
@@ -60,7 +66,7 @@ export const PaymentForm = () => {
       {paymentMenu ?
         <div className='__container'>
           <PaymentElement className={styles.paymentElement} id="payment-element"/>
-          <button className={styles.checkoutButton}>Pay Now</button>
+          <button onClick={checkoutPaymentHandler} className={styles.checkoutButton}>Pay Now</button>
         </div> :
         <div className={styles.body}>
           <div className={`${styles.content} __container`}>
@@ -70,7 +76,7 @@ export const PaymentForm = () => {
                 <span>Home</span>
                 <span>Checkout</span>
               </div>
-              <form className={styles.form} onSubmit={checkoutPaymentHandler}>
+              <form className={styles.form} onSubmit={checkoutFormHandler}>
                 <h3>Billing Details</h3>
                 <div className={styles.inputGroup}>
                   <label className={styles.formInput} htmlFor='name'>
