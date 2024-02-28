@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from "react";
-import styles from "./PaymentCheckout.module.scss";
+import React, {useEffect, useState} from 'react';
+import styles from './PaymentCheckout.module.scss';
 import { useInput } from "@/hooks/useInput/useInput.tsx";
-import {
-  PaymentElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import toast from "react-hot-toast";
 export const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [paymentMenu, setPaymentMenu] = useState(false);
 
-  const [orderNotes, setOrderNotes] = useState("");
-  const name = useInput("");
-  const surname = useInput("");
-  const country = useInput("");
-  const street = useInput("");
-  const town = useInput("");
-  const zipcode = useInput("");
-  const phone = useInput("");
-  const email = useInput("");
+  const [orderNotes, setOrderNotes] = useState('');
+  const name = useInput('');
+  const surname = useInput('');
+  const country = useInput('');
+  const street = useInput('');
+  const town = useInput('');
+  const zipcode = useInput('');
+  const phone = useInput('');
+  const email = useInput('');
 
   useEffect(() => {
     if (!stripe) {
@@ -28,7 +24,7 @@ export const PaymentForm = () => {
     }
 
     const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret",
+      "payment_intent_client_secret"
     );
 
     if (!clientSecret) {
@@ -50,7 +46,7 @@ export const PaymentForm = () => {
       return;
     }
 
-    const { error } = await stripe.confirmPayment({
+    const {error} = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: "http://localhost:5173/checkout-payment/success",
@@ -58,44 +54,34 @@ export const PaymentForm = () => {
           billing_details: {
             name: name.value,
             email: email.value,
+            phone: phone.value,
             address: {
               city: town.value,
               country: country.value,
               line1: street.value,
               postal_code: zipcode.value,
-            },
-          },
-        },
-      },
+              state: ''
+            }
+          }
+        }
+      }
     });
-    console.log(error);
 
     if (error.type === "card_error" || error.type === "validation_error") {
       toast.error(error.message as string);
     } else {
       toast.error(error.message as string);
     }
-  };
+}
+
 
   return (
     <React.Fragment>
-<<<<<<< HEAD
-      {paymentMenu ? (
-        <div className="__container">
-          <PaymentElement
-            className={styles.paymentElement}
-            id="payment-element"
-          />
-          <button className={styles.checkoutButton}>Pay Now</button>
-        </div>
-      ) : (
-=======
       {paymentMenu ?
         <div className='__container'>
           <PaymentElement className={styles.paymentElement} id="payment-element"/>
           <button onClick={checkoutPaymentHandler} className={styles.checkoutButton}>Pay Now</button>
         </div> :
->>>>>>> refs/remotes/origin/main
         <div className={styles.body}>
           <div className={`${styles.content} __container`}>
             <div className={styles.paymentForm}>
@@ -107,120 +93,55 @@ export const PaymentForm = () => {
               <form className={styles.form} onSubmit={checkoutFormHandler}>
                 <h3>Billing Details</h3>
                 <div className={styles.inputGroup}>
-                  <label className={styles.formInput} htmlFor="name">
+                  <label className={styles.formInput} htmlFor='name'>
                     First Name
-                    <input
-                      value={name.value}
-                      onChange={name.onChange}
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="First Name"
-                      required
-                    />
+                    <input value={name.value} onChange={name.onChange} type='text' id='name' name='name'
+                           placeholder='First Name' required/>
                   </label>
-                  <label className={styles.formInput} htmlFor="surname">
+                  <label className={styles.formInput} htmlFor='surname'>
                     Last Name
-                    <input
-                      value={surname.value}
-                      onChange={surname.onChange}
-                      type="text"
-                      id="surname"
-                      name="surname"
-                      placeholder="Last Name"
-                      required
-                    />
+                    <input value={surname.value} onChange={surname.onChange} type='text' id='surname' name='surname'
+                           placeholder='Last Name' required/>
                   </label>
                 </div>
-                <label className={styles.formInput} htmlFor="country">
+                <label className={styles.formInput} htmlFor='country'>
                   Country
-                  <input
-                    value={country.value}
-                    onChange={country.onChange}
-                    type="text"
-                    id="country"
-                    name="country"
-                    placeholder="United States (US)"
-                    required
-                  />
+                  <input value={country.value} onChange={country.onChange} type='text' id='country' name='country'
+                         placeholder='United States (US)' required/>
                 </label>
-                <label className={styles.formInput} htmlFor="street">
+                <label className={styles.formInput} htmlFor='street'>
                   Street
-                  <input
-                    value={street.value}
-                    onChange={street.onChange}
-                    type="text"
-                    id="street"
-                    name="street"
-                    placeholder="Full address"
-                    required
-                  />
+                  <input value={street.value} onChange={street.onChange} type='text' id='street' name='street'
+                         placeholder='Full address' required/>
                 </label>
                 <div className={styles.inputGroup}>
-                  <label className={styles.formInput} htmlFor="town">
+                  <label className={styles.formInput} htmlFor='town'>
                     Town / City
-                    <input
-                      value={town.value}
-                      onChange={town.onChange}
-                      type="text"
-                      id="town"
-                      name="town"
-                      placeholder="town"
-                      required
-                    />
+                    <input value={town.value} onChange={town.onChange} type='text' id='town' name='town'
+                           placeholder='town' required/>
                   </label>
-                  <label className={styles.formInput} htmlFor="zipcode">
+                  <label className={styles.formInput} htmlFor='zipcode'>
                     Postcode / ZIP
-                    <input
-                      value={zipcode.value}
-                      onChange={zipcode.onChange}
-                      type="text"
-                      id="zipcode"
-                      name="zipcode"
-                      placeholder="Zip Code"
-                      required
-                    />
+                    <input value={zipcode.value} onChange={zipcode.onChange} type='text' id='zipcode' name='zipcode'
+                           placeholder='Zip Code' required/>
                   </label>
                 </div>
-                <label className={styles.formInput} htmlFor="phone">
+                <label className={styles.formInput} htmlFor='phone'>
                   Phone
-                  <input
-                    value={phone.value}
-                    onChange={phone.onChange}
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    required
-                    placeholder="phone number"
-                  />
+                  <input value={phone.value} onChange={phone.onChange} type='text' id='phone' name='phone' required
+                         placeholder='phone number'/>
                 </label>
-                <label className={styles.formInput} htmlFor="email">
+                <label className={styles.formInput} htmlFor='email'>
                   Email Address
-                  <input
-                    value={email.value}
-                    onChange={email.onChange}
-                    type="text"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="email"
-                  />
+                  <input value={email.value} onChange={email.onChange} type='text' id='email' name='email' required
+                         placeholder='email'/>
                 </label>
-                <label className={styles.formInput} htmlFor="orderNotes">
+                <label className={styles.formInput} htmlFor='orderNotes'>
                   Order Notes
-                  <textarea
-                    value={orderNotes}
-                    onChange={(event) => setOrderNotes(event.target.value)}
-                    name="orderNotes"
-                    placeholder="Note about your order"
-                  />
+                  <textarea value={orderNotes} onChange={event => setOrderNotes(event.target.value)} name='orderNotes'
+                            placeholder='Note about your order'/>
                 </label>
-                <button
-                  className={styles.checkoutButton}
-                  type="submit"
-                  disabled={!stripe || !elements}
-                  id="submit"
-                >
+                <button className={styles.checkoutButton} type='submit' disabled={!stripe || !elements} id="submit">
                   Checkout
                 </button>
               </form>
@@ -255,7 +176,7 @@ export const PaymentForm = () => {
             </div>
           </div>
         </div>
-      )}
+      }
     </React.Fragment>
   );
-};
+}
