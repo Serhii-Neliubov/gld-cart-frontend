@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
@@ -6,26 +6,7 @@ import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 const STRIPE_SECRET_KEY = 'pk_test_51LwMMSIr9qomMnpIKf6KC11Fw326JmIM7THj2zhFsrzuRs63CTcdnABWvpGWAKr96dF0qNHwoE3JFuq8R8Vif54i007XexrztK';
 
 export const PaymentCardForm = () => {
-  const { clientSecret, name, surname, country, street, town, zipcode, phone, email } = useParams();
-
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (!stripe) {
-      return;
-    }
-
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
-    );
-
-    if (!clientSecret) {
-      return;
-    }
-  }, [stripe]);
+  const { clientSecret } = useParams();
 
   const appearance = {
     theme: 'stripe',
@@ -59,14 +40,47 @@ export const PaymentCardForm = () => {
     }
   };
 
+  const options = {
+    clientSecret,
+    appearance,
+  } as StripeElementsOptions | undefined;
+
+  const stripePromise = loadStripe(STRIPE_SECRET_KEY)
+
+  return (
+    clientSecret && stripePromise && (
+      <Elements options={options} stripe={stripePromise}>
+        <PaymentWrapper />
+      </Elements>)
+  );
+}
+
+const PaymentWrapper = () => {
+  const { name, country, street, town, zipcode, phone, email } = useParams();
+
+  const elements = useElements();
+  const stripe = useStripe();
+
+  useEffect(() => {
+    if (!stripe) {
+      return;
+    }
+
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      "payment_intent_client_secret"
+    );
+
+    if (!clientSecret) {
+      return;
+    }
+  }, [stripe]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
-
-    setIsLoading(true);
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -94,26 +108,16 @@ export const PaymentCardForm = () => {
     } else {
       alert("An unexpected error occurred.");
     }
-
-    setIsLoading(false);
   };
 
-  const options = {
-    clientSecret,
-    appearance,
-  } as StripeElementsOptions | undefined;
-
-  const stripePromise = loadStripe(STRIPE_SECRET_KEY)
-
   return (
-    clientSecret &&
-    <Elements options={options} stripe={stripePromise}>
-        <form id="payment-form" onSubmit={handleSubmit}>
-            <PaymentElement id="payment-element" />
-            <button disabled={isLoading || !stripe || !elements} id="submit">
-                Submit Payment
-            </button>
-        </form>
-    </Elements>
-  );
+    <div className='__container'>
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <PaymentElement id="payment-element"/>
+        <button disabled={!stripe || !elements} id="submit">
+          Submit Payment
+        </button>
+      </form>
+    </div>
+  )
 }
