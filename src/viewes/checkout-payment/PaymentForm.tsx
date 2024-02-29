@@ -1,17 +1,69 @@
 import React, {useEffect, useState} from 'react';
 import styles from './PaymentCheckout.module.scss';
 import { useInput } from "@/hooks/useInput/useInput.tsx";
-import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {Elements, PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import toast from "react-hot-toast";
+import $api from "@/utils/interceptors/interceptors.ts";
+import {loadStripe, StripeElementsOptions} from "@stripe/stripe-js";
 
-type PaymentFormProps = {
-  setOrderNotes: (value: string) => void;
-  orderNotes: string;
-}
+const STRIPE_SECRET_KEY = 'pk_test_51LwMMSIr9qomMnpIKf6KC11Fw326JmIM7THj2zhFsrzuRs63CTcdnABWvpGWAKr96dF0qNHwoE3JFuq8R8Vif54i007XexrztK';
 
-export const PaymentForm = ({setOrderNotes, orderNotes}: PaymentFormProps) => {
+export const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+
+  const [clientSecret, setClientSecret] = useState("");
+  const [orderNotes, setOrderNotes] = useState('');
+
+  useEffect(() => {
+    $api.post('/payments/create-payment-intent', {
+      items: [{id: "xl-tshirt"}],
+      amount: 1000,
+      currency: "usd",
+    }).then((res) => setClientSecret(res.data.client_secret));
+  }, []);
+
+  const appearance = {
+    theme: 'stripe',
+    variables: {
+      display: 'flex',
+      flexDirection: 'column',
+
+    },
+    rules: {
+      '.Input': {
+        padding: '20px 30px',
+        borderRadius: '0',
+        border: '1px solid rgb(217, 217, 217)',
+        background: 'rgb(255, 255, 255)',
+      },
+      '.Input::placeholder': {
+        fontFamily: 'Poppins, sans-serif',
+        color: 'rgb(189, 189, 189)',
+        fontSize: '20px',
+        fontWeight: '700',
+        lineHeight: '30px',
+        textAlign: 'left',
+      },
+      '.Label': {
+        fontFamily: 'Poppins, sans-serif',
+        color: 'rgb(0, 0, 0)',
+        fontSize: '20px',
+        fontWeight: '700',
+        lineHeight: '30px',
+        textAlign: 'left',
+      },
+    }
+  };
+
+  const options = {
+    clientSecret,
+    appearance,
+  } as StripeElementsOptions | undefined;
+
+  const stripePromise = loadStripe(STRIPE_SECRET_KEY);
+
+
   const [paymentMenu, setPaymentMenu] = useState(false);
 
   const name = useInput('');
@@ -79,14 +131,15 @@ export const PaymentForm = ({setOrderNotes, orderNotes}: PaymentFormProps) => {
     }
 }
 
-
   return (
-    <React.Fragment>
+    <Elements options={options} stripe={stripePromise}>
       {paymentMenu ?
-        <div className='__container'>
-          <PaymentElement className={styles.paymentElement} id="payment-element"/>
-          <button onClick={checkoutPaymentHandler} className={styles.checkoutButton}>Pay Now</button>
-        </div> :
+        clientSecret &&
+          <div className='__container'>
+            <PaymentElement className={styles.paymentElement} id="payment-element"/>
+            <button onClick={checkoutPaymentHandler} className={styles.checkoutButton}>Pay Now</button>
+          </div>
+        :
         <div className={styles.body}>
           <div className={`${styles.content} __container`}>
             <div className={styles.paymentForm}>
@@ -182,6 +235,6 @@ export const PaymentForm = ({setOrderNotes, orderNotes}: PaymentFormProps) => {
           </div>
         </div>
       }
-    </React.Fragment>
+    </Elements>
   );
 }
