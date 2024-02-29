@@ -3,12 +3,17 @@ import styles from './PaymentCheckout.module.scss';
 import { useInput } from "@/hooks/useInput/useInput.tsx";
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import toast from "react-hot-toast";
-export const PaymentForm = () => {
+
+type PaymentFormProps = {
+  setOrderNotes: (value: string) => void;
+  orderNotes: string;
+}
+
+export const PaymentForm = ({setOrderNotes, orderNotes}: PaymentFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
   const [paymentMenu, setPaymentMenu] = useState(false);
 
-  const [orderNotes, setOrderNotes] = useState('');
   const name = useInput('');
   const surname = useInput('');
   const country = useInput('');
@@ -62,7 +67,7 @@ export const PaymentForm = () => {
               postal_code: zipcode.value,
               state: ''
             }
-          }
+          },
         }
       }
     });
