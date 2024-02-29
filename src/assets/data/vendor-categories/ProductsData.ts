@@ -8,7 +8,7 @@ export type ProductsDataProps = {
 };
 export const ProductsData: ProductsDataProps[] = [
   {
-    image: "ProductsCategoryPage/Vector-10.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-10.svg",
     category: "beauty",
     name: "Beauty of Skin",
     items: {
@@ -55,7 +55,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-3.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-3.svg",
     category: "bags",
     name: "Bags",
     items: {
@@ -132,7 +132,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-12.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-12.svg",
     category: "awesome",
     name: "Awesome Lip Care",
     items: {
@@ -209,7 +209,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector.svg",
     category: "mobileTablets",
     name: "Mobile Tablets",
     items: {
@@ -227,7 +227,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-1.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-1.svg",
     category: "necklaces",
     name: "Necklaces",
     items: {
@@ -269,7 +269,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-7.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-7.svg",
     category: "clothing",
     name: "Clothing",
     items: {
@@ -316,7 +316,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-6.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-6.svg",
     category: "bluetooth",
     name: "Bluetooth",
     items: {
@@ -365,7 +365,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-14.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-14.svg",
     category: "facial",
     name: "Facial Care",
     items: {
@@ -442,7 +442,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-13.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-13.svg",
     category: "shoes",
     name: "Shoes",
     items: {
@@ -528,7 +528,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-11.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-11.svg",
     category: "cpu",
     name: "CPU",
     items: {
@@ -605,7 +605,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-9.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-9.svg",
     category: "discover",
     name: "Discover Skincare",
     items: {
@@ -692,7 +692,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-4.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-4.svg",
     category: "headphones",
     name: "Headphones",
     items: {
@@ -777,7 +777,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-8.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-8.svg",
     category: "bracelets",
     name: "Bracelets",
     items: {
@@ -810,7 +810,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-5.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-5.svg",
     category: "smartWatch",
     name: "Smart Watch",
     items: {
@@ -877,7 +877,7 @@ export const ProductsData: ProductsDataProps[] = [
     },
   },
   {
-    image: "ProductsCategoryPage/Vector-2.svg",
+    image: "/src/assets/images/ProductsCategoryPage/Vector-2.svg",
     category: "earrings",
     name: "Earrings",
     items: {

@@ -4,8 +4,8 @@ import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
 import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
-import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
+import {PhotoAndVideoBlock} from "@/components/photo-video-block/PhotoAndVideoBlock.tsx";
 
 export const NewAwesomeLipCare = () => {
   const [stage, setStage] = useState(3);

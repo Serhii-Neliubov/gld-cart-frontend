@@ -14,7 +14,7 @@ const i18nConfig: InitOptions = {
     escapeValue: false,
   },
   backend: {
-    loadPath: 'src/assets/locales/{{lng}}/{{ns}}.json' // Замените 'your_custom_path' на путь к вашей новой папке
+    loadPath: '/src/assets/locales/{{lng}}/{{ns}}.json' // Замените 'your_custom_path' на путь к вашей новой папке
   }
 };
 

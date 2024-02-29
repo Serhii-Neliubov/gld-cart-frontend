@@ -9,7 +9,7 @@ type ProfessionalServicesDataType = {
 
 export const ProfessionalServicesData: ProfessionalServicesDataType = [
   {
-    image: "RentingProfservicesPage/icon1.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon1.svg",
     category: "cleaning",
     name: "Cleaning",
     items: {
@@ -79,7 +79,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     },
   },
   {
-    image: "RentingProfservicesPage/icon2.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon2.svg",
     category: "repairing",
     name: "Repairing",
     items: {
@@ -145,7 +145,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     },
   },
   {
-    image: "RentingProfservicesPage/icon3.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon3.svg",
     category: "gardening",
     name: "Gardening",
     items: {
@@ -215,7 +215,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     },
   },
   {
-    image: "RentingProfservicesPage/icon4.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon4.svg",
     category: "treeCutting",
     name: "Tree Cutting",
     items: {
@@ -262,7 +262,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     },
   },
   {
-    image: "RentingProfservicesPage/icon5.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon5.svg",
     category: "lawnServices",
     name: "Lawn Services",
     items: {
@@ -349,7 +349,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     },
   },
   {
-    image: "RentingProfservicesPage/icon6.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon6.svg",
     category: "handyman",
     name: "Handyman",
     items: {
@@ -375,7 +375,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     },
   },
   {
-    image: "RentingProfservicesPage/icon7.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon7.svg",
     category: "snowRemoval",
     name: "Snow Removal",
     items: {
@@ -414,7 +414,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     },
   },
   {
-    image: "RentingProfservicesPage/icon8.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon8.svg",
     category: "pestControl",
     name: "Pest Control",
     items: {
@@ -501,7 +501,7 @@ export const ProfessionalServicesData: ProfessionalServicesDataType = [
     },
   },
   {
-    image: "RentingProfservicesPage/icon9.svg",
+    image: "/src/assets/images/RentingProfservicesPage/icon9.svg",
     category: "electrical",
     name: "Electrical",
     items: {

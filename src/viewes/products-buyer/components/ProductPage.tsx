@@ -16,6 +16,7 @@ import imagePaymentMethods from '@/assets/images/ProductPage/paymentMethods.png'
 import imageShoppingCart from '@/assets/images/trash-icon.svg';
 import Wishlist from "services/WishlistService.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
+import {cartItem} from "@/viewes/shopping-cart/ShoppingCartPage.tsx";
 
 type product = {
     "reviews": [],
@@ -30,15 +31,22 @@ type product = {
 
 export const ProductPage = () => {
     const initialText = "joasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuq";
+
     const [showMore, setShowMore] = useState(false);
     const [showDetails, setShowDetails] = useState('description');
     const [product, setProduct] = useState<product>();
+    const [shoppingCartProduct, setShoppingCartProduct] = useState<cartItem[]>([]);
+
     const params = useParams();
     const user = useSelector(userDataSelector);
 
     useEffect(() => {
         getProductData();
-    }, []);
+
+        ShoppingCart.getItems(user.id).then((data) => {
+            setShoppingCartProduct(data);
+        });
+    }, [user.id]);
 
     const getProductData = async() => {
         const response = await $api.get(`${API_URL}/products/${params.id}`);
@@ -102,15 +110,19 @@ export const ProductPage = () => {
                                 <img src={imageFireIcon} alt='image'/>
                                 <span>Flash Sale: Ends in 5 days</span>
                             </div>
-                            <div className={styles.actionButtons}>
-                                <span>Quantity</span>
-                                <div className={styles.addToCart}>
-                                    <input max="9" min='0' type='number' placeholder='1'/>
-                                    <button onClick={() => ShoppingCart.addToCart(product?._id, user.id)}>Add to Cart</button>
-                                </div>
-                            </div>
+                            {shoppingCartProduct?.findIndex((item) => item.product._id === product?._id) !== -1 ?
+                              null : <div className={styles.actionButtons}>
+                                  <span>Quantity</span>
+                                  <div className={styles.addToCart}>
+                                      <input max="9" min='0' type='number' placeholder='1'/>
+                                      <button onClick={() => ShoppingCart.addToCart(product?._id, user.id)}>Add to
+                                          Cart
+                                      </button>
+                                  </div>
+                              </div>}
                             <button className={styles.buyNow}>Buy Now</button>
-                            <div onClick={() => Wishlist.addItem(product?._id, user.id)} className={styles.addToWishlist}>
+                            <div onClick={() => Wishlist.addItem(product?._id, user.id)}
+                                 className={styles.addToWishlist}>
                                 <span>Add Wishlist</span>
                                 <span>Ask a question</span>
                             </div>
