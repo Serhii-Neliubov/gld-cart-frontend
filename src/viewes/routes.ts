@@ -97,6 +97,7 @@ import {ProductPage} from "./products-buyer/components/ProductPage.tsx";
 import {RentingProductPage} from "./renting-buyer/components/product-page/RentingProductPage.tsx";
 import RentingProfessionalServicesPage from "./professional-services-vendor/RentingProfessionalServicesPage.tsx";
 import {PaymentCheckout} from "@/viewes/checkout-payment/PaymentCheckout.tsx";
+import {PaymentCardForm} from "@/viewes/checkout-payment/PaymentCardForm.tsx";
 
 interface IRoutes {
   component: FC;
@@ -153,6 +154,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: ProfilePage, path: "/profile" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: HelpAndSupport, path: "/help-and-support" },
+  { component: PaymentCardForm, path: "/checkout-payment/order/:clientSecret/:name/:surname/:country/:street/:town/:zipcode/:phone/:email" },
   { component: NotFound, path: "/*" },
 ];
 export const vendorRoutes: IRoutes[] = [
