@@ -21,7 +21,6 @@ export const BasicInformation = ({setFormData, formData}: BasicInformationProps)
         });
     }, []);
 
-
     return (
         <React.Fragment>
             <div className={styles.inputTextBox}>

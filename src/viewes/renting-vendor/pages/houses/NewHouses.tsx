@@ -20,8 +20,6 @@ export const NewHouses = () => {
     renting_name: '',
   });
 
-  console.log(formData);
-
   useCategoryRedirect("houses", "/renting-category-page", stage);
 
   return (

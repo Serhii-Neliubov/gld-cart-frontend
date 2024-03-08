@@ -6,6 +6,7 @@ import NoItems from "@/components/no-items-page/NoItems.tsx";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
+import $api from "@/utils/interceptors/interceptors.ts";
 
 export type cartItem = {
   product: {
@@ -27,12 +28,13 @@ export type cartItem = {
 const ShoppingCartPage: FC = () => {
   const [cartItems, setCartItems] = useState<cartItem[]>([]);
   const user = useSelector(userDataSelector);
-  console.log(cartItems);
 
   useEffect(() => {
     const getCartItems = async () => {
       const data = await ShoppingCart.getItems(user.id);
       setCartItems(data);
+      console.log(data);
+
     };
 
     getCartItems();
@@ -42,6 +44,15 @@ const ShoppingCartPage: FC = () => {
     const data = await ShoppingCart.removeItem(itemId, user.id);
     setCartItems(data);
   };
+
+  const proceedToCheckoutHandler = async () => {
+    const orderID = await $api.post('/order/create-order', {
+      userId: user.id,
+      products: cartItems.map((item) => item._id),
+      total: 500,
+      subtotal: 500,
+    });
+  }
 
   return (
     <React.Fragment>
@@ -69,7 +80,7 @@ const ShoppingCartPage: FC = () => {
                           <img alt="image" src={item.product.images[0]} />
                           <span>{item.product.product_name}</span>
                         </div>
-                        <span className={styles.productPrice}>$500.00</span>
+                        <span className={styles.productPrice}>${item.product.attributes.fullPrice}</span>
                         <div className={styles.productQuantity}>
                           <button>-</button>
                           <span>{item.quantity}</span>
@@ -115,7 +126,7 @@ const ShoppingCartPage: FC = () => {
                   <span>Total</span>
                   <span>$500.00</span>
                 </div>
-                <button>Proceed to checkout</button>
+                <button onClick={proceedToCheckoutHandler}>Proceed to checkout</button>
               </div>
             </div>
           ) : (

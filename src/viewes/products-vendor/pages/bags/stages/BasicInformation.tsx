@@ -1,13 +1,19 @@
 import styles from "@/viewes/products-vendor/pages/bags/NewBags.module.scss";
-import React from "react";
+import React, {Dispatch, SetStateAction} from "react";
+import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
 
-export const BasicInformation = () => {
+interface BasicInformationProps {
+  formData: IVendorProductData;
+  setFormData: Dispatch<SetStateAction<IVendorProductData>>;
+}
+
+export const BasicInformation = ({formData, setFormData}: BasicInformationProps) => {
 
   return (
     <React.Fragment>
       <div className={styles.inputTextBox}>
         <label>Product Title</label>
-        <input placeholder="70 words max" maxLength={70} />
+        <input  placeholder="70 words max" maxLength={70} />
       </div>
       <div className={styles.inputAreaBox}>
         <label>Products Description</label>
@@ -15,6 +21,7 @@ export const BasicInformation = () => {
           minLength={160}
           maxLength={9000}
           placeholder="Minimum 160 and maximum 9000 characters"
+          onChange={(event) => setFormData({...formData, description: event.target.value})}
         />
       </div>
       <div className={styles.inputsRadio}>

@@ -32,13 +32,13 @@ export const NewBags = () => {
           stage={stage - 1}
         >
           {stage == 3 && (
-            <BasicInformation />
+            <BasicInformation formData={formData} setFormData={setFormData} />
           )}
           {stage == 4 && (
             <PhotoAndVideoBlock setFormData={setFormData} formData={formData}/>
           )}
           {stage == 5 && (
-            <SpecificationInformation />
+            <SpecificationInformation formData={formData} setFormData={setFormData} />
           )}
         </Layout>
       )}

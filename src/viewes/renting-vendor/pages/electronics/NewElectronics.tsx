@@ -9,6 +9,7 @@ import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
 
 export const NewElectronics = () => {
   const [stage, setStage] = useState(3);
+
   const [formData, setFormData] = useState<IVendorProductData>({
     title: '',
     description: '',
@@ -34,7 +35,7 @@ export const NewElectronics = () => {
             <BasicInformation formData={formData} setFormData={setFormData}/>
           )}
           {stage == 4 && (
-              <PhotoAndVideoBlock formData={formData} setFormData={setFormData}/>
+            <PhotoAndVideoBlock formData={formData} setFormData={setFormData}/>
           )}
           {stage == 5 && (
             <SpecificationInformation formData={formData} setFormData={setFormData}/>
