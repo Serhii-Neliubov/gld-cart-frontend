@@ -377,34 +377,6 @@
   width: 33%;
 }
 
-.choosingColor{
-  & > span{
-    font-weight: 600;
-  }
-
-  & > div{
-    margin-top: 10px;
-    align-items: center;
-    display: flex;
-    gap: 18px;
-  }
-}
-
-.choosingColorItem{
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-}
-.addingColor{
-  border: 2px solid #808080;
-  border-radius: 50%;
-  color: #808080;
-  width: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 24px;
-}
 .tipTitle{
   font-weight: 600;
 }

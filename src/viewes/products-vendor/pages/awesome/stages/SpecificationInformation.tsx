@@ -5,13 +5,13 @@ import RentingStage from "@/components/renting-stages/RentingStage.tsx";
 import {useInput} from "@/hooks/useInput/useInput.tsx";
 import toast from "react-hot-toast";
 
-type BasicInformationProps = {
+type SpecificationInformationProps = {
     formData: IVendorProductData;
     setFormData: Dispatch<SetStateAction<IVendorProductData>>;
     setStage: Dispatch<SetStateAction<number>>;
 }
 
-export const SpecificationInformation = ({setStage, setFormData, formData}: BasicInformationProps) => {
+export const SpecificationInformation = ({setStage, setFormData, formData}: SpecificationInformationProps) => {
     const productsInStock = useInput('');
     const areaBox = useInput('');
 

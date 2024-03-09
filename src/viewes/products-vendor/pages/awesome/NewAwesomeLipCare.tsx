@@ -20,8 +20,6 @@ export const NewAwesomeLipCare = () => {
     product_name: "",
   });
 
-  console.log(formData, "formData")
-
   useCategoryRedirect("awesome", "/products-category-page", stage);
 
   return (
