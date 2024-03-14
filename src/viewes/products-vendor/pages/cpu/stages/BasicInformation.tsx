@@ -52,7 +52,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
 
   return (
     <div className='__container'>
-    <div className={styles.container}>
+      <div className={styles.container}>
       <RentingStage coloredStage={3}/>
       <h1 className={styles.title}>Beauty of skin</h1>
       <form className={styles.content}>
@@ -148,7 +148,6 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
         <div className={styles.nextButton} onClick={setNextStageHandler}>Next</div>
       </div>
     </div>
-  </div>
-
+    </div>
   )
 }
