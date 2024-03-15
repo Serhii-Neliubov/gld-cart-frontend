@@ -98,6 +98,7 @@ import {RentingProductPage} from "./renting-buyer/components/product-page/Rentin
 import RentingProfessionalServicesPage from "./professional-services-vendor/RentingProfessionalServicesPage.tsx";
 import {PaymentCheckout} from "@/viewes/checkout-payment/PaymentCheckout.tsx";
 import {PaymentCardForm} from "@/viewes/checkout-payment/PaymentCardForm.tsx";
+import {Chat} from "@/viewes/chat/Chat.tsx";
 
 interface IRoutes {
   component: FC;
@@ -106,6 +107,7 @@ interface IRoutes {
 
 export const buyerRoutes: IRoutes[] = [
   { component: Home, path: "/" },
+  { component: Chat, path: "/chat" },
   { component: PaymentCheckout, path: "/checkout-payment" },
   { component: SupportChat, path: "/support-chat" },
   { component: DriverLicense, path: "/driver-license" },
@@ -161,6 +163,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
   { component: DriverLicense, path: "/driver-license" },
   { component: SupportChat, path: "/support-chat" },
+  { component: Chat, path: "/chat" },
   // Pest Control Service
   {component: NewPestControl, path: "/professional-services/new-pest-control-page",},
   // Components
