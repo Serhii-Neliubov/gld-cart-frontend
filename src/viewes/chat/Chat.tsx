@@ -136,7 +136,7 @@ export const Chat: React.FC = () => {
           <ul>
             {chats.map((chat) => (
               <li key={chat._id} onClick={() => selectChat(chat._id)}>
-                {chat.participants[1].name} {chat.participants[1].surname}
+                {userId !== chat.participants[1]._id ? chat.participants[1].name : chat.participants[0].name} {userId !== chat.participants[1]._id ? chat.participants[1].surname : chat.participants[0].surname}
               </li>
             ))}
           </ul>
