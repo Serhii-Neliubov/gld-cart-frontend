@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import io, { Socket } from "socket.io-client";
 import style from "./Chat.module.scss";
-import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
-import {IoSend} from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { userDataSelector } from "@/store/slices/userDataSlice.ts";
+import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
+import { IoSend } from "react-icons/io5";
 
 interface User {
   _id: string;
@@ -37,20 +37,17 @@ export const Chat: React.FC = () => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-
   useEffect(() => {
     const newSocket = io(SOCKET_SERVER_URL, { query: { userId } });
     setSocket(newSocket);
-    // fetchChats();
-    newSocket.emit("chats", userId);
     newSocket.on("chats", (chatData) => {
-      console.log(chatData)
-      setChats(chatData.data);
-    })
+      console.log(chatData);
+      setChats(chatData);
+    });
     return () => {
       newSocket.disconnect();
     };
-  }, [socket]);
+  }, []);
 
   useEffect(() => {
     if (socket && selectedChat) {
@@ -79,9 +76,7 @@ export const Chat: React.FC = () => {
   }, [socket, selectedChat]);
   const fetchChats = async () => {
     try {
-      const response = await $api.get(
-        `${API_URL}/chat?userId=${userId}`,
-      );
+      const response = await $api.get(`${API_URL}/chat?userId=${userId}`);
 
       setChats(response.data);
     } catch (error) {
@@ -135,14 +130,27 @@ export const Chat: React.FC = () => {
         {/* Chat List */}
         <div className={style.chatListWrapper}>
           <div className={style.searchChats}>
-            <input placeholder='Search for anything...'/>
+            <input placeholder="Search for anything..." />
           </div>
           <ul className={style.chatsList}>
             {chats.map((chat) => (
               <div className={style.chatPerson}>
-                <img className={style.chatPersonImage} src='https://random.imagecdn.app/40/40' alt='image' />
-                <li className={style.chatPersonName} key={chat._id} onClick={() => selectChat(chat._id)}>
-                  {userId !== chat.participants[1]._id ? chat.participants[1].name : chat.participants[0].name} {userId !== chat.participants[1]._id ? chat.participants[1].surname : chat.participants[0].surname}
+                <img
+                  className={style.chatPersonImage}
+                  src="https://random.imagecdn.app/40/40"
+                  alt="image"
+                />
+                <li
+                  className={style.chatPersonName}
+                  key={chat._id}
+                  onClick={() => selectChat(chat._id)}
+                >
+                  {userId !== chat.participants[1]._id
+                    ? chat.participants[1].name
+                    : chat.participants[0].name}{" "}
+                  {userId !== chat.participants[1]._id
+                    ? chat.participants[1].surname
+                    : chat.participants[0].surname}
                 </li>
               </div>
             ))}
@@ -151,10 +159,12 @@ export const Chat: React.FC = () => {
         {/* Chat Messages */}
         <div className={style.chatMessages}>
           <div className={style.chatPersonLabel}>
-            <img className={style.chatPersonImage} src='https://random.imagecdn.app/40/40' alt='image'/>
-            <span className={style.chatPersonName}>
-              John Doe
-            </span>
+            <img
+              className={style.chatPersonImage}
+              src="https://random.imagecdn.app/40/40"
+              alt="image"
+            />
+            <span className={style.chatPersonName}>John Doe</span>
           </div>
           {/* Chat message list */}
           <div className={style.messages}>
@@ -173,16 +183,18 @@ export const Chat: React.FC = () => {
                 ))}
           </div>
           {/* Message input and send button */}
-          <div className={style.chatSendLabel} >
+          <div className={style.chatSendLabel}>
             <input
-              placeholder='Send message...'
+              placeholder="Send message..."
               type="text"
               value={messageInput}
               onChange={(e) => setMessageInput(e.target.value)}
               onKeyDown={handleKeyDown}
               ref={inputRef}
             />
-            <button onClick={sendMessage}><IoSend className={style.sendMessageButton}/></button>
+            <button onClick={sendMessage}>
+              <IoSend className={style.sendMessageButton} />
+            </button>
           </div>
         </div>
       </div>
