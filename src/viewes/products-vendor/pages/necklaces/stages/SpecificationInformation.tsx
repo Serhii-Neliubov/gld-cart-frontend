@@ -57,6 +57,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
 
   return (
     <div className='__container'>
+
     <div className={styles.container}>
       <RentingStage coloredStage={3}/>
       <h1 className={styles.title}>Necklaces</h1>
