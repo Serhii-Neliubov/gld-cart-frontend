@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import io, { Socket } from "socket.io-client";
-import "./Chat.module.scss";
+import style from "./Chat.module.scss";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import {IoSend} from "react-icons/io5";
 
 interface User {
   _id: string;
@@ -123,29 +124,35 @@ export const Chat: React.FC = () => {
     }
   };
 
-  console.log(userId);
-
-
   return (
     <div className="__container">
-      <h1>Chat</h1>
-      <div className="chat-wrapper">
+      <div className={style.chatWrapper}>
         {/* Chat List */}
-        <div className="chat-list">
-          <h2>Chats</h2>
-          <ul>
+        <div className={style.chatListWrapper}>
+          <div className={style.searchChats}>
+            <input placeholder='Search for anything...'/>
+          </div>
+          <ul className={style.chatsList}>
             {chats.map((chat) => (
-              <li key={chat._id} onClick={() => selectChat(chat._id)}>
-                {userId !== chat.participants[1]._id ? chat.participants[1].name : chat.participants[0].name} {userId !== chat.participants[1]._id ? chat.participants[1].surname : chat.participants[0].surname}
-              </li>
+              <div className={style.chatPerson}>
+                <img className={style.chatPersonImage} src='https://random.imagecdn.app/40/40' alt='image' />
+                <li className={style.chatPersonName} key={chat._id} onClick={() => selectChat(chat._id)}>
+                  {userId !== chat.participants[1]._id ? chat.participants[1].name : chat.participants[0].name} {userId !== chat.participants[1]._id ? chat.participants[1].surname : chat.participants[0].surname}
+                </li>
+              </div>
             ))}
           </ul>
         </div>
         {/* Chat Messages */}
-        <div className="chat-messages">
-          <h2>Chat Messages</h2>
+        <div className={style.chatMessages}>
+          <div className={style.chatPersonLabel}>
+            <img className={style.chatPersonImage} src='https://random.imagecdn.app/40/40' alt='image'/>
+            <span className={style.chatPersonName}>
+              John Doe
+            </span>
+          </div>
           {/* Chat message list */}
-          <div className="message-list">
+          <div className={style.messages}>
             {selectedChat &&
               messages
                 .filter((message) => message.chatId === selectedChat)
@@ -161,15 +168,16 @@ export const Chat: React.FC = () => {
                 ))}
           </div>
           {/* Message input and send button */}
-          <div className="message-input">
+          <div className={style.chatSendLabel} >
             <input
+              placeholder='Send message...'
               type="text"
               value={messageInput}
               onChange={(e) => setMessageInput(e.target.value)}
               onKeyDown={handleKeyDown}
               ref={inputRef}
             />
-            <button onClick={sendMessage}>Send</button>
+            <button onClick={sendMessage}><IoSend className={style.sendMessageButton}/></button>
           </div>
         </div>
       </div>
