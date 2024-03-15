@@ -37,6 +37,7 @@ export const Chat: React.FC = () => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+
   useEffect(() => {
     const newSocket = io(SOCKET_SERVER_URL, { query: { userId } });
     setSocket(newSocket);
