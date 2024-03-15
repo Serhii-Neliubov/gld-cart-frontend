@@ -40,12 +40,16 @@ export const Chat: React.FC = () => {
   useEffect(() => {
     const newSocket = io(SOCKET_SERVER_URL, { query: { userId } });
     setSocket(newSocket);
-    fetchChats();
-
+    // fetchChats();
+    newSocket.emit("chats", userId);
+    newSocket.on("chats", (chatData) => {
+      console.log(chatData)
+      setChats(chatData.data);
+    })
     return () => {
       newSocket.disconnect();
     };
-  }, [userId]);
+  }, [socket]);
 
   useEffect(() => {
     if (socket && selectedChat) {
