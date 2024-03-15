@@ -80,11 +80,11 @@ export const BasicInformation = ({setStage, setFormData, formData}: BasicInforma
                         <span>The Product you want to sell is for</span>
                         <div className={styles.radioInputs}>
                             <div className={styles.inputRadio}>
-                                <input onChange={productToSellIs.onChange} value='Men' type="radio"/>
+                                <input onChange={productToSellIs.onChange} value='Men' name='gender' type="radio"/>
                                 <label>Men</label>
                             </div>
                             <div className={styles.inputRadio}>
-                                <input onChange={productToSellIs.onChange} value='Women' type="radio"/>
+                                <input onChange={productToSellIs.onChange} value='Women' name='gender' type="radio"/>
                                 <label>Women</label>
                             </div>
                         </div>

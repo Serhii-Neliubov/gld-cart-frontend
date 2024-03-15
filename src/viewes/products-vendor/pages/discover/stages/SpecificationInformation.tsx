@@ -17,7 +17,7 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
   const specifyHow = useInput('');
 
   const setNextStageHandler = () => {
-    if(!productInStock.value){
+    if(!productInStock.value || !productIs.value || !specifyHow.value){
       return toast.error('Please fill all fields');
     }
 
@@ -26,6 +26,8 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
       attributes: {
         ...formData.attributes,
         productInStock: productInStock.value,
+        productIs: productIs.value,
+        specifyHow: specifyHow.value
       },
     });
 
@@ -59,9 +61,9 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
     <div className='__container'>
       <div className={styles.container}>
         <RentingStage coloredStage={3}/>
-        <h1 className={styles.title}>Beauty of skin</h1>
+        <h1 className={styles.title}>Discover Skincare</h1>
         <form className={styles.content}>
-          <h2 className={styles.subtitle}>Basic information</h2>
+          <h2 className={styles.subtitle}>Product Specification</h2>
           <React.Fragment>
             <div className={styles.inputBox}>
               <label>How many product are in stock?</label>

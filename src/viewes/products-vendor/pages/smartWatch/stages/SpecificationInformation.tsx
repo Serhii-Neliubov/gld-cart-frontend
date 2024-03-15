@@ -12,12 +12,11 @@ type SpecificationInformationProps = {
 }
 
 export const SpecificationInformation = ({setStage, formData, setFormData}: SpecificationInformationProps) => {
-  const productInStock = useInput('');
   const compatibility = useInput('');
   const cameraControl = useInput('');
 
   const setNextStageHandler = () => {
-    if(!productInStock.value){
+    if(!compatibility.value || !cameraControl.value){
       return toast.error('Please fill all fields');
     }
 
@@ -25,7 +24,8 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
       ...formData,
       attributes: {
         ...formData.attributes,
-        productInStock: productInStock.value,
+        compatibility: compatibility.value,
+        cameraControl: cameraControl.value,
       },
     });
 

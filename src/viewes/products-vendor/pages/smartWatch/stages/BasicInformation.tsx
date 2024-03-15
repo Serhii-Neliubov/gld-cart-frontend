@@ -77,15 +77,15 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
               <span>The Product you want to sell is for</span>
               <div className={styles.radioInputs}>
                 <div className={styles.inputRadio}>
-                  <input onChange={productToSellFor.onChange} value='Men' type="radio"/>
+                  <input onChange={productToSellFor.onChange} value='Men' name='gender' type="radio"/>
                   <label>Men</label>
                 </div>
                 <div className={styles.inputRadio}>
-                  <input onChange={productToSellFor.onChange} value='Women' type="radio"/>
+                  <input onChange={productToSellFor.onChange} value='Women' name='gender' type="radio"/>
                   <label>Women</label>
                 </div>
                 <div className={styles.inputRadio}>
-                  <input onChange={productToSellFor.onChange} value='Children' type="radio"/>
+                  <input onChange={productToSellFor.onChange} value='Children' name='gender' type="radio"/>
                   <label>Children</label>
                 </div>
               </div>
@@ -94,11 +94,11 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
               <span>The product you want to sell is ?</span>
               <div className={styles.radioInputs}>
                 <div className={styles.inputRadio}>
-                  <input onChange={productToSellIs.onChange} value='Branded' type="radio"/>
+                  <input onChange={productToSellIs.onChange} value='Branded' name='branded' type="radio"/>
                   <label>Branded</label>
                 </div>
                 <div className={styles.inputRadio}>
-                  <input onChange={productToSellIs.onChange} value='Local' type="radio"/>
+                  <input onChange={productToSellIs.onChange} value='Local' name='branded' type="radio"/>
                   <label>Local</label>
                 </div>
               </div>

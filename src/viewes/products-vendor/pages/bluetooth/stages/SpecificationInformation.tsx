@@ -34,7 +34,7 @@ export const SpecificationInformation = ({setStage, setFormData, formData}: Spec
         ...prevFormData,
         attributes: {
           ...prevFormData.attributes,
-          [category]: updatedValues
+          [category]: updatedValues,
         }
       };
     });
@@ -51,6 +51,8 @@ export const SpecificationInformation = ({setStage, setFormData, formData}: Spec
       attributes: {
         ...formData.attributes,
         productsInStock: productsInStock.value,
+        waterResistance: waterResistance.value,
+        noiseCancellation: noiseCancellation.value,
       },
     });
 
@@ -61,9 +63,9 @@ export const SpecificationInformation = ({setStage, setFormData, formData}: Spec
     <div className='__container'>
       <div className={styles.container}>
         <RentingStage coloredStage={3}/>
-        <h1 className={styles.title}>Beauty of skin</h1>
+        <h1 className={styles.title}>Bluetooth</h1>
         <form className={styles.content}>
-          <h2 className={styles.subtitle}>Basic information</h2>
+          <h2 className={styles.subtitle}>Product Specification</h2>
           <React.Fragment>
         <span className={styles.tipTitle}>
           Select the Type of Bluetooth Product

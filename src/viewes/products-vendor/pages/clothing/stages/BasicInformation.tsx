@@ -35,6 +35,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
       attributes: {
         ...formData.attributes,
         productToSellIs: productToSellIs.value,
+        productToSellFor: productToSellFor.value,
       },
       price: Number(price.value),
       discountPrice: Number(discountPrice.value),
@@ -55,7 +56,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
   <div className='__container'>
     <div className={styles.container}>
       <RentingStage coloredStage={3}/>
-      <h1 className={styles.title}>Beauty of skin</h1>
+      <h1 className={styles.title}>Clothing</h1>
       <form className={styles.content}>
         <h2 className={styles.subtitle}>Basic information</h2>
         <React.Fragment>

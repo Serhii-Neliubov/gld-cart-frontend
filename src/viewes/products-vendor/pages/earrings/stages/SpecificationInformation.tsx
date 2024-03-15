@@ -62,7 +62,7 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
       <RentingStage coloredStage={3}/>
       <h1 className={styles.title}>Earrings</h1>
       <form className={styles.content}>
-        <h2 className={styles.subtitle}>Basic information</h2>
+        <h2 className={styles.subtitle}>Product Specification</h2>
         <React.Fragment>
           <div className={styles.areaBox}>
             <label>Material</label>

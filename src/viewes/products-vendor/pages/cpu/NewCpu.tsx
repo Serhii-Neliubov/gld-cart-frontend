@@ -25,7 +25,7 @@ export const NewCpu = () => {
   return (
     <React.Fragment>
       {stage == 3 && <BasicInformation setStage={setStage} formData={formData} setFormData={setFormData}/> }
-      {stage == 4 && <PhotoAndVideoBlock title='CPU' subtitle='Basic information' setStage={setStage} formData={formData} setFormData={setFormData}/> }
+      {stage == 4 && <PhotoAndVideoBlock title='CPU' subtitle='Photo and video' setStage={setStage} formData={formData} setFormData={setFormData}/> }
       {stage == 5 && <SpecificationInformation setStage={setStage} formData={formData} setFormData={setFormData}/> }
       {stage == 6 && <ItemPublishPage link='products' formData={formData} category="CPU"/> }
     </React.Fragment>

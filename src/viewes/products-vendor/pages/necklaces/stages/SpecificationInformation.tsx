@@ -17,7 +17,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
   const productMaterial = useInput('');
 
   const setNextStageHandler = () => {
-    if(!productInStock.value){
+    if(!productInStock.value || !productMaterial.value){
       return toast.error('Please fill all fields');
     }
 
@@ -26,6 +26,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
       attributes: {
         ...formData.attributes,
         productInStock: productInStock.value,
+        productMaterial: productMaterial.value,
       },
     });
 
@@ -57,7 +58,6 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
 
   return (
     <div className='__container'>
-
     <div className={styles.container}>
       <RentingStage coloredStage={3}/>
       <h1 className={styles.title}>Necklaces</h1>
@@ -67,80 +67,99 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
           <span className={styles.tipTitle}>
             Material
           </span>
-          <textarea onChange={productMaterial.onChange} value={productMaterial.value} placeholder='Write about the primary material used for the necklace'/>
+          <textarea onChange={productMaterial.onChange} value={productMaterial.value}
+                    placeholder='Write about the primary material used for the necklace'/>
+          <ChoosingColorBlock/>
           <span className={styles.tipTitle}>
-            Select the age group for which the clothing item is suitable
+            Select Size of products
           </span>
           <div className={styles.checkboxInputsBox}>
             <div className={styles.checkboxInputColumn}>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('ageGroup', 'Adult')} type="checkbox"/>
-                <label>Adult</label>
+                <input onChange={() => handleCheckboxChange('size', 'Medium')} type="checkbox"/>
+                <label>Medium</label>
               </div>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('ageGroup', 'Infant')} type="checkbox"/>
-                <label>Infant</label>
-              </div>
-            </div>
-            <div className={styles.checkboxInputColumn}>
-              <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('ageGroup', 'Teen')} type="checkbox"/>
-                <label>Teen</label>
+                <input onChange={() => handleCheckboxChange('size', 'Small')} type="checkbox"/>
+                <label>Small</label>
               </div>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('ageGroup', 'All Ages')} type="checkbox"/>
-                <label>All Ages</label>
-              </div>
-            </div>
-            <div className={styles.checkboxInputColumn}>
-              <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('ageGroup', 'Child')} type="checkbox"/>
-                <label>Child</label>
+                <input onChange={() => handleCheckboxChange('size', 'Large')} type="checkbox"/>
+                <label>Large</label>
               </div>
             </div>
           </div>
-          <span className={styles.tipTitle}>Select Size of products</span>
-          <div className={styles.checkboxInputColumn}>
-            <div className={styles.checkboxInputs}>
-              <input onChange={() => handleCheckboxChange('size', 'Medium')} type="checkbox"/>
-              <label>Medium</label>
-            </div>
-            <div className={styles.checkboxInputs}>
-              <input onChange={() => handleCheckboxChange('size', 'Small')} type="checkbox"/>
-              <label>Small</label>
-            </div>
-            <div className={styles.checkboxInputs}>
-              <input onChange={() => handleCheckboxChange('size', 'Large')} type="checkbox"/>
-              <label>Large</label>
-            </div>
-          </div>
-          <ChoosingColorBlock/>
-          <span className={styles.tipTitle}>
-        Select the primary material used for the clothing item
-      </span>
+          <span className={styles.tipTitle}>Select the type of chain for the necklace</span>
           <div className={styles.checkboxInputsBox}>
             <div className={styles.checkboxInputColumn}>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('material', 'Cotton')} type="checkbox"/>
-                <label>Cotton</label>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Medium')} type="checkbox"/>
+                <label>Cable Chain</label>
               </div>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('material', 'Wool')} type="checkbox"/>
-                <label>Wool</label>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Small')} type="checkbox"/>
+                <label>Box Chain</label>
               </div>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('material', 'Leather')} type="checkbox"/>
-                <label>Leather</label>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Large')} type="checkbox"/>
+                <label>Singapore Chain</label>
               </div>
             </div>
             <div className={styles.checkboxInputColumn}>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('material', 'Polyester')} type="checkbox"/>
-                <label>Polyester</label>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Rolo Chain')} type="checkbox"/>
+                <label>Rolo Chain</label>
               </div>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('material', 'Silk')} type="checkbox"/>
-                <label>Silk</label>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Snake Chain')} type="checkbox"/>
+                <label>Snake Chain</label>
+              </div>
+              <div className={styles.checkboxInputs}>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Curb Chain')} type="checkbox"/>
+                <label>Curb Chain</label>
+              </div>
+            </div>
+            <div className={styles.checkboxInputColumn}>
+              <div className={styles.checkboxInputs}>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Figaro Chain')} type="checkbox"/>
+                <label>Figaro Chain</label>
+              </div>
+              <div className={styles.checkboxInputs}>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Rope Chain')} type="checkbox"/>
+                <label>Rope Chain</label>
+              </div>
+              <div className={styles.checkboxInputs}>
+                <input onChange={() => handleCheckboxChange('typeOfChain', 'Other')} type="checkbox"/>
+                <label>Other</label>
+              </div>
+            </div>
+          </div>
+          <span className={styles.tipTitle}>
+            Select the type of closure for the necklace
+          </span>
+          <div className={styles.checkboxInputsBox}>
+            <div className={styles.checkboxInputColumn}>
+              <div className={styles.checkboxInputs}>
+                <input onChange={() => handleCheckboxChange('typeofClosure', 'Lobster Clasp')} type="checkbox"/>
+                <label>Lobster Clasp</label>
+              </div>
+              <div className={styles.checkboxInputs}>
+                <input onChange={() => handleCheckboxChange('typeofClosure', 'Magnetic Clasp')} type="checkbox"/>
+                <label>Magnetic Clasp</label>
+              </div>
+              <div className={styles.checkboxInputs}>
+              <input onChange={() => handleCheckboxChange('typeofClosure', 'Barrel Clasp')} type="checkbox"/>
+                <label>Barrel Clasp</label>
+              </div>
+            </div>
+            <div className={styles.checkboxInputColumn}>
+              <div className={styles.checkboxInputs}>
+                <input onChange={() => handleCheckboxChange('material', 'Spring Ring Clasp')} type="checkbox"/>
+                <label>Spring Ring Clasp</label>
+              </div>
+              <div className={styles.checkboxInputs}>
+                <input onChange={() => handleCheckboxChange('material', 'Slide Clasp')} type="checkbox"/>
+                <label>Slide Clasp</label>
               </div>
               <div className={styles.checkboxInputs}>
                 <input onChange={() => handleCheckboxChange('material', 'Other')} type="checkbox"/>
@@ -149,12 +168,12 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
             </div>
             <div className={styles.checkboxInputColumn}>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('material', 'Linen')} type="checkbox"/>
-                <label>Linen</label>
+                <input onChange={() => handleCheckboxChange('material', 'Toggle Clasp')} type="checkbox"/>
+                <label>Toggle Clasp</label>
               </div>
               <div className={styles.checkboxInputs}>
-                <input onChange={() => handleCheckboxChange('material', 'Denim')} type="checkbox"/>
-                <label>Denim</label>
+                <input onChange={() => handleCheckboxChange('material', 'Hook Clasp')} type="checkbox"/>
+                <label>Hook Clasp</label>
               </div>
             </div>
           </div>
@@ -169,6 +188,6 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
         <div className={styles.nextButton} onClick={setNextStageHandler}>Next</div>
       </div>
     </div>
-  </div>
+    </div>
   )
 }

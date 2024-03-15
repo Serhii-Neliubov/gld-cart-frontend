@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import styles from "@/viewes/products-vendor/pages/cpu/NewCpu.module.scss";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
 import {useInput} from "@/hooks/useInput/useInput.tsx";
@@ -12,7 +12,6 @@ type SpecificationInformationProps = {
 }
 
 export const SpecificationInformation = ({formData, setFormData, setStage}: SpecificationInformationProps) => {
-  const productInStock = useInput('');
   const cpumodel = useInput('');
   const socketType = useInput('');
   const coreCount = useInput('');
@@ -21,11 +20,13 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
   const tdp = useInput('');
   const architecture = useInput('');
   const compatibility = useInput('');
-  const productsInStock = useInput('');
+
+  const [productsInStock, setProductsInStock] = useState('');
+
   const integratedGraphics = useInput('');
 
   const setNextStageHandler = () => {
-    if(!productInStock.value){
+    if(!cpumodel.value || !socketType.value || !coreCount.value || !clockSpeed.value || !cache.value || !tdp.value || !architecture.value || !compatibility.value || !productsInStock || !integratedGraphics.value){
       return toast.error('Please fill all fields');
     }
 
@@ -33,7 +34,16 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
       ...formData,
       attributes: {
         ...formData.attributes,
-        productInStock: productInStock.value,
+        productsInStock: productsInStock,
+        cpumodel: cpumodel.value,
+        socketType: socketType.value,
+        coreCount: coreCount.value,
+        clockSpeed: clockSpeed.value,
+        cache: cache.value,
+        tdp: tdp.value,
+        architecture: architecture.value,
+        compatibility: compatibility.value,
+        integratedGraphics: integratedGraphics.value,
       },
     });
 
@@ -44,9 +54,9 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
     <div className='__container'>
       <div className={styles.container}>
       <RentingStage coloredStage={3}/>
-      <h1 className={styles.title}>Beauty of skin</h1>
+      <h1 className={styles.title}>CPU</h1>
       <form className={styles.content}>
-        <h2 className={styles.subtitle}>Basic information</h2>
+        <h2 className={styles.subtitle}>Product Specification</h2>
         <React.Fragment>
           <div className={styles.inputsBox}>
             <div className={styles.inputBox}>
@@ -101,7 +111,7 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
           </div>
           <div className={styles.inputBox}>
             <label>How many product are in stock?</label>
-            <input onChange={productsInStock.onChange} value={productInStock.value} type="number" placeholder="100"/>
+            <input onChange={event => setProductsInStock(event.target.value)} value={productsInStock} type="number" placeholder="100"/>
           </div>
         </React.Fragment>
       </form>

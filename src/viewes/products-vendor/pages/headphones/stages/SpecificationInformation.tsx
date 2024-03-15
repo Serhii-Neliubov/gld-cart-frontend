@@ -19,7 +19,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
   const headphoneColor = useInput('');
 
   const setNextStageHandler = () => {
-    if(!productInStock.value){
+    if(!productInStock.value || !frequency.value || !chargingMethod.value || !headphoneType.value || !headphoneColor.value){
       return toast.error('Please fill all fields');
     }
 
@@ -28,6 +28,10 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
       attributes: {
         ...formData.attributes,
         productInStock: productInStock.value,
+        frequency: frequency.value,
+        chargingMethod: chargingMethod.value,
+        headphoneType: headphoneType.value,
+        headphoneColor: headphoneColor.value,
       },
     });
 
@@ -38,9 +42,9 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
     <div className='__container'>
     <div className={styles.container}>
       <RentingStage coloredStage={3}/>
-      <h1 className={styles.title}>Facial Care</h1>
+      <h1 className={styles.title}>Headphones</h1>
       <form className={styles.content}>
-        <h2 className={styles.subtitle}>Basic information</h2>
+        <h2 className={styles.subtitle}>Product Specification</h2>
         <React.Fragment>
           <div className={styles.inputsRadio}>
         <span>
@@ -48,11 +52,11 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
         </span>
             <div className={styles.radioInputs}>
               <div className={styles.inputRadio}>
-                <input onChange={frequency.onChange} value='20kHz' type="radio"/>
+                <input onChange={frequency.onChange} value='20kHz' name='hz' type="radio"/>
                 <label>20kHz</label>
               </div>
               <div className={styles.inputRadio}>
-                <input onChange={frequency.onChange} value='20Hz' type="radio"/>
+                <input onChange={frequency.onChange} value='20Hz' name='hz' type="radio"/>
                 <label>20Hz</label>
               </div>
             </div>
@@ -61,15 +65,15 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
             <span>Describe the charging method.</span>
             <div className={styles.radioInputs}>
               <div className={styles.inputRadio}>
-                <input onChange={chargingMethod.onChange} value='USB-C' type="radio"/>
+                <input onChange={chargingMethod.onChange} value='USB-C' name='charging' type="radio"/>
                 <label>USB-C</label>
               </div>
               <div className={styles.inputRadio}>
-                <input onChange={chargingMethod.onChange} value='Wireless' type="radio"/>
+                <input onChange={chargingMethod.onChange} value='Wireless' name='charging' type="radio"/>
                 <label>Wireless</label>
               </div>
               <div className={styles.inputRadio}>
-                <input onChange={chargingMethod.onChange} value='micro-USB' type="radio"/>
+                <input onChange={chargingMethod.onChange} value='micro-USB' name='charging' type="radio"/>
                 <label>micro-USB</label>
               </div>
             </div>
@@ -99,11 +103,11 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
             <span>Types of Colors.</span>
             <div className={styles.radioInputs}>
               <div className={styles.inputRadio}>
-                <input onChange={headphoneColor.onChange} value='Black' type="radio"/>
+                <input onChange={headphoneColor.onChange} value='Black' name='color' type="radio"/>
                 <label>Black</label>
               </div>
               <div className={styles.inputRadio}>
-                <input onChange={headphoneColor.onChange} value='Black' type="radio"/>
+                <input onChange={headphoneColor.onChange} value='White' name='color' type="radio"/>
                 <label>White</label>
               </div>
             </div>
