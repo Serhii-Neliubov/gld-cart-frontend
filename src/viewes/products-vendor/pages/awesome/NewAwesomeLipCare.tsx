@@ -25,7 +25,7 @@ export const NewAwesomeLipCare = () => {
   return (
     <React.Fragment>
         {stage == 3 && <BasicInformation setStage={setStage} formData={formData} setFormData={setFormData}/>}
-        {stage == 4 && <PhotoAndVideoBlock title='Awesome Lip Care' subtitle='Basic Information' setStage={setStage} formData={formData} setFormData={setFormData}/>}
+        {stage == 4 && <PhotoAndVideoBlock title='Awesome Lip Care' subtitle='Photo and video' setStage={setStage} formData={formData} setFormData={setFormData}/>}
         {stage == 5 && <SpecificationInformation setStage={setStage} formData={formData} setFormData={setFormData}/>}
         {stage == 6 && <ItemPublishPage link='products' formData={formData} category="Awesome Lip Care"/>}
     </React.Fragment>

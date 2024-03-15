@@ -23,7 +23,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
   const connectivity = useInput('');
 
   const setNextStageHandler = () => {
-    if(!productInStock.value){
+    if(!productInStock.value || !operatingSystem.value || !processor.value || !memory.value || !storage.value || !screenDisplay.value || !camera.value || !batteryLife.value || !connectivity.value){
       return toast.error('Please fill all fields');
     }
 
@@ -32,6 +32,14 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
       attributes: {
         ...formData.attributes,
         productInStock: productInStock.value,
+        operatingSystem: operatingSystem.value,
+        processor: processor.value,
+        memory: memory.value,
+        storage: storage.value,
+        screenDisplay: screenDisplay.value,
+        camera: camera.value,
+        batteryLife: batteryLife.value,
+        connectivity: connectivity.value,
       },
     });
 
@@ -65,9 +73,9 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
     <div className='__container'>
     <div className={styles.container}>
       <RentingStage coloredStage={3}/>
-      <h1 className={styles.title}>Facial Care</h1>
+      <h1 className={styles.title}>Mobile Tablets</h1>
       <form className={styles.content}>
-        <h2 className={styles.subtitle}>Basic information</h2>
+        <h2 className={styles.subtitle}>Products Specification</h2>
         <React.Fragment>
           <div className={styles.inputsBox}>
             <div className={styles.inputBox}>

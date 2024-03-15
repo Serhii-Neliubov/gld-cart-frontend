@@ -39,7 +39,7 @@ export const SpecificationInformation = ({setStage, setFormData, formData}: Spec
     };
 
     const setNextStageHandler = () => {
-        if(productsInStock.value === '' || areaBox.value === ''){
+        if(!productsInStock.value || !areaBox.value){
             return toast.error('Please fill all fields');
         }
 
@@ -48,7 +48,7 @@ export const SpecificationInformation = ({setStage, setFormData, formData}: Spec
             attributes: {
                 ...formData.attributes,
                 productInStock: productsInStock.value,
-                careInstructions: areaBox.value
+                careInstructions: areaBox.value,
             },
         });
 
@@ -59,9 +59,9 @@ export const SpecificationInformation = ({setStage, setFormData, formData}: Spec
         <div className='__container'>
             <div className={styles.container}>
                 <RentingStage coloredStage={5}/>
-                <h1 className={styles.title}>Awesome Lip Care PRODUCT Form</h1>
+                <h1 className={styles.title}>Awesome Lip Care</h1>
                 <form className={styles.content}>
-                    <h2 className={styles.subtitle}>Basic information</h2>
+                    <h2 className={styles.subtitle}>Products Specification</h2>
                     <React.Fragment>
                   <span className={styles.tipTitle}>
                     Select the Flavor of your product

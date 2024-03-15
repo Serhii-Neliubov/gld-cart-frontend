@@ -72,6 +72,7 @@ const RentingProductsPage: FC = () => {
   const [coloredStage, setColoredStage] = useState(0);
   const subcategories = Object.keys(isClicked);
   const navigate = useNavigate();
+
   function productClickHandler(arrayItem: string, category: string) {
     dispatch(setVendorSelectedItemValue(arrayItem));
     dispatch(setProductName(arrayItem));

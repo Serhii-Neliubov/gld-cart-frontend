@@ -67,7 +67,7 @@ export const BasicInformation = ({setStage, setFormData, formData}: BasicInforma
       <div className='__container'>
           <div className={styles.container}>
               <RentingStage coloredStage={3}/>
-              <h1 className={styles.title}>Awesome Lip Care PRODUCT Form</h1>
+              <h1 className={styles.title}>Awesome Lip Care</h1>
               <form className={styles.content}>
                   <h2 className={styles.subtitle}>Basic information</h2>
                   <React.Fragment>

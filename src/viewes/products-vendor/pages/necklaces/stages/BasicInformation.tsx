@@ -55,7 +55,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
     <div className='__container'>
     <div className={styles.container}>
       <RentingStage coloredStage={3}/>
-      <h1 className={styles.title}>Facial Care</h1>
+      <h1 className={styles.title}>Necklaces</h1>
       <form className={styles.content}>
         <h2 className={styles.subtitle}>Basic information</h2>
         <React.Fragment>
@@ -77,11 +77,11 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
             <span>The product you want to sell is for</span>
             <div className={styles.radioInputs}>
               <div className={styles.inputRadio}>
-                <input onChange={productToSellFor.onChange} value='Men' type="radio"/>
+                <input onChange={productToSellFor.onChange} value='Men' name='gender' type="radio"/>
                 <label>Men</label>
               </div>
               <div className={styles.inputRadio}>
-                <input onChange={productToSellFor.onChange} value='Women' type="radio"/>
+                <input onChange={productToSellFor.onChange} value='Women' name='gender' type="radio"/>
                 <label>Women</label>
               </div>
             </div>

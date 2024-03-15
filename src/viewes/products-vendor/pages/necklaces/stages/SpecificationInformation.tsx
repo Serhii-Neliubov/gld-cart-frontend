@@ -14,6 +14,7 @@ type SpecificationInformationProps = {
 
 export const SpecificationInformation = ({setStage, formData, setFormData}: SpecificationInformationProps) => {
   const productInStock = useInput('');
+  const productMaterial = useInput('');
 
   const setNextStageHandler = () => {
     if(!productInStock.value){
@@ -58,13 +59,17 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
     <div className='__container'>
     <div className={styles.container}>
       <RentingStage coloredStage={3}/>
-      <h1 className={styles.title}>Facial Care</h1>
+      <h1 className={styles.title}>Necklaces</h1>
       <form className={styles.content}>
-        <h2 className={styles.subtitle}>Basic information</h2>
+        <h2 className={styles.subtitle}>Products Specification</h2>
         <React.Fragment>
-      <span className={styles.tipTitle}>
-        Select the age group for which the clothing item is suitable
-      </span>
+          <span className={styles.tipTitle}>
+            Material
+          </span>
+          <textarea onChange={productMaterial.onChange} value={productMaterial.value} placeholder='Write about the primary material used for the necklace'/>
+          <span className={styles.tipTitle}>
+            Select the age group for which the clothing item is suitable
+          </span>
           <div className={styles.checkboxInputsBox}>
             <div className={styles.checkboxInputColumn}>
               <div className={styles.checkboxInputs}>

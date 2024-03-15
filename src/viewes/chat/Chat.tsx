@@ -74,15 +74,6 @@ export const Chat: React.FC = () => {
       }
     };
   }, [socket, selectedChat]);
-  const fetchChats = async () => {
-    try {
-      const response = await $api.get(`${API_URL}/chat?userId=${userId}`);
-
-      setChats(response.data);
-    } catch (error) {
-      console.error("Error fetching chats:", error);
-    }
-  };
 
   const fetchMessages = async (chatId: string) => {
     try {
@@ -123,6 +114,7 @@ export const Chat: React.FC = () => {
       sendMessage();
     }
   };
+
 
   return (
     <div className="__container">

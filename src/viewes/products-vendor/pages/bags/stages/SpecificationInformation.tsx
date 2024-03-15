@@ -16,6 +16,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
 
   const productsInStock = useInput('');
   const areaBox = useInput('');
+  const numberOfPockets = useInput('');
 
   const handleCheckboxChange = (category: string, value: string) => {
     setFormData((prevFormData) => {
@@ -34,14 +35,17 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
         ...prevFormData,
         attributes: {
           ...prevFormData.attributes,
-          [category]: updatedValues
+          [category]: updatedValues,
+          productsInStock: productsInStock.value,
+          careInstructions: areaBox.value,
+          numberOfPockets: numberOfPockets.value
         }
       };
     });
   };
 
   const setNextStageHandler = () => {
-    if(productsInStock.value === '' || areaBox.value === ''){
+    if(!productsInStock.value || !areaBox.value || !numberOfPockets.value){
       return toast.error('Please fill all fields');
     }
 
@@ -63,55 +67,55 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
         <RentingStage coloredStage={5}/>
         <h1 className={styles.title}>Bags</h1>
         <form className={styles.content}>
-          <h2 className={styles.subtitle}>Basic Information</h2>
+          <h2 className={styles.subtitle}>Products Specification</h2>
           <React.Fragment>
           <span className={styles.tipTitle}>
-            Select the Features of your product
+            Select the Material of your product
           </span>
             <div className={styles.checkboxInputsBox}>
               <div className={styles.checkboxInputColumn}>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Leather')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Leather')} type="checkbox"/>
                   <label>Leather</label>
                 </div>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Nylon')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Nylon')} type="checkbox"/>
                   <label>Nylon</label>
                 </div>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Denim')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Denim')} type="checkbox"/>
                   <label>Denim</label>
                 </div>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Other')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Other')} type="checkbox"/>
                   <label>Other</label>
                 </div>
               </div>
               <div className={styles.checkboxInputColumn}>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Canvas')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Canvas')} type="checkbox"/>
                   <label>Canvas</label>
                 </div>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Polyester')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Polyester')} type="checkbox"/>
                   <label>Polyester</label>
                 </div>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Suede')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Suede')} type="checkbox"/>
                   <label>Suede</label>
                 </div>
               </div>
               <div className={styles.checkboxInputColumn}>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Vinyl')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Vinyl')} type="checkbox"/>
                   <label>Vinyl</label>
                 </div>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Fabric Blend')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Fabric Blend')} type="checkbox"/>
                   <label>Fabric Blend</label>
                 </div>
                 <div className={styles.checkboxInputs}>
-                  <input onChange={() => handleCheckboxChange('features', 'Synthetic Leather')} type="checkbox"/>
+                  <input onChange={() => handleCheckboxChange('material', 'Synthetic Leather')} type="checkbox"/>
                   <label>Synthetic Leather</label>
                 </div>
               </div>
@@ -259,8 +263,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
             </div>
             <div className={styles.inputBox}>
               <label>Pockets</label>
-              <input type="text" placeholder="Write the number and type of pockets in the bag (e.g., interior pockets, exterior pockets)"
-              />
+              <input onChange={numberOfPockets.onChange} value={numberOfPockets.value} type="text" placeholder="Write the number and type of pockets in the bag (e.g., interior pockets, exterior pockets)"/>
             </div>
             <div className={styles.areaBox}>
               <label>Care Instructions</label>

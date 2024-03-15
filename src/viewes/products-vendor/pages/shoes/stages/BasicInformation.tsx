@@ -51,7 +51,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
     }
   }
 
-    return (
+  return (
     <div className='__container'>
     <div className={styles.container}>
       <RentingStage coloredStage={3}/>
