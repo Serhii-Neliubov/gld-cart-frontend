@@ -1,9 +1,6 @@
 import React, { FC, useState } from "react";
 import styles from "./RentingProductsPage.module.scss";
 import RentingStage from "@/components/renting-stages/RentingStage";
-import { useDispatch } from "react-redux";
-import { setVendorSelectedItemValue} from "@/store/slices/vendorSelectedItemSlice.ts";
-import {setProductCategory, setProductName, setProductSubcategory} from "@/store/slices/vendorProductInfoSlice.ts";
 import {useNavigate} from "react-router-dom";
 import {ProductsData} from "@/assets/data/vendor-categories/ProductsData.ts";
 
@@ -66,22 +63,16 @@ const links = {
 }
 
 const RentingProductsPage: FC = () => {
-  const dispatch = useDispatch();
+  const [category, setCategory] = useState('products');
+
   const [isClicked, setIsClicked] = useState<IClearClick>({...clearClick});
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
   const [coloredStage, setColoredStage] = useState(0);
   const subcategories = Object.keys(isClicked);
   const navigate = useNavigate();
 
-  function productClickHandler(arrayItem: string, category: string) {
-    dispatch(setVendorSelectedItemValue(arrayItem));
-    dispatch(setProductName(arrayItem));
-
-    if(links[category]){
-      navigate(links[category]);
-    } else {
-      navigate('/products-category-page');
-    }
+  function productClickHandler(product: string) {
+    navigate(`${links[category]}/${category}/${selectedSubCategory}/${product}`);
   }
 
   return (
@@ -111,7 +102,7 @@ const RentingProductsPage: FC = () => {
                                 ...clearClick,
                                 [item.category]: true,
                               });
-                              dispatch(setProductCategory(item.category));
+                              setCategory(item.category);
                               setColoredStage(1);
                               setSelectedSubCategory("");
                             }}
@@ -137,7 +128,6 @@ const RentingProductsPage: FC = () => {
                                                   selectedSubCategory === name ? "#02A0A0" : "",
                                             }}
                                             onClick={() => {
-                                              dispatch(setProductSubcategory(name));
                                               setSelectedSubCategory(name);
                                               setColoredStage(2);
                                             }}
@@ -157,7 +147,7 @@ const RentingProductsPage: FC = () => {
                             object.items[selectedSubCategory].map((arrayItem, index) => (
                                 <button
                                     onClick={() => {
-                                      productClickHandler(arrayItem, object.category)
+                                      productClickHandler(arrayItem)
                                     }}
                                     key={index}
                                     className={styles.main_item_3}

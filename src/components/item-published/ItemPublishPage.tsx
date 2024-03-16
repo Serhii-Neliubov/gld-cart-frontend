@@ -33,7 +33,7 @@ const ItemPublishPage = ({category, formData, link}: ItemPublishPageProps) => {
         formData.images.filter(value => !!value).forEach(file=> {
             images.append('images', file);
         })
-
+        console.log(formData);
         await $api.post(`${API_URL}/${link}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',

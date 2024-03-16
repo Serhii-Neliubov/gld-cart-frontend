@@ -234,7 +234,7 @@ export const vendorRoutes: IRoutes[] = [
   // Houses
   {component: NewHouses, path: "/renting-category-page/new-houses-page",},
   // Beauty
-  {component: NewBeautyOfSkin, path: "/products-category-page/new-beauty-of-skin-page",},
+  {component: NewBeautyOfSkin, path: "/products-category-page/new-beauty-of-skin-page/:category/:subcategory/:product",},
 ];
 
 export const noAuthRotes: IRoutes[] = [

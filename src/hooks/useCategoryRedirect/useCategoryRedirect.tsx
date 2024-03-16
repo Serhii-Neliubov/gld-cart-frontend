@@ -1,21 +1,19 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { vendorProductInfo } from "@/store/slices/vendorProductInfoSlice.ts";
+import {useNavigate, useParams} from "react-router-dom";
 
 const useCategoryRedirect = (
-  category: string,
+  navCategory: string,
   navigate: string,
   stage: number
 ) => {
   const navigator = useNavigate();
-  const data = useSelector(vendorProductInfo);
+  const {category} = useParams();
 
   useEffect(() => {
-    if (data.category !== category) {
+    if (category !== navCategory) {
       navigator(navigate);
     }
-  }, [category, data, navigate, navigator]);
+  }, [navCategory, category, navigate, navigator]);
 
   useEffect(() => {
     if (stage < 3) {
