@@ -5,9 +5,11 @@ import { BasicInformation } from "./stages/BasicInformation.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
 import {PhotoAndVideoBlock} from "@/components/photo-video-block/PhotoAndVideoBlock.tsx";
+import {useParams} from "react-router-dom";
 
 export const NewBeautyOfSkin = () => {
   const [stage, setStage] = useState(3);
+  const {category, subcategory, product} = useParams();
 
   const [formData, setFormData] = useState<IVendorProductData>({
     title: "",
@@ -15,9 +17,10 @@ export const NewBeautyOfSkin = () => {
     attributes: {},
     images: [],
     price: 0,
-    category: "",
-    subcategory: "",
-    product_name: "",
+    stock: 0,
+    category: category,
+    subcategory: subcategory,
+    product_name: product,
   });
 
   useCategoryRedirect("beauty", "/products-category-page", stage);

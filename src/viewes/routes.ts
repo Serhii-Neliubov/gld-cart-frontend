@@ -186,31 +186,31 @@ export const vendorRoutes: IRoutes[] = [
   // Electronics
   {component: NewElectronics, path: "/renting-category-page/new-electronics-page",},
   // bags
-  {component: NewBags, path: "/products-category-page/new-bags-page",},
+  {component: NewBags, path: "/products-category-page/new-bags-page/:category/:subcategory/:product",},
   // Awesome Lip Care
-  {component: NewAwesomeLipCare, path: "/products-category-page/new-awesome-lip-care-page",},
+  {component: NewAwesomeLipCare, path: "/products-category-page/new-awesome-lip-care-page/:category/:subcategory/:product",},
   // Mobile Tablets
-  {component: NewMobileTablets, path: "/products-category-page/new-mobile-tablets-page",},
+  {component: NewMobileTablets, path: "/products-category-page/new-mobile-tablets-page/:category/:subcategory/:product",},
   // necklaces
-  {component: NewNecklaces, path: "/products-category-page/new-necklaces-page",},
+  {component: NewNecklaces, path: "/products-category-page/new-necklaces-page/:category/:subcategory/:product",},
   // clothing
-  {component: NewClothing, path: "/products-category-page/new-clothing-page",},
+  {component: NewClothing, path: "/products-category-page/new-clothing-page/:category/:subcategory/:product",},
   // headphones
-  {component: NewBluetooth, path: "/products-category-page/new-bluetooth-page",},
+  {component: NewBluetooth, path: "/products-category-page/new-bluetooth-page/:category/:subcategory/:product",},
   // Facial Care
-  {component: NewFacialCare, path: "/products-category-page/new-facial-care-page",},
+  {component: NewFacialCare, path: "/products-category-page/new-facial-care-page/:category/:subcategory/:product",},
   // shoes
-  {component: NewShoes, path: "/products-category-page/new-shoes-page",},
+  {component: NewShoes, path: "/products-category-page/new-shoes-page/:category/:subcategory/:product",},
   // CPU
-  {component: NewCpu, path: "/products-category-page/new-cpu-page",},
+  {component: NewCpu, path: "/products-category-page/new-cpu-page/:category/:subcategory/:product",},
   // Discover Skincare
-  {component: NewDiscoverSkincare, path: "/products-category-page/new-discover-skincare-page",},
+  {component: NewDiscoverSkincare, path: "/products-category-page/new-discover-skincare-page/:category/:subcategory/:product",},
   // headphones
-  {component: NewHeadphones, path: "/products-category-page/new-headphones-page",},
+  {component: NewHeadphones, path: "/products-category-page/new-headphones-page/:category/:subcategory/:product",},
   // bracelets
-  {component: NewBracelets, path: "/products-category-page/new-bracelets-page",},
+  {component: NewBracelets, path: "/products-category-page/new-bracelets-page/:category/:subcategory/:product",},
   // smartwatch
-  {component: NewSmartWatch, path: "/products-category-page/new-smartwatch-page",},
+  {component: NewSmartWatch, path: "/products-category-page/new-smartwatch-page/:category/:subcategory/:product",},
   // Cleaning
   {component: NewCleaning, path: "/professional-services/new-cleaning-page",},
   // Repairing
@@ -230,7 +230,7 @@ export const vendorRoutes: IRoutes[] = [
   // Electrical
   {component: NewElectrical, path: "/professional-services/new-electrical-page",},
   // earrings
-  {component: NewEarrings, path: "/products-category-page/new-earrings-page",},
+  {component: NewEarrings, path: "/products-category-page/new-earrings-page/:category/:subcategory/:product",},
   // Houses
   {component: NewHouses, path: "/renting-category-page/new-houses-page",},
   // Beauty

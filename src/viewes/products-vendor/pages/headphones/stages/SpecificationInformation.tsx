@@ -27,12 +27,12 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
       ...formData,
       attributes: {
         ...formData.attributes,
-        productInStock: productInStock.value,
         frequency: frequency.value,
         chargingMethod: chargingMethod.value,
         headphoneType: headphoneType.value,
         headphoneColor: headphoneColor.value,
       },
+      stock: Number(productInStock.value),
     });
 
     setStage((prev: number) => prev + 1);

@@ -34,7 +34,6 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
       ...formData,
       attributes: {
         ...formData.attributes,
-        productsInStock: productsInStock,
         cpumodel: cpumodel.value,
         socketType: socketType.value,
         coreCount: coreCount.value,
@@ -45,6 +44,7 @@ export const SpecificationInformation = ({formData, setFormData, setStage}: Spec
         compatibility: compatibility.value,
         integratedGraphics: integratedGraphics.value,
       },
+      stock: Number(productsInStock),
     });
 
     setStage((prev: number) => prev + 1);

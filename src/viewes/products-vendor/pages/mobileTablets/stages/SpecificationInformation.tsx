@@ -31,7 +31,6 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
       ...formData,
       attributes: {
         ...formData.attributes,
-        productInStock: productInStock.value,
         operatingSystem: operatingSystem.value,
         processor: processor.value,
         memory: memory.value,
@@ -41,6 +40,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
         batteryLife: batteryLife.value,
         connectivity: connectivity.value,
       },
+      stock: Number(productInStock.value),
     });
 
     setStage((prev: number) => prev + 1);

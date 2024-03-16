@@ -50,10 +50,10 @@ export const SpecificationInformation = ({setStage, setFormData, formData}: Basi
       ...formData,
       attributes: {
         ...formData.attributes,
-        productInStock: productsInStock.value,
         parabenFree: parabenFree.value,
         cruentlyFree: cruentlyFree.value,
       },
+      stock: Number(productsInStock.value),
     });
 
     setStage((prev: number) => prev + 1);

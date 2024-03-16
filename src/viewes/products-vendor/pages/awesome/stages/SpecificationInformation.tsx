@@ -47,9 +47,9 @@ export const SpecificationInformation = ({setStage, setFormData, formData}: Spec
             ...formData,
             attributes: {
                 ...formData.attributes,
-                productInStock: productsInStock.value,
                 careInstructions: areaBox.value,
             },
+            stock: Number(productsInStock.value),
         });
 
         setStage((prev: number) => prev + 1);

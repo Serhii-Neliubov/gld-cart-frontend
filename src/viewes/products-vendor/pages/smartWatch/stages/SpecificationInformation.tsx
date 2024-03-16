@@ -14,6 +14,7 @@ type SpecificationInformationProps = {
 export const SpecificationInformation = ({setStage, formData, setFormData}: SpecificationInformationProps) => {
   const compatibility = useInput('');
   const cameraControl = useInput('');
+  const productInStock = useInput('');
 
   const setNextStageHandler = () => {
     if(!compatibility.value || !cameraControl.value){
@@ -27,6 +28,7 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
         compatibility: compatibility.value,
         cameraControl: cameraControl.value,
       },
+      stock: Number(productInStock.value),
     });
 
     setStage((prev: number) => prev + 1);
@@ -113,6 +115,10 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
               <input onChange={() => handleCheckboxChange('connectivity', 'NFC')} type="checkbox"/>
               <label>NFC</label>
             </div>
+          </div>
+          <div className={styles.inputBox}>
+            <label>How many product are in stock?</label>
+            <input onChange={productInStock.onChange} value={productInStock.value} type="number" placeholder="100"/>
           </div>
         </React.Fragment>
       </form>

@@ -36,10 +36,10 @@ export const SpecificationInformation = ({setStage, formData, setFormData}: Spec
         attributes: {
           ...prevFormData.attributes,
           [category]: updatedValues,
-          productsInStock: productsInStock.value,
           careInstructions: areaBox.value,
           numberOfPockets: numberOfPockets.value
-        }
+        },
+        stock: Number(productsInStock.value),
       };
     });
   };
