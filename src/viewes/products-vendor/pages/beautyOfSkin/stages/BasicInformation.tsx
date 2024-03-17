@@ -126,6 +126,7 @@ export const BasicInformation = ({setStage, setFormData, formData}: BasicInforma
                                         <div className={styles.inputBox}>
                                             <span>Discount Price</span>
                                             <input
+                                              disabled={!isDiscountPrice}
                                               placeholder="450$"
                                               onChange={discountPrice.onChange}
                                               value={discountPrice.value}

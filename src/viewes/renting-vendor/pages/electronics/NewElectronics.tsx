@@ -1,48 +1,37 @@
 import React, { useState } from "react";
-import { Layout } from "@/components/Vendor/Layout.tsx";
 import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
-import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
+import {useParams} from "react-router-dom";
+import {PhotoAndVideoBlock} from "@/components/photo-video-block/PhotoAndVideoBlock.tsx";
 
 export const NewElectronics = () => {
   const [stage, setStage] = useState(3);
+  const {category, subcategory, product} = useParams();
 
   const [formData, setFormData] = useState<IVendorProductData>({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     attributes: {},
     images: [],
-    category: '',
-    subcategory: '',
-    renting_name: '',
+    price: 0,
+    category: category,
+    subcategory: subcategory,
+    renting_name: product,
   });
 
   useCategoryRedirect("electronics", "/renting-category-page", stage);
 
   return (
     <React.Fragment>
-      {stage < 6 && (
-        <Layout
-          setStage={setStage}
-          title="Electronics Renting Form"
-          subtitle="Basic information"
-          stage={stage - 1}
-        >
-          {stage == 3 && (
-            <BasicInformation formData={formData} setFormData={setFormData}/>
-          )}
-          {stage == 4 && (
-            <PhotoAndVideoBlock formData={formData} setFormData={setFormData}/>
-          )}
-          {stage == 5 && (
-            <SpecificationInformation formData={formData} setFormData={setFormData}/>
-          )}
-        </Layout>
-      )}
-      {stage == 6 && <ItemPublishPage link='renting' formData={formData} category="Electronics" />}
+      <React.Fragment>
+        {stage == 3 && <BasicInformation setStage={setStage} formData={formData} setFormData={setFormData}/> }
+        {stage == 4 && <PhotoAndVideoBlock title='Electronics' subtitle='Photo and video' setStage={setStage} formData={formData} setFormData={setFormData}/> }
+        {stage == 5 && <SpecificationInformation setStage={setStage} formData={formData} setFormData={setFormData}/> }
+        {stage == 6 && <ItemPublishPage link='renting' formData={formData} category="Smartwatch"/> }
+      </React.Fragment>
     </React.Fragment>
   );
 };

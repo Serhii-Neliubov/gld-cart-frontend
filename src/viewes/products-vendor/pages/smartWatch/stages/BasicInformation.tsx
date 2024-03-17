@@ -131,6 +131,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
                       <div className={styles.inputBox}>
                         <span>Discount Price</span>
                         <input
+                          disabled={!isDiscountPrice}
                           onChange={discountPrice.onChange}
                           value={discountPrice.value}
                           placeholder="450$"
@@ -166,6 +167,5 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
         </div>
       </div>
     </div>
-
-)
+  )
 }

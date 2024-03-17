@@ -182,9 +182,9 @@ export const vendorRoutes: IRoutes[] = [
   { component: RentingProfessionalServicesPage, path: "/professional-services" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   // Vehicles
-  {component: NewVehicle, path: "/renting-category-page/new-vehicle-page",},
+  {component: NewVehicle, path: "/renting-category-page/new-vehicle-page/:category/:subcategory/:product",},
   // Electronics
-  {component: NewElectronics, path: "/renting-category-page/new-electronics-page",},
+  {component: NewElectronics, path: "/renting-category-page/new-electronics-page/:category/:subcategory/:product",},
   // bags
   {component: NewBags, path: "/products-category-page/new-bags-page/:category/:subcategory/:product",},
   // Awesome Lip Care
@@ -232,7 +232,7 @@ export const vendorRoutes: IRoutes[] = [
   // earrings
   {component: NewEarrings, path: "/products-category-page/new-earrings-page/:category/:subcategory/:product",},
   // Houses
-  {component: NewHouses, path: "/renting-category-page/new-houses-page",},
+  {component: NewHouses, path: "/renting-category-page/new-houses-page/:category/:subcategory/:product",},
   // Beauty
   {component: NewBeautyOfSkin, path: "/products-category-page/new-beauty-of-skin-page/:category/:subcategory/:product",},
 ];
