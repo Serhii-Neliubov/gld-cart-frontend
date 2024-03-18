@@ -2,12 +2,22 @@ import React, {useEffect, useState} from 'react';
 import Footer from "@/components/footer/Footer.tsx";
 import styles from "@/viewes/checkout-payment/PaymentCheckout.module.scss";
 import {useInput} from "@/hooks/useInput/useInput.tsx";
-import $api from "@/utils/interceptors/interceptors.ts";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+
+interface IProduct {
+  _id: string;
+  product_name: string;
+  price: number;
+}
 
 export const PaymentCheckout = () => {
   const [clientSecret, setClientSecret] = useState('');
   const navigate = useNavigate();
+  const user = useSelector(userDataSelector);
+  const [products, setProducts] = useState<IProduct[]>([]);
 
   const name = useInput('');
   const surname = useInput('');
@@ -26,17 +36,27 @@ export const PaymentCheckout = () => {
     }
   }, [clientSecret, navigate]);
 
+  const getOrderDetails = async () => {
+    const orderDetails = await $api.get(`${API_URL}/order/${user.id}`)
+
+    setProducts([...orderDetails.data.products]);
+  }
+
+  useEffect(() => {
+    getOrderDetails()
+  }, []);
+
   const getClientSecret = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
-    await $api.post('/payments/create-payment-intent', {
+    const response = await $api.post('/payments/create-payment-intent', {
       items: [{id: "xl-tshirt"}],
       amount: 1000,
       currency: "usd",
       metadata: {order_details: orderNotes}
-    }).then((res) => {
-      setClientSecret(res.data.client_secret);
     });
+
+    setClientSecret(response.data.client_secret)
   }
 
   return (
@@ -112,22 +132,15 @@ export const PaymentCheckout = () => {
             <div className={styles.orderItem}>
               <div className={styles.itemInfo}>
                 <div className={styles.itemList}>
-                  <div className={styles.itemName}>
-                    <span>item</span>
-                    <span>$100</span>
-                  </div>
-                  <div className={styles.itemName}>
-                    <span>item</span>
-                    <span>$100</span>
-                  </div>
-                  <div className={styles.itemName}>
-                    <span>item</span>
-                    <span>$100</span>
-                  </div>
-                  <div className={styles.itemName}>
-                    <span>item</span>
-                    <span>$100</span>
-                  </div>
+                  {products.length ? products.map((product) => {
+                      return (
+                        <div key={product._id} className={styles.itemName}>
+                          <span>{product.product_name}</span>
+                          <span>${product.price}</span>
+                        </div>
+                      );
+                    }) : <div className={styles.notFoundLabel}>No items in the cart</div>
+                  }
                 </div>
               </div>
             </div>

@@ -34,15 +34,14 @@ const WishlistPage: FC = () => {
   };
 
   const addItemToCartHandler = async (productId: string | undefined) => {
-    await ShoppingCart.addToCart(productId, user.id);
-    await removeWishlistItemHandler(productId);
+    await ShoppingCart.addToCart(productId, user.id, 1);
+    // await removeWishlistItemHandler(productId);
   }
 
   useEffect(() => {
     const getWishlistItems = async () => {
       const data = await Wishlist.getItems(user);
-      console.log(data);
-      setWishlistItems(data);
+      setWishlistItems(data.items);
     };
 
     getWishlistItems();

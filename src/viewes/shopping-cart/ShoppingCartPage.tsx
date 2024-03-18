@@ -7,10 +7,12 @@ import { useSelector } from "react-redux";
 import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
 import $api from "@/utils/interceptors/interceptors.ts";
+import {useNavigate} from "react-router-dom";
 
 export type cartItem = {
   product: {
     reviews: [];
+    price: number;
     _id: string;
     product_name: string;
     category: string;
@@ -28,6 +30,7 @@ export type cartItem = {
 const ShoppingCartPage: FC = () => {
   const [cartItems, setCartItems] = useState<cartItem[]>([]);
   const user = useSelector(userDataSelector);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCartItems = async () => {
@@ -46,12 +49,17 @@ const ShoppingCartPage: FC = () => {
   };
 
   const proceedToCheckoutHandler = async () => {
-    const orderID = await $api.post('/order/create-order', {
-      userId: user.id,
-      products: cartItems.map((item) => item._id),
-      total: 500,
-      subtotal: 500,
-    });
+    try {
+      await $api.post('/order/create-order', {
+        user: user.id,
+        products: cartItems.map((item) => item._id),
+        total: "123",
+      });
+
+      navigate('/checkout-payment');
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -80,7 +88,7 @@ const ShoppingCartPage: FC = () => {
                           <img alt="image" src={item.product.images[0]} />
                           <span>{item.product.product_name}</span>
                         </div>
-                        <span className={styles.productPrice}>${item.product.attributes.fullPrice}</span>
+                        <span className={styles.productPrice}>${item.product.price}</span>
                         <div className={styles.productQuantity}>
                           <button>-</button>
                           <span>{item.quantity}</span>

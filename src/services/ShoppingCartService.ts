@@ -1,11 +1,19 @@
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 export default class ShoppingCart {
-  static async addToCart (productId: string | undefined, userId: string) {
+  static async addToCart (productId: string | undefined, userId: string, quantity: number) {
+    console.log({
+      userId: userId,
+      item: {
+        product: productId,
+        quantity: quantity,
+      }
+    })
     try {
       await $api.post(`${API_URL}/cart/add-item`, {
         userId: userId,
         item: {
           product: productId,
+          quantity: quantity,
         }
       });
     } catch (error) {
