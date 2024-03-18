@@ -36,8 +36,6 @@ const ShoppingCartPage: FC = () => {
     const getCartItems = async () => {
       const data = await ShoppingCart.getItems(user.id);
       setCartItems(data);
-      console.log(data);
-
     };
 
     getCartItems();
@@ -96,7 +94,7 @@ const ShoppingCartPage: FC = () => {
                         </div>
                         <div className={styles.removeProduct}>
                           <button
-                            onClick={() => removeCartItemHandler(item._id)}
+                            onClick={() => removeCartItemHandler(item.product._id)}
                           >
                             &times; Remove
                           </button>

@@ -26,7 +26,7 @@ export default class ShoppingCart {
       const response = await $api.delete(`${API_URL}/cart/remove-item`, {
         data: {
           userId: userId,
-          product: itemId,
+          productId: itemId,
         }
       });
 

@@ -3,10 +3,10 @@ import IUser from "@/utils/models/IUser.ts";
 export default class Wishlist {
   static async removeItem (itemId: string | undefined, userId: string) {
     try {
-      const response = await $api.delete(`${API_URL}/wishlist`, {
+      const response = await $api.delete(`${API_URL}/wishlist/remove-item`, {
         data: {
           userId: userId,
-          product: itemId,
+          productId: itemId,
         }
       });
 

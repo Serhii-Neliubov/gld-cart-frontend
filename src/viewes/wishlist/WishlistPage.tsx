@@ -30,12 +30,13 @@ const WishlistPage: FC = () => {
 
   const removeWishlistItemHandler = async (itemId: string | undefined) => {
     const data = await Wishlist.removeItem(itemId, user.id);
+    console.log(data);
     setWishlistItems(data);
   };
 
   const addItemToCartHandler = async (productId: string | undefined) => {
     await ShoppingCart.addToCart(productId, user.id, 1);
-    // await removeWishlistItemHandler(productId);
+    await removeWishlistItemHandler(productId);
   }
 
   useEffect(() => {
@@ -69,7 +70,7 @@ const WishlistPage: FC = () => {
                   {wishlistItems.map((item) => {
                     return <div key={item._id} className={styles.productContent}>
                       <div className={styles.productInfo}>
-                        <img alt='' src={item.product.images[0]}/>
+                        <img alt='image' src={item.product.images[0]}/>
                         <span>{item.product.product_name}</span>
                       </div>
                       <span className={styles.productPrice}>$500.00</span>
