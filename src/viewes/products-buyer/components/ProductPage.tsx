@@ -17,6 +17,7 @@ import imageShoppingCart from '@/assets/images/trash-icon.svg';
 import Wishlist from "services/WishlistService.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
 import {cartItem} from "@/viewes/shopping-cart/ShoppingCartPage.tsx";
+import axios from "axios";
 
 type product = {
     "reviews": [],
@@ -121,7 +122,7 @@ export const ProductPage = () => {
                                   </div>
                               </div>}
                             <button className={styles.buyNow}>Buy Now</button>
-                            <div onClick={() => Wishlist.addItem(product?._id, user.id)}
+                            <div onClick={() => Wishlist.addItem(product?._id as string, user.id)}
                                  className={styles.addToWishlist}>
                                 <span>Add Wishlist</span>
                                 <span>Ask a question</span>

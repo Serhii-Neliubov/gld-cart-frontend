@@ -41,6 +41,7 @@ const WishlistPage: FC = () => {
   useEffect(() => {
     const getWishlistItems = async () => {
       const data = await Wishlist.getItems(user);
+      console.log(data);
       setWishlistItems(data);
     };
 

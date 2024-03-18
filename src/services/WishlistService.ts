@@ -17,16 +17,21 @@ export default class Wishlist {
 
   }
 
-  static async addItem (productId: string | undefined, userId: string) {
+  static async addItem (productId: string, userId: string) {
+    console.log({
+      userId: userId,
+      item: {
+        product: productId,
+      }
+    });
+
     try {
-      const response = await $api.post(`${API_URL}/wishlist`, {
+      await $api.post(`${API_URL}/wishlist`, {
         userId: userId,
         item: {
           product: productId,
         }
       });
-
-      return response.data.items;
     } catch (error) {
       console.error("Error adding item to wishlist:", error);
     }
@@ -36,7 +41,7 @@ export default class Wishlist {
     try {
       const response = await $api.get(`${API_URL}/wishlist/${user.id}`);
 
-      return response.data.items;
+      return response.data;
     } catch (e) {
       console.error("Error fetching wishlist items:", e);
     }

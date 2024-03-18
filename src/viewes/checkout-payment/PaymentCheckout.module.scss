@@ -25,7 +25,7 @@
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    left: 16%;
+    left: 14%;
     transform: translate(-50%, -50%);
   }
 }
@@ -52,20 +52,28 @@ h1{
 }
 .formInput{
   display: flex;
+
   flex-direction: column;
   gap: 6px;
 
   & > input{
     padding: 10px 20px;
+    box-sizing: border-box;
+    border: 1px solid rgb(217, 217, 217);
+    background: rgb(255, 255, 255);
   }
 
   & > textarea{
     resize: none;
     height: 100px;
     padding: 10px 20px;
+    border: 1px solid rgb(217, 217, 217);
+    background: rgb(255, 255, 255);
   }
 }
 .form{
+  background-color: white;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -92,9 +100,99 @@ h3{
   margin: 100px auto;
   max-width: 500px;
 }
+
 .checkoutButton{
+  margin-top: 100px;
   width: 100%;
-  background-color: black;
+  background-color: rgb(2, 160, 160);;
   padding: 10px 0;
   color: white;
 }
+
+.yourOrderBlock{
+  background-color: white;
+  width: 465px;
+  padding: 25px 50px;
+
+  & > h2{
+    color: rgb(0, 0, 0);
+    font-size: 32px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    line-height: 38px;
+    text-align: left;
+  }
+}
+
+.itemName{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+
+  & > span{
+    color: rgb(0, 0, 0);
+    font-size: 15.29px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: left;
+  }
+
+  &::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #B8B8B8;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+  }
+}
+
+.itemList{
+  position: relative;
+
+  &::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #B8B8B8;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+  }
+}
+
+.shippingCost{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shippingCostDelivery{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & > span > input{
+    margin-left: 10px;
+  }
+}
+
+.orderTotal{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  position: relative;
+  &:after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #B8B8B8;
+    position: absolute;
+    top: -12px;
+    left: 0;
+  }
+}
+

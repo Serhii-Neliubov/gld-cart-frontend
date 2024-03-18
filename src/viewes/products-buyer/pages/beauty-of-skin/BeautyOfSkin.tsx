@@ -26,6 +26,7 @@ export const BeautyOfSkin = () => {
 
     const getProductsData = async() => {
         const response = await $api.get(`${API_URL}/products/category/beauty`);
+        console.log(response.data)
         setProducts(response.data);
     }
 

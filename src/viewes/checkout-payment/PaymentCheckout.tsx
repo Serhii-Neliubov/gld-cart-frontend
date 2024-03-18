@@ -100,38 +100,51 @@ export const PaymentCheckout = () => {
                 <textarea value={orderNotes} onChange={event => setOrderNotes(event.target.value)} name='orderNotes'
                           placeholder='Note about your order'/>
               </label>
-              <button onClick={getClientSecret} className={styles.checkoutButton} type='submit' id="submit">
-                Checkout
-              </button>
             </form>
           </div>
           <div className={styles.yourOrderBlock}>
             <h2>Your Order</h2>
             <div className={styles.orderItem}>
-              <div className={styles.itemInfo}>
-                <div className={styles.itemName}>Product Name</div>
-                <div className={styles.itemPrice}>$100.00</div>
+              <div className={styles.itemName}>
+                <span>Product</span>
               </div>
-              <div className={styles.itemQuantity}>x1</div>
             </div>
             <div className={styles.orderItem}>
               <div className={styles.itemInfo}>
-                <div className={styles.itemName}>Product Name</div>
-                <div className={styles.itemPrice}>$100.00</div>
+                <div className={styles.itemList}>
+                  <div className={styles.itemName}>
+                    <span>item</span>
+                    <span>$100</span>
+                  </div>
+                  <div className={styles.itemName}>
+                    <span>item</span>
+                    <span>$100</span>
+                  </div>
+                  <div className={styles.itemName}>
+                    <span>item</span>
+                    <span>$100</span>
+                  </div>
+                  <div className={styles.itemName}>
+                    <span>item</span>
+                    <span>$100</span>
+                  </div>
+                </div>
               </div>
-              <div className={styles.itemQuantity}>x1</div>
             </div>
-            <div className={styles.orderItem}>
-              <div className={styles.itemInfo}>
-                <div className={styles.itemName}>Product Name</div>
-                <div className={styles.itemPrice}>$100.00</div>
+            <div className={styles.shippingCost}>
+              <div>Shipping</div>
+              <div className={styles.shippingCostDelivery}>
+                <span>Delivery: Today Cost: $60.00 <input type='radio'/></span>
+                <span>Delivery: 7 Days Cost: $20.00 <input type='radio'/></span>
               </div>
-              <div className={styles.itemQuantity}>x1</div>
             </div>
             <div className={styles.orderTotal}>
               <div>Total</div>
               <div>$300.00</div>
             </div>
+            <button onClick={getClientSecret} className={styles.checkoutButton} type='submit' id="submit">
+              Place order
+            </button>
           </div>
         </div>
       </div>
