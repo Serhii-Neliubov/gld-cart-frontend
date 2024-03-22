@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import io, { Socket } from "socket.io-client";
-import style from "./Chat.module.scss";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
+import io, {Socket} from "socket.io-client";
+import style from "./Chat.module.scss";
 
 interface User {
   _id: string;
@@ -112,7 +112,6 @@ export const Chat: React.FC = () => {
       sendMessage();
     }
   };
-
 
   return (
     <div className="__container">
