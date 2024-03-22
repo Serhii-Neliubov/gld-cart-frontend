@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
-import io, {Socket} from "socket.io-client";
+import { initSocket, sendMessage, selectSocket } from "@/store/slices/socketSlice.ts";
 import style from "./Chat.module.scss";
 
 interface User {
@@ -32,19 +32,12 @@ export const Chat: React.FC = () => {
   const [chats, setChats] = useState<Chat[]>([]);
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [socket, setSocket] = useState<Socket | null>(null);
+  const socket = useSelector(selectSocket);
+  const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const newSocket = io(API_URL, { query: { userId } });
-    setSocket(newSocket);
-    newSocket.on("chats", (chatData) => {
-      console.log(chatData);
-      setChats(chatData);
-    });
-    return () => {
-      newSocket.disconnect();
-    };
+    dispatch(initSocket(userId));
   }, []);
 
   useEffect(() => {
@@ -83,7 +76,7 @@ export const Chat: React.FC = () => {
     }
   };
 
-  const sendMessage = () => {
+  const sendMessageToSocket = () => {
     if (!selectedChat || !socket) return;
 
     const message: Message = {
@@ -95,7 +88,7 @@ export const Chat: React.FC = () => {
         "",
     };
     console.log("Sending message:", message);
-    socket.emit("message", message);
+    dispatch(sendMessage(message));
     setMessageInput("");
     setMessages((prevMessages) => [...prevMessages, message]);
   };
@@ -109,7 +102,7 @@ export const Chat: React.FC = () => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      sendMessage();
+      sendMessageToSocket();
     }
   };
 
@@ -181,7 +174,7 @@ export const Chat: React.FC = () => {
               onKeyDown={handleKeyDown}
               ref={inputRef}
             />
-            <button onClick={sendMessage}>
+            <button onClick={sendMessageToSocket}>
               <IoSend className={style.sendMessageButton} />
             </button>
           </div>
