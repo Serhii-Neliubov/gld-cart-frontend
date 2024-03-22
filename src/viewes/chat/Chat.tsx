@@ -5,7 +5,7 @@ import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
 import { sendMessage, selectSocket } from "@/store/slices/socketSlice.ts";
 import style from "./Chat.module.scss";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 interface User {
   _id: string;
@@ -33,18 +33,16 @@ export const Chat: React.FC = () => {
   const [chats, setChats] = useState<Chat[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
   const socket = useSelector(selectSocket);
-  const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
   const { chatId } = useParams();
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Socket:", socket);
-    console.log("Chat ID:", chatId);
     if (socket && chatId) {
-      console.log("Emitting join event with chat ID:", chatId);
       socket.emit("join", chatId);
       fetchMessages(chatId);
+      setSelectedChat(chatId);
     }
   }, [socket, chatId]);
 
@@ -62,7 +60,11 @@ export const Chat: React.FC = () => {
 
       socket.emit('chats', userId)
       socket.on('chats', (chats: Chat[]) => {
-          setChats(chats);
+        setChats(chats);
+        // Если текущий chatId не установлен, выберите первый чат из списка
+        if (!chatId && chats.length > 0) {
+          selectChat(chats[0]._id);
+        }
       });
     }
 
@@ -76,36 +78,38 @@ export const Chat: React.FC = () => {
   const fetchMessages = async (chatId: string) => {
     try {
       const response = await $api.get(`${API_URL}/message/${chatId}`);
-
+      console.log("Fetched messages:", response)
       setMessages(response.data);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
   };
 
+  // TODO - сделать отправку сообщения по уникальному айди юзера
+
   const sendMessageToSocket = () => {
-    if (!chatId || !socket || !messageInput.trim()) return; // Check if chatId, socket, and messageInput are valid
+    if (!chatId || !socket || !messageInput.trim()) return;
 
     const message: Message = {
       chatId: chatId,
-      text: messageInput.trim(), // Trim whitespace from the message text
+      text: messageInput.trim(),
       senderId: userId,
-      recipientId: chats.find(chat => chat._id === chatId)?.participants.find(participant => participant._id !== userId)?._id || "", // Find the recipient ID based on the chat
+      recipientId: chats.find((chat) => chat._id === selectedChat)?.participants[1]._id || "",
     };
-
-    console.log("Sending message:", message);
-
     try {
-      socket.emit("message", message); // Emit the message event with the message object
+      socket.emit("message", message);
     } catch (error) {
       console.error("Error sending message:", error);
     }
 
-    setMessageInput(""); // Clear the message input after sending
+    setMessageInput("");
   };
 
   const selectChat = (chatId: string) => {
     setSelectedChat(chatId);
+
+    navigate(`/chat/${chatId}`)
+
     inputRef.current?.focus();
     socket?.emit("join", chatId);
   };

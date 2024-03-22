@@ -79,12 +79,9 @@ export const ProductPage = () => {
             });
             const chatId = chat.data._id;
 
-            console.log("Chat ID:", chatId);
-
             if (socket) {
-                console.log("Emitting join event with chatId:", chatId);
                 socket.emit("join", chatId);
-                navigate(`/chat/${chatId}`); // Navigate to the chat page with chatId as parameter
+                navigate(`/chat/${chatId}/${product?.seller_id}`); // Navigate to the chat page with chatId as parameter
             } else {
                 console.error("Socket is not initialized properly.");
             }
