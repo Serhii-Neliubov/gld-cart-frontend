@@ -35,8 +35,7 @@ export const ProductPage = () => {
     const [showMore, setShowMore] = useState(false);
     const [showDetails, setShowDetails] = useState('description');
     const [product, setProduct] = useState<product>();
-    const [shoppingCartProduct, setShoppingCartProduct] = useState<cartItem[]>([]);
-    console.log(product);
+    const [isItemInCart, setIsItemInCart] = useState(true);
     const params = useParams();
     const user = useSelector(userDataSelector);
     const navigate = useNavigate();
@@ -44,20 +43,36 @@ export const ProductPage = () => {
     useEffect(() => {
         getProductData();
 
-        ShoppingCart.getItems(user.id).then((data) => {
-            setShoppingCartProduct(data);
-        });
-    }, [user.id]);
+        if (user && user.id) {
+            fetchCartItems();
+        }
+    }, [user]);
 
     const getProductData = async() => {
         const response = await $api.get(`${API_URL}/products/${params.id}`);
         setProduct(response.data);
     }
 
+    const fetchCartItems = async () => {
+        try {
+            const response = await $api.get(`${API_URL}/cart/user/${user.id}`);
+
+            response.data.items.find((item: cartItem) => {
+                if (item.product._id === params.id) {
+                    setIsItemInCart(false);
+                } else {
+                    setIsItemInCart(true);
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching cart items:', error);
+        }
+    };
+
     const goToChatHandler = () => {
         try {
             navigate('/chat');
-        }catch (error) {
+        } catch (error) {
             console.log(error);
         }
     }
@@ -68,25 +83,24 @@ export const ProductPage = () => {
                 <div className={styles.content}>
                     <div className={styles.label}>
                         <span>Home</span>
-                        <span>Earrings</span>
-                        <span>Diamond Ear rings</span>
+                        <span>{product?.category}</span>
+                        <span>{product?.product_name}</span>
                     </div>
                     <div className={styles.product}>
                         <div className={styles.images}>
-                            <div className={styles.smallImages}>
-                                <img src={imageProduct} alt='Image'/>
-                                <img src={imageProduct} alt='Image'/>
-                                <img src={imageProduct} alt='Image'/>
-                                <img src={imageProduct} alt='Image'/>
-                            </div>
+                            {product?.images.length > 1 && <div className={styles.smallImages}>
+                                {product?.images.map((image, index) => (
+                                  <img key={index} src={image[index + 1]} alt='Image'/>
+                                ))}
+                            </div>}
                             <div className={styles.bigImage}>
                                 <img src={product?.images[0]} alt=''/>
                             </div>
                         </div>
                         <div className={styles.productInfo}>
                             <div className={styles.productTitle}>
-                                <span>Earrings</span>
-                                <h1>Diamond Ear rings</h1>
+                                <span>{(product?.category)?.toUpperCase()}</span>
+                                <h1>{product?.product_name}</h1>
                             </div>
                             <div className={styles.inStock}>
                                 <div>In-Stock</div>
@@ -119,16 +133,19 @@ export const ProductPage = () => {
                                 <img src={imageFireIcon} alt='image'/>
                                 <span>Flash Sale: Ends in 5 days</span>
                             </div>
-                            {shoppingCartProduct?.findIndex((item) => item.product._id === product?._id) !== -1 ?
-                              null : <div className={styles.actionButtons}>
-                                  <span>Quantity</span>
-                                  <div className={styles.addToCart}>
-                                      <input max="9" min='0' type='number' placeholder='1'/>
-                                      <button onClick={() => ShoppingCart.addToCart(product?._id, user.id)}>Add to
-                                          Cart
-                                      </button>
-                                  </div>
-                              </div>}
+                            {isItemInCart && <div className={styles.actionButtons}>
+                                <span>Quantity</span>
+                                <div className={styles.addToCart}>
+                                    <input max="9" min='0' type='number' placeholder='1'/>
+                                    <button onClick={async () => {
+                                        await ShoppingCart.addToCart(product?._id, user.id, 1);
+                                        setIsItemInCart(false);
+                                    }}>
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>}
+
                             <button className={styles.buyNow}>Buy Now</button>
                             <button onClick={goToChatHandler} className={styles.buyNow}>Go to chat</button>
                             <div onClick={() => Wishlist.addItem(product?._id as string, user.id)}
