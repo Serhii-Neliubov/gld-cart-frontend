@@ -54,7 +54,15 @@ export const Chat: React.FC = () => {
           setMessages((prevMessages) => [...prevMessages, newMessage]);
         }
       });
+
+      socket?.emit('chats', userId)
+      socket.on('chats', (chats: Chat[]) => {
+          setChats(chats);
+
+          console.log('Chats:', chats)
+      });
     }
+
     return () => {
       if (socket) {
         socket.off("message");
@@ -83,6 +91,7 @@ export const Chat: React.FC = () => {
         chats.find((chat) => chat._id === selectedChat)?.participants[1]._id ||
         "",
     };
+
     console.log("Sending message:", message);
 
     dispatch(sendMessage(message));
