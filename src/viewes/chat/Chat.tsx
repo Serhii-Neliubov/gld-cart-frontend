@@ -5,6 +5,7 @@ import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
 import { sendMessage, selectSocket } from "@/store/slices/socketSlice.ts";
 import style from "./Chat.module.scss";
+import {useParams} from "react-router-dom";
 
 interface User {
   _id: string;
@@ -30,26 +31,30 @@ export const Chat: React.FC = () => {
   const [messageInput, setMessageInput] = useState("");
   const userId = useSelector(userDataSelector).id;
   const [chats, setChats] = useState<Chat[]>([]);
-  const [selectedChat, setSelectedChat] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const socket = useSelector(selectSocket);
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
+  const { chatId } = useParams();
+  const [selectedChat, setSelectedChat] = useState<string | null>(null);
 
   useEffect(() => {
-    if (socket && selectedChat) {
-      socket.emit("join", selectedChat);
-      fetchMessages(selectedChat);
+    console.log("Socket:", socket);
+    console.log("Chat ID:", chatId);
+    if (socket && chatId) {
+      console.log("Emitting join event with chat ID:", chatId);
+      socket.emit("join", chatId);
+      fetchMessages(chatId);
     }
-  }, [socket, selectedChat]);
+  }, [socket, chatId]);
 
   useEffect(() => {
     if (socket) {
       socket.on("message", (newMessage: Message) => {
         console.log("Received message:", newMessage);
-        console.log("Selected chat:", selectedChat);
+        console.log("Selected chat:", chatId);
         console.log("ChatId:", newMessage.chatId);
-        if (newMessage.chatId === selectedChat) {
+        if (newMessage.chatId === chatId) {
           console.log("Adding message to chat:", newMessage);
           setMessages((prevMessages) => [...prevMessages, newMessage]);
         }
@@ -66,7 +71,7 @@ export const Chat: React.FC = () => {
         socket.off("message");
       }
     };
-  }, [socket, selectedChat]);
+  }, [socket, chatId]);
 
   const fetchMessages = async (chatId: string) => {
     try {
@@ -79,22 +84,24 @@ export const Chat: React.FC = () => {
   };
 
   const sendMessageToSocket = () => {
-    if (!selectedChat || !socket) return;
+    if (!chatId || !socket || !messageInput.trim()) return; // Check if chatId, socket, and messageInput are valid
 
     const message: Message = {
-      chatId: selectedChat,
-      text: messageInput,
+      chatId: chatId,
+      text: messageInput.trim(), // Trim whitespace from the message text
       senderId: userId,
-      recipientId:
-        chats.find((chat) => chat._id === selectedChat)?.participants[1]._id ||
-        "",
+      recipientId: chats.find(chat => chat._id === chatId)?.participants.find(participant => participant._id !== userId)?._id || "", // Find the recipient ID based on the chat
     };
 
     console.log("Sending message:", message);
 
-    dispatch(sendMessage(message));
-    setMessageInput("");
-    setMessages((prevMessages) => [...prevMessages, message]);
+    try {
+      socket.emit("message", message); // Emit the message event with the message object
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+
+    setMessageInput(""); // Clear the message input after sending
   };
 
   const selectChat = (chatId: string) => {
@@ -156,7 +163,7 @@ export const Chat: React.FC = () => {
           <div className={style.messages}>
             {selectedChat &&
               messages
-                .filter((message) => message.chatId === selectedChat)
+                .filter((message) => message.chatId === chatId)
                 .map((message, index) => (
                   <div
                     key={index}

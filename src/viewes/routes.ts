@@ -107,7 +107,7 @@ interface IRoutes {
 
 export const buyerRoutes: IRoutes[] = [
   { component: Home, path: "/" },
-  { component: Chat, path: "/chat" },
+  { component: Chat, path: "/chat/:chatId" },
   { component: PaymentCheckout, path: "/checkout-payment" },
   { component: SupportChat, path: "/support-chat" },
   { component: DriverLicense, path: "/driver-license" },
@@ -163,7 +163,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
   { component: DriverLicense, path: "/driver-license" },
   { component: SupportChat, path: "/support-chat" },
-  { component: Chat, path: "/chat" },
+  { component: Chat, path: "/chat/:chatId" },
   // Pest Control Service
   {component: NewPestControl, path: "/professional-services/new-pest-control-page",},
   // Components
