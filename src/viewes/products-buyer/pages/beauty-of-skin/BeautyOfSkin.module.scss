@@ -174,13 +174,12 @@
 .productImage{
   padding: 70px 30px;
   border: 1px solid rgba(0, 0, 0, 0.11);
-  width: 295px;
+  width: 250px;
   align-items: center;
   justify-content: center;
   display: flex;
   & > img{
-    max-width: 285px;
-    object-fit: cover;
+    max-width: 240px;
     max-height: 145px;
   }
 }

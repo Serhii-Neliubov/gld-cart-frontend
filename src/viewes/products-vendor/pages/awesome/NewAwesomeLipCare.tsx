@@ -6,11 +6,13 @@ import { SpecificationInformation } from "./stages/SpecificationInformation.tsx"
 import { PhotoAndVideoBlock } from "@/components/photo-video-block/PhotoAndVideoBlock.tsx";
 import { IVendorProductData } from "@/utils/models/IVendorProductData.ts";
 import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 
 export const NewAwesomeLipCare = () => {
   const [stage, setStage] = useState(3);
   const {category, subcategory, product} = useParams();
-
+  const user = useSelector(userDataSelector);
   const [formData, setFormData] = useState<IVendorProductData>({
     title: "",
     description: "",
@@ -21,6 +23,7 @@ export const NewAwesomeLipCare = () => {
     category: category,
     subcategory: subcategory,
     product_name: product,
+    seller_id: user.id,
   });
 
   useCategoryRedirect("awesome", "/products-category-page", stage);

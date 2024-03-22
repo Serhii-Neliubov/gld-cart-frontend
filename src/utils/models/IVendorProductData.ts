@@ -5,6 +5,7 @@ export type IVendorProductData = {
     images: File[];
     price: number;
     stock?: number;
+    seller_id: string;
     category?: string;
     discountPrice?: number;
     subcategory?: string;

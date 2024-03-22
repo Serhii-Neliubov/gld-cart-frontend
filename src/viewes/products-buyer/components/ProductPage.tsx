@@ -36,7 +36,7 @@ export const ProductPage = () => {
     const [showDetails, setShowDetails] = useState('description');
     const [product, setProduct] = useState<product>();
     const [shoppingCartProduct, setShoppingCartProduct] = useState<cartItem[]>([]);
-
+    console.log(product);
     const params = useParams();
     const user = useSelector(userDataSelector);
     const navigate = useNavigate();

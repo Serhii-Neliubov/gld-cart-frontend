@@ -5,9 +5,12 @@ import {PhotoAndVideoBlock} from "@/components/photo-video-block/PhotoAndVideoBl
 import {BasicInformation} from "@/viewes/products-vendor/pages/braceletes/stages/BasicInformation.tsx";
 import {SpecificationInformation} from "@/viewes/products-vendor/pages/braceletes/stages/SpecificationInformation.tsx";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 
 export const NewBracelets = () => {
   const [stage, setStage] = useState(3);
+  const user = useSelector(userDataSelector);
 
   const [formData, setFormData] = useState<IVendorProductData>({
     title: "",
@@ -15,6 +18,7 @@ export const NewBracelets = () => {
     attributes: {},
     images: [],
     price: 0,
+    seller_id: user.id,
     category: "",
     subcategory: "",
     product_name: "",

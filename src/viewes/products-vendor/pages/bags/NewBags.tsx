@@ -6,10 +6,13 @@ import {BasicInformation} from "@/viewes/products-vendor/pages/bags/stages/Basic
 import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
 import {SpecificationInformation} from "@/viewes/products-vendor/pages/bags/stages/SpecificationInformation.tsx";
 import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 
 export const NewBags = () => {
   const [stage, setStage] = useState(3);
   const {category, subcategory, product} = useParams();
+  const user = useSelector(userDataSelector);
 
   const [formData, setFormData] = useState<IVendorProductData>({
     title: "",
@@ -21,6 +24,7 @@ export const NewBags = () => {
     category: category,
     subcategory: subcategory,
     product_name: product,
+    seller_id: user.id,
   });
 
   useCategoryRedirect("bags", "/products-category-page", stage);

@@ -6,10 +6,13 @@ import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
 import {BasicInformation} from "@/viewes/products-vendor/pages/necklaces/stages/BasicInformation.tsx";
 import {SpecificationInformation} from "@/viewes/products-vendor/pages/necklaces/stages/SpecificationInformation.tsx";
 import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 
 export const NewNecklaces = () => {
   const [stage, setStage] = useState(3);
   const {category, subcategory, product} = useParams();
+  const user = useSelector(userDataSelector);
 
   const [formData, setFormData] = useState<IVendorProductData>({
     title: "",
@@ -17,6 +20,7 @@ export const NewNecklaces = () => {
     attributes: {},
     images: [],
     price: 0,
+    seller_id: user.id,
     stock: 0,
     category: category,
     subcategory: subcategory,
