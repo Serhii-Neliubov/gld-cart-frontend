@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
-import { initSocket, sendMessage, selectSocket } from "@/store/slices/socketSlice.ts";
+import { sendMessage, selectSocket } from "@/store/slices/socketSlice.ts";
 import style from "./Chat.module.scss";
 
 interface User {
@@ -35,10 +35,6 @@ export const Chat: React.FC = () => {
   const socket = useSelector(selectSocket);
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    dispatch(initSocket(userId));
-  }, []);
 
   useEffect(() => {
     if (socket && selectedChat) {
@@ -88,6 +84,7 @@ export const Chat: React.FC = () => {
         "",
     };
     console.log("Sending message:", message);
+
     dispatch(sendMessage(message));
     setMessageInput("");
     setMessages((prevMessages) => [...prevMessages, message]);

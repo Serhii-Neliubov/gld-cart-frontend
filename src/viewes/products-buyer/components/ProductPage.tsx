@@ -17,6 +17,7 @@ import imageShoppingCart from '@/assets/images/trash-icon.svg';
 import Wishlist from "services/WishlistService.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
 import {cartItem} from "@/viewes/shopping-cart/ShoppingCartPage.tsx";
+import {selectSocket} from "@/store/slices/socketSlice.ts";
 
 type product = {
     "reviews": [],
@@ -25,6 +26,7 @@ type product = {
     "category": string,
     "subcategory": string,
     "description": string,
+    "seller_id": string,
     "images": string[],
     "attributes": object,
 }
@@ -39,6 +41,7 @@ export const ProductPage = () => {
     const params = useParams();
     const user = useSelector(userDataSelector);
     const navigate = useNavigate();
+    const socket = useSelector(selectSocket);
 
     useEffect(() => {
         getProductData();
@@ -69,11 +72,24 @@ export const ProductPage = () => {
         }
     };
 
-    const goToChatHandler = () => {
+    const goToChatHandler = async () => {
         try {
-            navigate('/chat');
+            const chat = await $api.post(`${API_URL}/chat`, {
+                participants: [user.id, `${product?.seller_id}`],
+            });
+            const chatId = chat.data._id;
+
+            console.log("Chat ID:", chatId);
+
+            if (socket) {
+                console.log("Emitting join event with chatId:", chatId);
+                socket.emit("join", chatId);
+                navigate("/chat");
+            } else {
+                console.error("Socket is not initialized properly.");
+            }
         } catch (error) {
-            console.log(error);
+            console.error("Error while joining chat:", error);
         }
     }
 

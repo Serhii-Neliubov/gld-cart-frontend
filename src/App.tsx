@@ -10,6 +10,7 @@ import Header from "@/components/header/Header.tsx";
 import Label from "@/components/header-label/Label.tsx";
 import {io} from "socket.io-client";
 import {API_URL} from "@/utils/interceptors/interceptors.ts";
+import {setSocket} from "@/store/slices/socketSlice.ts";
 
 const App: FC = () => {
   const user = useSelector<RootState, IUser>(userDataSelector);
@@ -23,7 +24,7 @@ const App: FC = () => {
     if(!user.id) return;
     
     const newSocket = io(API_URL, { query: { userId: user.id } });
-
+    dispatch(setSocket(newSocket));
     return () => {
       newSocket.disconnect();
     };
