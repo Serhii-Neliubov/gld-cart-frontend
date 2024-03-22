@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './ProductPage.module.scss';
 import Footer from '@/components/footer/Footer';
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
@@ -17,7 +17,6 @@ import imageShoppingCart from '@/assets/images/trash-icon.svg';
 import Wishlist from "services/WishlistService.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
 import {cartItem} from "@/viewes/shopping-cart/ShoppingCartPage.tsx";
-import axios from "axios";
 
 type product = {
     "reviews": [],
@@ -40,6 +39,7 @@ export const ProductPage = () => {
 
     const params = useParams();
     const user = useSelector(userDataSelector);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getProductData();
@@ -52,6 +52,14 @@ export const ProductPage = () => {
     const getProductData = async() => {
         const response = await $api.get(`${API_URL}/products/${params.id}`);
         setProduct(response.data);
+    }
+
+    const goToChatHandler = () => {
+        try {
+            navigate('/chat');
+        }catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -86,11 +94,11 @@ export const ProductPage = () => {
                             </div>
                             <div className={styles.descriptionContainer}>
                                 <span
-                                    className={styles.description}>{showMore ? initialText : `${initialText.slice(0, 100)}...`}</span>
+                                  className={styles.description}>{showMore ? initialText : `${initialText.slice(0, 100)}...`}</span>
                                 {initialText.length > 100 && (
-                                    <button onClick={() => setShowMore((prev) => !prev)} className={styles.seeMoreBtn}>
-                                        {showMore ? "See less" : "See more"}
-                                    </button>
+                                  <button onClick={() => setShowMore((prev) => !prev)} className={styles.seeMoreBtn}>
+                                      {showMore ? "See less" : "See more"}
+                                  </button>
                                 )}
                             </div>
                             <div className={styles.price}>
@@ -122,6 +130,7 @@ export const ProductPage = () => {
                                   </div>
                               </div>}
                             <button className={styles.buyNow}>Buy Now</button>
+                            <button onClick={goToChatHandler} className={styles.buyNow}>Go to chat</button>
                             <div onClick={() => Wishlist.addItem(product?._id as string, user.id)}
                                  className={styles.addToWishlist}>
                                 <span>Add Wishlist</span>
