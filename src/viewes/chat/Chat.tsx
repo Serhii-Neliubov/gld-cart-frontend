@@ -26,8 +26,6 @@ interface Message {
   recipientId: string;
 }
 
-const SOCKET_SERVER_URL = "http://localhost:3002";
-
 export const Chat: React.FC = () => {
   const [messageInput, setMessageInput] = useState("");
   const userId = useSelector(userDataSelector).id;
@@ -38,7 +36,7 @@ export const Chat: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const newSocket = io(SOCKET_SERVER_URL, { query: { userId } });
+    const newSocket = io(API_URL, { query: { userId } });
     setSocket(newSocket);
     newSocket.on("chats", (chatData) => {
       console.log(chatData);
