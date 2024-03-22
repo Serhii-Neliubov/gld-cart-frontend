@@ -55,11 +55,9 @@ export const Chat: React.FC = () => {
         }
       });
 
-      socket?.emit('chats', userId)
+      socket.emit('chats', userId)
       socket.on('chats', (chats: Chat[]) => {
           setChats(chats);
-
-          console.log('Chats:', chats)
       });
     }
 
