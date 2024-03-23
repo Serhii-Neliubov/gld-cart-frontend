@@ -17,7 +17,6 @@ import imageShoppingCart from "@/assets/images/trash-icon.svg";
 import Wishlist from "services/WishlistService.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
 import { cartItem } from "@/viewes/shopping-cart/ShoppingCartPage.tsx";
-import { selectSocket } from "@/store/slices/socketSlice.ts";
 
 type product = {
     reviews: [];
