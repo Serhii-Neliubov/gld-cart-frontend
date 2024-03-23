@@ -73,9 +73,32 @@ export const ProductPage = () => {
 
     const goToChatHandler = async () => {
         try {
-            navigate("/chat/" + product?.seller_id);
+            const response = await $api.get(
+                `${API_URL}/chat/${user.id}/${product?.seller_id}`,
+            );
+            if (response.status === 200) {
+                console.log("Chat exists:", response.data);
+                navigate(`/chat/${product?.seller_id}`);
+            } else {
+                console.log("Chat does not exist");
+                throw new Error("Chat does not exist");
+            }
         } catch (error) {
-            console.error("Error while joining chat:", error);
+            console.error("Error while checking chat:", error);
+            try {
+                console.log("Attempting to create a new chat...");
+                const createResponse = await $api.post(`${API_URL}/chat`, {
+                    participants: [product?.seller_id, user.id],
+                });
+                console.log("Chat created:", createResponse.data);
+                if (createResponse.status === 201) {
+                    navigate(`/chat/${product?.seller_id}`);
+                } else {
+                    console.error("Failed to create chat:", createResponse.statusText);
+                }
+            } catch (createError) {
+                console.error("Error while creating chat:", createError);
+            }
         }
     };
 
