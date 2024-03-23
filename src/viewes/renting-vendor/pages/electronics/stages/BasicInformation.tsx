@@ -110,6 +110,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
                                 <div className={styles.inputCheckbox}>
                                     <div>
                                         <input
+                                          disabled={!isDayRent}
                                           onChange={() => setIsWeekRent((prev: boolean) => !prev)}
                                           name="time"
                                           type="checkbox"
@@ -120,13 +121,13 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
                                         <div>
                                             <div className={styles.inputBox}>
                                                 <span>Rent Price</span>
-                                                <input disabled={!isWeekRent} onChange={weekRentPrice.onChange} value={weekRentPrice.value} placeholder="450$"/>
+                                                <input disabled={!isWeekRent || !isDayRent} onChange={weekRentPrice.onChange} value={weekRentPrice.value} placeholder="450$"/>
                                             </div>
                                             <div className={styles.inputBox}>
                                                 <span>Week</span>
                                                 <select
                                                   onChange={countOfWeeks.onChange}
-                                                  disabled={!isWeekRent}
+                                                  disabled={!isWeekRent || !isDayRent}
                                                 >
                                                     <option value="1 Day">01 Week</option>
                                                     <option value="2 Weeks">02 Weeks</option>
@@ -144,6 +145,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
                                           onChange={() => setIsMonthRent((prev: boolean) => !prev)}
                                           name="time"
                                           type="checkbox"
+                                          disabled={!isDayRent || !isWeekRent}
                                         />
                                         <label>Renting Packages For Months </label>
                                     </div>
@@ -151,13 +153,18 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
                                         <div>
                                             <div className={styles.inputBox}>
                                                 <span>Rent Price</span>
-                                                <input onChange={monthRentPrice.onChange} value={monthRentPrice.value} placeholder="450$"/>
+                                                <input
+                                                  disabled={!isMonthRent || !isDayRent || !isWeekRent}
+                                                  onChange={monthRentPrice.onChange}
+                                                  value={monthRentPrice.value}
+                                                  placeholder="450$"
+                                                />
                                             </div>
                                             <div className={styles.inputBox}>
                                                 <span>Month</span>
                                                 <select
                                                   onChange={countOfMonths.onChange}
-                                                  disabled={!isMonthRent}
+                                                  disabled={!isMonthRent || !isDayRent || !isWeekRent}
                                                 >
                                                     <option value="1 Month">01 Month</option>
                                                     <option value="2 Months">02 Months</option>

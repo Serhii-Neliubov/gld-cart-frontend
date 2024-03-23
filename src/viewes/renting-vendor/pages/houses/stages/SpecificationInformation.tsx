@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import styles from "../NewHouses.module.scss";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
@@ -14,33 +14,21 @@ export const SpecificationInformation = ({setFormData, setStage, formData}: Spec
     const bedrooms = useInput('');
     const washroom = useInput('');
     const area = useInput('');
-    const countOfStoreys = useInput('');
-    const areaUnit = useInput('');
+    const [countOfStoreys, setCountOfStoreys] = useState('');
+    const [areaUnit, setAreaUnit] = useState('');
+    const [features, setFeatures] = useState<string[]>([]);
     const condition = useInput('');
 
-    function handleFeatureClick(feature: string) {
-        setFormData(prevFormData => {
-            const { attributes } = prevFormData;
-            const featureValue = attributes['features'] || [];
-
-            const updatedFeatures = Array.isArray(featureValue)
-                ? featureValue.includes(feature)
-                    ? featureValue.filter(item => item !== feature)
-                    : [...featureValue, feature]
-                : [feature];
-
-            return {
-                ...prevFormData,
-                attributes: {
-                    ...attributes,
-                    features: updatedFeatures
-                }
-            };
-        });
-    }
-
     const setNextStageHandler = () => {
-      if(!bedrooms.value || !washroom.value || !area.value || !countOfStoreys.value || !areaUnit.value || !condition.value) {
+      if(
+        !bedrooms.value ||
+        !washroom.value ||
+        !area.value ||
+        !countOfStoreys ||
+        !areaUnit ||
+        !condition.value ||
+        features.length === 0
+      ) {
         return toast.error('Please fill all fields');
       }
 
@@ -88,125 +76,93 @@ export const SpecificationInformation = ({setFormData, setStage, formData}: Spec
             <div className={styles.noOfStoreys}>
               <span>No of storeys</span>
               <div>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      countOfStoreys: '1'
-                    }
-                  })
-                }>1
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setCountOfStoreys('1')
+                }}
+                >1</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setCountOfStoreys('2')
+                }}>2
                 </button>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      countOfStoreys: '2'
-                    }
-                  })
-                }>2
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setCountOfStoreys('3')
+                }}>3
                 </button>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      countOfStoreys: '3'
-                    }
-                  })
-                }>3
-                </button>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      countOfStoreys: '4+'
-                    }
-                  })
-                }>4+
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setCountOfStoreys('4+')
+                }}>4+
                 </button>
               </div>
             </div>
             <div className={styles.areaUnit}>
               <span>Area unit</span>
               <div>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      areaUnit: 'Canal'
-                    }
-                  })
-                }>Canal
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setAreaUnit('Canal')
+                }}>Canal
                 </button>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      areaUnit: 'Square Feet'
-                    }
-                  })
-                }>Marla
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setAreaUnit('Marla')
+                }}>Marla
                 </button>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      areaUnit: 'Square Feet'
-                    }
-                  })
-                }>Square Feet
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setAreaUnit('Square Feet')
+                }}>Square Feet
                 </button>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      areaUnit: 'Square Meter'
-                    }
-                  })
-                }>Square Meter
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setAreaUnit('Square Meter')
+                }}>Square Meter
                 </button>
-                <button onClick={() =>
-                  setFormData({
-                    ...formData,
-                    attributes: {
-                      ...formData.attributes,
-                      areaUnit: 'Square Yards'
-                    }
-                  })
-                }>Square Yards
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setAreaUnit('Square Yards')
+                }}>Square Yards
                 </button>
               </div>
             </div>
             <div className={styles.inputBox}>
               <label>Area</label>
-              <input onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  attributes: {
-                    ...formData.attributes,
-                    area: event.target.value
-                  }
-                })
-              } placeholder="Write the area value"/>
+              <input onChange={area.onChange} value={area.value} placeholder="Write the area value"/>
             </div>
             <div className={styles.features}>
               <span>Features</span>
               <div>
-                <button onClick={() => handleFeatureClick('Servant Quarters')}>Servant Quarters</button>
-                <button onClick={() => handleFeatureClick('Drawing Room')}>Drawing Room</button>
-                <button onClick={() => handleFeatureClick('Dining Room')}>Dining Room</button>
-                <button onClick={() => handleFeatureClick('Kitchen')}>Kitchen</button>
-                <button onClick={() => handleFeatureClick('Study Room')}>Study Room</button>
-                <button onClick={() => handleFeatureClick('Prayer Room')}>Prayer Room</button>
-                <button onClick={() => handleFeatureClick('Powder Room')}>Powder Room</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setFeatures([...features, 'Servant Quarters'])
+                }}>Servant Quarters</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setFeatures([...features, 'Drawing Room'])
+                }}>Drawing Room</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setFeatures([...features, 'Dining Room'])
+                }}>Dining Room</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setFeatures([...features, 'Kitchen'])
+                }}>Kitchen</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setFeatures([...features, 'Study Room'])
+                }}>Study Room</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setFeatures([...features, 'Prayer Room'])
+                }}>Prayer Room</button>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  setFeatures([...features, 'Powder Room'])
+                }}>Powder Room</button>
               </div>
             </div>
           </React.Fragment>

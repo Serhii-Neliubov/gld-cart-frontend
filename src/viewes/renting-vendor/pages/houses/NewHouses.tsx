@@ -6,16 +6,19 @@ import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {IVendorProductData} from "../../../../utils/models/IVendorProductData.tsx";
 import {useParams} from "react-router-dom";
 import {PhotoAndVideoBlock} from "@/components/photo-video-block/PhotoAndVideoBlock.tsx";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import {useSelector} from "react-redux";
 
 export const NewHouses = () => {
   const [stage, setStage] = useState(3);
   const {category, subcategory, product} = useParams();
-
+  const user = useSelector(userDataSelector);
   const [formData, setFormData] = useState<IVendorProductData>({
     title: "",
     description: "",
     attributes: {},
     images: [],
+    seller_id: user.id,
     price: 0,
     category: category,
     subcategory: subcategory,

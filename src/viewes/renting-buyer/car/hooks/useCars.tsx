@@ -34,7 +34,7 @@ export const useCars = () => {
     const getCars = async() => {
         const response = await $api.get('/renting/category/vehicles');
 
-        if(response && response.data) setCars(response.data);
+        if(response) setCars(response.data);
     }
 
     useEffect(() => {

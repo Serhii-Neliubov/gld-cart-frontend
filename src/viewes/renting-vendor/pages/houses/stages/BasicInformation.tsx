@@ -1,8 +1,6 @@
-import React, {Dispatch, SetStateAction, useEffect} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import styles from "../NewHouses.module.scss";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
-import {useSelector} from "react-redux";
-import {vendorProductInfo} from "@/store/slices/vendorProductInfoSlice.ts";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
 import {useInput} from "@/hooks/useInput/useInput.tsx";
 import toast from "react-hot-toast";
@@ -18,8 +16,6 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
   const [isPackagesForWeeks, setIsPackagesForWeeks] = React.useState(false);
   const [isPackagesForMonths, setIsPackagesForMonths] = React.useState(false);
 
-  const data = useSelector(vendorProductInfo);
-
     const title = useInput('');
     const description = useInput('');
     const city = useInput('');
@@ -32,18 +28,8 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
     const monthlyRentPrice = useInput('');
     const amountOfMonths = useInput('');
 
-
-    useEffect(() => {
-        setFormData({
-            ...formData,
-            category: data.category,
-            subcategory: data.subcategory,
-            renting_name: data.product_name
-        });
-    }, []);
-
     const setNextStageHandler = () => {
-      if(!title.value || !description.value || !city.value || !address.value || !tidiness.value || !dayRentPrice.value || !amountOfDays.value){
+      if(!title.value || !description.value || !city.value || !address.value || !tidiness.value || !dayRentPrice.value){
         return toast.error('Please fill all fields');
       }
 
@@ -63,7 +49,7 @@ export const BasicInformation = ({setStage, formData, setFormData}: BasicInforma
           monthlyRentPrice: monthlyRentPrice.value,
           amountOfMonths: amountOfMonths.value,
         },
-        renting_name: data.product_name,
+        price: parseInt(dayRentPrice.value),
       });
 
       setStage((prev: number) => prev + 1);
