@@ -107,7 +107,7 @@ interface IRoutes {
 
 export const buyerRoutes: IRoutes[] = [
   { component: Home, path: "/" },
-  { component: Chat, path: "/chat/:chatId" },
+  { component: Chat, path: "/chat/:recipientId" },
   { component: PaymentCheckout, path: "/checkout-payment" },
   { component: SupportChat, path: "/support-chat" },
   { component: DriverLicense, path: "/driver-license" },
