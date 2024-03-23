@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import io, { Socket } from "socket.io-client";
+import style from "./Chat.module.scss";
+import { useSelector } from "react-redux";
 import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
-import { sendMessage, selectSocket } from "@/store/slices/socketSlice.ts";
-import style from "./Chat.module.scss";
-import {useNavigate, useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface User {
   _id: string;
@@ -31,93 +31,104 @@ export const Chat: React.FC = () => {
   const [messageInput, setMessageInput] = useState("");
   const userId = useSelector(userDataSelector).id;
   const [chats, setChats] = useState<Chat[]>([]);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const socket = useSelector(selectSocket);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const { chatId } = useParams();
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [socket, setSocket] = useState<Socket | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { recipientId: paramUserId } = useParams<{ recipientId: string }>();
 
   useEffect(() => {
-    if (socket && chatId) {
-      socket.emit("join", chatId);
-      fetchMessages(chatId);
-      setSelectedChat(chatId);
+    const newSocket = io(`${API_URL}/chat`, { query: { userId } });
+    setSocket(newSocket);
+    newSocket.on("chats", (chatData) => {
+      console.log(chatData);
+      setChats(chatData);
+    });
+    return () => {
+      newSocket.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("Param user id:", paramUserId);
+    const selectedChatId =
+      chats.find((chat) =>
+        chat.participants.some(
+          (participant) => participant._id === paramUserId,
+        ),
+      )?._id || null;
+    setSelectedChat(selectedChatId);
+  }, [paramUserId, chats]);
+
+  useEffect(() => {
+    if (socket && selectedChat) {
+      socket.emit("join", selectedChat);
+      fetchMessages(selectedChat);
     }
-  }, [socket, chatId]);
+  }, [socket, selectedChat]);
 
   useEffect(() => {
     if (socket) {
       socket.on("message", (newMessage: Message) => {
         console.log("Received message:", newMessage);
-        console.log("Selected chat:", chatId);
+        console.log("Selected chat:", selectedChat);
         console.log("ChatId:", newMessage.chatId);
-        if (newMessage.chatId === chatId) {
+        if (newMessage.chatId === selectedChat) {
           console.log("Adding message to chat:", newMessage);
           setMessages((prevMessages) => [...prevMessages, newMessage]);
         }
       });
-
-      socket.emit('chats', userId)
-      socket.on('chats', (chats: Chat[]) => {
-        setChats(chats);
-        // Если текущий chatId не установлен, выберите первый чат из списка
-        if (!chatId && chats.length > 0) {
-          selectChat(chats[0]._id);
-        }
-      });
     }
-
     return () => {
       if (socket) {
         socket.off("message");
       }
     };
-  }, [socket, chatId]);
+  }, [socket, selectedChat]);
 
   const fetchMessages = async (chatId: string) => {
     try {
       const response = await $api.get(`${API_URL}/message/${chatId}`);
-      console.log("Fetched messages:", response)
+
       setMessages(response.data);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
   };
 
-  // TODO - сделать отправку сообщения по уникальному айди юзера
-
-  const sendMessageToSocket = () => {
-    if (!chatId || !socket || !messageInput.trim()) return;
+  const sendMessage = () => {
+    if (!selectedChat || !socket) return;
 
     const message: Message = {
-      chatId: chatId,
-      text: messageInput.trim(),
+      chatId: selectedChat,
+      text: messageInput,
       senderId: userId,
-      recipientId: chats.find((chat) => chat._id === selectedChat)?.participants[1]._id || "",
+      recipientId:
+        chats.find((chat) => chat._id === selectedChat)?.participants[1]._id ||
+        "",
     };
-    try {
-      socket.emit("message", message);
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
-
+    console.log("Sending message:", message);
+    socket.emit("message", message);
     setMessageInput("");
+    setMessages((prevMessages) => [...prevMessages, message]);
   };
 
   const selectChat = (chatId: string) => {
     setSelectedChat(chatId);
-
-    navigate(`/chat/${chatId}`)
-
     inputRef.current?.focus();
     socket?.emit("join", chatId);
+    const otherUserId =
+      chats
+        .find((chat) => chat._id === chatId)
+        ?.participants.find((participant) => participant._id !== userId)?._id ||
+      "";
+    window.history.pushState({}, "", `/chat/${otherUserId}`);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      sendMessageToSocket();
+      sendMessage();
     }
   };
 
@@ -167,7 +178,7 @@ export const Chat: React.FC = () => {
           <div className={style.messages}>
             {selectedChat &&
               messages
-                .filter((message) => message.chatId === chatId)
+                .filter((message) => message.chatId === selectedChat)
                 .map((message, index) => (
                   <div
                     key={index}
@@ -189,7 +200,7 @@ export const Chat: React.FC = () => {
               onKeyDown={handleKeyDown}
               ref={inputRef}
             />
-            <button onClick={sendMessageToSocket}>
+            <button onClick={sendMessage}>
               <IoSend className={style.sendMessageButton} />
             </button>
           </div>
