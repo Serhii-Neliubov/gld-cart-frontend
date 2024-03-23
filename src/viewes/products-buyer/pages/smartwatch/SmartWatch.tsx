@@ -1,14 +1,37 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './SmartWatch.module.scss';
 import Footer from '@/components/footer/Footer';
 import { ProductFilter } from "@/components/product-filter/ProductFilter.tsx";
 
-import imageProduct from '@/assets/images/TopRatedProducts/productImage.png';
 import imageDefaultIcon from '@/assets/images/TopRatedProducts/defaultIcon.svg';
 import imageMenuSort from '@/assets/images/TopRatedProducts/menuSort.svg';
 import imageFilterIcon from '@/assets/images/TopRatedProducts/filterIcon.svg';
-
+import {useNavigate} from "react-router-dom";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+type product = {
+    "reviews": [],
+    "_id": string,
+    title: string,
+    "product_name": string,
+    "category": string,
+    "subcategory": string,
+    "description": string,
+    "images": string[],
+    "attributes": object,
+}
 export const SmartWatch = () => {
+    const [products, setProducts] = React.useState([])
+    const navigate = useNavigate();
+    const getProductsData = async() => {
+        const response = await $api.get(`${API_URL}/products/category/smartwatch`);
+        console.log(response.data)
+        setProducts(response.data);
+    }
+
+    useEffect(() => {
+        getProductsData();
+    }, []);
+
     return (
         <React.Fragment>
             <div className='__container'>
@@ -37,62 +60,23 @@ export const SmartWatch = () => {
                             </div>
                         </div>
                         <div className={styles.productList}>
-                            <div className={styles.productItem}>
-                                <div className={styles.productImage}>
-                                    <img src={imageProduct} alt='Image'/>
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <p>Product Tag</p>
-                                    <span>Product Name</span>
-                                    <div>(rating)</div>
-                                    <div className={styles.productPrice}>
-                                        <span>$130.00</span>
-                                        <p>$123.50</p>
+                            {products?.map((product: product) => {
+                                return <div key={product._id} onClick={() => navigate(`/product-page/${product._id}`)}
+                                            className={styles.productItem}>
+                                    <div className={styles.productImage}>
+                                        <img src={product.images[0]} alt=''/>
+                                    </div>
+                                    <div className={styles.productInfo}>
+                                        <p>{product.product_name}</p>
+                                        <span>{product.title}</span>
+                                        <div>(rating)</div>
+                                        <div className={styles.productPrice}>
+                                            <span>${product.price}</span>
+                                            <p>$123</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={styles.productItem}>
-                                <div className={styles.productImage}>
-                                    <img src={imageProduct} alt='Image'/>
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <p>Product Tag</p>
-                                    <span>Product Name</span>
-                                    <div>(rating)</div>
-                                    <div className={styles.productPrice}>
-                                        <span>$130.00</span>
-                                        <p>$123.50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.productItem}>
-                                <div className={styles.productImage}>
-                                    <img src={imageProduct} alt='Image'/>
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <p>Product Tag</p>
-                                    <span>Product Name</span>
-                                    <div>(rating)</div>
-                                    <div className={styles.productPrice}>
-                                        <span>$130.00</span>
-                                        <p>$123.50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.productItem}>
-                                <div className={styles.productImage}>
-                                    <img src={imageProduct} alt='Image'/>
-                                </div>
-                                <div className={styles.productInfo}>
-                                    <p>Product Tag</p>
-                                    <span>Product Name</span>
-                                    <div>(rating)</div>
-                                    <div className={styles.productPrice}>
-                                        <span>$130.00</span>
-                                        <p>$123.50</p>
-                                    </div>
-                                </div>
-                            </div>
+                            })}
                         </div>
                     </div>
                 </div>

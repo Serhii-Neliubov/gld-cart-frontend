@@ -12,6 +12,7 @@ import imageFilterIcon from '@/assets/images/TopRatedProducts/filterIcon.svg';
 type product = {
     "reviews": [],
     "_id": string,
+    title: string,
     "product_name": string,
     "category": string,
     "subcategory": string,
@@ -23,7 +24,6 @@ type product = {
 export const BeautyOfSkin = () => {
     const [products, setProducts] = React.useState([])
     const navigate = useNavigate();
-
     const getProductsData = async() => {
         const response = await $api.get(`${API_URL}/products/category/beauty`);
         console.log(response.data)
@@ -68,12 +68,12 @@ export const BeautyOfSkin = () => {
                                         <img src={product.images[0]} alt=''/>
                                     </div>
                                     <div className={styles.productInfo}>
-                                        <p>Product Tag</p>
-                                        <span>{product.product_name}</span>
+                                        <p>{product.product_name}</p>
+                                        <span>{product.title}</span>
                                         <div>(rating)</div>
                                         <div className={styles.productPrice}>
-                                            <span>$130.00</span>
-                                            <p>$123.50</p>
+                                            <span>${product.price}</span>
+                                            <p>$123</p>
                                         </div>
                                     </div>
                                 </div>

@@ -170,7 +170,6 @@
   color: white;
   padding: 0 39px;
 }
-
 .productImage{
   padding: 70px 30px;
   border: 1px solid rgba(0, 0, 0, 0.11);
@@ -179,8 +178,9 @@
   justify-content: center;
   display: flex;
   & > img{
-    max-width: 240px;
-    max-height: 145px;
+    object-fit: cover;
+    width: 240px;
+    height: 145px;
   }
 }
 
@@ -193,9 +193,7 @@
   & > p {
     color: #8B8B8B;
   }
-
 }
-
 .productPrice{
   display: flex;
   align-items: center;
@@ -215,9 +213,9 @@
   }
 }
 
-.productList{
-  display: flex;
+.productList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 30px;
 }

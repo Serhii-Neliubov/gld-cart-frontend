@@ -68,7 +68,7 @@ export const Bags = () => {
                                     <span>{product.product_name}</span>
                                     <div>(rating)</div>
                                     <div className={styles.productPrice}>
-                                        <span>$130.00</span>
+                                        <span>${product.price}</span>
                                         <p>$123.50</p>
                                     </div>
                                 </div>
