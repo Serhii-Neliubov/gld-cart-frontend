@@ -24,17 +24,17 @@ type Product = {
 export const ProductsList = () => {
   const { category } = useParams();
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true); // добавляем состояние загрузки
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const getData = async () => {
     try {
       const response = await $api.get(`/products/category/${category}`);
       setProducts(response.data);
-      setLoading(false); // устанавливаем состояние загрузки в false после получения данных
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
-      setLoading(false); // устанавливаем состояние загрузки в false в случае ошибки
+      setLoading(false);
     }
   }
 
