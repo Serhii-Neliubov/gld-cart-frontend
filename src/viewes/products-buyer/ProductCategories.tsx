@@ -1,4 +1,4 @@
-import styles from "./ProductsPage.module.scss";
+import styles from "./ProductsCategories.module.scss";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import Footer from "@/components/footer/Footer.tsx";
@@ -21,21 +21,21 @@ import imageCategory14 from "@/assets/images/Categories/img14.png";
 import imageCategory15 from "@/assets/images/Categories/img15.png";
 
 const categories = [
-  { link: '/products/beauty-of-skin', title: "Beauty of Skin", img: imageCategory1, count: "2 products"},
-  { link: '/products/bags', title: "Bags", img: imageCategory2, count: "2 products"},
-  { link: '/products/awesome-lip-care', title: "Awesome Lip Care", img: imageCategory3, count: "2 products"},
-  { link: '/products/mobile-tablets',title: "Mobile Tablets", img: imageCategory4, count: "2 products"},
-  { link: '/products/necklaces',title: "Necklaces", img: imageCategory5, count: "2 products"},
-  { link: '/products/clothing',title: "Clothing", img: imageCategory6, count: "2 products"},
-  { link: '/products/bluetooth',title: "Bluetooth", img: imageCategory7, count: "2 products"},
-  { link: '/products/facial-care',title: "Facial Care", img: imageCategory8, count: "2 products"},
-  { link: '/products/shoes',title: "Shoes", img: imageCategory9, count: "2 products"},
-  { link: '/products/cpu',title: "CPU", img: imageCategory10, count: "2 products"},
-  { link: '/products/discover-skincare', title: "Discover Skincare", img: imageCategory11, count: "2 products"},
-  { link: '/products/headphones', title: "Headphones", img: imageCategory12, count: "3 products"},
-  { link: '/products/bracelets', title: "Bracelets", img: imageCategory13, count: "3 products"},
-  { link: '/products/smart-watch', title: "Smart Watch", img: imageCategory14, count: "3 products"},
-  { link: '/products/earrings', title: "Earrings", img: imageCategory15, count: "3 products"},
+  { category: 'beauty', title: "Beauty of Skin", img: imageCategory1, count: "2 products"},
+  { category: 'bags', title: "Bags", img: imageCategory2, count: "2 products"},
+  { category: 'awesome', title: "Awesome Lip Care", img: imageCategory3, count: "2 products"},
+  { category: 'mobileTablets',title: "Mobile Tablets", img: imageCategory4, count: "2 products"},
+  { category: 'necklaces',title: "Necklaces", img: imageCategory5, count: "2 products"},
+  { category: 'clothing',title: "Clothing", img: imageCategory6, count: "2 products"},
+  { category: 'bluetooth',title: "Bluetooth", img: imageCategory7, count: "2 products"},
+  { category: 'facial',title: "Facial Care", img: imageCategory8, count: "2 products"},
+  { category: 'shoes',title: "Shoes", img: imageCategory9, count: "2 products"},
+  { category: 'cpu',title: "CPU", img: imageCategory10, count: "2 products"},
+  { category: 'discover', title: "Discover Skincare", img: imageCategory11, count: "2 products"},
+  { category: 'headphones', title: "Headphones", img: imageCategory12, count: "3 products"},
+  { category: 'bracelets', title: "Bracelets", img: imageCategory13, count: "3 products"},
+  { category: 'smartwatch', title: "Smart Watch", img: imageCategory14, count: "3 products"},
+  { category: 'earrings', title: "Earrings", img: imageCategory15, count: "3 products"},
 ];
 
 const ProductsPage: FC = () => {
@@ -54,7 +54,7 @@ const ProductsPage: FC = () => {
             <div className={styles.blocks}>
               {categories.map((category, index) => {
                 return (
-                  <Link key={index} to={category.link} className={styles.block}>
+                  <Link key={index} to={category.category} className={styles.block}>
                     <img
                       className={styles.image}
                       src={category.img}
