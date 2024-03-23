@@ -21,6 +21,7 @@ import { cartItem } from "@/viewes/shopping-cart/ShoppingCartPage.tsx";
 type product = {
     reviews: [];
     _id: string;
+    title: string,
     product_name: string;
     category: string;
     subcategory: string;
@@ -41,6 +42,7 @@ export const ProductPage = () => {
     const params = useParams();
     const user = useSelector(userDataSelector);
     const navigate = useNavigate();
+    console.log("product:", product);
 
     useEffect(() => {
         getProductData();
