@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Product.module.scss";
+import styles from "./RentingItem.module.scss";
 import { useNavigate } from "react-router-dom";
 
 type ProductProps = {
@@ -11,7 +11,7 @@ type ProductProps = {
     price_month: string;
 };
 
-export default function Product({id, image, title, price_day, price_week, price_month}: ProductProps) {
+export default function RentingItem({id, image, title, price_day, price_week, price_month}: ProductProps) {
 
     const navigate = useNavigate();
     const total_price = (Number(price_day) + Number(price_week) + Number(price_month)) / 3;

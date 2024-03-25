@@ -17,15 +17,12 @@ import LoginPage from "../viewes/login/LoginPage";
 import NotFound from "../viewes/not-found/NotFound";
 import Register from "./register/Register.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
-import Renting from "../viewes/renting-buyer/Renting";
-import RentingCarPage from "../viewes/renting-buyer/car/RentingCarPage";
-import RentingElectronicsPage from "../viewes/renting-buyer/electronics/RentingElectronicsPage";
+import RentingCategories from "./renting-buyer/RentingCategories.tsx";
 import RentingCategoryPage from "../viewes/renting-vendor/RentingCategoryPage";
 import RentingProductsPage from "../viewes/products-vendor/RentingProductsPage";
 import SendMessagePage from "../viewes/send-message-successfully/SendMessagePage";
 import ProfessionalCategories from "./professional-services-buyer/ProfessionalCategories.tsx";
 import TrackOrder from "../viewes/track-order/TrackOrder";
-import RentingHousePage from "../viewes/renting-buyer/house/RentingHousePage";
 import { NewVehicle } from "./renting-vendor/pages/vehicle/NewVehicle.tsx";
 import { NewElectronics } from "./renting-vendor/pages/electronics/NewElectronics.tsx";
 import { NewHouses } from "./renting-vendor/pages/houses/NewHouses.tsx";
@@ -55,9 +52,7 @@ import { NewPestControl } from "./professional-services-vendor/pages/pestControl
 import { NewElectrical } from "./professional-services-vendor/pages/electrical/NewElectrical.tsx";
 import { DriverLicense } from "./driver-licese/DriverLicense.tsx";
 import { SupportChat } from "./support-chat/SupportChat.tsx";
-import CarPage from "../viewes/renting-buyer/car/components/car-page/CarPage.tsx";
 import { ProductPage } from "./products-buyer/components/ProductPage.tsx";
-import { RentingProductPage } from "./renting-buyer/components/product-page/RentingProductPage.tsx";
 import RentingProfessionalServicesPage from "./professional-services-vendor/RentingProfessionalServicesPage.tsx";
 import { PaymentCheckout } from "@/viewes/checkout-payment/PaymentCheckout.tsx";
 import { PaymentCardForm } from "@/viewes/checkout-payment/PaymentCardForm.tsx";
@@ -67,6 +62,7 @@ import ProductsPage from "@/viewes/products-buyer/ProductCategories.tsx";
 import ProductCategories from "@/viewes/products-buyer/ProductCategories.tsx";
 import ProfessionalServices from "@/viewes/professional-services-buyer/components/ProfessionalServices.tsx";
 import {ProfessionalService} from "@/viewes/professional-services-buyer/components/ProfessionalService.tsx";
+import RentingProducts from "@/viewes/renting-buyer/RentingProducts.tsx";
 
 interface IRoutes {
   component: FC;
@@ -80,9 +76,8 @@ export const buyerRoutes: IRoutes[] = [
   { component: PaymentCheckout, path: "/checkout-payment" },
   { component: SupportChat, path: "/support-chat" },
   { component: DriverLicense, path: "/driver-license" },
-  { component: CarPage, path: "/renting-car/:id" },
   { component: TrackOrder, path: "/track-an-order" },
-  { component: Renting, path: "/renting" },
+  { component: RentingCategories, path: "/renting" },
   { component: ContactUsPage, path: "/contact-us" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
   { component: CookiePolicyPage, path: "/cookie-policy" },
@@ -94,25 +89,23 @@ export const buyerRoutes: IRoutes[] = [
   // Products
   { component: ProductCategories, path: "/products" },
   { component: ProductsList, path: "/products/:category" },
-  { component: ProductPage, path: "/product-page/:id" },
+  { component: ProductPage, path: "/renting-item-page/:id" },
   // -----------------------
   // Professional Services
   { component: ProfessionalCategories, path: "/professional-services" },
   { component: ProfessionalServices, path: "/professional-services/:category" },
   { component: ProfessionalService, path: "/professional-services/:category/:id" },
   // -----------------------
-  { component: RentingProductPage, path: "/renting-product-page" },
-  { component: SendMessagePage, path: "/send-message" },
-  { component: WishlistPage, path: "/wishlist" },
-  { component: ShoppingCartPage, path: "/shopping-cart" },
-  { component: RentingCarPage, path: "/renting-car" },
-  { component: RentingCategoryPage, path: "/renting" },
-  { component: RentingElectronicsPage, path: "/renting-electronics" },
-  { component: RentingHousePage, path: "/renting-house" },
-  { component: RentingProductsPage, path: "/products-category-page" },
+  { component: RentingCategories, path: "/renting" },
+  { component: RentingProducts, path: "/renting/:category" },
+
   { component: ProfilePage, path: "/profile" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: HelpAndSupport, path: "/help-and-support" },
+  { component: SendMessagePage, path: "/send-message" },
+
+  { component: WishlistPage, path: "/wishlist" },
+  { component: ShoppingCartPage, path: "/shopping-cart" },
   {
     component: PaymentCardForm,
     path: "/checkout-payment/order/:clientSecret/:name/:surname/:country/:street/:town/:zipcode/:phone/:email",
@@ -151,78 +144,78 @@ export const vendorRoutes: IRoutes[] = [
   // Vehicles
   {
     component: NewVehicle,
-    path: "/renting-category-page/new-vehicle-page/:category/:subcategory/:product",
+    path: "/renting-category-page/new-vehicle-page/:category/:subcategory/:renting-item",
   },
 
   // Electronics
   {
     component: NewElectronics,
-    path: "/renting-category-page/new-electronics-page/:category/:subcategory/:product",
+    path: "/renting-category-page/new-electronics-page/:category/:subcategory/:renting-item",
   },
   // bags
   {
     component: NewBags,
-    path: "/products-category-page/new-bags-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-bags-page/:category/:subcategory/:renting-item",
   },
   // Awesome Lip Care
   {
     component: NewAwesomeLipCare,
-    path: "/products-category-page/new-awesome-lip-care-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-awesome-lip-care-page/:category/:subcategory/:renting-item",
   },
   // Mobile Tablets
   {
     component: NewMobileTablets,
-    path: "/products-category-page/new-mobile-tablets-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-mobile-tablets-page/:category/:subcategory/:renting-item",
   },
   // necklaces
   {
     component: NewNecklaces,
-    path: "/products-category-page/new-necklaces-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-necklaces-page/:category/:subcategory/:renting-item",
   },
   // clothing
   {
     component: NewClothing,
-    path: "/products-category-page/new-clothing-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-clothing-page/:category/:subcategory/:renting-item",
   },
   // headphones
   {
     component: NewBluetooth,
-    path: "/products-category-page/new-bluetooth-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-bluetooth-page/:category/:subcategory/:renting-item",
   },
   // Facial Care
   {
     component: NewFacialCare,
-    path: "/products-category-page/new-facial-care-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-facial-care-page/:category/:subcategory/:renting-item",
   },
   // shoes
   {
     component: NewShoes,
-    path: "/products-category-page/new-shoes-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-shoes-page/:category/:subcategory/:renting-item",
   },
   // CPU
   {
     component: NewCpu,
-    path: "/products-category-page/new-cpu-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-cpu-page/:category/:subcategory/:renting-item",
   },
   // Discover Skincare
   {
     component: NewDiscoverSkincare,
-    path: "/products-category-page/new-discover-skincare-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-discover-skincare-page/:category/:subcategory/:renting-item",
   },
   // headphones
   {
     component: NewHeadphones,
-    path: "/products-category-page/new-headphones-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-headphones-page/:category/:subcategory/:renting-item",
   },
   // bracelets
   {
     component: NewBracelets,
-    path: "/products-category-page/new-bracelets-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-bracelets-page/:category/:subcategory/:renting-item",
   },
   // smartwatch
   {
     component: NewSmartWatch,
-    path: "/products-category-page/new-smartwatch-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-smartwatch-page/:category/:subcategory/:renting-item",
   },
 
   // Cleaning
@@ -267,28 +260,25 @@ export const vendorRoutes: IRoutes[] = [
   // earrings
   {
     component: NewEarrings,
-    path: "/products-category-page/new-earrings-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-earrings-page/:category/:subcategory/:renting-item",
   },
   // Houses
   {
     component: NewHouses,
-    path: "/renting-category-page/new-houses-page/:category/:subcategory/:product",
+    path: "/renting-category-page/new-houses-page/:category/:subcategory/:renting-item",
   },
   // Beauty
   {
     component: NewBeautyOfSkin,
-    path: "/products-category-page/new-beauty-of-skin-page/:category/:subcategory/:product",
+    path: "/products-category-page/new-beauty-of-skin-page/:category/:subcategory/:renting-item",
   },
 ];
 
 export const noAuthRotes: IRoutes[] = [
-  { component: ProductPage, path: "/product-page/:id" },
+  { component: ProductPage, path: "/renting-item-page/:id" },
   { component: Home, path: "/" },
-  { component: RentingElectronicsPage, path: "/renting-electronics" },
   { component: Register, path: "/register" },
-  { component: Renting, path: "/renting" },
-  { component: RentingCarPage, path: "/renting-car" },
-  { component: RentingHousePage, path: "/renting-house" },
+  { component: RentingCategories, path: "/renting" },
   { component: LoginPage, path: "/login" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },
   { component: CookiePolicyPage, path: "/cookie-policy" },

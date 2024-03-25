@@ -42,7 +42,7 @@ export const ProductPage = () => {
     const params = useParams();
     const user = useSelector(userDataSelector);
     const navigate = useNavigate();
-    console.log("product:", product);
+    console.log("renting-item:", product);
 
     useEffect(() => {
         getProductData();

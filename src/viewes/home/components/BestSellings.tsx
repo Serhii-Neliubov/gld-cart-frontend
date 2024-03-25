@@ -36,7 +36,7 @@ export const BestSellings = () => {
             <div className="best-sellings__container">
                 <div className="best-sellings__see-more">
                     <h3>{t("Best Selling For Woman’s")}</h3>
-                    <p>{t("Easiest way to Buy best and good quality product")}</p>
+                    <p>{t("Easiest way to Buy best and good quality renting-item")}</p>
                     <button>{t("See more")}</button>
                 </div>
                 <div className="best-sellings__blocks blocks">

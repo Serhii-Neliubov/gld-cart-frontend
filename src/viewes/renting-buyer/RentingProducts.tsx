@@ -1,14 +1,46 @@
 import React, { FC } from "react";
-import Footer from "../../../components/footer/Footer.tsx";
-import styles from "./RentingCarPage.module.scss";
-import CarList from "./components/CarList.tsx";
+import styles from "./RentingProducts.module.scss";
+import Footer from "@/components/footer/Footer.tsx";
+import RentingItem from "@/viewes/renting-buyer/components/renting-item/RentingItem.tsx";
+import {useParams} from "react-router-dom";
+import {useGetData} from "@/hooks/useGetData/useGetData.tsx";
 
-const RentingCarPage: FC = () => {
+type car = {
+  _id: string,
+  product_name: string,
+  category: string,
+  subcategory: string,
+  description: string,
+  images: string[],
+  attributes: {
+    driver: string,
+    dayRentPrice: string,
+    amountOfDays: string,
+    weeklyRentPrice: string,
+    amountOfWeeks: string,
+    monthlyRentPrice: string,
+    amountOfMonths: string,
+    yearOfManufacture: string,
+    vehiclePlateNumber: string,
+    transmission: string,
+    specificationDetails: string,
+    fuelType: string,
+    engineCapacity: string,
+    seatCapacity: string,
+    storageBagCapacity: string,
+    airBags: string
+  },
+}
+
+const RentingProducts: FC = () => {
+  const {category} = useParams();
+  const {data, loading} = useGetData(`/renting/category/${category}`);
+
   return (
     <React.Fragment>
       <div className={styles.body}>
         <div className="__container">
-          <h1 className={styles.title}>Rental Listings</h1>
+          <h1 className={styles.title}>Rental <span>{category}</span> Listings</h1>
           <div className={styles.content}>
             <div className={styles.filter}>
               <div className={styles.filter_content}>
@@ -51,7 +83,23 @@ const RentingCarPage: FC = () => {
               </div>
               <button className={styles.filter_button}>FIND MY RENTALS</button>
             </div>
-            <CarList />
+            {loading ? <div>Loading...</div> :
+              <div className={styles.items}>
+                {data.map((car: car) => {
+                  return (
+                    <RentingItem
+                      key={car._id}
+                      id={car._id}
+                      image={car.images[0]}
+                      title={car.product_name}
+                      price_day={car.attributes.dayRentPrice}
+                      price_week={car.attributes.weeklyRentPrice}
+                      price_month={car.attributes.monthlyRentPrice}
+                    />
+                  );
+                })}
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -60,4 +108,4 @@ const RentingCarPage: FC = () => {
   );
 };
 
-export default RentingCarPage;
+export default RentingProducts;

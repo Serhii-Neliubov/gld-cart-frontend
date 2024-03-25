@@ -34,14 +34,14 @@ export const FaqsData = {
       title:
         "Are there any additional customs fees or taxes for international orders?",
       text: [
-        "International orders may be subject to customs duties, taxes, or import fees imposed by the destination country. These charges are the responsibility of the recipient and are not included in the product price or shipping cost.",
+        "International orders may be subject to customs duties, taxes, or import fees imposed by the destination country. These charges are the responsibility of the recipient and are not included in the renting-item price or shipping cost.",
       ],
     },
     {
       id: 6,
-      title: "What should I do if I receive an incorrect or damaged product?",
+      title: "What should I do if I receive an incorrect or damaged renting-item?",
       text: [
-        "If you receive an incorrect or damaged product, please contact our customer support team within [insert number of days] days of receiving the order. We will work to resolve the issue promptly.",
+        "If you receive an incorrect or damaged renting-item, please contact our customer support team within [insert number of days] days of receiving the order. We will work to resolve the issue promptly.",
       ],
     },
     {

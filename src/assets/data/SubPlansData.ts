@@ -55,14 +55,14 @@ export const SubPlansData: SubPlan[] = [
   },
   {
     img: "SubPlans/icon4.svg",
-    title: "Extended Renting",
+    title: "Extended RentingCategories",
     subtitle:
       "In this Package you can rent your products & Sell your Professional Services to your Clients",
     price: "150",
     color: "#FAB706",
-    advantages: ["Renting Services", "Professional Services"],
+    advantages: ["RentingCategories Services", "Professional Services"],
     popular: true,
-    lookup_key: "Extended Renting",
+    lookup_key: "Extended RentingCategories",
   },
   {
     img: "SubPlans/icon5.svg",
@@ -71,7 +71,7 @@ export const SubPlansData: SubPlan[] = [
       "In this Package you can Rent your products, Sell your Professional Services &Sell your Products to your Clients",
     price: "250",
     color: "#7095F1",
-    advantages: ["Renting Services", "Professional Services"],
+    advantages: ["RentingCategories Services", "Professional Services"],
     popular: true,
     lookup_key: "All Services Package",
   },

@@ -33,9 +33,9 @@ export const TermsConditions = {
     },
     {
       id: 4,
-      title: "Product Listings and Orders:",
+      title: "RentingItem Listings and Orders:",
       text: [
-        "GLDCART strives to provide accurate product information but does not guarantee its accuracy.",
+        "GLDCART strives to provide accurate renting-item information but does not guarantee its accuracy.",
         "Users represent that their order information is accurate and complete.",
         "GLDCART reserves the right to refuse or cancel orders for various reasons.",
       ],
