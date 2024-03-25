@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styles from "./ProfServicesPage.module.scss";
+import styles from "./ProfessionalCategories.module.scss";
 import Footer from "../../components/footer/Footer.tsx";
 import { Link } from "react-router-dom";
 import useDefaultScrollPosition from "../../hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
@@ -8,51 +8,51 @@ const categories = [
     {
         name: "Cleaning",
         image: "src/assets/images/professional-services/img1.png",
-        link: "/cleaning-page",
+        category: "cleaning",
     },
     {
         name: "Repairing",
         image: "src/assets/images/professional-services/img2.png",
-        link: "/repairing-page",
+        category: "repairing",
     },
     {
         name: "Gardening",
         image: "src/assets/images/professional-services/img3.png",
-        link: "/gardening-page",
+        category: "gardening",
     },
     {
         name: "Tree Cutting",
         image: "src/assets/images/professional-services/img4.png",
-        link: "/tree-cutting-page",
+        category: "treeCutting",
     },
     {
         name: "Lawn Services",
         image: "src/assets/images/professional-services/img5.png",
-        link: "/lawn-services-page",
+        category: "lawnServices",
     },
     {
         name: "Handyman",
         image: "src/assets/images/professional-services/img6.png",
-        link: "/handyman-page",
+        category: "handyman",
     },
     {
         name: "Snow Removal",
         image: "src/assets/images/professional-services/img7.png",
-        link: "/snow-removal-page",
+        category: "snowRemoval",
     },
     {
         name: "Pest Control",
         image: "src/assets/images/professional-services/img8.png",
-        link: "/pest-control-page",
+        category: "pestControl",
     },
     {
         name: "Electrical",
         image: "src/assets/images/professional-services/img9.png",
-        link: "/electrical-page",
+        category: "electrical",
     },
 ]
 
-const ProfServicesPage: FC = () => {
+const ProfessionalCategories: FC = () => {
   useDefaultScrollPosition();
 
   return (
@@ -63,7 +63,7 @@ const ProfServicesPage: FC = () => {
         </h1>
         <div className={styles.blocks}>
             {categories.map((category, index) => (
-                <Link key={index} to={category.link} className={styles.block}>
+                <Link key={index} to={`/professional-services/${category.category}`} className={styles.block}>
                 <div className={styles.image}>
                     <img src={category.image} alt="Image" />
                 </div>
@@ -77,4 +77,4 @@ const ProfServicesPage: FC = () => {
   );
 };
 
-export default ProfServicesPage;
+export default ProfessionalCategories;

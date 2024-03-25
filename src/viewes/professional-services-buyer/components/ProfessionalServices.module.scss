@@ -1,0 +1,254 @@
+.body {
+  padding-bottom: 150px;
+}
+
+.content {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  margin-top: 70px;
+}
+.filter {
+  white-space: nowrap;
+  padding: 20px;
+  background-color: #F3F3F3;
+  border: 0.3px solid rgba(0, 0, 0, 0.44);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.filterReset_button{
+  color: #00b4b4;
+  text-align: left;
+  font-weight: bolder;
+  font-family: "Poppins", serif;
+  font-size: 18px;
+}
+.filter_block{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  & > span{
+    color: rgb(47, 48, 51);
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  & > label {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    gap: 5px;
+
+    color: rgb(47, 48, 51);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.8px;
+    text-align: left;
+  }
+}
+h5{
+  color: rgb(47, 48, 51);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+}
+.reset {
+  display: flex;
+  flex-direction: column;
+}
+.reset_button {
+  margin-top: 30px;
+  width: 123.5px;
+  height: 44.778px;
+  background-color: #262626;
+
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid black;
+    background-color: #fff;
+    color: #000;
+  }
+}
+h1 {
+  color: #000;
+  font-size: 36px;
+  font-weight: 500;
+
+  & > span{
+    color: #02a0a0;
+    text-transform: uppercase;
+  }
+}
+
+.item_content{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.item_title{
+  color: rgb(47, 48, 51);
+  font-size: 20.12px;
+  font-weight: 400;
+  line-height: 30.41px;
+  text-align: left;
+}
+.item_reviews{
+  display: flex;
+  gap: 10px;
+
+  color: rgb(45, 183, 131);
+  font-size: 17.74px;
+  font-weight: 400;
+  line-height: 25.35px;
+  text-align: left;
+}
+.item_demand{
+  display: flex;
+  gap: 10px;
+  width: 180px;
+  padding: 10px;
+  white-space: nowrap;
+  border-radius: 30px;
+  background: rgb(232, 241, 253);
+}
+.item_features{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  & > div{
+    display: flex;
+    gap: 10px;
+  }
+}
+.item_actions{
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+.item_button{
+  &:first-child{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  &:last-child{
+    border-radius: 5.07px;
+    background: rgb(0, 159, 217);
+    padding: 10px 20px;
+    color: white;
+  }
+}
+.item{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 40px;
+
+  box-sizing: border-box;
+  border: 0.3px solid rgba(0, 0, 0, 0.44);
+  border-radius: 24.01px;
+  box-shadow: 0 4px 4px 0 rgba(120, 120, 120, 0.15);
+  background: rgb(243, 243, 243);
+}
+
+.image {
+  background-color: white;
+  padding: 12px 50px;
+  width: 333px;
+  position: relative;
+  border-radius: 10.212px;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    height: 238px;
+  }
+}
+
+.advantages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: rgba(0, 0, 0, 0.92);
+  font-size: 14.377px;
+}
+
+.advantage {
+  padding-left: 13px;
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: red;
+  }
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .total_price {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    border-radius: 12.765px;
+    flex: 1 1 auto;
+    background-color: #fff;
+
+    h3 {
+      color: #000;
+      font-size: 14.377px;
+      font-weight: 600;
+    }
+
+    span {
+      color: #02a0a0;
+      font-size: 36.457px;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 7px 0 40px 0;
+
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 14.377px;
+    }
+  }
+
+  button {
+    padding: 17px 35px;
+
+    color: #fff;
+    font-size: 24.828px;
+    font-weight: 500;
+
+    border-radius: 7.659px;
+    background-color: #02a0a0;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #00b4b4;
+    }
+  }
+}

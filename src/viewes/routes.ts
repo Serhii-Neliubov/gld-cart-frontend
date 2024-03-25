@@ -23,10 +23,7 @@ import RentingElectronicsPage from "../viewes/renting-buyer/electronics/RentingE
 import RentingCategoryPage from "../viewes/renting-vendor/RentingCategoryPage";
 import RentingProductsPage from "../viewes/products-vendor/RentingProductsPage";
 import SendMessagePage from "../viewes/send-message-successfully/SendMessagePage";
-import ProfServicesPage from "../viewes/professional-services-buyer/ProfServicesPage";
-import CleaningPage from "../viewes/professional-services-buyer/cleaning/CleaningPage";
-import GardeningPage from "../viewes/professional-services-buyer/gardening/GardeningPage";
-import RepairingPage from "../viewes/professional-services-buyer/repairing/RepairingPage";
+import ProfessionalCategories from "./professional-services-buyer/ProfessionalCategories.tsx";
 import TrackOrder from "../viewes/track-order/TrackOrder";
 import RentingHousePage from "../viewes/renting-buyer/house/RentingHousePage";
 import { NewVehicle } from "./renting-vendor/pages/vehicle/NewVehicle.tsx";
@@ -68,6 +65,8 @@ import { Chat } from "@/viewes/chat/Chat.tsx";
 import {ProductsList} from "@/viewes/products-buyer/components/ProductsList.tsx";
 import ProductsPage from "@/viewes/products-buyer/ProductCategories.tsx";
 import ProductCategories from "@/viewes/products-buyer/ProductCategories.tsx";
+import ProfessionalServices from "@/viewes/professional-services-buyer/components/ProfessionalServices.tsx";
+import {ProfessionalService} from "@/viewes/professional-services-buyer/components/ProfessionalService.tsx";
 
 interface IRoutes {
   component: FC;
@@ -97,9 +96,13 @@ export const buyerRoutes: IRoutes[] = [
   { component: ProductsList, path: "/products/:category" },
   { component: ProductPage, path: "/product-page/:id" },
   // -----------------------
+  // Professional Services
+  { component: ProfessionalCategories, path: "/professional-services" },
+  { component: ProfessionalServices, path: "/professional-services/:category" },
+  { component: ProfessionalService, path: "/professional-services/:category/:id" },
+  // -----------------------
   { component: RentingProductPage, path: "/renting-product-page" },
   { component: SendMessagePage, path: "/send-message" },
-  { component: ProfServicesPage, path: "/professional-services" },
   { component: WishlistPage, path: "/wishlist" },
   { component: ShoppingCartPage, path: "/shopping-cart" },
   { component: RentingCarPage, path: "/renting-car" },
@@ -107,9 +110,6 @@ export const buyerRoutes: IRoutes[] = [
   { component: RentingElectronicsPage, path: "/renting-electronics" },
   { component: RentingHousePage, path: "/renting-house" },
   { component: RentingProductsPage, path: "/products-category-page" },
-  { component: CleaningPage, path: "/cleaning-page" },
-  { component: GardeningPage, path: "/gardening-page" },
-  { component: RepairingPage, path: "/repairing-page" },
   { component: ProfilePage, path: "/profile" },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: HelpAndSupport, path: "/help-and-support" },
@@ -284,7 +284,6 @@ export const vendorRoutes: IRoutes[] = [
 export const noAuthRotes: IRoutes[] = [
   { component: ProductPage, path: "/product-page/:id" },
   { component: Home, path: "/" },
-  { component: CleaningPage, path: "/cleaning-page" },
   { component: RentingElectronicsPage, path: "/renting-electronics" },
   { component: Register, path: "/register" },
   { component: Renting, path: "/renting" },
@@ -301,7 +300,7 @@ export const noAuthRotes: IRoutes[] = [
   { component: ForgottenAttentionPage, path: "/forgotten-attention" },
   { component: NewPasswordPage, path: "/password/:token" },
   { component: ContactUsPage, path: "/contact-us" },
-  { component: ProfServicesPage, path: "/professional-services" },
+  { component: ProfessionalCategories, path: "/professional-services" },
   { component: ProductsPage, path: "/products" },
   { component: SendMessagePage, path: "/send-message" },
 ];
