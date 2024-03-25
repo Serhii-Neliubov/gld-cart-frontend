@@ -197,7 +197,7 @@ const ProfessionalServices: FC = () => {
                     <FiMessageCircle />
                     Contact
                   </button>
-                  <button className={styles.item_button}>Vies Profile</button>
+                  <button className={styles.item_button}>View Profile</button>
                 </div>
               </div>
             </div>
