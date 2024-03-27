@@ -13,6 +13,7 @@ export const NewAwesomeLipCare = () => {
   const [stage, setStage] = useState(3);
   const {category, subcategory, product} = useParams();
   const user = useSelector(userDataSelector);
+  console.log(category, subcategory, product)
   const [formData, setFormData] = useState<IVendorProductData>({
     title: "",
     description: "",

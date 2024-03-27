@@ -6,6 +6,7 @@ import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
 import { useParams } from "react-router-dom";
+import {CiSearch} from "react-icons/ci";
 
 interface User {
   _id: string;
@@ -138,7 +139,12 @@ export const Chat: React.FC = () => {
         {/* Chat List */}
         <div className={style.chatListWrapper}>
           <div className={style.searchChats}>
-            <input placeholder="Search for anything..." />
+            <div className={style.searchInput}>
+              <input placeholder="Search for anything..."/>
+              <button>
+                <CiSearch/>
+              </button>
+            </div>
           </div>
           <ul className={style.chatsList}>
             {chats.map((chat) => (
@@ -182,9 +188,7 @@ export const Chat: React.FC = () => {
                 .map((message, index) => (
                   <div
                     key={index}
-                    style={{
-                      textAlign: message.senderId === userId ? "right" : "left",
-                    }}
+                    className={message.senderId === userId ? `${style.userRight}` : `${style.userLeft}`}
                   >
                     <p>{message.text}</p>
                   </div>
