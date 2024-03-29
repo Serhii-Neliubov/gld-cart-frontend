@@ -61,7 +61,7 @@ export const Chat: React.FC = () => {
           prevChats.map((chat) => {
             const chatParticipants = chat.participants.map((participant) => {
               if (participant._id === statusData.userId) {
-                return { ...participant, is_online: statusData.isOnline };
+                return { ...participant, is_online: statusData.status };
               }
               return participant;
             });
