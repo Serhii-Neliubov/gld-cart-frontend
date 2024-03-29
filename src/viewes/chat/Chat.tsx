@@ -63,7 +63,6 @@ export const Chat: React.FC = () => {
 
   useEffect(() => {
     if (socket && selectedChat) {
-      socket.emit("join", selectedChat);
       fetchMessages(selectedChat);
     }
   }, [socket, selectedChat]);
