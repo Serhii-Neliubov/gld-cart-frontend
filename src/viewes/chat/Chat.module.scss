@@ -74,6 +74,8 @@
     padding: 10px;
     border-radius: 1.125rem 1.125rem 0 1.125rem;
     background: #219dea;
+    max-width: 340px;
+    word-wrap: break-word; /* для старых браузеров */
     color: white;
   }
 }
@@ -89,8 +91,10 @@
 
     padding: 10px;
     border-radius: 1.125rem 1.125rem 1.125rem  0;
+    max-width: 340px;
     background: rgba(94, 224, 159, 0.73);
     color: white;
+    word-wrap: break-word; /* для старых браузеров */
   }
 }
 .chatPersonImage{
