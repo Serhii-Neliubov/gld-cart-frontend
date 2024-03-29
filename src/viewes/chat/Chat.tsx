@@ -7,6 +7,7 @@ import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import {CiSearch} from "react-icons/ci";
+import {BsPaperclip} from "react-icons/bs";
 
 interface User {
   _id: string;
@@ -37,7 +38,7 @@ export const Chat: React.FC = () => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { recipientId: paramUserId } = useParams<{ recipientId: string }>();
-
+  let fileInput: HTMLInputElement | null = useRef(null);
   useEffect(() => {
     const newSocket = io(`${API_URL}/chat`, { query: { userId } });
     setSocket(newSocket);
@@ -132,6 +133,15 @@ export const Chat: React.FC = () => {
     }
   };
 
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    console.log('Selected file:', selectedFile);
+  };
+
+  const handleClick = () => {
+    fileInput?.click();
+  };
+
   return (
     <div className="__container">
       <div className={style.chatWrapper}>
@@ -195,6 +205,15 @@ export const Chat: React.FC = () => {
           </div>
           {/* Message input and send button */}
           <div className={style.chatSendLabel}>
+            <button onClick={handleClick}>
+                <input
+                  type="file"
+                  style={{display: 'none'}}
+                  ref={(input) => (fileInput = input)}
+                  onChange={handleFileChange}
+                />
+              <BsPaperclip className={style.sendFileButton}/>
+            </button>
             <input
               placeholder="Send message..."
               type="text"
