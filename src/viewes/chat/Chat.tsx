@@ -56,7 +56,6 @@ export const Chat: React.FC = () => {
   useEffect(() => {
     if (socket) {
       socket.on("status", (statusData) => {
-        console.log("Status data:", statusData);
         setChats((prevChats) =>
           prevChats.map((chat) => {
             const chatParticipants = chat.participants.map((participant) => {
@@ -174,8 +173,25 @@ export const Chat: React.FC = () => {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onload = () => {
+      const fileData = {
+        chatId: selectedChat,
+        file: reader.result,
+        fileName: selectedFile.name,
+        senderId: userId,
+        recipientId:
+          chats.find((chat) => chat._id === selectedChat)?.participants[1]
+            ._id || "",
+      };
+      console.log("File data:", fileData);
+      socket?.emit("file", fileData);
+    };
+
     console.log("Selected file:", selectedFile);
   };
+
 
   const handleClick = () => {
     fileInput?.click();
