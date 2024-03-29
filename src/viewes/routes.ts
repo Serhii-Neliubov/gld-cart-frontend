@@ -26,20 +26,10 @@ import TrackOrder from "../viewes/track-order/TrackOrder";
 import { NewVehicle } from "./renting-vendor/pages/vehicle/NewVehicle.tsx";
 import { NewElectronics } from "./renting-vendor/pages/electronics/NewElectronics.tsx";
 import { NewHouses } from "./renting-vendor/pages/houses/NewHouses.tsx";
-import { NewEarrings } from "./products-vendor/pages/earrings/NewEarrings.tsx";
-import { NewCleaning } from "./professional-services-vendor/pages/cleaning/NewCleaning.tsx";
-import { NewRepairing } from "./professional-services-vendor/pages/repairing/NewRepairing.tsx";
-import { NewGardening } from "./professional-services-vendor/pages/gardening/NewGardening.tsx";
-import { NewTreeCutting } from "./professional-services-vendor/pages/treeCutting/NewTreeCutting.tsx";
-import { NewLawnServices } from "./professional-services-vendor/pages/lawnServices/NewLawnServices.tsx";
-import { NewHandyman } from "./professional-services-vendor/pages/handyman/NewHandyman.tsx";
-import { NewSnowRemoval } from "./professional-services-vendor/pages/snowRemoval/NewSnowRemoval.tsx";
-import { NewPestControl } from "./professional-services-vendor/pages/pestControl/NewPestControl.tsx";
-import { NewElectrical } from "./professional-services-vendor/pages/electrical/NewElectrical.tsx";
 import { DriverLicense } from "./driver-licese/DriverLicense.tsx";
 import { SupportChat } from "./support-chat/SupportChat.tsx";
 import { ProductPage } from "./products-buyer/components/ProductPage.tsx";
-import RentingProfessionalServicesPage from "./professional-services-vendor/RentingProfessionalServicesPage.tsx";
+import ProfessionalServicesVendor from "./professional-services-vendor/ProfessionalServicesVendor.tsx";
 import { PaymentCheckout } from "@/viewes/checkout-payment/PaymentCheckout.tsx";
 import { PaymentCardForm } from "@/viewes/checkout-payment/PaymentCardForm.tsx";
 import { Chat } from "@/viewes/chat/Chat.tsx";
@@ -50,6 +40,7 @@ import ProfessionalServices from "@/viewes/professional-services-buyer/component
 import {ProfessionalService} from "@/viewes/professional-services-buyer/components/professional-service/ProfessionalService.tsx";
 import RentingProducts from "@/viewes/renting-buyer/components/renting-product/RentingProducts.tsx";
 import {ProductsFormVendor} from "@/viewes/products-vendor/ProductsFormVendor.tsx";
+import {ProfessionalServicesFormVendor} from "@/viewes/professional-services-vendor/ProfessionalServicesFormVendor.tsx";
 
 interface IRoutes {
   component: FC;
@@ -105,11 +96,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: SupportChat, path: "/support-chat" },
   { component: Chat, path: "/chat"},
   { component: Chat, path: "/chat/:recipientId" },
-  // Pest Control Service
-  {
-    component: NewPestControl,
-    path: "/professional-services/new-pest-control-page",
-  },
+
   // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },
   { component: ContactUsPage, path: "/contact-us" },
@@ -123,12 +110,11 @@ export const vendorRoutes: IRoutes[] = [
   { component: ProductsVendor, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
   { component: HelpAndSupport, path: "/help-and-support" },
-  {
-    component: RentingProfessionalServicesPage,
-    path: "/professional-services",
-  },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: ProductsFormVendor, path: "/products-category-page/:category/:subcategory/:product" },
+
+  { component: ProfessionalServicesFormVendor, path: "/professional-services/:category/:subcategory/:product" },
+  { component: ProfessionalServicesVendor, path: "/professional-services" },
   // Vehicles
   {
     component: NewVehicle,
@@ -138,50 +124,6 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: NewElectronics,
     path: "/renting-category-page/new-electronics-page/:category/:subcategory/:renting-item",
-  },
-  // Cleaning
-  { component: NewCleaning, path: "/professional-services/new-cleaning-page" },
-  // Repairing
-  {
-    component: NewRepairing,
-    path: "/professional-services/new-repairing-page",
-  },
-  // Gardening
-  {
-    component: NewGardening,
-    path: "/professional-services/new-gardening-page",
-  },
-  // Tree Cutting
-  {
-    component: NewTreeCutting,
-    path: "/professional-services/new-tree-cutting-page",
-  },
-  // Lawn Services
-  {
-    component: NewLawnServices,
-    path: "/professional-services/new-lawn-services-page",
-  },
-  // Handyman
-  { component: NewHandyman, path: "/professional-services/new-handyman-page" },
-  // Snow Removal
-  {
-    component: NewSnowRemoval,
-    path: "/professional-services/new-snow-removal-page",
-  },
-  // Pest Control
-  {
-    component: NewPestControl,
-    path: "/professional-services/pest-control/basic-information",
-  },
-  // Electrical
-  {
-    component: NewElectrical,
-    path: "/professional-services/new-electrical-page",
-  },
-  // earrings
-  {
-    component: NewEarrings,
-    path: "/products-category-page/new-earrings-page/:category/:subcategory/:product",
   },
   // Houses
   {

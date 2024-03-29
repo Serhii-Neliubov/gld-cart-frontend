@@ -1,24 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout } from "@/components/Vendor/Layout.tsx";
 import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
-import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 
-export const NewCleaning = () => {
-  const [stage, setStage] = useState(3);
-  const [formData, setFormData] = useState<IVendorProductData>({
-    title: '',
-    description: '',
-    attributes: {},
-    images: [],
-    category: '',
-    subcategory: '',
-    service_name: '',
-  });
-
+export const NewCleaning = ({stage, formData, setFormData, setStage}: I) => {
   useCategoryRedirect("cleaning", "/personal-services", stage);
 
   return (

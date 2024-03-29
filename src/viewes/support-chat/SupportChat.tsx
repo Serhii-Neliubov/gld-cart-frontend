@@ -1,129 +1,16 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import styles from './SupportChat.module.scss'
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 import IUser from "@/utils/models/IUser.ts";
-import {io, Socket} from "socket.io-client";
 
 export interface Chat {
     _id: string;
     participants: IUser[];
 }
 
-interface Message {
-    chatId: string;
-    text: string;
-    senderId: string;
-    recipientId: string;
-}
-
-const SOCKET_SERVER_URL = "http://localhost:3002";
-
 export const SupportChat = () => {
     const [isChatActive, setIsChatActive] = useState(false);
     const [inputValue, setInputValue] = useState('');
-
-    const [messageInput, setMessageInput] = useState("");
-    const userId = useSelector(userDataSelector).id;
-    const [chats, setChats] = useState<Chat[]>([]);
-    const [selectedChat, setSelectedChat] = useState<string | null>(null);
-    const [messages, setMessages] = useState<Message[]>([]);
-    const [socket, setSocket] = useState<Socket | null>(null);
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        const newSocket = io(SOCKET_SERVER_URL, { query: { userId } });
-        setSocket(newSocket);
-        fetchChats();
-
-        return () => {
-            newSocket.disconnect();
-        };
-    }, [userId]);
-
-    useEffect(() => {
-        if (socket && selectedChat) {
-            socket.emit("join", selectedChat);
-            fetchMessages(selectedChat);
-        }
-    }, [socket, selectedChat]);
-
-    useEffect(() => {
-        if (socket) {
-            socket.on("message", (newMessage: Message) => {
-                console.log("Received message:", newMessage);
-                console.log("Selected chat:", selectedChat);
-                console.log("ChatId:", newMessage.chatId);
-                if (newMessage.chatId === selectedChat) {
-                    console.log("Adding message to chat:", newMessage);
-                    setMessages((prevMessages) => [...prevMessages, newMessage]);
-                }
-            });
-        }
-        return () => {
-            if (socket) {
-                socket.off("message");
-            }
-        };
-    }, [socket, selectedChat]);
-    const fetchChats = async () => {
-        try {
-            const response = await fetch(
-              `http://localhost:3001/chat?userId=${userId}`,
-            );
-            if (!response.ok) {
-                throw new Error("Failed to fetch chats");
-            }
-            const chatsData = await response.json();
-            setChats(chatsData);
-        } catch (error) {
-            console.error("Error fetching chats:", error);
-        }
-    };
-
-    const fetchMessages = async (chatId: string) => {
-        try {
-            const response = await fetch(`http://localhost:3001/message/${chatId}`);
-            if (!response.ok) {
-                throw new Error("Failed to fetch messages");
-            }
-            const messagesData = await response.json();
-            setMessages(messagesData);
-        } catch (error) {
-            console.error("Error fetching messages:", error);
-        }
-    };
-
-    const sendMessage = () => {
-        if (!selectedChat || !socket) return;
-
-        const message: Message = {
-            chatId: selectedChat,
-            text: messageInput,
-            senderId: userId,
-            recipientId:
-              chats.find((chat) => chat._id === selectedChat)?.participants[1]._id ||
-              "",
-        };
-        console.log("Sending message:", message);
-        socket.emit("message", message);
-        setMessageInput("");
-        setMessages((prevMessages) => [...prevMessages, message]);
-    };
-
-    const selectChat = (chatId: string) => {
-        setSelectedChat(chatId);
-        inputRef.current?.focus();
-        socket?.emit("join", chatId);
-    };
-
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            sendMessage();
-        }
-    };
 
     return (
         <div className='__container'>
@@ -206,7 +93,7 @@ export const SupportChat = () => {
                     <button>
                         <img src='src/assets/images/SupportChat/file-input.svg' className={styles.voiceInput} alt='file input'/>
                     </button>
-                    <button onClick={sendMessage}>
+                    <button>
                         <img src='src/assets/images/SupportChat/send-message-button.svg' className={styles.voiceInput}
                              alt='send message'/>
                     </button>

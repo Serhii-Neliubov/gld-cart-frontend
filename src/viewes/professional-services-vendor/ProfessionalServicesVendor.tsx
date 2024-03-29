@@ -1,9 +1,6 @@
-import styles from "./RentingProfessionalServicesPage.module.scss";
+import styles from "./ProfessionalServicesVendor.module.scss";
 import React, {FC, useState} from "react";
 import RentingStage from "../../components/renting-stages/RentingStage.tsx";
-import {setVendorSelectedItemValue} from "@/store/slices/vendorSelectedItemSlice.ts";
-import {useDispatch} from "react-redux";
-import {setProductCategory, setProductName, setProductSubcategory} from "@/store/slices/vendorProductInfoSlice.ts";
 import {useNavigate} from "react-router-dom";
 import {ProfessionalServicesData} from "@/assets/data/vendor-categories/ProfessionalServicesData.ts";
 
@@ -23,32 +20,8 @@ const clearClick: IClearClick = {
   electrical: false,
 };
 
-const ROUTES = {
-  CLEANING: 'cleaning',
-  REPAIRING: 'repairing',
-  GARDENING: 'gardening',
-  TREE_CUTTING: 'treeCutting',
-  LAWN_SERVICES: 'lawnServices',
-  HANDYMAN: 'handyman',
-  SNOW_REMOVAL: 'snowRemoval',
-  PEST_CONTROL: 'pestControl',
-  ELECTRICAL: 'electrical',
-}
-
-const links = {
-  [ROUTES.CLEANING]: '/professional-services/new-cleaning-page',
-  [ROUTES.REPAIRING]: '/professional-services/new-repairing-page',
-  [ROUTES.GARDENING]: '/professional-services/new-gardening-page',
-  [ROUTES.TREE_CUTTING]: '/professional-services/new-tree-cutting-page',
-  [ROUTES.LAWN_SERVICES]: '/professional-services/new-lawn-services-page',
-  [ROUTES.HANDYMAN]: '/professional-services/new-handyman-page',
-  [ROUTES.SNOW_REMOVAL]: '/professional-services/new-snow-removal-page',
-  [ROUTES.PEST_CONTROL]: '/professional-services/new-pest-control-page',
-  [ROUTES.ELECTRICAL]: '/professional-services/new-electrical-page',
-}
-
-const RentingProfessionalServicesPage: FC = () => {
-  const dispatch = useDispatch();
+const ProfessionalServicesVendor: FC = () => {
+  const [category, setCategory] = useState('');
 
   const [isClicked, setIsClicked] = React.useState<IClearClick>(clearClick);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
@@ -57,15 +30,8 @@ const RentingProfessionalServicesPage: FC = () => {
   const subcategories = Object.keys(isClicked);
   const navigate = useNavigate();
 
-  function productClickHandler(arrayItem: string, category: string) {
-    dispatch(setVendorSelectedItemValue(arrayItem));
-    dispatch(setProductName(arrayItem));
-
-    if(links[category]){
-      navigate(links[category]);
-    } else {
-      navigate('/personal-services');
-    }
+  function productClickHandler(service : string) {
+    navigate(`/professional-services/${category}/${selectedSubCategory}/${service}`)
   }
 
   return (
@@ -95,7 +61,7 @@ const RentingProfessionalServicesPage: FC = () => {
                                 ...clearClick,
                                 [item.category]: true,
                               });
-                              dispatch(setProductCategory(item.category));
+                              setCategory(item.category);
                               setColoredStage(1);
                               setSelectedSubCategory("");
                             }}
@@ -121,7 +87,7 @@ const RentingProfessionalServicesPage: FC = () => {
                                                   selectedSubCategory === name ? "#02A0A0" : "",
                                             }}
                                             onClick={() => {
-                                              dispatch(setProductSubcategory(name));
+                                              setSelectedSubCategory(name);
                                               setSelectedSubCategory(name);
                                               setColoredStage(2);
                                             }}
@@ -141,7 +107,8 @@ const RentingProfessionalServicesPage: FC = () => {
                             object.items[selectedSubCategory].map((arrayItem, index) => (
                                 <button
                                     onClick={() => {
-                                      productClickHandler(arrayItem, object.category)
+                                      setCategory(object.category);
+                                      productClickHandler(arrayItem);
                                     }}
                                     key={index}
                                     className={styles.main_item_1}
@@ -161,4 +128,4 @@ const RentingProfessionalServicesPage: FC = () => {
   );
 };
 
-export default RentingProfessionalServicesPage;
+export default ProfessionalServicesVendor;

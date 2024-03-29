@@ -30,7 +30,6 @@ const WishlistPage: FC = () => {
 
   const removeWishlistItemHandler = async (itemId: string | undefined) => {
     const data = await Wishlist.removeItem(itemId, user.id);
-    console.log(data);
     setWishlistItems(data);
   };
 

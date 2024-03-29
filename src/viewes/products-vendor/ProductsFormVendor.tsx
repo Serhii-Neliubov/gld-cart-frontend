@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
-import { IVendorProductData } from "@/utils/models/IVendorProductData.ts";
+import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";
@@ -58,12 +58,12 @@ const COMPONENTS = {
 }
 
 export const ProductsFormVendor = () => {
+  const user = useSelector(userDataSelector);
+
   const [stage, setStage] = useState(3);
 
   const {category, subcategory, product} = useParams();
   useCategoryRedirect(category as string, "/products-category-page", stage);
-
-  const user = useSelector(userDataSelector);
 
   const [formData, setFormData] = useState<IVendorProductData>({
     title: "",
@@ -78,10 +78,7 @@ export const ProductsFormVendor = () => {
     seller_id: user.id,
   });
 
-
   return (
-    <React.Fragment>
-        {React.createElement(COMPONENTS[category as string], { setStage, stage, formData, setFormData })}
-    </React.Fragment>
+    React.createElement(COMPONENTS[category as string], { setStage, stage, formData, setFormData })
   );
 };
