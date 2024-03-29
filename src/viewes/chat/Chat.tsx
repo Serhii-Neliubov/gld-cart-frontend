@@ -6,8 +6,8 @@ import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
 import { IoSend } from "react-icons/io5";
 import { useParams } from "react-router-dom";
-import {CiSearch} from "react-icons/ci";
-import {BsPaperclip} from "react-icons/bs";
+import { CiSearch } from "react-icons/ci";
+import { BsPaperclip } from "react-icons/bs";
 
 interface User {
   _id: string;
@@ -52,6 +52,43 @@ export const Chat: React.FC = () => {
       newSocket.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    if (socket) {
+      socket.on("status", (statusData) => {
+        console.log("Status data:", statusData);
+        setChats((prevChats) =>
+          prevChats.map((chat) => {
+            const chatParticipants = chat.participants.map((participant) => {
+              if (participant._id === statusData.userId) {
+                return { ...participant, is_online: statusData.isOnline };
+              }
+              return participant;
+            });
+            return { ...chat, participants: chatParticipants };
+          }),
+        );
+      });
+    }
+    return () => {
+      if (socket) {
+        socket.off("status");
+      }
+    };
+  }, [socket]);
+
+  useEffect(() => {
+    if (socket) {
+      socket.on("newChat", (newChat: any) => {
+        setChats((prevChats) => [...prevChats, newChat]);
+      });
+    }
+    return () => {
+      if (socket) {
+        socket.off("newChat");
+      }
+    };
+  }, [socket]);
 
   useEffect(() => {
     console.log("Param user id:", paramUserId);
@@ -137,7 +174,7 @@ export const Chat: React.FC = () => {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    console.log('Selected file:', selectedFile);
+    console.log("Selected file:", selectedFile);
   };
 
   const handleClick = () => {
@@ -151,9 +188,9 @@ export const Chat: React.FC = () => {
         <div className={style.chatListWrapper}>
           <div className={style.searchChats}>
             <div className={style.searchInput}>
-              <input placeholder="Search for anything..."/>
+              <input placeholder="Search for anything..." />
               <button>
-                <CiSearch/>
+                <CiSearch />
               </button>
             </div>
           </div>
@@ -166,9 +203,13 @@ export const Chat: React.FC = () => {
                     src="https://random.imagecdn.app/40/40"
                     alt="image"
                   />
-                  {(userId !== chat.participants[1]._id
-                    ? chat.participants[1].is_online
-                    : chat.participants[0].is_online) ? <div className={style.chatPersonStatus} /> : null}
+                  {(
+                    userId !== chat.participants[1]._id
+                      ? chat.participants[1].is_online
+                      : chat.participants[0].is_online
+                  ) ? (
+                    <div className={style.chatPersonStatus} />
+                  ) : null}
                 </div>
 
                 <li
@@ -201,10 +242,22 @@ export const Chat: React.FC = () => {
             />
             <div className={style.chatPersonName}>
               <span>
-                {chats.map(chat => chat._id === selectedChat ? chat.participants.find(participant => participant._id !== userId)?.name : null)}
+                {chats.map((chat) =>
+                  chat._id === selectedChat
+                    ? chat.participants.find(
+                        (participant) => participant._id !== userId,
+                      )?.name
+                    : null,
+                )}
               </span>
               <span>
-                {chats.map(chat => chat._id === selectedChat ? chat.participants.find(participant => participant._id !== userId)?.surname : null)}
+                {chats.map((chat) =>
+                  chat._id === selectedChat
+                    ? chat.participants.find(
+                        (participant) => participant._id !== userId,
+                      )?.surname
+                    : null,
+                )}
               </span>
             </div>
           </div>
@@ -216,7 +269,11 @@ export const Chat: React.FC = () => {
                 .map((message, index) => (
                   <div
                     key={index}
-                    className={message.senderId === userId ? `${style.userRight}` : `${style.userLeft}`}
+                    className={
+                      message.senderId === userId
+                        ? `${style.userRight}`
+                        : `${style.userLeft}`
+                    }
                   >
                     <p>{message.text}</p>
                   </div>
@@ -225,13 +282,13 @@ export const Chat: React.FC = () => {
           {/* Message input and send button */}
           <div className={style.chatSendLabel}>
             <button onClick={handleClick}>
-                <input
-                  type="file"
-                  style={{display: 'none'}}
-                  ref={(input) => (fileInput = input)}
-                  onChange={handleFileChange}
-                />
-              <BsPaperclip className={style.sendFileButton}/>
+              <input
+                type="file"
+                style={{ display: "none" }}
+                ref={(input) => (fileInput = input)}
+                onChange={handleFileChange}
+              />
+              <BsPaperclip className={style.sendFileButton} />
             </button>
             <input
               placeholder="Send message..."
