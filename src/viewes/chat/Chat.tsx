@@ -38,7 +38,9 @@ export const Chat: React.FC = () => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { recipientId: paramUserId } = useParams<{ recipientId: string }>();
+
   let fileInput: HTMLInputElement | null = useRef(null);
+
   useEffect(() => {
     const newSocket = io(`${API_URL}/chat`, { query: { userId } });
     setSocket(newSocket);
@@ -158,11 +160,18 @@ export const Chat: React.FC = () => {
           <ul className={style.chatsList}>
             {chats.map((chat) => (
               <div className={style.chatPerson}>
-                <img
-                  className={style.chatPersonImage}
-                  src="https://random.imagecdn.app/40/40"
-                  alt="image"
-                />
+                <div className={style.chatPerson}>
+                  <img
+                    className={style.chatPersonImage}
+                    src="https://random.imagecdn.app/40/40"
+                    alt="image"
+                  />
+                  {(userId !== chat.participants[1]._id
+                    ? chat.participants[1].is_online
+                    : chat.participants[0].is_online) ? <div className={style.chatPersonStatus} /> : null}
+
+                </div>
+
                 <li
                   className={style.chatPersonName}
                   key={chat._id}
