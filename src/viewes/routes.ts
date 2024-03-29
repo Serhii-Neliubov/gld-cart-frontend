@@ -8,7 +8,6 @@ import FaqsPage from "../viewes/faq-s/FaqsPage";
 import TermsConditionsPage from "../viewes/terms-conditions/TermsConditionsPage";
 import HelpAndSupport from "../viewes/help-and-support/HelpAndSupport";
 import ProfilePage from "../viewes/profile/ProfilePage";
-import QuestionsAndAnswers from "../viewes/questions-answers/QuestionsAndAnswers";
 import ShoppingCartPage from "../viewes/shopping-cart/ShoppingCartPage";
 import ForgottenPasswordPage from "../viewes/forgot-password/ForgottenPasswordPage";
 import ForgottenAttentionPage from "../viewes/forgot-password/forgot-password-sended/ForgottenAttentionPage";
@@ -78,7 +77,6 @@ export const buyerRoutes: IRoutes[] = [
   { component: RentingProducts, path: "/renting/:category" },
 
   { component: ProfilePage, path: "/profile" },
-  { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: HelpAndSupport, path: "/help-and-support" },
   { component: SendMessagePage, path: "/send-message" },
 
@@ -110,7 +108,6 @@ export const vendorRoutes: IRoutes[] = [
   { component: ProductsVendor, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
   { component: HelpAndSupport, path: "/help-and-support" },
-  { component: QuestionsAndAnswers, path: "/chat-answers" },
   { component: ProductsFormVendor, path: "/products-category-page/:category/:subcategory/:product" },
 
   { component: ProfessionalServicesFormVendor, path: "/professional-services/:category/:subcategory/:product" },

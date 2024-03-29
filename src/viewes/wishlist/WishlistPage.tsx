@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import styles from "./WishlistPage.module.scss";
 import Footer from "@/components/footer/Footer";
-import { FC } from "react";
 import NoItems from "@/components/no-items-page/NoItems.tsx";
-import { useSelector } from "react-redux";
-import { userDataSelector } from "@/store/slices/userDataSlice.ts";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 import Wishlist from "services/WishlistService.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
 
@@ -40,12 +39,11 @@ const WishlistPage: FC = () => {
 
   useEffect(() => {
     const getWishlistItems = async () => {
-      const data = await Wishlist.getItems(user);
-      setWishlistItems(data.items);
+      return await Wishlist.getItems(user);
     };
 
-    getWishlistItems();
-  }, []);
+    getWishlistItems().then(data => setWishlistItems(data.items));
+  }, [user]);
 
   return (
     <React.Fragment>

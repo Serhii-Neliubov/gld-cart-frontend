@@ -18,6 +18,6 @@ const i18nConfig: InitOptions = {
   }
 };
 
-i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init(i18nConfig);
+i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init(i18nConfig).then(r => console.log(r));
 
 export default i18n;
