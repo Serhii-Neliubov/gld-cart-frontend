@@ -144,6 +144,7 @@ export const Chat: React.FC = () => {
     fileInput?.click();
   };
 
+  // @ts-ignore
   return (
     <div className="__container">
       <div className={style.chatWrapper}>
@@ -169,7 +170,6 @@ export const Chat: React.FC = () => {
                   {(userId !== chat.participants[1]._id
                     ? chat.participants[1].is_online
                     : chat.participants[0].is_online) ? <div className={style.chatPersonStatus} /> : null}
-
                 </div>
 
                 <li
@@ -177,12 +177,16 @@ export const Chat: React.FC = () => {
                   key={chat._id}
                   onClick={() => selectChat(chat._id)}
                 >
-                  {userId !== chat.participants[1]._id
-                    ? chat.participants[1].name
-                    : chat.participants[0].name}{" "}
-                  {userId !== chat.participants[1]._id
-                    ? chat.participants[1].surname
-                    : chat.participants[0].surname}
+                  <span>
+                    {userId !== chat.participants[1]._id
+                      ? chat.participants[1].name
+                      : chat.participants[0].name}
+                  </span>
+                  <span>
+                    {userId !== chat.participants[1]._id
+                      ? chat.participants[1].surname
+                      : chat.participants[0].surname}
+                  </span>
                 </li>
               </div>
             ))}
@@ -196,7 +200,14 @@ export const Chat: React.FC = () => {
               src="https://random.imagecdn.app/40/40"
               alt="image"
             />
-            <span className={style.chatPersonName}>John Doe</span>
+            <div className={style.chatPersonName}>
+              <span>
+                {chats.map(chat => chat._id === selectedChat ? chat.participants.find(participant => participant._id !== userId).name : null)}
+              </span>
+              <span>
+                {chats.map(chat => chat._id === selectedChat ? chat.participants.find(participant => participant._id !== userId).surname : null)}
+              </span>
+            </div>
           </div>
           {/* Chat message list */}
           <div className={style.messages}>
