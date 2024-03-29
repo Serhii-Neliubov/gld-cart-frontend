@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import styles from "./RentingProductsPage.module.scss";
+import styles from "./ProductsVendor.module.scss";
 import RentingStage from "@/components/renting-stages/RentingStage";
 import {useNavigate} from "react-router-dom";
 import {ProductsData} from "@/assets/data/vendor-categories/ProductsData.ts";
@@ -26,44 +26,8 @@ const clearClick: IClearClick = {
   earrings: false,
 };
 
-const ROUTES = {
-  BEAUTY: 'beauty',
-  BAGS: 'bags',
-  AWESOME: 'awesome',
-  MOBILE_TABLETS: 'mobileTablets',
-  NECKLACES: 'necklaces',
-  CLOTHING: 'clothing',
-  BLUETOOTH: 'bluetooth',
-  FACIAL_LIP_CARE: 'facial',
-  SHOES: 'shoes',
-  CPU: 'cpu',
-  DISCOVER_SKINCARE: 'discover',
-  HEADPHONES: 'headphones',
-  BRACELETS: 'bracelets',
-  SMART_WATCH: 'smartWatch',
-  EARRINGS: 'earrings'
-}
-
-const links = {
-  [ROUTES.BEAUTY]: '/products-category-page/new-beauty-of-skin-page',
-  [ROUTES.BAGS]: '/products-category-page/new-bags-page',
-  [ROUTES.AWESOME]: '/products-category-page/new-awesome-lip-care-page',
-  [ROUTES.MOBILE_TABLETS]: '/products-category-page/new-mobile-tablets-page',
-  [ROUTES.NECKLACES]: '/products-category-page/new-necklaces-page',
-  [ROUTES.CLOTHING]: '/products-category-page/new-clothing-page',
-  [ROUTES.BLUETOOTH]: '/products-category-page/new-bluetooth-page',
-  [ROUTES.FACIAL_LIP_CARE]: '/products-category-page/new-facial-care-page',
-  [ROUTES.SHOES]: '/products-category-page/new-shoes-page',
-  [ROUTES.CPU]: '/products-category-page/new-cpu-page',
-  [ROUTES.DISCOVER_SKINCARE]: '/products-category-page/new-discover-skincare-page',
-  [ROUTES.HEADPHONES]: '/products-category-page/new-headphones-page',
-  [ROUTES.BRACELETS]: '/products-category-page/new-bracelets-page',
-  [ROUTES.SMART_WATCH]: '/products-category-page/new-smartwatch-page',
-  [ROUTES.EARRINGS]: '/products-category-page/new-earrings-page'
-}
-
-const RentingProductsPage: FC = () => {
-  const [category, setCategory] = useState('products');
+const ProductsVendor: FC = () => {
+  const [category, setCategory] = useState('');
 
   const [isClicked, setIsClicked] = useState<IClearClick>({...clearClick});
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
@@ -72,7 +36,7 @@ const RentingProductsPage: FC = () => {
   const navigate = useNavigate();
 
   function productClickHandler(product: string) {
-    navigate(`${links[category]}/${category}/${selectedSubCategory}/${product}`);
+    navigate(`${category}/${selectedSubCategory}/${product}`);
   }
 
   return (
@@ -167,4 +131,4 @@ const RentingProductsPage: FC = () => {
   );
 };
 
-export default RentingProductsPage;
+export default ProductsVendor;

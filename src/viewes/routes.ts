@@ -19,27 +19,13 @@ import Register from "./register/Register.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
 import RentingCategories from "./renting-buyer/RentingCategories.tsx";
 import RentingCategoryPage from "../viewes/renting-vendor/RentingCategoryPage";
-import RentingProductsPage from "../viewes/products-vendor/RentingProductsPage";
+import ProductsVendor from "./products-vendor/ProductsVendor.tsx";
 import SendMessagePage from "../viewes/send-message-successfully/SendMessagePage";
 import ProfessionalCategories from "./professional-services-buyer/ProfessionalCategories.tsx";
 import TrackOrder from "../viewes/track-order/TrackOrder";
 import { NewVehicle } from "./renting-vendor/pages/vehicle/NewVehicle.tsx";
 import { NewElectronics } from "./renting-vendor/pages/electronics/NewElectronics.tsx";
 import { NewHouses } from "./renting-vendor/pages/houses/NewHouses.tsx";
-import { NewBeautyOfSkin } from "./products-vendor/pages/beautyOfSkin/NewBeautyOfSkin.tsx";
-import { NewBags } from "./products-vendor/pages/bags/NewBags.tsx";
-import { NewAwesomeLipCare } from "./products-vendor/pages/awesome/NewAwesomeLipCare.tsx";
-import { NewMobileTablets } from "./products-vendor/pages/mobileTablets/NewMobileTablets.tsx";
-import { NewNecklaces } from "./products-vendor/pages/necklaces/NewNecklaces.tsx";
-import { NewClothing } from "./products-vendor/pages/clothing/NewClothing.tsx";
-import { NewBluetooth } from "./products-vendor/pages/bluetooth/NewBluetooth.tsx";
-import { NewFacialCare } from "./products-vendor/pages/facial/NewFacialCare.tsx";
-import { NewShoes } from "./products-vendor/pages/shoes/NewShoes.tsx";
-import { NewCpu } from "./products-vendor/pages/cpu/NewCpu.tsx";
-import { NewDiscoverSkincare } from "./products-vendor/pages/discover/NewDiscoverSkincare.tsx";
-import { NewHeadphones } from "./products-vendor/pages/headphones/NewHeadphones.tsx";
-import { NewBracelets } from "./products-vendor/pages/braceletes/NewBracelets.tsx";
-import { NewSmartWatch } from "./products-vendor/pages/smartWatch/NewSmartWatch.tsx";
 import { NewEarrings } from "./products-vendor/pages/earrings/NewEarrings.tsx";
 import { NewCleaning } from "./professional-services-vendor/pages/cleaning/NewCleaning.tsx";
 import { NewRepairing } from "./professional-services-vendor/pages/repairing/NewRepairing.tsx";
@@ -63,6 +49,7 @@ import ProductCategories from "@/viewes/products-buyer/ProductCategories.tsx";
 import ProfessionalServices from "@/viewes/professional-services-buyer/components/professional-services/ProfessionalServices.tsx";
 import {ProfessionalService} from "@/viewes/professional-services-buyer/components/professional-service/ProfessionalService.tsx";
 import RentingProducts from "@/viewes/renting-buyer/components/renting-product/RentingProducts.tsx";
+import {ProductsFormVendor} from "@/viewes/products-vendor/ProductsFormVendor.tsx";
 
 interface IRoutes {
   component: FC;
@@ -133,7 +120,7 @@ export const vendorRoutes: IRoutes[] = [
   { component: FaqsPage, path: "/faq-s" },
   { component: NotFound, path: "/not-found" },
   { component: SendMessagePage, path: "/send-message" },
-  { component: RentingProductsPage, path: "/products-category-page" },
+  { component: ProductsVendor, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
   { component: HelpAndSupport, path: "/help-and-support" },
   {
@@ -141,6 +128,7 @@ export const vendorRoutes: IRoutes[] = [
     path: "/professional-services",
   },
   { component: QuestionsAndAnswers, path: "/chat-answers" },
+  { component: ProductsFormVendor, path: "/products-category-page/:category/:subcategory/:product" },
   // Vehicles
   {
     component: NewVehicle,
@@ -151,72 +139,6 @@ export const vendorRoutes: IRoutes[] = [
     component: NewElectronics,
     path: "/renting-category-page/new-electronics-page/:category/:subcategory/:renting-item",
   },
-  // bags
-  {
-    component: NewBags,
-    path: "/products-category-page/new-bags-page/:category/:subcategory/:product",
-  },
-  // Awesome Lip Care
-  {
-    component: NewAwesomeLipCare,
-    path: "/products-category-page/new-awesome-lip-care-page/:category/:subcategory/:product",
-  },
-  // Mobile Tablets
-  {
-    component: NewMobileTablets,
-    path: "/products-category-page/new-mobile-tablets-page/:category/:subcategory/:product",
-  },
-  // necklaces
-  {
-    component: NewNecklaces,
-    path: "/products-category-page/new-necklaces-page/:category/:subcategory/:product",
-  },
-  // clothing
-  {
-    component: NewClothing,
-    path: "/products-category-page/new-clothing-page/:category/:subcategory/:product",
-  },
-  // headphones
-  {
-    component: NewBluetooth,
-    path: "/products-category-page/new-bluetooth-page/:category/:subcategory/:product",
-  },
-  // Facial Care
-  {
-    component: NewFacialCare,
-    path: "/products-category-page/new-facial-care-page/:category/:subcategory/:product",
-  },
-  // shoes
-  {
-    component: NewShoes,
-    path: "/products-category-page/new-shoes-page/:category/:subcategory/:product",
-  },
-  // CPU
-  {
-    component: NewCpu,
-    path: "/products-category-page/new-cpu-page/:category/:subcategory/:product",
-  },
-  // Discover Skincare
-  {
-    component: NewDiscoverSkincare,
-    path: "/products-category-page/new-discover-skincare-page/:category/:subcategory/:product",
-  },
-  // headphones
-  {
-    component: NewHeadphones,
-    path: "/products-category-page/new-headphones-page/:category/:subcategory/:product",
-  },
-  // bracelets
-  {
-    component: NewBracelets,
-    path: "/products-category-page/new-bracelets-page/:category/:subcategory/:product",
-  },
-  // smartwatch
-  {
-    component: NewSmartWatch,
-    path: "/products-category-page/new-smartwatch-page/:category/:subcategory/:product",
-  },
-
   // Cleaning
   { component: NewCleaning, path: "/professional-services/new-cleaning-page" },
   // Repairing
@@ -265,11 +187,6 @@ export const vendorRoutes: IRoutes[] = [
   {
     component: NewHouses,
     path: "/renting-category-page/new-houses-page/:category/:subcategory/:renting-item",
-  },
-  // Beauty
-  {
-    component: NewBeautyOfSkin,
-    path: "/products-category-page/new-beauty-of-skin-page/:category/:subcategory/:product",
   },
 ];
 
