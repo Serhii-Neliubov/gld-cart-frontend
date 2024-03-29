@@ -24,7 +24,11 @@ export interface Chat {
 
 interface Message {
   chatId: string;
-  text: string;
+  text?: string;
+  file?: {
+    url: string;
+    name: string;
+  } | null;
   senderId: string;
   recipientId: string;
 }
@@ -174,12 +178,13 @@ export const Chat: React.FC = () => {
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
+
     reader.onload = () => {
       const fileData = {
         chatId: selectedChat,
-        file: reader.result,
+        file: reader.result, // ArrayBuffer
         fileName: selectedFile.name,
+        mimeType: selectedFile.type,
         senderId: userId,
         recipientId:
           chats.find((chat) => chat._id === selectedChat)?.participants[1]
@@ -189,10 +194,10 @@ export const Chat: React.FC = () => {
       socket?.emit("file", fileData);
     };
 
+    reader.readAsArrayBuffer(selectedFile);
+
     console.log("Selected file:", selectedFile);
   };
-
-
   const handleClick = () => {
     fileInput?.click();
   };
@@ -261,8 +266,8 @@ export const Chat: React.FC = () => {
                 {chats.map((chat) =>
                   chat._id === selectedChat
                     ? chat.participants.find(
-                        (participant) => participant._id !== userId,
-                      )?.name
+                      (participant) => participant._id !== userId,
+                    )?.name
                     : null,
                 )}
               </span>
@@ -270,8 +275,8 @@ export const Chat: React.FC = () => {
                 {chats.map((chat) =>
                   chat._id === selectedChat
                     ? chat.participants.find(
-                        (participant) => participant._id !== userId,
-                      )?.surname
+                      (participant) => participant._id !== userId,
+                    )?.surname
                     : null,
                 )}
               </span>
