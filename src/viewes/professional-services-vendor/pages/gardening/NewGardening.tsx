@@ -1,43 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./NewGardening.module.scss";
-import { Layout } from "@/components/Vendor/Layout.tsx";
 import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
 import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
-import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
+import {VendorProductComponentProps} from "@/utils/models/IVendorProductComponentProps.ts";
 
-export const NewGardening = () => {
-  const [stage, setStage] = useState(3);
-  const [formData, setFormData] = useState<IVendorProductData>({
-    title: '',
-    description: '',
-    attributes: {},
-    images: [],
-    category: '',
-    subcategory: '',
-    service_name: '',
-  });
-
+export const NewGardening = ({setStage, formData, stage, setFormData}: VendorProductComponentProps) => {
   useCategoryRedirect("gardening", "/personal-services", stage);
 
   return (
     <React.Fragment>
-      {stage < 6 && (
-        <Layout
-          setStage={setStage}
-          title="Gardening SERVICES Form"
-          subtitle="Basic information"
-          stage={stage - 1}
-        >
-          {stage == 3 && (
-            <BasicInformation formData={formData} setFormData={setFormData} />
-          )}
-          {stage == 4 && (
-            <PhotoAndVideoBlock  formData={formData} setFormData={setFormData}/>
-          )}
-          {stage == 5 && (
-            <React.Fragment>
+      stage == 3 && <BasicInformation formData={formData} setFormData={setFormData} />
+      stage == 4 && <PhotoAndVideoBlock  formData={formData} setFormData={setFormData}/>
+      stage == 5 && <React.Fragment>
               <div className={styles.inputBox}>
                 <label>Garden Size</label>
                 <input placeholder="Approximate size of the garden" />
@@ -88,10 +64,7 @@ export const NewGardening = () => {
                 </div>
               </div>
             </React.Fragment>
-          )}
-        </Layout>
-      )}
-      {stage == 6 && <ItemPublishPage link='professional-services' formData={formData} category="Gardening" />}
+      stage == 6 && <ItemPublishPage link='professional-services' formData={formData} category="Gardening" />
     </React.Fragment>
   );
 };

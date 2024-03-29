@@ -5,6 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {useInput} from "@/hooks/useInput/useInput.tsx";
 import {ProfileService} from "services/ProfileService.ts";
+import {IoPersonOutline} from "react-icons/io5";
+import {MdOutlineMail} from "react-icons/md";
+import {IoMdPhonePortrait} from "react-icons/io";
+import {CiLocationOn} from "react-icons/ci";
 
 export default function ProfileMenu() {
   const user = useSelector(userDataSelector);
@@ -48,51 +52,49 @@ export default function ProfileMenu() {
         <div className={styles.content_box_items}>
           <form className={styles.box_inputs} onSubmit={submitHandler}>
             <div className={styles.inputs_column}>
-              <input
-                className={styles.input}
-                placeholder="Eleanor"
-                type="text"
-                name="name"
-                value={name.value}
-                onChange={name.onChange}
-              />
-              <input
-                className={styles.input}
-                placeholder="Pena"
-                type="text"
-                name="surname"
-                value={surname.value}
-                onChange={surname.onChange}
-              />
+              <label className={styles.input}>
+                <IoPersonOutline className={styles.inputIcon}/>
+                <input
+                  placeholder="Eleanor"
+                  type="text"
+                  name="name"
+                  value={name.value}
+                  onChange={name.onChange}
+                />
+              </label>
+              <label className={styles.input}>
+                <MdOutlineMail className={styles.inputIcon}/>
+                <input
+                  placeholder="alma.lawson@example.com"
+                  type="text"
+                  name="email"
+                  value={email.value}
+                  onChange={email.onChange}
+                />
+              </label>
             </div>
-            <input
-              placeholder="alma.lawson@example.com"
-              className={styles.input}
-              type="text"
-              name="email"
-              value={email.value}
-              onChange={email.onChange}
-            />
-            <input
-              placeholder="0123 456 7889"
-              className={styles.input}
-              type="text"
-              name="phone_number"
-              value={phoneNumber.value}
-              onChange={phoneNumber.onChange}
-            />
-            <input
-              placeholder="3304 Randall Drive"
-              className={styles.input}
-              type="text"
-              name="address"
-              value={address.value}
-              onChange={address.onChange}
-            />
-            <input
+            <label className={styles.input}>
+              <IoMdPhonePortrait className={styles.inputIcon}/>
+              <input
+                placeholder="0123 456 7889"
+                type="text"
+                name="phone_number"
+                value={phoneNumber.value}
+                onChange={phoneNumber.onChange}
+              />
+            </label>
+            <label className={styles.input}>
+              <CiLocationOn className={styles.inputIcon}/>
+              <input
+                placeholder="3304 Randall Drive"
+                type="text"
+                name="address"
+                value={address.value}
+                onChange={address.onChange}
+              />
+            </label>
+            <textarea
               placeholder="Hi there, this is my bio..."
-              className={styles.input}
-              type="text"
               name="BIO"
               value={bio.value}
               onChange={bio.onChange}
@@ -103,5 +105,5 @@ export default function ProfileMenu() {
           </form>
         </div>
       </React.Fragment>
-    );
+  );
 }

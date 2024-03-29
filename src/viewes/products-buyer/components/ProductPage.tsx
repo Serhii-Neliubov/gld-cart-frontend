@@ -83,7 +83,7 @@ export const ProductPage = () => {
                 navigate(`/chat/${product?.seller_id}`);
             } else {
                 console.log("Chat does not exist");
-                throw new Error("Chat does not exist");
+                new Error("Chat does not exist");
             }
         } catch (error) {
             console.error("Error while checking chat:", error);
