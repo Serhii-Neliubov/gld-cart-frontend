@@ -144,7 +144,6 @@ export const Chat: React.FC = () => {
     fileInput?.click();
   };
 
-  // @ts-ignore
   return (
     <div className="__container">
       <div className={style.chatWrapper}>
@@ -202,10 +201,10 @@ export const Chat: React.FC = () => {
             />
             <div className={style.chatPersonName}>
               <span>
-                {chats.map(chat => chat._id === selectedChat ? chat.participants.find(participant => participant._id !== userId).name : null)}
+                {chats.map(chat => chat._id === selectedChat ? chat.participants.find(participant => participant._id !== userId)?.name : null)}
               </span>
               <span>
-                {chats.map(chat => chat._id === selectedChat ? chat.participants.find(participant => participant._id !== userId).surname : null)}
+                {chats.map(chat => chat._id === selectedChat ? chat.participants.find(participant => participant._id !== userId)?.surname : null)}
               </span>
             </div>
           </div>
