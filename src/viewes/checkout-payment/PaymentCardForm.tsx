@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
-
+import styles from './PaymentCheckout.module.scss';
 const STRIPE_SECRET_KEY = 'pk_test_51LwMMSIr9qomMnpIKf6KC11Fw326JmIM7THj2zhFsrzuRs63CTcdnABWvpGWAKr96dF0qNHwoE3JFuq8R8Vif54i007XexrztK';
 
 export const PaymentCardForm = () => {
@@ -51,7 +51,8 @@ export const PaymentCardForm = () => {
     clientSecret && stripePromise && (
       <Elements options={options} stripe={stripePromise}>
         <PaymentWrapper />
-      </Elements>)
+      </Elements>
+    )
   );
 }
 
@@ -104,7 +105,7 @@ const PaymentWrapper = () => {
     });
 
     if (error?.type === "card_error" || error?.type === "validation_error") {
-      alert(error.message);
+      console.log(error.message);
     } else {
       alert("An unexpected error occurred.");
     }
@@ -114,7 +115,7 @@ const PaymentWrapper = () => {
     <div className='__container'>
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element"/>
-        <button disabled={!stripe || !elements} id="submit">
+        <button disabled={!stripe || !elements} className={styles.submitPaymentButton}>
           Submit Payment
         </button>
       </form>

@@ -20,7 +20,6 @@ import imageProfileIcon8 from '@/assets/images/ProfilePage/icon8.svg'
 import imageProfileIcon9 from '@/assets/images/ProfilePage/icon9.svg'
 import imageProfileIcon10 from '@/assets/images/ProfilePage/icon10.svg'
 
-
 const ProfilePage: FC = () => {
   const user = useSelector(userDataSelector);
   const [selectedLabel, setSelectedLabel] = useState("Profile");

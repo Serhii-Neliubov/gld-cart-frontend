@@ -3,7 +3,25 @@
   padding: 140px 0;
 
 }
+.submitPaymentButton{
+  background-color: #02A0A0;
+  color: white;
+  font-weight: 600;
+  font-family: "Poppins", serif;
+  text-transform: uppercase;
+  padding: 20px 0;
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 
+  transition: all .3s ease;
+
+  &:hover{
+    background-color: #03b7b7;
+  }
+}
 .routePath{
   display: flex;
   gap: 30px;
