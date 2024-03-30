@@ -122,12 +122,12 @@ export const Chat: React.FC = () => {
   const handleIncomingMessage = (newMessage: Message) => {
     if (newMessage.chatId === selectedChat) {
       setMessages((prevMessages) => [...prevMessages, newMessage]);
+      console.log("Received message:", newMessage);
     }
   };
 
   const sendMessage = () => {
     if (!selectedChat || !socket) return;
-
     const message: Message = {
       chatId: selectedChat,
       text: messageInput,
