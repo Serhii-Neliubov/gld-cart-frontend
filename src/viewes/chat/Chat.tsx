@@ -43,19 +43,18 @@ export const Chat: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { recipientId: paramUserId } = useParams<{ recipientId: string }>();
 
-  let fileInput: HTMLInputElement | null = useRef(null);
+  let fileInput: HTMLInputElement | null = null;
 
   useEffect(() => {
     const newSocket = io(`${API_URL}/chat`, { query: { userId } });
     setSocket(newSocket);
     newSocket.on("chats", (chatData) => {
-      console.log(chatData);
       setChats(chatData);
     });
     return () => {
       newSocket.disconnect();
     };
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (socket) {
@@ -94,7 +93,6 @@ export const Chat: React.FC = () => {
   }, [socket]);
 
   useEffect(() => {
-    console.log("Param user id:", paramUserId);
     const selectedChatId =
       chats.find((chat) =>
         chat.participants.some(
@@ -102,7 +100,8 @@ export const Chat: React.FC = () => {
         ),
       )?._id || null;
     setSelectedChat(selectedChatId);
-  }, [paramUserId, chats]);
+    socket?.emit("join", selectedChatId);
+  }, [paramUserId, chats, socket]);
 
   useEffect(() => {
     if (socket && selectedChat) {
@@ -113,11 +112,7 @@ export const Chat: React.FC = () => {
   useEffect(() => {
     if (socket) {
       socket.on("message", (newMessage: Message) => {
-        console.log("Received message:", newMessage);
-        console.log("Selected chat:", selectedChat);
-        console.log("ChatId:", newMessage.chatId);
         if (newMessage.chatId === selectedChat) {
-          console.log("Adding message to chat:", newMessage);
           setMessages((prevMessages) => [...prevMessages, newMessage]);
         }
       });
@@ -132,7 +127,6 @@ export const Chat: React.FC = () => {
   const fetchMessages = async (chatId: string) => {
     try {
       const response = await $api.get(`${API_URL}/message/${chatId}`);
-
       setMessages(response.data);
     } catch (error) {
       console.error("Error fetching messages:", error);
@@ -147,10 +141,11 @@ export const Chat: React.FC = () => {
       text: messageInput,
       senderId: userId,
       recipientId:
-        chats.find((chat) => chat._id === selectedChat)?.participants[1]._id ||
-        "",
+        chats
+          .find((chat) => chat._id === selectedChat)
+          ?.participants.find((participant) => participant._id !== userId)
+          ?._id || "",
     };
-    console.log("Sending message:", message);
     socket.emit("message", message);
     setMessageInput("");
     setMessages((prevMessages) => [...prevMessages, message]);
@@ -175,7 +170,7 @@ export const Chat: React.FC = () => {
     }
   };
 
-  const handleFileChange = (event) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files[0];
     const reader = new FileReader();
 
@@ -187,17 +182,17 @@ export const Chat: React.FC = () => {
         mimeType: selectedFile.type,
         senderId: userId,
         recipientId:
-          chats.find((chat) => chat._id === selectedChat)?.participants[1]
-            ._id || "",
+          chats
+            .find((chat) => chat._id === selectedChat)
+            ?.participants.find((participant) => participant._id !== userId)
+            ?._id || "",
       };
-      console.log("File data:", fileData);
       socket?.emit("file", fileData);
     };
 
     reader.readAsArrayBuffer(selectedFile);
-
-    console.log("Selected file:", selectedFile);
   };
+
   const handleClick = () => {
     fileInput?.click();
   };
