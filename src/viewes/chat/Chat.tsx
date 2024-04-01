@@ -22,19 +22,21 @@ export interface Chat {
   participants: User[];
 }
 
+interface File {
+  url: string;
+  name: string;
+}
+
 interface Message {
   chatId: string;
   text?: string;
-  file?: {
-    url: string;
-    name: string;
-  } | null;
+  files?: File[] | null;
   senderId: string;
   recipientId: string;
 }
 
 export const Chat: React.FC = () => {
-  const [messageInput, setMessageInput] = useState("");
+  const [messageInput, setMessageInput] = useState<string>("");
   const userId = useSelector(userDataSelector).id;
   const [chats, setChats] = useState<Chat[]>([]);
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
@@ -42,85 +44,35 @@ export const Chat: React.FC = () => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { recipientId: paramUserId } = useParams<{ recipientId: string }>();
-
-  let fileInput: HTMLInputElement | null = useRef(null);
+  let fileInput: HTMLInputElement | null = null;
 
   useEffect(() => {
     const newSocket = io(`${API_URL}/chat`, { query: { userId } });
     setSocket(newSocket);
     newSocket.on("chats", (chatData) => {
-      console.log(chatData);
       setChats(chatData);
+    });
+    newSocket.on("status", (statusData) => {
+      updateChatStatus(statusData);
+    });
+    newSocket.on("newChat", (newChat: Chat) => {
+      setChats((prevChats) => [...prevChats, newChat]);
     });
     return () => {
       newSocket.disconnect();
     };
-  }, []);
-
-  useEffect(() => {
-    if (socket) {
-      socket.on("status", (statusData) => {
-        setChats((prevChats) =>
-          prevChats.map((chat) => {
-            const chatParticipants = chat.participants.map((participant) => {
-              if (participant._id === statusData.userId) {
-                return { ...participant, is_online: statusData.status };
-              }
-              return participant;
-            });
-            return { ...chat, participants: chatParticipants };
-          }),
-        );
-      });
-    }
-    return () => {
-      if (socket) {
-        socket.off("status");
-      }
-    };
-  }, [socket]);
-
-  useEffect(() => {
-    if (socket) {
-      socket.on("newChat", (newChat: any) => {
-        setChats((prevChats) => [...prevChats, newChat]);
-      });
-    }
-    return () => {
-      if (socket) {
-        socket.off("newChat");
-      }
-    };
-  }, [socket]);
-
-  useEffect(() => {
-    console.log("Param user id:", paramUserId);
-    const selectedChatId =
-      chats.find((chat) =>
-        chat.participants.some(
-          (participant) => participant._id === paramUserId,
-        ),
-      )?._id || null;
-    setSelectedChat(selectedChatId);
-  }, [paramUserId, chats]);
+  }, [userId]);
 
   useEffect(() => {
     if (socket && selectedChat) {
+      socket.emit("join", selectedChat);
       fetchMessages(selectedChat);
     }
   }, [socket, selectedChat]);
 
   useEffect(() => {
     if (socket) {
-      socket.on("message", (newMessage: Message) => {
-        console.log("Received message:", newMessage);
-        console.log("Selected chat:", selectedChat);
-        console.log("ChatId:", newMessage.chatId);
-        if (newMessage.chatId === selectedChat) {
-          console.log("Adding message to chat:", newMessage);
-          setMessages((prevMessages) => [...prevMessages, newMessage]);
-        }
-      });
+      socket.on("message", handleIncomingMessage);
     }
     return () => {
       if (socket) {
@@ -129,42 +81,79 @@ export const Chat: React.FC = () => {
     };
   }, [socket, selectedChat]);
 
+  useEffect(() => {
+    const selectedChatId = findSelectedChatId(chats, paramUserId || userId);
+    setSelectedChat(selectedChatId);
+    if (socket && selectedChatId) {
+      socket.emit("join", selectedChatId);
+    }
+  }, [paramUserId, chats, socket]);
+
+  const updateChatStatus = (statusData: any) => {
+    setChats((prevChats) =>
+      prevChats.map((chat) => {
+        const updatedParticipants = chat.participants.map((participant) => {
+          if (participant._id === statusData.userId) {
+            return { ...participant, is_online: statusData.status };
+          }
+          return participant;
+        });
+        return { ...chat, participants: updatedParticipants };
+      }),
+    );
+  };
+
+  const findSelectedChatId = (chats: Chat[], userId: string): string | null => {
+    const selectedChat = chats.find((chat) =>
+      chat.participants.some((participant) => participant._id === userId),
+    );
+    return selectedChat?._id || null;
+  };
+
   const fetchMessages = async (chatId: string) => {
     try {
       const response = await $api.get(`${API_URL}/message/${chatId}`);
-
       setMessages(response.data);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
   };
 
+  const handleIncomingMessage = (newMessage: Message) => {
+    if (newMessage.chatId === selectedChat) {
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
+      console.log("Received message:", newMessage);
+    }
+  };
+
   const sendMessage = () => {
     if (!selectedChat || !socket) return;
-
     const message: Message = {
       chatId: selectedChat,
       text: messageInput,
       senderId: userId,
-      recipientId:
-        chats.find((chat) => chat._id === selectedChat)?.participants[1]._id ||
-        "",
+      recipientId: findRecipientId(selectedChat),
     };
-    console.log("Sending message:", message);
     socket.emit("message", message);
     setMessageInput("");
     setMessages((prevMessages) => [...prevMessages, message]);
   };
 
+  const findRecipientId = (chatId: string): string => {
+    const chat = chats.find((chat) => chat._id === chatId);
+    return (
+      chat?.participants.find((participant) => participant._id !== userId)
+        ?._id || ""
+    );
+  };
+
   const selectChat = (chatId: string) => {
     setSelectedChat(chatId);
     inputRef.current?.focus();
-    socket?.emit("join", chatId);
-    const otherUserId =
-      chats
-        .find((chat) => chat._id === chatId)
-        ?.participants.find((participant) => participant._id !== userId)?._id ||
-      "";
+    if (socket) {
+      socket.emit("join", chatId);
+    }
+    const otherUserId = findRecipientId(chatId);
     window.history.pushState({}, "", `/chat/${otherUserId}`);
   };
 
@@ -175,33 +164,39 @@ export const Chat: React.FC = () => {
     }
   };
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    const reader = new FileReader();
+  const handleFilesChange = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const files = event.target.files;
+    if (!files) return;
 
-    reader.onload = () => {
-      const fileData = {
+    const formData = new FormData();
+    Array.from(files).forEach((file) => {
+      formData.append("files", file);
+    });
+
+    try {
+      const files = await $api.post(`${API_URL}/files/aws`, formData);
+      console.log(files.data);
+      if (!selectedChat || !socket) return;
+      const message: Message = {
         chatId: selectedChat,
-        file: reader.result, // ArrayBuffer
-        fileName: selectedFile.name,
-        mimeType: selectedFile.type,
+        files: files.data,
         senderId: userId,
-        recipientId:
-          chats.find((chat) => chat._id === selectedChat)?.participants[1]
-            ._id || "",
+        recipientId: findRecipientId(selectedChat),
       };
-      console.log("File data:", fileData);
-      socket?.emit("file", fileData);
-    };
-
-    reader.readAsArrayBuffer(selectedFile);
-
-    console.log("Selected file:", selectedFile);
+      socket.emit("message", message);
+      setMessages((prevMessages) => [...prevMessages, message]);
+    } catch (error) {
+      console.error("Error uploading files:", error);
+    }
   };
+
   const handleClick = () => {
-    fileInput?.click();
+    if (fileInput) {
+      fileInput.click();
+    }
   };
-
   return (
     <div className="__container">
       <div className={style.chatWrapper}>
@@ -307,7 +302,7 @@ export const Chat: React.FC = () => {
                 type="file"
                 style={{ display: "none" }}
                 ref={(input) => (fileInput = input)}
-                onChange={handleFileChange}
+                onChange={handleFilesChange}
               />
               <BsPaperclip className={style.sendFileButton} />
             </button>
