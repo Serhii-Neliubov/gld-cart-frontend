@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import io, { Socket } from "socket.io-client";
+import React, {useEffect, useRef, useState} from "react";
+import io, {Socket} from "socket.io-client";
 import style from "./Chat.module.scss";
-import { useSelector } from "react-redux";
-import { userDataSelector } from "@/store/slices/userDataSlice.ts";
-import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
-import { IoSend } from "react-icons/io5";
-import { useParams } from "react-router-dom";
-import { CiSearch } from "react-icons/ci";
-import { BsPaperclip } from "react-icons/bs";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import {IoCloudDownloadOutline, IoSend} from "react-icons/io5";
+import {useParams} from "react-router-dom";
+import {CiSearch} from "react-icons/ci";
+import {BsPaperclip} from "react-icons/bs";
 
 interface User {
   _id: string;
@@ -164,6 +164,29 @@ export const Chat: React.FC = () => {
     }
   };
 
+  const handleDownload = (imageUrl: string) => {
+    // Создаем элемент <a> для скачивания изображения
+    const link = document.createElement("a");
+    // Задаем URL изображения для скачивания
+    link.href = imageUrl;
+    // Получаем имя файла из URL изображения
+    const fileName = imageUrl.split('/').pop();
+    // Задаем имя файла для скачивания
+    link.download = fileName;
+
+    // Добавляем заголовок Content-Disposition
+    link.setAttribute('download', fileName);
+    link.setAttribute('target', '_blank');
+
+    // Добавляем элемент <a> в тело документа
+    document.body.appendChild(link);
+    // Имитируем клик по ссылке для скачивания
+    link.click();
+    // Удаляем элемент <a> из тела документа
+    document.body.removeChild(link);
+  };
+
+
   const handleFilesChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -283,16 +306,36 @@ export const Chat: React.FC = () => {
               messages
                 .filter((message) => message.chatId === selectedChat)
                 .map((message, index) => (
-                  <div
-                    key={index}
-                    className={
-                      message.senderId === userId
-                        ? `${style.userRight}`
-                        : `${style.userLeft}`
-                    }
-                  >
-                    <p>{message.text}</p>
-                  </div>
+                  message.text ?
+                    <div
+                      key={index}
+                      className={
+                        message.senderId === userId
+                          ? `${style.userRight}`
+                          : `${style.userLeft}`
+                      }
+                    >
+                      <p>{message.text}</p>
+                    </div> : null
+                ))}
+            {selectedChat &&
+              messages
+                .filter((message) => message.chatId === selectedChat)
+                .map((message, index) => (
+                  message.files?.map(fileMessage =>
+                    <div
+                      key={index}
+                      className={
+                        message.senderId === userId
+                          ? `${style.userRight}`
+                          : `${style.userLeft}`
+                      }
+                    >
+                      <p>{fileMessage.originalName}</p>
+                      <div onClick={() => handleDownload(fileMessage.url)}>
+                        <IoCloudDownloadOutline />
+                      </div>
+                  </div>)
                 ))}
           </div>
           {/* Message input and send button */}
@@ -300,7 +343,7 @@ export const Chat: React.FC = () => {
             <button onClick={handleClick}>
               <input
                 type="file"
-                style={{ display: "none" }}
+                style={{display: "none"}}
                 ref={(input) => (fileInput = input)}
                 onChange={handleFilesChange}
               />
