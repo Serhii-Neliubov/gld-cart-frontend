@@ -11,13 +11,13 @@ export default function NoItems({ title }: NoItemsProps) {
   return (
     <React.Fragment>
       <div className='__container'>
-        <h1>Wishlist</h1>
+        <h1>{title}</h1>
         <div className={styles.path}>
           <span>Home</span>
-          <span>Wishlist</span>
+          <span>{title}</span>
         </div>
         <div className={styles.content}>
-          <h2>{title}</h2>
+          <h2>No {title} Items Found</h2>
           <Link className={styles.link} to="/products">
             Continue Shopping
           </Link>

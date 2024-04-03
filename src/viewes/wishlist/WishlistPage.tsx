@@ -18,7 +18,7 @@ const WishlistPage: FC = () => {
   });
 
   if(!data?.length) {
-    return <NoItems title="No Wishlist Items Found"/>
+    return <NoItems title="Wishlist"/>
   }
 
   return (
@@ -39,9 +39,7 @@ const WishlistPage: FC = () => {
                   <span></span>
                 </div>
                 <div className={styles.productList}>
-                  {data.map((item: TypeWishlistItem) => {
-                    return <WishlistItem item={item}/>
-                  })}
+                  {data.map((item: TypeWishlistItem) => <WishlistItem item={item} key={item._id}/>)}
                 </div>
               </div>
             </div>
