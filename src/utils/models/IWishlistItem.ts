@@ -1,4 +1,4 @@
-export type WishlistItem = {
+export type TypeWishlistItem = {
   product: {
     "reviews": [],
     "_id": string,
