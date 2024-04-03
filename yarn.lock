@@ -745,6 +745,18 @@
   resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-3.0.5.tgz#8e4c8e2dcf3a283f56d83ee1c8016f2cbf0e9535"
   integrity sha512-0BTd2bC+8gSKty7jXKRntLnvmWgFTmpZkY0oP7ADBYfdV0JtuGoDbfQawui0W5eUlwT3CcKh2IeRV4SPOBIeXQ==
 
+"@tanstack/query-core@5.28.13":
+  version "5.28.13"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.28.13.tgz#15c187c23b87a393e91d0fd2ea6dfc22b8a85b75"
+  integrity sha512-C3+CCOcza+mrZ7LglQbjeYEOTEC3LV0VN0eYaIN6GvqAZ8Foegdgch7n6QYPtT4FuLae5ALy+m+ZMEKpD6tMCQ==
+
+"@tanstack/react-query@^5.28.14":
+  version "5.28.14"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.28.14.tgz#9585b6300eb8f167ed374e2748043dc8d6476709"
+  integrity sha512-cZqt03Igb3I9tM72qNX5TAAmeYl75Z+k4Mv92VkXIXc2hCrv0fIywd7GN3JV1BBJl4mr7Cc+OOKKOPy8sNVOkA==
+  dependencies:
+    "@tanstack/query-core" "5.28.13"
+
 "@types/babel__core@^7.20.5":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"

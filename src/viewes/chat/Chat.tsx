@@ -165,24 +165,19 @@ export const Chat: React.FC = () => {
   };
 
   const handleDownload = (imageUrl: string) => {
-    // Создаем элемент <a> для скачивания изображения
     const link = document.createElement("a");
-    // Задаем URL изображения для скачивания
+
     link.href = imageUrl;
-    // Получаем имя файла из URL изображения
+
     const fileName = imageUrl.split('/').pop();
-    // Задаем имя файла для скачивания
+
     link.download = fileName;
 
-    // Добавляем заголовок Content-Disposition
     link.setAttribute('download', fileName);
     link.setAttribute('target', '_blank');
 
-    // Добавляем элемент <a> в тело документа
     document.body.appendChild(link);
-    // Имитируем клик по ссылке для скачивания
     link.click();
-    // Удаляем элемент <a> из тела документа
     document.body.removeChild(link);
   };
 

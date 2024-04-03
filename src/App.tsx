@@ -20,6 +20,7 @@ const App: FC = () => {
 
   useEffect(() => {
     if(!user.id) return;
+
     initSocket(user.id)(dispatch);
   }, [user.id]);
 
