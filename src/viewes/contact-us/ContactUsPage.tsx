@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { FC, FormEvent } from 'react';
+import React from 'react';
+import { FC } from 'react';
 import styles from './ContactUsPage.module.scss';
 import Footer from '@/components/footer/Footer.tsx';
 import { useNavigate } from 'react-router-dom';
 import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
-import { useInput } from '@/hooks/useInput/useInput.tsx';
 import { ContactUsService } from '@/services/ContactUsService.ts';
+import { useForm, SubmitHandler } from "react-hook-form"
 
 import imageContactUs1 from "@/assets/images/contact-us/icon1.svg";
 import imageContactUs2 from "@/assets/images/contact-us/icon2.svg";
@@ -14,28 +14,24 @@ import imageSocialIcon1 from "@/assets/images/contact-us/social1.png";
 import imageSocialIcon2 from "@/assets/images/contact-us/social2.png";
 import imageSocialIcon3 from "@/assets/images/contact-us/social3.png";
 
+interface IFormData {
+  name: string,
+  email: string,
+  subject: string,
+  message: string
+}
+
 const ContactUsPage: FC = () => {
   useDefaultScrollPosition();
+  const { register, handleSubmit } = useForm<IFormData>()
+  const onSubmit: SubmitHandler<IFormData> = (data) => sendMessageHandler(data)
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  const name = useInput('');
-  const email = useInput('');
-  const subject = useInput('');
-  const [message, setMessage] = useState('');
-
-  async function sendMessageHandler(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
+  async function sendMessageHandler(data: IFormData) {
     try {
-      await ContactUsService.sendMessage({
-        name: name.value,
-        email: email.value,
-        subject: subject.value,
-        message: message,
-        token: token,
-      });
+      await ContactUsService.sendMessage({...data, token});
 
       navigate("/send-message");
     } catch (error) {
@@ -53,43 +49,37 @@ const ContactUsPage: FC = () => {
             <span>Contact</span>
           </div>
           <div className={styles.content}>
-            <form className={styles.form} onSubmit={sendMessageHandler}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
               <h2 className={styles.content_title}>Sent A Message</h2>
               <div className={styles.inputs}>
-                <div className={styles.input}>
+                <label className={styles.input}>
                   <span>Your Name</span>
                   <input
-                    value={name.value}
-                    onChange={name.onChange}
+                    {...register("name")}
                     type="text"
                     placeholder='Cameron Williamson'
                   />
-                </div>
-                <div className={styles.input}>
+                </label>
+                <label className={styles.input}>
                   <span>Your Email</span>
                   <input
-                    value={email.value}
-                    onChange={email.onChange}
+                    {...register("email")}
                     type="text"
                     placeholder='Gldcart@gmail.com'
                   />
-                </div>
-                <div className={styles.input}>
+                </label>
+                <label className={styles.input}>
                   <span>Your Subject</span>
                   <input
-                    value={subject.value}
-                    onChange={subject.onChange}
+                    {...register("subject")}
                     type="text"
                     placeholder='Write your subject'
                   />
-                </div>
-                <div className={styles.textarea}>
+                </label>
+                <label className={styles.textarea}>
                   <span>Your Message</span>
-                  <textarea
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                </div>
+                  <textarea {...register("message")}/>
+                </label>
               </div>
               <div className={styles.checkbox}>
                 <input type="checkbox"/>

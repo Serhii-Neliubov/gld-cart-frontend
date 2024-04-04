@@ -1,5 +1,4 @@
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
-import IUser from "@/utils/models/IUser.ts";
 export default class Wishlist {
   static async removeItem (itemId: string | undefined, userId: string) {
     try {
@@ -37,11 +36,11 @@ export default class Wishlist {
     }
   }
 
-  static async getItems (user: IUser) {
+  static async getItems (userId: string) {
     try {
-      const response = await $api.get(`${API_URL}/wishlist/${user.id}`);
+      const response = await $api.get(`${API_URL}/wishlist/${userId}`);
 
-      return response.data;
+      return response.data.items;
     } catch (e) {
       console.error("Error fetching wishlist items:", e);
     }

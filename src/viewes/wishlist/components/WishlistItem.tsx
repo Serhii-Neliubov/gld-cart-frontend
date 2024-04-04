@@ -20,7 +20,7 @@ export const WishlistItem = ({item}: {item: TypeWishlistItem}) => {
   });
 
   // TODO: Item quantity should be dynamic
-  const itemToCartAdd = useMutation({
+  const itemAddToCart = useMutation({
     mutationFn: (itemId: string) => ShoppingCart.addToCart(itemId, user.id, 1),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['wishlistItems'] }),
     onError: () => toast.error("Error adding item to cart")
@@ -34,7 +34,7 @@ export const WishlistItem = ({item}: {item: TypeWishlistItem}) => {
       </div>
       <span className={styles.productPrice}>$500.00</span>
       <button
-        onClick={() => itemToCartAdd.mutate(item.product._id)}
+        onClick={() => itemAddToCart.mutate(item.product._id)}
         className={styles.addToCart}
       >
         Add to Cart

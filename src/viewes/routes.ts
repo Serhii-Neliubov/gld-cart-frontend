@@ -10,11 +10,9 @@ import HelpAndSupport from "../viewes/help-and-support/HelpAndSupport";
 import ProfilePage from "../viewes/profile/ProfilePage";
 import ShoppingCartPage from "../viewes/shopping-cart/ShoppingCartPage";
 import ForgottenPasswordPage from "../viewes/forgot-password/ForgottenPasswordPage";
-import ForgottenAttentionPage from "../viewes/forgot-password/forgot-password-sended/ForgottenAttentionPage";
-import NewPasswordPage from "../viewes/forgot-password/new-password/NewPasswordPage";
 import LoginPage from "../viewes/login/LoginPage";
 import NotFound from "../viewes/not-found/NotFound";
-import Register from "./register/Register.tsx";
+import Registration from "./register/Registration.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
 import RentingCategories from "./renting-buyer/RentingCategories.tsx";
 import RentingCategoryPage from "../viewes/renting-vendor/RentingCategoryPage";
@@ -40,6 +38,8 @@ import {ProfessionalService} from "@/viewes/professional-services-buyer/componen
 import RentingProducts from "@/viewes/renting-buyer/components/renting-product/RentingProducts.tsx";
 import {ProductsFormVendor} from "@/viewes/products-vendor/ProductsFormVendor.tsx";
 import {ProfessionalServicesFormVendor} from "@/viewes/professional-services-vendor/ProfessionalServicesFormVendor.tsx";
+import NewPasswordPage from "@/viewes/forgot-password/new-password/NewPasswordPage.tsx";
+import ForgottenAttentionPage from "@/viewes/forgot-password/forgot-password-sended/ForgottenAttentionPage.tsx";
 
 interface IRoutes {
   component: FC;
@@ -132,7 +132,7 @@ export const vendorRoutes: IRoutes[] = [
 export const noAuthRotes: IRoutes[] = [
   { component: ProductPage, path: "/renting-item-page/:id" },
   { component: Home, path: "/" },
-  { component: Register, path: "/register" },
+  { component: Registration, path: "/register" },
   { component: RentingCategories, path: "/renting" },
   { component: LoginPage, path: "/login" },
   { component: PrivacyPolicyPage, path: "/privacy-policy" },

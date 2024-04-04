@@ -12,13 +12,21 @@ import {TypeWishlistItem} from "@/utils/models/IWishlistItem.ts";
 const WishlistPage: FC = () => {
   const user = useSelector(userDataSelector);
 
-  const { data } = useQuery({
+  const { data, isError, isLoading } = useQuery({
     queryKey: ["wishlistItems"],
-    queryFn: () => Wishlist.getItems(user).then((res) => res.items),
+    queryFn: () => Wishlist.getItems(user.id),
   });
 
   if(!data?.length) {
     return <NoItems title="Wishlist"/>
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (isError) {
+    return <div>Error</div>
   }
 
   return (

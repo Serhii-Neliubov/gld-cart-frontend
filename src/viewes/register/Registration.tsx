@@ -1,6 +1,6 @@
 import { FC, FormEvent, useState } from "react";
 import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
-import styles from "./Register.module.scss";
+import styles from "./Registration.module.scss";
 import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import { useInput } from "@/hooks/useInput/useInput.tsx";
 import toast from "react-hot-toast";
 import { register } from "@/store/slices/userDataSlice.ts";
 
-const Register: FC = () => {
+const Registration: FC = () => {
   useDefaultScrollPosition();
 
   const dispatch = useDispatch<AppDispatch>();
@@ -149,4 +149,4 @@ const Register: FC = () => {
   );
 };
 
-export default Register;
+export default Registration;
