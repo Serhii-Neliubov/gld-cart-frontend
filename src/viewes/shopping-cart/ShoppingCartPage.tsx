@@ -26,7 +26,7 @@ const ShoppingCartPage: FC = () => {
       await $api.post('/order/create-order', {
         user: user.id,
         products: data.map((item: TypeCartItem) => item._id),
-        total: "123",
+        total: 123,
       });
 
       navigate('/checkout-payment');

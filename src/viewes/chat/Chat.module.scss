@@ -34,7 +34,37 @@
     outline: none;
   }
 }
-
+.fileMessageBlock{
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  width: 30%;
+  justify-content: end;
+  gap: 5px;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all .3s ease;
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+.fileMessageBlockLeft{
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  width: 30%;
+  justify-content: start;
+  gap: 5px;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all .3s ease;
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
 .chatsList{
   white-space: nowrap;
   padding: 0 24px;

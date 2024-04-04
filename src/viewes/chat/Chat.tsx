@@ -6,7 +6,7 @@ import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 import {IoCloudDownloadOutline, IoSend} from "react-icons/io5";
 import {useParams} from "react-router-dom";
-import {CiSearch} from "react-icons/ci";
+import {CiFileOn, CiSearch} from "react-icons/ci";
 import {BsPaperclip} from "react-icons/bs";
 
 interface User {
@@ -311,26 +311,27 @@ export const Chat: React.FC = () => {
                       }
                     >
                       <p>{message.text}</p>
-                    </div> : null
-                ))}
-            {selectedChat &&
-              messages
-                .filter((message) => message.chatId === selectedChat)
-                .map((message, index) => (
-                  message.files?.map(fileMessage =>
-                    <div
-                      key={index}
-                      className={
-                        message.senderId === userId
-                          ? `${style.userRight}`
-                          : `${style.userLeft}`
-                      }
-                    >
-                      <p>{fileMessage.originalName}</p>
-                      <div onClick={() => handleDownload(fileMessage.url)}>
-                        <IoCloudDownloadOutline />
+                    </div> :
+                    message.files?.map(fileMessage => {
+                      return <div
+                        key={index}
+                        className={
+                          message.senderId === userId
+                            ? `${style.userRight}`
+                            : `${style.userLeft}`
+                        }
+                      >
+                        <div className={
+                          message.senderId === userId
+                            ? `${style.fileMessageBlock}`
+                            : `${style.fileMessageBlockLeft}`
+                          } onClick={() => handleDownload(fileMessage.url)}
+                        >
+                          <p>{fileMessage.originalName}</p>
+                          <CiFileOn style={{minWidth: '30px', minHeight: '30px'}}/>
+                        </div>
                       </div>
-                  </div>)
+                    })
                 ))}
           </div>
           {/* Message input and send button */}
@@ -342,7 +343,7 @@ export const Chat: React.FC = () => {
                 ref={(input) => (fileInput = input)}
                 onChange={handleFilesChange}
               />
-              <BsPaperclip className={style.sendFileButton} />
+              <BsPaperclip className={style.sendFileButton}/>
             </button>
             <input
               placeholder="Send message..."
