@@ -6,6 +6,20 @@ import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import { useForm, SubmitHandler } from "react-hook-form"
+
+interface IFormData {
+  name: string,
+  surname: string,
+  country: string,
+  street: string,
+  town: string,
+  zipcode: string,
+  phone: string,
+  email: string,
+  orderNotes: string
+}
 
 interface IProduct {
   _id: string;
@@ -14,6 +28,9 @@ interface IProduct {
 }
 
 export const PaymentCheckout = () => {
+  useDefaultScrollPosition();
+  const { register, formState: { errors }, handleSubmit } = useForm<IFormData>()
+
   const [clientSecret, setClientSecret] = useState('');
   const navigate = useNavigate();
   const user = useSelector(userDataSelector);

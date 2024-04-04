@@ -13,6 +13,7 @@ import imageContactUs3 from "@/assets/images/contact-us/icon3.svg";
 import imageSocialIcon1 from "@/assets/images/contact-us/social1.png";
 import imageSocialIcon2 from "@/assets/images/contact-us/social2.png";
 import imageSocialIcon3 from "@/assets/images/contact-us/social3.png";
+import toast from "react-hot-toast";
 
 interface IFormData {
   name: string,
@@ -23,7 +24,7 @@ interface IFormData {
 
 const ContactUsPage: FC = () => {
   useDefaultScrollPosition();
-  const { register, handleSubmit } = useForm<IFormData>()
+  const { register, formState: { errors }, handleSubmit } = useForm<IFormData>()
   const onSubmit: SubmitHandler<IFormData> = (data) => sendMessageHandler(data)
 
   const navigate = useNavigate();
@@ -32,11 +33,15 @@ const ContactUsPage: FC = () => {
   async function sendMessageHandler(data: IFormData) {
     try {
       await ContactUsService.sendMessage({...data, token});
-
       navigate("/send-message");
     } catch (error) {
       console.log(error);
     }
+  }
+
+  if(errors){
+    const fieldError = Object.keys(errors)[0];
+    fieldError && toast.error(`${fieldError} is required`);
   }
 
   return (
@@ -55,7 +60,7 @@ const ContactUsPage: FC = () => {
                 <label className={styles.input}>
                   <span>Your Name</span>
                   <input
-                    {...register("name")}
+                    {...register("name", {required: true})}
                     type="text"
                     placeholder='Cameron Williamson'
                   />
@@ -63,7 +68,7 @@ const ContactUsPage: FC = () => {
                 <label className={styles.input}>
                   <span>Your Email</span>
                   <input
-                    {...register("email")}
+                    {...register("email", {required: true})}
                     type="text"
                     placeholder='Gldcart@gmail.com'
                   />
@@ -71,14 +76,16 @@ const ContactUsPage: FC = () => {
                 <label className={styles.input}>
                   <span>Your Subject</span>
                   <input
-                    {...register("subject")}
+                    {...register("subject", {required: true})}
                     type="text"
                     placeholder='Write your subject'
                   />
                 </label>
                 <label className={styles.textarea}>
                   <span>Your Message</span>
-                  <textarea {...register("message")}/>
+                  <textarea
+                    {...register("message", {required: true})}
+                  />
                 </label>
               </div>
               <div className={styles.checkbox}>
