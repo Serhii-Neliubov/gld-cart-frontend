@@ -6,6 +6,7 @@ import { AuthResponse } from "@/utils/models/response/AuthResponse.ts";
 import { RootState } from "@/store/store.ts";
 import toast from "react-hot-toast";
 import {API_URL} from "@/utils/interceptors/interceptors.ts";
+
 const initialState = {
     user: {} as IUser,
     isAuth: false,

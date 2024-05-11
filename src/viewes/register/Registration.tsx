@@ -35,17 +35,11 @@ const Registration: FC = () => {
     event.preventDefault();
 
     if(user.password !== user.rePassword) {
-      toast.error('Passwords do not match');
+      return toast.error('Passwords do not match');
     }
 
-    if(user && user.password === user.rePassword) {
-      try {
-        dispatch(register(user));
-        navigate('/');
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    dispatch(register(user));
+    navigate('/');
   }
 
   return (

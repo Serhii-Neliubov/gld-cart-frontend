@@ -3,12 +3,12 @@ import styles from "../ProfilePage.module.scss";
 import {logout, userDataSelector} from "@/store/slices/userDataSlice.ts";
 import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
-import {ProfileService} from "services/ProfileService.ts";
-import {IoPersonOutline} from "react-icons/io5";
-import {MdOutlineMail} from "react-icons/md";
-import {IoMdPhonePortrait} from "react-icons/io";
-import {CiLocationOn} from "react-icons/ci";
+import { useInput } from "@/hooks/useInput/useInput.tsx";
+import { ProfileService } from "services/ProfileService.ts";
+import { IoPersonOutline } from "react-icons/io5";
+import { MdOutlineMail } from "react-icons/md";
+import { IoMdPhonePortrait } from "react-icons/io";
+import { CiLocationOn } from "react-icons/ci";
 
 export default function ProfileMenu() {
   const user = useSelector(userDataSelector);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./ShoppingCartPage.module.scss";
 import Footer from "@/components/footer/Footer.tsx";
 import { FC } from "react";
@@ -12,20 +12,52 @@ import {useQuery} from "@tanstack/react-query";
 import {CartItem} from "@/viewes/shopping-cart/components/CartItem.tsx";
 import {TypeCartItem} from "@/utils/models/ICartItem.ts";
 
+const DELIVERY: Record<string, string> = {
+  FLAT_RATE: "Flat rate",
+  LOCAL_PICKUP: "Local pickup",
+  FREE: "Free shipping",
+}
+
+const DELIVERY_PRICE = {
+  [DELIVERY.FREE]: 0,
+  [DELIVERY.FLAT_RATE]: 20,
+  [DELIVERY.LOCAL_PICKUP]: 20,
+}
+
 const ShoppingCartPage: FC = () => {
+  const [delivery, setDelivery] = useState(DELIVERY.FREE);
+  const [subTotal, setSubTotal] = useState(0);
+  const [total, setTotal] = useState(0);
+
   const user = useSelector(userDataSelector);
   const navigate = useNavigate();
 
-  const { data } = useQuery({
+  const { data: cartItems } = useQuery({
     queryKey: ["cartItems"],
-    queryFn: () => ShoppingCart.getItems(user.id),
+    queryFn: async () => {
+      const data = await ShoppingCart.getItems(user.id);
+      setSubTotal(data.subtotal);
+      setTotal(data.subtotal + DELIVERY_PRICE[delivery]);
+
+      return data.items;
+    },
   });
+
+  const handleSetSubtotal = (value: number) => {
+    setSubTotal(value);
+    setTotal(value + DELIVERY_PRICE[delivery]);
+  }
+
+  const handleDeliveryChange = (value: string) => () => {
+    setDelivery(value);
+    setTotal(subTotal + DELIVERY_PRICE[value]);
+  }
 
   const proceedToCheckoutHandler = async () => {
     try {
       await $api.post('/order/create-order', {
         user: user.id,
-        products: data.map((item: TypeCartItem) => item._id),
+        products: cartItems.map((item: TypeCartItem) => item._id),
         total: 123,
       });
 
@@ -35,7 +67,7 @@ const ShoppingCartPage: FC = () => {
     }
   }
 
-  if(!data?.length) {
+  if(!cartItems?.length) {
     return <NoItems title="Cart"/>
   }
 
@@ -57,36 +89,34 @@ const ShoppingCartPage: FC = () => {
                   <span></span>
                 </div>
                 <div className={styles.productList}>
-                  {data.map((item: TypeCartItem) => <CartItem item={item} key={item._id}/>)}
+                  {cartItems.map((item: TypeCartItem) => <CartItem setSubtotal={handleSetSubtotal} item={item} key={item._id}/>)}
                 </div>
               </div>
               <div className={styles.checkoutMenu}>
                 <div className={styles.price}>
                   <span>Subtotal</span>
-                  <span>$500</span>
+                  <span>${subTotal}</span>
                 </div>
                 <div className={styles.shipping}>
                   <span>Shipping</span>
-                  <div className={styles.shipping_input}>
-                    <input type="radio" name="shipping" value="Flat rate" />
-                    <span>
-                      Flat rate: <p>$20.00</p>
-                    </span>
-                  </div>
-                  <div className={styles.shipping_input}>
-                    <input type="radio" name="shipping" value="Local pickup" />
-                    <span>
-                      Local pickup: <p>$20.00</p>
-                    </span>
-                  </div>
-                  <div className={styles.shipping_input}>
-                    <input type="radio" name="shipping" value="Free shipping" />
-                    <span>Free shipping</span>
-                  </div>
+                  {Object.keys(DELIVERY).map((key) => (
+                    <div className={styles.shipping_input} key={key}>
+                      <input
+                        type="radio"
+                        name="shipping"
+                        value={DELIVERY[key]}
+                        checked={delivery === DELIVERY[key]}
+                        onChange={handleDeliveryChange(DELIVERY[key])}
+                      />
+                      <span>
+                        {DELIVERY[key]}: <p>${DELIVERY_PRICE[DELIVERY[key]]}</p>
+                      </span>
+                    </div>
+                  ))}
                 </div>
                 <div className={styles.price}>
                   <span>Total</span>
-                  <span>$500.00</span>
+                  <span>${total}</span>
                 </div>
                 <button onClick={proceedToCheckoutHandler}>Proceed to checkout</button>
               </div>

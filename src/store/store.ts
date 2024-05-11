@@ -3,7 +3,6 @@ import userDataSlice from "./slices/userDataSlice";
 import resetPasswordEmailSlice from "./slices/resetPasswordEmailSlice";
 import vendorSelectedItemSlice from "./slices/vendorSelectedItemSlice.ts";
 import vendorProductInfoSlice from "./slices/vendorProductInfoSlice.ts";
-import socketSlice from "@/store/slices/socketSlice.ts";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +10,6 @@ export const store = configureStore({
     setEmail: resetPasswordEmailSlice,
     vendorSelectedItemSlice: vendorSelectedItemSlice,
     vendorProductInfo: vendorProductInfoSlice,
-    socket: socketSlice,
   },
 });
 
