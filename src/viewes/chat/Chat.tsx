@@ -8,6 +8,7 @@ import {IoSend} from "react-icons/io5";
 import {useParams} from "react-router-dom";
 import {CiFileOn, CiSearch} from "react-icons/ci";
 import {BsPaperclip} from "react-icons/bs";
+import getSocket from "@/socket.ts";
 
 interface User {
   _id: string;
@@ -41,53 +42,99 @@ export const Chat: React.FC = () => {
   const [chats, setChats] = useState<Chat[]>([]);
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [socket, setSocket] = useState<Socket | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { recipientId: paramUserId } = useParams<{ recipientId: string }>();
   let fileInput: HTMLInputElement | null = null;
+  const socket = getSocket(userId);
+
+  const [isConnected, setIsConnected] = useState(socket.connected);
 
   useEffect(() => {
-    const newSocket = io(`${API_URL}/chat`, { query: { userId } });
-    setSocket(newSocket);
-    newSocket.on("chats", (chatData) => {
-      setChats(chatData);
-    });
-    newSocket.on("status", (statusData) => {
-      updateChatStatus(statusData);
-    });
-    newSocket.on("newChat", (newChat: Chat) => {
-      setChats((prevChats) => [...prevChats, newChat]);
-    });
-    return () => {
-      newSocket.disconnect();
-    };
-  }, [userId]);
+    function onConnect() {
+      console.log('connected', socket)
+      setIsConnected(true);
+    }
 
+    function onDisconnect() {
+      console.log('disconnected')
+      setIsConnected(false);
+    }
+    
+    function onChats(chatData: Chat[]) {
+      console.log('chats', chatData)
+      setChats(chatData);
+    }
+    
+    function onUpdateChatStatus(statusData: any) {
+      updateChatStatus(statusData);
+    }
+    
+    function onNewChat(newChat: Chat) {
+      console.log('newChat', newChat)
+      setChats((prevChats) => [...prevChats, newChat]);
+    }
+
+    socket.on('connect', onConnect);
+    socket.on('disconnect', onDisconnect);
+    socket.on("chats", onChats);
+    socket.on("status", onUpdateChatStatus);
+    socket.on("newChat", onNewChat);
+
+    return () => {
+      socket.off('connect', onConnect);
+      socket.off('disconnect', onDisconnect);
+      socket.off('chats', onChats);
+      socket.off('status', onUpdateChatStatus);
+      socket.off('newChat', onNewChat);
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   socket.on("chats", (chatData: Chat[]) => {
+  //     setChats(chatData);
+  //   });
+  //   socket.on("status", (statusData) => {
+  //     updateChatStatus(statusData);
+  //   });
+  //   socket.on("newChat", (newChat: Chat) => {
+  //     setChats((prevChats) => [...prevChats, newChat]);
+  //   });
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, [userId]);
+  //
   useEffect(() => {
     if (socket && selectedChat) {
       socket.emit("join", selectedChat);
-      fetchMessages(selectedChat);
-    }
-  }, [socket, selectedChat]);
-
-  useEffect(() => {
-    if (socket) {
       socket.on("message", handleIncomingMessage);
-    }
-    return () => {
-      if (socket) {
-        socket.off("message");
-      }
-    };
-  }, [socket, selectedChat]);
 
+      fetchMessages(selectedChat).catch((error) => console.error(error));
+    }
+
+    return () => {
+      socket.off("message");
+    };
+  }, [socket, selectedChat, isConnected]);
+  //
+  // useEffect(() => {
+  //   if (socket) {
+  //     socket.on("message", handleIncomingMessage);
+  //   }
+  //   return () => {
+  //     if (socket) {
+  //       socket.off("message");
+  //     }
+  //   };
+  // }, [socket, selectedChat]);
+  //
   useEffect(() => {
     const selectedChatId = findSelectedChatId(chats, paramUserId || userId);
     setSelectedChat(selectedChatId);
     if (socket && selectedChatId) {
       socket.emit("join", selectedChatId);
     }
-  }, [paramUserId, chats, socket]);
+  }, [paramUserId, chats, socket, isConnected]);
 
   const updateChatStatus = (statusData: any) => {
     setChats((prevChats) =>

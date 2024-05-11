@@ -8,7 +8,7 @@ import { checkAuth, userDataSelector } from "./store/slices/userDataSlice.ts";
 import IUser from "@/utils/models/IUser.ts";
 import Header from "@/components/header/Header.tsx";
 import Label from "@/components/header-label/Label.tsx";
-import {initSocket} from "@/store/slices/socketSlice.ts";
+import getSocket from "@/socket.ts";
 
 const App: FC = () => {
   const user = useSelector<RootState, IUser>(userDataSelector);
@@ -21,7 +21,7 @@ const App: FC = () => {
   useEffect(() => {
     if(!user.id) return;
 
-    initSocket(user.id)(dispatch);
+    getSocket(user.id);
   }, [user.id]);
 
     return (
