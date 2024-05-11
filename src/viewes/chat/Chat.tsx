@@ -42,6 +42,7 @@ export const Chat: React.FC = () => {
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [socket, setSocket] = useState<Socket | null>(null);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const { recipientId: paramUserId } = useParams<{ recipientId: string }>();
   let fileInput: HTMLInputElement | null = null;
@@ -49,6 +50,7 @@ export const Chat: React.FC = () => {
   useEffect(() => {
     const newSocket = io(`${API_URL}/chat`, { query: { userId } });
     setSocket(newSocket);
+    setIsConnected(true);
     newSocket.on("chats", (chatData) => {
       setChats(chatData);
     });
@@ -68,7 +70,7 @@ export const Chat: React.FC = () => {
       socket.emit("join", selectedChat);
       fetchMessages(selectedChat);
     }
-  }, [socket, selectedChat]);
+  }, [isConnected, selectedChat]);
 
   useEffect(() => {
     if (socket) {
@@ -79,7 +81,7 @@ export const Chat: React.FC = () => {
         socket.off("message");
       }
     };
-  }, [socket, selectedChat]);
+  }, [isConnected, selectedChat]);
 
   useEffect(() => {
     const selectedChatId = findSelectedChatId(chats, paramUserId || userId);
@@ -87,7 +89,7 @@ export const Chat: React.FC = () => {
     if (socket && selectedChatId) {
       socket.emit("join", selectedChatId);
     }
-  }, [paramUserId, chats, socket]);
+  }, [paramUserId, chats, isConnected]);
 
   const updateChatStatus = (statusData: any) => {
     setChats((prevChats) =>
