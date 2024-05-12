@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-import io, {Socket} from "socket.io-client";
 import style from "./Chat.module.scss";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";
@@ -8,6 +7,7 @@ import {IoSend} from "react-icons/io5";
 import {useParams} from "react-router-dom";
 import {CiFileOn, CiSearch} from "react-icons/ci";
 import {BsPaperclip} from "react-icons/bs";
+import getSocket from "@/socket.ts";
 
 interface User {
   _id: string;
@@ -25,6 +25,7 @@ export interface Chat {
 interface File {
   url: string;
   name: string;
+  originalName?: string;
 }
 
 interface Message {
@@ -41,27 +42,24 @@ export const Chat: React.FC = () => {
   const [chats, setChats] = useState<Chat[]>([]);
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [socket, setSocket] = useState<Socket | null>(null);
-  const [isConnected, setIsConnected] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const { recipientId: paramUserId } = useParams<{ recipientId: string }>();
+
   let fileInput: HTMLInputElement | null = null;
+  const socket = getSocket(userId);
 
   useEffect(() => {
-    const newSocket = io(`${API_URL}/chat`, { query: { userId } });
-    setSocket(newSocket);
-    setIsConnected(true);
-    newSocket.on("chats", (chatData) => {
+    socket.on("chats", (chatData) => {
       setChats(chatData);
     });
-    newSocket.on("status", (statusData) => {
+    socket.on("status", (statusData) => {
       updateChatStatus(statusData);
     });
-    newSocket.on("newChat", (newChat: Chat) => {
+    socket.on("newChat", (newChat: Chat) => {
       setChats((prevChats) => [...prevChats, newChat]);
     });
     return () => {
-      newSocket.disconnect();
+      socket.disconnect();
     };
   }, [userId]);
 
@@ -70,7 +68,7 @@ export const Chat: React.FC = () => {
       socket.emit("join", selectedChat);
       fetchMessages(selectedChat);
     }
-  }, [isConnected, selectedChat]);
+  }, [selectedChat]);
 
   useEffect(() => {
     if (socket) {
@@ -81,7 +79,7 @@ export const Chat: React.FC = () => {
         socket.off("message");
       }
     };
-  }, [isConnected, selectedChat]);
+  }, [selectedChat]);
 
   useEffect(() => {
     const selectedChatId = findSelectedChatId(chats, paramUserId || userId);
@@ -89,7 +87,7 @@ export const Chat: React.FC = () => {
     if (socket && selectedChatId) {
       socket.emit("join", selectedChatId);
     }
-  }, [paramUserId, chats, isConnected]);
+  }, [paramUserId, chats]);
 
   const updateChatStatus = (statusData: any) => {
     setChats((prevChats) =>
@@ -171,7 +169,7 @@ export const Chat: React.FC = () => {
     link.href = imageUrl;
 
     // Проверяем расширение файла для определения, является ли это изображение
-    const extension = imageUrl.split('.').pop();
+    const extension = imageUrl.split('.').pop() || '';
     const imageExtensions = ['jpg', 'jpeg', 'png', 'gif']; // Добавьте другие расширения, если необходимо
 
     if (imageExtensions.includes(extension.toLowerCase())) {
@@ -232,7 +230,7 @@ export const Chat: React.FC = () => {
           </div>
           <ul className={style.chatsList}>
             {chats.map((chat) => (
-              <div className={style.chatPerson}>
+              <div key={chat._id} className={style.chatPerson}>
                 <div className={style.chatPerson}>
                   <img
                     className={style.chatPersonImage}
@@ -314,7 +312,7 @@ export const Chat: React.FC = () => {
                     >
                       <p>{message.text}</p>
                     </div> :
-                    message.files?.map(fileMessage => {
+                    message.files?.map((fileMessage: File) => {
                       return <div
                         key={index}
                         className={

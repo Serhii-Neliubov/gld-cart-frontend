@@ -16,9 +16,8 @@ import imagePaymentMethods from "@/assets/images/ProductPage/paymentMethods.png"
 import imageShoppingCart from "@/assets/images/trash-icon.svg";
 import Wishlist from "services/WishlistService.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
-import { cartItem } from "@/viewes/shopping-cart/ShoppingCartPage.tsx";
 
-type product = {
+export type Product = {
     reviews: [];
     _id: string;
     title: string,
@@ -31,18 +30,22 @@ type product = {
     attributes: object;
 };
 
+type cartItem = {
+    product: Product;
+    quantity: number;
+};
+
 export const ProductPage = () => {
     const initialText =
         "joasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuqjoasdojiqwfuiuwquviquivwojqoasdasdasdasdsadvjiojiwqvoijqiowviqwvwfiuqwvuiuq";
 
     const [showMore, setShowMore] = useState(false);
     const [showDetails, setShowDetails] = useState("description");
-    const [product, setProduct] = useState<product>();
+    const [product, setProduct] = useState<Product>();
     const [isItemInCart, setIsItemInCart] = useState(true);
     const params = useParams();
     const user = useSelector(userDataSelector);
     const navigate = useNavigate();
-    console.log("renting-item:", product);
 
     useEffect(() => {
         getProductData();
@@ -50,7 +53,7 @@ export const ProductPage = () => {
         if (user && user.id) {
             fetchCartItems();
         }
-    }, [user]);
+    }, [user, params.id]);
 
     const getProductData = async () => {
         const response = await $api.get(`${API_URL}/products/${params.id}`);
@@ -115,7 +118,7 @@ export const ProductPage = () => {
                     </div>
                     <div className={styles.product}>
                         <div className={styles.images}>
-                            {product?.images.length > 1 && (
+                            {Number(product?.images?.length) > 1 && (
                                 <div className={styles.smallImages}>
                                     {product?.images.map((image, index) => (
                                         <img key={index} src={image[index + 1]} alt="Image" />
