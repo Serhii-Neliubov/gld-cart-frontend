@@ -3,7 +3,7 @@ import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 
 export default class AuthService {
   static async login(email: string, password: string): Promise<AxiosResponse> {
-    return $api.post("/login", { email, password });
+    return $api.post("/auth/login", { email, password });
   }
 
   static getGoogleOAuthURL() {
@@ -33,7 +33,7 @@ export default class AuthService {
     email: string,
     password: string
   ): Promise<AxiosResponse> {
-    return $api.post("/signup", {
+    return $api.post("/auth/signup", {
       name,
       password,
       type,
@@ -42,6 +42,6 @@ export default class AuthService {
     });
   }
   static async logout(): Promise<AxiosResponse<void>> {
-    return $api.post("/logout");
+    return $api.post("/auth/logout");
   }
 }

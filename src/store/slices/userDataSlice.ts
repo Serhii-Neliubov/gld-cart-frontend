@@ -13,7 +13,7 @@ const initialState = {
 };
 
 export const login = createAsyncThunk(
-    "/login",
+    "/auth/login",
     async (payload: { email: string; password: string }) => {
         try {
             const response = await AuthService.login(payload.email, payload.password);
@@ -26,7 +26,7 @@ export const login = createAsyncThunk(
 );
 
 export const register = createAsyncThunk(
-    "/signup",
+    "/auth/signup",
     async (payload: {
         surname: string;
         name: string;
@@ -46,7 +46,7 @@ export const register = createAsyncThunk(
     }
 );
 
-export const checkAuth = createAsyncThunk("/refresh", async () => {
+export const checkAuth = createAsyncThunk("/auth/refresh", async () => {
     try {
         const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
             withCredentials: true,
