@@ -2,18 +2,17 @@ import { FC } from "react";
 import "./Footer.scss";
 import { Link } from "react-router-dom";
 
-import imageSocial1 from "@/assets/images/HomePage/footer/social-icon1.svg";
-import imageSocial2 from "@/assets/images/HomePage/footer/social-icon2.png";
-import imageSocial3 from "@/assets/images/HomePage/footer/social-icon3.svg";
-import imageSocial4 from "@/assets/images/HomePage/footer/social-icon4.svg";
-import imageQR from "@/assets/images/HomePage/footer/qr.jpg";
-import imageAppStore from "@/assets/images/HomePage/footer/AppStore.png";
-import imageGooglePlay from "@/assets/images/HomePage/footer/GooglePlay.png";
-import imageVisa from "@/assets/images/HomePage/footer/cards/visa.png";
-import imageMasterCard from "@/assets/images/HomePage/footer/cards/mastercard.png";
-import imageBHIM from "@/assets/images/HomePage/footer/cards/bhim.png";
-import imageR from "@/assets/images/HomePage/footer/cards/r.png";
-
+import imageSocial1 from "@assets/images/HomePage/footer/social-icon1.svg";
+import imageSocial2 from "@assets/images/HomePage/footer/social-icon2.png";
+import imageSocial3 from "@assets/images/HomePage/footer/social-icon3.svg";
+import imageSocial4 from "@assets/images/HomePage/footer/social-icon4.svg";
+import imageQR from "@assets/images/HomePage/footer/qr.jpg";
+import imageAppStore from "@assets/images/HomePage/footer/AppStore.png";
+import imageGooglePlay from "@assets/images/HomePage/footer/GooglePlay.png";
+import imageVisa from "@assets/images/HomePage/footer/cards/visa.png";
+import imageMasterCard from "@assets/images/HomePage/footer/cards/mastercard.png";
+import imageBHIM from "@assets/images/HomePage/footer/cards/bhim.png";
+import imageR from "@assets/images/HomePage/footer/cards/r.png";
 
 const Footer: FC = () => {
   return (

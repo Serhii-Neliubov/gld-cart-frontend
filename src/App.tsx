@@ -1,71 +1,25 @@
-import { useEffect } from "react";
-import {Routes, Route, BrowserRouter} from "react-router-dom";
-import { FC } from "react";
-import { AppDispatch, RootState } from "./store/store";
-import { useDispatch, useSelector } from "react-redux";
-import { noAuthRotes, buyerRoutes, vendorRoutes } from "@/viewes/routes";
-import { checkAuth, userDataSelector } from "./store/slices/userDataSlice.ts";
-import IUser from "@/utils/models/IUser.ts";
-import Header from "@/components/header/Header.tsx";
-import Label from "@/components/header-label/Label.tsx";
-import {initSocket} from "@/store/slices/socketSlice.ts";
+import {Suspense} from "react";
+import {Provider} from "react-redux";
+import {Toaster} from "react-hot-toast";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import "./i18n.ts";
 
-const App: FC = () => {
-  const user = useSelector<RootState, IUser>(userDataSelector);
-  const dispatch = useDispatch<AppDispatch>();
+import Navigation from "./navigation/Navigation.tsx";
+import {store} from "@store/store.ts";
 
-  useEffect(() => {
-    dispatch(checkAuth());
-  }, [dispatch]);
+const queryClient = new QueryClient();
+// "https://test-gld-backend-a01fa3463a0e.herokuapp.com"
 
-  useEffect(() => {
-    if(!user.id) return;
-
-    initSocket(user.id)(dispatch);
-  }, [user.id]);
-
+const App = () => {
     return (
-      <BrowserRouter>
-        <Header />
-        <Label />
-        <Routes>
-          {!user.type && (
-            noAuthRotes.map((route, index) => {
-              return (
-                <Route
-                  Component={route.component}
-                  path={route.path}
-                  key={index}
-                />
-              );
-            })
-          )}
-
-          {user.type === 'Vendor' && (
-            vendorRoutes.map((route) => {
-              return (
-                <Route
-                  Component={route.component}
-                  path={route.path}
-                  key={route.path}
-                />
-              );
-            })
-          )}
-
-          {user.type === 'Buyer' && (
-            buyerRoutes.map((route) => {
-              return (
-                <Route
-                  Component={route.component}
-                  path={route.path}
-                  key={route.path}
-                />
-              );
-            })
-          )}
-        </Routes>
-      </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Provider store={store}>
+                    <Navigation />
+                    <Toaster position="top-center" reverseOrder={false} />
+                </Provider>
+            </Suspense>
+        </QueryClientProvider>
     );
 };
 

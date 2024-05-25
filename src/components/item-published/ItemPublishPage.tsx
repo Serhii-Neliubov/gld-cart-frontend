@@ -1,13 +1,11 @@
-import React from "react";
 import styles from "./ItemPublishPage.module.scss";
 import { Link } from "react-router-dom";
 import RentingStage from "../renting-stages/RentingStage";
-import {useDispatch} from "react-redux";
-import {
-    resetVendorProductInfo,
-} from "@/store/slices/vendorProductInfoSlice.ts";
-import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+// import {useDispatch} from "react-redux";
+import {IVendorProductData} from "@models/IVendorProductData.tsx";
+import $api, {API_URL} from "@utils/interceptors.ts";
+
+import imageCloseButton from "@assets/images/ItemPublishPage/close-button.svg";
 
 type ItemPublishPageProps = {
     category: string,
@@ -15,13 +13,13 @@ type ItemPublishPageProps = {
     link: string,
 }
 
-import imageCloseButton from "@/assets/images/ItemPublishPage/close-button.svg";
+// TODO: Need refactor
 
 const ItemPublishPage = ({category, formData, link}: ItemPublishPageProps) => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     async function sendProductInfoHandler() {
-        dispatch(resetVendorProductInfo());
+        // dispatch(resetVendorProductInfo());
         const images = new FormData();
 
         Object.entries(formData).forEach(([key, value]) => {

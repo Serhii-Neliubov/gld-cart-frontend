@@ -1,6 +1,5 @@
 import toast from "react-hot-toast";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
-
+import $api, {API_URL} from "@utils/interceptors.ts";
 
 export class PasswordService {
     static async sendResetEmail(email: string) {

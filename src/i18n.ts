@@ -5,7 +5,7 @@ import { initReactI18next } from "react-i18next";
 
 const i18nConfig: InitOptions = {
   fallbackLng: "en",
-  debug: true,
+  debug: false,
   detection: {
     order: ["queryString", "cookie"],
     caches: ["cookie"],
@@ -14,10 +14,10 @@ const i18nConfig: InitOptions = {
     escapeValue: false,
   },
   backend: {
-    loadPath: '/src/assets/locales/{{lng}}/{{ns}}.json' // Замените 'your_custom_path' на путь к вашей новой папке
+    loadPath: '/src/assets/locales/{{lng}}/{{ns}}.json',
   }
 };
 
-i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init(i18nConfig).then(r => console.log(r));
+i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init(i18nConfig);
 
 export default i18n;

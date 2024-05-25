@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./BgWithParticles.module.scss";
 
+import imageDecor1 from "@assets/images/Login/decor1.png";
+import imageDecor2 from "@assets/images/Login/decor2.png";
+import imageDecor3 from "@assets/images/Login/decor3.png";
+
 type LoginProps = {
   children: React.ReactNode;
 };
-
-import imageDecor1 from "@/assets/images/Login/decor1.png";
-import imageDecor2 from "@/assets/images/Login/decor2.png";
-import imageDecor3 from "@/assets/images/Login/decor3.png";
 
 const BgWithParticles = ({ children }: LoginProps) => {
   return (

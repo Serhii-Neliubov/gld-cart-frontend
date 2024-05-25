@@ -1,7 +1,7 @@
-import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import styles from './PhotoAndVideoBlock.module.scss';
-import {IVendorProductData} from '@/utils/models/IVendorProductData.tsx';
-import {Layout} from "@/components/Vendor/Layout.tsx";
+import {IVendorProductData} from '@models/IVendorProductData.tsx';
+import {Layout} from "@components/Vendor/Layout.tsx";
 
 type PhotoAndVideoBlockProps = {
   formData: IVendorProductData;

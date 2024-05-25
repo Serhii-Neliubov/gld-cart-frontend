@@ -1,4 +1,4 @@
-import $api from "@/utils/interceptors/interceptors.ts";
+import $api from "@utils/interceptors.ts";
 import {useEffect, useState} from "react";
 
 export const useGetData = (url: string) => {

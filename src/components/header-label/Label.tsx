@@ -1,13 +1,18 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './Label.scss';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { FC } from 'react';
-import {RootState} from '@/store/store.ts';
-import {selectIsAuth, userDataSelector} from '@/store/slices/userDataSlice.ts';
-import IUser from '@/utils/models/IUser.ts';
 import Skeleton from 'react-loading-skeleton'
+
+import imageProfile from '@assets/images/profile-icon.svg';
+import imageLike from '@assets/images/like-icon.svg';
+import imageTrash from '@assets/images/trash-icon.svg';
+
+import {selectIsAuth, userDataSelector} from "@store/slices/userDataSlice.ts";
+import {RootState} from "@store/store.ts";
+
+import IUser from "@models/IUser.ts";
+
+import './Label.scss';
 import 'react-loading-skeleton/dist/skeleton.css'
 
 interface NavLink {
@@ -15,17 +20,14 @@ interface NavLink {
   label: string;
 }
 
-import imageProfile from '@/assets/images/profile-icon.svg';
-import imageLike from '@/assets/images/like-icon.svg';
-import imageTrash from '@/assets/images/trash-icon.svg';
-
-
-const Label: FC = () => {
+const Label = () => {
   const location = useLocation();
-  const isAuth = useSelector<RootState, boolean>(selectIsAuth);
-  const user = useSelector<RootState, IUser>(userDataSelector);
   const { t } = useTranslation();
 
+  const isAuth = useSelector<RootState, boolean>(selectIsAuth);
+  const user = useSelector<RootState, IUser>(userDataSelector);
+
+  // TODO: Need refactor
   const navLinks: NavLink[] = [
     { to: "/", label: t("home") },
     {
@@ -95,7 +97,7 @@ const Label: FC = () => {
               containerClassName="avatar-skeleton"
           />
           {user.type == "Vendor" ? null : (
-            <React.Fragment>
+            <>
               <Link
                 to={!isAuth ? "/login" : "/wishlist"}
                 className="label__like-btn"
@@ -108,7 +110,7 @@ const Label: FC = () => {
               >
                 <img src={imageTrash} alt="Trash icon" />
               </Link>
-            </React.Fragment>
+            </>
           )}
           <Link
             to={isAuth ? "/profile" : "/login"}

@@ -1,4 +1,4 @@
-export const TermsConditions = {
+export const TermsConditionsData = {
   title: "Terms and Conditions",
   description_top:
     "By using Gldcart.com , you agree to the terms and conditions, privacy policy, and returns/refund policy of the Site. Please read the Terms and Conditions carefully before using Gldcart.com.",
@@ -7,7 +7,7 @@ export const TermsConditions = {
   list_text: [
     {
       id: 1,
-      title: "Account Registration:",
+      title: "Account Register:",
       text: [
         "Users must be at least 18 years old or the age of majority in their jurisdiction to create an account.",
         "Users are responsible for maintaining the confidentiality of their account login information.",

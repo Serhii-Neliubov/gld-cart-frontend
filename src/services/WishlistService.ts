@@ -1,5 +1,6 @@
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
-export default class Wishlist {
+import $api, {API_URL} from "@utils/interceptors.ts";
+
+export default class WishlistService {
   static async removeItem (itemId: string | undefined, userId: string) {
     try {
       const response = await $api.delete(`${API_URL}/wishlist/remove-item`, {
@@ -17,13 +18,6 @@ export default class Wishlist {
   }
 
   static async addItem (productId: string, userId: string) {
-    console.log({
-      userId: userId,
-      item: {
-        product: productId,
-      }
-    });
-
     try {
       await $api.post(`${API_URL}/wishlist`, {
         userId: userId,

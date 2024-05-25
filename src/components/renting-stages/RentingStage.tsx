@@ -1,11 +1,10 @@
-import React from "react";
 import styles from "./RentingStage.module.scss";
 
 type RentingStageProps = {
   coloredStage: number;
 };
 
-const routings = [
+const routing = [
   { id: 1, stage: "Category" },
   { id: 2, stage: "Sub Category" },
   { id: 3, stage: "Information" },
@@ -17,7 +16,7 @@ const routings = [
 export default function RentingStage({ coloredStage }: RentingStageProps) {
   return (
     <div className={styles.routings}>
-      {routings.map((routing) => {
+      {routing.map((routing) => {
         return (
           <div key={routing.id} className={styles.routing}>
             <div

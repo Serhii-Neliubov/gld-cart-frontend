@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import IUser from "@/utils/models/IUser";
-import AuthService from "@/services/AuthService";
 import axios from "axios";
-import { AuthResponse } from "@/utils/models/response/AuthResponse.ts";
-import { RootState } from "@/store/store.ts";
 import toast from "react-hot-toast";
-import {API_URL} from "@/utils/interceptors/interceptors.ts";
+import IUser from "@models/IUser.ts";
+import {AuthResponse} from "@models/response/AuthResponse.ts";
+import AuthService from "@services/AuthService.ts";
+import {RootState} from "@store/store.ts";
+import {API_URL} from "@utils/interceptors.ts";
 
 const initialState = {
     user: {} as IUser,
@@ -13,20 +13,20 @@ const initialState = {
 };
 
 export const login = createAsyncThunk(
-    "/login",
+    "/auth/login",
     async (payload: { email: string; password: string }) => {
         try {
             const response = await AuthService.login(payload.email, payload.password);
             localStorage.setItem("token", response.data.accessToken);
             return response.data;
-        }catch (error){
+        } catch (error){
             toast.error('Incorrect password or email');
         }
     }
 );
 
 export const register = createAsyncThunk(
-    "/signup",
+    "/auth/signup",
     async (payload: {
         surname: string;
         name: string;
@@ -42,13 +42,14 @@ export const register = createAsyncThunk(
             payload.password
         );
         localStorage.setItem("token", response.data.accessToken);
-        return response.data; // Возвращаем данные для обработки в extraReducers
+
+        return response.data;
     }
 );
 
-export const checkAuth = createAsyncThunk("/refresh", async () => {
+export const checkAuth = createAsyncThunk("/auth/refresh", async () => {
     try {
-        const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
+        const response = await axios.get<AuthResponse>(`${API_URL}/auth/refresh`, {
             withCredentials: true,
         });
         localStorage.setItem("token", response.data.accessToken);

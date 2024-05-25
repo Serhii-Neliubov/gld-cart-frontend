@@ -11,7 +11,6 @@ type LayoutProps = {
 }
 
 export const Layout = ({setStage, title, children, stage, subtitle}: LayoutProps) => {
-
     return (
         <div className='__container'>
             <div className={styles.container}>

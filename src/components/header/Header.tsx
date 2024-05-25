@@ -1,13 +1,17 @@
-import { ChangeEvent, FC, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import "./Header.scss";
 import { Link } from "react-router-dom";
-import imageLogoURL from '@/assets/images/HomePage/header/logo.png'
-import imageArrowDown from '@/assets/images/HomePage/header/arrow-down.svg'
-import { useDebounce } from "@uidotdev/usehooks";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { API_URL } from "@/utils/interceptors/interceptors.ts";
+
+import "./Header.scss";
+
+import imageLogoURL from '@assets/images/HomePage/header/logo.png'
+import imageArrowDown from '@assets/images/HomePage/header/arrow-down.svg'
+
+import { useDebounce } from "@uidotdev/usehooks";
+import { API_URL } from "@utils/interceptors.ts";
+
 const languages = ["English", "Russian", "Ukrainian", "German"];
 
 const languageCodes: { [key: string]: string } = {
@@ -17,7 +21,7 @@ const languageCodes: { [key: string]: string } = {
   German: "de",
 };
 
-const Header: FC = () => {
+const Header = () => {
   const [openLanguageModal, setOpenLanguageModal] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>("English");
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,8 +29,8 @@ const Header: FC = () => {
   const { t, i18n } = useTranslation();
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
-  const changeLanguage = (newLanguage: string): void => {
-    i18n.changeLanguage(languageCodes[newLanguage]);
+  const changeLanguage = async (newLanguage: string): Promise<void> => {
+    await i18n.changeLanguage(languageCodes[newLanguage]);
     setLanguage(newLanguage);
   };
 
@@ -36,14 +40,13 @@ const Header: FC = () => {
 
   const searchProductHandler = async (value: string) => {
     if(value) {
-      try{
+      try {
         const response = await axios.get(`${API_URL}/search?query=${value}`);
         console.log(response.data);
       } catch (e) {
         toast.error(`Item does not exist!`);
       }
     }
-    console.log(value);
   };
 
   useEffect(() => {

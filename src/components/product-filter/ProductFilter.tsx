@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './ProductFilter.module.scss';
 
-import imageHeadphones from '@/assets/images/TopRatedProducts/headphones.png';
-import imageIphone12 from '@/assets/images/TopRatedProducts/iphone12.png';
-import imageAppleWatch from '@/assets/images/TopRatedProducts/appleWatch.png';
-import image1 from '@/assets/images/TopRatedProducts/img1.png';
-import image2 from '@/assets/images/TopRatedProducts/img2.png';
-import image3 from '@/assets/images/TopRatedProducts/img3.png';
-import image4 from '@/assets/images/TopRatedProducts/img4.png';
-import image5 from '@/assets/images/TopRatedProducts/img5.png';
-import image6 from '@/assets/images/TopRatedProducts/img6.png';
+import imageHeadphones from '@assets/images/TopRatedProducts/headphones.png';
+import imageIphone12 from '@assets/images/TopRatedProducts/iphone12.png';
+import imageAppleWatch from '@assets/images/TopRatedProducts/appleWatch.png';
+import image1 from '@assets/images/TopRatedProducts/img1.png';
+import image2 from '@assets/images/TopRatedProducts/img2.png';
+import image3 from '@assets/images/TopRatedProducts/img3.png';
+import image4 from '@assets/images/TopRatedProducts/img4.png';
+import image5 from '@assets/images/TopRatedProducts/img5.png';
+import image6 from '@assets/images/TopRatedProducts/img6.png';
 
 export const ProductFilter = () => {
   return (
