@@ -48,7 +48,7 @@ export const register = createAsyncThunk(
 
 export const checkAuth = createAsyncThunk("/auth/refresh", async () => {
     try {
-        const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {
+        const response = await axios.get<AuthResponse>(`${API_URL}/auth/refresh`, {
             withCredentials: true,
         });
         localStorage.setItem("token", response.data.accessToken);
