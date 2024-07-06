@@ -10,7 +10,7 @@ import HelpAndSupport from "../viewes/help-and-support/HelpAndSupport";
 import ProfilePage from "../viewes/profile/ProfilePage";
 import ShoppingCartPage from "../viewes/shopping-cart/ShoppingCartPage";
 import ForgottenPasswordPage from "../viewes/forgot-password/ForgottenPasswordPage";
-import LoginPage from "../viewes/login/LoginPage";
+import Login from "./Login.tsx";
 import Registration from "./register/Registration.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
 import RentingCategories from "./renting-buyer/RentingCategories.tsx";
@@ -130,7 +130,7 @@ export const noAuthRotes: IRoutes[] = [
   { component: Home, path: "/" },
   { component: Registration, path: "/register" },
   { component: RentingCategories, path: "/renting" },
-  { component: LoginPage, path: "/login" },
+  { component: Login, path: "/login" },
   { component: PrivacyPolicy, path: "/privacy-policy" },
   { component: CookiePolicy, path: "/cookie-policy" },
   { component: ShippingPolicy, path: "/shipping-policy" },

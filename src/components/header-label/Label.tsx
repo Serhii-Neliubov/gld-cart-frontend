@@ -29,6 +29,18 @@ const Label: FC = () => {
   const navLinks: NavLink[] = [
     { to: "/", label: t("home") },
     {
+      to: user.type == "Vendor"
+        ? "/renting-category-page"
+        : "/renting",
+      label: t("renting"),
+    },
+    {
+      to: user.type == "Vendor"
+        ? "/products-category-page"
+        : "/products",
+      label: t("products"),
+    },
+    {
       to: "/professional-services",
       label: t("professional services"),
     },

@@ -58,10 +58,10 @@ const ContactUs: FC = () => {
           <div className={'flex flex-wrap md:flex-nowrap gap-10 justify-between items-center bg-white py-[25px] md:py-[50px] px-[30px] md:px-[60px]'}>
             <form className={'w-full'} onSubmit={handleSubmit(onSubmit)}>
               <div className={'max-w-[720px]'}>
-                <h2 className={'md:text-[30px] text-[20px] mb-[42px] font-medium'}>Sent A Message</h2>
+                <h2 className={'md:text-[30px] text-[20px] mb-[42px] font-medium'}>{t('Sent A Message')}</h2>
                 <div className={'flex flex-col gap-10'}>
                   <label className={'flex flex-col relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>Your Name</span>
+                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Your Name')}</span>
                     <input
                       {...register("name", {required: true})}
                       type="text"
@@ -70,7 +70,7 @@ const ContactUs: FC = () => {
                     />
                   </label>
                   <label className={'flex flex-col relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>Your Email</span>
+                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Your Email')}</span>
                     <input
                       {...register("email", {required: true})}
                       type="text"
@@ -79,7 +79,7 @@ const ContactUs: FC = () => {
                     />
                   </label>
                   <label className={'flex flex-col relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>Subject</span>
+                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Subject')}</span>
                     <input
                       {...register("subject", {required: true})}
                       type="text"
@@ -88,7 +88,7 @@ const ContactUs: FC = () => {
                     />
                   </label>
                   <label className={'flex flex-col relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>Your Message</span>
+                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Your Message')}</span>
                     <textarea
                       {...register("message", {required: true})}
                       className={'py-[25px] min-h-[165px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
@@ -98,12 +98,12 @@ const ContactUs: FC = () => {
                 <div className={'flex gap-2 items-center my-[15px]'}>
                   <input className={'w-[20px] text-[#55585B] h-[20px]'} type="checkbox"/>
                   <span className={'text-[#55585B]'}>
-                  Save my name, email, and website in this browser for the next
-                  time I comment.
+                  {t(`Save my name, email, and website in this browser for the next
+                    time I comment.`)}
                 </span>
                 </div>
                 <button className={'text-white hover:bg-[#021B32] transition-all bg-black w-full md:max-w-[200px] py-[15px] text-[16px]'}>
-                  Send Message
+                  {t('Send Message')}
                 </button>
               </div>
             </form>
@@ -119,7 +119,7 @@ const ContactUs: FC = () => {
               </div>
               <div className={'text-center lg:text-left flex justify-center md:items-start items-center flex-col gap-4'}>
                 <img className={'w-[40px]'} src={imageContactUs3} alt="Icon"/>
-                <span>Find on social media</span>
+                <span>{t('Find on social media')}</span>
                 <div className={'flex md:gap-0 gap-2'}>
                   <a href="#" className={'w-[38px] h-[38px] flex justify-center items-center border-[1px] border-solid border-[#E6E7E8]'}>
                     <img src={imageSocialIcon1} alt='Social image'/>

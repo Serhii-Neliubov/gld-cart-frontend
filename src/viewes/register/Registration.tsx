@@ -2,7 +2,7 @@ import { FC, FormEvent, useState } from "react";
 import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
 import styles from "./Registration.module.scss";
 import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store.ts";
 import { useInput } from "@/hooks/useInput/useInput.tsx";
@@ -12,10 +12,10 @@ import { register } from "@/store/slices/userDataSlice.ts";
 const Registration: FC = () => {
   useDefaultScrollPosition();
 
-  const dispatch = useDispatch<AppDispatch>();
-  const navigate: NavigateFunction = useNavigate();
-
   const [userType, setUserType] = useState("");
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
   const name = useInput('');
   const surname = useInput('');
   const email = useInput('');

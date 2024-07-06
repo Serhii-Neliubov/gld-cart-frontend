@@ -8,7 +8,6 @@ import { useDebounce } from "@uidotdev/usehooks";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { API_URL } from "@/utils/interceptors/interceptors.ts";
-
 const languages = ["English", "Russian", "Ukrainian", "German"];
 
 const languageCodes: { [key: string]: string } = {
