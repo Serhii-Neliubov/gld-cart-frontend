@@ -5,7 +5,7 @@ import { initReactI18next } from "react-i18next";
 
 const i18nConfig: InitOptions = {
   fallbackLng: "en",
-  debug: true,
+  debug: false,
   detection: {
     order: ["queryString", "cookie"],
     caches: ["cookie"],
@@ -18,6 +18,6 @@ const i18nConfig: InitOptions = {
   }
 };
 
-i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init(i18nConfig).then(r => console.log(r));
+i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init(i18nConfig);
 
 export default i18n;

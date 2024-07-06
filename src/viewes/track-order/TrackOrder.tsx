@@ -12,7 +12,7 @@ const TrackOrder: FC = () => {
   const orderNumber = useInput('');
 
   const [isAgree, setIsAgree] = useState<boolean>(false);
-  const [orderStatus] = useState<string>("Delivered");
+  const [orderStatus] = useState<string>("Order Placed");
 
   return (
     <React.Fragment>

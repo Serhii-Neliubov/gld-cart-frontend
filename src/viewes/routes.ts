@@ -1,24 +1,23 @@
 import { FC } from "react";
 import Home from "../viewes/home/Home";
-import ContactUsPage from "../viewes/contact-us/ContactUsPage";
-import PrivacyPolicyPage from "../viewes/privacy-policy/PrivacyPolicyPage";
-import CookiePolicyPage from "../viewes/cookie-policy/CookiePolicyPage";
-import ShippingPolicyPage from "../viewes/shipping-policy/ShippingPolicyPage";
-import FaqsPage from "../viewes/faq-s/FaqsPage";
-import TermsConditionsPage from "../viewes/terms-conditions/TermsConditionsPage";
+import ContactUs from "./ContactUs.tsx";
+import PrivacyPolicy from "./PrivacyPolicy.tsx";
+import CookiePolicy from "./CookiePolicy.tsx";
+import ShippingPolicy from "./ShippingPolicy.tsx";
+import Faqs from "./Faqs.tsx";
+import TermsConditions from "./TermsConditions.tsx";
 import HelpAndSupport from "../viewes/help-and-support/HelpAndSupport";
 import ProfilePage from "../viewes/profile/ProfilePage";
 import ShoppingCartPage from "../viewes/shopping-cart/ShoppingCartPage";
 import ForgottenPasswordPage from "../viewes/forgot-password/ForgottenPasswordPage";
 import LoginPage from "../viewes/login/LoginPage";
-import NotFound from "../viewes/not-found/NotFound";
 import Registration from "./register/Registration.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
 import RentingCategories from "./renting-buyer/RentingCategories.tsx";
 import RentingCategoryPage from "../viewes/renting-vendor/RentingCategoryPage";
 import ProductsVendor from "./products-vendor/ProductsVendor.tsx";
 import SendMessagePage from "../viewes/send-message-successfully/SendMessagePage";
-import ProfessionalCategories from "./professional-services-buyer/ProfessionalCategories.tsx";
+import ProfessionalServicesCategories from "./ProfessionalServicesCategories.tsx";
 import TrackOrder from "../viewes/track-order/TrackOrder";
 import { NewVehicle } from "./renting-vendor/pages/vehicle/NewVehicle.tsx";
 import { NewElectronics } from "./renting-vendor/pages/electronics/NewElectronics.tsx";
@@ -55,13 +54,12 @@ export const buyerRoutes: IRoutes[] = [
   { component: DriverLicense, path: "/driver-license" },
   { component: TrackOrder, path: "/track-an-order" },
   { component: RentingCategories, path: "/renting" },
-  { component: ContactUsPage, path: "/contact-us" },
-  { component: PrivacyPolicyPage, path: "/privacy-policy" },
-  { component: CookiePolicyPage, path: "/cookie-policy" },
-  { component: ShippingPolicyPage, path: "/shipping-policy" },
-  { component: TermsConditionsPage, path: "/terms-and-conditions" },
-  { component: FaqsPage, path: "/faq-s" },
-  { component: NotFound, path: "/not-found" },
+  { component: ContactUs, path: "/contact-us" },
+  { component: PrivacyPolicy, path: "/privacy-policy" },
+  { component: CookiePolicy, path: "/cookie-policy" },
+  { component: ShippingPolicy, path: "/shipping-policy" },
+  { component: TermsConditions, path: "/terms-and-conditions" },
+  { component: Faqs, path: "/faq-s" },
   { component: ProductsPage, path: "/products" },
   // Products
   { component: ProductCategories, path: "/products" },
@@ -69,7 +67,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: ProductPage, path: "/product-page/:id" },
   // -----------------------
   // Professional Services
-  { component: ProfessionalCategories, path: "/professional-services" },
+  { component: ProfessionalServicesCategories, path: "/professional-services" },
   { component: ProfessionalServices, path: "/professional-services/:category" },
   { component: ProfessionalService, path: "/professional-services/:category/:id" },
   // -----------------------
@@ -86,7 +84,6 @@ export const buyerRoutes: IRoutes[] = [
     component: PaymentCardForm,
     path: "/checkout-payment/order/:clientSecret/:name/:surname/:country/:street/:town/:zipcode/:phone/:email",
   },
-  { component: NotFound, path: "/*" },
 ];
 export const vendorRoutes: IRoutes[] = [
   { component: Home, path: "/" },
@@ -97,13 +94,12 @@ export const vendorRoutes: IRoutes[] = [
 
   // Components
   { component: RentingCategoryPage, path: "/renting-category-page" },
-  { component: ContactUsPage, path: "/contact-us" },
-  { component: PrivacyPolicyPage, path: "/privacy-policy" },
-  { component: CookiePolicyPage, path: "/cookie-policy" },
-  { component: ShippingPolicyPage, path: "/shipping-policy" },
-  { component: TermsConditionsPage, path: "/terms-and-conditions" },
-  { component: FaqsPage, path: "/faq-s" },
-  { component: NotFound, path: "/not-found" },
+  { component: ContactUs, path: "/contact-us" },
+  { component: PrivacyPolicy, path: "/privacy-policy" },
+  { component: CookiePolicy, path: "/cookie-policy" },
+  { component: ShippingPolicy, path: "/shipping-policy" },
+  { component: TermsConditions, path: "/terms-and-conditions" },
+  { component: Faqs, path: "/faq-s" },
   { component: SendMessagePage, path: "/send-message" },
   { component: ProductsVendor, path: "/products-category-page" },
   { component: ProfilePage, path: "/profile" },
@@ -135,17 +131,18 @@ export const noAuthRotes: IRoutes[] = [
   { component: Registration, path: "/register" },
   { component: RentingCategories, path: "/renting" },
   { component: LoginPage, path: "/login" },
-  { component: PrivacyPolicyPage, path: "/privacy-policy" },
-  { component: CookiePolicyPage, path: "/cookie-policy" },
-  { component: ShippingPolicyPage, path: "/shipping-policy" },
-  { component: TermsConditionsPage, path: "/terms-and-conditions" },
-  { component: FaqsPage, path: "/faq-s" },
-  { component: NotFound, path: "/not-found" },
+  { component: PrivacyPolicy, path: "/privacy-policy" },
+  { component: CookiePolicy, path: "/cookie-policy" },
+  { component: ShippingPolicy, path: "/shipping-policy" },
+  { component: TermsConditions, path: "/terms-and-conditions" },
+  { component: Faqs, path: "/faq-s" },
+  { component: TrackOrder, path: "/track-an-order" },
+  { component: HelpAndSupport, path: "/help-and-support" },
   { component: ForgottenPasswordPage, path: "/forgotten-password" },
   { component: ForgottenAttentionPage, path: "/forgotten-attention" },
   { component: NewPasswordPage, path: "/password/:token" },
-  { component: ContactUsPage, path: "/contact-us" },
-  { component: ProfessionalCategories, path: "/professional-services" },
+  { component: ContactUs, path: "/contact-us" },
+  { component: ProfessionalServicesCategories, path: "/professional-services" },
   { component: ProductsPage, path: "/products" },
   { component: SendMessagePage, path: "/send-message" },
 ];

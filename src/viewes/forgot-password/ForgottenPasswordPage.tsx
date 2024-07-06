@@ -28,7 +28,7 @@ const ForgottenPasswordPage: FC = () => {
   return (
     <div className={styles.body}>
       <BgWithParticles>
-        <div className={styles.components}>
+        <div className={'flex flex-col gap-5'}>
           <div className={styles.content}>
             <h1 className={styles.title}>Forgotten Password</h1>
             <div className={styles.log_link}>
