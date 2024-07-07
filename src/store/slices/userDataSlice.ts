@@ -19,7 +19,7 @@ export const login = createAsyncThunk(
             const response = await AuthService.login(payload.email, payload.password);
 
             if(payload.isRemember){
-                localStorage.setItem("email", payload.email);
+                localStorage.setItem("token", response.data.accessToken);
             }
 
             return response.data;
@@ -37,6 +37,7 @@ export const register = createAsyncThunk(
         type: string;
         email: string;
         password: string;
+        isRemember: boolean;
     }) => {
         const response = await AuthService.registration(
             payload.type,
@@ -45,8 +46,12 @@ export const register = createAsyncThunk(
             payload.email,
             payload.password
         );
-        localStorage.setItem("token", response.data.accessToken);
-        return response.data; // Возвращаем данные для обработки в extraReducers
+
+        if(payload.isRemember){
+            localStorage.setItem("token", response.data.accessToken);
+        }
+
+        return response.data;
     }
 );
 

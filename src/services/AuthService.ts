@@ -7,7 +7,7 @@ export default class AuthService {
     return $api.post("/auth/login", { email, password });
   }
 
-  static getGoogleOAuthURL() {
+  static getGoogleOAuthURL(userType: string = "Buyer") {
     const rootUrl = "https://accounts.google.com/o/oauth2/v2/auth";
     const options = {
       redirect_uri: `${API_URL}/tokens/oauth/google`,
@@ -16,7 +16,7 @@ export default class AuthService {
       access_type: "offline",
       response_type: "code",
       prompt: "consent",
-      state: "Buyer",
+      state: userType,
       scope: [
         "https://www.googleapis.com/auth/userinfo.profile",
         "https://www.googleapis.com/auth/userinfo.email",

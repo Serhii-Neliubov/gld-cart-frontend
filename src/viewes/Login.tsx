@@ -65,7 +65,7 @@ const Login = () => {
               type="email"
               required={true}
               placeholder='Gldcart@mail.com'
-              className={'py-[18px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
+              className={'py-[18px] text-[14px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
             />
           </label>
           <label className={'flex flex-col relative'}>
@@ -74,8 +74,8 @@ const Login = () => {
               {...password}
               type="password"
               required={true}
-              placeholder='Min. 6 character'
-              className={'py-[18px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
+              placeholder={t('Min. 6 character')}
+              className={'py-[18px] text-[14px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
             />
           </label>
         </div>

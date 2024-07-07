@@ -11,7 +11,7 @@ import ProfilePage from "../viewes/profile/ProfilePage";
 import ShoppingCartPage from "../viewes/shopping-cart/ShoppingCartPage";
 import ForgottenPasswordPage from "../viewes/forgot-password/ForgottenPasswordPage";
 import Login from "./Login.tsx";
-import Registration from "./register/Registration.tsx";
+import Registration from "./Registration.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
 import RentingCategories from "./renting-buyer/RentingCategories.tsx";
 import RentingCategoryPage from "../viewes/renting-vendor/RentingCategoryPage";
