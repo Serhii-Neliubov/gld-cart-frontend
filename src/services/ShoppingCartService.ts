@@ -1,9 +1,10 @@
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
 import {TypeCartItem} from "@/utils/models/ICartItem.ts";
+import $api from "@/utils/interceptors/interceptors.ts";
+
 export default class ShoppingCart {
   static async addToCart (productId: string | undefined, userId: string, quantity: number) {
     try {
-      await $api.post(`${API_URL}/cart/add-item`, {
+      await $api.post(`/cart/add-item`, {
         userId: userId,
         item: {
           product: productId,
@@ -17,7 +18,7 @@ export default class ShoppingCart {
 
   static async removeItem (itemId: string, userId: string) {
     try {
-      const response = await $api.delete(`${API_URL}/cart/remove-item`, {
+      const response = await $api.delete(`/cart/remove-item`, {
         data: {
           userId: userId,
           productId: itemId,
@@ -32,7 +33,7 @@ export default class ShoppingCart {
 
   static async getItems (userId: string) {
     try {
-      const response = await $api.get(`${API_URL}/cart/user/${userId}`);
+      const response = await $api.get(`/cart/user/${userId}`);
       return response.data;
     } catch (e) {
       console.log(e);
@@ -41,7 +42,7 @@ export default class ShoppingCart {
 
   static async updateItemQuantity(userId: string, item: TypeCartItem) {
     try {
-      return await $api.put(`${API_URL}/cart/update-quantity`, {
+      return await $api.put(`/cart/update-quantity`, {
         userId: userId,
         item: item,
       });
@@ -52,7 +53,7 @@ export default class ShoppingCart {
 
   static async getSubTotal(userId: string) {
     try {
-      const response = await $api.get(`${API_URL}/cart/user/${userId}`);
+      const response = await $api.get(`/cart/user/${userId}`);
       return response.data.subtotal;
     } catch (e) {
       console.log(e);

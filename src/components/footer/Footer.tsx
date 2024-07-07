@@ -13,18 +13,18 @@ import imageVisa from "@/assets/images/HomePage/footer/cards/visa.png";
 import imageMasterCard from "@/assets/images/HomePage/footer/cards/mastercard.png";
 import imageBHIM from "@/assets/images/HomePage/footer/cards/bhim.png";
 import imageR from "@/assets/images/HomePage/footer/cards/r.png";
+import iconCopyright from "@/assets/images/icon-copyright.png";
 
 
 const Footer: FC = () => {
   return (
-    <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__content">
-          <div className="footer__nav">
-            <h3 className="footer__links-title">Online Shopping</h3>
+    <footer className="bg-black pt-[56px]">
+      <div className="max-w-[1240px] px-[20px] mx-auto">
+        <div className="flex justify-between flex-wrap gap-[20px]">
+          <div className="flex flex-col">
+            <h3 className=" w-full text-center text-white text-[20px] uppercase mb-[10px] font-medium">Online Shopping</h3>
             <a href="#" className="footer__link">
-              {" "}
-              Furniture's{" "}
+              Furniture's
             </a>
             <nav className="footer__links">
               <a href="#" className="footer__link">
@@ -90,14 +90,13 @@ const Footer: FC = () => {
               </Link>
             </nav>
             <Link to="/help-and-support" className="footer__link">
-              {" "}
-              Help & Support{" "}
+              Help & Support
             </Link>
           </div>
           <div className="footer__contacts">
             <div className="footer__email">
               <h3 className="footer__links-title">email</h3>
-              <span className="footer__link-mail">Gldcartsrcgmail.com</span>
+              <a href={'mailto:contact@Gldcard.com'} className="footer__link-mail">Gldcartsrcgmail.com</a>
             </div>
             <div className="footer__socials">
               <h3 className="footer__links-title">social links</h3>
@@ -136,11 +135,11 @@ const Footer: FC = () => {
         </div>
       </div>
       <div className="footer__copyright">
-        <div className="footer__container">
-          <div className="footer__copyright-content">
-            <div className="footer__trialshoopy">
+        <div className="max-w-[1240px] px-[20px] mx-auto">
+          <div className="flex justify-between gap-[40px] flex-wrap items-center">
+            <div className="flex flex-col justify-center md:justify-start gap-2 w-full md:items-start items-center">
               <h4 className="footer__trialshoopy-title">Trialshoopy accepts</h4>
-              <div className="footer__trialshoopy-items">
+              <div className="flex gap-8 md:gap-4">
                 <img src={imageVisa} alt="Visa" />
                 <img
                   src={imageMasterCard}
@@ -150,8 +149,9 @@ const Footer: FC = () => {
                 <img src={imageR} alt=" R" />
               </div>
             </div>
-            <div className="footer__reserved">
-              <p className="footer__reserved-text">
+            <div className="flex justify-center md:justify-start gap-2 w-full items-center">
+              <img src={iconCopyright} alt={'Icon copyright'} className={'w-[20px] h-[20px]'}/>
+              <p className={'text-[#CFCFCF]'}>
                 2023 WWW.TrailShoppy.com. All right reserved
               </p>
             </div>

@@ -34,7 +34,7 @@ export default class AuthService {
     email: string,
     password: string
   ): Promise<AxiosResponse> {
-    return $api.post("/auth/signup", {
+    return $api.post("/auth/register", {
       name,
       password,
       type,

@@ -1,8 +1,9 @@
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import $api from "@/utils/interceptors/interceptors.ts";
+
 export default class Wishlist {
   static async removeItem (itemId: string | undefined, userId: string) {
     try {
-      const response = await $api.delete(`${API_URL}/wishlist/remove-item`, {
+      const response = await $api.delete(`/wishlist/remove-item`, {
         data: {
           userId: userId,
           productId: itemId,
@@ -17,15 +18,8 @@ export default class Wishlist {
   }
 
   static async addItem (productId: string, userId: string) {
-    console.log({
-      userId: userId,
-      item: {
-        product: productId,
-      }
-    });
-
     try {
-      await $api.post(`${API_URL}/wishlist`, {
+      await $api.post(`/wishlist`, {
         userId: userId,
         item: {
           product: productId,
@@ -38,7 +32,7 @@ export default class Wishlist {
 
   static async getItems (userId: string) {
     try {
-      const response = await $api.get(`${API_URL}/wishlist/${userId}`);
+      const response = await $api.get(`/wishlist/${userId}`);
 
       return response.data.items;
     } catch (e) {

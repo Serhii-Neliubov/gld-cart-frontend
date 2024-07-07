@@ -6,7 +6,7 @@ import CookiePolicy from "./CookiePolicy.tsx";
 import ShippingPolicy from "./ShippingPolicy.tsx";
 import Faqs from "./Faqs.tsx";
 import TermsConditions from "./TermsConditions.tsx";
-import HelpAndSupport from "../viewes/help-and-support/HelpAndSupport";
+import HelpAndSupport from "./HelpAndSupport.tsx";
 import ProfilePage from "../viewes/profile/ProfilePage";
 import ShoppingCartPage from "../viewes/shopping-cart/ShoppingCartPage";
 import ForgottenPasswordPage from "../viewes/forgot-password/ForgottenPasswordPage";

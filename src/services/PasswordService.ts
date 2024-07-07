@@ -1,12 +1,12 @@
 import toast from "react-hot-toast";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import $api from "@/utils/interceptors/interceptors.ts";
 
 
 export class PasswordService {
     static async sendResetEmail(email: string) {
         try {
             await $api.post(
-                `${API_URL}/password/initiate`,
+                `/password/initiate`,
                 {
                     email
                 },
@@ -19,7 +19,7 @@ export class PasswordService {
     static async sendResetPassword(password: string, token: string | undefined) {
         try {
             await $api.post(
-                `${API_URL}/password/reset/${token}`,
+                `/password/reset/${token}`,
                 {
                     newPassword: password
                 },
@@ -31,20 +31,22 @@ export class PasswordService {
 
     static async changeOldPassword(newPassword: string, oldPassword: string, email: string | undefined, confirmPassword: string,) {
         try {
-            if (newPassword == confirmPassword) {
-                await $api.post(
-                    `${API_URL}/password/reset`,
-                    {
-                        newPassword: newPassword,
-                        oldPassword: oldPassword,
-                        email: email
-                    },
-                );
-                return { success: true };
-            } else {
+            if(newPassword !== confirmPassword){
                 toast.error("Passwords do not match");
+
                 return { success: false };
             }
+
+            await $api.post(
+                `/password/reset`,
+                {
+                    newPassword: newPassword,
+                    oldPassword: oldPassword,
+                    email: email
+                },
+            );
+
+            return { success: true };
         } catch (error) {
             toast.error("Your old password is incorrect");
             return { success: false };
