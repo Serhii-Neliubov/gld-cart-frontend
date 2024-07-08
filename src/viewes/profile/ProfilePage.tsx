@@ -9,6 +9,7 @@ import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
 import {useInput} from "@/hooks/useInput/useInput.tsx";
 import Footer from "@/components/footer/Footer.tsx";
 import Input from "@/components/Input.tsx";
+import Textarea from "@/components/Textarea.tsx";
 
 // Order Details
 import order_img1 from "@/assets/images/ProfilePage/order-details/img1.svg";
@@ -16,6 +17,9 @@ import order_img2 from "@/assets/images/ProfilePage/order-details/img2.svg";
 import order_img3 from "@/assets/images/ProfilePage/order-details/img3.svg";
 import order_img4 from "@/assets/images/ProfilePage/order-details/img4.svg";
 import order_img5 from "@/assets/images/ProfilePage/order-details/img5.svg";
+import IconPerson from "@/assets/icons/profile/IconPerson.tsx";
+import IconMobile from "@/assets/icons/profile/IconMobile.tsx";
+import IconLocation from "@/assets/icons/profile/IconLocation.tsx";
 
 const ProfilePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -40,24 +44,48 @@ const ProfilePage: FC = () => {
   const confirmPassword = useInput('');
 
   const updateProfileHandler = () => {
+    const body = {
+      name: name.value,
+      surname: surname.value,
+      phone_number: phone_number.value,
+      address: address.value,
+      bio: bio.value,
+    };
+
+    const errors = validate(body);
+
+    if (errors.length > 0) {
+      setErrorFields(errors);
+      return;
+    }
+
     try {
-      const body = {
-        name: name.value,
-        surname: surname.value,
-        phone_number: phone_number.value,
-        address: address.value,
-        bio: bio.value,
-      };
-      
-      validate(body);
+      console.log(body);
     } catch (e) {
       console.log(e);
     }
   }
 
   const changePasswordHandler = () => {
+    if(newPassword.value !== confirmPassword.value) {
+      return setErrorFields(['newPassword', 'confirmPassword']);
+    }
+
+    const body = {
+      oldPassword: oldPassword.value,
+      newPassword: newPassword.value,
+      confirmPassword: confirmPassword.value,
+    };
+
+    const errors = validate(body);
+
+    if (errors.length > 0) {
+      setErrorFields(errors);
+      return;
+    }
+
     try {
-      // Change password
+      console.log(body);
     } catch (e) {
       console.log(e);
     }
@@ -86,17 +114,18 @@ const ProfilePage: FC = () => {
       console.log(e);
     }
   }
-  
-  const validate = (object: any) => {
-    setErrorFields([]);
 
+  const validate = (object: { [key: string]: string }) => {
+    const errors: string[] = [];
     const bodyKeys: string[] = Object.keys(object);
-    
+
     bodyKeys.forEach((field) => {
       if (!object[field].length) {
-        setErrorFields(prev => [...prev, field]);
+        errors.push(field);
       }
     });
+
+    return errors;
   }
 
   return (
@@ -105,7 +134,7 @@ const ProfilePage: FC = () => {
         <div className={'w-[360px]'}>
           <div className={'w-full h-full bg-white drop-shadow-lg'}>
             <div onClick={() => setSelectedLabel('Profile')}
-                 className={selectedLabel === 'Profile' ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
+                 className={selectedLabel === t('Profile') ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -120,7 +149,7 @@ const ProfilePage: FC = () => {
               </div>
             </div>
             <div onClick={() => setSelectedLabel('Address')}
-                 className={selectedLabel === 'Address' ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
+                 className={selectedLabel === t('Address') ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
                 <svg width="20" height="22" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fillRule="evenodd" clipRule="evenodd"
@@ -135,7 +164,7 @@ const ProfilePage: FC = () => {
               </div>
             </div>
             <div onClick={() => setSelectedLabel('My Orders')}
-                 className={selectedLabel === 'My Orders' ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
+                 className={selectedLabel === t('My Orders') ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -164,7 +193,7 @@ const ProfilePage: FC = () => {
               </div>
             </div>
             <div onClick={() => setSelectedLabel('Change Password')}
-                 className={selectedLabel === 'Change Password' ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
+                 className={selectedLabel === t('Change Password') ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
                 <svg width="19" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -241,95 +270,47 @@ const ProfilePage: FC = () => {
         {selectedLabel === 'Profile' &&
           <div className={'w-[800px]'}>
             <div className={'flex w-full flex-col'}>
-              <h1 className={'text-[20px] sm:text-[30px] mt-0 mb-[20px]'}>Welcome {user.name} {user.surname}</h1>
-              <div
-                className={'bg-white flex flex-col gap-[25px] drop-shadow-lg border-solid border-[1px] border-[#C5C6C7] p-[35px]'}>
-                <span className={'font-semibold text-[26px]'}>Personal Details</span>
-                <div className={'flex-col sm:flex-row flex w-full items-center justify-between mt-[25px] gap-[25px]'}>
-                  <div className={'border-solid w-full border-[1px] border-[#C5C6C7] px-[20px] flex gap-3 items-center'}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 17 20" fill="none">
-                      <path
-                        d="M9.21553 9.8041C11.4735 9.8041 13.3041 7.97358 13.3041 5.71553C13.3041 3.45747 11.4735 1.62695 9.21553 1.62695C6.95747 1.62695 5.12695 3.45747 5.12695 5.71553C5.12695 7.97358 6.95747 9.8041 9.21553 9.8041Z"
-                        stroke="#55585B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path
-                        d="M15.8588 18.5951C15.8588 15.4305 12.652 12.8711 8.70383 12.8711C4.75567 12.8711 1.54883 15.4305 1.54883 18.5951"
-                        stroke="#55585B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <input
-                      {...name}
-                      required={true}
-                      placeholder={'Eleonor'}
-                      className={'outline-none text-[19px] font-medium w-full py-[20px]'}/>
-                  </div>
-                  <div className={'border-solid w-full border-[1px] border-[#C5C6C7] px-[20px] flex gap-3 items-center'}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 17 20" fill="none">
-                      <path
-                        d="M9.21553 9.8041C11.4735 9.8041 13.3041 7.97358 13.3041 5.71553C13.3041 3.45747 11.4735 1.62695 9.21553 1.62695C6.95747 1.62695 5.12695 3.45747 5.12695 5.71553C5.12695 7.97358 6.95747 9.8041 9.21553 9.8041Z"
-                        stroke="#55585B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path
-                        d="M15.8588 18.5951C15.8588 15.4305 12.652 12.8711 8.70383 12.8711C4.75567 12.8711 1.54883 15.4305 1.54883 18.5951"
-                        stroke="#55585B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <input
-                      {...surname}
-                      required={true}
-                      placeholder={'Pena'}
-                      className={'outline-none text-[19px] font-medium w-full py-[20px]'}/>
-                  </div>
-                </div>
+              <h1 className={'text-[20px] sm:text-[30px] mt-0 mb-[20px]'}>{t('Welcome')} {user.name} {user.surname}</h1>
+              <div className={'bg-white flex flex-col gap-[15px] drop-shadow-lg border-solid border-[1px] border-[#C5C6C7] p-[35px]'}>
+                <span className={'font-semibold text-[26px]'}>{t('Personal Details')}</span>
                 <div className={'flex gap-[25px]'}>
                   <Input
                     inputValue={name}
-                    type={'text'}
-                    placeholder={'Test'}
-                    errorText={'Field is required'}
+                    placeholder={'Eleonor'}
                     errorFields={errorFields}
                     name={'name'}
+                    image={<IconPerson />}
                   />
 
                   <Input
                     inputValue={surname}
-                    type={'text'}
-                    placeholder={'Test'}
-                    errorText={'Field is required'}
+                    placeholder={'Pena'}
                     errorFields={errorFields}
                     name={'surname'}
+                    image={<IconPerson />}
                   />
                 </div>
-                <div className={'w-full border-solid border-[1px] border-[#C5C6C7] px-[20px] flex gap-3 items-center'}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
-                    <path
-                      d="M13.7858 5.08873V13.1685C13.7858 16.4004 12.9706 17.2084 9.70967 17.2084H4.81832C1.55741 17.2084 0.742188 16.4004 0.742188 13.1685V5.08873C0.742188 1.85681 1.55741 1.04883 4.81832 1.04883H9.70967C12.9706 1.04883 13.7858 1.85681 13.7858 5.08873Z"
-                      stroke="#55585B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path opacity="0.4" d="M8.90348 3.87891H5.64258" stroke="#55585B" strokeWidth="1.5"
-                          strokeLinecap="round" strokeLinejoin="round"/>
-                    <path opacity="0.4"
-                          d="M7.26166 14.8641C7.95952 14.8641 8.52526 14.3034 8.52526 13.6117C8.52526 12.92 7.95952 12.3594 7.26166 12.3594C6.56378 12.3594 5.99805 12.92 5.99805 13.6117C5.99805 14.3034 6.56378 14.8641 7.26166 14.8641Z"
-                          stroke="#55585B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <input
-                    {...phone_number}
-                    placeholder={'0123 456 7889'}
-                    className={'outline-none text-[19px] font-medium min-w-[280px] py-[20px]'}/>
-                </div>
-                <div className={'w-full border-solid border-[1px] border-[#C5C6C7] px-[20px] flex gap-3 items-center'}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="19" viewBox="0 0 17 19" fill="none">
-                    <path
-                      d="M8.10679 10.5249C9.56374 10.5249 10.7448 9.36066 10.7448 7.92455C10.7448 6.48843 9.56374 5.32422 8.10679 5.32422C6.64984 5.32422 5.46875 6.48843 5.46875 7.92455C5.46875 9.36066 6.64984 10.5249 8.10679 10.5249Z"
-                      stroke="#55585B" strokeWidth="1.5"/>
-                    <path
-                      d="M1.02752 6.40901C2.69321 -0.808558 13.5413 -0.800223 15.1986 6.41735C16.1709 10.6512 13.499 14.235 11.1569 16.4519C9.45743 18.0688 6.76865 18.0688 5.06069 16.4519C2.72703 14.235 0.0551672 10.6429 1.02752 6.40901Z"
-                      stroke="#55585B" strokeWidth="1.5"/>
-                  </svg>
-                  <input
-                    {...address}
-                    placeholder={'3304 Randall Drive'}
-                    className={'outline-none text-[19px] font-medium min-w-[280px] py-[20px]'}/>
-                </div>
-                <textarea
-                  {...bio}
+                <Input
+                  inputValue={phone_number}
+                  type={'number'}
+                  placeholder={'0123 456 7889'}
+                  errorFields={errorFields}
+                  name={'phone_number'}
+                  image={<IconMobile />}
+                />
+                <Input
+                  inputValue={address}
+                  placeholder={'3304 Randall Drive'}
+                  name={'address'}
+                  image={<IconLocation />}
+                  errorFields={errorFields}
+                />
+                <Textarea
                   placeholder={'Hi there, this is my bio...'}
-                  className={'w-full outline-none text-[19px] min-h-[200px] font-medium min-w-[360px] py-[20px] px-[25px] border-solid border-[1px] border-[#C5C6C7]'}/>
+                  errorFields={errorFields}
+                  textareaValue={bio}
+                  name={'bio'}
+                />
                 <div className={'w-full flex justify-end'}>
                   <button
                     onClick={updateProfileHandler}
@@ -486,37 +467,33 @@ const ProfilePage: FC = () => {
 
         {selectedLabel === 'Change Password' &&
           <div className={'flex flex-col w-full'}>
-            <div
-              className={'bg-white flex flex-col gap-[25px] drop-shadow-lg border-solid border-[1px] border-[#C5C6C7] p-[35px]'}>
-              <span className={'font-semibold text-[26px]'}>Please enter your current password</span>
-              <div className={'flex flex-col gap-[30px] mt-[40px]'}>
-                <label className={'flex flex-col relative'}>
-                  <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Old Password')}</span>
-                  <input
-                    {...oldPassword}
-                    required={true}
-                    type="password"
-                    className={'py-[18px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                  />
-                </label>
-                <label className={'flex flex-col relative'}>
-                  <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('New Password')}</span>
-                  <input
-                    {...newPassword}
-                    required={true}
-                    type="password"
-                    className={'py-[18px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                  />
-                </label>
-                <label className={'flex flex-col relative'}>
-                  <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Confirm password')}</span>
-                  <input
-                    {...confirmPassword}
-                    required={true}
-                    type="password"
-                    className={'py-[18px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                  />
-                </label>
+            <div className={'bg-white flex flex-col gap-[25px] drop-shadow-lg border-solid border-[1px] border-[#C5C6C7] p-[35px]'}>
+              <span className={'font-semibold text-[26px]'}>{t('Please enter your current password')}</span>
+              <div className={'flex flex-col gap-[15px] mt-[40px]'}>
+                <Input
+                  type={'text'}
+                  placeholder={'Old password'}
+                  errorText={'Field is required'}
+                  errorFields={errorFields}
+                  inputValue={oldPassword}
+                  name={'oldPassword'}
+                />
+                <Input
+                  type={'text'}
+                  placeholder={'New password'}
+                  errorText={'Field is required and must be match'}
+                  errorFields={errorFields}
+                  inputValue={newPassword}
+                  name={'newPassword'}
+                />
+                <Input
+                  type={'text'}
+                  placeholder={'Confirm password'}
+                  errorText={'Field is required and must be match'}
+                  errorFields={errorFields}
+                  inputValue={confirmPassword}
+                  name={'confirmPassword'}
+                />
               </div>
               <div className={'w-full items-end flex justify-end'}>
                 <button

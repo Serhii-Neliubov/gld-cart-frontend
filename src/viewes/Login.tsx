@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {t} from "i18next";
 import {useDispatch} from "react-redux";
-import toast from "react-hot-toast";
 
 import { AppDispatch } from "@/store/store.ts";
 import { login } from "@/store/slices/userDataSlice.ts";
@@ -15,26 +14,50 @@ import googleIcon from "@/assets/images/google-icon.svg";
 import decorImg1 from "@/assets/images/Login/decor1.png";
 import decorImg2 from "@/assets/images/Login/decor2.png";
 import decorImg3 from "@/assets/images/Login/decor3.png";
+import Input from "@/components/Input.tsx";
 
 const Login = () => {
   useDefaultScrollPosition();
 
   const dispatch = useDispatch<AppDispatch>();
+
   const [isRemember, setIsRemember] = useState(false);
+  const [errorFields, setErrorFields] = useState<string[]>([]);
 
   const email = useInput('');
   const password = useInput('');
 
-  const handleLogin = () => {
-    if(!email.value || !password.value){
-     return toast.error('Email and password are required');
+  const handleLogin = async () => {
+    const body = {
+      email: email.value,
+      password: password.value,
     }
 
-    if(email.value.length < 6 || password.value.length < 6){
-      return toast.error('Password must be at least 6 characters');
+    const errors = validate(body);
+
+    if (errors.length > 0) {
+      setErrorFields(errors);
+      return;
     }
 
-    dispatch(login({ email: email.value, password: password.value, isRemember }));
+    try {
+      await dispatch(login({ email: email.value, password: password.value, isRemember }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const validate = (object: { [key: string]: string }) => {
+    const errors: string[] = [];
+    const bodyKeys: string[] = Object.keys(object);
+
+    bodyKeys.forEach((field) => {
+      if (!object[field].length) {
+        errors.push(field);
+      }
+    });
+
+    return errors;
   }
 
   return (
@@ -57,29 +80,11 @@ const Login = () => {
           <div
             className={'text-[#49535B] relative z-10 w-fit px-[5px] text-center bg-white'}>{t('or Sign up with Email')}</div>
         </div>
-        <div className={'mt-[40px] flex flex-col gap-[30px] w-full'}>
-          <label className={'flex flex-col relative'}>
-            <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Your Email')}</span>
-            <input
-              {...email}
-              type="email"
-              required={true}
-              placeholder='Gldcart@mail.com'
-              className={'py-[18px] text-[14px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-            />
-          </label>
-          <label className={'flex flex-col relative'}>
-            <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Password')}</span>
-            <input
-              {...password}
-              type="password"
-              required={true}
-              placeholder={t('Min. 6 character')}
-              className={'py-[18px] text-[14px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-            />
-          </label>
+        <div className={'mt-[40px] flex flex-col gap-[25px] w-full'}>
+          <Input placeholder={'Gldcart@gmail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
+          <Input placeholder={'********'} subject={'Password'} type={'password'} errorText={'Field is required and must have 6 character'} errorFields={errorFields} inputValue={password} name={'password'} />
         </div>
-        <div className={'flex flex-wrap gap-2 justify-between items-center w-full mt-[15px]'}>
+        <div className={'flex flex-wrap gap-2 justify-between items-center w-full mt-[20px]'}>
           <div className={'flex gap-2 items-center'}>
             <input onChange={() => setIsRemember(prev => !prev)} className={'w-[20px] text-[#55585B] h-[20px]'}
                    type="checkbox"/>

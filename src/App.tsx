@@ -53,7 +53,7 @@ const App: FC = () => {
             })
           )}
 
-          {user.role === 'buyer' && (
+          {user.role === 'Buyer' && (
             buyerRoutes.map((route) => {
               return (
                 <Route

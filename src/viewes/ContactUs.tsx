@@ -1,10 +1,8 @@
-import React from 'react';
-import { FC } from 'react';
+import React, {useState} from 'react';
 import Footer from '@/components/footer/Footer.tsx';
 import {Link, useNavigate} from 'react-router-dom';
 import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
 import { ContactUsService } from 'services/ContactUsService.ts';
-import { useForm, SubmitHandler } from "react-hook-form"
 
 import imageContactUs1 from "@/assets/images/contact-us/icon1.svg";
 import imageContactUs2 from "@/assets/images/contact-us/icon2.svg";
@@ -12,36 +10,58 @@ import imageContactUs3 from "@/assets/images/contact-us/icon3.svg";
 import imageSocialIcon1 from "@/assets/images/contact-us/social1.png";
 import imageSocialIcon2 from "@/assets/images/contact-us/social2.png";
 import imageSocialIcon3 from "@/assets/images/contact-us/social3.png";
-import toast from "react-hot-toast";
 import {t} from "i18next";
+import {useInput} from "@/hooks/useInput/useInput.tsx";
+import Input from "@/components/Input.tsx";
+import Textarea from "@/components/Textarea.tsx";
 
-interface IFormData {
-  name: string,
-  email: string,
-  subject: string,
-  message: string
-}
-
-const ContactUs: FC = () => {
+const ContactUs = () => {
   useDefaultScrollPosition();
-  const { register, formState: { errors }, handleSubmit } = useForm<IFormData>()
-  const onSubmit: SubmitHandler<IFormData> = (data) => sendMessageHandler(data)
+
+  const [errorFields, setErrorFields] = useState<string[]>([]);
+
+  const name = useInput('');
+  const email = useInput('');
+  const subject = useInput('');
+  const message = useInput('');
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  async function sendMessageHandler(data: IFormData) {
+  async function sendMessageHandler() {
+    const body = {
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value
+    }
+
+    const errors = validate(body);
+
+    if (errors.length > 0) {
+      setErrorFields(errors);
+      return;
+    }
+
     try {
-      await ContactUsService.sendMessage({...data, token});
+      await ContactUsService.sendMessage({...body, token});
       navigate("/send-message");
     } catch (error) {
       console.log(error);
     }
   }
 
-  if(errors){
-    const fieldError = Object.keys(errors)[0];
-    fieldError && toast.error(`${fieldError} is required`);
+  const validate = (object: { [key: string]: string }) => {
+    const errors: string[] = [];
+    const bodyKeys: string[] = Object.keys(object);
+
+    bodyKeys.forEach((field) => {
+      if (!object[field].length) {
+        errors.push(field);
+      }
+    });
+
+    return errors;
   }
 
   return (
@@ -56,44 +76,14 @@ const ContactUs: FC = () => {
             </div>
           </div>
           <div className={'flex flex-wrap md:flex-nowrap gap-10 justify-between items-center bg-white py-[25px] md:py-[50px] px-[30px] md:px-[60px]'}>
-            <form className={'w-full'} onSubmit={handleSubmit(onSubmit)}>
+            <div className={'w-full'}>
               <div className={'max-w-[720px]'}>
                 <h2 className={'md:text-[30px] text-[20px] mb-[42px] font-medium'}>{t('Sent A Message')}</h2>
-                <div className={'flex flex-col gap-10'}>
-                  <label className={'flex flex-col relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Your Name')}</span>
-                    <input
-                      {...register("name", {required: true})}
-                      type="text"
-                      placeholder='Cameron Williamson'
-                      className={'py-[18px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                    />
-                  </label>
-                  <label className={'flex flex-col relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Your Email')}</span>
-                    <input
-                      {...register("email", {required: true})}
-                      type="text"
-                      placeholder='Gldcart@mail.com'
-                      className={'py-[18px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                    />
-                  </label>
-                  <label className={'flex flex-col relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Subject')}</span>
-                    <input
-                      {...register("subject", {required: true})}
-                      type="text"
-                      placeholder='Write your subject'
-                      className={'py-[18px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                    />
-                  </label>
-                  <label className={'flex flex-col relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Your Message')}</span>
-                    <textarea
-                      {...register("message", {required: true})}
-                      className={'py-[25px] min-h-[165px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                    />
-                  </label>
+                <div className={'flex flex-col gap-6'}>
+                  <Input placeholder={'Cameron Williamson'} subject={'Your Name'} errorFields={errorFields} inputValue={name} name={'name'} />
+                  <Input placeholder={'Gldcart@mail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
+                  <Input placeholder={'Write your subject'} subject={'Subject'} errorFields={errorFields} inputValue={subject} name={'subject'} />
+                  <Textarea placeholder={''} subject={'Your Message'} errorFields={errorFields} textareaValue={message} name={'message'} />
                 </div>
                 <div className={'flex gap-2 items-center my-[15px]'}>
                   <input className={'w-[20px] text-[#55585B] h-[20px]'} type="checkbox"/>
@@ -102,11 +92,11 @@ const ContactUs: FC = () => {
                     time I comment.`)}
                 </span>
                 </div>
-                <button className={'text-white hover:bg-[#021B32] transition-all bg-black w-full md:max-w-[200px] py-[15px] text-[16px]'}>
+                <button onClick={sendMessageHandler} className={'text-white hover:bg-[#021B32] transition-all bg-black w-full md:max-w-[200px] py-[15px] text-[16px]'}>
                   {t('Send Message')}
                 </button>
               </div>
-            </form>
+            </div>
             <div className={'flex flex-col gap-10 w-full md:max-w-[205px]'}>
               <div className={'text-center lg:text-left flex justify-center md:items-start items-center flex-col gap-2'}>
                 <img className={'w-[40px]'} src={imageContactUs1} alt="Icon"/>

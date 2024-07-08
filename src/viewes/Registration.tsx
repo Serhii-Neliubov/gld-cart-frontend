@@ -16,14 +16,17 @@ import googleIcon from "@/assets/images/google-icon.svg";
 import decorImg1 from "@/assets/images/Login/decor1.png";
 import decorImg2 from "@/assets/images/Login/decor2.png";
 import decorImg3 from "@/assets/images/Login/decor3.png";
+import Input from "@/components/Input.tsx";
 
 const Registration = () => {
   useDefaultScrollPosition();
 
-  const [userType, setUserType] = useState("");
-  const [isRemember, setIsRemember] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
+  const [userType, setUserType] = useState("");
+  const [isRemember, setIsRemember] = useState(false);
+  const [errorFields, setErrorFields] = useState<string[]>([]);
 
   const name = useInput('');
   const surname = useInput('');
@@ -31,29 +34,48 @@ const Registration = () => {
   const password = useInput('');
   const rePassword = useInput('');
 
-  const user = {
-    role: userType,
-    name: name.value,
-    surname: surname.value,
-    email: email.value,
-    password: password.value,
-    rePassword: rePassword.value,
-    isRemember,
-  };
-
   function sendFormHandler(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
-    if(user.password !== user.rePassword) {
+    if(password.value !== rePassword.value) {
       return toast.error('Passwords do not match');
     }
 
+    const body = {
+      role: userType,
+      name: name.value,
+      surname: surname.value,
+      email: email.value,
+      password: password.value,
+      rePassword: rePassword.value,
+    };
+
+    const errors = validate(body);
+
+    if (errors.length > 0) {
+      setErrorFields(errors);
+      return;
+    }
+
     try {
-      dispatch(register(user));
+      dispatch(register({...body, isRemember}));
       navigate('/');
     } catch (error) {
       toast.error('Error with registration');
     }
+  }
+
+  const validate = (object: { [key: string]: string }) => {
+    const errors: string[] = [];
+    const bodyKeys: string[] = Object.keys(object);
+
+    bodyKeys.forEach((field) => {
+      if (!object[field].length) {
+        errors.push(field);
+      }
+    });
+
+    return errors;
   }
 
   return (
@@ -78,53 +100,14 @@ const Registration = () => {
                 <div
                   className={'text-[#49535B] relative z-10 w-fit px-[5px] text-center bg-white'}>{t('or Sign up with Email')}</div>
               </div>
-              <div className={'mt-[40px] flex flex-col gap-[30px] w-full'}>
+              <div className={'mt-[40px] flex flex-col gap-[25px] w-full'}>
                 <div className={'flex gap-7 sm:gap-4 flex-wrap sm:flex-nowrap'}>
-                  <label className={'w-full relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('First Name')}</span>
-                    <input
-                      {...name}
-                      placeholder={'ex:John'}
-                      className={'border-[#E0E2E3] text-[14px] outline-none border-solid border-[1px] w-full py-[18px] px-[27px]'}/>
-                  </label>
-                  <label className={'w-full relative'}>
-                    <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Last Name')}</span>
-                    <input
-                      {...surname}
-                      placeholder={'ex:Miller'}
-                      className={'border-[#E0E2E3] text-[14px] outline-none border-solid border-[1px] w-full py-[18px] px-[27px]'}/>
-                  </label>
+                  <Input placeholder={'ex:John'} subject={'First Name'} errorFields={errorFields} inputValue={name} name={'name'} />
+                  <Input placeholder={'ex:Miller'} subject={'Last Name'} errorFields={errorFields} inputValue={surname} name={'surname'} />
                 </div>
-                <label className={'flex flex-col relative'}>
-                  <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Your Email')}</span>
-                  <input
-                    {...email}
-                    type="email"
-                    required={true}
-                    placeholder='Gldcart@mail.com'
-                    className={'py-[18px] text-[14px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                  />
-                </label>
-                <label className={'flex flex-col relative'}>
-                  <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Password')}</span>
-                  <input
-                    {...password}
-                    type="password"
-                    required={true}
-                    placeholder={t('Min. 6 character')}
-                    className={'py-[18px] text-[14px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                  />
-                </label>
-                <label className={'flex flex-col relative'}>
-                  <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Re-Password')}</span>
-                  <input
-                    {...rePassword}
-                    type="password"
-                    required={true}
-                    placeholder={t('Min. 6 character')}
-                    className={'py-[18px] text-[14px] outline-none px-[27px] border-solid border-[#E0E2E3] border-[1px]'}
-                  />
-                </label>
+                <Input placeholder={'Gldcart@mail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
+                <Input placeholder={'Min. 6 character'} type={'password'} subject={'Password'} errorFields={errorFields} inputValue={password} name={'password'} />
+                <Input placeholder={'Min. 6 character'} type={'password'} subject={'Re-Password'} errorFields={errorFields} inputValue={rePassword} name={'rePassword'} />
               </div>
               <div className={'flex flex-wrap gap-2 justify-between items-center w-full mt-[15px]'}>
                 <div className={'flex gap-2 items-center'}>
