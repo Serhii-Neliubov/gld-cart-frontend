@@ -19,17 +19,17 @@ const App: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if(!user.id) return;
+    if(!user._id) return;
 
-    initSocket(user.id)(dispatch);
-  }, [user.id]);
+    initSocket(user._id)(dispatch);
+  }, [user._id]);
 
     return (
       <BrowserRouter>
         <Header />
         <Label />
         <Routes>
-          {!user.type && (
+          {!user.role && (
             noAuthRotes.map((route, index) => {
               return (
                 <Route
@@ -41,7 +41,7 @@ const App: FC = () => {
             })
           )}
 
-          {user.type === 'Vendor' && (
+          {user.role === 'vendor' && (
             vendorRoutes.map((route) => {
               return (
                 <Route
@@ -53,7 +53,7 @@ const App: FC = () => {
             })
           )}
 
-          {user.type === 'Buyer' && (
+          {user.role === 'buyer' && (
             buyerRoutes.map((route) => {
               return (
                 <Route

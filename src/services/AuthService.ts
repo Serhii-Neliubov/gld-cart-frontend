@@ -28,7 +28,7 @@ export default class AuthService {
   }
 
   static async registration(
-    type: string,
+    role: string,
     name: string,
     surname: string,
     email: string,
@@ -37,7 +37,7 @@ export default class AuthService {
     return $api.post("/auth/register", {
       name,
       password,
-      type,
+      role,
       surname,
       email,
     });

@@ -32,7 +32,7 @@ const Registration = () => {
   const rePassword = useInput('');
 
   const user = {
-    type: userType,
+    role: userType,
     name: name.value,
     surname: surname.value,
     email: email.value,
@@ -48,8 +48,12 @@ const Registration = () => {
       return toast.error('Passwords do not match');
     }
 
-    dispatch(register(user));
-    navigate('/');
+    try {
+      dispatch(register(user));
+      navigate('/');
+    } catch (error) {
+      toast.error('Error with registration');
+    }
   }
 
   return (
@@ -79,12 +83,14 @@ const Registration = () => {
                   <label className={'w-full relative'}>
                     <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('First Name')}</span>
                     <input
+                      {...name}
                       placeholder={'ex:John'}
                       className={'border-[#E0E2E3] text-[14px] outline-none border-solid border-[1px] w-full py-[18px] px-[27px]'}/>
                   </label>
                   <label className={'w-full relative'}>
                     <span className={'ml-[27px] absolute top-[-8px] bg-white left-0'}>{t('Last Name')}</span>
                     <input
+                      {...surname}
                       placeholder={'ex:Miller'}
                       className={'border-[#E0E2E3] text-[14px] outline-none border-solid border-[1px] w-full py-[18px] px-[27px]'}/>
                   </label>

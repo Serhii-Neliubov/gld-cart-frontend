@@ -34,13 +34,13 @@ export const register = createAsyncThunk(
     async (payload: {
         surname: string;
         name: string;
-        type: string;
+        role: string;
         email: string;
         password: string;
         isRemember: boolean;
     }) => {
         const response = await AuthService.registration(
-            payload.type,
+            payload.role,
             payload.name,
             payload.surname,
             payload.email,
