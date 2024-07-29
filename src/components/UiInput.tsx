@@ -12,7 +12,7 @@ interface InputProps {
   subject?: string,
 }
 
-export default function Input({ inputValue, subject, name, type = 'text', errorFields, errorText = 'Field is required', placeholder = '', image, }: InputProps) {
+export default function UiInput({ inputValue, subject, name, type = 'text', errorFields, errorText = 'Field is required', placeholder = '', image, }: InputProps) {
   const isErrored = errorFields.includes(name);
 
   const inputStyles = 'mb-1 border-solid w-full border-[1px] border-[#C5C6C7] px-[20px] flex gap-3 items-center'

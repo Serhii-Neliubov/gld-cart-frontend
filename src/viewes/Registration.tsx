@@ -16,7 +16,7 @@ import googleIcon from "@/assets/images/google-icon.svg";
 import decorImg1 from "@/assets/images/Login/decor1.png";
 import decorImg2 from "@/assets/images/Login/decor2.png";
 import decorImg3 from "@/assets/images/Login/decor3.png";
-import Input from "@/components/Input.tsx";
+import UiInput from "@/components/UiInput.tsx";
 
 const Registration = () => {
   useDefaultScrollPosition();
@@ -102,20 +102,19 @@ const Registration = () => {
               </div>
               <div className={'mt-[40px] flex flex-col gap-[25px] w-full'}>
                 <div className={'flex gap-7 sm:gap-4 flex-wrap sm:flex-nowrap'}>
-                  <Input placeholder={'ex:John'} subject={'First Name'} errorFields={errorFields} inputValue={name} name={'name'} />
-                  <Input placeholder={'ex:Miller'} subject={'Last Name'} errorFields={errorFields} inputValue={surname} name={'surname'} />
+                  <UiInput placeholder={'ex:John'} subject={'First Name'} errorFields={errorFields} inputValue={name} name={'name'} />
+                  <UiInput placeholder={'ex:Miller'} subject={'Last Name'} errorFields={errorFields} inputValue={surname} name={'surname'} />
                 </div>
-                <Input placeholder={'Gldcart@mail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
-                <Input placeholder={'Min. 6 character'} type={'password'} subject={'Password'} errorFields={errorFields} inputValue={password} name={'password'} />
-                <Input placeholder={'Min. 6 character'} type={'password'} subject={'Re-Password'} errorFields={errorFields} inputValue={rePassword} name={'rePassword'} />
+                <UiInput placeholder={'Gldcart@mail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
+                <UiInput placeholder={'Min. 6 character'} type={'password'} subject={'Password'} errorFields={errorFields} inputValue={password} name={'password'} />
+                <UiInput placeholder={'Min. 6 character'} type={'password'} subject={'Re-Password'} errorFields={errorFields} inputValue={rePassword} name={'rePassword'} />
               </div>
               <div className={'flex flex-wrap gap-2 justify-between items-center w-full mt-[15px]'}>
                 <div className={'flex gap-2 items-center'}>
-                  <input onChange={() => setIsRemember(prev => !prev)} className={'w-[20px] text-[#55585B] h-[20px]'}
-                         type="checkbox"/>
+                  <input onChange={() => setIsRemember(prev => !prev)} className={'w-[20px] text-[#55585B] h-[20px]'} type="checkbox" />
                   <span className={'text-[#55585B]'}>
-                  {t(`Remember me`)}
-          </span>
+                    {t(`Remember me`)}
+                  </span>
                 </div>
               </div>
               <button onClick={event => sendFormHandler(event)} className={'text-white bg-[#02A0A0] py-[13px] w-full mt-[20px]'}>{t('Create my account')}</button>

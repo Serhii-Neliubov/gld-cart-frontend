@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
-import Footer from '@/components/footer/Footer.tsx';
+import {t} from "i18next";
 import {Link, useNavigate} from 'react-router-dom';
-import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
+
 import { ContactUsService } from 'services/ContactUsService.ts';
+
+import {useInput} from "@/hooks/useInput/useInput.tsx";
+import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
+
+import UiInput from "@/components/UiInput.tsx";
+import UiTextarea from "@/components/UiTextarea.tsx";
+import Footer from '@/components/footer/Footer.tsx';
 
 import imageContactUs1 from "@/assets/images/contact-us/icon1.svg";
 import imageContactUs2 from "@/assets/images/contact-us/icon2.svg";
@@ -10,10 +17,6 @@ import imageContactUs3 from "@/assets/images/contact-us/icon3.svg";
 import imageSocialIcon1 from "@/assets/images/contact-us/social1.png";
 import imageSocialIcon2 from "@/assets/images/contact-us/social2.png";
 import imageSocialIcon3 from "@/assets/images/contact-us/social3.png";
-import {t} from "i18next";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
-import Input from "@/components/Input.tsx";
-import Textarea from "@/components/Textarea.tsx";
 
 const ContactUs = () => {
   useDefaultScrollPosition();
@@ -80,10 +83,10 @@ const ContactUs = () => {
               <div className={'max-w-[720px]'}>
                 <h2 className={'md:text-[30px] text-[20px] mb-[42px] font-medium'}>{t('Sent A Message')}</h2>
                 <div className={'flex flex-col gap-6'}>
-                  <Input placeholder={'Cameron Williamson'} subject={'Your Name'} errorFields={errorFields} inputValue={name} name={'name'} />
-                  <Input placeholder={'Gldcart@mail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
-                  <Input placeholder={'Write your subject'} subject={'Subject'} errorFields={errorFields} inputValue={subject} name={'subject'} />
-                  <Textarea placeholder={''} subject={'Your Message'} errorFields={errorFields} textareaValue={message} name={'message'} />
+                  <UiInput placeholder={'Cameron Williamson'} subject={'Your Name'} errorFields={errorFields} inputValue={name} name={'name'} />
+                  <UiInput placeholder={'Gldcart@mail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
+                  <UiInput placeholder={'Write your subject'} subject={'Subject'} errorFields={errorFields} inputValue={subject} name={'subject'} />
+                  <UiTextarea placeholder={''} subject={'Your Message'} errorFields={errorFields} textareaValue={message} name={'message'} />
                 </div>
                 <div className={'flex gap-2 items-center my-[15px]'}>
                   <input className={'w-[20px] text-[#55585B] h-[20px]'} type="checkbox"/>

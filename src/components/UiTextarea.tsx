@@ -11,7 +11,7 @@ interface TextareaProps {
   subject?: string,
 }
 
-export default function Textarea({ textareaValue, subject, name, errorFields, errorText = 'Field is required', placeholder = '', }: TextareaProps) {
+export default function UiTextarea({ textareaValue, subject, name, errorFields, errorText = 'Field is required', placeholder = '', }: TextareaProps) {
   const isErrored = errorFields.includes(name);
 
   const textareaStyles = 'mb-1 border-solid w-full border-[1px] border-[#C5C6C7] p-[10px]'

@@ -1,127 +1,88 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import './Label.scss';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { FC } from 'react';
-import {RootState} from '@/store/store.ts';
-import {selectIsAuth, userDataSelector} from '@/store/slices/userDataSlice.ts';
-import IUser from '@/utils/models/IUser.ts';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-
-interface NavLink {
-  to: string;
-  label: string;
-}
+import React, {useState} from "react";
+import {t} from "i18next";
+import {Link, useLocation} from "react-router-dom";
 
 import imageProfile from '@/assets/images/profile-icon.svg';
 import imageLike from '@/assets/images/like-icon.svg';
 import imageTrash from '@/assets/images/trash-icon.svg';
 
-
-const Label: FC = () => {
+const Label = () => {
+  const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const location = useLocation();
-  const isAuth = useSelector<RootState, boolean>(selectIsAuth);
-  const user = useSelector<RootState, IUser>(userDataSelector);
-  const { t } = useTranslation();
 
-  const navLinks: NavLink[] = [
-    { to: "/", label: t("home") },
-    {
-      to: user.type == "Vendor"
-        ? "/renting-category-page"
-        : "/renting",
-      label: t("renting"),
-    },
-    {
-      to: user.type == "Vendor"
-        ? "/products-category-page"
-        : "/products",
-      label: t("products"),
-    },
-    {
-      to: "/professional-services",
-      label: t("professional services"),
-    },
-    {
-      to: user.type
-          ? "/driver-license"
-          : "/login",
-      label: t("driver license"),
-    },
-  ];
+  console.log(location.pathname);
 
   return (
-    <div className="page__label label">
-      <div className="label__container">
-        <h2 className="label__title">{t("Exclusive")}</h2>
-        <div className="label__menu">
-          <nav className="label__body">
-            <ul className="label__list">
-              {navLinks.map((navLink) => (
-                <li className="label__item" key={navLink.label}>
-                  <Link
-                    to={navLink.to}
-                    className={`label__link ${
-                      location.pathname === navLink.to
-                        ? "label__link_active"
-                        : ""
-                    }`}
-                  >
-                    {navLink.label}
-                  </Link>
-                </li>
-              ))}
-              <li className="label__item">
-                <Link
-                    to="/contact-us"
-                    className={`label__link ${
-                        location.pathname === "/contact-us"
-                            ? "label__link_active"
-                            : ""
-                    }`}
-                >
-                  Contact Us
-                </Link>
+    <>
+      <div className={'bg-white py-[12px] border-y border-black border-solid'}>
+        <div className={'max-w-[1265px] flex items-center justify-between mx-auto px-[20px]'}>
+          <span className={'font-semibold text-[24px]'}>{t('Exclusive')}</span>
+          <nav className={'block max-[1150px]:hidden'}>
+            <ul className={'uppercase flex gap-[40px]'}>
+              <li>
+                <Link to={'/'} className={'hover:text-red-500 transition-all'}>{t('Home')}</Link>
+              </li>
+              <li>
+                <Link to={'/renting'} className={'hover:text-red-500 transition-all'}>{t('Renting')}</Link>
+              </li>
+              <li>
+                <Link to={'/products'} className={'hover:text-red-500 transition-all'}>{t('Products')}</Link>
+              </li>
+              <li>
+                <Link to={'/professional-services'} className={'hover:text-red-500 transition-all'}>{t('Professional services')}</Link>
+              </li>
+              <li>
+                <Link to={'/driver-license'} className={'hover:text-red-500 transition-all'}>{t('Driver Services')}</Link>
+              </li>
+              <li>
+                <Link to={'/contact-us'} className={'hover:text-red-500 transition-all'}>{t('Contact us')}</Link>
               </li>
             </ul>
           </nav>
-        </div>
-        <div className="label__actions">
-          <Skeleton
-              circle
-              height="100%"
-              containerClassName="avatar-skeleton"
-          />
-          {user.type == "Vendor" ? null : (
-            <React.Fragment>
-              <Link
-                to={!isAuth ? "/login" : "/wishlist"}
-                className="label__like-btn"
-              >
-                <img src={imageLike} alt="Like icon" />
-              </Link>
-              <Link
-                to={!isAuth ? "/login" : "/shopping-cart"}
-                className="label__trash-btn"
-              >
-                <img src={imageTrash} alt="Trash icon" />
-              </Link>
-            </React.Fragment>
-          )}
-          <Link
-            to={isAuth ? "/profile" : "/login"}
-            className="label__profile-btn"
-          >
-            <img src={imageProfile} alt="Profile icon" />
-            <span>
-              {user.name} {user.surname}
-            </span>
-          </Link>
+          <div className={'flex items-center gap-[16px]'}>
+            <Link to={'/wishlist'} className={'max-[350px]:hidden block'}>
+              <img src={imageLike} alt={'like icon'}/>
+            </Link>
+            <Link to={'/shopping-cart'} className={'max-[350px]:hidden block'}>
+              <img src={imageTrash} alt={'shopping cart icon'}/>
+            </Link>
+            <Link to={'/profile'}>
+              <img src={imageProfile} alt={'profile icon'}/>
+            </Link>
+
+            <button
+              onClick={() => setBurgerMenuOpen(prev => !prev)}
+              className="relative group hidden max-[1150px]:block">
+              <div
+                className="relative flex overflow-hidden items-center justify-center rounded-full w-[35px] h-[35px] transform transition-all bg-[#2283DC] ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                <div
+                  className="flex flex-col justify-between w-[15px] h-[15px] transform transition-all duration-300 origin-center overflow-hidden">
+                  <div
+                    className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6 delay-100"></div>
+                  <div
+                    className="bg-white h-[2px] w-7 transform transition-all duration-300 group-focus:translate-y-6 delay-75"></div>
+                  <div
+                    className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6"></div>
+
+                  <div
+                    className="absolute items-center justify-between transform transition-all duration-500 top-2 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
+                    <div
+                      className="absolute bg-white h-[2px] w-4 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
+                    <div
+                      className="absolute bg-white h-[2px] w-4 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+                  </div>
+                </div>
+              </div>
+            </button
+            >
+          </div>
         </div>
       </div>
-    </div>
+
+      {burgerMenuOpen &&
+        <div className={'absolute w-full bg-black z-[1000]'}>123</div>
+      }
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ const TrackOrder: FC = () => {
   const [orderStatus] = useState<string>("Order Placed");
 
   return (
-    <React.Fragment>
+    <>
       <div className={styles.main}>
         <div className="__container">
           <div className={styles.content}>
@@ -105,7 +105,7 @@ const TrackOrder: FC = () => {
         </div>
       </div>
       <Footer/>
-    </React.Fragment>
+    </>
   );
 };
 

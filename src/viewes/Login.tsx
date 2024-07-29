@@ -14,7 +14,7 @@ import googleIcon from "@/assets/images/google-icon.svg";
 import decorImg1 from "@/assets/images/Login/decor1.png";
 import decorImg2 from "@/assets/images/Login/decor2.png";
 import decorImg3 from "@/assets/images/Login/decor3.png";
-import Input from "@/components/Input.tsx";
+import UiInput from "@/components/UiInput.tsx";
 
 const Login = () => {
   useDefaultScrollPosition();
@@ -81,8 +81,8 @@ const Login = () => {
             className={'text-[#49535B] relative z-10 w-fit px-[5px] text-center bg-white'}>{t('or Sign up with Email')}</div>
         </div>
         <div className={'mt-[40px] flex flex-col gap-[25px] w-full'}>
-          <Input placeholder={'Gldcart@gmail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
-          <Input placeholder={'********'} subject={'Password'} type={'password'} errorText={'Field is required and must have 6 character'} errorFields={errorFields} inputValue={password} name={'password'} />
+          <UiInput placeholder={'Gldcart@gmail.com'} subject={'Your Email'} errorFields={errorFields} inputValue={email} name={'email'} />
+          <UiInput placeholder={'********'} subject={'Password'} type={'password'} errorText={'Field is required and must have 6 character'} errorFields={errorFields} inputValue={password} name={'password'} />
         </div>
         <div className={'flex flex-wrap gap-2 justify-between items-center w-full mt-[20px]'}>
           <div className={'flex gap-2 items-center'}>

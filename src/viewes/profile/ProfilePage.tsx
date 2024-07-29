@@ -8,8 +8,8 @@ import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
 
 import {useInput} from "@/hooks/useInput/useInput.tsx";
 import Footer from "@/components/footer/Footer.tsx";
-import Input from "@/components/Input.tsx";
-import Textarea from "@/components/Textarea.tsx";
+import UiInput from "@/components/UiInput.tsx";
+import UiTextarea from "@/components/UiTextarea.tsx";
 
 // Order Details
 import order_img1 from "@/assets/images/ProfilePage/order-details/img1.svg";
@@ -274,7 +274,7 @@ const ProfilePage: FC = () => {
               <div className={'bg-white flex flex-col gap-[15px] drop-shadow-lg border-solid border-[1px] border-[#C5C6C7] p-[35px]'}>
                 <span className={'font-semibold text-[26px]'}>{t('Personal Details')}</span>
                 <div className={'flex gap-[25px]'}>
-                  <Input
+                  <UiInput
                     inputValue={name}
                     placeholder={'Eleonor'}
                     errorFields={errorFields}
@@ -282,7 +282,7 @@ const ProfilePage: FC = () => {
                     image={<IconPerson />}
                   />
 
-                  <Input
+                  <UiInput
                     inputValue={surname}
                     placeholder={'Pena'}
                     errorFields={errorFields}
@@ -290,7 +290,7 @@ const ProfilePage: FC = () => {
                     image={<IconPerson />}
                   />
                 </div>
-                <Input
+                <UiInput
                   inputValue={phone_number}
                   type={'number'}
                   placeholder={'0123 456 7889'}
@@ -298,14 +298,14 @@ const ProfilePage: FC = () => {
                   name={'phone_number'}
                   image={<IconMobile />}
                 />
-                <Input
+                <UiInput
                   inputValue={address}
                   placeholder={'3304 Randall Drive'}
                   name={'address'}
                   image={<IconLocation />}
                   errorFields={errorFields}
                 />
-                <Textarea
+                <UiTextarea
                   placeholder={'Hi there, this is my bio...'}
                   errorFields={errorFields}
                   textareaValue={bio}
@@ -470,7 +470,7 @@ const ProfilePage: FC = () => {
             <div className={'bg-white flex flex-col gap-[25px] drop-shadow-lg border-solid border-[1px] border-[#C5C6C7] p-[35px]'}>
               <span className={'font-semibold text-[26px]'}>{t('Please enter your current password')}</span>
               <div className={'flex flex-col gap-[15px] mt-[40px]'}>
-                <Input
+                <UiInput
                   type={'text'}
                   placeholder={'Old password'}
                   errorText={'Field is required'}
@@ -478,7 +478,7 @@ const ProfilePage: FC = () => {
                   inputValue={oldPassword}
                   name={'oldPassword'}
                 />
-                <Input
+                <UiInput
                   type={'text'}
                   placeholder={'New password'}
                   errorText={'Field is required and must be match'}
@@ -486,7 +486,7 @@ const ProfilePage: FC = () => {
                   inputValue={newPassword}
                   name={'newPassword'}
                 />
-                <Input
+                <UiInput
                   type={'text'}
                   placeholder={'Confirm password'}
                   errorText={'Field is required and must be match'}
