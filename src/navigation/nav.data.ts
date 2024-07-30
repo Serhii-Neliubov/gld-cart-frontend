@@ -5,7 +5,13 @@ import {
   ForgotPassword,
   NewPassword,
   ContactUs,
-  RentingCategories, ShoppingCart, Wishlist
+  RentingCategories,
+  ShoppingCart,
+  Wishlist,
+  PrivacyPolicy,
+  CookiePolicy,
+  ShippingPolicy,
+  TermsConditions
 } from "@/viewes/index.ts";
 
 import ProfessionalServicesCategories from "../viewes/ProfessionalServicesCategories.tsx";
@@ -17,7 +23,30 @@ export const routes = [
     isAuthRequired: false,
     userRole: ['Buyer', 'Vendor', 'NoAuth'],
   },
-
+  {
+    path: "/privacy-policy",
+    element: PrivacyPolicy,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/cookie-policy",
+    element: CookiePolicy,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/shipping-policy",
+    element: ShippingPolicy,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/terms-conditions",
+    element: TermsConditions,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
   // Auth
   {
     path: "/login",

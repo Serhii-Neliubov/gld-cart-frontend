@@ -10,7 +10,7 @@ const CookiePolicy = () => {
   return (
     <>
       <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
-        <h1 className={'text-[32px] mb-[25px]'}>{t('Cookie Policy')}</h1>
+        <h1 className={'text-[32px] font-semibold mt-[25px] mb-[25px]'}>{t('Cookie Policy')}</h1>
         <p className={'text-[22px] leading-9'}>{t(`We use cookies to enhance your browsing experience on our website. By continuing to use our website, you consent to the use of cookies. This policy explains how we use cookies and how you can manage them.`)}
         </p>
         <div className={'max-w-[1119px] mt-[20px] leading-8 flex flex-col gap-12 font-poppins text-[22px]'}>

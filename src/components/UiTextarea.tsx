@@ -24,7 +24,7 @@ export default function UiTextarea({ textareaValue, subject, name, errorFields, 
           {...textareaValue}
           required={true}
           placeholder={placeholder}
-          className={'w-full outline-none text-[18px] min-h-[200px] font-medium p-[12px] border-none'}
+          className={'w-full resize-none outline-none text-[18px] min-h-[200px] font-medium p-[12px] border-none'}
         />
 
 

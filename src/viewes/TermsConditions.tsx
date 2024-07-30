@@ -10,7 +10,7 @@ const TermsConditions = () => {
   return (
     <>
       <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
-        <h1 className={'text-[32px] mb-[25px]'}>{t('Terms and Conditions')}</h1>
+        <h1 className={'text-[32px] font-semibold mt-[25px] mb-[25px]'}>{t('Terms and Conditions')}</h1>
         <p className={'text-[22px] leading-9'}>{t(`By using Gldcart.com , you agree to the terms and conditions, privacy policy, and returns/refund policy of the Site. Please read the Terms and Conditions carefully before using Gldcart.com.`)}</p>
         <div className={'max-w-[1119px] mt-[20px] leading-8 flex flex-col gap-12 font-poppins text-[22px]'}>
           <div className={'flex flex-col gap-2'}>

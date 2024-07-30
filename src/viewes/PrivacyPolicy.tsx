@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
   return (
     <>
       <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
-        <h1 className={'text-[32px] mb-[25px]'}>{t('Privacy Policy')}</h1>
+        <h1 className={'text-[32px] font-semibold mt-[25px] mb-[25px]'}>{t('Privacy Policy')}</h1>
         <p className={'text-[22px] leading-9'}>{t(`Welcome to Gldcart, we prioritize your privacy. This Privacy Policy outlines how we collect, use, disclose, and protect
           your personal information when you use our Website. By using the Website, you consent to our practices
           as described in this Policy.`)}
