@@ -3,7 +3,7 @@ import styles from "../NewAwesomeLipCare.module.scss";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
 import {useSelector} from "react-redux";
 import {vendorProductInfo} from "@/store/slices/vendorProductInfoSlice.ts";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput.tsx";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
 import toast from "react-hot-toast";
 

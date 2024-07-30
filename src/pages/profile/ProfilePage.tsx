@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/store/store.ts";
 import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
 
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput.tsx";
 import {validate} from "@/utils/validate.ts";
 
 import Footer from "@/components/Footer.tsx";

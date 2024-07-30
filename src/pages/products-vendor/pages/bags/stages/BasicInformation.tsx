@@ -2,7 +2,7 @@ import styles from "@/pages/products-vendor/pages/bags/NewBags.module.scss";
 import React, {Dispatch, SetStateAction, useState} from "react";
 import {IVendorProductData} from "@/models/IVendorProductData.ts";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput.tsx";
 import toast from "react-hot-toast";
 
 interface BasicInformationProps {

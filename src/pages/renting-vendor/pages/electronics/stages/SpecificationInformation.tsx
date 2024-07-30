@@ -3,7 +3,7 @@ import styles from "../NewElectronics.module.scss";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
 import toast from "react-hot-toast";
-import { useInput } from '@/hooks/useInput/useInput';
+import { useInput } from '@/hooks/useInput.tsx';
 
 type SpecificationInformationProps = {
   formData: IVendorProductData;

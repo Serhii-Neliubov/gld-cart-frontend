@@ -10,6 +10,7 @@ export {default as ForgotPassword} from "./ForgotPassword.tsx";
 export {default as NewPassword} from "./NewPassword.tsx";
 
 export {default as Login} from "./Login.tsx";
+export {default as DriverLicense} from "./driver-licese/DriverLicense.tsx";
 
 export {default as Wishlist} from "./Wishlist.tsx";
 export {default as ShoppingCart} from "./ShoppingCart.tsx";

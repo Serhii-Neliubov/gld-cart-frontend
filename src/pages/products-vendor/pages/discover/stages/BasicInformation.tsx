@@ -1,7 +1,7 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import styles from "@/pages/products-vendor/pages/discover/NewDiscoverSkincare.module.scss";
 import {IVendorProductData} from "@/models/IVendorProductData.ts";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput.tsx";
 import toast from "react-hot-toast";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
 

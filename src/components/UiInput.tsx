@@ -1,5 +1,5 @@
 import React from "react";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput.tsx";
 
 interface InputProps {
   type?: string,

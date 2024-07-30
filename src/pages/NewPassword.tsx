@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import {t} from "i18next";
 import {useNavigate} from "react-router-dom";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import { useInput } from "@/hooks/useInput/useInput.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
+import { useInput } from "@/hooks/useInput.tsx";
 
 import {validate} from "@/utils/validate.ts";
 

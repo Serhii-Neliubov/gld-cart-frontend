@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {t} from "i18next";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
 
 import vehicleImg from "@/assets/images/RentingPage/img1.png";
 import housesImg from "@/assets/images/RentingPage/img2.png";

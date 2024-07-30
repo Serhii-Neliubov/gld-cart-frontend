@@ -1,6 +1,6 @@
 import React from "react";
 import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
-import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
+import useCategoryRedirect from "@/hooks/useCategoryRedirect.tsx";
 import {PhotoAndVideoBlock} from "@/components/photo-video-block/PhotoAndVideoBlock.tsx";
 import {BasicInformation} from "@/pages/products-vendor/pages/necklaces/stages/BasicInformation.tsx";
 import {SpecificationInformation} from "@/pages/products-vendor/pages/necklaces/stages/SpecificationInformation.tsx";

@@ -2,7 +2,7 @@ import styles from "./ProductsCategories.module.scss";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import Footer from "@/components/Footer.tsx";
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
 
 import imageCategory1 from "@/assets/images/Categories/img1.png";
 import imageCategory2 from "@/assets/images/Categories/img2.png";

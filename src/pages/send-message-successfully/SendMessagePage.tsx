@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./SendMessagePage.module.scss";
 import { FC } from "react";
 import BgWithParticles from "@/components/bg-with-particles/BgWithParticles.tsx";
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
 
 import imageTick from "@/assets/images/send-message/tick.png";
 

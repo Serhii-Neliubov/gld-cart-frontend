@@ -1,5 +1,5 @@
 import React from "react";
-import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
+import useCategoryRedirect from "@/hooks/useCategoryRedirect.tsx";
 import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";

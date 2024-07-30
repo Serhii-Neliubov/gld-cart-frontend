@@ -4,7 +4,7 @@ import {IVendorProductData} from "@/models/IVendorProductData.ts";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
 import toast from "react-hot-toast";
 import {ChoosingColorBlock} from "@/components/choosing-color-block/ChoosingColorBlock.tsx";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput.tsx";
 
 type SpecificationInformationProps = {
   formData: IVendorProductData;

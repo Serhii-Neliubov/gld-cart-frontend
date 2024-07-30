@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction} from "react";
 import styles from "@/pages/products-vendor/pages/braceletes/NewBracelets.module.scss";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput.tsx";
 import toast from "react-hot-toast";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
 import {ChoosingColorBlock} from "@/components/choosing-color-block/ChoosingColorBlock.tsx";

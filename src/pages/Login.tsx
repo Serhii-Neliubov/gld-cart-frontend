@@ -11,8 +11,8 @@ import { login } from "@/store/slices/userDataSlice.ts";
 
 import {validate} from "@/utils/validate.ts";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import { useInput } from "@/hooks/useInput/useInput.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
+import { useInput } from "@/hooks/useInput.tsx";
 
 import googleIcon from "@/assets/images/google-icon.svg";
 import decorImg1 from "@/assets/images/Login/decor1.png";

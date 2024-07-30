@@ -4,7 +4,7 @@ import './Home.scss'
 import { SavedItem } from './components/SavedItem.tsx';
 import { CompaniesList } from './components/CompaniesList.tsx';
 import { BestSellings} from './components/BestSellings.tsx';
-import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
+import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition.tsx';
 
 import imageAppleIcon from '@/assets/images/apple-icon.png';
 import imageIphone from '@/assets/images/iphone-img.png';

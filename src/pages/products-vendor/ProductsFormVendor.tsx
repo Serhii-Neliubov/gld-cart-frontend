@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
+import useCategoryRedirect from "@/hooks/useCategoryRedirect.tsx";
 import {IVendorProductData} from "@/models/IVendorProductData.ts";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./NewGardening.module.scss";
-import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
+import useCategoryRedirect from "@/hooks/useCategoryRedirect.tsx";
 import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
 import {PhotoAndVideoBlock} from "../../components/PhotoAndVideoBlock.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";

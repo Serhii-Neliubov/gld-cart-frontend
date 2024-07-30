@@ -4,12 +4,14 @@ import { userDataSelector } from "@/store/slices/userDataSlice.ts";
 import { DriverLicenseBuyer } from "./components/buyer/DriverLicenseBuyer.tsx";
 import { DriverLicenseVendor } from "./components/vendor/DriverLicenseVendor.tsx";
 
-export const DriverLicense = () => {
+const DriverLicense = () => {
     const user = useSelector(userDataSelector);
 
     return (
-        user.type === 'Vendor' ?
+        user.role === 'Vendor' ?
             <DriverLicenseBuyer /> :
             <DriverLicenseVendor />
     );
 }
+
+export default DriverLicense;

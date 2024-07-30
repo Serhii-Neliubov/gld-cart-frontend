@@ -6,7 +6,7 @@ import {FaTrophy} from "react-icons/fa";
 import {FiMessageCircle} from "react-icons/fi";
 import {IoLocationOutline} from "react-icons/io5";
 import {LuMessagesSquare} from "react-icons/lu";
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
 
 const ProfessionalServices: FC = () => {
   useDefaultScrollPosition();

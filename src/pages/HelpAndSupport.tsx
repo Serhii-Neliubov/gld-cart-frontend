@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {t} from "i18next";
 
 import Footer from "@/components/Footer.tsx";
-import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
+import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition.tsx';
 
 import imageIcon1 from '@/assets/images/HelpAndSupport/icon1.svg';
 import imageIcon2 from '@/assets/images/HelpAndSupport/icon2.svg';

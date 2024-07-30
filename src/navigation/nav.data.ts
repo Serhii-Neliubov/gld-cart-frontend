@@ -13,6 +13,7 @@ import {
   ShippingPolicy,
   TermsConditions,
   Faqs,
+  DriverLicense
 } from "@/pages/index.ts";
 
 import ProfessionalServicesCategories from "../pages/ProfessionalServicesCategories.tsx";
@@ -54,7 +55,6 @@ export const routes = [
     isAuthRequired: false,
     userRole: ['Buyer', 'Vendor', 'NoAuth'],
   },
-  // Auth
   {
     path: "/login",
     element: Login,
@@ -79,8 +79,6 @@ export const routes = [
     isAuthRequired: false,
     userRole: ['NoAuth'],
   },
-
-  // Public
   {
     path: "/contact-us",
     element: ContactUs,
@@ -108,7 +106,7 @@ export const routes = [
   {
     path: "/profile",
     element: ProfessionalServicesCategories,
-    isAuthRequired: false,
+    isAuthRequired: true,
     userRole: ['Buyer', 'Vendor'],
   },
   {
@@ -120,6 +118,12 @@ export const routes = [
   {
     path: "/wishlist",
     element: Wishlist,
+    isAuthRequired: true,
+    userRole: ['Buyer'],
+  },
+  {
+    path: "/driver-license",
+    element: DriverLicense,
     isAuthRequired: true,
     userRole: ['Buyer'],
   },

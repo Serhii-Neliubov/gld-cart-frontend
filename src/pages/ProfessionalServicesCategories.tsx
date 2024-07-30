@@ -2,7 +2,7 @@ import React from "react";
 import {t} from "i18next";
 import {Link} from "react-router-dom";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
 
 import cleaningImg from "@/assets/images/professional-services/img1.png";
 import repairingImg from "@/assets/images/professional-services/img2.png";

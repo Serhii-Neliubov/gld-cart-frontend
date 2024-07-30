@@ -4,8 +4,8 @@ import {t} from "i18next";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
-import { useInput } from "@/hooks/useInput/useInput.tsx";
+import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
+import { useInput } from "@/hooks/useInput.tsx";
 
 import { AppDispatch } from "@/store/store.ts";
 import { register } from "@/store/slices/userDataSlice.ts";

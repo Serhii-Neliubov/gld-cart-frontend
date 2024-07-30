@@ -1,7 +1,7 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import styles from "../NewElectronics.module.scss";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
-import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {useInput} from "@/hooks/useInput.tsx";
 import toast from "react-hot-toast";
 import RentingStage from "@/components/renting-stages/RentingStage.tsx";
 
