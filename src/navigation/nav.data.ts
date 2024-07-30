@@ -114,13 +114,13 @@ export const routes = [
   {
     path: "/shopping-cart",
     element: ShoppingCart,
-    isAuthRequired: false,
+    isAuthRequired: true,
     userRole: ['Buyer'],
   },
   {
     path: "/wishlist",
     element: Wishlist,
-    isAuthRequired: false,
+    isAuthRequired: true,
     userRole: ['Buyer'],
   },
 ]

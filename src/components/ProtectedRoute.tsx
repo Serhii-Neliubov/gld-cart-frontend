@@ -1,5 +1,7 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
 
 type ProtectedRouteProps = {
   element: React.ReactNode;
@@ -7,15 +9,11 @@ type ProtectedRouteProps = {
 };
 
 export default function ProtectedRoute({element, userRole}: ProtectedRouteProps): React.ReactNode {
-  // Replace the following line with your authentication logic
-  const isAuthenticated = true;
+  const user = useSelector(userDataSelector);
+  console.log(userRole);
 
-  if (!isAuthenticated) {
+  if (!user._id) {
     return <Navigate to="/login" replace/>;
-  }
-
-  if(userRole.includes('NoAuth')) {
-    return <Navigate to="/" replace/>;
   }
 
   return element;
