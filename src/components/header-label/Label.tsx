@@ -1,6 +1,11 @@
 import React, {useState} from "react";
 import {t} from "i18next";
 import {Link, useLocation} from "react-router-dom";
+import {useSelector} from "react-redux";
+
+import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import IUser from "@/utils/models/IUser.ts";
+import {RootState} from "@/store/store.ts";
 
 import imageProfile from '@/assets/images/profile-icon.svg';
 import imageLike from '@/assets/images/like-icon.svg';
@@ -8,45 +13,45 @@ import imageTrash from '@/assets/images/trash-icon.svg';
 
 const Label = () => {
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
-  const location = useLocation();
 
-  console.log(location.pathname);
+  const location = useLocation();
+  const user = useSelector<RootState, IUser>(userDataSelector);
 
   return (
     <>
-      <div className={'bg-white py-[12px] border-y border-black border-solid'}>
-        <div className={'max-w-[1265px] flex items-center justify-between mx-auto px-[20px]'}>
+      <div className={'bg-white py-[12px] border-y border-black border-solid px-[20px]'}>
+        <div className={'max-w-[1255px] flex items-center justify-between mx-auto'}>
           <span className={'font-semibold text-[24px]'}>{t('Exclusive')}</span>
           <nav className={'block max-[1150px]:hidden'}>
             <ul className={'uppercase flex gap-[40px]'}>
               <li>
-                <Link to={'/'} className={'hover:text-red-500 transition-all'}>{t('Home')}</Link>
+                <Link to={'/'} className={location.pathname === '/' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Home')}</Link>
               </li>
               <li>
-                <Link to={'/renting'} className={'hover:text-red-500 transition-all'}>{t('Renting')}</Link>
+                <Link to={'/renting'} className={location.pathname === '/renting' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Renting')}</Link>
               </li>
               <li>
-                <Link to={'/products'} className={'hover:text-red-500 transition-all'}>{t('Products')}</Link>
+                <Link to={'/products'} className={location.pathname === '/products' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Products')}</Link>
               </li>
               <li>
-                <Link to={'/professional-services'} className={'hover:text-red-500 transition-all'}>{t('Professional services')}</Link>
+                <Link to={'/professional-services'} className={location.pathname === '/professional-services' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Professional services')}</Link>
               </li>
               <li>
-                <Link to={'/driver-license'} className={'hover:text-red-500 transition-all'}>{t('Driver Services')}</Link>
+                <Link to={user._id ? '/driver-license' : '/login'} className={location.pathname === '/driver-license' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Driver Services')}</Link>
               </li>
               <li>
-                <Link to={'/contact-us'} className={'hover:text-red-500 transition-all'}>{t('Contact us')}</Link>
+                <Link to={'/contact-us'} className={location.pathname === '/contact-us' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Contact us')}</Link>
               </li>
             </ul>
           </nav>
           <div className={'flex items-center gap-[16px]'}>
-            <Link to={'/wishlist'} className={'max-[350px]:hidden block'}>
+            <Link to={user._id ? '/wishlist' : '/login'} className={'max-[350px]:hidden block'}>
               <img src={imageLike} alt={'like icon'}/>
             </Link>
-            <Link to={'/shopping-cart'} className={'max-[350px]:hidden block'}>
+            <Link to={user._id ? '/shopping-cart' : '/login'} className={'max-[350px]:hidden block'}>
               <img src={imageTrash} alt={'shopping cart icon'}/>
             </Link>
-            <Link to={'/profile'}>
+            <Link to={user._id ? '/profile' : '/login'}>
               <img src={imageProfile} alt={'profile icon'}/>
             </Link>
 

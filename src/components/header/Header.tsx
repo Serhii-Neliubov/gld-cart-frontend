@@ -53,7 +53,7 @@ const Header: FC = () => {
 
   return (
     <div className="px-[20px] bg-white py-[50px]">
-      <div className="flex max-w-[1265px] mx-auto items-center justify-between gap-[16px]">
+      <div className="flex max-w-[1255px] mx-auto items-center justify-between gap-[16px]">
         <Link to="/">
           <img src={imageLogoURL} alt="Logo" className={'min-w-[60px] min-h-[40px]'} />
         </Link>

@@ -1,6 +1,7 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {routes} from "./nav.data.ts";
 import ProtectedRoute from "@/components/ProtectedRoute.tsx";
+import Layout from "@/components/layouts/DefaultLayout.tsx";
 
 export default function Navigation() {
   return (
@@ -11,8 +12,8 @@ export default function Navigation() {
             key={route.path}
             path={route.path}
             element={route.isAuthRequired
-              ? <ProtectedRoute userRole={route.userRole} element={<route.element/>}/>
-              : <route.element/>
+              ? <ProtectedRoute userRole={route.userRole} element={<Layout><route.element/></Layout>} />
+              : <Layout><route.element/></Layout>
             }
           />
         )}

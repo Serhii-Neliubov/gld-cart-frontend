@@ -1,4 +1,14 @@
-import {Home, Login, Registration, ForgotPassword, NewPassword} from "@/viewes/index.ts";
+import {
+  Home,
+  Login,
+  Registration,
+  ForgotPassword,
+  NewPassword,
+  ContactUs,
+  ShoppingCartPage,
+  WishlistPage
+} from "@/viewes/index.ts";
+import ProfessionalServicesCategories from "../viewes/ProfessionalServicesCategories.tsx";
 
 export const routes = [
   {
@@ -32,5 +42,49 @@ export const routes = [
     element: NewPassword,
     isAuthRequired: false,
     userRole: ['NoAuth'],
+  },
+
+  // Public
+  {
+    path: "/contact-us",
+    element: ContactUs,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/renting",
+    element: ContactUs,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/products",
+    element: ContactUs,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/professional-services",
+    element: ProfessionalServicesCategories,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/profile",
+    element: ProfessionalServicesCategories,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor'],
+  },
+  {
+    path: "/shopping-cart",
+    element: ShoppingCartPage,
+    isAuthRequired: false,
+    userRole: ['Buyer'],
+  },
+  {
+    path: "/wishlist",
+    element: WishlistPage,
+    isAuthRequired: false,
+    userRole: ['Buyer'],
   },
 ]

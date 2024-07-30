@@ -2,7 +2,6 @@ import React from "react";
 import {t} from "i18next";
 import {Link} from "react-router-dom";
 
-import Footer from "@/components/footer/Footer.tsx";
 import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 
 import cleaningImg from "@/assets/images/professional-services/img1.png";
@@ -68,7 +67,7 @@ const ProfessionalServicesCategories = () => {
 
   return (
     <>
-      <div className="max-w-[1240px] pb-[50px] sm:pb-[130px] px-[40px] justify-center items-center mx-auto">
+      <div className="max-w-[1240px] pb-[50px] sm:pb-[130px] px-[20px] justify-center items-center mx-auto">
         <h1 className={'text-[36px] flex-wrap justify-center mb-[50px] font-medium flex gap-4'}>
             {t('Select')}
             <span className={'uppercase text-[#02A0A0] text-center'}>{t('professional services')}</span>
@@ -76,7 +75,7 @@ const ProfessionalServicesCategories = () => {
         </h1>
         <div className={'flex flex-wrap gap-[40px] justify-center'}>
             {categories.map((category, index) => (
-                <Link key={index} to={`/professional-services/${category.category}`} className={'bg-[#F2F2F2] w-full min-[846px]:max-w-[350px] rounded-[15px] flex flex-col justify-center items-center gap-[10px] p-[15px]'}>
+                <Link key={index} to={`/professional-services/categories/${category.category}`} className={'bg-[#F2F2F2] w-full min-[846px]:max-w-[350px] rounded-[15px] flex flex-col justify-center items-center gap-[10px] p-[15px]'}>
                     <div className={'min-[350px]:h-[250px] min-[400px]:h-[326px] h-[200px] w-full px-[20px] rounded-[15px] flex items-center justify-center  bg-white'}>
                         <img src={category.image} alt="Image" />
                     </div>
@@ -85,7 +84,6 @@ const ProfessionalServicesCategories = () => {
             ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

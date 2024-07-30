@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Footer from '@/components/footer/Footer.tsx';
 import { useTranslation } from 'react-i18next';
 import './Home.scss'
 import { SavedItem } from './components/SavedItem.tsx';
@@ -13,8 +12,6 @@ import imageAdvantage1 from '@/assets/images/HomePage/advantages/delivery.svg';
 import imageAdvantage2 from '@/assets/images/HomePage/advantages/refund.svg';
 import imageAdvantage3 from '@/assets/images/HomePage/advantages/discount.svg';
 import imageAdvantage4 from '@/assets/images/HomePage/advantages/support.svg';
-import Header from "@/components/header/Header.tsx";
-import Label from "@/components/header-label/Label.tsx";
 
 const Home: FC = () => {
     useDefaultScrollPosition();
@@ -22,9 +19,7 @@ const Home: FC = () => {
     const { t } = useTranslation();
 
   return (
-    <React.Fragment>
-        <Header />
-        <Label />
+    <>
         <main className="page">
             <div className="page__shop-now shop-now">
                 <div className="shop-now__container">
@@ -196,8 +191,7 @@ const Home: FC = () => {
                 </div>
             </div>
         </main>
-        <Footer/>
-    </React.Fragment>
+    </>
   );
 };
 

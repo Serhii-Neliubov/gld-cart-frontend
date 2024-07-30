@@ -22,9 +22,7 @@ const App: FC = () => {
   }, [user._id]);
 
     return (
-      <>
-        <Navigation />
-      </>
+      <Navigation />
     );
 };
 

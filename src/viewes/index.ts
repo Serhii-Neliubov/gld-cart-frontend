@@ -11,7 +11,7 @@ export {default as NewPassword} from "./NewPassword.tsx";
 
 export {default as Login} from "./Login.tsx";
 
-export {default as WishlistPage} from "./wishlist/WishlistPage";
+export {default as WishlistPage} from "./Wishlist.tsx";
 
 export {default as RentingCategories} from "./renting-buyer/RentingCategories.tsx";
 export {default as RentingCategoryPage} from "./renting-vendor/RentingCategoryPage";

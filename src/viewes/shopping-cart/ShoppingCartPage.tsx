@@ -35,7 +35,7 @@ const ShoppingCartPage: FC = () => {
   const { data: cartItems } = useQuery({
     queryKey: ["cartItems"],
     queryFn: async () => {
-      const data = await ShoppingCart.getItems(user.id);
+      const data = await ShoppingCart.getItems(user._id);
       setSubTotal(data.subtotal);
       setTotal(data.subtotal + DELIVERY_PRICE[delivery]);
 
@@ -56,7 +56,7 @@ const ShoppingCartPage: FC = () => {
   const proceedToCheckoutHandler = async () => {
     try {
       await $api.post('/order/create-order', {
-        user: user.id,
+        user: user._id,
         products: cartItems.map((item: TypeCartItem) => item._id),
         total: 123,
       });
@@ -72,7 +72,7 @@ const ShoppingCartPage: FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <div className={styles.body}>
         <div className="__container">
           <h1>Cart</h1>
@@ -123,8 +123,7 @@ const ShoppingCartPage: FC = () => {
             </div>
         </div>
       </div>
-      <Footer />
-    </React.Fragment>
+    </>
   );
 };
 
