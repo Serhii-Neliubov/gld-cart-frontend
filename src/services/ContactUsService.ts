@@ -1,6 +1,6 @@
-import {IMessageData} from "../utils/models/IMessageData.ts";
+import {IMessageData} from "@/models/IMessageData.ts";
 import toast from "react-hot-toast";
-import $api from "@/utils/interceptors/interceptors.ts";
+import $api from "@/utils/interceptors.ts";
 
 export class ContactUsService {
     static async sendMessage(message: IMessageData) {

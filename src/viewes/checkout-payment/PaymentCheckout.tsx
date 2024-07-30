@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Footer from "@/components/Footer.tsx";
 import styles from "@/viewes/checkout-payment/PaymentCheckout.module.scss";
 import {useInput} from "@/hooks/useInput/useInput.tsx";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import $api, {API_URL} from "@/utils/interceptors.ts";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";

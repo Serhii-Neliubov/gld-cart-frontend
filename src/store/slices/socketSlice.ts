@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import io, { Socket } from 'socket.io-client';
-import {API_URL} from "@/utils/interceptors/interceptors.ts";
+import {API_URL} from "@/utils/interceptors.ts";
 
 interface Message {
   chatId: string;

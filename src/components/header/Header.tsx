@@ -7,7 +7,7 @@ import imageArrowDown from '@/assets/images/HomePage/header/arrow-down.svg'
 import { useDebounce } from "@uidotdev/usehooks";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { API_URL } from "@/utils/interceptors/interceptors.ts";
+import { API_URL } from "@/utils/interceptors.ts";
 const languages = ["English", "Russian", "Ukrainian", "German"];
 
 import searchIcon from '@/assets/images/HomePage/header/search-icon.svg';

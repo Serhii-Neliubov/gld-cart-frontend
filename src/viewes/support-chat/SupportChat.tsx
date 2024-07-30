@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './SupportChat.module.scss'
 import {Link} from "react-router-dom";
-import IUser from "@/utils/models/IUser.ts";
+import IUser from "@/models/IUser.ts";
 
 export interface Chat {
     _id: string;

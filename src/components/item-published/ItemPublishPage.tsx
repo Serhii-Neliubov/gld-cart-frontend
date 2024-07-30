@@ -7,7 +7,7 @@ import {
     resetVendorProductInfo,
 } from "@/store/slices/vendorProductInfoSlice.ts";
 import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import $api, {API_URL} from "@/utils/interceptors.ts";
 
 type ItemPublishPageProps = {
     category: string,

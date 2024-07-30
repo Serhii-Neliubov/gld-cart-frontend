@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import useCategoryRedirect from "@/hooks/useCategoryRedirect/useCategoryRedirect.tsx";
-import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
+import {IVendorProductData} from "@/models/IVendorProductData.ts";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";

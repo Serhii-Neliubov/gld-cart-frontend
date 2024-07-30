@@ -5,7 +5,7 @@ import axios from "axios";
 import { AuthResponse } from "@/utils/models/response/AuthResponse.ts";
 import { RootState } from "@/store/store.ts";
 import toast from "react-hot-toast";
-import {API_URL} from "@/utils/interceptors/interceptors.ts";
+import {API_URL} from "@/utils/interceptors.ts";
 
 const initialState = {
     user: {} as IUser,

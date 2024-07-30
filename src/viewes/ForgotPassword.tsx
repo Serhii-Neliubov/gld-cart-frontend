@@ -54,8 +54,7 @@ const ForgotPassword = () => {
             <button onClick={sendLinkHandler}
                     className={'text-white bg-[#02A0A0] py-[13px] w-full mt-[20px]'}>{t('Send Link')}</button>
           </div>
-          : <div
-            className={'w-[590px] z-10 relative flex flex-col items-center justify-center h-fit bg-white sm:drop-shadow-2xl py-[30px] px-[35px] sm:py-[60px] sm:px-[70px]'}>
+          : <div className={'w-[590px] z-10 relative flex flex-col items-center justify-center h-fit bg-white sm:drop-shadow-2xl py-[30px] px-[35px] sm:py-[60px] sm:px-[70px]'}>
             <h1
               className={'text-center mb-[10px] mt-0 text-[20px] sm:text-[30px] font-medium'}>{t('Password Reset Email Sent')}</h1>
             <p

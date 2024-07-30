@@ -4,7 +4,7 @@ import Footer from "@/components/Footer.tsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userDataSelector } from "@/store/slices/userDataSlice.ts";
-import $api, { API_URL } from "@/utils/interceptors/interceptors.ts";
+import $api, { API_URL } from "@/utils/interceptors.ts";
 
 import imageProduct from "@/assets/images/ProductPage/imageProduct.png";
 import imageFireIcon from "@/assets/images/ProductPage/fireIcon.png";

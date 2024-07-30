@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import $api from "@/utils/interceptors/interceptors.ts";
+import $api from "@/utils/interceptors.ts";
 
 
 export class PasswordService {

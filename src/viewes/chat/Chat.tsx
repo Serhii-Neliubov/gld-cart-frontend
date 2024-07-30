@@ -3,7 +3,7 @@ import io, {Socket} from "socket.io-client";
 import style from "./Chat.module.scss";
 import {useSelector} from "react-redux";
 import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";
+import $api, {API_URL} from "@/utils/interceptors.ts";
 import {IoSend} from "react-icons/io5";
 import {useParams} from "react-router-dom";
 import {CiFileOn, CiSearch} from "react-icons/ci";

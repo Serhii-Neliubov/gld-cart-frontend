@@ -7,7 +7,7 @@ import imageDefaultIcon from '@/assets/images/TopRatedProducts/defaultIcon.svg';
 import imageMenuSort from '@/assets/images/TopRatedProducts/menuSort.svg';
 import imageFilterIcon from '@/assets/images/TopRatedProducts/filterIcon.svg';
 import {useNavigate, useParams} from "react-router-dom";
-import $api from "@/utils/interceptors/interceptors.ts";
+import $api from "@/utils/interceptors.ts";
 
 type Product = {
   "reviews": [],
