@@ -1,5 +1,5 @@
 import {Dispatch, SetStateAction} from "react";
-import {IVendorProductData} from "@/utils/models/IVendorProductData.ts";
+import {IVendorProductData} from "@/models/IVendorProductData.ts";
 
 export interface VendorProductComponentProps {
   setStage: Dispatch<SetStateAction<number>>;
