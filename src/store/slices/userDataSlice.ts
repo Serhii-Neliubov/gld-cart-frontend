@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import IUser from "@/utils/models/IUser";
+import IUser from "@/models/IUser";
 import AuthService from "@/services/AuthService";
 import axios from "axios";
-import { AuthResponse } from "@/utils/models/response/AuthResponse.ts";
+import { AuthResponse } from "@/models/response/AuthResponse.ts";
 import { RootState } from "@/store/store.ts";
 import toast from "react-hot-toast";
 import {API_URL} from "@/utils/interceptors.ts";
