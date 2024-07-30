@@ -11,11 +11,11 @@ import {
   PrivacyPolicy,
   CookiePolicy,
   ShippingPolicy,
-  TermsConditions
-} from "@/viewes/index.ts";
+  TermsConditions,
+  Faqs,
+} from "@/pages/index.ts";
 
-import ProfessionalServicesCategories from "../viewes/ProfessionalServicesCategories.tsx";
-import Faqs from "@/viewes/Faqs.tsx";
+import ProfessionalServicesCategories from "../pages/ProfessionalServicesCategories.tsx";
 
 export const routes = [
   {
