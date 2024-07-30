@@ -11,7 +11,8 @@ export {default as NewPassword} from "./NewPassword.tsx";
 
 export {default as Login} from "./Login.tsx";
 
-export {default as WishlistPage} from "./Wishlist.tsx";
+export {default as Wishlist} from "./Wishlist.tsx";
+export {default as ShoppingCart} from "./ShoppingCart.tsx";
 
 export {default as RentingCategories} from "./RentingCategories.tsx";
 export {default as RentingCategoryPage} from "./renting-vendor/RentingCategoryPage";
@@ -19,7 +20,7 @@ export {default as Registration} from "./Registration.tsx";
 
 export {default as SendMessagePage} from "./send-message-successfully/SendMessagePage";
 export {default as ShippingPolicy} from "./ShippingPolicy.tsx";
-export {default as ShoppingCartPage} from "./shopping-cart/ShoppingCartPage";
+export {default as ShoppingCartPage} from "./Wishlist.tsx";
 
 export {default as ProfessionalServicesCategories} from "./ProfessionalServicesCategories.tsx";
 export {default as PrivacyPolicy} from "./PrivacyPolicy.tsx";

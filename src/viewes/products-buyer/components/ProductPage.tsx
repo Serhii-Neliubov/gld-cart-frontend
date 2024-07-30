@@ -16,7 +16,7 @@ import imagePaymentMethods from "@/assets/images/ProductPage/paymentMethods.png"
 import imageShoppingCart from "@/assets/images/trash-icon.svg";
 import Wishlist from "services/WishlistService.ts";
 import ShoppingCart from "services/ShoppingCartService.ts";
-import { cartItem } from "@/viewes/shopping-cart/ShoppingCartPage.tsx";
+import { cartItem } from "@/viewes/Wishlist.tsx";
 
 type product = {
     reviews: [];

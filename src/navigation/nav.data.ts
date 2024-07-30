@@ -5,9 +5,9 @@ import {
   ForgotPassword,
   NewPassword,
   ContactUs,
-  ShoppingCartPage,
-  WishlistPage, RentingCategories
+  RentingCategories, ShoppingCart, Wishlist
 } from "@/viewes/index.ts";
+
 import ProfessionalServicesCategories from "../viewes/ProfessionalServicesCategories.tsx";
 
 export const routes = [
@@ -77,13 +77,13 @@ export const routes = [
   },
   {
     path: "/shopping-cart",
-    element: ShoppingCartPage,
+    element: ShoppingCart,
     isAuthRequired: false,
     userRole: ['Buyer'],
   },
   {
     path: "/wishlist",
-    element: WishlistPage,
+    element: Wishlist,
     isAuthRequired: false,
     userRole: ['Buyer'],
   },
