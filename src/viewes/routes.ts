@@ -9,7 +9,7 @@ import TermsConditions from "./TermsConditions.tsx";
 import HelpAndSupport from "./HelpAndSupport.tsx";
 import ProfilePage from "../viewes/profile/ProfilePage";
 import ShoppingCartPage from "../viewes/shopping-cart/ShoppingCartPage";
-import ForgottenPasswordPage from "../viewes/forgot-password/ForgottenPasswordPage";
+import ForgotPassword from "./ForgotPassword.tsx";
 import Login from "./Login.tsx";
 import Registration from "./Registration.tsx";
 import WishlistPage from "../viewes/wishlist/WishlistPage";
@@ -37,7 +37,7 @@ import {ProfessionalService} from "@/viewes/professional-services-buyer/componen
 import RentingProducts from "@/viewes/renting-buyer/components/renting-product/RentingProducts.tsx";
 import {ProductsFormVendor} from "@/viewes/products-vendor/ProductsFormVendor.tsx";
 import {ProfessionalServicesFormVendor} from "@/viewes/professional-services-vendor/ProfessionalServicesFormVendor.tsx";
-import NewPasswordPage from "@/viewes/forgot-password/new-password/NewPasswordPage.tsx";
+import NewPasswordPage from "@/viewes/NewPassword.tsx";
 import ForgottenAttentionPage from "@/viewes/forgot-password/forgot-password-sended/ForgottenAttentionPage.tsx";
 
 interface IRoutes {
@@ -61,6 +61,7 @@ export const buyerRoutes: IRoutes[] = [
   { component: TermsConditions, path: "/terms-and-conditions" },
   { component: Faqs, path: "/faq-s" },
   { component: ProductsPage, path: "/products" },
+  { component: ForgotPassword, path: "/forgot-password" },
   // Products
   { component: ProductCategories, path: "/products" },
   { component: ProductsList, path: "/products/:category" },
@@ -138,7 +139,7 @@ export const noAuthRotes: IRoutes[] = [
   { component: Faqs, path: "/faq-s" },
   { component: TrackOrder, path: "/track-an-order" },
   { component: HelpAndSupport, path: "/help-and-support" },
-  { component: ForgottenPasswordPage, path: "/forgotten-password" },
+  { component: ForgotPassword, path: "/forgotten-password" },
   { component: ForgottenAttentionPage, path: "/forgotten-attention" },
   { component: NewPasswordPage, path: "/password/:token" },
   { component: ContactUs, path: "/contact-us" },

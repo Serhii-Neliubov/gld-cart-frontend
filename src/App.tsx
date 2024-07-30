@@ -1,14 +1,11 @@
 import { useEffect } from "react";
-import {Routes, Route, BrowserRouter} from "react-router-dom";
 import { FC } from "react";
 import { AppDispatch, RootState } from "./store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { noAuthRotes, buyerRoutes, vendorRoutes } from "@/viewes/routes";
 import { checkAuth, userDataSelector } from "./store/slices/userDataSlice.ts";
 import IUser from "@/utils/models/IUser.ts";
-import Header from "@/components/header/Header.tsx";
-import Label from "@/components/header-label/Label.tsx";
 import {initSocket} from "@/store/slices/socketSlice.ts";
+import Navigation from "@/navigation/Navigation.tsx";
 
 const App: FC = () => {
   const user = useSelector<RootState, IUser>(userDataSelector);
@@ -25,47 +22,9 @@ const App: FC = () => {
   }, [user._id]);
 
     return (
-      <BrowserRouter>
-        <Header />
-        <Label />
-        <Routes>
-          {!user.role && (
-            noAuthRotes.map((route, index) => {
-              return (
-                <Route
-                  Component={route.component}
-                  path={route.path}
-                  key={index}
-                />
-              );
-            })
-          )}
-
-          {user.role === 'vendor' && (
-            vendorRoutes.map((route) => {
-              return (
-                <Route
-                  Component={route.component}
-                  path={route.path}
-                  key={route.path}
-                />
-              );
-            })
-          )}
-
-          {user.role === 'Buyer' && (
-            buyerRoutes.map((route) => {
-              return (
-                <Route
-                  Component={route.component}
-                  path={route.path}
-                  key={route.path}
-                />
-              );
-            })
-          )}
-        </Routes>
-      </BrowserRouter>
+      <>
+        <Navigation />
+      </>
     );
 };
 

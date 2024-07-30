@@ -6,7 +6,8 @@ export {default as CookiePolicy} from "./CookiePolicy.tsx";
 
 export {default as Faqs} from "./Faqs.tsx";
 
-export {default as ForgottenPasswordPage} from "./forgot-password/ForgottenPasswordPage";
+export {default as ForgotPassword} from "./ForgotPassword.tsx";
+export {default as NewPassword} from "./NewPassword.tsx";
 
 export {default as Login} from "./Login.tsx";
 

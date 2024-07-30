@@ -10,9 +10,9 @@ export default function Navigation() {
           <Route
             key={route.path}
             path={route.path}
-            element={route.isAuthRequired ?
-              <ProtectedRoute userRole={route.userRole} element={<route.element/>}/> :
-              <route.element/>
+            element={route.isAuthRequired
+              ? <ProtectedRoute userRole={route.userRole} element={<route.element/>}/>
+              : <route.element/>
             }
           />
         )}

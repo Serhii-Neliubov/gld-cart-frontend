@@ -1,4 +1,4 @@
-import {Home, Login, Registration} from "@/viewes/index.ts";
+import {Home, Login, Registration, ForgotPassword, NewPassword} from "@/viewes/index.ts";
 
 export const routes = [
   {
@@ -18,6 +18,18 @@ export const routes = [
   {
     path: "/register",
     element: Registration,
+    isAuthRequired: false,
+    userRole: ['NoAuth'],
+  },
+  {
+    path: "/forgot-password",
+    element: ForgotPassword,
+    isAuthRequired: false,
+    userRole: ['NoAuth'],
+  },
+  {
+    path: "/forgot-password/reset/:token",
+    element: NewPassword,
     isAuthRequired: false,
     userRole: ['NoAuth'],
   },
