@@ -7,6 +7,8 @@ import { AppDispatch } from "@/store/store.ts";
 import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
 
 import {useInput} from "@/hooks/useInput/useInput.tsx";
+import {validate} from "@/utils/validate.ts";
+
 import Footer from "@/components/Footer.tsx";
 import UiInput from "@/components/UiInput.tsx";
 import UiTextarea from "@/components/UiTextarea.tsx";
@@ -113,19 +115,6 @@ const ProfilePage: FC = () => {
     } catch (e) {
       console.log(e);
     }
-  }
-
-  const validate = (object: { [key: string]: string }) => {
-    const errors: string[] = [];
-    const bodyKeys: string[] = Object.keys(object);
-
-    bodyKeys.forEach((field) => {
-      if (!object[field].length) {
-        errors.push(field);
-      }
-    });
-
-    return errors;
   }
 
   return (

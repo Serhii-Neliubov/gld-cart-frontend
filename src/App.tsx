@@ -1,12 +1,15 @@
 import { useEffect } from "react";
-import { FC } from "react";
-import { AppDispatch } from "./store/store";
 import { useDispatch } from "react-redux";
-import { checkAuth } from "./store/slices/userDataSlice.ts";
+// import { io } from "socket.io-client";
+
+import { AppDispatch } from "@/store/store";
+import { checkAuth } from "@/store/slices/userDataSlice.ts";
+
 import Navigation from "@/navigation/Navigation.tsx";
 
-const App: FC = () => {
+const App = () => {
   const dispatch = useDispatch<AppDispatch>();
+  // const socket = io();
 
   useEffect(() => {
     dispatch(checkAuth());

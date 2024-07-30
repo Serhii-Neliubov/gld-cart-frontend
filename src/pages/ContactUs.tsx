@@ -5,9 +5,11 @@ import {Link, useNavigate} from 'react-router-dom';
 import {useInput} from "@/hooks/useInput/useInput.tsx";
 import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
 
+import $api from "@/utils/interceptors.ts";
+import {validate} from "@/utils/validate.ts";
+
 import UiInput from "@/components/UiInput.tsx";
 import UiTextarea from "@/components/UiTextarea.tsx";
-import Footer from '@/components/Footer.tsx';
 
 import imageContactUs1 from "@/assets/images/contact-us/icon1.svg";
 import imageContactUs2 from "@/assets/images/contact-us/icon2.svg";
@@ -15,7 +17,6 @@ import imageContactUs3 from "@/assets/images/contact-us/icon3.svg";
 import imageSocialIcon1 from "@/assets/images/contact-us/social1.png";
 import imageSocialIcon2 from "@/assets/images/contact-us/social2.png";
 import imageSocialIcon3 from "@/assets/images/contact-us/social3.png";
-import $api from "@/utils/interceptors.ts";
 
 const ContactUs = () => {
   useDefaultScrollPosition();
@@ -53,22 +54,8 @@ const ContactUs = () => {
     }
   }
 
-  const validate = (object: { [key: string]: string }) => {
-    const errors: string[] = [];
-    const bodyKeys: string[] = Object.keys(object);
-
-    bodyKeys.forEach((field) => {
-      if (!object[field].length) {
-        errors.push(field);
-      }
-    });
-
-    return errors;
-  }
-
   return (
-    <>
-      <div className={'bg-[#ecf2f7]'}>
+    <div className={'bg-[#ecf2f7]'}>
         <div className={'mx-auto max-w-[1240px] drop-shadow-2xl pb-[50px] px-[20px]'}>
           <div className={'flex flex-col justify-center items-center text-center'}>
             <h1 className={'sm:text-[44px] mt-[25px] min-[470px]:text-[35px] text-[22px] text-center font-poppins font-light mb-[15px] sm:mb-[30px]'}>{t('Keep In Touch with Us')}</h1>
@@ -128,8 +115,6 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <Footer/>
-    </>
   );
 };
 

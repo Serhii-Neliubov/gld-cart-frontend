@@ -17,6 +17,7 @@ import decorImg1 from "@/assets/images/Login/decor1.png";
 import decorImg2 from "@/assets/images/Login/decor2.png";
 import decorImg3 from "@/assets/images/Login/decor3.png";
 import UiInput from "@/components/UiInput.tsx";
+import {validate} from "@/utils/validate.ts";
 
 const Registration = () => {
   useDefaultScrollPosition();
@@ -63,19 +64,6 @@ const Registration = () => {
     } catch (error) {
       toast.error('Error with registration');
     }
-  }
-
-  const validate = (object: { [key: string]: string }) => {
-    const errors: string[] = [];
-    const bodyKeys: string[] = Object.keys(object);
-
-    bodyKeys.forEach((field) => {
-      if (!object[field].length) {
-        errors.push(field);
-      }
-    });
-
-    return errors;
   }
 
   return (

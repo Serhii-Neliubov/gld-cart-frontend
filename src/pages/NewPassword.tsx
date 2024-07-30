@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom";
 import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 import { useInput } from "@/hooks/useInput/useInput.tsx";
 
+import {validate} from "@/utils/validate.ts";
+
 import UiInput from "@/components/UiInput.tsx";
 
 import decorImg1 from "@/assets/images/Login/decor1.png";
@@ -49,19 +51,6 @@ const NewPassword = () => {
     } catch (error) {
       console.log(error);
     }
-  }
-
-  const validate = (object: { [key: string]: string }) => {
-    const errors: string[] = [];
-    const bodyKeys: string[] = Object.keys(object);
-
-    bodyKeys.forEach((field) => {
-      if (!object[field].length) {
-        errors.push(field);
-      }
-    });
-
-    return errors;
   }
 
   return (

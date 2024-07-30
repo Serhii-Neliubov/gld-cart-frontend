@@ -1,11 +1,6 @@
 import React, {useState} from "react";
 import {t} from "i18next";
 import {Link, useLocation} from "react-router-dom";
-import {useSelector} from "react-redux";
-
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import IUser from "@/utils/models/IUser.ts";
-import {RootState} from "@/store/store.ts";
 
 import imageProfile from '@/assets/images/profile-icon.svg';
 import imageLike from '@/assets/images/like-icon.svg';
@@ -15,7 +10,6 @@ const Label = () => {
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
 
   const location = useLocation();
-  const user = useSelector<RootState, IUser>(userDataSelector);
 
   return (
     <>
@@ -37,7 +31,7 @@ const Label = () => {
                 <Link to={'/professional-services'} className={location.pathname === '/professional-services' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Professional services')}</Link>
               </li>
               <li>
-                <Link to={user._id ? '/driver-license' : '/login'} className={location.pathname === '/driver-license' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Driver Services')}</Link>
+                <Link to={'/driver-license'} className={location.pathname === '/driver-license' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Driver Services')}</Link>
               </li>
               <li>
                 <Link to={'/contact-us'} className={location.pathname === '/contact-us' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Contact us')}</Link>
@@ -45,13 +39,13 @@ const Label = () => {
             </ul>
           </nav>
           <div className={'flex items-center gap-[16px]'}>
-            <Link to={user._id ? '/wishlist' : '/login'} className={'max-[350px]:hidden block'}>
+            <Link to={'/wishlist'} className={'max-[350px]:hidden block'}>
               <img src={imageLike} alt={'like icon'}/>
             </Link>
-            <Link to={user._id ? '/shopping-cart' : '/login'} className={'max-[350px]:hidden block'}>
+            <Link to={'/shopping-cart'} className={'max-[350px]:hidden block'}>
               <img src={imageTrash} alt={'shopping cart icon'}/>
             </Link>
-            <Link to={user._id ? '/profile' : '/login'}>
+            <Link to={'/profile'}>
               <img src={imageProfile} alt={'profile icon'}/>
             </Link>
 

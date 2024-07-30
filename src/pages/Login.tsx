@@ -3,10 +3,14 @@ import {Link} from "react-router-dom";
 import {t} from "i18next";
 import {useDispatch} from "react-redux";
 
+import AuthService from "services/AuthService.ts";
+import UiInput from "@/components/UiInput.tsx";
+
 import { AppDispatch } from "@/store/store.ts";
 import { login } from "@/store/slices/userDataSlice.ts";
 
-import AuthService from "services/AuthService.ts";
+import {validate} from "@/utils/validate.ts";
+
 import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx";
 import { useInput } from "@/hooks/useInput/useInput.tsx";
 
@@ -14,7 +18,6 @@ import googleIcon from "@/assets/images/google-icon.svg";
 import decorImg1 from "@/assets/images/Login/decor1.png";
 import decorImg2 from "@/assets/images/Login/decor2.png";
 import decorImg3 from "@/assets/images/Login/decor3.png";
-import UiInput from "@/components/UiInput.tsx";
 
 const Login = () => {
   useDefaultScrollPosition();
@@ -45,19 +48,6 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
-  }
-
-  const validate = (object: { [key: string]: string }) => {
-    const errors: string[] = [];
-    const bodyKeys: string[] = Object.keys(object);
-
-    bodyKeys.forEach((field) => {
-      if (!object[field].length) {
-        errors.push(field);
-      }
-    });
-
-    return errors;
   }
 
   return (
