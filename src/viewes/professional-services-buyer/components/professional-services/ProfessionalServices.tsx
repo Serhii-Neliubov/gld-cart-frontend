@@ -1,8 +1,7 @@
-import Footer from "@/components/footer/Footer.tsx";
+import Footer from "@/components/Footer.tsx";
 import styles from "./ProfessionalServices.module.scss";
 import React, { FC } from "react";
 import {useParams} from "react-router-dom";
-import {useGetData} from "@/hooks/useGetData/useGetData.tsx";
 import {FaTrophy} from "react-icons/fa";
 import {FiMessageCircle} from "react-icons/fi";
 import {IoLocationOutline} from "react-icons/io5";
@@ -13,7 +12,6 @@ const ProfessionalServices: FC = () => {
   useDefaultScrollPosition();
 
   const {category} = useParams();
-  const {data, loading} = useGetData(`/services?category=${category}`);
 
   return (
     <React.Fragment>

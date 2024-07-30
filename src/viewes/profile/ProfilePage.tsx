@@ -7,7 +7,7 @@ import { AppDispatch } from "@/store/store.ts";
 import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
 
 import {useInput} from "@/hooks/useInput/useInput.tsx";
-import Footer from "@/components/footer/Footer.tsx";
+import Footer from "@/components/Footer.tsx";
 import UiInput from "@/components/UiInput.tsx";
 import UiTextarea from "@/components/UiTextarea.tsx";
 

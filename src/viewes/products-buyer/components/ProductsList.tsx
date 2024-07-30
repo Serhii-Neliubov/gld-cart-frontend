@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './ProductsList.module.scss';
-import Footer from '@/components/footer/Footer.tsx';
+import Footer from '@/components/Footer.tsx';
 import { ProductFilter } from "@/components/product-filter/ProductFilter.tsx";
 
 import imageDefaultIcon from '@/assets/images/TopRatedProducts/defaultIcon.svg';

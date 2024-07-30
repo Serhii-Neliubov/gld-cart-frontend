@@ -15,6 +15,7 @@ import {
 } from "@/viewes/index.ts";
 
 import ProfessionalServicesCategories from "../viewes/ProfessionalServicesCategories.tsx";
+import Faqs from "@/viewes/Faqs.tsx";
 
 export const routes = [
   {
@@ -44,6 +45,12 @@ export const routes = [
   {
     path: "/terms-conditions",
     element: TermsConditions,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/faqs",
+    element: Faqs,
     isAuthRequired: false,
     userRole: ['Buyer', 'Vendor', 'NoAuth'],
   },

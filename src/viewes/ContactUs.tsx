@@ -9,7 +9,7 @@ import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaul
 
 import UiInput from "@/components/UiInput.tsx";
 import UiTextarea from "@/components/UiTextarea.tsx";
-import Footer from '@/components/footer/Footer.tsx';
+import Footer from '@/components/Footer.tsx';
 
 import imageContactUs1 from "@/assets/images/contact-us/icon1.svg";
 import imageContactUs2 from "@/assets/images/contact-us/icon2.svg";

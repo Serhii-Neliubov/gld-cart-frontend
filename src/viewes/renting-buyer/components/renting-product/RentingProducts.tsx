@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styles from "./RentingProducts.module.scss";
-import Footer from "@/components/footer/Footer.tsx";
+import Footer from "@/components/Footer.tsx";
 import RentingItem from "@/viewes/renting-buyer/components/renting-item/RentingItem.tsx";
 import {useParams} from "react-router-dom";
 import {useGetData} from "@/hooks/useGetData/useGetData.tsx";

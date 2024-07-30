@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Footer from "@/components/footer/Footer.tsx";
+import Footer from "@/components/Footer.tsx";
 import styles from "@/viewes/checkout-payment/PaymentCheckout.module.scss";
 import {useInput} from "@/hooks/useInput/useInput.tsx";
 import $api, {API_URL} from "@/utils/interceptors/interceptors.ts";

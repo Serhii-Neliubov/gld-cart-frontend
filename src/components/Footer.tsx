@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Link } from "react-router-dom";
 
 import imageSocial1 from "@/assets/images/HomePage/footer/social-icon1.svg";
@@ -14,8 +13,7 @@ import imageBHIM from "@/assets/images/HomePage/footer/cards/bhim.png";
 import imageR from "@/assets/images/HomePage/footer/cards/r.png";
 import iconCopyright from "@/assets/images/icon-copyright.png";
 
-
-const Footer: FC = () => {
+const Footer = () => {
   return (
     <footer className="bg-black pt-[56px]">
       <div className="max-w-[1240px] pb-[25px] px-[20px] mx-auto">

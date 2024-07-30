@@ -1,17 +1,14 @@
 import React from 'react';
-
 import {t} from "i18next";
 
-import Footer from '@/components/footer/Footer.tsx';
 import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition/useDefaultScrollPosition.tsx';
 
 const Faqs = () => {
   useDefaultScrollPosition();
 
   return (
-    <>
-      <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
-        <h1 className={'text-[32px] mb-[25px]'}>{t('FAQs')}</h1>
+    <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
+        <h1 className={'text-[32px] font-semibold mt-[25px] mb-[25px]'}>{t('FAQs')}</h1>
         <div className={'max-w-[1119px] leading-8 flex flex-col gap-12 font-poppins text-[22px]'}>
           <div className={'flex flex-col gap-2'}>
             <span>1. {t('How long does it take to process an order?')}</span>
@@ -94,8 +91,6 @@ const Faqs = () => {
           </div>
         </div>
       </div>
-      <Footer/>
-    </>
   );
 };
 
