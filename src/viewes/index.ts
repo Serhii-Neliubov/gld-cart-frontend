@@ -13,7 +13,7 @@ export {default as Login} from "./Login.tsx";
 
 export {default as WishlistPage} from "./Wishlist.tsx";
 
-export {default as RentingCategories} from "./renting-buyer/RentingCategories.tsx";
+export {default as RentingCategories} from "./RentingCategories.tsx";
 export {default as RentingCategoryPage} from "./renting-vendor/RentingCategoryPage";
 export {default as Registration} from "./Registration.tsx";
 

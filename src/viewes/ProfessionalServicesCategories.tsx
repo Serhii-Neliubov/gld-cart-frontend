@@ -74,13 +74,13 @@ const ProfessionalServicesCategories = () => {
             {t('Category')}
         </h1>
         <div className={'flex flex-wrap gap-[40px] justify-center'}>
-            {categories.map((category, index) => (
-                <Link key={index} to={`/professional-services/categories/${category.category}`} className={'bg-[#F2F2F2] w-full min-[846px]:max-w-[350px] rounded-[15px] flex flex-col justify-center items-center gap-[10px] p-[15px]'}>
-                    <div className={'min-[350px]:h-[250px] min-[400px]:h-[326px] h-[200px] w-full px-[20px] rounded-[15px] flex items-center justify-center  bg-white'}>
-                        <img src={category.image} alt="Image" />
-                    </div>
-                    <span className={'mb-[5px] text-[24px] sm:text-[32px] font-medium'}>{category.name}</span>
-                </Link>
+          {categories.map((category, index) => (
+            <Link key={index} to={`/professional-services/${category.category}`} className={'bg-[#F2F2F2] w-full min-[846px]:max-w-[350px] rounded-[15px] flex flex-col justify-center items-center gap-[10px] p-[15px]'}>
+              <div className={'min-[350px]:h-[250px] min-[400px]:h-[326px] h-[200px] w-full px-[20px] rounded-[15px] flex items-center justify-center  bg-white'}>
+                <img src={category.image} alt="Image" className={'max-h-[200px]'} />
+              </div>
+              <span className={'mb-[5px] text-[24px] sm:text-[32px] font-medium'}>{category.name}</span>
+            </Link>
             ))}
         </div>
       </div>

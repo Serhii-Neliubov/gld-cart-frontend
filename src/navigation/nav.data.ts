@@ -6,7 +6,7 @@ import {
   NewPassword,
   ContactUs,
   ShoppingCartPage,
-  WishlistPage
+  WishlistPage, RentingCategories
 } from "@/viewes/index.ts";
 import ProfessionalServicesCategories from "../viewes/ProfessionalServicesCategories.tsx";
 
@@ -53,7 +53,7 @@ export const routes = [
   },
   {
     path: "/renting",
-    element: ContactUs,
+    element: RentingCategories,
     isAuthRequired: false,
     userRole: ['Buyer', 'Vendor', 'NoAuth'],
   },
