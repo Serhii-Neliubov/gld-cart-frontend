@@ -44,7 +44,7 @@ export const vendorProductInfoSlice = createSlice({
             state.title = action.payload;
         },
         setProductImages: (state, action) => {
-            state.images = action.payload; // сохраняем массив строк с именами файлов
+            state.images = action.payload;
         },
         resetVendorProductInfo: () => {
             return initialState;

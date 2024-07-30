@@ -168,15 +168,12 @@ export const Chat: React.FC = () => {
     const link = document.createElement("a");
     link.href = imageUrl;
 
-    // Проверяем расширение файла для определения, является ли это изображение
     const extension = imageUrl.split('.').pop();
     const imageExtensions = ['jpg', 'jpeg', 'png', 'gif']; // Добавьте другие расширения, если необходимо
 
     if (imageExtensions.includes(extension.toLowerCase())) {
-      // Если это изображение, открываем его в новой вкладке
       window.open(imageUrl, '_blank');
     } else {
-      // Если это не изображение, устанавливаем атрибут download для скачивания файла
       link.download = imageUrl;
       link.click();
     }
