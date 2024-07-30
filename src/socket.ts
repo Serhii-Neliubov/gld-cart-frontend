@@ -11,5 +11,6 @@ export default function getSocket(userId: string) {
 
   socket = io(API_URL, { query: { userId } });
   socket.connect();
+
   return socket;
 }
