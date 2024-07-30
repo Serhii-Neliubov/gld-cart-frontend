@@ -68,7 +68,7 @@ const ProfessionalServicesCategories = () => {
   return (
     <>
       <div className="max-w-[1240px] pb-[50px] sm:pb-[130px] px-[20px] justify-center items-center mx-auto">
-        <h1 className={'text-[36px] flex-wrap justify-center mb-[50px] font-medium flex gap-4'}>
+        <h1 className={'text-[36px] mt-[25px] flex-wrap justify-center mb-[50px] font-medium flex gap-4'}>
             {t('Select')}
             <span className={'uppercase text-[#02A0A0] text-center'}>{t('professional services')}</span>
             {t('Category')}

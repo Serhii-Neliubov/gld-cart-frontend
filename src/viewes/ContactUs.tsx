@@ -72,7 +72,7 @@ const ContactUs = () => {
       <div className={'bg-[#ecf2f7]'}>
         <div className={'mx-auto max-w-[1240px] drop-shadow-2xl pb-[50px] px-[20px]'}>
           <div className={'flex flex-col justify-center items-center text-center'}>
-            <h1 className={'sm:text-[44px] min-[470px]:text-[35px] text-[22px] text-center font-poppins font-light mb-[15px] sm:mb-[30px]'}>{t('Keep In Touch with Us')}</h1>
+            <h1 className={'sm:text-[44px] mt-[25px] min-[470px]:text-[35px] text-[22px] text-center font-poppins font-light mb-[15px] sm:mb-[30px]'}>{t('Keep In Touch with Us')}</h1>
             <div className={'flex mb-[25px] sm:mb-[50px] items-center gap-[20px] after:absolute after:w-[8px] after:h-[8px] after:top-[50%] after:translate-y-[-50%] after:rounded-full relative after:left-[43%] after:translate-x-[-50%] after:bg-[#A8ACB0]'}>
               <Link to={'/'} className={'text-[#55585B] hover:underline'}>{t('Home')}</Link>
               <span className={'text-[#55585B]'}>{t('Contact')}</span>
