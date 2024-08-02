@@ -19,9 +19,9 @@ import order_img2 from "@/assets/images/ProfilePage/order-details/img2.svg";
 import order_img3 from "@/assets/images/ProfilePage/order-details/img3.svg";
 import order_img4 from "@/assets/images/ProfilePage/order-details/img4.svg";
 import order_img5 from "@/assets/images/ProfilePage/order-details/img5.svg";
-import IconPerson from "@/assets/icons/profile/IconPerson.tsx";
-import IconMobile from "@/assets/icons/profile/IconMobile.tsx";
-import IconLocation from "@/assets/icons/profile/IconLocation.tsx";
+import IconPerson from "assets/icons/IconPerson.tsx";
+import IconMobile from "assets/icons/IconMobile.tsx";
+import IconLocation from "assets/icons/IconLocation.tsx";
 
 const ProfilePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();

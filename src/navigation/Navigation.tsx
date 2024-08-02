@@ -2,8 +2,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import {routes} from "./nav.data.ts";
 
-import ProtectedRoute from "@/components/ProtectedRoute.tsx";
-import Layout from "@/components/layouts/DefaultLayout.tsx";
+import ProtectedRoute from "components/ProtectedRoute.tsx";
+import Layout from "components/layouts/DefaultLayout.tsx";
 
 export default function Navigation() {
   return (

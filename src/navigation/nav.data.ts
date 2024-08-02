@@ -14,9 +14,9 @@ import {
   TermsConditions,
   Faqs,
   DriverLicense
-} from "@/pages/index.ts";
+} from "pages/index.ts";
 
-import ProfessionalServicesCategories from "../pages/ProfessionalServicesCategories.tsx";
+import ProfessionalServicesCategories from "pages/ProfessionalServicesCategories.tsx";
 
 export const routes = [
   {
