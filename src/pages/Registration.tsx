@@ -16,7 +16,7 @@ import googleIcon from "@/assets/images/google-icon.svg";
 import decorImg1 from "@/assets/images/Login/decor1.png";
 import decorImg2 from "@/assets/images/Login/decor2.png";
 import decorImg3 from "@/assets/images/Login/decor3.png";
-import UiInput from "@/components/UiInput.tsx";
+import UiInput from "@/components/ui/UiInput.tsx";
 import {validate} from "@/utils/validate.ts";
 
 const Registration = () => {

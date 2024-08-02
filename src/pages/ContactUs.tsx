@@ -8,8 +8,8 @@ import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition.tsx';
 import $api from "@/utils/interceptors.ts";
 import {validate} from "@/utils/validate.ts";
 
-import UiInput from "@/components/UiInput.tsx";
-import UiTextarea from "@/components/UiTextarea.tsx";
+import UiInput from "@/components/ui/UiInput.tsx";
+import UiTextarea from "@/components/ui/UiTextarea.tsx";
 
 import imageContactUs1 from "@/assets/images/contact-us/icon1.svg";
 import imageContactUs2 from "@/assets/images/contact-us/icon2.svg";

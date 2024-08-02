@@ -10,8 +10,8 @@ import {useInput} from "@/hooks/useInput.tsx";
 import {validate} from "@/utils/validate.ts";
 
 import Footer from "@/components/Footer.tsx";
-import UiInput from "@/components/UiInput.tsx";
-import UiTextarea from "@/components/UiTextarea.tsx";
+import UiInput from "@/components/ui/UiInput.tsx";
+import UiTextarea from "@/components/ui/UiTextarea.tsx";
 
 // Order Details
 import order_img1 from "@/assets/images/ProfilePage/order-details/img1.svg";

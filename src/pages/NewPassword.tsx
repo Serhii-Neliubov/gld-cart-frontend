@@ -7,7 +7,7 @@ import { useInput } from "@/hooks/useInput.tsx";
 
 import {validate} from "@/utils/validate.ts";
 
-import UiInput from "@/components/UiInput.tsx";
+import UiInput from "@/components/ui/UiInput.tsx";
 
 import decorImg1 from "@/assets/images/Login/decor1.png";
 import decorImg2 from "@/assets/images/Login/decor2.png";

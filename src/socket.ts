@@ -1,6 +1,7 @@
 import { Socket, io} from 'socket.io-client';
-import {API_URL} from "@/utils/interceptors.ts";
 import {DefaultEventsMap} from '@socket.io/component-emitter';
+
+import {API_URL} from "@/utils/interceptors.ts";
 
 let socket: Socket<DefaultEventsMap, DefaultEventsMap> | null = null;
 

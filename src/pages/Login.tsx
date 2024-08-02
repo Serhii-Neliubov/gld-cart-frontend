@@ -4,7 +4,7 @@ import {t} from "i18next";
 import {useDispatch} from "react-redux";
 
 import AuthService from "services/AuthService.ts";
-import UiInput from "@/components/UiInput.tsx";
+import UiInput from "@/components/ui/UiInput.tsx";
 
 import { AppDispatch } from "@/store/store.ts";
 import { login } from "@/store/slices/userDataSlice.ts";
