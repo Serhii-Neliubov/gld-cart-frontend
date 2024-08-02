@@ -1,8 +1,8 @@
 import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import styles from "../NewTreeCutting.module.scss";
-import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
+import {IVendorProductData} from "models/IVendorProductData.tsx";
 import {useSelector} from "react-redux";
-import {vendorProductInfo} from "@/store/slices/vendorProductInfoSlice.ts";
+import {vendorProductInfo} from "store/slices/vendorProductInfoSlice.ts";
 
 type BasicInformationProps = {
     formData: IVendorProductData;

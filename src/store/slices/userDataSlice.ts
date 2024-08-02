@@ -1,11 +1,15 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import IUser from "@/models/IUser";
-import AuthService from "@/services/AuthService";
 import axios from "axios";
-import { AuthResponse } from "@/models/response/AuthResponse.ts";
-import { RootState } from "@/store/store.ts";
 import toast from "react-hot-toast";
-import {API_URL} from "@/utils/interceptors.ts";
+
+import AuthService from "services/AuthService";
+
+import { RootState } from "store/store.ts";
+
+import {API_URL} from "utils/interceptors.ts";
+
+import IUser from "models/IUser";
+import { AuthResponse } from "models/response/AuthResponse.ts";
 
 const initialState = {
     user: {} as IUser,

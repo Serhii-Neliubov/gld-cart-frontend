@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import Footer from "@/components/Footer.tsx";
-import styles from "@/pages/checkout-payment/PaymentCheckout.module.scss";
-import {useInput} from "@/hooks/useInput.tsx";
-import $api, {API_URL} from "@/utils/interceptors.ts";
+import Footer from "components/Footer.tsx";
+import styles from "pages/checkout-payment/PaymentCheckout.module.scss";
+import {useInput} from "hooks/useInput.tsx";
+import $api, {API_URL} from "utils/interceptors.ts";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
+import {userDataSelector} from "store/slices/userDataSlice.ts";
+import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
 
 interface IProduct {
   _id: string;

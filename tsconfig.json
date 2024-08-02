@@ -31,13 +31,16 @@
     "baseUrl": ".",
 
     "paths": {
-
       "@/*": ["./src/*", "./dist/*", ""],
 
-      "routes/*": ["./src/routes/*"],
-
-      "services/*": ["./src/services/*"]
-
+      "pages/*": ["./src/pages/*"],
+      "services/*": ["./src/services/*"],
+      "models/*": ["./src/models/*"],
+      "assets/*": ["./src/assets/*"],
+      "components/*": ["./src/components/*"],
+      "store/*": ["./src/store/*"],
+      "utils/*": ["./src/utils/*"],
+      "hooks/*": ["./src/hooks/*"]
     },
   },
   "esModuleInterop": true,

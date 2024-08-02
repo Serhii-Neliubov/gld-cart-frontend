@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import $api, {API_URL} from "@/utils/interceptors.ts";
+import $api, {API_URL} from "utils/interceptors.ts";
 
 export default class AuthService {
 

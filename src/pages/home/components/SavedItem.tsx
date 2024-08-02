@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { userDataSelector } from '@/store/slices/userDataSlice.ts';
-import ShoppingCart from '@/services/ShoppingCartService.ts';
-import imageSavedItem1 from '@/assets/images/HomePage/saved/img1.png';
 import toast from "react-hot-toast";
+
+import { userDataSelector } from 'store/slices/userDataSlice.ts';
+import ShoppingCart from 'services/ShoppingCartService.ts';
+
+import imageSavedItem1 from 'assets/images/HomePage/saved/img1.png';
 
 export type SavedItem = {
     id: string,

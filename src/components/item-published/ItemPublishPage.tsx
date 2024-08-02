@@ -5,9 +5,9 @@ import RentingStage from "../renting-stages/RentingStage";
 import {useDispatch} from "react-redux";
 import {
     resetVendorProductInfo,
-} from "@/store/slices/vendorProductInfoSlice.ts";
-import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
-import $api, {API_URL} from "@/utils/interceptors.ts";
+} from "store/slices/vendorProductInfoSlice.ts";
+import {IVendorProductData} from "models/IVendorProductData.tsx";
+import $api, {API_URL} from "utils/interceptors.ts";
 
 type ItemPublishPageProps = {
     category: string,

@@ -1,5 +1,5 @@
-import {TypeCartItem} from "@/models/ICartItem.ts";
-import $api from "@/utils/interceptors.ts";
+import {TypeCartItem} from "models/ICartItem.ts";
+import $api from "utils/interceptors.ts";
 
 export default class ShoppingCart {
   static async addToCart (productId: string | undefined, userId: string, quantity: number) {

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { AppDispatch } from "@/store/store";
-import { checkAuth } from "@/store/slices/userDataSlice.ts";
+import { AppDispatch } from "store/store";
+import { checkAuth } from "store/slices/userDataSlice.ts";
 
 import Navigation from "@/navigation/Navigation.tsx";
 

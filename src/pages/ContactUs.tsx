@@ -2,21 +2,21 @@ import React, {useState} from 'react';
 import {t} from "i18next";
 import {Link, useNavigate} from 'react-router-dom';
 
-import {useInput} from "@/hooks/useInput.tsx";
-import useDefaultScrollPosition from '@/hooks/useDefaultScrollPosition.tsx';
+import {useInput} from "hooks/useInput.tsx";
+import useDefaultScrollPosition from 'hooks/useDefaultScrollPosition.tsx';
 
-import $api from "@/utils/interceptors.ts";
-import {validate} from "@/utils/validate.ts";
+import $api from "utils/interceptors.ts";
+import {validate} from "utils/validate.ts";
 
-import UiInput from "@/components/ui/UiInput.tsx";
-import UiTextarea from "@/components/ui/UiTextarea.tsx";
+import UiInput from "components/ui/UiInput.tsx";
+import UiTextarea from "components/ui/UiTextarea.tsx";
 
-import imageContactUs1 from "@/assets/images/contact-us/icon1.svg";
-import imageContactUs2 from "@/assets/images/contact-us/icon2.svg";
-import imageContactUs3 from "@/assets/images/contact-us/icon3.svg";
-import imageSocialIcon1 from "@/assets/images/contact-us/social1.png";
-import imageSocialIcon2 from "@/assets/images/contact-us/social2.png";
-import imageSocialIcon3 from "@/assets/images/contact-us/social3.png";
+import imageContactUs1 from "assets/images/contact-us/icon1.svg";
+import imageContactUs2 from "assets/images/contact-us/icon2.svg";
+import imageContactUs3 from "assets/images/contact-us/icon3.svg";
+import imageSocialIcon1 from "assets/images/contact-us/social1.png";
+import imageSocialIcon2 from "assets/images/contact-us/social2.png";
+import imageSocialIcon3 from "assets/images/contact-us/social3.png";
 
 const ContactUs = () => {
   useDefaultScrollPosition();

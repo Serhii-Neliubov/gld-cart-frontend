@@ -1,8 +1,10 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import { useSelector } from "react-redux";
-import { userDataSelector } from "@/store/slices/userDataSlice.ts";
+
 import styles from "../ProfilePage.module.scss";
-import AddressService from "@/services/AddressService.ts";
+
+import { userDataSelector } from "store/slices/userDataSlice.ts";
+import AddressService from "services/AddressService.ts";
 
 type AddAddressMenuProps = {
   selectedLabel: string;

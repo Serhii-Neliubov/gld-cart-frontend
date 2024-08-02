@@ -2,17 +2,17 @@ import React from "react";
 import {t} from "i18next";
 import {Link} from "react-router-dom";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
+import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
 
-import cleaningImg from "@/assets/images/professional-services/img1.png";
-import repairingImg from "@/assets/images/professional-services/img2.png";
-import gardeningImg from "@/assets/images/professional-services/img3.png";
-import treeCuttingImg from "@/assets/images/professional-services/img4.png";
-import lawnServicesImg from "@/assets/images/professional-services/img5.png";
-import handymanImg from "@/assets/images/professional-services/img6.png";
-import snowRemovalImg from "@/assets/images/professional-services/img7.png";
-import pestControlImg from "@/assets/images/professional-services/img8.png";
-import electricalImg from "@/assets/images/professional-services/img9.png";
+import cleaningImg from "assets/images/professional-services/img1.png";
+import repairingImg from "assets/images/professional-services/img2.png";
+import gardeningImg from "assets/images/professional-services/img3.png";
+import treeCuttingImg from "assets/images/professional-services/img4.png";
+import lawnServicesImg from "assets/images/professional-services/img5.png";
+import handymanImg from "assets/images/professional-services/img6.png";
+import snowRemovalImg from "assets/images/professional-services/img7.png";
+import pestControlImg from "assets/images/professional-services/img8.png";
+import electricalImg from "assets/images/professional-services/img9.png";
 
 const categories = [
     {

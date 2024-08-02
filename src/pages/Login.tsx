@@ -4,20 +4,20 @@ import {t} from "i18next";
 import {useDispatch} from "react-redux";
 
 import AuthService from "services/AuthService.ts";
-import UiInput from "@/components/ui/UiInput.tsx";
+import UiInput from "components/ui/UiInput.tsx";
 
-import { AppDispatch } from "@/store/store.ts";
-import { login } from "@/store/slices/userDataSlice.ts";
+import { AppDispatch } from "store/store.ts";
+import { login } from "store/slices/userDataSlice.ts";
 
-import {validate} from "@/utils/validate.ts";
+import {validate} from "utils/validate.ts";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
-import { useInput } from "@/hooks/useInput.tsx";
+import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
+import { useInput } from "hooks/useInput.tsx";
 
-import googleIcon from "@/assets/images/google-icon.svg";
-import decorImg1 from "@/assets/images/Login/decor1.png";
-import decorImg2 from "@/assets/images/Login/decor2.png";
-import decorImg3 from "@/assets/images/Login/decor3.png";
+import googleIcon from "assets/images/google-icon.svg";
+import decorImg1 from "assets/images/Login/decor1.png";
+import decorImg2 from "assets/images/Login/decor2.png";
+import decorImg3 from "assets/images/Login/decor3.png";
 
 const Login = () => {
   useDefaultScrollPosition();

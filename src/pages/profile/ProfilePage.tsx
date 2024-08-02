@@ -3,8 +3,8 @@ import React, { FC, useState } from "react";
 import {t} from "i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-import { AppDispatch } from "@/store/store.ts";
-import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
+import { AppDispatch } from "store/store.ts";
+import { logout, userDataSelector } from "store/slices/userDataSlice.ts";
 
 import {useInput} from "@/hooks/useInput.tsx";
 import {validate} from "@/utils/validate.ts";

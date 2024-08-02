@@ -1,6 +1,6 @@
 import React, { FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, userDataSelector } from "@/store/slices/userDataSlice.ts";
+import { logout, userDataSelector } from "store/slices/userDataSlice.ts";
 import {useNavigate} from "react-router-dom";
 import styles from "../ProfilePage.module.scss";
 import {useInput} from "@/hooks/useInput.tsx";

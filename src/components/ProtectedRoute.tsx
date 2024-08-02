@@ -1,7 +1,7 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
+import {userDataSelector} from "store/slices/userDataSlice.ts";
 
 type ProtectedRouteProps = {
   element: React.ReactNode;

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import useCategoryRedirect from "@/hooks/useCategoryRedirect.tsx";
-import ItemPublishPage from "@/components/item-published/ItemPublishPage.tsx";
+import useCategoryRedirect from "hooks/useCategoryRedirect.tsx";
+import ItemPublishPage from "components/item-published/ItemPublishPage.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
-import {IVendorProductData} from "@/utils/models/IVendorProductData.tsx";
+import {IVendorProductData} from "models/IVendorProductData.tsx";
 import {useSelector} from "react-redux";
-import {userDataSelector} from "@/store/slices/userDataSlice.ts";
-import {PhotoAndVideoBlock} from "@/components/photo-video-block/PhotoAndVideoBlock.tsx";
+import {userDataSelector} from "store/slices/userDataSlice.ts";
+import {PhotoAndVideoBlock} from "components/photo-video-block/PhotoAndVideoBlock.tsx";
 import {useParams} from "react-router-dom";
 
 export const NewVehicle = () => {

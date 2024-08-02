@@ -2,16 +2,16 @@ import React, {useState} from "react";
 import {t} from "i18next";
 import {useNavigate} from "react-router-dom";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
-import { useInput } from "@/hooks/useInput.tsx";
+import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
+import { useInput } from "hooks/useInput.tsx";
 
-import {validate} from "@/utils/validate.ts";
+import {validate} from "utils/validate.ts";
 
-import UiInput from "@/components/ui/UiInput.tsx";
+import UiInput from "components/ui/UiInput.tsx";
 
-import decorImg1 from "@/assets/images/Login/decor1.png";
-import decorImg2 from "@/assets/images/Login/decor2.png";
-import decorImg3 from "@/assets/images/Login/decor3.png";
+import decorImg1 from "assets/images/Login/decor1.png";
+import decorImg2 from "assets/images/Login/decor2.png";
+import decorImg3 from "assets/images/Login/decor3.png";
 
 const NewPassword = () => {
   useDefaultScrollPosition();

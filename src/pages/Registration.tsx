@@ -4,20 +4,21 @@ import {t} from "i18next";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
-import { useInput } from "@/hooks/useInput.tsx";
+import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
+import { useInput } from "hooks/useInput.tsx";
 
-import { AppDispatch } from "@/store/store.ts";
-import { register } from "@/store/slices/userDataSlice.ts";
+import { AppDispatch } from "store/store.ts";
+import { register } from "store/slices/userDataSlice.ts";
 
 import AuthService from "services/AuthService.ts";
 
-import googleIcon from "@/assets/images/google-icon.svg";
-import decorImg1 from "@/assets/images/Login/decor1.png";
-import decorImg2 from "@/assets/images/Login/decor2.png";
-import decorImg3 from "@/assets/images/Login/decor3.png";
-import UiInput from "@/components/ui/UiInput.tsx";
-import {validate} from "@/utils/validate.ts";
+import {validate} from "utils/validate.ts";
+import UiInput from "components/ui/UiInput.tsx";
+
+import googleIcon from "assets/images/google-icon.svg";
+import decorImg1 from "assets/images/Login/decor1.png";
+import decorImg2 from "assets/images/Login/decor2.png";
+import decorImg3 from "assets/images/Login/decor3.png";
 
 const Registration = () => {
   useDefaultScrollPosition();

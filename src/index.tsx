@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 
-import { store } from "@/store/store.ts";
+import { store } from "store/store.ts";
 import "./i18n.ts";
 import App from "@/App.tsx";
 

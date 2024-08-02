@@ -1,4 +1,4 @@
-import $api from "@/utils/interceptors.ts";
+import $api from "utils/interceptors.ts";
 
 export default class Wishlist {
   static async removeItem (itemId: string | undefined, userId: string) {

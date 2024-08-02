@@ -1,8 +1,8 @@
 import React from "react";
 import {t} from "i18next";
 
-import Footer from "@/components/Footer.tsx";
-import useDefaultScrollPosition from "@/hooks/useDefaultScrollPosition.tsx";
+import Footer from "components/Footer.tsx";
+import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
 
 const PrivacyPolicy = () => {
   useDefaultScrollPosition();
