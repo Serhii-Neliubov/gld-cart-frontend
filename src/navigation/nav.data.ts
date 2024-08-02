@@ -112,13 +112,13 @@ export const routes = [
   {
     path: "/shopping-cart",
     element: ShoppingCart,
-    isAuthRequired: true,
+    isAuthRequired: false,
     userRole: ['Buyer'],
   },
   {
     path: "/wishlist",
     element: Wishlist,
-    isAuthRequired: true,
+    isAuthRequired: false,
     userRole: ['Buyer'],
   },
   {
