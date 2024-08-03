@@ -13,7 +13,7 @@ import {
   ShippingPolicy,
   TermsConditions,
   Faqs,
-  DriverLicense
+  DriverLicense, ProductCategories, ProductsCatalog, CheckoutPayment
 } from "pages/index.ts";
 
 import ProfessionalServicesCategories from "pages/ProfessionalServicesCategories.tsx";
@@ -93,7 +93,13 @@ export const routes = [
   },
   {
     path: "/products",
-    element: ContactUs,
+    element: ProductCategories,
+    isAuthRequired: false,
+    userRole: ['Buyer', 'Vendor', 'NoAuth'],
+  },
+  {
+    path: "/products/:category",
+    element: ProductsCatalog,
     isAuthRequired: false,
     userRole: ['Buyer', 'Vendor', 'NoAuth'],
   },
@@ -118,6 +124,12 @@ export const routes = [
   {
     path: "/wishlist",
     element: Wishlist,
+    isAuthRequired: false,
+    userRole: ['Buyer'],
+  },
+  {
+    path: "/checkout-payment",
+    element: CheckoutPayment,
     isAuthRequired: false,
     userRole: ['Buyer'],
   },

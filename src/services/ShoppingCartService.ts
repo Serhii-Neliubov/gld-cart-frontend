@@ -1,7 +1,7 @@
 import {TypeCartItem} from "models/ICartItem.ts";
 import $api from "utils/interceptors.ts";
 
-export default class ShoppingCart {
+export default class ShoppingCartService {
   static async addToCart (productId: string | undefined, userId: string, quantity: number) {
     try {
       await $api.post(`/cart/add-item`, {

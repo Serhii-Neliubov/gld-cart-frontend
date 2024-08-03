@@ -24,9 +24,8 @@ export default function UiTextarea({ textareaValue, subject, name, errorFields, 
           {...textareaValue}
           required={true}
           placeholder={placeholder}
-          className={'w-full resize-none outline-none text-[18px] min-h-[200px] font-medium p-[12px] border-none'}
+          className={'w-full resize-none outline-none text-[18px] min-h-[200px] p-[12px] border-none'}
         />
-
 
         <div className={'bg-white w-fit absolute top-[-8px] left-[20px] text-[18px]'}>
           <span className={isErrored ? 'text-[18px] text-red-500' : 'text-[18px]'}>{subject}</span>
