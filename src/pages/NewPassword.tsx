@@ -15,6 +15,7 @@ import decorImg3 from "assets/images/Login/decor3.png";
 
 const NewPassword = () => {
   useDefaultScrollPosition();
+
   const navigate = useNavigate();
 
   const [errorFields, setErrorFields] = useState<string[]>([]);

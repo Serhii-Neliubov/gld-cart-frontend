@@ -1,15 +1,13 @@
 import React from "react";
 import {t} from "i18next";
 
-import Footer from "components/Footer.tsx";
 import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
 
 const PrivacyPolicy = () => {
   useDefaultScrollPosition();
 
   return (
-    <>
-      <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
+    <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
         <h1 className={'text-[32px] font-semibold mt-[25px] mb-[25px]'}>{t('Privacy Policy')}</h1>
         <p className={'text-[22px] leading-9'}>{t(`Welcome to Gldcart, we prioritize your privacy. This Privacy Policy outlines how we collect, use, disclose, and protect
           your personal information when you use our Website. By using the Website, you consent to our practices
@@ -102,8 +100,6 @@ const PrivacyPolicy = () => {
           </div>
         </div>
       </div>
-      <Footer/>
-    </>
   );
 };
 

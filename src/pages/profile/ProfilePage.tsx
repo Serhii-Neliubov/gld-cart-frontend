@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import React, { FC, useState } from "react";
 import {t} from "i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,6 @@ import { logout, userDataSelector } from "store/slices/userDataSlice.ts";
 import {useInput} from "@/hooks/useInput.tsx";
 import {validate} from "@/utils/validate.ts";
 
-import Footer from "@/components/Footer.tsx";
 import UiInput from "@/components/ui/UiInput.tsx";
 import UiTextarea from "@/components/ui/UiTextarea.tsx";
 
@@ -118,8 +117,7 @@ const ProfilePage: FC = () => {
   }
 
   return (
-    <>
-      <div className={'max-w-[1240px] px-[20px] justify-between flex gap-[50px] mx-auto pt-[90px] pb-[160px]'}>
+    <div className={'max-w-[1240px] px-[20px] justify-between flex gap-[50px] mx-auto pt-[90px] pb-[160px]'}>
         <div className={'w-[360px]'}>
           <div className={'w-full h-full bg-white drop-shadow-lg'}>
             <div onClick={() => setSelectedLabel('Profile')}
@@ -196,8 +194,7 @@ const ProfilePage: FC = () => {
                   className={selectedLabel === 'Change Password' ? 'text-[#0989FF]' : 'text-[#000000]'}>{t('Change Password')}</span>
               </div>
             </div>
-            <div onClick={() => navigate('/help-and-support')}
-                 className={'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
+            <Link to={'/help-center'} className={'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
                 <svg width="19" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -208,7 +205,7 @@ const ProfilePage: FC = () => {
               <div className={'hidden sm:block'}>
                 <span className={'text-[#000000]'}>{t('Help & Support')}</span>
               </div>
-            </div>
+            </Link>
             <div onClick={() => navigate('/terms-and-conditions')}
                  className={'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
@@ -494,8 +491,6 @@ const ProfilePage: FC = () => {
           </div>
         }
       </div>
-      <Footer/>
-    </>
   );
 };
 

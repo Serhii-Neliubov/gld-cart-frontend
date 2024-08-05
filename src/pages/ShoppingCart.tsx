@@ -9,10 +9,20 @@ import {userDataSelector} from "store/slices/userDataSlice.ts";
 import {IoIosClose} from "react-icons/io";
 import {useSelector} from "react-redux";
 
+interface ICartItem {
+  _id: string;
+  product: {
+    _id: string;
+    name: string;
+    price: number;
+  };
+  quantity: number;
+}
+
 const ShoppingCart = () => {
   const user = useSelector(userDataSelector);
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<ICartItem[]>([]);
 
   useEffect(() => {
     ShoppingCartService

@@ -1,5 +1,5 @@
 export {default as Home} from "./home/Home";
-export {default as HelpAndSupport} from "./HelpAndSupport.tsx";
+export {default as HelpCenter} from "./HelpCenter.tsx";
 
 export {default as ContactUs} from "./ContactUs.tsx";
 export {default as CookiePolicy} from "./CookiePolicy.tsx";

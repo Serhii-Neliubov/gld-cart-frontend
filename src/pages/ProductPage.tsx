@@ -1,17 +1,25 @@
-import {t} from "i18next";
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import { t } from "i18next";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import UiDescription from "components/ui/UiDescription.tsx";
 
+import { userDataSelector } from "store/slices/userDataSlice.ts";
+
+import WishlistService from "services/WishlistService.ts";
+import ShoppingCartService from "services/ShoppingCartService.ts";
+
 import imageProduct from "assets/images/ProductPage/imageProduct.png";
 import imagePaymentMethods from "assets/images/ProductPage/paymentMethods.png";
-import {CiCircleQuestion, CiHeart} from "react-icons/ci";
+import { CiCircleQuestion, CiHeart } from "react-icons/ci";
 
 const ProductPage = () => {
+  const user = useSelector(userDataSelector);
+
   const [product, setProduct] = useState({
     img: imageProduct,
-    id: 1,
+    id: '1',
     title: 'Product Title',
     category: 'Product Category',
     price: '$100.00',
@@ -21,21 +29,25 @@ const ProductPage = () => {
   });
   const [quantity, setQuantity] = useState(1);
 
-  const addToWishlistHandler = () => {
-    try {
-      console.log('Add to wishlist');
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    // Fetch product data
+  }, []);
 
-  const addToCartHandler = () => {
+  async function addToWishlistHandler() {
     try {
-      console.log('Add to cart');
+      await WishlistService.addItem(product.id, user._id);
     } catch (error) {
       console.error(error);
     }
-  };
+  }
+
+  async function addToCartHandler() {
+    try {
+      await ShoppingCartService.addToCart(product.id, user._id, quantity);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className={'bg-white mx-[20px]'}>

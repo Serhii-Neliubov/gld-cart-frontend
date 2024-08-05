@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {t} from "i18next";
 
-import Footer from "components/Footer.tsx";
 import useDefaultScrollPosition from 'hooks/useDefaultScrollPosition.tsx';
 
 import imageIcon1 from 'assets/images/HelpAndSupport/icon1.svg';
@@ -12,12 +11,11 @@ import imageSupportLogo from 'assets/images/HelpAndSupport/logo1.png';
 import chatIcon from 'assets/images/HelpAndSupport/chaticon.png';
 import arrowRightIcon from 'assets/images/HelpAndSupport/arrow-right.svg';
 
-const HelpAndSupport = () => {
+const HelpCenter = () => {
   useDefaultScrollPosition();
 
   return (
-    <>
-      <div className={'max-w-[1240px] pt-[24px] px-[20px] pb-[80px] min-[1081px]:pb-[160px] mx-auto'}>
+    <div className={'max-w-[1240px] pt-[24px] px-[20px] pb-[80px] min-[1081px]:pb-[160px] mx-auto'}>
         <h1 className={'font-light text-[20px] sm:text-[26px] mt-0'}>{t('Hi, how can we help you?')}</h1>
         <div className={'flex gap-[20px] min-[1255px]:gap-[35px] flex-wrap mt-[25px] items-center'}>
           <Link to={'#'} className={'border-solid w-full min-[1255px]:max-w-[375px] hover:bg-gray-100 cursor-pointer transition-all min-h-[115px] border-[1px] border-[#D9D9D9] flex p-[12px] flex-col gap-[13px]'}>
@@ -76,9 +74,7 @@ const HelpAndSupport = () => {
           </div>
         </div>
       </div>
-      <Footer/>
-    </>
   );
 };
 
-export default HelpAndSupport;
+export default HelpCenter;

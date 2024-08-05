@@ -16,7 +16,7 @@ export const SupportChat = () => {
         <div className='__container'>
             <div className={styles.content}>
                 <div className={styles.actionButtons}>
-                    <Link to='/help-and-support'>
+                    <Link to='/help-center'>
                         <button className={styles.backButton}/>
                     </Link>
                     <Link to='/'>

@@ -1,15 +1,13 @@
 import React from 'react';
 import {t} from "i18next";
 
-import Footer from "components/Footer.tsx";
 import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
 
 const ShippingPolicy = () => {
   useDefaultScrollPosition();
 
   return (
-    <>
-      <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
+    <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
         <h1 className={'text-[32px] font-semibold mt-[25px] mb-[25px]'}>{t('Shipping Policy')}</h1>
         <p className={'text-[22px] leading-9'}>{t(`Thank you for shopping at GLDCART! This Shipping Policy outlines important information regarding the 
 shipping of products purchased on our website (the "Website"). By placing an order, you agree to the 
@@ -137,8 +135,6 @@ terms and conditions set forth in this policy.`)}</p>
           </div>
         </div>
       </div>
-      <Footer/>
-    </>
   );
 };
 

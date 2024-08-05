@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {t} from "i18next";
 import {Link} from "react-router-dom";
 
@@ -14,51 +14,55 @@ interface Product {
 }
 
 const ProductsCatalog = () => {
-  const [products, setProducts] = useState<Product[]>([{
-    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
-    category: 'Clothing & Apparel',
-    title: 'Abaya for Women',
-    price: '$100.00',
-    id: 1,
-  },
-  {
-    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
-    category: 'Clothing & Apparel',
-    title: 'Abaya for Women',
-    price: '$100.00',
-    id: 2,
-  },
-  {
-    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
-    category: 'Clothing & Apparel',
-    title: 'Abaya for Women',
-    price: '$100.00',
-    id: 3,
-  },
-  {
-    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
-    category: 'Clothing & Apparel',
-    title: 'Abaya for Women',
-    price: '$100.00',
-    id: 4,
-  },
-
-  {
-    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
-    category: 'Clothing & Apparel',
-    title: 'Abaya for Women',
-    price: '$100.00',
-    id: 5,
-  },
-
-  {
-    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
-    category: 'Clothing & Apparel',
-    title: 'Abaya for Women',
-    price: '$100.00',
-    id: 6,
-  },
+  const [products, setProducts] = useState<Product[]>([
+    {
+      img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+      category: 'Clothing & Apparel',
+      title: 'Abaya for Women',
+      price: '$100.00',
+      id: 1,
+    },
+    {
+      img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+      category: 'Clothing & Apparel',
+      title: 'Abaya for Women',
+      price: '$100.00',
+      id: 2,
+    },
+    {
+      img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+      category: 'Clothing & Apparel',
+      title: 'Abaya for Women',
+      price: '$100.00',
+      id: 3,
+    },
+    {
+      img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+      category: 'Clothing & Apparel',
+      title: 'Abaya for Women',
+      price: '$100.00',
+      id: 4,
+    },
+    {
+      img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+      category: 'Clothing & Apparel',
+      title: 'Abaya for Women',
+      price: '$100.00',
+      id: 5,
+    },
+    {
+      img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+      category: 'Clothing & Apparel',
+      title: 'Abaya for Women',
+      price: '$100.00',
+      id: 6,
+    },
   ]);
+  const [filters, setFilters] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Fetch products from API
+  }, []);
 
   return (
     <div className={'flex flex-col py-[100px] gap-[20px] mx-auto max-w-[1255px]'}>

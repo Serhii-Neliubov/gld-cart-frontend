@@ -1,15 +1,13 @@
 import React from 'react';
 import {t} from "i18next";
 
-import Footer from 'components/Footer.tsx';
 import useDefaultScrollPosition from 'hooks/useDefaultScrollPosition.tsx';
 
 const CookiePolicy = () => {
   useDefaultScrollPosition();
 
   return (
-    <>
-      <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
+    <div className={'max-w-[1240px] pb-[50px] px-[20px] mx-auto'}>
         <h1 className={'text-[32px] font-semibold mt-[25px] mb-[25px]'}>{t('Cookie Policy')}</h1>
         <p className={'text-[22px] leading-9'}>{t(`We use cookies to enhance your browsing experience on our website. By continuing to use our website, you consent to the use of cookies. This policy explains how we use cookies and how you can manage them.`)}
         </p>
@@ -78,8 +76,6 @@ const CookiePolicy = () => {
           </div>
         </div>
       </div>
-      <Footer/>
-    </>
   );
 };
 

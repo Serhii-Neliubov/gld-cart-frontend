@@ -86,7 +86,7 @@ const Footer = () => {
                 Terms & Conditions
               </Link>
             </nav>
-            <Link to="/help-and-support" className="text-white hover:text-red-500 leading-normal transition-all">
+            <Link to="/help-center" className="text-white hover:text-red-500 leading-normal transition-all">
               Help & Support
             </Link>
           </div>

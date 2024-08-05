@@ -13,10 +13,14 @@ import {
   ShippingPolicy,
   TermsConditions,
   Faqs,
-  DriverLicense, ProductCategories, ProductsCatalog, CheckoutPayment, ProductPage
+  DriverLicense,
+  ProductCategories,
+  ProductsCatalog,
+  CheckoutPayment,
+  ProductPage,
+  HelpCenter,
+  ProfessionalServicesCategories
 } from "pages/index.ts";
-
-import ProfessionalServicesCategories from "pages/ProfessionalServicesCategories.tsx";
 
 export const routes = [
   {
@@ -122,6 +126,11 @@ export const routes = [
   {
     path: "/driver-license",
     element: DriverLicense,
+    isAuthRequired: true,
+  },
+  {
+    path: "/help-center",
+    element: HelpCenter,
     isAuthRequired: true,
   },
 ]
