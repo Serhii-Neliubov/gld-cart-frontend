@@ -1,17 +1,21 @@
-import {Dispatch, SetStateAction} from "react";
-import {Link, useLocation} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import { Dispatch, SetStateAction } from "react";
+import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+import { userDataSelector } from "store/slices/userDataSlice.ts";
 
 import imageLike from "@/assets/images/like-icon.svg";
 import imageTrash from "@/assets/images/trash-icon.svg";
 import imageProfile from "@/assets/images/profile-icon.svg";
-import {IconBurgerMenu} from "assets/icons/IconBurgerMenu.tsx";
+import { IconBurgerMenu } from "assets/icons/IconBurgerMenu.tsx";
 
 interface HeaderNavProps {
     setBurgerMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const HeaderNav = ({setBurgerMenuOpen}: HeaderNavProps) => {
+    const user = useSelector(userDataSelector);
     const location = useLocation();
     const { t } = useTranslation();
 
@@ -54,8 +58,9 @@ export const HeaderNav = ({setBurgerMenuOpen}: HeaderNavProps) => {
                     <Link to={'/shopping-cart'} className={'max-[350px]:hidden block'}>
                         <img src={imageTrash} alt={'shopping cart icon'}/>
                     </Link>
-                    <Link to={'/profile'}>
+                    <Link to={'/profile'} className={'relative'}>
                         <img src={imageProfile} alt={'profile icon'}/>
+                        <span className={'absolute top-[50%] translate-y-[-50%] left-[40px]'}>{user.name}</span>
                     </Link>
 
                     <button onClick={() => setBurgerMenuOpen(prev => !prev)} className="relative group hidden max-[1150px]:block">

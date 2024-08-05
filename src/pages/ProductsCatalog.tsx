@@ -5,9 +5,60 @@ import {Link} from "react-router-dom";
 import {ProductsList} from "components/buyer-products/ProductsList.tsx";
 import {ProductsFilter} from "components/buyer-products/ProductsFilter.tsx";
 
-const ProductsCatalog = () => {
+interface Product {
+  id: number;
+  img: string;
+  category: string;
+  title: string;
+  price: string;
+}
 
-  const [products, setProducts] = useState([]);
+const ProductsCatalog = () => {
+  const [products, setProducts] = useState<Product[]>([{
+    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+    category: 'Clothing & Apparel',
+    title: 'Abaya for Women',
+    price: '$100.00',
+    id: 1,
+  },
+  {
+    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+    category: 'Clothing & Apparel',
+    title: 'Abaya for Women',
+    price: '$100.00',
+    id: 2,
+  },
+  {
+    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+    category: 'Clothing & Apparel',
+    title: 'Abaya for Women',
+    price: '$100.00',
+    id: 3,
+  },
+  {
+    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+    category: 'Clothing & Apparel',
+    title: 'Abaya for Women',
+    price: '$100.00',
+    id: 4,
+  },
+
+  {
+    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+    category: 'Clothing & Apparel',
+    title: 'Abaya for Women',
+    price: '$100.00',
+    id: 5,
+  },
+
+  {
+    img: 'https://cdn.northland-pro.com/upload/mdm/media_content/resize/fb7/1000_1000_9481/82828780299.jpg',
+    category: 'Clothing & Apparel',
+    title: 'Abaya for Women',
+    price: '$100.00',
+    id: 6,
+  },
+  ]);
 
   return (
     <div className={'flex flex-col py-[100px] gap-[20px] mx-auto max-w-[1255px]'}>
@@ -19,7 +70,7 @@ const ProductsCatalog = () => {
 
       <div className={'flex gap-[20px]'}>
         <ProductsFilter />
-        <ProductsList />
+        <ProductsList products={products} />
       </div>
     </div>
   )

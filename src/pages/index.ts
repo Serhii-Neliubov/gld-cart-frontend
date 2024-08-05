@@ -29,6 +29,7 @@ export {default as ProductsVendor} from "./products-vendor/ProductsVendor.tsx";
 export {default as ProfilePage} from "./profile/ProfilePage";
 export {default as ProductCategories} from "./ProductCategories.tsx";
 export {default as ProductsCatalog} from "./ProductsCatalog.tsx";
+export {default as ProductPage} from "./ProductPage.tsx";
 export {default as CheckoutPayment} from "./CheckoutPayment.tsx";
 
 export {default as TrackOrder} from "./track-order/TrackOrder";

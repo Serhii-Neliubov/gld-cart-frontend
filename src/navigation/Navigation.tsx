@@ -14,7 +14,7 @@ export default function Navigation() {
             key={route.path}
             path={route.path}
             element={route.isAuthRequired
-              ? <ProtectedRoute userRole={route.userRole} element={<Layout><route.element/></Layout>} />
+              ? <ProtectedRoute element={<Layout><route.element/></Layout>} />
               : <Layout><route.element/></Layout>
             }
           />

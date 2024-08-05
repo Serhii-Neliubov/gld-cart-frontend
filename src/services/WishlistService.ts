@@ -1,6 +1,6 @@
 import $api from "utils/interceptors.ts";
 
-export default class Wishlist {
+export default class WishlistService {
   static async removeItem (itemId: string | undefined, userId: string) {
     try {
       const response = await $api.delete(`/wishlist/remove-item`, {
