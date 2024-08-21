@@ -52,14 +52,15 @@ export const HeaderNav = ({setBurgerMenuOpen}: HeaderNavProps) => {
                     </ul>
                 </nav>
                 <div className={'flex items-center gap-[16px]'}>
-                    {user.role === 'Vendor' ? null : <>
-                        <Link to={'/wishlist'} className={'max-[350px]:hidden block'}>
-                            <img src={imageLike} alt={'like icon'}/>
-                        </Link>
-                        <Link to={'/shopping-cart'} className={'max-[350px]:hidden block'}>
-                            <img src={imageTrash} alt={'shopping cart icon'}/>
-                        </Link>
-                    </>}
+                    {
+                        user.role === 'vendor'
+                            ? null
+                            : <>
+                                <Link to={'/wishlist'} className={'max-[350px]:hidden block'}><img src={imageLike} alt={'like icon'}/></Link><Link to={'/shopping-cart'} className={'max-[350px]:hidden block'}>
+                                    <img src={imageTrash} alt={'shopping cart icon'}/>
+                                </Link>
+                            </>
+                    }
                     <Link to={'/profile'} className={'relative'}>
                         <img src={imageProfile} alt={'profile icon'}/>
                         <span className={'absolute top-[50%] translate-y-[-50%] left-[40px]'}>{user.name}</span>

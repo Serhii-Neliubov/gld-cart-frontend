@@ -1,7 +1,7 @@
 import {ReactNode} from "react";
 
-import Header from "@/components/header/Header.tsx";
-import Footer from "@/components/Footer.tsx";
+import Header from "components/header/Header.tsx";
+import Footer from "components/Footer.tsx";
 
 interface DefaultLayoutProps {
   children: ReactNode;

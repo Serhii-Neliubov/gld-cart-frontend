@@ -6,18 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "store/store.ts";
 import { logout, userDataSelector } from "store/slices/userDataSlice.ts";
 
-import {useInput} from "@/hooks/useInput.tsx";
-import {validate} from "@/utils/validate.ts";
+import {useInput} from "hooks/useInput.tsx";
+import {validate} from "utils/validate.ts";
 
-import UiInput from "@/components/ui/UiInput.tsx";
-import UiTextarea from "@/components/ui/UiTextarea.tsx";
+import UiInput from "components/ui/UiInput.tsx";
+import UiTextarea from "components/ui/UiTextarea.tsx";
 
 // Order Details
-import order_img1 from "@/assets/images/ProfilePage/order-details/img1.svg";
-import order_img2 from "@/assets/images/ProfilePage/order-details/img2.svg";
-import order_img3 from "@/assets/images/ProfilePage/order-details/img3.svg";
-import order_img4 from "@/assets/images/ProfilePage/order-details/img4.svg";
-import order_img5 from "@/assets/images/ProfilePage/order-details/img5.svg";
+import order_img1 from "assets/images/ProfilePage/order-details/img1.svg";
+import order_img2 from "assets/images/ProfilePage/order-details/img2.svg";
+import order_img3 from "assets/images/ProfilePage/order-details/img3.svg";
+import order_img4 from "assets/images/ProfilePage/order-details/img4.svg";
+import order_img5 from "assets/images/ProfilePage/order-details/img5.svg";
 import IconPerson from "assets/icons/IconPerson.tsx";
 import IconMobile from "assets/icons/IconMobile.tsx";
 import IconLocation from "assets/icons/IconLocation.tsx";
@@ -29,8 +29,6 @@ const ProfilePage: FC = () => {
 
   const [errorFields, setErrorFields] = useState<string[]>([]);
   const [selectedLabel, setSelectedLabel] = useState("Profile");
-  const [selectedOrderLabel, setSelectedOrderLabel] = useState("All Orders");
-  const [isAddressMenuOpen, setIsAddressMenuOpen] = useState(false);
 
   // Profile
   const name = useInput('');
@@ -90,6 +88,11 @@ const ProfilePage: FC = () => {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate('/');
   }
 
   const editAddressHandler = () => {
@@ -234,7 +237,7 @@ const ProfilePage: FC = () => {
                 <span className={'text-[#000000]'}>{t('Contact Us')}</span>
               </div>
             </div>
-            <div onClick={() => dispatch(logout)}
+            <div onClick={logoutHandler}
                  className={'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
                 <svg width="19" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
