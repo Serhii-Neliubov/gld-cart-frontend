@@ -29,10 +29,10 @@ export const HeaderNav = ({setBurgerMenuOpen}: HeaderNavProps) => {
                             <Link to={'/'}
                                   className={location.pathname === '/' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Home')}</Link>
                         </li>
-                        <li>
-                            <Link to={'/renting'}
-                                  className={location.pathname === '/renting' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Renting')}</Link>
-                        </li>
+                        {/*<li>*/}
+                        {/*    <Link to={'/renting'}*/}
+                        {/*          className={location.pathname === '/renting' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Renting')}</Link>*/}
+                        {/*</li>*/}
                         <li>
                             <Link to={'/products'}
                                   className={location.pathname === '/products' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Products')}</Link>
@@ -41,10 +41,10 @@ export const HeaderNav = ({setBurgerMenuOpen}: HeaderNavProps) => {
                             <Link to={'/professional-services'}
                                   className={location.pathname === '/professional-services' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Professional services')}</Link>
                         </li>
-                        <li>
+                        {user.role === 'Buyer' && <li>
                             <Link to={'/driver-license'}
                                   className={location.pathname === '/driver-license' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Driver Services')}</Link>
-                        </li>
+                        </li>}
                         <li>
                             <Link to={'/contact-us'}
                                   className={location.pathname === '/contact-us' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Contact us')}</Link>
@@ -52,12 +52,14 @@ export const HeaderNav = ({setBurgerMenuOpen}: HeaderNavProps) => {
                     </ul>
                 </nav>
                 <div className={'flex items-center gap-[16px]'}>
-                    <Link to={'/wishlist'} className={'max-[350px]:hidden block'}>
-                        <img src={imageLike} alt={'like icon'}/>
-                    </Link>
-                    <Link to={'/shopping-cart'} className={'max-[350px]:hidden block'}>
-                        <img src={imageTrash} alt={'shopping cart icon'}/>
-                    </Link>
+                    {user.role === 'Vendor' ? null : <>
+                        <Link to={'/wishlist'} className={'max-[350px]:hidden block'}>
+                            <img src={imageLike} alt={'like icon'}/>
+                        </Link>
+                        <Link to={'/shopping-cart'} className={'max-[350px]:hidden block'}>
+                            <img src={imageTrash} alt={'shopping cart icon'}/>
+                        </Link>
+                    </>}
                     <Link to={'/profile'} className={'relative'}>
                         <img src={imageProfile} alt={'profile icon'}/>
                         <span className={'absolute top-[50%] translate-y-[-50%] left-[40px]'}>{user.name}</span>

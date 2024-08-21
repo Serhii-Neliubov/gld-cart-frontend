@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import {t} from "i18next";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import AuthService from "services/AuthService.ts";
 import UiInput from "components/ui/UiInput.tsx";
 
 import { AppDispatch } from "store/store.ts";
-import { login } from "store/slices/userDataSlice.ts";
+import { login, userDataSelector } from "store/slices/userDataSlice.ts";
 
 import {validate} from "utils/validate.ts";
 
@@ -22,13 +22,22 @@ import decorImg3 from "assets/images/Login/decor3.png";
 const Login = () => {
   useDefaultScrollPosition();
 
+  const user = useSelector(userDataSelector);
+
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const [isRemember, setIsRemember] = useState(false);
   const [errorFields, setErrorFields] = useState<string[]>([]);
 
   const email = useInput('');
   const password = useInput('');
+
+  useEffect(() => {
+    if (user._id) {
+      navigate('/');
+    }
+  }, [user._id]);
 
   const handleLogin = async () => {
     const body = {
@@ -43,11 +52,7 @@ const Login = () => {
       return;
     }
 
-    try {
-      await dispatch(login({ email: email.value, password: password.value, isRemember }));
-    } catch (error) {
-      console.log(error);
-    }
+    await dispatch(login({ email: email.value, password: password.value, isRemember }));
   }
 
   return (

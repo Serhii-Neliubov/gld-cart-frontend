@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import {t} from "i18next";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
 import { useInput } from "hooks/useInput.tsx";
 
 import { AppDispatch } from "store/store.ts";
-import { register } from "store/slices/userDataSlice.ts";
+import { register, userDataSelector } from "store/slices/userDataSlice.ts";
 
 import AuthService from "services/AuthService.ts";
 
@@ -26,6 +26,8 @@ const Registration = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
+  const user = useSelector(userDataSelector);
+
   const [userType, setUserType] = useState("");
   const [isRemember, setIsRemember] = useState(false);
   const [errorFields, setErrorFields] = useState<string[]>([]);
@@ -35,6 +37,12 @@ const Registration = () => {
   const email = useInput('');
   const password = useInput('');
   const rePassword = useInput('');
+
+  useEffect(() => {
+    if (user._id) {
+      navigate('/');
+    }
+  }, [user._id]);
 
   function sendFormHandler(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();

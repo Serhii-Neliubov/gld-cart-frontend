@@ -117,7 +117,6 @@ const authDataSlice = createSlice({
                 try{
                     if (action.payload) {
                         state.isAuth = true;
-                        toast.success("You successfully logged!");
                         state.user = action.payload.user;
                     }
                 } catch (error){

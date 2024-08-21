@@ -21,7 +21,7 @@ export {default as Registration} from "./Registration.tsx";
 
 export {default as SendMessagePage} from "./send-message-successfully/SendMessagePage";
 export {default as ShippingPolicy} from "./ShippingPolicy.tsx";
-export {default as ShoppingCartPage} from "./Wishlist.tsx";
+export {default as ShoppingCartPage} from "./ShoppingCart.tsx";
 
 export {default as ProfessionalServicesCategories} from "./ProfessionalServicesCategories.tsx";
 export {default as PrivacyPolicy} from "./PrivacyPolicy.tsx";

@@ -5,7 +5,7 @@ import {
   ForgotPassword,
   NewPassword,
   ContactUs,
-  RentingCategories,
+  // RentingCategories,
   ShoppingCart,
   Wishlist,
   PrivacyPolicy,
@@ -19,7 +19,8 @@ import {
   CheckoutPayment,
   ProductPage,
   HelpCenter,
-  ProfessionalServicesCategories
+  ProfessionalServicesCategories,
+  ProfilePage
 } from "pages/index.ts";
 
 export const routes = [
@@ -78,11 +79,11 @@ export const routes = [
     element: ContactUs,
     isAuthRequired: false,
   },
-  {
-    path: "/renting",
-    element: RentingCategories,
-    isAuthRequired: false,
-  },
+  // {
+  //   path: "/renting",
+  //   element: RentingCategories,
+  //   isAuthRequired: false,
+  // },
   {
     path: "/products",
     element: ProductCategories,
@@ -105,18 +106,18 @@ export const routes = [
   },
   {
     path: "/profile",
-    element: ProfessionalServicesCategories,
+    element: ProfilePage,
     isAuthRequired: true,
   },
   {
     path: "/shopping-cart",
     element: ShoppingCart,
-    isAuthRequired: false,
+    isAuthRequired: true,
   },
   {
     path: "/wishlist",
     element: Wishlist,
-    isAuthRequired: false,
+    isAuthRequired: true,
   },
   {
     path: "/checkout-payment",

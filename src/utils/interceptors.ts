@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AuthResponse } from "models/response/AuthResponse.ts";
-// export const API_URL = "https://test-gld-backend-a01fa3463a0e.herokuapp.com";
+
 export const API_URL = "http://localhost:3001/api";
 
 const $api = axios.create({
@@ -10,7 +10,6 @@ const $api = axios.create({
 
 $api.interceptors.request.use((config) => {
   config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
-  console.log(config.headers.Authorization);
   return config;
 });
 

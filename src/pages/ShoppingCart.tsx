@@ -1,5 +1,5 @@
 import {t} from "i18next";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 import ShoppingCartService from "services/ShoppingCartService.ts";
@@ -21,10 +21,19 @@ interface ICartItem {
 
 const ShoppingCart = () => {
   const user = useSelector(userDataSelector);
+  const navigate = useNavigate();
 
   const [items, setItems] = useState<ICartItem[]>([]);
 
   useEffect(() => {
+    if(!user._id) {
+      return;
+    };
+
+    if(user.role !== 'Buyer') {
+      navigate('/');
+    };
+
     ShoppingCartService
       .getItems(user._id)
       .then((data) => {

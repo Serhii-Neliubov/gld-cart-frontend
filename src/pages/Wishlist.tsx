@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {t} from "i18next";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 import {userDataSelector} from "store/slices/userDataSlice.ts";
@@ -9,10 +9,19 @@ import WishlistService from "services/WishlistService.ts";
 
 const Wishlist = () => {
   const user = useSelector(userDataSelector);
+  const navigate = useNavigate();
 
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+      if(!user._id) {
+          return;
+      };
+
+      if(user.role !== 'Buyer') {
+          navigate('/');
+      };
+
     WishlistService
       .getItems(user._id)
       .then((data) => {

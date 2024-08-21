@@ -25,8 +25,8 @@ import IconLocation from "assets/icons/IconLocation.tsx";
 const ProfilePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-
   const user = useSelector(userDataSelector);
+
   const [errorFields, setErrorFields] = useState<string[]>([]);
   const [selectedLabel, setSelectedLabel] = useState("Profile");
   const [selectedOrderLabel, setSelectedOrderLabel] = useState("All Orders");
@@ -165,20 +165,19 @@ const ProfilePage: FC = () => {
                   className={selectedLabel === 'My Orders' ? 'text-[#0989FF]' : 'text-[#000000]'}>{t('My Orders')}</span>
               </div>
             </div>
-            <div onClick={() => navigate('/wishlist')}
-                 className={'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
+            {user.role === 'Buyer' && <div onClick={() => navigate('/wishlist')} className={'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M9.09 13.5586L9 13.6458L8.901 13.5586C4.626 9.80054 1.8 7.31553 1.8 4.79564C1.8 3.05177 3.15 1.74387 4.95 1.74387C6.336 1.74387 7.686 2.6158 8.163 3.80164H9.837C10.314 2.6158 11.664 1.74387 13.05 1.74387C14.85 1.74387 16.2 3.05177 16.2 4.79564C16.2 7.31553 13.374 9.80054 9.09 13.5586ZM13.05 0C11.484 0 9.981 0.706267 9 1.81362C8.019 0.706267 6.516 0 4.95 0C2.178 0 0 2.10136 0 4.79564C0 8.08283 3.06 10.7771 7.695 14.849L9 16L10.305 14.849C14.94 10.7771 18 8.08283 18 4.79564C18 2.10136 15.822 0 13.05 0Z"
-                    fill='#767A7D'
+                      d="M9.09 13.5586L9 13.6458L8.901 13.5586C4.626 9.80054 1.8 7.31553 1.8 4.79564C1.8 3.05177 3.15 1.74387 4.95 1.74387C6.336 1.74387 7.686 2.6158 8.163 3.80164H9.837C10.314 2.6158 11.664 1.74387 13.05 1.74387C14.85 1.74387 16.2 3.05177 16.2 4.79564C16.2 7.31553 13.374 9.80054 9.09 13.5586ZM13.05 0C11.484 0 9.981 0.706267 9 1.81362C8.019 0.706267 6.516 0 4.95 0C2.178 0 0 2.10136 0 4.79564C0 8.08283 3.06 10.7771 7.695 14.849L9 16L10.305 14.849C14.94 10.7771 18 8.08283 18 4.79564C18 2.10136 15.822 0 13.05 0Z"
+                      fill='#767A7D'
                   />
                 </svg>
               </div>
               <div className={'hidden sm:block'}>
                 <span className={'text-[#000000]'}>{t('Wishlist')}</span>
               </div>
-            </div>
+            </div>}
             <div onClick={() => setSelectedLabel('Change Password')}
                  className={selectedLabel === t('Change Password') ? 'flex gap-4 items-center bg-gray-100 bg-opacity-80 cursor-pointer py-[20px] px-[30px]' : 'flex gap-4 items-center hover:bg-[#E9E9E9] cursor-pointer py-[20px] px-[30px]'}>
               <div className={'w-[20px]'}>
