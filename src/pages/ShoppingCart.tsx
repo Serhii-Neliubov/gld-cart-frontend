@@ -1,5 +1,5 @@
 import {t} from "i18next";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 import ShoppingCartService from "services/ShoppingCartService.ts";
@@ -21,17 +21,12 @@ interface ICartItem {
 
 const ShoppingCart = () => {
   const user = useSelector(userDataSelector);
-  const navigate = useNavigate();
 
   const [items, setItems] = useState<ICartItem[]>([]);
 
   useEffect(() => {
     if(!user._id) {
       return;
-    };
-
-    if(user.role !== 'Buyer') {
-      navigate('/');
     };
 
     ShoppingCartService
@@ -52,7 +47,7 @@ const ShoppingCart = () => {
           </div>
         </div>
 
-        {items?.length > 0
+        {items.length > 0
           ? <div className={'flex-col min-[880px]:flex-row flex justify-between gap-[40px] pb-[40px]'}>
             <div className={'overflow-scroll w-full'}>
               <table className="table-auto min-w-[535px] w-full h-fit">

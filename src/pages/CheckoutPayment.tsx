@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {t} from "i18next";
 
@@ -9,20 +9,25 @@ import { useInput } from "hooks/useInput.tsx";
 import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
 
 import { validate } from "utils/validate.ts";
+import ShoppingCartService from "@/services/ShoppingCartService";
+import { useSelector } from "react-redux";
+import { userDataSelector } from "@/store/slices/userDataSlice";
+import $api from "@/utils/interceptors";
+import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
+import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+
+// TODO: Set stripe key to .env file
+const STRIPE_SECRET_KEY = 'pk_test_51LwMMSIr9qomMnpIKf6KC11Fw326JmIM7THj2zhFsrzuRs63CTcdnABWvpGWAKr96dF0qNHwoE3JFuq8R8Vif54i007XexrztK';
 
 const CheckoutPayment = () => {
-  const [errorFields, setErrorFields] = useState<string[]>([]);
+  useDefaultScrollPosition();
 
-  const [products, setProducts] = useState([
-    {
-      name: 'Cool Headphone',
-      price: '60.00',
-    },
-    {
-      name: 'Cool Headphone',
-      price: '60.00',
-    }
-  ]);
+  const user = useSelector(userDataSelector);
+  const stripePromise = loadStripe(STRIPE_SECRET_KEY)
+
+  const [errorFields, setErrorFields] = useState<string[]>([]);
+  const [products, setProducts] = useState([]);
+  const [clientSecret, setClientSecret] = useState('');
 
   const [subtotalPrice, setSubtotalPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -38,7 +43,60 @@ const CheckoutPayment = () => {
   const emailAddress = useInput('');
   const orderNotes = useInput('');
 
-  useDefaultScrollPosition();
+  const appearance = {
+    theme: 'stripe',
+    variables: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    rules: {
+      '.Input': {
+        padding: '20px 30px',
+        borderRadius: '0',
+        border: '1px solid rgb(217, 217, 217)',
+        background: 'rgb(255, 255, 255)',
+      },
+      '.Input::placeholder': {
+        fontFamily: 'Poppins, sans-serif',
+        color: 'rgb(189, 189, 189)',
+        fontSize: '20px',
+        fontWeight: '700',
+        lineHeight: '30px',
+        textAlign: 'left',
+      },
+      '.Label': {
+        fontFamily: 'Poppins, sans-serif',
+        color: 'rgb(0, 0, 0)',
+        fontSize: '20px',
+        fontWeight: '700',
+        lineHeight: '30px',
+        textAlign: 'left',
+      },
+    }
+  }
+
+  const options = {
+    clientSecret,
+    appearance,
+  } as StripeElementsOptions | undefined;
+
+  useEffect(() => {
+    if(!user._id) {
+      return;
+    };
+
+    ShoppingCartService
+        .getItems(user._id)
+        .then((data) => {
+          setProducts(data)
+          setSubtotalPrice(data.total)
+        });
+  }, [user._id]);
+
+  useEffect(() => {
+    setTotalPrice(subtotalPrice + shippingCost)
+  }, [shippingCost, subtotalPrice]);
+
 
   async function checkoutPaymentHandler() {
     const body = {
@@ -50,7 +108,6 @@ const CheckoutPayment = () => {
       zipCode: zipCode.value,
       phoneNumber: phoneNumber.value,
       emailAddress: emailAddress.value,
-      orderNotes: orderNotes.value,
     }
 
     const errors = validate(body);
@@ -61,17 +118,33 @@ const CheckoutPayment = () => {
     }
 
     try {
-      // Logic to handle payment
+      $api.post('/orders', {
+        customer: user._id,
+        items: [...products.items],
+        amount: totalPrice,
+        billing_details: {
+          ...body
+        },
+        order_notes: orderNotes.value,
+      }).then((response) => {
+        setClientSecret(response.data.client_secret)
+      })
+
     } catch (error) {
       console.log(error);
     }
   }
 
   return (
-    <div className={'bg-[#ecf2f7] px-[20px]'}>
+      clientSecret
+        ? <Elements options={options} stripe={stripePromise}>
+            <PaymentWrapper />
+          </Elements>
+        : <div className={'bg-[#ecf2f7] px-[20px]'}>
       <div className={'mx-auto max-w-[1255px] drop-shadow-2xl py-[50px] sm:py-[100px]'}>
         <h1 className={'font-semibold mb-[10px] text-[32px] sm:text-[64px]'}>{t('Checkout')}</h1>
-        <div className={'flex mb-[25px] sm:mb-[50px] items-center gap-[20px] after:absolute after:w-[8px] after:h-[8px] after:top-[50%] after:translate-y-[-50%] after:rounded-full relative after:left-[58px] after:translate-x-[-50%] after:bg-[#A8ACB0]'}>
+        <div
+            className={'flex mb-[25px] sm:mb-[50px] items-center gap-[20px] after:absolute after:w-[8px] after:h-[8px] after:top-[50%] after:translate-y-[-50%] after:rounded-full relative after:left-[58px] after:translate-x-[-50%] after:bg-[#A8ACB0]'}>
           <Link to={'/'} className={'text-[#55585B] hover:underline'}>{t('Home')}</Link>
           <span className={'text-[#55585B]'}>{t('Checkout')}</span>
         </div>
@@ -112,18 +185,19 @@ const CheckoutPayment = () => {
             <UiTextarea placeholder={'Note about your order'} subject={'Order Notes'} errorFields={errorFields}
                         textareaValue={orderNotes} name={'orderNotes'}/>
           </div>
-          <div className={'bg-white min-[1000px]:max-w-[460px] h-fit w-full p-[30px] sm:p-[40px] flex flex-col gap-[15px]'}>
+          <div
+              className={'bg-white min-[1000px]:max-w-[460px] h-fit w-full p-[30px] sm:p-[40px] flex flex-col gap-[15px]'}>
             <h2 className={'font-semibold text-[28px] sm:text-[34px]'}>{t('Your Order')}</h2>
             <div className={'flex justify-between border-b border-[#D9D9D9] border-solid py-[12px]'}>
               <span className={'font-semibold'}>{t('Product')}</span>
               <span className={'font-semibold'}>{t('Total')}</span>
             </div>
             <div className={'border-b border-[#D9D9D9] flex flex-col gap-[10px] border-solid py-[12px]'}>
-              {products.map((product, index) => (
-                <div key={index} className={'flex justify-between gap-[10px]'}>
-                  <span className={'font-semibold'}>{product.name}</span>
-                  <span className={'font-semibold'}>${product.price}</span>
-                </div>
+              {products?.items?.map((product, index) => (
+                  <div key={index} className={'flex justify-between gap-[10px]'}>
+                    <span className={'font-semibold'}>{product.id.name}</span>
+                    <span className={'font-semibold'}>${product.id.price}</span>
+                  </div>
               ))}
             </div>
             <div className={'flex justify-between items-center border-b border-[#D9D9D9] border-solid py-[12px]'}>
@@ -165,12 +239,58 @@ const CheckoutPayment = () => {
               <span className={'font-semibold text-blue-500'}>${totalPrice}</span>
             </div>
 
-            <button onClick={checkoutPaymentHandler} className={'mt-[50px] bg-[#02A0A0] py-[15px] font-medium text-white'}>{t('Place Order')}</button>
+            <button onClick={checkoutPaymentHandler}
+                    className={'mt-[50px] bg-[#02A0A0] py-[15px] font-medium text-white'}>{t('Place Order')}</button>
           </div>
         </div>
       </div>
     </div>
-  );
+    );
+}
+
+const PaymentWrapper = () => {
+  const elements = useElements();
+  const stripe = useStripe();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!stripe || !elements) {
+      return;
+    }
+
+    await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: 'http://localhost:5173/checkout-payment/success',
+        payment_method_data: {
+          billing_details: {
+            name: 'blabla',
+            email: 'test@slovakia.sk',
+            phone: 'blasldlasld',
+            address: {
+              city: 'kasdkaksd',
+              country: 'aksdkaksd',
+              line1: 'masdkakskd',
+              postal_code: 'askdmasdmamsd',
+              state: ''
+            }
+          },
+        }
+      }
+    });
+  };
+
+  return (
+      <div className='__container'>
+        <form id="payment-form" onSubmit={handleSubmit}>
+          <PaymentElement id="payment-element"/>
+          <button disabled={!stripe || !elements}>
+            Submit Payment
+          </button>
+        </form>
+      </div>
+  )
 }
 
 export default CheckoutPayment;
