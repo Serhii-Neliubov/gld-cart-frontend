@@ -1,29 +1,30 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import { useSelector } from "react-redux";
+import {Elements} from "@stripe/react-stripe-js";
+import {StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import {t} from "i18next";
 
 import UiTextarea from "components/ui/UiTextarea.tsx";
 import UiInput from "components/ui/UiInput.tsx";
+import PaymentCard from "components/checkout-payment/PaymentCard.tsx";
 
 import { useInput } from "hooks/useInput.tsx";
 import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
 
-import { validate } from "utils/validate.ts";
-import ShoppingCartService from "@/services/ShoppingCartService";
-import { useSelector } from "react-redux";
-import { userDataSelector } from "@/store/slices/userDataSlice";
-import $api from "@/utils/interceptors";
-import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
-import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { userDataSelector } from "store/slices/userDataSlice";
 
-// TODO: Set stripe key to .env file
+import { validate } from "utils/validate.ts";
+import $api from "utils/interceptors";
+
+import ShoppingCartService from "services/ShoppingCartService";
+
 const STRIPE_SECRET_KEY = 'pk_test_51LwMMSIr9qomMnpIKf6KC11Fw326JmIM7THj2zhFsrzuRs63CTcdnABWvpGWAKr96dF0qNHwoE3JFuq8R8Vif54i007XexrztK';
 
 const CheckoutPayment = () => {
   useDefaultScrollPosition();
 
   const user = useSelector(userDataSelector);
-  const stripePromise = loadStripe(STRIPE_SECRET_KEY)
 
   const [errorFields, setErrorFields] = useState<string[]>([]);
   const [products, setProducts] = useState([]);
@@ -42,6 +43,24 @@ const CheckoutPayment = () => {
   const phoneNumber = useInput('');
   const emailAddress = useInput('');
   const orderNotes = useInput('');
+
+  useEffect(() => {
+    if(!user._id) {
+      return;
+    };
+
+    ShoppingCartService
+        .getItems(user._id)
+        .then((data) => {
+          setProducts(data)
+          setSubtotalPrice(data.total)
+        });
+  }, [user._id]);
+
+  useEffect(() => {
+    setTotalPrice(subtotalPrice + shippingCost)
+  }, [shippingCost, subtotalPrice]);
+
 
   const appearance = {
     theme: 'stripe',
@@ -74,43 +93,26 @@ const CheckoutPayment = () => {
       },
     }
   }
+  const stripePromise = loadStripe(STRIPE_SECRET_KEY)
 
   const options = {
     clientSecret,
     appearance,
   } as StripeElementsOptions | undefined;
 
-  useEffect(() => {
-    if(!user._id) {
-      return;
-    };
-
-    ShoppingCartService
-        .getItems(user._id)
-        .then((data) => {
-          setProducts(data)
-          setSubtotalPrice(data.total)
-        });
-  }, [user._id]);
-
-  useEffect(() => {
-    setTotalPrice(subtotalPrice + shippingCost)
-  }, [shippingCost, subtotalPrice]);
-
+  const paymentData = {
+    name: firstName.value + ' ' + lastName.value,
+    lastName: lastName.value,
+    country: country.value,
+    street: street.value,
+    town: town.value,
+    zipCode: zipCode.value,
+    phone: phoneNumber.value,
+    email: emailAddress.value,
+  }
 
   async function checkoutPaymentHandler() {
-    const body = {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      country: country.value,
-      street: street.value,
-      town: town.value,
-      zipCode: zipCode.value,
-      phoneNumber: phoneNumber.value,
-      emailAddress: emailAddress.value,
-    }
-
-    const errors = validate(body);
+    const errors = validate(paymentData);
 
     if (errors.length > 0) {
       setErrorFields(errors);
@@ -123,7 +125,7 @@ const CheckoutPayment = () => {
         items: [...products.items],
         amount: totalPrice,
         billing_details: {
-          ...body
+          ...paymentData
         },
         order_notes: orderNotes.value,
       }).then((response) => {
@@ -138,7 +140,7 @@ const CheckoutPayment = () => {
   return (
       clientSecret
         ? <Elements options={options} stripe={stripePromise}>
-            <PaymentWrapper />
+            <PaymentCard data={paymentData} orderNotes={orderNotes.value} />
           </Elements>
         : <div className={'bg-[#ecf2f7] px-[20px]'}>
       <div className={'mx-auto max-w-[1255px] drop-shadow-2xl py-[50px] sm:py-[100px]'}>
@@ -246,51 +248,6 @@ const CheckoutPayment = () => {
       </div>
     </div>
     );
-}
-
-const PaymentWrapper = () => {
-  const elements = useElements();
-  const stripe = useStripe();
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!stripe || !elements) {
-      return;
-    }
-
-    await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: 'http://localhost:5173/checkout-payment/success',
-        payment_method_data: {
-          billing_details: {
-            name: 'blabla',
-            email: 'test@slovakia.sk',
-            phone: 'blasldlasld',
-            address: {
-              city: 'kasdkaksd',
-              country: 'aksdkaksd',
-              line1: 'masdkakskd',
-              postal_code: 'askdmasdmamsd',
-              state: ''
-            }
-          },
-        }
-      }
-    });
-  };
-
-  return (
-      <div className='__container'>
-        <form id="payment-form" onSubmit={handleSubmit}>
-          <PaymentElement id="payment-element"/>
-          <button disabled={!stripe || !elements}>
-            Submit Payment
-          </button>
-        </form>
-      </div>
-  )
 }
 
 export default CheckoutPayment;
