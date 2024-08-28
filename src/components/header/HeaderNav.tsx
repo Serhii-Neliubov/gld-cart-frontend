@@ -29,19 +29,19 @@ export const HeaderNav = ({setBurgerMenuOpen}: HeaderNavProps) => {
                             <Link to={'/'}
                                   className={location.pathname === '/' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Home')}</Link>
                         </li>
-                        {/*<li>*/}
-                        {/*    <Link to={'/renting'}*/}
-                        {/*          className={location.pathname === '/renting' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Renting')}</Link>*/}
-                        {/*</li>*/}
+                        {user.role === 'Driver' || user.role === 'vendor' && <li>
+                            <Link to={user.role === 'vendor' ? '/renting-vendor' : '/renting'}
+                                  className={location.pathname === '/renting' || location.pathname === '/renting-vendor' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Renting')}</Link>
+                        </li>}
                         <li>
-                            <Link to={'/products'}
-                                  className={location.pathname === '/products' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Products')}</Link>
+                            <Link to={user.role === 'vendor' ? '/products-vendor' : '/products'}
+                                  className={location.pathname === '/products' || location.pathname === '/products-vendor' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Products')}</Link>
                         </li>
                         <li>
-                            <Link to={'/professional-services'}
-                                  className={location.pathname === '/professional-services' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Professional services')}</Link>
+                            <Link to={user.role === 'vendor' ? '/professional-services-vendor' : '/professional-services'}
+                                  className={location.pathname === '/professional-services' || location.pathname === '/professional-services-vendor' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Professional services')}</Link>
                         </li>
-                        {user.role === 'Buyer' && <li>
+                        {user.role === 'Driver' && <li>
                             <Link to={'/driver-license'}
                                   className={location.pathname === '/driver-license' ? 'text-red-500' : 'hover:text-red-500 transition-all'}>{t('Driver Services')}</Link>
                         </li>}
@@ -62,7 +62,9 @@ export const HeaderNav = ({setBurgerMenuOpen}: HeaderNavProps) => {
                             </>
                     }
                     <Link to={'/profile'} className={'relative'}>
-                        <img src={imageProfile} alt={'profile icon'}/>
+                        <div className={'w-[30px] h-[30px] rounded-full relative overflow-hidden'}>
+                            <img src={user.profile_picture ? user.profile_picture : imageProfile} alt={'profile icon'}/>
+                        </div>
                         <span className={'absolute top-[50%] translate-y-[-50%] left-[40px]'}>{user.name}</span>
                     </Link>
 

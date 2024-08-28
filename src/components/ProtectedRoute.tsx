@@ -10,7 +10,9 @@ type ProtectedRouteProps = {
 export default function ProtectedRoute({element}: ProtectedRouteProps): React.ReactNode {
   const user = useSelector(userDataSelector);
 
-  if (!user._id) {
+  const accessToken = localStorage.getItem('token');
+
+  if (!user._id && !accessToken) {
     return <Navigate to="/login" replace/>;
   }
 

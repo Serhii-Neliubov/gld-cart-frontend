@@ -1,3 +1,6 @@
+import { ProfessionalServicesFormVendor } from "@/pages/professional-services-vendor/ProfessionalServicesFormVendor";
+import ProfessionalServicesVendor from "@/pages/professional-services-vendor/ProfessionalServicesVendor";
+
 import {
   Home,
   Login,
@@ -5,7 +8,7 @@ import {
   ForgotPassword,
   NewPassword,
   ContactUs,
-  // RentingCategories,
+  RentingCategories,
   ShoppingCart,
   Wishlist,
   PrivacyPolicy,
@@ -20,7 +23,9 @@ import {
   ProductPage,
   HelpCenter,
   ProfessionalServicesCategories,
-  ProfilePage
+  ProfilePage,
+  ProductsVendor,
+  RentingCategoryPage
 } from "pages/index.ts";
 
 export const routes = [
@@ -79,14 +84,24 @@ export const routes = [
     element: ContactUs,
     isAuthRequired: false,
   },
-  // {
-  //   path: "/renting",
-  //   element: RentingCategories,
-  //   isAuthRequired: false,
-  // },
+  {
+    path: "/renting",
+    element: RentingCategories,
+    isAuthRequired: false,
+  },
+  {
+    path: "/renting-vendor",
+    element: RentingCategoryPage,
+    isAuthRequired: false,
+  },
   {
     path: "/products",
     element: ProductCategories,
+    isAuthRequired: false,
+  },
+  {
+    path: "/products-vendor",
+    element: ProductsVendor,
     isAuthRequired: false,
   },
   {
@@ -102,6 +117,16 @@ export const routes = [
   {
     path: "/professional-services",
     element: ProfessionalServicesCategories,
+    isAuthRequired: false,
+  },
+  {
+    path: "/professional-services-vendor",
+    element: ProfessionalServicesVendor,
+    isAuthRequired: false,
+  },
+  {
+    path: "/professional-services-vendor/:category/:subcategory/:service",
+    element: ProfessionalServicesFormVendor,
     isAuthRequired: false,
   },
   {

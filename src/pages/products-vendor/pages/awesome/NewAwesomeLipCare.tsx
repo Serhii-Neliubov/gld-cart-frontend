@@ -4,7 +4,7 @@ import useCategoryRedirect from "@/hooks/useCategoryRedirect.tsx";
 import {BasicInformation} from "./stages/BasicInformation.tsx";
 import {SpecificationInformation} from "./stages/SpecificationInformation.tsx";
 import {PhotoAndVideoBlock} from "@/components/photo-video-block/PhotoAndVideoBlock.tsx";
-import {VendorProductComponentProps} from "@/utils/models/IVendorProductComponentProps.ts";
+import {VendorProductComponentProps} from "models/IVendorProductComponentProps.ts";
 
 export const NewAwesomeLipCare = ({setStage, formData, stage, setFormData}: VendorProductComponentProps) => {
   useCategoryRedirect("awesome", "/products-category-page", stage);

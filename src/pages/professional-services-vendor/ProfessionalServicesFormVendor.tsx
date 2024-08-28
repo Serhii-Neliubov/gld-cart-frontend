@@ -55,7 +55,7 @@ export const ProfessionalServicesFormVendor = () => {
     seller_id: user.id,
   });
 
-  useCategoryRedirect(category as string, "/professional-services", stage);
+  useCategoryRedirect(category as string, "/professional-services-vendor", stage);
 
   return (
     React.createElement(COMPONENTS[category as string], { setStage, stage, formData, setFormData })

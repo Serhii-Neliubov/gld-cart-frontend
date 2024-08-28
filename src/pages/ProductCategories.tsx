@@ -1,7 +1,11 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {t} from "i18next";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import useDefaultScrollPosition from "hooks/useDefaultScrollPosition.tsx";
+
+import { userDataSelector } from "store/slices/userDataSlice";
 
 import imageCategory1 from "assets/images/Categories/img1.png";
 import imageCategory2 from "assets/images/Categories/img2.png";
@@ -39,6 +43,15 @@ const categories = [
 
 const ProductsPage = () => {
   useDefaultScrollPosition();
+
+  const user = useSelector(userDataSelector);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(user.role === 'vendor') {
+      navigate('/products-vendor');
+    }
+  }, []);
 
   return (
     <div className={'bg-white py-[50px] sm:py-[100px] mx-[20px] '}>

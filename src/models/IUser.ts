@@ -5,4 +5,5 @@ export default interface IUser {
   surname: string;
   email: string;
   password: string;
+  profile_picture?: string;
 }

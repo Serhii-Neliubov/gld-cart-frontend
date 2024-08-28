@@ -31,7 +31,7 @@ const ProfessionalServicesVendor: FC = () => {
   const navigate = useNavigate();
 
   function productClickHandler(service : string) {
-    navigate(`/professional-services/${category}/${selectedSubCategory}/${service}`)
+    navigate(`/professional-services-vendor/${category}/${selectedSubCategory}/${service}`)
   }
 
   return (

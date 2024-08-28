@@ -125,21 +125,27 @@ const Registration = () => {
               success.`)}
             </p>
           </div>
-          <div className={'flex flex-col items-center w-full gap-8 mt-[85px]'}>
-            <button
-              onClick={() => setUserType('Vendor')}
-              className={'py-[16px] hover:bg-[#009191] transition-all bg-[#02A0A0] max-w-[345px] text-white w-full rounded-[12px] text-[24px] font-bold'}
-            >
-              {t('Vendor')}
-            </button>
-            <button
-              onClick={() => setUserType('Buyer')}
-              className={'py-[16px] hover:bg-[#1C70BC] transition-all bg-[#2283DC] max-w-[345px] text-white w-full rounded-[12px] text-[24px] font-bold'}
-            >
-              {t('Buyer')}
-            </button>
+            <div className={'flex flex-col items-center w-full gap-4 mt-[85px]'}>
+              <button
+                  onClick={() => setUserType('Vendor')}
+                  className={'py-[16px] hover:bg-[#009191] transition-all bg-[#02A0A0] max-w-[345px] text-white w-full rounded-[12px] text-[24px] font-bold'}
+              >
+                {t('Vendor')}
+              </button>
+              <button
+                  onClick={() => setUserType('Buyer')}
+                  className={'py-[16px] hover:bg-[#1C70BC] transition-all bg-[#2283DC] max-w-[345px] text-white w-full rounded-[12px] text-[24px] font-bold'}
+              >
+                {t('Buyer')}
+              </button>
+              <button
+                  onClick={() => setUserType('Driver')}
+                  className={'py-[16px] hover:bg-[#ba942f] transition-all bg-[#d4aa39] max-w-[345px] text-white w-full rounded-[12px] text-[24px] font-bold'}
+              >
+                {t('Driver')}
+              </button>
+            </div>
           </div>
-        </div>
       }
 
       <img src={decorImg1} alt={'Login particle image'}
