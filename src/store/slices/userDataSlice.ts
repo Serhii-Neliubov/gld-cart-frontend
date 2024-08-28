@@ -83,7 +83,7 @@ const authDataSlice = createSlice({
             state.user = action.payload;
         },
         logout: (state) => {
-            localStorage.removeItem("access_token");
+            localStorage.removeItem("token");
             state.isAuth = false;
             state.user = {} as IUser;
             AuthService.logout();
